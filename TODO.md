@@ -2,11 +2,10 @@
 
 ## ✅ MVP - Fase 1 (Completado)
 - [x] Estructura base del proyecto
-- [x] 6 herramientas iniciales funcionando:
+- [x] 5 herramientas iniciales funcionando:
   - [x] Redimensionar imagen (Canvas)
   - [x] Convertir formato imagen (PNG/JPG/WebP)
-  - [x] Formatear JSON
-  - [x] CSV ↔ JSON  
+  - [x] Formatear JSON  
   - [x] Extraer texto de PDF
   - [x] Limpiar texto
 
@@ -94,7 +93,7 @@
 - [ ] Herramientas prioritarias:
   - [x] Generador de QR (crear) — Completado ✓
   - [x] Generador de contraseñas — Completado ✓
-  - [ ] Calculadora de hashes (MD5, SHA)
+  - [x] Calculadora de hashes (MD5, SHA) — Completado ✓
 - [ ] Futuras adiciones:
   - [ ] Conversor de unidades (longitud, peso, etc)
   - [ ] Calculadora de fechas (diff, añadir/restar)
@@ -112,6 +111,7 @@
 - [ ] Reusar patrón UX (drop-zone, botones copiar, mensajes)
 - [ ] Añadir tests unitarios básicos (scripts node/npm)
 - [ ] Documentar uso en `README.md` y ejemplos rápidos
+- [x] Configurar GitHub Actions para CI (tests) — Completado ✓
 
 ### Próximos pasos inmediatos
 - [ ] Definir 3 herramientas a implementar en la próxima iteración (sugerido: CSV↔JSON, URL encoder, QR generator)

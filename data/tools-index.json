@@ -170,5 +170,17 @@
             "security",
             "generator"
         ]
+    },
+    {
+        "title": "Calculadora de Hashes",
+        "slug": "tools/utils/hash-calculator.html",
+        "description": "Calcula hashes MD5, SHA-1, SHA-256 y SHA-512 para texto.",
+        "category": "Utilidades",
+        "tags": [
+            "hash",
+            "md5",
+            "sha",
+            "security"
+        ]
     }
 ]
