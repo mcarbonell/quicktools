@@ -4,5 +4,18 @@
     "private": true,
     "scripts": {
         "test": "node tests/csv-parser.test.js && node tests/csv-detect.test.js"
+    },
+    "description": "Proyecto MVP con 5 herramientas que funcionan 100% en el navegador. Estructura mínima para desplegar en GitHub Pages o abrir localmente.",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "dependencies": {
+        "fast-xml-parser": "^4.3.0",
+        "js-yaml": "^4.1.0"
     }
 }
