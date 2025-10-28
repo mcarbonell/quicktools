@@ -137,4 +137,17 @@
             "data"
         ]
     }
+    ,
+    {
+        "title": "TOML ↔ JSON",
+        "slug": "tools/data/toml-json.html",
+        "description": "Convierte TOML a JSON y JSON a TOML en el navegador.",
+        "category": "Datos",
+        "tags": [
+            "toml",
+            "json",
+            "convert",
+            "data"
+        ]
+    }
 ]
