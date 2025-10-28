@@ -112,8 +112,7 @@
             "diff",
             "compare"
         ]
-    }
-    ,
+    },
     {
         "title": "YAML ↔ JSON",
         "slug": "tools/data/yaml-json.html",
@@ -121,6 +120,18 @@
         "category": "Datos",
         "tags": [
             "yaml",
+            "json",
+            "convert",
+            "data"
+        ]
+    },
+    {
+        "title": "XML ↔ JSON",
+        "slug": "tools/data/xml-json.html",
+        "description": "Convierte XML a JSON y JSON a XML en el navegador.",
+        "category": "Datos",
+        "tags": [
+            "xml",
             "json",
             "convert",
             "data"
