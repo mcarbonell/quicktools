@@ -30,26 +30,82 @@
   - [x] GDPR compliance básico
 
 ## 📦 Fase 3 - Nuevas herramientas
-- [ ] Imagen
+
+### 🖼️ Imagen y multimedia
+- [x] Redimensionar imagen — Completado ✓
+- [x] Convertir formato — Completado ✓
+- [ ] Herramientas prioritarias:
   - [ ] Comprimir imagen (reducir KB)
-  - [ ] OCR con Tesseract.js
-  - [ ] Filtros básicos (B/N, brillo)
-- [ ] Archivos
+  - [ ] Filtros y efectos (brillo, contraste, B/N, sepia)
+  - [ ] Recortar imagen (crop)
+- [ ] Futuras adiciones:
+  - [ ] OCR con Tesseract.js (texto en imágenes)
+  - [ ] Extraer paleta de colores
+  - [ ] Añadir marca de agua
+  - [ ] Editor collage simple
+  - [ ] EXIF viewer/cleaner
+
+### 📝 Texto y código
+- [x] Limpiar texto — Completado ✓
+- [ ] Herramientas prioritarias:
+  - [ ] Diff/comparador de texto
+  - [ ] Encode/decode URL
+  - [ ] Base64 encode/decode
+  - [ ] HTML encode/decode
+- [ ] Futuras adiciones:
+  - [ ] Markdown preview
+  - [ ] Minificar CSS/JS/HTML
+  - [ ] Formatear SQL
+  - [ ] Contar caracteres/palabras/líneas
+  - [ ] Convertir case (camelCase, kebab-case, etc)
+  - [ ] Escapar/desescapar strings
+  - [ ] ROT13 y cifrados simples
+  - [ ] Transliteración (quitar acentos)
+
+### 📊 Datos y formatos
+- [x] Formatear JSON — Completado ✓
+- [x] CSV ↔ JSON — Completado ✓
+- [ ] Herramientas prioritarias:
+  - [ ] YAML ↔ JSON
+  - [ ] XML ↔ JSON
+  - [ ] TOML ↔ JSON
+- [ ] Futuras adiciones:
+  - [ ] Convertir tablas HTML ↔ CSV
+  - [ ] Excel ↔ CSV (SheetJS)
+  - [ ] Query URL parser
+  - [ ] Validador de JSON Schema
+  - [ ] GraphQL prettifier
+  - [ ] Generador de datos de prueba (mock data)
+
+### 📁 Archivos y documentos
+- [x] Extraer texto de PDF — Completado ✓
+- [ ] Herramientas prioritarias:
   - [ ] Unir PDFs
   - [ ] Dividir PDF por páginas
-  - [ ] CSV ↔ JSON (importar/convertir/preview)
-  - [ ] Extraer metadatos de archivos (imágenes, pdf)
-- [ ] Utilidades
-  - [ ] Generador de contraseñas
-  - [ ] Encriptación AES local
-  - [ ] Conversor de unidades
+  - [ ] Comprimir PDF
+- [ ] Futuras adiciones:
+  - [ ] PDF a imágenes
+  - [ ] Rotar páginas PDF
+  - [ ] Extraer imágenes de PDF
+  - [ ] Extraer metadatos (PDF/imágenes)
+  - [ ] Conversor de documentos (MDI)
 
-### Prioridad Fase 3 (MVP)
-- [ ] CSV ↔ JSON (parser + preview + descarga)
-- [ ] URL encoder / decoder
-- [ ] Generador y lector de QR (canvas + descarga)
-- [ ] Comparador / diff de texto (resaltar cambios)
-- [ ] Conversor Base64 ↔ Imagen
+### 🛠️ Utilidades generales
+- [ ] Herramientas prioritarias:
+  - [ ] Generador de QR (crear/leer)
+  - [ ] Generador de contraseñas
+  - [ ] Calculadora de hashes (MD5, SHA)
+- [ ] Futuras adiciones:
+  - [ ] Conversor de unidades (longitud, peso, etc)
+  - [ ] Calculadora de fechas (diff, añadir/restar)
+  - [ ] UUID/GUID generator
+  - [ ] Encriptación AES local
+  - [ ] Color picker/conversor
+  - [ ] Cronómetro/temporizador
+  - [ ] Calculadora de regex
+  - [ ] Generador de Lorem Ipsum
+  - [ ] Validador de tarjetas de crédito
+  - [ ] Calculadora IP/CIDR
 
 ### Tareas técnicas Fase 3
 - [ ] Crear páginas HTML para cada herramienta y añadir ruta en `index.html`
