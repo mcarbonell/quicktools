@@ -36,56 +36,8 @@ fileInput?.addEventListener('change', (e) => {
     reader.readAsText(f);
 });
 
-// CSV parser (soporta comillas y comillas dobles)
-function parseCSV(str, delimiter = ',') {
-    const rows = [];
-    let row = [];
-    let cur = '';
-    let inQuotes = false;
-    for (let i = 0; i < str.length; i++) {
-        const ch = str[i];
-        if (ch === '"') {
-            if (inQuotes && str[i + 1] === '"') { cur += '"'; i++; }
-            else { inQuotes = !inQuotes; }
-        } else if (ch === delimiter && !inQuotes) {
-            row.push(cur);
-            cur = '';
-        } else if ((ch === '\n' || ch === '\r') && !inQuotes) {
-            if (ch === '\r' && str[i + 1] === '\n') { i++; }
-            row.push(cur);
-            rows.push(row);
-            row = [];
-            cur = '';
-        } else {
-            cur += ch;
-        }
-    }
-    // Push remaining
-    if (cur !== '' || row.length > 0) {
-        row.push(cur);
-        rows.push(row);
-    }
-    // Remove possible trailing empty row caused by newline at end
-    if (rows.length > 0) {
-        const last = rows[rows.length - 1];
-        if (last.length === 1 && last[0] === '') rows.pop();
-    }
-    return rows;
-}
-
-function csvToJson(csvText) {
-    const rows = parseCSV(csvText);
-    if (rows.length === 0) return [];
-    const headers = rows[0].map(h => h.trim());
-    const data = rows.slice(1).map(r => {
-        const obj = {};
-        for (let i = 0; i < headers.length; i++) {
-            obj[headers[i] || `col${i}`] = (r[i] !== undefined) ? r[i] : '';
-        }
-        return obj;
-    });
-    return data;
-}
+// Utilizar la librería compartida si está disponible
+const CSVLib = (typeof window !== 'undefined' && window.__qt_csv) ? window.__qt_csv : null;
 
 function jsonToCsv(json) {
     // json: array of objects OR array of arrays
@@ -116,7 +68,8 @@ csvToJsonBtn?.addEventListener('click', () => {
     const csv = inputArea.value;
     if (!csv.trim()) { msg.textContent = 'Introduce CSV o carga un archivo.'; return; }
     try {
-        const data = csvToJson(csv);
+        if (!CSVLib || !CSVLib.csvToJson) throw new Error('CSV library no disponible en el navegador.');
+        const data = CSVLib.csvToJson(csv);
         resultArea.value = JSON.stringify(data, null, 2);
         msg.textContent = `Convertido: ${data.length} filas`;
     } catch (e) {
@@ -187,8 +140,7 @@ downloadBtn?.addEventListener('click', () => {
 
 // Helper conversion wrapper
 function csvToJsonWrapper(csv) {
-    try { return csvToJson(csv); } catch (e) { throw e; }
+    if (!CSVLib || !CSVLib.csvToJson) throw new Error('CSV library no disponible.');
+    return CSVLib.csvToJson(csv);
 }
-
-// Expose in console for debugging
-window.__qt_csv = { parseCSV, csvToJson, jsonToCsv };
+// Nota: la librería CSV queda expuesta en window.__qt_csv por `js/lib/csv-parser.js`

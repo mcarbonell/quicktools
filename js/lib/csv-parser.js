@@ -50,4 +50,13 @@ function csvToJson(csvText) {
     return data;
 }
 
-module.exports = { parseCSV, csvToJson };
+// UMD-ish export: CommonJS + expose on window for browser
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { parseCSV, csvToJson };
+}
+
+if (typeof window !== 'undefined') {
+    window.__qt_csv = window.__qt_csv || {};
+    window.__qt_csv.parseCSV = parseCSV;
+    window.__qt_csv.csvToJson = csvToJson;
+}
