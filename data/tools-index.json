@@ -136,8 +136,7 @@
             "convert",
             "data"
         ]
-    }
-    ,
+    },
     {
         "title": "TOML ↔ JSON",
         "slug": "tools/data/toml-json.html",
