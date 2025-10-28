@@ -65,5 +65,52 @@
             "clean",
             "count"
         ]
+    },
+    {
+        "title": "Codificar/Decodificar URL",
+        "slug": "tools/text/url-encoder.html",
+        "description": "Codifica y decodifica URLs y parámetros. Funciona offline en tu navegador.",
+        "category": "Texto",
+        "tags": [
+            "text",
+            "url",
+            "encode",
+            "decode"
+        ]
+    },
+    {
+        "title": "Codificar/Decodificar Base64",
+        "slug": "tools/text/base64.html",
+        "description": "Codifica y decodifica texto en Base64. Funciona offline en tu navegador.",
+        "category": "Texto",
+        "tags": [
+            "text",
+            "base64",
+            "encode",
+            "decode"
+        ]
+    },
+    {
+        "title": "Codificar/Decodificar HTML",
+        "slug": "tools/text/html-encoder.html",
+        "description": "Codifica y decodifica entidades HTML. Funciona offline en tu navegador.",
+        "category": "Texto",
+        "tags": [
+            "text",
+            "html",
+            "encode",
+            "decode"
+        ]
+    },
+    {
+        "title": "Comparar Textos",
+        "slug": "tools/text/diff.html",
+        "description": "Compara dos textos y encuentra las diferencias entre ellos.",
+        "category": "Texto",
+        "tags": [
+            "text",
+            "diff",
+            "compare"
+        ]
     }
 ]

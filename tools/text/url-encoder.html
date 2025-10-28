@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Codificar/Decodificar URL — QuickTools</title>
+    <meta name="description"
+        content="Codifica y decodifica URLs y parámetros de consulta. Herramienta gratuita online que funciona sin conexión.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Codificar y decodificar URL online — QuickTools">
+    <meta property="og:description"
+        content="Codifica y decodifica URLs y parámetros. Funciona offline en tu navegador.">
+    <meta property="og:url" content="https://quicktools.dev/tools/text/url-encoder.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "URL Encoder/Decoder",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      }
+    }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <div class="container py-4">
+        <a href="../../index.html">← Volver</a>
+        <h1 class="h4 mt-3">Codificar/Decodificar URL</h1>
+        <p class="text-muted">Codifica y decodifica URLs y parámetros de consulta. Funciona sin conexión.</p>
+
+        <div class="mb-3">
+            <label for="inputText" class="form-label">Texto a codificar/decodificar</label>
+            <textarea id="inputText" rows="3" class="form-control"
+                placeholder="Por ejemplo: https://ejemplo.com/ruta?param=valor con espacios"></textarea>
+        </div>
+
+        <div class="mb-3 d-flex gap-2 flex-wrap">
+            <button id="encodeBtn" class="btn btn-primary">Codificar URL</button>
+            <button id="encodeComponentBtn" class="btn btn-primary">Codificar componente</button>
+            <button id="decodeBtn" class="btn btn-primary">Decodificar URL</button>
+            <button id="decodeComponentBtn" class="btn btn-primary">Decodificar componente</button>
+            <button id="copyBtn" class="btn btn-outline-secondary">Copiar</button>
+        </div>
+
+        <div class="mb-3">
+            <label for="outputText" class="form-label">Resultado</label>
+            <textarea id="outputText" rows="3" class="form-control" readonly
+                placeholder="Aquí aparecerá el texto codificado o decodificado..."></textarea>
+        </div>
+
+        <div class="alert alert-info small">
+            <strong>Diferencias entre codificar URL y componente:</strong><br>
+            • <code>encodeURI</code>: Codifica una URL completa preservando caracteres especiales como
+            <code>/ ? : @ & = + $ #</code><br>
+            • <code>encodeURIComponent</code>: Codifica un componente de URL (como un parámetro), escapando más
+            caracteres
+        </div>
+
+        <div id="msg" class="text-muted small"></div>
+    </div>
+
+    <script src="../../js/tools/url-encoder.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

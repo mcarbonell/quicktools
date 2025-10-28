@@ -47,12 +47,16 @@
 
 ### 📝 Texto y código
 - [x] Limpiar texto — Completado ✓
-- [ ] Herramientas prioritarias:
   - [ ] Diff/comparador de texto
   - [ ] Encode/decode URL
   - [ ] Base64 encode/decode
   - [ ] HTML encode/decode
-- [ ] Futuras adiciones:
+- [x] Herramientas prioritarias:
+  - [x] Diff/comparador de texto — Completado ✓
+  - [x] Encode/decode URL — Completado ✓
+  - [x] Base64 encode/decode — Completado ✓
+  - [x] HTML encode/decode — Completado ✓
+
   - [ ] Markdown preview
   - [ ] Minificar CSS/JS/HTML
   - [ ] Formatear SQL
