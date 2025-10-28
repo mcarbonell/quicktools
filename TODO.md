@@ -92,7 +92,7 @@
 
 ### 🛠️ Utilidades generales
 - [ ] Herramientas prioritarias:
-  - [ ] Generador de QR (crear/leer)
+  - [x] Generador de QR (crear) — Completado ✓
   - [ ] Generador de contraseñas
   - [ ] Calculadora de hashes (MD5, SHA)
 - [ ] Futuras adiciones:

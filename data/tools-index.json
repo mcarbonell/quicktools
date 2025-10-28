@@ -148,5 +148,16 @@
             "convert",
             "data"
         ]
+    },
+    {
+        "title": "Generador de QR",
+        "slug": "tools/utils/qr-generator.html",
+        "description": "Genera códigos QR desde texto o URL y permite descargar la imagen.",
+        "category": "Utilidades",
+        "tags": [
+            "qr",
+            "image",
+            "generator"
+        ]
     }
 ]
