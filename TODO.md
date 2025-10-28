@@ -65,10 +65,10 @@
 ### 📊 Datos y formatos
 - [x] Formatear JSON — Completado ✓
 - [x] CSV ↔ JSON — Completado ✓
-- [x] Herramientas prioritarias:
-  - [x] YAML ↔ JSON
-  - [x] XML ↔ JSON
-  - [x] TOML ↔ JSON
+- [ ] Herramientas prioritarias:
+  - [x] YAML ↔ JSON — Completado ✓
+  - [x] XML ↔ JSON — Completado ✓
+  - [x] TOML ↔ JSON — Completado ✓
 - [ ] Futuras adiciones:
   - [ ] Convertir tablas HTML ↔ CSV
   - [ ] Excel ↔ CSV (SheetJS)
@@ -94,7 +94,6 @@
 - [ ] Herramientas prioritarias:
   - [x] Generador de QR (crear) — Completado ✓
   - [x] Generador de contraseñas — Completado ✓
-  - [ ] Generador de contraseñas
   - [ ] Calculadora de hashes (MD5, SHA)
 - [ ] Futuras adiciones:
   - [ ] Conversor de unidades (longitud, peso, etc)

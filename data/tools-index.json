@@ -159,8 +159,7 @@
             "image",
             "generator"
         ]
-    }
-    ,
+    },
     {
         "title": "Generador de contraseñas",
         "slug": "tools/utils/password-generator.html",

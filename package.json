@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "test": "node tests/validate-conversions.js"
+        "test": "node tests/validate-conversions.js && node tests/validate-format-edgecases.js"
     },
     "description": "Proyecto MVP con 5 herramientas que funcionan 100% en el navegador. Estructura mínima para desplegar en GitHub Pages o abrir localmente.",
     "main": "index.js",
@@ -15,6 +15,7 @@
     "license": "ISC",
     "type": "commonjs",
     "dependencies": {
+        "@iarna/toml": "^2.2.5",
         "fast-xml-parser": "^4.3.0",
         "js-yaml": "^4.1.0"
     }
