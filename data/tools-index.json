@@ -113,4 +113,17 @@
             "compare"
         ]
     }
+    ,
+    {
+        "title": "YAML ↔ JSON",
+        "slug": "tools/data/yaml-json.html",
+        "description": "Convierte YAML a JSON y JSON a YAML en el navegador.",
+        "category": "Datos",
+        "tags": [
+            "yaml",
+            "json",
+            "convert",
+            "data"
+        ]
+    }
 ]
