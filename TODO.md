@@ -36,11 +36,30 @@
 - [ ] Archivos
   - [ ] Unir PDFs
   - [ ] Dividir PDF por páginas
-  - [ ] CSV ↔ JSON
+  - [ ] CSV ↔ JSON (importar/convertir/preview)
+  - [ ] Extraer metadatos de archivos (imágenes, pdf)
 - [ ] Utilidades
   - [ ] Generador de contraseñas
   - [ ] Encriptación AES local
   - [ ] Conversor de unidades
+
+### Prioridad Fase 3 (MVP)
+- [ ] CSV ↔ JSON (parser + preview + descarga)
+- [ ] URL encoder / decoder
+- [ ] Generador y lector de QR (canvas + descarga)
+- [ ] Comparador / diff de texto (resaltar cambios)
+- [ ] Conversor Base64 ↔ Imagen
+
+### Tareas técnicas Fase 3
+- [ ] Crear páginas HTML para cada herramienta y añadir ruta en `index.html`
+- [ ] Reusar patrón UX (drop-zone, botones copiar, mensajes)
+- [ ] Añadir tests unitarios básicos (scripts node/npm)
+- [ ] Documentar uso en `README.md` y ejemplos rápidos
+
+### Próximos pasos inmediatos
+- [ ] Definir 3 herramientas a implementar en la próxima iteración (sugerido: CSV↔JSON, URL encoder, QR generator)
+- [ ] Implementar la primera herramienta y PR local (branch `feature/phase3-csv`)
+- [ ] Añadir una GitHub Action básica para lint/format en push
 
 ## 🔄 Fase 4 - Mejoras continuas
 - [ ] Analytics e insights
