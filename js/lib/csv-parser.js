@@ -50,9 +50,45 @@ function csvToJson(csvText) {
     return data;
 }
 
+// Detect delimiter by counting occurrences outside quotes in the first N non-empty lines
+function detectDelimiter(text) {
+    if (!text) return null;
+    const candidates = [',', ';', '\t', '|'];
+    const lines = text.split(/\r?\n/).filter(l => l.trim() !== '').slice(0, 10);
+    if (lines.length === 0) return null;
+
+    function countOutsideQuotes(line, ch) {
+        let count = 0;
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+            const c = line[i];
+            if (c === '"') {
+                if (inQuotes && line[i + 1] === '"') { i++; continue; }
+                inQuotes = !inQuotes;
+                continue;
+            }
+            if (!inQuotes) {
+                if (ch === '\t') {
+                    if (c === '\t') count++;
+                } else if (c === ch) count++;
+            }
+        }
+        return count;
+    }
+
+    const totals = candidates.map(d => lines.reduce((acc, ln) => acc + countOutsideQuotes(ln, d), 0));
+    let max = 0;
+    let idx = -1;
+    for (let i = 0; i < totals.length; i++) {
+        if (totals[i] > max) { max = totals[i]; idx = i; }
+    }
+    if (idx === -1 || max === 0) return null;
+    return candidates[idx];
+}
+
 // UMD-ish export: CommonJS + expose on window for browser
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { parseCSV, csvToJson };
+    module.exports = { parseCSV, csvToJson, detectDelimiter };
 }
 
 if (typeof window !== 'undefined') {

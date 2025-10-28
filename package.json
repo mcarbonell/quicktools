@@ -3,6 +3,6 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "test": "node tests/csv-parser.test.js"
+        "test": "node tests/csv-parser.test.js && node tests/csv-detect.test.js"
     }
 }
