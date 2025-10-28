@@ -55,6 +55,11 @@ function getDelimiter() {
     if (!delimiterSelect) return ',';
     const v = delimiterSelect.value;
     if (v === 'custom') return customDelimiter?.value || ',';
+    if (v === 'auto') {
+        const detected = detectDelimiter(inputArea.value || '');
+        msg.textContent = detected ? `Delimitador detectado: ${detected === '\t' ? '\\t (tab)' : detected}` : 'No se detectó delimitador, usando coma.';
+        return detected || ',';
+    }
     if (v === '\t') return '\t';
     return v;
 }
@@ -75,14 +80,54 @@ function jsonToCsv(json, delimiter = ',') {
     return header + '\n' + lines.join('\n');
 }
 
-function escapeCsv(val) {
+function escapeCsv(val, delimiter = ',') {
     if (val == null) return '';
     const s = String(val);
     // If contains quote, delimiter, or newlines, escape
-    if (s.includes('"') || s.includes('\n') || s.includes('\r') || s.includes(',')) {
+    if (s.includes('"') || s.includes('\n') || s.includes('\r') || (delimiter && s.includes(delimiter))) {
         return '"' + s.replace(/"/g, '""') + '"';
     }
     return s;
+}
+
+// Detect delimiter by counting occurrences outside quotes in the first N non-empty lines
+function detectDelimiter(text) {
+    if (!text) return null;
+    const candidates = [',', ';', '\t', '|'];
+    const lines = text.split(/\r?\n/).filter(l => l.trim() !== '').slice(0, 10);
+    if (lines.length === 0) return null;
+
+    function countOutsideQuotes(line, ch) {
+        let count = 0;
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+            const c = line[i];
+            if (c === '"') {
+                if (inQuotes && line[i + 1] === '"') { i++; continue; }
+                inQuotes = !inQuotes;
+                continue;
+            }
+            if (!inQuotes) {
+                if (ch === '\t') {
+                    if (c === '\t') count++;
+                } else if (c === ch) count++;
+            }
+        }
+        return count;
+    }
+
+    const totals = candidates.map(d => {
+        return lines.reduce((acc, ln) => acc + countOutsideQuotes(ln, d), 0);
+    });
+
+    // Find the candidate with the highest total count
+    let max = 0;
+    let idx = -1;
+    for (let i = 0; i < totals.length; i++) {
+        if (totals[i] > max) { max = totals[i]; idx = i; }
+    }
+    if (idx === -1 || max === 0) return null;
+    return candidates[idx];
 }
 
 csvToJsonBtn?.addEventListener('click', () => {
