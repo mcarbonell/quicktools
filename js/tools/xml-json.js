@@ -26,6 +26,18 @@ function getParserOptions() {
     };
 }
 
+// Detectar el objeto expuesto por el CDN de fast-xml-parser de forma robusta
+function getFastXmlParser() {
+    if (typeof fastXmlParser !== 'undefined') return fastXmlParser;
+    if (typeof window !== 'undefined') {
+        if (window.fastXmlParser) return window.fastXmlParser;
+        if (window['fast-xml-parser']) return window['fast-xml-parser'];
+        // Algunas versiones exponen XMLParser/XMLBuilder globalmente
+        if (window.XMLParser && window.XMLBuilder) return { XMLParser: window.XMLParser, XMLBuilder: window.XMLBuilder };
+    }
+    throw new Error('fast-xml-parser no está disponible. Comprueba la carga del CDN.');
+}
+
 xmlToJsonBtn?.addEventListener('click', () => {
     const input = inputText.value.trim();
     if (!input) {
@@ -37,7 +49,8 @@ xmlToJsonBtn?.addEventListener('click', () => {
         // Si el usuario no quiere atributos, se pueden ignorar
         if (!preserveAttributes.checked) options.ignoreAttributes = true;
 
-        const parser = new fastXmlParser.XMLParser(options);
+        const FXP = getFastXmlParser();
+        const parser = new FXP.XMLParser(options);
         const jsonObj = parser.parse(input);
         outputText.value = JSON.stringify(jsonObj, null, 2);
         showMsg('XML convertido a JSON');
@@ -62,7 +75,8 @@ jsonToXmlBtn?.addEventListener('click', () => {
             indentBy: "  ",
             supressEmptyNode: false
         };
-        const j2x = new fastXmlParser.XMLBuilder(options);
+        const FXP = getFastXmlParser();
+        const j2x = new FXP.XMLBuilder(options);
         const xml = j2x.build(obj);
         outputText.value = xml;
         showMsg('JSON convertido a XML');
