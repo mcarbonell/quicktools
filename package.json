@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "test": "node tests/csv-parser.test.js && node tests/csv-detect.test.js"
+        "test": "node tests/validate-conversions.js"
     },
     "description": "Proyecto MVP con 5 herramientas que funcionan 100% en el navegador. Estructura mínima para desplegar en GitHub Pages o abrir localmente.",
     "main": "index.js",
