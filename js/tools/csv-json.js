@@ -11,6 +11,7 @@ const downloadBtn = document.getElementById('downloadBtn');
 const msg = document.getElementById('msg');
 const delimiterSelect = document.getElementById('delimiterSelect');
 const customDelimiter = document.getElementById('customDelimiter');
+let detectedDelimiterCache = null;
 
 // Drag & drop
 dropZone?.addEventListener('click', () => fileInput.click());
@@ -26,7 +27,7 @@ dropZone?.addEventListener('drop', (e) => {
         return;
     }
     const reader = new FileReader();
-    reader.onload = () => { inputArea.value = reader.result; msg.textContent = `Archivo cargado: ${f.name}`; };
+    reader.onload = () => { inputArea.value = reader.result; msg.textContent = `Archivo cargado: ${f.name}`; runAutoDetectIfNeeded && runAutoDetectIfNeeded(`Archivo cargado: ${f.name}`); };
     reader.readAsText(f);
 });
 
@@ -34,7 +35,7 @@ fileInput?.addEventListener('change', (e) => {
     const f = e.target.files?.[0];
     if (!f) return;
     const reader = new FileReader();
-    reader.onload = () => { inputArea.value = reader.result; msg.textContent = `Archivo cargado: ${f.name}`; };
+    reader.onload = () => { inputArea.value = reader.result; msg.textContent = `Archivo cargado: ${f.name}`; runAutoDetectIfNeeded && runAutoDetectIfNeeded(`Archivo cargado: ${f.name}`); };
     reader.readAsText(f);
 });
 
@@ -49,6 +50,8 @@ delimiterSelect?.addEventListener('change', (e) => {
     } else {
         customDelimiter.classList.add('d-none');
     }
+    // Clear cached detection when user explicitly changes selection
+    detectedDelimiterCache = null;
 });
 
 function getDelimiter() {
@@ -56,7 +59,12 @@ function getDelimiter() {
     const v = delimiterSelect.value;
     if (v === 'custom') return customDelimiter?.value || ',';
     if (v === 'auto') {
+        if (detectedDelimiterCache) {
+            msg.textContent = `Delimitador detectado: ${detectedDelimiterCache === '\t' ? '\\t (tab)' : detectedDelimiterCache}`;
+            return detectedDelimiterCache;
+        }
         const detected = detectDelimiter(inputArea.value || '');
+        detectedDelimiterCache = detected || null;
         msg.textContent = detected ? `Delimitador detectado: ${detected === '\t' ? '\\t (tab)' : detected}` : 'No se detectó delimitador, usando coma.';
         return detected || ',';
     }
@@ -129,6 +137,23 @@ function detectDelimiter(text) {
     if (idx === -1 || max === 0) return null;
     return candidates[idx];
 }
+
+// Run auto-detection and update UI message if needed
+function runAutoDetectIfNeeded(contextMsg) {
+    if (delimiterSelect?.value !== 'auto') return;
+    detectedDelimiterCache = detectDelimiter(inputArea.value || '') || null;
+    if (detectedDelimiterCache) {
+        if (contextMsg) msg.textContent = `${contextMsg} — Delimitador detectado: ${detectedDelimiterCache === '\t' ? '\\t (tab)' : detectedDelimiterCache}`;
+        else msg.textContent = `Delimitador detectado: ${detectedDelimiterCache === '\t' ? '\\t (tab)' : detectedDelimiterCache}`;
+    } else {
+        if (contextMsg) msg.textContent = `${contextMsg} — No se detectó delimitador, usando coma.`;
+    }
+}
+
+// Detect automatically after paste into textarea
+inputArea?.addEventListener('paste', () => {
+    setTimeout(() => runAutoDetectIfNeeded('Contenido pegado'), 50);
+});
 
 csvToJsonBtn?.addEventListener('click', () => {
     const csv = inputArea.value;
