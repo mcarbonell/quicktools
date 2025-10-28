@@ -2,10 +2,11 @@
 
 ## ✅ MVP - Fase 1 (Completado)
 - [x] Estructura base del proyecto
-- [x] 5 herramientas iniciales funcionando:
+- [x] 6 herramientas iniciales funcionando:
   - [x] Redimensionar imagen (Canvas)
   - [x] Convertir formato imagen (PNG/JPG/WebP)
   - [x] Formatear JSON
+  - [x] CSV ↔ JSON  
   - [x] Extraer texto de PDF
   - [x] Limpiar texto
 

@@ -7,31 +7,31 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://quicktools.dev/tools/image-resizer.html</loc>
+    <loc>https://quicktools.dev/tools/image/image-resizer.html</loc>
     <lastmod>2025-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quicktools.dev/tools/convert-image.html</loc>
+    <loc>https://quicktools.dev/tools/image/convert-image.html</loc>
     <lastmod>2025-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quicktools.dev/tools/json-formatter.html</loc>
+    <loc>https://quicktools.dev/tools/data/json-formatter.html</loc>
     <lastmod>2025-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quicktools.dev/tools/pdf-to-text.html</loc>
+    <loc>https://quicktools.dev/tools/files/pdf-to-text.html</loc>
     <lastmod>2025-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quicktools.dev/tools/text-cleaner.html</loc>
+    <loc>https://quicktools.dev/tools/text/text-cleaner.html</loc>
     <lastmod>2025-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

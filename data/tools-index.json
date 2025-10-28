@@ -1,7 +1,7 @@
 [
     {
         "title": "Redimensionar imagen",
-        "slug": "tools/image-resizer.html",
+        "slug": "tools/image/image-resizer.html",
         "description": "Redimensiona imágenes en el navegador manteniendo la proporción.",
         "category": "Imagen",
         "tags": [
@@ -12,7 +12,7 @@
     },
     {
         "title": "Convertir formato de imagen",
-        "slug": "tools/convert-image.html",
+        "slug": "tools/image/convert-image.html",
         "description": "Convierte JPG, PNG y WebP sin subir archivos.",
         "category": "Imagen",
         "tags": [
@@ -23,7 +23,7 @@
     },
     {
         "title": "Formatear JSON",
-        "slug": "tools/json-formatter.html",
+        "slug": "tools/data/json-formatter.html",
         "description": "Formatea, valida y minifica JSON al instante.",
         "category": "Datos",
         "tags": [
@@ -34,7 +34,7 @@
     },
     {
         "title": "CSV ↔ JSON",
-        "slug": "tools/csv-json.html",
+        "slug": "tools/data/csv-json.html",
         "description": "Convierte CSV a JSON y JSON a CSV en el navegador. Soporta arrastrar y soltar.",
         "category": "Datos",
         "tags": [
@@ -46,7 +46,7 @@
     },
     {
         "title": "Extraer texto de PDF",
-        "slug": "tools/pdf-to-text.html",
+        "slug": "tools/files/pdf-to-text.html",
         "description": "Extrae texto de archivos PDF en el navegador usando PDF.js.",
         "category": "Archivos",
         "tags": [
@@ -57,7 +57,7 @@
     },
     {
         "title": "Limpiar texto",
-        "slug": "tools/text-cleaner.html",
+        "slug": "tools/text/text-cleaner.html",
         "description": "Elimina espacios extra, normaliza saltos de línea y cuenta palabras.",
         "category": "Texto",
         "tags": [
