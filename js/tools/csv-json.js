@@ -9,6 +9,8 @@ const validateJsonBtn = document.getElementById('validateJsonBtn');
 const copyBtn = document.getElementById('copyBtn');
 const downloadBtn = document.getElementById('downloadBtn');
 const msg = document.getElementById('msg');
+const delimiterSelect = document.getElementById('delimiterSelect');
+const customDelimiter = document.getElementById('customDelimiter');
 
 // Drag & drop
 dropZone?.addEventListener('click', () => fileInput.click());
@@ -39,26 +41,45 @@ fileInput?.addEventListener('change', (e) => {
 // Utilizar la librería compartida si está disponible
 const CSVLib = (typeof window !== 'undefined' && window.__qt_csv) ? window.__qt_csv : null;
 
-function jsonToCsv(json) {
+// Mostrar/ocultar campo de delimitador personalizado
+delimiterSelect?.addEventListener('change', (e) => {
+    if (delimiterSelect.value === 'custom') {
+        customDelimiter.classList.remove('d-none');
+        customDelimiter.focus();
+    } else {
+        customDelimiter.classList.add('d-none');
+    }
+});
+
+function getDelimiter() {
+    if (!delimiterSelect) return ',';
+    const v = delimiterSelect.value;
+    if (v === 'custom') return customDelimiter?.value || ',';
+    if (v === '\t') return '\t';
+    return v;
+}
+
+function jsonToCsv(json, delimiter = ',') {
     // json: array of objects OR array of arrays
     if (!Array.isArray(json)) throw new Error('JSON debe ser un array.');
     if (json.length === 0) return '';
     // If array of arrays, just join
     if (Array.isArray(json[0])) {
-        return json.map(r => r.map(cell => escapeCsv(String(cell))).join(',')).join('\n');
+        return json.map(r => r.map(cell => escapeCsv(String(cell), delimiter)).join(delimiter)).join('\n');
     }
     // Array of objects
     // Collect union of keys (order by first object's keys)
     const keys = Array.from(new Set(json.flatMap(obj => Object.keys(obj))));
-    const header = keys.join(',');
-    const lines = json.map(obj => keys.map(k => escapeCsv(obj[k] ?? '')).join(','));
+    const header = keys.join(delimiter);
+    const lines = json.map(obj => keys.map(k => escapeCsv(obj[k] ?? '', delimiter)).join(delimiter));
     return header + '\n' + lines.join('\n');
 }
 
 function escapeCsv(val) {
     if (val == null) return '';
     const s = String(val);
-    if (s.includes('"') || s.includes(',') || s.includes('\n') || s.includes('\r')) {
+    // If contains quote, delimiter, or newlines, escape
+    if (s.includes('"') || s.includes('\n') || s.includes('\r') || s.includes(',')) {
         return '"' + s.replace(/"/g, '""') + '"';
     }
     return s;
@@ -68,8 +89,18 @@ csvToJsonBtn?.addEventListener('click', () => {
     const csv = inputArea.value;
     if (!csv.trim()) { msg.textContent = 'Introduce CSV o carga un archivo.'; return; }
     try {
-        if (!CSVLib || !CSVLib.csvToJson) throw new Error('CSV library no disponible en el navegador.');
-        const data = CSVLib.csvToJson(csv);
+        const delim = getDelimiter();
+        if (!CSVLib || !CSVLib.parseCSV) throw new Error('CSV library no disponible en el navegador.');
+        const rows = CSVLib.parseCSV(csv, delim);
+        if (!rows || rows.length === 0) { resultArea.value = '[]'; msg.textContent = 'Sin filas.'; return; }
+        const headers = rows[0].map(h => h.trim());
+        const data = rows.slice(1).map(r => {
+            const obj = {};
+            for (let i = 0; i < headers.length; i++) {
+                obj[headers[i] || `col${i}`] = (r[i] !== undefined) ? r[i] : '';
+            }
+            return obj;
+        });
         resultArea.value = JSON.stringify(data, null, 2);
         msg.textContent = `Convertido: ${data.length} filas`;
     } catch (e) {
@@ -82,7 +113,8 @@ jsonToCsvBtn?.addEventListener('click', () => {
     if (!txt.trim()) { msg.textContent = 'Introduce JSON o carga un archivo.'; return; }
     try {
         const parsed = JSON.parse(txt);
-        const csv = jsonToCsv(parsed);
+        const delim = getDelimiter();
+        const csv = jsonToCsv(parsed, delim);
         resultArea.value = csv;
         msg.textContent = `Convertido a CSV (${csv.split('\n').length} líneas)`;
     } catch (e) {

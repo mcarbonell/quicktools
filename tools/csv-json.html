@@ -35,6 +35,19 @@
             <button id="downloadBtn" class="btn btn-success">Descargar</button>
         </div>
 
+        <div class="mb-3 d-flex align-items-center gap-2">
+            <label for="delimiterSelect" class="form-label mb-0">Delimitador:</label>
+            <select id="delimiterSelect" class="form-select w-auto">
+                <option value="," selected>Coma (,)</option>
+                <option value=";">Punto y coma (;)</option>
+                <option value="\t">Tab (\t)</option>
+                <option value="|">Pipe (|)</option>
+                <option value="custom">Personalizado</option>
+            </select>
+            <input id="customDelimiter" class="form-control w-auto d-none" placeholder="Escribe el delimitador"
+                style="max-width:120px">
+        </div>
+
         <div class="mb-3 position-relative">
             <label for="resultArea" class="form-label">Resultado</label>
             <textarea id="resultArea" rows="10" class="form-control"
