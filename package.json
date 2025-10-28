@@ -1,8 +1,8 @@
 {
-  "name": "quicktools",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "test": "node tests/csv-parser.test.js"
-  }
+    "name": "quicktools",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "test": "node tests/csv-parser.test.js"
+    }
 }

@@ -7,14 +7,14 @@ console.log('Running csv-parser tests...');
 (() => {
     const input = 'a,b,c\n1,2,3';
     const rows = parseCSV(input);
-    assert.deepStrictEqual(rows, [['a','b','c'], ['1','2','3']]);
+    assert.deepStrictEqual(rows, [['a', 'b', 'c'], ['1', '2', '3']]);
 })();
 
 // Test 2: Quoted fields with comma
 (() => {
     const input = 'h1,h2\n"hello, world",2';
     const rows = parseCSV(input);
-    assert.deepStrictEqual(rows, [['h1','h2'], ['hello, world','2']]);
+    assert.deepStrictEqual(rows, [['h1', 'h2'], ['hello, world', '2']]);
 })();
 
 // Test 3: Escaped double quotes inside quoted field
@@ -28,7 +28,7 @@ console.log('Running csv-parser tests...');
 (() => {
     const input = 'a,b\r\n1,2\r\n';
     const rows = parseCSV(input);
-    assert.deepStrictEqual(rows, [['a','b'], ['1','2']]);
+    assert.deepStrictEqual(rows, [['a', 'b'], ['1', '2']]);
 })();
 
 // Test 5: csvToJson mapping headers
