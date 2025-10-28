@@ -36,7 +36,7 @@ async function calculateHash() {
             copyBtn.disabled = true;
             return;
         } else {
-            hashBuffer = await crypto.subtle.digest(algorithm.replace('-', ''), data);
+            hashBuffer = await crypto.subtle.digest(algorithm, data);
         }
 
         const hashArray = Array.from(new Uint8Array(hashBuffer));
