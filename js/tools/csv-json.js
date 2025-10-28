@@ -246,3 +246,12 @@ function csvToJsonWrapper(csv) {
     return CSVLib.csvToJson(csv);
 }
 // Nota: la librería CSV queda expuesta en window.__qt_csv por `js/lib/csv-parser.js`
+
+// Si la opción por defecto es 'auto', ejecutar detección al cargar la página
+setTimeout(() => {
+    try {
+        if (delimiterSelect?.value === 'auto') runAutoDetectIfNeeded('Auto-detección activada');
+    } catch (e) {
+        // no-op
+    }
+}, 80);
