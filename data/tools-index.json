@@ -160,4 +160,16 @@
             "generator"
         ]
     }
+    ,
+    {
+        "title": "Generador de contraseñas",
+        "slug": "tools/utils/password-generator.html",
+        "description": "Generador seguro de contraseñas con opciones de longitud y tipos de caracteres.",
+        "category": "Utilidades",
+        "tags": [
+            "password",
+            "security",
+            "generator"
+        ]
+    }
 ]
