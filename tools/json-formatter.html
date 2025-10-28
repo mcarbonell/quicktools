@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formatear JSON — QuickTools</title>
+    <meta name="description"
+        content="Formatea, valida y minifica JSON online. Herramienta gratuita para desarrolladores que funciona sin conexión.">
+    <meta name="keywords" content="formatear json, validar json, json pretty print, json formatter">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Formatear y validar JSON online — QuickTools">
+    <meta property="og:description"
+        content="Formatea, valida y minifica JSON online. Herramienta gratuita para desarrolladores.">
+    <meta property="og:url" content="https://quicktools.dev/tools/json-formatter.html">
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Formatear JSON",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      }
+    }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="container py-4">
+        <a href="../index.html">← Volver</a>
+        <h1 class="h4 mt-3">Formatear JSON</h1>
+        <p class="text-muted">Pega JSON, valida, formatea (pretty) o minifica.</p>
+
+        <div class="position-relative">
+            <textarea id="jsonInput" rows="12" class="form-control mb-2" placeholder='{"key": "value"}'></textarea>
+            <button id="copyBtn" class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-2"
+                title="Copiar al portapapeles">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-clipboard" viewBox="0 0 16 16">
+                    <path
+                        d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                    <path
+                        d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+                </svg>
+            </button>
+        </div>
+        <div class="mb-3">
+            <button id="prettyBtn" class="btn btn-outline-primary me-2">Formatear</button>
+            <button id="minifyBtn" class="btn btn-outline-secondary me-2">Minificar</button>
+            <button id="validateBtn" class="btn btn-outline-success">Validar</button>
+        </div>
+        <div id="jsonMsg" class="mb-2"></div>
+    </div>
+
+    <script src="../js/tools/json-formatter.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+/* Estilos mínimos para QuickTools MVP */
+:root {
+    --primary: #0d6efd;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.ads-placeholder {
+    background: #f8f9fa;
+    border: 1px dashed #ced4da;
+    color: #6c757d;
+}
+
+.card-title {
+    font-weight: 600
+}
+
+/* Zona de drop para archivos */
+.drop-zone {
+    border: 2px dashed #dee2e6;
+    border-radius: 4px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    cursor: pointer;
+}
+
+.drop-zone.drag-over {
+    border-color: var(--primary);
+    background: #e9ecef;
+}
+
+.drop-zone .drop-message {
+    color: #6c757d;
+    margin: 1rem 0;
+}
+
+/* Animación para feedback */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Pequeños ajustes responsivos */
+@media (max-width:576px) {
+    header h1 {
+        font-size: 1.4rem
+    }
+}
