@@ -1,76 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Comparar Textos (Diff) — QuickTools</title>
-    <meta name="description"
-        content="Compara dos textos y encuentra las diferencias. Herramienta gratuita online que funciona sin conexión.">
+    <title>Comparar Textos - QuickTools</title>
+    <meta name="description" content="Compara dos textos y encuentra las diferencias entre ellos.">
+    <meta name="keywords" content="text, diff, compare">
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Comparador de textos online — QuickTools">
-    <meta property="og:description"
-        content="Compara dos textos y encuentra las diferencias. Funciona offline en tu navegador.">
-    <meta property="og:url" content="https://quicktools.dev/tools/text/diff.html">
+    <meta property="og:title" content="Comparar Textos — QuickTools">
+    <meta property="og:description" content="Compara dos textos y encuentra las diferencias entre ellos.">
+    <meta property="og:url" content="/tools/text/diff.html">
+    <!-- Schema.org markup -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Text Diff Tool",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0"
-      }
-    }
+    
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/style.css">
-    <style>
-        .diff-added {
-            background-color: #e6ffe6;
-            color: #0a3622;
-        }
-
-        .diff-removed {
-            background-color: #ffe6e6;
-            color: #360a0a;
-        }
-
-        .diff-modified {
-            background-color: #fff9e6;
-            color: #362f0a;
-        }
-
-        pre {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .diff-added {
-                background-color: #0a3622;
-                color: #e6ffe6;
-            }
-
-            .diff-removed {
-                background-color: #360a0a;
-                color: #ffe6e6;
-            }
-
-            .diff-modified {
-                background-color: #362f0a;
-                color: #fff9e6;
-            }
-        }
-    </style>
+    
 </head>
 
 <body>
     <div class="container py-4">
         <a href="../../index.html">← Volver</a>
-        <h1 class="h4 mt-3">Comparar Textos (Diff)</h1>
+        <h1 class="h4 mt-3">Comparar Textos</h1>
         <p class="text-muted">Compara dos textos y encuentra las diferencias entre ellos.</p>
 
         <div class="row mb-3">
@@ -123,9 +77,9 @@
         <div id="msg" class="text-muted small"></div>
     </div>
 
-    <script src="../../js/vendor/diff_match_patch.js"></script>
     <script src="../../js/tools/diff.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 
 </html>

@@ -1,0 +1,39 @@
+<div class="row mt-4">
+            <!-- Cronómetro -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">Cronómetro</div>
+                    <div class="card-body text-center">
+                        <div id="stopwatch-display" class="display-time mb-3">00:00:00.000</div>
+                        <div class="d-flex justify-content-center gap-2 mb-3">
+                            <button id="stopwatch-start" class="btn btn-success">Iniciar</button>
+                            <button id="stopwatch-stop" class="btn btn-danger" disabled>Detener</button>
+                            <button id="stopwatch-lap" class="btn btn-info" disabled>Vuelta</button>
+                            <button id="stopwatch-reset" class="btn btn-warning" disabled>Reiniciar</button>
+                        </div>
+                        <ul id="stopwatch-laps" class="list-group mt-3 text-start"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Temporizador -->
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">Temporizador</div>
+                    <div class="card-body text-center">
+                        <div id="timer-display" class="display-time mb-3">00:00:00</div>
+                        <div class="d-flex justify-content-center gap-2 mb-3">
+                            <input type="number" id="timer-hours" class="form-control w-25 text-center" placeholder="HH" min="0" value="0">
+                            <input type="number" id="timer-minutes" class="form-control w-25 text-center" placeholder="MM" min="0" max="59" value="0">
+                            <input type="number" id="timer-seconds" class="form-control w-25 text-center" placeholder="SS" min="0" max="59" value="0">
+                        </div>
+                        <div class="d-flex justify-content-center gap-2">
+                            <button id="timer-start" class="btn btn-success">Iniciar</button>
+                            <button id="timer-pause" class="btn btn-primary" disabled>Pausar</button>
+                            <button id="timer-reset" class="btn btn-warning" disabled>Reiniciar</button>
+                        </div>
+                        <audio id="timer-alarm" src="" preload="auto"></audio>
+                    </div>
+                </div>
+            </div>
+        </div>

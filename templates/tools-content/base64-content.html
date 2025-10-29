@@ -1,0 +1,30 @@
+<div class="mb-3">
+            <label for="inputText" class="form-label">Texto a codificar/decodificar</label>
+            <textarea id="inputText" rows="3" class="form-control"
+                placeholder="Escribe o pega el texto aquí..."></textarea>
+        </div>
+
+        <div class="mb-3 d-flex gap-2 flex-wrap">
+            <button id="encodeBtn" class="btn btn-primary">Codificar en Base64</button>
+            <button id="decodeBtn" class="btn btn-primary">Decodificar Base64</button>
+            <button id="copyBtn" class="btn btn-outline-secondary">Copiar</button>
+        </div>
+
+        <div class="mb-3">
+            <label for="outputText" class="form-label">Resultado</label>
+            <textarea id="outputText" rows="3" class="form-control" readonly
+                placeholder="Aquí aparecerá el texto codificado o decodificado..."></textarea>
+        </div>
+
+        <div class="alert alert-info small">
+            <strong>¿Qué es Base64?</strong><br>
+            Base64 es un sistema de codificación que convierte datos binarios en texto ASCII utilizando 64 caracteres
+            diferentes.
+            Es comúnmente usado para:<br>
+            • Enviar datos binarios por email<br>
+            • Codificar imágenes en línea en HTML/CSS<br>
+            • Transmitir datos que podrían contener caracteres especiales<br>
+            • Almacenar datos binarios en formatos de texto
+        </div>
+
+        <div id="msg" class="text-muted small"></div>
