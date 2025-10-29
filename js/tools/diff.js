@@ -28,7 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Generar HTML con las diferencias resaltadas
     function prettyDiff(diffs) {
         const html = [];
-        for (let [operation, text] of diffs) {
+        for (let i = 0; i < diffs.length; i++) {
+            const operation = diffs[i][0];
+            const text = diffs[i][1];
             const escapedText = text
                 .replace(/&/g, '&amp;')
                 .replace(/</g, '&lt;')
