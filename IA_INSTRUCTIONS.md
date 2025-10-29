@@ -30,15 +30,35 @@ El objetivo de **QuickTools** es ser un sitio web de herramientas online que fun
 - `js/vendor/`: Librerías de terceros.
 - `css/style.css`: Estilos personalizados.
 
-## 5. Cómo añadir una nueva herramienta
+## 5. Arquitectura de Plantillas
 
-1.  **Crear el HTML:** Añade un nuevo archivo HTML en la subcarpeta correspondiente dentro de `tools/` (e.g., `tools/text/new-tool.html`). Utiliza la estructura de Bootstrap 5 de los otros archivos para mantener la consistencia.
-2.  **Crear el JavaScript:** Añade un nuevo archivo JS en `js/tools/` (e.g., `js/tools/new-tool.js`) con la lógica de la herramienta.
-3.  **Añadir la librería (si es necesario):** Si usas una librería de terceros, añádela a `js/vendor/`.
-4.  **Actualizar el índice:** Añade una nueva entrada en `data/tools-index.json` para que la herramienta aparezca en la página principal. Asegúrate de rellenar todos los campos (`title`, `slug`, `description`, `category`, `tags`).
-5.  **Actualizar TODO.md:** Marca la tarea como completada en el `TODO.md`.
+El proyecto utiliza un sistema de plantillas para generar las páginas de las herramientas, asegurando una estructura y diseño consistentes.
 
-## 6. Estilo de Código
+- **`templates/base.html`**: Es la plantilla principal que contiene la cabecera, el pie de página y la estructura común.
+- **`templates/tools-content/`**: Contiene los fragmentos de HTML específicos de cada herramienta. Cada herramienta se divide en hasta tres archivos:
+  - `[nombre-herramienta]-head.html`: (Opcional) CSS o `<link>` adicionales.
+  - `[nombre-herramienta]-content.html`: El HTML principal de la herramienta.
+  - `[nombre-herramienta]-scripts.html`: (Opcional) `<script>` adicionales, incluidas librerías externas.
+- **`generate-tools.js`**: Es un script de Node.js que combina la plantilla base con los fragmentos de cada herramienta para generar los archivos HTML finales en el directorio `tools/`.
+
+## 6. Cómo añadir o modificar una herramienta
+
+1.  **Crear/Editar los fragmentos de contenido**:
+    - Añade o modifica los archivos de la herramienta en `templates/tools-content/`. Como mínimo, necesitarás un archivo `[nombre-herramienta]-content.html`.
+2.  **Crear/Editar el script de la herramienta**:
+    - La lógica principal debe ir en `js/tools/[nombre-herramienta].js`.
+3.  **Añadir librerías (si es necesario)**:
+    - Las librerías de terceros van en `js/vendor/`. Asegúrate de incluirlas en el archivo `[nombre-herramienta]-scripts.html`.
+4.  **Actualizar el índice de herramientas**:
+    - Añade o actualiza la entrada de la herramienta en `data/tools-index.json`.
+5.  **Regenerar los archivos HTML**:
+    - Ejecuta el script de generación desde la raíz del proyecto:
+      ```bash
+      node generate-tools.js
+      ```
+    - **Importante**: No edites directamente los archivos HTML en el directorio `tools/`, ya que serán sobrescritos.
+
+## 7. Estilo de Código
 
 - **Consistencia:** Antes de añadir o modificar código, revisa los archivos existentes para entender y replicar el estilo de codificación, la estructura y las convenciones utilizadas.
 - **Comentarios:** Añade comentarios solo cuando sea necesario para explicar lógica compleja.

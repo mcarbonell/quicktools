@@ -10,6 +10,9 @@
   - [x] Limpiar texto
 
 ## 🚀 Fase 2 - Mejoras inmediatas
+- [x] Refactorizar la arquitectura a un sistema de plantillas
+  - [x] Crear plantilla base `base.html`
+  - [x] Crear scripts para extraer contenido y generar páginas de herramientas
 - [x] SEO y metadata
   - [x] Metatags y OpenGraph en todas las páginas
   - [x] Schema.org markup para herramientas
