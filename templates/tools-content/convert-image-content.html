@@ -1,22 +1,22 @@
 <p class="text-muted">Sube una imagen y elige el formato de salida.</p>
 
-        <div class="row g-3">
-            <div class="col-md-6">
-                <div class="drop-zone mb-2" id="dropZone">
-                    <input type="file" id="fileInput" accept="image/*" class="d-none">
-                    <div class="drop-message">
-                        Arrastra una imagen aquí o haz clic para seleccionar
-                    </div>
-                </div>
-                <select id="formatSelect" class="form-select mb-2">
-                    <option value="image/png">PNG</option>
-                    <option value="image/jpeg">JPG (calidad 0.92)</option>
-                    <option value="image/webp">WebP</option>
-                </select>
-                <button id="convertBtn" class="btn btn-primary">Convertir y descargar</button>
-            </div>
-            <div class="col-md-6">
-                <p>Vista previa:</p>
-                <div class="border p-2"><canvas id="previewCanvas" style="max-width:100%"></canvas></div>
+<div class="row g-3">
+    <div class="col-md-6">
+        <div class="drop-zone mb-2" id="dropZone">
+            <input type="file" id="fileInput" accept="image/*" class="d-none">
+            <div class="drop-message">
+                Arrastra una imagen aquí o haz clic para seleccionar
             </div>
         </div>
+        <select id="formatSelect" class="form-select mb-2">
+            <option value="image/png">PNG</option>
+            <option value="image/jpeg">JPG (calidad 0.92)</option>
+            <option value="image/webp">WebP</option>
+        </select>
+        <button id="convertBtn" class="btn btn-primary">Convertir y descargar</button>
+    </div>
+    <div class="col-md-6">
+        <p>Vista previa:</p>
+        <div class="border p-2"><canvas id="previewCanvas" style="max-width:100%"></canvas></div>
+    </div>
+</div>
