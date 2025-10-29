@@ -34,7 +34,7 @@
 - [x] Redimensionar imagen — Completado ✓
 - [x] Convertir formato — Completado ✓
 - [ ] Herramientas prioritarias:
-  - [ ] Comprimir imagen (reducir KB)
+  - [x] Comprimir imagen (reducir KB) — Completado ✓
   - [ ] Filtros y efectos (brillo, contraste, B/N, sepia)
   - [ ] Recortar imagen (crop)
 - [ ] Futuras adiciones:

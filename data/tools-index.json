@@ -182,5 +182,17 @@
             "sha",
             "security"
         ]
+    },
+    {
+        "title": "Comprimir Imagen",
+        "slug": "tools/image/image-compressor.html",
+        "description": "Reduce el tamaño de tus imágenes (JPG, PNG, WebP) sin perder calidad visible.",
+        "category": "Imagen",
+        "tags": [
+            "image",
+            "compress",
+            "quality",
+            "download"
+        ]
     }
 ]
