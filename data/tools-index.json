@@ -56,6 +56,17 @@
         ]
     },
     {
+        "title": "Unir PDFs",
+        "slug": "tools/files/merge-pdfs.html",
+        "description": "Combina varios archivos PDF en uno solo directamente en tu navegador.",
+        "category": "Archivos",
+        "tags": [
+            "pdf",
+            "unir",
+            "merge"
+        ]
+    },
+    {
         "title": "Limpiar texto",
         "slug": "tools/text/text-cleaner.html",
         "description": "Elimina espacios extra, normaliza saltos de línea y cuenta palabras.",

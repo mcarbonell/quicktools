@@ -79,7 +79,7 @@
 ### 📁 Archivos y documentos
 - [x] Extraer texto de PDF — Completado ✓
 - [ ] Herramientas prioritarias:
-  - [ ] Unir PDFs
+  - [x] Unir PDFs — Completado ✓
   - [ ] Dividir PDF por páginas
   - [ ] Comprimir PDF
 - [ ] Futuras adiciones:
