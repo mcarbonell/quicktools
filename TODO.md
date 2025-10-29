@@ -30,81 +30,72 @@
 
 ## 📦 Fase 3 - Nuevas herramientas
 
+### 🔄 Conversores
+- [x] CSV ↔ JSON — Completado ✓
+- [x] YAML ↔ JSON — Completado ✓
+- [x] XML ↔ JSON — Completado ✓
+- [x] TOML ↔ JSON — Completado ✓
+- [ ] Herramientas prioritarias:
+  - [x] PDF a JPG/PNG — Completado ✓
+  - [x] Imagen a PDF — Completado ✓
+- [ ] Futuras adiciones:
+  - [ ] Convertir tablas HTML ↔ CSV
+  - [ ] Excel ↔ CSV (SheetJS)
+  - [ ] Conversor de unidades (px ↔ rem, em, etc.)
+
 ### 🖼️ Imagen y multimedia
 - [x] Redimensionar imagen — Completado ✓
-- [x] Convertir formato — Completado ✓
+- [x] Convertir formato de imagen — Completado ✓
+- [x] Comprimir imagen — Completado ✓
 - [ ] Herramientas prioritarias:
-  - [x] Comprimir imagen (reducir KB) — Completado ✓
   - [ ] Filtros y efectos (brillo, contraste, B/N, sepia)
-  - [ ] Recortar imagen (crop)
+  - [x] Recortar imagen (crop) — Completado ✓
+  - [x] Extraer paleta de colores de una imagen — Completado ✓
 - [ ] Futuras adiciones:
-  - [ ] OCR con Tesseract.js (texto en imágenes)
-  - [ ] Extraer paleta de colores
+  - [x] Editor de metadatos (EXIF) de imágenes — Completado ✓
   - [ ] Añadir marca de agua
   - [ ] Editor collage simple
-  - [ ] EXIF viewer/cleaner
 
 ### 📝 Texto y código
 - [x] Limpiar texto — Completado ✓
-- [x] Herramientas prioritarias:
-  - [x] Diff/comparador de texto — Completado ✓
-  - [x] Encode/decode URL — Completado ✓
-  - [x] Base64 encode/decode — Completado ✓
-  - [x] HTML encode/decode — Completado ✓
+- [x] Formatear JSON — Completado ✓
+- [x] Diff/comparador de texto — Completado ✓
+- [x] Encode/decode URL — Completado ✓
+- [x] Base64 encode/decode — Completado ✓
+- [x] HTML encode/decode — Completado ✓
 - [ ] Futuras adiciones:
   - [ ] Markdown preview
   - [ ] Minificar CSS/JS/HTML
   - [ ] Formatear SQL
   - [ ] Contar caracteres/palabras/líneas
   - [ ] Convertir case (camelCase, kebab-case, etc)
-  - [ ] Escapar/desescapar strings
-  - [ ] ROT13 y cifrados simples
-  - [ ] Transliteración (quitar acentos)
-
-### 📊 Datos y formatos
-- [x] Formatear JSON — Completado ✓
-- [x] CSV ↔ JSON — Completado ✓
-- [ ] Herramientas prioritarias:
-  - [x] YAML ↔ JSON — Completado ✓
-  - [x] XML ↔ JSON — Completado ✓
-  - [x] TOML ↔ JSON — Completado ✓
-- [ ] Futuras adiciones:
-  - [ ] Convertir tablas HTML ↔ CSV
-  - [ ] Excel ↔ CSV (SheetJS)
-  - [ ] Query URL parser
-  - [ ] Validador de JSON Schema
-  - [ ] GraphQL prettifier
-  - [ ] Generador de datos de prueba (mock data)
 
 ### 📁 Archivos y documentos
 - [x] Extraer texto de PDF — Completado ✓
-- [ ] Herramientas prioritarias:
-  - [x] Unir PDFs — Completado ✓
-  - [ ] Dividir PDF por páginas
-  - [ ] Comprimir PDF
+- [x] Unir PDFs — Completado ✓
+- [x] Dividir PDF por páginas — Completado ✓
+- [x] Comprimir PDF — Completado ✓
 - [ ] Futuras adiciones:
-  - [ ] PDF a imágenes
   - [ ] Rotar páginas PDF
   - [ ] Extraer imágenes de PDF
-  - [ ] Extraer metadatos (PDF/imágenes)
-  - [ ] Conversor de documentos (MDI)
+
+### 🎲 Generadores
+- [x] Generador de QR — Completado ✓
+- [x] Generador de contraseñas — Completado ✓
+- [ ] Herramientas prioritarias:
+  - [x] Generador de Lorem Ipsum — Completado ✓
+  - [ ] Generador de UUIDs
+- [ ] Futuras adiciones:
+  - [ ] Generador de datos de prueba (mock data)
 
 ### 🛠️ Utilidades generales
-- [ ] Herramientas prioritarias:
-  - [x] Generador de QR (crear) — Completado ✓
-  - [x] Generador de contraseñas — Completado ✓
-  - [x] Calculadora de hashes (MD5, SHA) — Completado ✓
+- [x] Calculadora de hashes (MD5, SHA) — Completado ✓
 - [ ] Futuras adiciones:
-  - [ ] Conversor de unidades (longitud, peso, etc)
   - [ ] Calculadora de fechas (diff, añadir/restar)
-  - [ ] UUID/GUID generator
   - [ ] Encriptación AES local
   - [ ] Color picker/conversor
   - [ ] Cronómetro/temporizador
-  - [ ] Calculadora de regex
-  - [ ] Generador de Lorem Ipsum
   - [ ] Validador de tarjetas de crédito
-  - [ ] Calculadora IP/CIDR
 
 ### Tareas técnicas Fase 3
 - [ ] Crear páginas HTML para cada herramienta y añadir ruta en `index.html`

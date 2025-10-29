@@ -67,6 +67,104 @@
         ]
     },
     {
+        "title": "Dividir PDF",
+        "slug": "tools/files/split-pdf.html",
+        "description": "Divide un PDF en varias partes o extrae páginas específicas.",
+        "category": "Archivos",
+        "tags": [
+            "pdf",
+            "dividir",
+            "split",
+            "extract"
+        ]
+    },
+    {
+        "title": "Comprimir PDF",
+        "slug": "tools/files/compress-pdf.html",
+        "description": "Reduce el tamaño de un PDF comprimiendo las imágenes que contiene.",
+        "category": "Archivos",
+        "tags": [
+            "pdf",
+            "comprimir",
+            "compress",
+            "optimizar"
+        ]
+    },
+    {
+        "title": "PDF a Imagen",
+        "slug": "tools/files/pdf-to-image.html",
+        "description": "Convierte cada página de un PDF a imágenes JPG o PNG.",
+        "category": "Conversores",
+        "tags": [
+            "pdf",
+            "imagen",
+            "convertir",
+            "jpg",
+            "png"
+        ]
+    },
+    {
+        "title": "Imagen a PDF",
+        "slug": "tools/files/image-to-pdf.html",
+        "description": "Convierte una o varias imágenes (JPG, PNG) a un archivo PDF.",
+        "category": "Conversores",
+        "tags": [
+            "imagen",
+            "pdf",
+            "convertir",
+            "jpg",
+            "png"
+        ]
+    },
+    {
+        "title": "Generador de Paleta de Colores",
+        "slug": "tools/image/color-palette-generator.html",
+        "description": "Extrae la paleta de colores dominante de cualquier imagen.",
+        "category": "Imagen",
+        "tags": [
+            "imagen",
+            "colores",
+            "paleta",
+            "diseño"
+        ]
+    },
+    {
+        "title": "Visor y Limpiador EXIF",
+        "slug": "tools/image/exif-viewer-cleaner.html",
+        "description": "Visualiza los metadatos EXIF de tus imágenes y elimina la información privada.",
+        "category": "Imagen",
+        "tags": [
+            "imagen",
+            "exif",
+            "privacidad",
+            "limpiar"
+        ]
+    },
+    {
+        "title": "Generador de Lorem Ipsum",
+        "slug": "tools/text/lorem-ipsum-generator.html",
+        "description": "Genera texto Lorem Ipsum para tus proyectos de diseño y desarrollo.",
+        "category": "Generadores",
+        "tags": [
+            "texto",
+            "lorem ipsum",
+            "generador",
+            "desarrollo"
+        ]
+    },
+    {
+        "title": "Recortar Imagen",
+        "slug": "tools/image/image-cropper.html",
+        "description": "Recorta tus imágenes online de forma sencilla y precisa.",
+        "category": "Imagen",
+        "tags": [
+            "imagen",
+            "recortar",
+            "crop",
+            "editor"
+        ]
+    },
+    {
         "title": "Limpiar texto",
         "slug": "tools/text/text-cleaner.html",
         "description": "Elimina espacios extra, normaliza saltos de línea y cuenta palabras.",
