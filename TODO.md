@@ -93,8 +93,8 @@
 - [ ] Futuras adiciones:
   - [ ] Calculadora de fechas (diff, añadir/restar)
   - [ ] Encriptación AES local
-  - [ ] Color picker/conversor
-  - [ ] Cronómetro/temporizador
+  - [x] Color picker/conversor — Completado ✓
+  - [x] Cronómetro/temporizador — Completado ✓
   - [ ] Validador de tarjetas de crédito
 
 ### Tareas técnicas Fase 3

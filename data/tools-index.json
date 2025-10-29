@@ -303,5 +303,31 @@
             "quality",
             "download"
         ]
+    },
+    {
+        "title": "Selector y Conversor de Color",
+        "slug": "tools/utils/color-picker-converter.html",
+        "description": "Selecciona colores y conviértelos entre formatos HEX, RGB y HSL.",
+        "category": "Utilidades",
+        "tags": [
+            "color",
+            "picker",
+            "converter",
+            "hex",
+            "rgb",
+            "hsl"
+        ]
+    },
+    {
+        "title": "Cronómetro y Temporizador",
+        "slug": "tools/utils/stopwatch-timer.html",
+        "description": "Un cronómetro y temporizador online simple y fácil de usar.",
+        "category": "Utilidades",
+        "tags": [
+            "cronometro",
+            "temporizador",
+            "tiempo",
+            "utilidad"
+        ]
     }
 ]
