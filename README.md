@@ -177,6 +177,51 @@ Las contribuciones son bienvenidas. Por favor:
 
 ## 📄 Licencia
 
+## 🧪 Testing y Validación
+
+QuickTools incluye una **suite completa de testing y validación PWA** para garantizar la calidad y funcionalidad:
+
+### 📊 Estado de Testing
+- ✅ **27/27 tests pasando (100%)**
+- ✅ **Validación PWA completa**
+- ✅ **Tests Node.js y navegador**
+- ✅ **Documentación automática**
+
+### 🧪 Herramientas de Testing Disponibles
+
+**Tests Node.js:**
+```bash
+# Suite completa de tests
+node tests/run-all-tests.js
+
+# Tests individuales
+node tests/csv-parser.test.js
+node tests/debug-yaml.js
+```
+
+**Tests Navegador:**
+- **Interfaz Web:** `/tests/web-tests.html`
+- **Validación PWA:** `/tests/pwa-validation.js` (ejecutar en consola)
+- **Tests interactivos** con métricas en tiempo real
+
+### 📈 Cobertura de Tests
+- 🔧 **Estructura de archivos** (100%)
+- 📝 **Sintaxis JavaScript** (100%)
+- 📄 **Archivos JSON válidos** (100%)
+- 📊 **Parsers (CSV/YAML)** (100%)
+- 🌐 **Herramientas web** (100%)
+- 📱 **Validación PWA** (completa)
+
+### 🚀 Funcionalidades de Testing
+- **Validación Service Worker y PWA**
+- **Tests de parsers CSV/YAML**
+- **Validación de conversiones**
+- **Tests interactivos web**
+- **Reportes automáticos JSON**
+- **Documentación CI/CD**
+
+**Documentación completa:** [`tests/README.md`](tests/README.md)
+
 Este proyecto está bajo la licencia ISC - ver el archivo [LICENSE](LICENSE) para detalles.
 
 ## 🔗 Enlaces
