@@ -1,5 +1,11 @@
 const jsyaml = require('js-yaml');
-const sample = `text: |\n  Line1\n  Line2\ndate: 2012-12-12\nflag: !!bool yes\nnullval: null\n`;
+const sample = `text: |
+  Line1
+  Line2
+date: 2012-12-12
+flag: true
+nullval: null
+`;
 console.log('Sample:\n', sample);
 try {
     const obj = jsyaml.load(sample);

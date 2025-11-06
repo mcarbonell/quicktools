@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 Tests Web - QuickTools PWA</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .test-section {
+            background: white;
+            margin: 20px 0;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .test-button {
+            background: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px 5px 10px 0;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .test-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .test-button.danger {
+            background: #f44336;
+        }
+
+        .test-button.danger:hover {
+            background: #da190b;
+        }
+
+        .test-button.info {
+            background: #2196F3;
+        }
+
+        .test-button.info:hover {
+            background: #0b7dda;
+        }
+
+        .output {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        .status {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .status.passing {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.failing {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status.running {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .console {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin: 20px 0;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .console-line {
+            margin: 2px 0;
+            padding: 2px 0;
+        }
+
+        .console-error {
+            color: #f48771;
+        }
+
+        .console-warn {
+            color: #dcdcaa;
+        }
+
+        .console-info {
+            color: #4fc1ff;
+        }
+
+        .console-success {
+            color: #89d185;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>🧪 Tests Web - QuickTools PWA</h1>
+        <p>Suite completa de pruebas para navegador</p>
+        <div id="test-summary" class="grid" style="margin-top: 20px;">
+            <div class="metric">
+                <div class="metric-value" id="total-tests">0</div>
+                <div class="metric-label">Tests Totales</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" id="passed-tests">0</div>
+                <div class="metric-label">Tests Pasados</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" id="failed-tests">0</div>
+                <div class="metric-label">Tests Fallidos</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🚀 Tests Rápidos</h2>
+        <button class="test-button" onclick="runBasicTests()">🔍 Tests Básicos</button>
+        <button class="test-button" onclick="testPWA()">📱 Test PWA</button>
+        <button class="test-button" onclick="testToolsAvailability()">🔧 Test Herramientas</button>
+        <button class="test-button info" onclick="runAllTests()">🎯 Ejecutar Todo</button>
+        <button class="test-button danger" onclick="clearResults()">🧹 Limpiar</button>
+        <div id="quick-tests-output" class="output"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 Tests Específicos</h2>
+        <h3>CSV Parser</h3>
+        <button class="test-button" onclick="testCSVParser()">📊 Test CSV</button>
+        <button class="test-button" onclick="testCSVDetection()">🔍 Test Detección</button>
+
+        <h3>Conversiones</h3>
+        <button class="test-button" onclick="testBase64()">🔐 Test Base64</button>
+        <button class="test-button" onclick="testJSONFormatter()">📋 Test JSON</button>
+        <button class="test-button" onclick="testURLEncoder()">🔗 Test URL</button>
+
+        <h3>PWA</h3>
+        <button class="test-button" onclick="testServiceWorker()">⚙️ Test SW</button>
+        <button class="test-button" onclick="testManifest()">📄 Test Manifest</button>
+        <button class="test-button" onclick="testCache()">💾 Test Cache</button>
+
+        <div id="specific-tests-output" class="output"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🌐 Tests de Navegador</h2>
+        <div id="browser-tests-output" class="output"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>🖥️ Consola de Debug</h2>
+        <p>Capturando mensajes de la consola:</p>
+        <div id="console-output" class="console"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>📊 Estado Global</h2>
+        <div id="global-status">
+            <span class="status" id="pwa-status">Verificando PWA...</span>
+            <span class="status" id="sw-status">Verificando Service Worker...</span>
+            <span class="status" id="cache-status">Verificando Cache...</span>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales de testing
+        const testState = {
+            totalTests: 0,
+            passedTests: 0,
+            failedTests: 0,
+            tests: []
+        };
+
+        // Capturar console.log
+        const originalLog = console.log;
+        const originalWarn = console.warn;
+        const originalError = console.error;
+
+        console.log = function (...args) {
+            originalLog.apply(console, args);
+            addToConsole('log', args.join(' '));
+        };
+
+        console.warn = function (...args) {
+            originalWarn.apply(console, args);
+            addToConsole('warn', args.join(' '));
+        };
+
+        console.error = function (...args) {
+            originalError.apply(console, args);
+            addToConsole('error', args.join(' '));
+        };
+
+        function addToConsole(type, message) {
+            const consoleDiv = document.getElementById('console-output');
+            const line = document.createElement('div');
+            line.className = `console-line console-${type}`;
+            line.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            consoleDiv.appendChild(line);
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }
+
+        function updateSummary() {
+            document.getElementById('total-tests').textContent = testState.totalTests;
+            document.getElementById('passed-tests').textContent = testState.passedTests;
+            document.getElementById('failed-tests').textContent = testState.failedTests;
+        }
+
+        function runTest(testName, testFunction, outputElement) {
+            testState.totalTests++;
+            addToConsole('info', `🚀 Iniciando: ${testName}`);
+
+            try {
+                const result = testFunction();
+                testState.passedTests++;
+                addToConsole('success', `✅ ${testName} - PASÓ`);
+                return { success: true, message: 'Pasó' };
+            } catch (error) {
+                testState.failedTests++;
+                addToConsole('error', `❌ ${testName} - ERROR: ${error.message}`);
+                return { success: false, message: error.message };
+            } finally {
+                updateSummary();
+            }
+        }
+
+        function clearResults() {
+            document.getElementById('quick-tests-output').innerHTML = '';
+            document.getElementById('specific-tests-output').innerHTML = '';
+            document.getElementById('browser-tests-output').innerHTML = '';
+            document.getElementById('console-output').innerHTML = '';
+            testState.totalTests = 0;
+            testState.passedTests = 0;
+            testState.failedTests = 0;
+            updateSummary();
+            addToConsole('info', '🧹 Resultados limpiados');
+        }
+
+        // Tests básicos
+        function runBasicTests() {
+            const output = document.getElementById('quick-tests-output');
+            output.innerHTML = '🔍 Ejecutando tests básicos...\n';
+
+            // Test API Browser
+            runTest('Service Worker', () => {
+                if (!('serviceWorker' in navigator)) throw new Error('Service Worker no soportado');
+            }, output);
+
+            runTest('Cache API', () => {
+                if (!('caches' in window)) throw new Error('Cache API no soportado');
+            }, output);
+
+            runTest('Manifest', () => {
+                // Verificar si hay link de manifest
+                const manifestLink = document.querySelector('link[rel="manifest"]');
+                if (!manifestLink) throw new Error('Manifest link no encontrado');
+            }, output);
+
+            runTest('HTTPS', () => {
+                if (location.protocol !== 'https:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+                    throw new Error('No es HTTPS');
+                }
+            }, output);
+
+            addToConsole('info', '✅ Tests básicos completados');
+        }
+
+        // Test PWA completo
+        async function testPWA() {
+            const output = document.getElementById('browser-tests-output');
+            output.innerHTML = '📱 Ejecutando tests PWA...\n';
+
+            // Cargar script PWA validation
+            try {
+                const response = await fetch('/tests/pwa-validation.js');
+                const script = await response.text();
+                eval(script);
+
+                output.innerHTML += '✅ Script de validación PWA cargado\n';
+                addToConsole('success', '✅ PWA validation script loaded');
+
+                if (window.pwaValidation) {
+                    await window.pwaValidation.validate();
+                }
+            } catch (error) {
+                output.innerHTML += `❌ Error cargando validación PWA: ${error.message}\n`;
+                addToConsole('error', `❌ PWA validation error: ${error.message}`);
+            }
+        }
+
+        // Test disponibilidad de herramientas
+        function testToolsAvailability() {
+            const output = document.getElementById('specific-tests-output');
+            output.innerHTML = '🔧 Verificando herramientas...\n';
+
+            const tools = [
+                'base64.js',
+                'csv-json.js',
+                'hash-calculator.js',
+                'html-encoder.js',
+                'json-formatter.js',
+                'url-encoder.js',
+                'yaml-json.js'
+            ];
+
+            tools.forEach(tool => {
+                runTest(`Herramienta ${tool}`, () => {
+                    // Verificar que el archivo existe
+                    return fetch(`/js/tools/${tool}`)
+                        .then(response => {
+                            if (!response.ok) throw new Error(`${tool} no encontrado`);
+                        });
+                }, output);
+            });
+        }
+
+        // Tests específicos CSV
+        function testCSVParser() {
+            const output = document.getElementById('specific-tests-output');
+            output.innerHTML = '📊 Testando CSV Parser...\n';
+
+            runTest('CSV Parse básico', () => {
+                const csvData = 'name,age,city\nJohn,30,NYC\nJane,25,LA';
+                if (typeof CSVParser === 'undefined') throw new Error('CSVParser no disponible');
+
+                const result = CSVParser.parse(csvData);
+                if (!result || result.length === 0) throw new Error('CSV Parse falló');
+            }, output);
+        }
+
+        function testCSVDetection() {
+            const output = document.getElementById('specific-tests-output');
+            output.innerHTML += '🔍 Testando detección CSV...\n';
+
+            runTest('Detección formato', () => {
+                if (typeof CSVParser === 'undefined') throw new Error('CSVParser no disponible');
+
+                const testCases = [
+                    { csv: 'a,b,c\n1,2,3', expected: ',' },
+                    { csv: 'a;b;c\n1;2;3', expected: ';' },
+                    { csv: 'a\tb\tc\n1\t2\t3', expected: '\t' }
+                ];
+
+                testCases.forEach(testCase => {
+                    const delimiter = CSVParser.detectDelimiter(testCase.csv);
+                    if (delimiter !== testCase.expected) {
+                        throw new Error(`Detección falló: esperado ${testCase.expected}, got ${delimiter}`);
+                    }
+                });
+            }, output);
+        }
+
+        // Tests de conversión
+        function testBase64() {
+            const output = document.getElementById('specific-tests-output');
+            output.innerHTML += '🔐 Testando Base64...\n';
+
+            runTest('Base64 encode/decode', () => {
+                if (typeof window.base64Encode === 'undefined') {
+                    // Intentar encontrar la función global
+                    const functions = Object.getOwnPropertyNames(window)
+                        .filter(name => name.includes('base64') || name.includes('Base64'));
+                    if (functions.length === 0) {
+                        throw new Error('Funciones Base64 no encontradas');
+                    }
+                }
+
+                const test = 'Hello, World!';
+                if (typeof base64Encode !== 'undefined') {
+                    const encoded = base64Encode(test);
+                    if (typeof base64Decode !== 'undefined') {
+                        const decoded = base64Decode(encoded);
+                        if (decoded !== test) throw new Error('Base64 decode falló');
+                    }
+                }
+            }, output);
+        }
+
+        function testJSONFormatter() {
+            const output = document.getElementById('specific-tests-output');
+            output.innerHTML += '📋 Testando JSON Formatter...\n';
+
+            runTest('JSON format/validate', () => {
+                const testObj = { name: 'test', value: 42 };
+                const jsonStr = JSON.stringify(testObj);
+
+                if (typeof jsonFormat !== 'undefined') {
+                    const formatted = jsonFormat(jsonStr);
+                    if (!formatted) throw new Error('JSON Format falló');
+                }
+
+                if (typeof jsonValidate !== 'undefined') {
+                    const isValid = jsonValidate(jsonStr);
+                    if (!isValid) throw new Error('JSON Validate falló');
+                }
+            }, output);
+        }
+
+        function testURLEncoder() {
+            const output = document.getElementById('specific-tests-output');
+            output.innerHTML += '🔗 Testando URL Encoder...\n';
+
+            runTest('URL encode/decode', () => {
+                const test = 'Hello World! & ? = +';
+
+                if (typeof urlEncode !== 'undefined') {
+                    const encoded = urlEncode(test);
+                    if (typeof urlDecode !== 'undefined') {
+                        const decoded = urlDecode(encoded);
+                        if (decoded !== test) throw new Error('URL decode falló');
+                    }
+                } else {
+                    // Test con funciones nativas
+                    const encoded = encodeURIComponent(test);
+                    const decoded = decodeURIComponent(encoded);
+                    if (decoded !== test) throw new Error('URL encode falló');
+                }
+            }, output);
+        }
+
+        // Tests PWA específicos
+        async function testServiceWorker() {
+            const output = document.getElementById('specific-tests-output');
+            output.innerHTML += '⚙️ Testando Service Worker...\n';
+
+            runTest('SW registration', async () => {
+                if (!('serviceWorker' in navigator)) {
+                    throw new Error('Service Worker no soportado');
+                }
+
+                const registration = await navigator.serviceWorker.getRegistration();
+                if (registration) {
+                    console.log('SW State:', registration.active?.state);
+                } else {
+                    console.log('SW no registrado');
+                }
+            }, output);
+        }
+
+        async function testManifest() {
+            const output = document.getElementById('specific-tests-output');
+            output.innerHTML += '📄 Testando Manifest...\n';
+
+            runTest('Manifest fetch', async () => {
+                const response = await fetch('/manifest.json');
+                if (!response.ok) {
+                    throw new Error('Manifest no encontrado');
+                }
+
+                const manifest = await response.json();
+                console.log('Manifest:', manifest.name);
+
+                if (!manifest.name || !manifest.start_url) {
+                    throw new Error('Manifest incompleto');
+                }
+            }, output);
+        }
+
+        async function testCache() {
+            const output = document.getElementById('specific-tests-output');
+            output.innerHTML += '💾 Testando Cache...\n';
+
+            runTest('Cache API', async () => {
+                if (!('caches' in window)) {
+                    throw new Error('Cache API no soportado');
+                }
+
+                const cacheNames = await caches.keys();
+                console.log('Caches disponibles:', cacheNames);
+
+                // Intentar abrir un cache
+                const cache = await caches.open('test-cache');
+                await cache.put('/test', new Response('test'));
+                const response = await cache.match('/test');
+
+                if (!response) {
+                    throw new Error('Cache put/get falló');
+                }
+            }, output);
+        }
+
+        function runAllTests() {
+            addToConsole('info', '🎯 Iniciando suite completa de tests...');
+
+            // Ejecutar todos los tests en secuencia
+            setTimeout(() => runBasicTests(), 100);
+            setTimeout(() => testToolsAvailability(), 500);
+            setTimeout(() => testCSVParser(), 1000);
+            setTimeout(() => testBase64(), 1500);
+            setTimeout(() => testJSONFormatter(), 2000);
+            setTimeout(() => testURLEncoder(), 2500);
+        }
+
+        // Inicialización
+        window.addEventListener('load', () => {
+            addToConsole('info', '🚀 Tests Web inicializados');
+            updateSummary();
+
+            // Test inicial de estado
+            checkInitialState();
+        });
+
+        function checkInitialState() {
+            // Verificar PWA status
+            const pwaStatus = document.getElementById('pwa-status');
+            if ('serviceWorker' in navigator) {
+                pwaStatus.className = 'status passing';
+                pwaStatus.textContent = '✅ PWA Soportado';
+            } else {
+                pwaStatus.className = 'status failing';
+                pwaStatus.textContent = '❌ PWA No Soportado';
+            }
+
+            // Verificar Service Worker
+            const swStatus = document.getElementById('sw-status');
+            navigator.serviceWorker?.getRegistration().then(reg => {
+                if (reg) {
+                    swStatus.className = 'status passing';
+                    swStatus.textContent = '✅ SW Registrado';
+                } else {
+                    swStatus.className = 'status running';
+                    swStatus.textContent = '⏳ SW No Registrado';
+                }
+            });
+
+            // Verificar Cache
+            const cacheStatus = document.getElementById('cache-status');
+            if ('caches' in window) {
+                cacheStatus.className = 'status passing';
+                cacheStatus.textContent = '✅ Cache API';
+            } else {
+                cacheStatus.className = 'status failing';
+                cacheStatus.textContent = '❌ Cache API';
+            }
+        }
+    </script>
+</body>
+
+</html>

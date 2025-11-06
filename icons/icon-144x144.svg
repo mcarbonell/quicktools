@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="144" height="144" viewBox="0 0 144 144" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d6efd;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0056b3;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="144" height="144" rx="14.4" fill="url(#grad)" stroke="#ffffff" stroke-width="2.88"/>
+  <text x="72" y="79.2" font-family="Arial, sans-serif" font-size="36" font-weight="bold" text-anchor="middle" fill="white">QT</text>
+  <g transform="translate(60.480000000000004, 60.480000000000004)">
+    <rect x="0" y="0" width="23.04" height="50.4" fill="white" rx="1.44"/>
+    <rect x="5.040000000000001" y="5.040000000000001" width="50.4" height="23.04" fill="white" rx="1.44"/>
+  </g>
+</svg>

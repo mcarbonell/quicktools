@@ -1,0 +1,74 @@
+{
+  "timestamp": "2025-11-05T22:31:08.679Z",
+  "duration": 254,
+  "results": [
+    {
+      "name": "Estructura de Archivos",
+      "passed": 19,
+      "total": 19,
+      "errors": []
+    },
+    {
+      "name": "Tests Node.js",
+      "passed": 2,
+      "total": 2,
+      "errors": []
+    },
+    {
+      "name": "Sintaxis JavaScript",
+      "passed": 2,
+      "total": 2,
+      "errors": []
+    },
+    {
+      "name": "Archivos JSON",
+      "passed": 2,
+      "total": 2,
+      "errors": []
+    },
+    {
+      "name": "Herramientas Web",
+      "passed": 2,
+      "total": 2,
+      "errors": []
+    }
+  ],
+  "summary": {
+    "totalTests": 27,
+    "totalPassed": 27,
+    "totalErrors": 0,
+    "percentage": "100.0",
+    "details": [
+      {
+        "name": "Estructura de Archivos",
+        "passed": 19,
+        "total": 19,
+        "errors": []
+      },
+      {
+        "name": "Tests Node.js",
+        "passed": 2,
+        "total": 2,
+        "errors": []
+      },
+      {
+        "name": "Sintaxis JavaScript",
+        "passed": 2,
+        "total": 2,
+        "errors": []
+      },
+      {
+        "name": "Archivos JSON",
+        "passed": 2,
+        "total": 2,
+        "errors": []
+      },
+      {
+        "name": "Herramientas Web",
+        "passed": 2,
+        "total": 2,
+        "errors": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+{
+    "name": "QuickTools - Herramientas Online",
+    "short_name": "QuickTools",
+    "description": "Herramientas online rápidas, seguras y sin registro. Todo se procesa en tu navegador.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#0d6efd",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "es",
+    "dir": "ltr",
+    "categories": [
+        "productivity",
+        "utilities",
+        "tools"
+    ],
+    "icons": [
+        {
+            "src": "icons/icon-72x72.svg",
+            "sizes": "72x72",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "icons/icon-96x96.svg",
+            "sizes": "96x96",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "icons/icon-128x128.svg",
+            "sizes": "128x128",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "icons/icon-144x144.svg",
+            "sizes": "144x144",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "icons/icon-152x152.svg",
+            "sizes": "152x152",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "icons/icon-192x192.svg",
+            "sizes": "192x192",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "icons/icon-384x384.svg",
+            "sizes": "384x384",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "icons/icon-512x512.svg",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Redimensionar Imagen",
+            "short_name": "Resize",
+            "description": "Redimensiona imágenes manteniendo la proporción",
+            "url": "/tools/image/image-resizer.html",
+            "icons": [
+                {
+                    "src": "icons/icon-192x192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Convertir CSV a JSON",
+            "short_name": "CSV-JSON",
+            "description": "Convierte CSV a JSON y viceversa",
+            "url": "/tools/data/csv-json.html",
+            "icons": [
+                {
+                    "src": "icons/icon-192x192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "PDF a Texto",
+            "short_name": "PDF",
+            "description": "Extrae texto de archivos PDF",
+            "url": "/tools/files/pdf-to-text.html",
+            "icons": [
+                {
+                    "src": "icons/icon-192x192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "screenshots/desktop-1.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "platform": "wide",
+            "label": "Vista principal de QuickTools en escritorio"
+        },
+        {
+            "src": "screenshots/mobile-1.png",
+            "sizes": "390x844",
+            "type": "image/png",
+            "platform": "narrow",
+            "label": "QuickTools en móvil"
+        }
+    ],
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "edge_side_panel": {
+        "preferred_width": 400
+    },
+    "handle_links": "preferred",
+    "launch_handler": {
+        "client_mode": "navigate-existing"
+    }
+}
