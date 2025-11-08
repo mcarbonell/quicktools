@@ -62,7 +62,7 @@
 | **Input** | Manual/paste | Selected text from any page | 🚀 Nueva |
 | **Processing** | One-at-time | Batch processing | +400% |
 | **Clipboard** | Copy result | Auto-paste back | +200% |
-| **Rules** |预设 | Custom rules | Nueva |
+| **Rules** | Default | Custom rules | Nueva |
 
 ### **🔗 URL Encoder/Decoder**
 | Característica | Web Actual | Con Extensión | Mejora |

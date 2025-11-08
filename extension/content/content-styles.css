@@ -1,0 +1,455 @@
+/* QuickTools Extension - Content Script Styles */
+/* Inyectado en todas las páginas web */
+
+:root {
+    --qt-primary: #6366f1;
+    --qt-primary-hover: #5855eb;
+    --qt-background: #ffffff;
+    --qt-surface: #f8fafc;
+    --qt-text-primary: #1e293b;
+    --qt-text-secondary: #64748b;
+    --qt-border: #e2e8f0;
+    --qt-success: #10b981;
+    --qt-warning: #f59e0b;
+    --qt-error: #ef4444;
+    --qt-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --qt-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --qt-radius: 8px;
+    --qt-radius-lg: 12px;
+}
+
+/* Tooltip Styles */
+.quicktools-tooltip {
+    background: var(--qt-background);
+    border: 1px solid var(--qt-border);
+    border-radius: var(--qt-radius-lg);
+    box-shadow: var(--qt-shadow-lg);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 14px;
+    animation: qt-fadeIn 0.2s ease-out;
+    backdrop-filter: blur(10px);
+}
+
+.tooltip-content {
+    display: flex;
+    gap: 4px;
+    padding: 8px;
+}
+
+.tooltip-btn {
+    background: var(--qt-surface);
+    border: 1px solid var(--qt-border);
+    border-radius: var(--qt-radius);
+    color: var(--qt-text-primary);
+    cursor: pointer;
+    font-size: 12px;
+    padding: 6px 10px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.tooltip-btn:hover {
+    background: var(--qt-primary);
+    color: white;
+    border-color: var(--qt-primary);
+    transform: translateY(-1px);
+}
+
+/* Modal Styles */
+.quicktools-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: qt-fadeIn 0.3s ease-out;
+}
+
+.quicktools-modal {
+    background: var(--qt-background);
+    border-radius: var(--qt-radius-lg);
+    box-shadow: var(--qt-shadow-lg);
+    width: 90%;
+    max-width: 500px;
+    max-height: 80%;
+    overflow: hidden;
+    animation: qt-slideIn 0.3s ease-out;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background: var(--qt-surface);
+    border-bottom: 1px solid var(--qt-border);
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--qt-text-primary);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--qt-text-secondary);
+    padding: 4px;
+    border-radius: var(--qt-radius);
+    line-height: 1;
+    transition: all 0.2s;
+}
+
+.modal-close:hover {
+    background: var(--qt-border);
+    color: var(--qt-text-primary);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.note-input {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px;
+    border: 1px solid var(--qt-border);
+    border-radius: var(--qt-radius);
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--qt-text-primary);
+    background: var(--qt-background);
+    resize: vertical;
+    margin-bottom: 16px;
+}
+
+.note-input:focus {
+    outline: none;
+    border-color: var(--qt-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.btn {
+    padding: 10px 16px;
+    border: 1px solid var(--qt-border);
+    border-radius: var(--qt-radius);
+    background: var(--qt-surface);
+    color: var(--qt-text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.btn:hover {
+    background: var(--qt-border);
+}
+
+.btn-primary {
+    background: var(--qt-primary);
+    color: white;
+    border-color: var(--qt-primary);
+}
+
+.btn-primary:hover {
+    background: var(--qt-primary-hover);
+}
+
+/* Toast Notifications */
+.quicktools-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--qt-text-primary);
+    color: var(--qt-background);
+    padding: 12px 20px;
+    border-radius: var(--qt-radius-lg);
+    box-shadow: var(--qt-shadow-lg);
+    z-index: 10001;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-out;
+}
+
+.quicktools-toast.show {
+    transform: translateX(0);
+}
+
+.quicktools-toast-success {
+    background: var(--qt-success);
+}
+
+.quicktools-toast-warning {
+    background: var(--qt-warning);
+}
+
+.quicktools-toast-error {
+    background: var(--qt-error);
+}
+
+.quicktools-toast-info {
+    background: var(--qt-primary);
+}
+
+/* Loading Spinner */
+.quicktools-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--qt-border);
+    border-top-color: var(--qt-primary);
+    border-radius: 50%;
+    animation: qt-spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+/* Context Menu */
+.quicktools-context-menu {
+    position: fixed;
+    background: var(--qt-background);
+    border: 1px solid var(--qt-border);
+    border-radius: var(--qt-radius-lg);
+    box-shadow: var(--qt-shadow-lg);
+    z-index: 10002;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-size: 14px;
+    min-width: 180px;
+    animation: qt-fadeIn 0.2s ease-out;
+}
+
+.context-menu-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+    color: var(--qt-text-primary);
+}
+
+.context-menu-item:hover {
+    background: var(--qt-surface);
+}
+
+.context-menu-item:first-child {
+    border-radius: var(--qt-radius-lg) var(--qt-radius-lg) 0 0;
+}
+
+.context-menu-item:last-child {
+    border-radius: 0 0 var(--qt-radius-lg) var(--qt-radius-lg);
+}
+
+.context-menu-separator {
+    height: 1px;
+    background: var(--qt-border);
+    margin: 4px 0;
+}
+
+/* Selection Highlight */
+.quicktools-selection-highlight {
+    background: rgba(99, 102, 241, 0.2);
+    transition: background-color 0.3s;
+}
+
+/* Color Picker */
+.quicktools-color-picker {
+    position: fixed;
+    background: var(--qt-background);
+    border: 1px solid var(--qt-border);
+    border-radius: var(--qt-radius-lg);
+    box-shadow: var(--qt-shadow-lg);
+    z-index: 10003;
+    padding: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    animation: qt-scaleIn 0.2s ease-out;
+}
+
+.color-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.color-picker-canvas {
+    cursor: crosshair;
+    border-radius: var(--qt-radius);
+    border: 1px solid var(--qt-border);
+}
+
+.color-info {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 8px;
+    font-size: 12px;
+}
+
+.color-value {
+    font-family: 'Monaco', 'Consolas', monospace;
+    background: var(--qt-surface);
+    padding: 4px 8px;
+    border-radius: var(--qt-radius);
+    text-align: center;
+}
+
+/* Animations */
+@keyframes qt-fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes qt-slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes qt-scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes qt-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes qt-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Accessibility */
+.quicktools-tooltip:focus,
+.quicktools-modal:focus,
+.quicktools-toast:focus {
+    outline: 2px solid var(--qt-primary);
+    outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    :root {
+        --qt-border: #000000;
+        --qt-text-secondary: #000000;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    .quicktools-tooltip,
+    .quicktools-modal,
+    .quicktools-toast,
+    .tooltip-btn,
+    .btn,
+    .context-menu-item {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --qt-background: #1e293b;
+        --qt-surface: #334155;
+        --qt-text-primary: #f1f5f9;
+        --qt-text-secondary: #94a3b8;
+        --qt-border: #475569;
+    }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .quicktools-modal {
+        width: 95%;
+        margin: 10px;
+    }
+
+    .quicktools-tooltip {
+        left: 10px !important;
+        right: 10px !important;
+        transform: none !important;
+    }
+
+    .tooltip-content {
+        flex-wrap: wrap;
+    }
+
+    .tooltip-btn {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .quicktools-toast {
+        left: 10px;
+        right: 10px;
+        transform: translateY(-100%);
+    }
+
+    .quicktools-toast.show {
+        transform: translateY(0);
+    }
+}
+
+/* Print styles */
+@media print {
+
+    .quicktools-tooltip,
+    .quicktools-modal,
+    .quicktools-toast,
+    .quicktools-context-menu,
+    .quicktools-color-picker {
+        display: none !important;
+    }
+}

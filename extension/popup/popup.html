@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickTools Extension</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <img src="../icons/icon-32x32.png" alt="QuickTools" class="logo-icon">
+                <h1 class="logo-text">QuickTools</h1>
+            </div>
+            <div class="header-actions">
+                <button id="settings-btn" class="icon-btn" title="Configuración">⚙️</button>
+                <button id="analytics-btn" class="icon-btn" title="Analíticas">📊</button>
+            </div>
+        </header>
+
+        <!-- Quick Actions Bar -->
+        <div class="quick-actions">
+            <button id="capture-btn" class="quick-action-btn primary" title="Capturar Pantalla">
+                📸 <span>Capturar</span>
+            </button>
+            <button id="notes-btn" class="quick-action-btn" title="Notas Rápidas">
+                📝 <span>Notas</span>
+            </button>
+            <button id="color-picker-btn" class="quick-action-btn" title="Color Picker">
+                🎨 <span>Color</span>
+            </button>
+            <button id="timer-btn" class="quick-action-btn" title="Timer/Stopwatch">
+                ⏰ <span>Temporizador</span>
+            </button>
+        </div>
+
+        <!-- Tools Grid -->
+        <div class="tools-section">
+            <h2 class="section-title">Herramientas Principales</h2>
+            <div class="tools-grid" id="tools-grid">
+                <!-- Tools will be loaded here dynamically -->
+            </div>
+        </div>
+
+        <!-- Recent Items -->
+        <div class="recent-section" id="recent-section" style="display: none;">
+            <h2 class="section-title">Recientes</h2>
+            <div class="recent-items" id="recent-items">
+                <!-- Recent items will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Bottom Stats -->
+        <footer class="footer">
+            <div class="stats" id="stats">
+                <span class="stat-item">
+                    <span class="stat-icon">📈</span>
+                    <span class="stat-text" id="usage-today">0 usos hoy</span>
+                </span>
+                <span class="stat-item">
+                    <span class="stat-icon">⭐</span>
+                    <span class="stat-text" id="favorite-tool">Captura</span>
+                </span>
+            </div>
+            <div class="tier-badge" id="tier-badge">
+                <span class="tier-text">🆓 Free</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modals -->
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚙️ Configuración</h3>
+                <button class="close-btn" onclick="closeModal('settings-modal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <label for="theme-select">Tema:</label>
+                    <select id="theme-select">
+                        <option value="auto">Automático</option>
+                        <option value="light">Claro</option>
+                        <option value="dark">Oscuro</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="auto-capture"> Captura automática
+                    </label>
+                </div>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="save-to-clipboard" checked> Guardar en portapapeles
+                    </label>
+                </div>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="show-tooltips" checked> Mostrar tooltips
+                    </label>
+                </div>
+                <div class="setting-group">
+                    <label>
+                        <input type="checkbox" id="enable-analytics" checked> Analíticas
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn primary" onclick="saveSettings()">Guardar</button>
+                <button class="btn" onclick="closeModal('settings-modal')">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analytics Modal -->
+    <div id="analytics-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📊 Analíticas</h3>
+                <button class="close-btn" onclick="closeModal('analytics-modal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="analytics-icon">📈</div>
+                        <div class="analytics-value" id="total-uses">0</div>
+                        <div class="analytics-label">Usos Totales</div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-icon">📅</div>
+                        <div class="analytics-value" id="today-uses">0</div>
+                        <div class="analytics-label">Hoy</div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-icon">⭐</div>
+                        <div class="analytics-value" id="favorite-tool-count">0</div>
+                        <div class="analytics-label">Herramienta Favorita</div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-icon">⏰</div>
+                        <div class="analytics-value" id="avg-session">0m</div>
+                        <div class="analytics-label">Sesión Promedio</div>
+                    </div>
+                </div>
+                <div class="analytics-chart" id="usage-chart">
+                    <!-- Usage chart will be rendered here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('analytics-modal')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes Modal -->
+    <div id="notes-modal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>📝 Notas Rápidas</h3>
+                <button class="close-btn" onclick="closeModal('notes-modal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="notes-actions">
+                    <button class="btn primary" onclick="createNewNote()">+ Nueva Nota</button>
+                    <input type="text" id="note-search" placeholder="Buscar notas..." class="search-input">
+                </div>
+                <div class="notes-list" id="notes-list">
+                    <!-- Notes will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Color Picker Modal -->
+    <div id="color-picker-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🎨 Color Picker Global</h3>
+                <button class="close-btn" onclick="closeModal('color-picker-modal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="color-picker-content">
+                    <div class="color-picker-instructions">
+                        <p>👆 Haz click en cualquier pixel de la pantalla para obtener su color</p>
+                        <p>💡 O arrastra el selector para explorar colores</p>
+                    </div>
+                    <div class="color-preview" id="color-preview">
+                        <div class="color-sample" id="color-sample"></div>
+                        <div class="color-info">
+                            <div class="color-value" id="color-hex">#000000</div>
+                            <div class="color-formats">
+                                <div>RGB: <span id="color-rgb">rgb(0, 0, 0)</span></div>
+                                <div>HSL: <span id="color-hsl">hsl(0, 0%, 0%)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="color-history" id="color-history">
+                        <h4>Colores Recientes</h4>
+                        <div class="color-palette" id="recent-colors">
+                            <!-- Recent colors will be shown here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="activateGlobalPicker()">Activar Picker</button>
+                <button class="btn primary" onclick="copyCurrentColor()">Copiar Color</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen Capture Modal -->
+    <div id="capture-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📸 Captura de Pantalla</h3>
+                <button class="close-btn" onclick="closeModal('capture-modal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="capture-options">
+                    <button class="btn primary" onclick="captureScreen()">
+                        📺 Capturar Pantalla Completa
+                    </button>
+                    <button class="btn" onclick="captureWindow()">
+                        🪟 Capturar Ventana
+                    </button>
+                    <button class="btn" onclick="startRegionCapture()">
+                        ✂️ Capturar Región
+                    </button>
+                </div>
+                <div class="capture-preview" id="capture-preview" style="display: none;">
+                    <img id="captured-image" src="" alt="Captura">
+                    <div class="capture-actions">
+                        <button class="btn" onclick="annotateImage()">✏️ Anotar</button>
+                        <button class="btn" onclick="copyCapture()">📋 Copiar</button>
+                        <button class="btn primary" onclick="downloadCapture()">💾 Descargar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timer Modal -->
+    <div id="timer-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⏰ Temporizador & Cronómetro</h3>
+                <button class="close-btn" onclick="closeModal('timer-modal')">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="timer-display" id="timer-display">00:00:00</div>
+                <div class="timer-controls">
+                    <button class="btn primary" id="timer-start" onclick="startTimer()">▶️ Iniciar</button>
+                    <button class="btn" id="timer-pause" onclick="pauseTimer()" disabled>⏸️ Pausar</button>
+                    <button class="btn" id="timer-reset" onclick="resetTimer()">⏹️ Reset</button>
+                </div>
+                <div class="timer-modes">
+                    <button class="mode-btn active" onclick="setTimerMode('stopwatch')">⏱️ Cronómetro</button>
+                    <button class="mode-btn" onclick="setTimerMode('countdown')">⏰ Cuenta Atrás</button>
+                </div>
+                <div class="timer-presets" id="timer-presets">
+                    <button class="preset-btn" onclick="setCountdown(300)">5 min</button>
+                    <button class="preset-btn" onclick="setCountdown(900)">15 min</button>
+                    <button class="preset-btn" onclick="setCountdown(1800)">30 min</button>
+                    <button class="preset-btn" onclick="setCountdown(3600)">1 hora</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

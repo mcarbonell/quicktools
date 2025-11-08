@@ -1,0 +1,13 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="4" fill="#6366f1"/>
+  <g fill="white">
+    <!-- Main circle/header indicator -->
+    <circle cx="16" cy="10" r="3"/>
+    <!-- First line -->
+    <rect x="8" y="16" width="16" height="2" rx="1"/>
+    <!-- Second line -->
+    <rect x="6" y="20" width="20" height="2" rx="1"/>
+    <!-- Third line -->
+    <rect x="10" y="24" width="12" height="2" rx="1"/>
+  </g>
+</svg>

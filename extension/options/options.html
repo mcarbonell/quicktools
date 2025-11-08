@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickTools Extension - Opciones</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <img src="../icons/icon-48x48.png" alt="QuickTools" class="logo-icon">
+                <h1>QuickTools Extension</h1>
+            </div>
+            <div class="version">v1.0.0</div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar Navigation -->
+            <nav class="sidebar">
+                <ul class="nav-list">
+                    <li class="nav-item active">
+                        <button class="nav-btn" data-section="general">
+                            <span class="nav-icon">⚙️</span>
+                            <span class="nav-text">General</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="appearance">
+                            <span class="nav-icon">🎨</span>
+                            <span class="nav-text">Apariencia</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="shortcuts">
+                            <span class="nav-icon">⌨️</span>
+                            <span class="nav-text">Atajos</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="privacy">
+                            <span class="nav-icon">🔒</span>
+                            <span class="nav-text">Privacidad</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="sync">
+                            <span class="nav-icon">🔄</span>
+                            <span class="nav-text">Sincronización</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-btn" data-section="advanced">
+                            <span class="nav-icon">🔧</span>
+                            <span class="nav-text">Avanzado</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Content Sections -->
+            <div class="content-area">
+                <!-- General Section -->
+                <section id="general-section" class="content-section active">
+                    <h2>Configuración General</h2>
+
+                    <div class="settings-group">
+                        <h3>Funcionalidad</h3>
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="auto-start">
+                                <span class="checkmark"></span>
+                                Iniciar automáticamente con el navegador
+                            </label>
+                            <p class="setting-description">La extensión se activará automáticamente al abrir Chrome</p>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="auto-capture" checked>
+                                <span class="checkmark"></span>
+                                Captura automática al seleccionar
+                            </label>
+                            <p class="setting-description">Capturar automáticamente cuando selecciones una región</p>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="save-to-clipboard" checked>
+                                <span class="checkmark"></span>
+                                Guardar automáticamente en el portapapeles
+                            </label>
+                            <p class="setting-description">Copiar resultados automáticamente al portapapeles</p>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="show-notifications" checked>
+                                <span class="checkmark"></span>
+                                Mostrar notificaciones
+                            </label>
+                            <p class="setting-description">Mostrar notificaciones de éxito y error</p>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>Comportamiento del Popup</h3>
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="open-in-new-tab">
+                                <span class="checkmark"></span>
+                                Abrir herramientas en nueva pestaña
+                            </label>
+                            <p class="setting-description">Abrir herramientas web en lugar de usar el popup</p>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="compact-view">
+                                <span class="checkmark"></span>
+                                Vista compacta
+                            </label>
+                            <p class="setting-description">Mostrar herramientas en vista más compacta</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Appearance Section -->
+                <section id="appearance-section" class="content-section">
+                    <h2>Apariencia</h2>
+
+                    <div class="settings-group">
+                        <h3>Tema</h3>
+                        <div class="theme-options">
+                            <label class="theme-option">
+                                <input type="radio" name="theme" value="auto" checked>
+                                <div class="theme-preview">
+                                    <div class="theme-auto">Auto</div>
+                                    <span>Seguir configuración del sistema</span>
+                                </div>
+                            </label>
+                            <label class="theme-option">
+                                <input type="radio" name="theme" value="light">
+                                <div class="theme-preview">
+                                    <div class="theme-light">Claro</div>
+                                    <span>Interfaz clara</span>
+                                </div>
+                            </label>
+                            <label class="theme-option">
+                                <input type="radio" name="theme" value="dark">
+                                <div class="theme-preview">
+                                    <div class="theme-dark">Oscuro</div>
+                                    <span>Interfaz oscura</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>Colores</h3>
+                        <div class="color-setting">
+                            <label for="accent-color">Color de acento:</label>
+                            <div class="color-picker-container">
+                                <input type="color" id="accent-color" value="#6366f1" class="color-input">
+                                <span class="color-value">#6366f1</span>
+                            </div>
+                        </div>
+
+                        <div class="color-setting">
+                            <label for="background-color">Color de fondo:</label>
+                            <div class="color-picker-container">
+                                <input type="color" id="background-color" value="#ffffff" class="color-input">
+                                <span class="color-value">#ffffff</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>New Tab</h3>
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="use-custom-newtab" checked>
+                                <span class="checkmark"></span>
+                                Usar QuickTools como página de nueva pestaña
+                            </label>
+                            <p class="setting-description">Reemplaza la página de nueva pestaña con el dashboard de
+                                QuickTools</p>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="show-weather" checked>
+                                <span class="checkmark"></span>
+                                Mostrar widget del clima
+                            </label>
+                            <p class="setting-description">Mostrar información del clima en el dashboard</p>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="show-productivity" checked>
+                                <span class="checkmark"></span>
+                                Mostrar métricas de productividad
+                            </label>
+                            <p class="setting-description">Mostrar estadísticas de uso y productividad</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Shortcuts Section -->
+                <section id="shortcuts-section" class="content-section">
+                    <h2>Atajos de Teclado</h2>
+
+                    <div class="settings-group">
+                        <h3>Atajos Globales</h3>
+                        <p class="section-description">Personaliza los atajos de teclado para acceder rápidamente a las
+                            funciones</p>
+
+                        <div class="shortcut-list" id="shortcut-list">
+                            <!-- Shortcuts will be loaded here -->
+                        </div>
+
+                        <div class="shortcut-actions">
+                            <button class="btn" id="reset-shortcuts">Restaurar por defecto</button>
+                            <button class="btn" id="add-shortcut">Agregar atajo</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Privacy Section -->
+                <section id="privacy-section" class="content-section">
+                    <h2>Privacidad y Datos</h2>
+
+                    <div class="settings-group">
+                        <h3>Recolección de Datos</h3>
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="enable-analytics" checked>
+                                <span class="checkmark"></span>
+                                Enviar analíticas de uso anónimas
+                            </label>
+                            <p class="setting-description">Ayuda a mejorar QuickTools enviando datos de uso anónimos</p>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="crash-reports">
+                                <span class="checkmark"></span>
+                                Enviar reportes de errores
+                            </label>
+                            <p class="setting-description">Enviar automáticamente información sobre errores para mejorar
+                                la estabilidad</p>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>Almacenamiento Local</h3>
+                        <div class="data-info">
+                            <div class="data-item">
+                                <span class="data-label">Notas guardadas:</span>
+                                <span class="data-value" id="notes-count">0</span>
+                                <button class="btn btn-small" id="clear-notes">Limpiar</button>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">Capturas guardadas:</span>
+                                <span class="data-value" id="captures-count">0</span>
+                                <button class="btn btn-small" id="clear-captures">Limpiar</button>
+                            </div>
+                            <div class="data-item">
+                                <span class="data-label">Historial de herramientas:</span>
+                                <span class="data-value" id="history-count">0</span>
+                                <button class="btn btn-small" id="clear-history">Limpiar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>Exportar/Importar Datos</h3>
+                        <div class="data-actions">
+                            <button class="btn" id="export-data">Exportar datos</button>
+                            <input type="file" id="import-file" accept=".json" style="display: none;">
+                            <button class="btn" id="import-data">Importar datos</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sync Section -->
+                <section id="sync-section" class="content-section">
+                    <h2>Sincronización</h2>
+
+                    <div class="settings-group">
+                        <h3>Estado de Sincronización</h3>
+                        <div class="sync-status">
+                            <div class="status-indicator" id="sync-status">
+                                <span class="status-icon">🔒</span>
+                                <span class="status-text">No sincronizado</span>
+                            </div>
+                            <p class="sync-description">Sincroniza tus notas, configuraciones y datos entre dispositivos
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>Opciones de Sincronización</h3>
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="sync-settings">
+                                <span class="checkmark"></span>
+                                Sincronizar configuraciones
+                            </label>
+                            <p class="setting-description">Aplicar la misma configuración en todos los dispositivos</p>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="sync-notes">
+                                <span class="checkmark"></span>
+                                Sincronizar notas
+                            </label>
+                            <p class="setting-description">Sincronizar notas entre dispositivos</p>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="sync-favorites">
+                                <span class="checkmark"></span>
+                                Sincronizar herramientas favoritas
+                            </label>
+                            <p class="setting-description">Mantener la misma configuración de favoritos</p>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>Cuenta Premium</h3>
+                        <div class="premium-info">
+                            <div class="premium-icon">💎</div>
+                            <div class="premium-text">
+                                <h4>QuickTools Premium</h4>
+                                <p>Desbloquea sincronización ilimitada, notas ilimitadas, y funciones exclusivas</p>
+                                <button class="btn btn-primary" id="upgrade-premium">Actualizar a Premium</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Advanced Section -->
+                <section id="advanced-section" class="content-section">
+                    <h2>Configuración Avanzada</h2>
+
+                    <div class="settings-group">
+                        <h3>Performance</h3>
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="lazy-loading">
+                                <span class="checkmark"></span>
+                                Carga diferida de herramientas
+                            </label>
+                            <p class="setting-description">Cargar herramientas solo cuando se necesiten (mejora el
+                                rendimiento)</p>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="cache-images">
+                                <span class="checkmark"></span>
+                                Cache de imágenes
+                            </label>
+                            <p class="setting-description">Cachear imágenes para carga más rápida</p>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>Desarrollo</h3>
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="debug-mode">
+                                <span class="checkmark"></span>
+                                Modo debug
+                            </label>
+                            <p class="setting-description">Habilita logs detallados para debugging</p>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <input type="checkbox" id="experimental-features">
+                                <span class="checkmark"></span>
+                                Características experimentales
+                            </label>
+                            <p class="setting-description">Habilita características en desarrollo</p>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>Reset y Mantenimiento</h3>
+                        <div class="maintenance-actions">
+                            <button class="btn" id="clear-cache">Limpiar cache</button>
+                            <button class="btn" id="update-extensions">Buscar actualizaciones</button>
+                            <button class="btn btn-danger" id="reset-all">Restaurar configuración</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span>QuickTools Extension v1.0.0</span>
+                    <span class="separator">•</span>
+                    <a href="#" id="help-link">Ayuda</a>
+                    <span class="separator">•</span>
+                    <a href="#" id="feedback-link">Feedback</a>
+                </div>
+                <div class="footer-right">
+                    <button class="btn btn-primary" id="save-settings">Guardar Configuración</button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+
+</html>
