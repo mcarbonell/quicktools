@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     // diff.js - Comparador de textos
     const text1 = document.getElementById('text1');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
     const text2 = document.getElementById('text2');
     const compareBtn = document.getElementById('compareBtn');
     const copyBtn = document.getElementById('copyBtn');
@@ -95,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
             await navigator.clipboard.writeText(textToCopy);
             const originalText = copyBtn.textContent;
             copyBtn.innerHTML = '✔';
-            msg.textContent = 'Copiado al portapapeles';
+            msg.textContent = t.copied || 'Copiado al portapapeles';
             setTimeout(() => {
                 copyBtn.innerHTML = originalText;
                 msg.textContent = '';
@@ -112,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const originalText = copyBtn.innerHTML;
                 copyBtn.innerHTML = '✔';
-                msg.textContent = 'Copiado al portapapeles';
+                msg.textContent = t.copied || 'Copiado al portapapeles';
                 setTimeout(() => {
                     copyBtn.innerHTML = originalText;
                     msg.textContent = '';

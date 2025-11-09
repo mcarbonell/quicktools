@@ -1,4 +1,7 @@
 const imageInput = document.getElementById('image-input');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const exifDataPre = document.getElementById('exif-data');
 const cleanExifBtn = document.getElementById('clean-exif-btn');
 const cleanedImageOutput = document.getElementById('cleaned-image-output');

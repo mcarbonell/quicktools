@@ -1,4 +1,7 @@
 const amountInput = document.getElementById('amount-input');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const unitSelect = document.getElementById('unit-select');
 const generateBtn = document.getElementById('generate-btn');
 const loremIpsumOutput = document.getElementById('lorem-ipsum-output');

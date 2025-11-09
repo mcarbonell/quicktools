@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Generador de QR - QuickTools</title>
-    <meta name="description" content="Genera códigos QR desde texto o URL y permite descargar la imagen.">
+    <title>QR Generator - QuickTools</title>
+    <meta name="description" content="Generate QR codes from text or URL and download the image.">
     <meta name="keywords" content="qr, image, generator">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -79,7 +79,7 @@
     <button id="generateBtn" class="btn btn-primary">Generar QR</button>
     <button id="downloadBtn" class="btn btn-outline-primary" disabled>Descargar PNG</button>
     <button id="copyBtn" class="btn btn-outline-secondary" disabled>Copiar imagen</button>
-    <button id="clearBtn" class="btn btn-outline-danger">Limpiar</button>
+    <button id="clearBtn" class="btn btn-outline-danger">Clear</button>
 </div>
 
 <div class="mb-3">
@@ -91,7 +91,7 @@
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","generateButton":"Generate QR"};
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","generateButton":"Generate QR"};
     </script>
 <!-- QRCode.js (pequeño y compatible) -->
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>

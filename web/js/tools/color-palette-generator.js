@@ -1,4 +1,7 @@
 const imageInput = document.getElementById('image-input');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const colorCountInput = document.getElementById('color-count');
 const extractBtn = document.getElementById('extract-btn');
 const previewImg = document.getElementById('preview');

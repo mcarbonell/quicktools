@@ -1,6 +1,9 @@
 // js/tools/image-compressor.js - Compresor de Imágenes
 
 const dropZone = document.getElementById('dropZone');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const imageInput = document.getElementById('imageInput');
 const qualityRange = document.getElementById('qualityRange');
 const qualityValue = document.getElementById('qualityValue');

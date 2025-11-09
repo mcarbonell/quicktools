@@ -1,0 +1,29 @@
+<div class="mb-3">
+    <label for="inputText" class="form-label">Texto a codificar/decodificar</label>
+    <textarea id="inputText" rows="3" class="form-control"
+        placeholder="Por ejemplo: https://ejemplo.com/ruta?param=valor con espacios"></textarea>
+</div>
+
+<div class="mb-3 d-flex gap-2 flex-wrap">
+    <button id="encodeBtn" class="btn btn-primary">Codificar URL</button>
+    <button id="encodeComponentBtn" class="btn btn-primary">Codificar componente</button>
+    <button id="decodeBtn" class="btn btn-primary">Decodificar URL</button>
+    <button id="decodeComponentBtn" class="btn btn-primary">Decodificar componente</button>
+    <button id="copyBtn" class="btn btn-outline-secondary">Copiar</button>
+</div>
+
+<div class="mb-3">
+    <label for="outputText" class="form-label">Resultado</label>
+    <textarea id="outputText" rows="3" class="form-control" readonly
+        placeholder="Aquí aparecerá el texto codificado o decodificado..."></textarea>
+</div>
+
+<div class="alert alert-info small">
+    <strong>Diferencias entre codificar URL y componente:</strong><br>
+    • <code>encodeURI</code>: Codifica una URL completa preservando caracteres especiales como
+    <code>/ ? : @ & = + $ #</code><br>
+    • <code>encodeURIComponent</code>: Codifica un componente de URL (como un parámetro), escapando más
+    caracteres
+</div>
+
+<div id="msg" class="text-muted small"></div>

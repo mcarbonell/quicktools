@@ -218,9 +218,14 @@ async function generateTools(toolsIndex, lang) {
         toolContent = replaceTranslations(toolContent, toolTranslations);
         toolScript = replaceTranslations(toolScript, toolTranslations);
         
+        // Get translated tool info from tools-index
+        const translatedToolsIndexPath = path.join(dataDir, `tools-index-${lang}.json`);
+        const translatedToolsIndex = JSON.parse(await fs.readFile(translatedToolsIndexPath, 'utf8'));
+        const translatedTool = translatedToolsIndex.find(t => t.slug === tool.slug) || tool;
+        
         let generatedHtml = baseTemplate;
-        generatedHtml = generatedHtml.replace(/{{title}}/g, tool.title || '');
-        generatedHtml = generatedHtml.replace(/{{description}}/g, tool.description || '');
+        generatedHtml = generatedHtml.replace(/{{title}}/g, translatedTool.title || '');
+        generatedHtml = generatedHtml.replace(/{{description}}/g, translatedTool.description || '');
         generatedHtml = generatedHtml.replace(/{{keywords}}/g, tool.tags ? `<meta name="keywords" content="${tool.tags.join(', ')}">` : '');
         generatedHtml = generatedHtml.replace(/{{og_title}}/g, tool.title || '');
         generatedHtml = generatedHtml.replace(/{{og_description}}/g, tool.description || '');

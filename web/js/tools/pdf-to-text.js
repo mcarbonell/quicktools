@@ -1,5 +1,8 @@
 // pdf-to-text.js
 const pdfInput = document.getElementById('pdfInput');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const extractBtn = document.getElementById('extractBtn');
 const pdfText = document.getElementById('pdfText');
 const copyBtn = document.getElementById('copyBtn');
@@ -65,7 +68,7 @@ extractBtn?.addEventListener('click', async () => {
 copyBtn?.addEventListener('click', async () => {
     try {
         if (pdfText.value.trim() === '') {
-            alert('No hay texto para copiar.');
+            alert(t.noText || 'No hay texto para copiar');
             return;
         }
         await navigator.clipboard.writeText(pdfText.value);

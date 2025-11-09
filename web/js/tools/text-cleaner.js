@@ -1,4 +1,7 @@
 const textInput = document.getElementById('textInput');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const cleanBtn = document.getElementById('cleanBtn');
 const countBtn = document.getElementById('countBtn');
 const copyBtn = document.getElementById('copyBtn');
@@ -28,7 +31,7 @@ countBtn?.addEventListener('click', () => {
 copyBtn?.addEventListener('click', async () => {
     try {
         if (textInput.value.trim() === '') {
-            resultDiv.textContent = 'No hay texto para copiar.';
+            resultDiv.textContent = t.noText || 'No hay texto para copiar';
             return;
         }
         await navigator.clipboard.writeText(textInput.value);
@@ -38,7 +41,7 @@ copyBtn?.addEventListener('click', async () => {
                 <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
             </svg>
         `;
-        resultDiv.textContent = 'Copiado al portapapeles.';
+        resultDiv.textContent = t.copied || 'Copiado al portapapeles';
         setTimeout(() => {
             copyBtn.innerHTML = originalText;
             resultDiv.textContent = '';
@@ -54,7 +57,7 @@ copyBtn?.addEventListener('click', async () => {
                     <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                 </svg>
             `;
-            resultDiv.textContent = 'Copiado al portapapeles.';
+            resultDiv.textContent = t.copied || 'Copiado al portapapeles';
             setTimeout(() => {
                 copyBtn.innerHTML = originalText;
                 resultDiv.textContent = '';

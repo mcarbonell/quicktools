@@ -1,6 +1,9 @@
 // js/tools/hash-calculator.js - Calculadora de Hashes (MD5, SHA)
 
 const inputText = document.getElementById('inputText');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const hashType = document.getElementById('hashType');
 const calculateBtn = document.getElementById('calculateBtn');
 const copyBtn = document.getElementById('copyBtn');

@@ -1,4 +1,7 @@
 const pdfInput = document.getElementById('pdf-input');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const pagesInput = document.getElementById('pages-input');
 const splitBtn = document.getElementById('split-btn');
 const outputDiv = document.getElementById('output');

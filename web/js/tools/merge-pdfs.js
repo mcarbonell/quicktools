@@ -1,4 +1,7 @@
 const pdfInput = document.getElementById('pdf-input');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const mergeBtn = document.getElementById('merge-btn');
 const outputDiv = document.getElementById('output');
 const dropZone = document.getElementById('dropZone');

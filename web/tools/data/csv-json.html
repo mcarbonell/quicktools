@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CSV ↔ JSON - QuickTools</title>
-    <meta name="description" content="Convierte CSV a JSON y JSON a CSV en el navegador. Soporta arrastrar y soltar.">
+    <meta name="description" content="Convert CSV to JSON and JSON to CSV in the browser. Supports drag and drop.">
     <meta name="keywords" content="csv, json, convert, detect">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -48,7 +48,7 @@
 </div>
 
 <div class="mb-3">
-    <label for="inputArea" class="form-label">Entrada</label>
+    <label for="inputArea" class="form-label">Input</label>
     <textarea id="inputArea" rows="10" class="form-control" placeholder="Pega CSV o JSON aquí..."></textarea>
 </div>
 
@@ -56,8 +56,8 @@
     <button id="csvToJsonBtn" class="btn btn-primary">CSV → JSON</button>
     <button id="jsonToCsvBtn" class="btn btn-primary">JSON → CSV</button>
     <button id="validateJsonBtn" class="btn btn-outline-secondary">Validar JSON</button>
-    <button id="copyBtn" class="btn btn-outline-secondary">Copiar</button>
-    <button id="downloadBtn" class="btn btn-success">Descargar</button>
+    <button id="copyBtn" class="btn btn-outline-secondary">Copy</button>
+    <button id="downloadBtn" class="btn btn-success">Download</button>
 </div>
 
 <div class="mb-3 d-flex align-items-center gap-2">
@@ -84,7 +84,7 @@
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","convertButton":"Convert","inputLabel":"Input","outputLabel":"Output"};
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","convertButton":"Convert"};
     </script>
 <script src="../../js/lib/csv-parser.js"></script>
 <script src="../../js/tools/csv-json.js"></script>

@@ -1,5 +1,8 @@
 // qr.js - Generador de QR usando qrcodejs (CDN)
 const qrText = document.getElementById('qrText');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const sizeInput = document.getElementById('size');
 const ecLevel = document.getElementById('ecLevel');
 const quietZone = document.getElementById('quietZone');

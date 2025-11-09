@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Stopwatch elements
     const stopwatchDisplay = document.getElementById('stopwatch-display');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
     const stopwatchStartBtn = document.getElementById('stopwatch-start');
     const stopwatchStopBtn = document.getElementById('stopwatch-stop');
     const stopwatchLapBtn = document.getElementById('stopwatch-lap');

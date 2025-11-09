@@ -1,4 +1,7 @@
 const imageInput = document.getElementById('image-input');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const imageToCrop = document.getElementById('image-to-crop');
 const cropBtn = document.getElementById('crop-btn');
 const outputDiv = document.getElementById('output');

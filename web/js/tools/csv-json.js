@@ -1,5 +1,8 @@
 // csv-json.js
 const dropZone = document.getElementById('dropZone');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const fileInput = document.getElementById('fileInput');
 const inputArea = document.getElementById('inputArea');
 const resultArea = document.getElementById('resultArea');
@@ -196,7 +199,7 @@ validateJsonBtn?.addEventListener('click', () => {
     const txt = inputArea.value;
     try {
         JSON.parse(txt);
-        msg.textContent = 'JSON válido.';
+        msg.textContent = t.validJson || 'JSON válido';
     } catch (e) {
         msg.textContent = 'JSON inválido: ' + e.message;
     }
@@ -208,7 +211,7 @@ copyBtn?.addEventListener('click', async () => {
         await navigator.clipboard.writeText(resultArea.value);
         const originalText = copyBtn.innerHTML;
         copyBtn.innerHTML = '✔';
-        msg.textContent = 'Copiado al portapapeles.';
+        msg.textContent = t.copied || 'Copiado al portapapeles';
         setTimeout(() => { copyBtn.innerHTML = originalText; msg.textContent = ''; }, 1800);
     } catch (e) {
         try {
@@ -216,7 +219,7 @@ copyBtn?.addEventListener('click', async () => {
             document.execCommand('copy');
             const originalText = copyBtn.innerHTML;
             copyBtn.innerHTML = '✔';
-            msg.textContent = 'Copiado al portapapeles.';
+            msg.textContent = t.copied || 'Copiado al portapapeles';
             setTimeout(() => { copyBtn.innerHTML = originalText; msg.textContent = ''; }, 1800);
         } catch (err) {
             msg.textContent = 'Error al copiar: ' + (e?.message || '') + (err ? ' / ' + err.message : '');

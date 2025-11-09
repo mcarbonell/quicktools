@@ -1,5 +1,8 @@
 // password.js - Generador de contraseñas seguro
 const lengthInput = document.getElementById('length');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const lowercase = document.getElementById('lowercase');
 const uppercase = document.getElementById('uppercase');
 const numbers = document.getElementById('numbers');

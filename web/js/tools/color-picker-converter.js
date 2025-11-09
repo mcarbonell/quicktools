@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const colorPicker = document.getElementById('color-picker');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
     const colorSwatch = document.getElementById('color-swatch');
     const hexInput = document.getElementById('hex-input');
     const rgbR = document.getElementById('rgb-r');

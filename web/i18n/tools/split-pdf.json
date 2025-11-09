@@ -1,0 +1,38 @@
+{
+  "en": {
+    "copyButton": "Copy",
+    "clearButton": "Clear",
+    "downloadButton": "Download",
+    "uploadButton": "Upload",
+    "processButton": "Process",
+    "validateButton": "Validate",
+    "resetButton": "Reset",
+    "copied": "✅ Copied to clipboard",
+    "processing": "⏳ Processing...",
+    "success": "✅ Success!",
+    "error": "❌ Error",
+    "inputLabel": "Input",
+    "outputLabel": "Output",
+    "textLabel": "Text",
+    "fileLabel": "File",
+    "splitButton": "Split PDF"
+  },
+  "es": {
+    "copyButton": "Copiar",
+    "clearButton": "Limpiar",
+    "downloadButton": "Descargar",
+    "uploadButton": "Subir",
+    "processButton": "Procesar",
+    "validateButton": "Validar",
+    "resetButton": "Reiniciar",
+    "copied": "✅ Copiado al portapapeles",
+    "processing": "⏳ Procesando...",
+    "success": "✅ ¡Éxito!",
+    "error": "❌ Error",
+    "inputLabel": "Entrada",
+    "outputLabel": "Salida",
+    "textLabel": "Texto",
+    "fileLabel": "Archivo",
+    "splitButton": "Dividir PDF"
+  }
+}

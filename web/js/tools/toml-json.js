@@ -1,5 +1,8 @@
 // toml-json.js - Convierte TOML <-> JSON en el navegador
 const inputText = document.getElementById('inputText');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const outputText = document.getElementById('outputText');
 const tomlToJsonBtn = document.getElementById('tomlToJsonBtn');
 const jsonToTomlBtn = document.getElementById('jsonToTomlBtn');
@@ -76,7 +79,7 @@ prettyJsonBtn?.addEventListener('click', () => {
     try {
         const obj = JSON.parse(input);
         outputText.value = JSON.stringify(obj, null, 2);
-        showMsg('JSON formateado');
+        showMsg(t.formatted || 'JSON formateado');
     } catch (e) {
         showMsg('Error al parsear JSON: ' + e.message, true);
     }
@@ -88,9 +91,9 @@ copyBtn?.addEventListener('click', async () => {
         await navigator.clipboard.writeText(outputText.value);
         const original = copyBtn.textContent;
         copyBtn.innerHTML = '✔';
-        showMsg('Copiado al portapapeles');
+        showMsg(t.copied || 'Copiado al portapapeles');
         setTimeout(() => { copyBtn.innerHTML = original; showMsg(''); }, 1200);
     } catch (e) {
-        try { outputText.select(); document.execCommand('copy'); showMsg('Copiado al portapapeles'); } catch (err) { showMsg('Error al copiar: ' + err.message, true); }
+        try { outputText.select(); document.execCommand('copy'); showMsg(t.copied || 'Copiado al portapapeles'); } catch (err) { showMsg('Error al copiar: ' + err.message, true); }
     }
 });

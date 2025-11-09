@@ -1,5 +1,8 @@
 // image-resizer.js
 const fileInput = document.getElementById('fileInput');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const widthInput = document.getElementById('widthInput');
 const resizeBtn = document.getElementById('resizeBtn');
 const keepRatio = document.getElementById('keepRatio');

@@ -1,0 +1,57 @@
+<script src="../../js/lib/gemini-api.js"></script>
+<script>
+    let gemini = null;
+
+    window.addEventListener('DOMContentLoaded', () => {
+        if (GeminiStorage.exists()) {
+            gemini = new GeminiAPI(GeminiStorage.get());
+            document.getElementById('apiKeySetup').classList.add('d-none');
+            document.getElementById('toolSection').classList.remove('d-none');
+        }
+    });
+
+    async function improveText() {
+        const text = document.getElementById('inputText').value.trim();
+        const type = document.getElementById('improveType').value;
+        const lang = document.getElementById('language').value;
+
+        if (!text) {
+            alert('❌ Por favor ingresa un texto');
+            return;
+        }
+
+        const languages = { es: 'español', en: 'inglés', pt: 'portugués', fr: 'francés' };
+        
+        const prompts = {
+            grammar: `Corrige la gramática y ortografía del siguiente texto en ${languages[lang]}. Mantén el mismo tono y estilo:`,
+            style: `Mejora el estilo y claridad del siguiente texto en ${languages[lang]}. Hazlo más legible y profesional:`,
+            formal: `Reescribe el siguiente texto en ${languages[lang]} de forma más formal y profesional:`,
+            casual: `Reescribe el siguiente texto en ${languages[lang]} de forma más casual y amigable:`,
+            concise: `Reescribe el siguiente texto en ${languages[lang]} de forma más concisa, eliminando redundancias:`,
+            expand: `Expande y detalla el siguiente texto en ${languages[lang]}, añadiendo más información y contexto:`
+        };
+
+        const btn = document.getElementById('improveBtn');
+        btn.disabled = true;
+        btn.textContent = '⏳ Mejorando...';
+        document.getElementById('outputText').value = '';
+
+        try {
+            const prompt = `${prompts[type]}\\n\\n${text}`;
+            const result = await gemini.chat(prompt);
+            document.getElementById('outputText').value = result;
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '✨ Mejorar texto';
+        }
+    }
+
+    function copyResult() {
+        const output = document.getElementById('outputText');
+        output.select();
+        document.execCommand('copy');
+        alert('✅ Texto copiado al portapapeles');
+    }
+</script>

@@ -4,7 +4,7 @@
 </div>
 
 <div class="mb-3">
-    <label for="inputArea" class="form-label">Entrada</label>
+    <label for="inputArea" class="form-label">{{t.inputLabel}}</label>
     <textarea id="inputArea" rows="10" class="form-control" placeholder="Pega CSV o JSON aquí..."></textarea>
 </div>
 
@@ -12,8 +12,8 @@
     <button id="csvToJsonBtn" class="btn btn-primary">CSV → JSON</button>
     <button id="jsonToCsvBtn" class="btn btn-primary">JSON → CSV</button>
     <button id="validateJsonBtn" class="btn btn-outline-secondary">Validar JSON</button>
-    <button id="copyBtn" class="btn btn-outline-secondary">Copiar</button>
-    <button id="downloadBtn" class="btn btn-success">Descargar</button>
+    <button id="copyBtn" class="btn btn-outline-secondary">{{t.copyButton}}</button>
+    <button id="downloadBtn" class="btn btn-success">{{t.downloadButton}}</button>
 </div>
 
 <div class="mb-3 d-flex align-items-center gap-2">

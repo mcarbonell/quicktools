@@ -1,4 +1,7 @@
 const pdfInput = document.getElementById('pdf-input');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const qualityInput = document.getElementById('quality-input');
 const compressBtn = document.getElementById('compress-btn');
 const outputDiv = document.getElementById('output');

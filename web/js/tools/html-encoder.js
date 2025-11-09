@@ -1,5 +1,8 @@
 // html-encoder.js - Codificador/decodificador HTML
 const inputText = document.getElementById('inputText');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const outputText = document.getElementById('outputText');
 const encodeBtn = document.getElementById('encodeBtn');
 const encodeAllBtn = document.getElementById('encodeAllBtn');
@@ -85,7 +88,7 @@ copyBtn?.addEventListener('click', async () => {
         await navigator.clipboard.writeText(outputText.value);
         const originalText = copyBtn.textContent;
         copyBtn.innerHTML = '✔';
-        msg.textContent = 'Copiado al portapapeles';
+        msg.textContent = t.copied || 'Copiado al portapapeles';
         setTimeout(() => {
             copyBtn.innerHTML = originalText;
             msg.textContent = '';
@@ -96,7 +99,7 @@ copyBtn?.addEventListener('click', async () => {
             document.execCommand('copy');
             const originalText = copyBtn.innerHTML;
             copyBtn.innerHTML = '✔';
-            msg.textContent = 'Copiado al portapapeles';
+            msg.textContent = t.copied || 'Copiado al portapapeles';
             setTimeout(() => {
                 copyBtn.innerHTML = originalText;
                 msg.textContent = '';

@@ -1,4 +1,7 @@
 const fileInputCI = document.getElementById('fileInput');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const formatSelect = document.getElementById('formatSelect');
 const convertBtn = document.getElementById('convertBtn');
 const previewCanvasCI = document.getElementById('previewCanvas');

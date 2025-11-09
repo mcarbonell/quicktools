@@ -1,0 +1,19 @@
+<div class="mb-3">
+    <label for="inputText" class="form-label">Entrada (YAML o JSON)</label>
+    <textarea id="inputText" rows="10" class="form-control" placeholder="Pega tu YAML o JSON aquí..."></textarea>
+</div>
+
+<div class="mb-3 d-flex gap-2">
+    <button id="yamlToJsonBtn" class="btn btn-primary">YAML → JSON</button>
+    <button id="jsonToYamlBtn" class="btn btn-primary">JSON → YAML</button>
+    <button id="prettyJsonBtn" class="btn btn-secondary">Prettify JSON</button>
+    <button id="copyBtn" class="btn btn-outline-secondary">Copiar resultado</button>
+</div>
+
+<div class="mb-3">
+    <label for="outputText" class="form-label">Resultado</label>
+    <textarea id="outputText" rows="10" class="form-control" readonly
+        placeholder="Aquí aparecerá el resultado..."></textarea>
+</div>
+
+<div id="msg" class="text-muted small"></div>

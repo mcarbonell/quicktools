@@ -1,0 +1,45 @@
+<div id="apiKeySetup" class="api-key-setup">
+    <h5>⚙️ Configuración inicial</h5>
+    <p class="mb-3">Para usar esta herramienta necesitas una API key gratuita de Google AI Studio:</p>
+    <ol class="mb-3">
+        <li>Visita <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+        <li>Inicia sesión con tu cuenta de Google</li>
+        <li>Crea una API key (es gratis, 60 req/min)</li>
+        <li>Pégala aquí abajo 👇</li>
+    </ol>
+    <div class="input-group mb-2">
+        <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
+        <button class="btn btn-primary" onclick="saveApiKey()">💾 Guardar</button>
+    </div>
+    <small class="text-muted">🔒 Se guarda en localStorage de tu navegador, nunca en nuestros servidores.</small>
+</div>
+
+<div id="apiKeyManage" class="alert alert-success d-none">
+    <div class="d-flex justify-content-between align-items-center">
+        <span>✅ API Key configurada</span>
+        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Eliminar</button>
+    </div>
+</div>
+
+<div id="chatSection" class="d-none">
+    <div class="chat-container mb-3" id="chatMessages">
+        <div class="message assistant">
+            <strong>Asistente IA</strong>
+            <p class="mb-0 mt-2">¡Hola! Soy tu asistente con IA. ¿En qué puedo ayudarte hoy?</p>
+        </div>
+    </div>
+
+    <div class="typing-indicator mb-3" id="typingIndicator">
+        <span></span><span></span><span></span>
+    </div>
+
+    <div class="input-group">
+        <input type="text" id="userInput" class="form-control" placeholder="Escribe tu mensaje..." onkeypress="handleKeyPress(event)">
+        <button class="btn btn-primary" onclick="sendMessage()" id="sendBtn">📤 Enviar</button>
+    </div>
+
+    <div class="mt-3">
+        <button class="btn btn-sm btn-outline-secondary" onclick="clearChat()">🗑️ Limpiar chat</button>
+        <button class="btn btn-sm btn-outline-info" onclick="exportChat()">💾 Exportar</button>
+    </div>
+</div>

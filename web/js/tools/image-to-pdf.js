@@ -1,4 +1,7 @@
 const imageInput = document.getElementById('image-input');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const pageSizeSelect = document.getElementById('page-size-select');
 const orientationSelect = document.getElementById('orientation-select');
 const convertBtn = document.getElementById('convert-btn');

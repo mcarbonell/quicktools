@@ -1,4 +1,7 @@
 const pdfInput = document.getElementById('pdf-input');
+
+// Get translations (injected by generator)
+const t = window.toolTranslations || {};
 const formatSelect = document.getElementById('format-select');
 const convertBtn = document.getElementById('convert-btn');
 const outputDiv = document.getElementById('output');
