@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar Imagen con IA - QuickTools</title>
+    <meta name="description" content="Edita imágenes con instrucciones de texto usando Gemini 2.5 Flash Image (Nano Banana).">
+    <meta name="keywords" content="ia, imagen, editar, ai, nano-banana">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Editar Imagen con IA — QuickTools">
+    <meta property="og:description" content="Edita imágenes con instrucciones de texto usando Gemini 2.5 Flash Image (Nano Banana).">
+    <meta property="og:url" content="/tools/ai/edit-image.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="QuickTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+    .image-preview { max-width: 100%; max-height: 400px; border: 2px solid #dee2e6; border-radius: 8px; }
+    .chat-container { height: 300px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: #f8f9fa; }
+    .message { margin-bottom: 0.5rem; padding: 0.5rem; border-radius: 6px; }
+    .message.user { background: #007bff; color: white; }
+    .message.assistant { background: white; border: 1px solid #dee2e6; }
+</style>
+
+</head>
+
+<body>
+    <div class="container py-4">
+        <a href="../../index.html">← Volver</a>
+        <h1 class="h4 mt-3">Editar Imagen con IA</h1>
+        <p class="text-muted">Edita imágenes con instrucciones de texto usando Gemini 2.5 Flash Image (Nano Banana).</p>
+
+        <div id="apiKeySetup" class="alert alert-warning">
+    <p class="mb-2">⚙️ Necesitas configurar tu API key de Google Gemini.</p>
+    <a href="chat-ai.html" class="btn btn-sm btn-primary">Configurar ahora</a>
+</div>
+
+<div id="toolSection" class="d-none">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Subir Imagen</label>
+            <input type="file" id="imageFile" class="form-control" accept="image/*" onchange="loadImage()">
+            <div class="mt-3 text-center" id="imageContainer" style="display:none;">
+                <img id="imagePreview" class="image-preview" alt="Preview">
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Conversación</label>
+            <div class="chat-container" id="chatMessages"></div>
+            <div class="input-group mt-2">
+                <input type="text" id="userInput" class="form-control" placeholder="Describe los cambios que quieres hacer..." onkeypress="handleKeyPress(event)">
+                <button class="btn btn-primary" onclick="editImageAI()" id="editBtn">✨ Editar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-info">
+        <strong>💡 Ejemplos de edición:</strong>
+        <ul class="mb-0">
+            <li>"Cambia el fondo a una playa al atardecer"</li>
+            <li>"Añade un sombrero de mago"</li>
+            <li>"Convierte en estilo acuarela"</li>
+            <li>"Ajusta los colores a tonos cálidos"</li>
+        </ul>
+    </div>
+</div>
+
+    </div>
+
+    <script src="../../js/lib/gemini-api.js"></script>
+<script>
+    let gemini = null;
+    let imageBase64 = '';
+    let imageMimeType = '';
+
+    window.addEventListener('DOMContentLoaded', () => {
+        if (GeminiStorage.exists()) {
+            gemini = new GeminiAPI(GeminiStorage.get());
+            document.getElementById('apiKeySetup').classList.add('d-none');
+            document.getElementById('toolSection').classList.remove('d-none');
+        }
+    });
+
+    function loadImage() {
+        const file = document.getElementById('imageFile').files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            imageBase64 = e.target.result.split(',')[1];
+            imageMimeType = file.type;
+            document.getElementById('imagePreview').src = e.target.result;
+            document.getElementById('imageContainer').style.display = 'block';
+            addMessage('Imagen cargada. ¿Qué quieres saber sobre ella?', 'assistant');
+        };
+        reader.readAsDataURL(file);
+    }
+
+    async function editImageAI() {
+        const input = document.getElementById('userInput');
+        const message = input.value.trim();
+        
+        if (!message || !imageBase64) {
+            alert('❌ Sube una imagen y describe los cambios');
+            return;
+        }
+
+        addMessage(message, 'user');
+        input.value = '';
+        
+        const btn = document.getElementById('editBtn');
+        btn.disabled = true;
+        btn.textContent = '⏳ Editando...';
+
+        try {
+            const result = await gemini.editImage(message, imageBase64, imageMimeType);
+            
+            if (result.text) {
+                addMessage(result.text, 'assistant');
+            }
+            
+            if (result.image) {
+                const newImageUrl = `data:${imageMimeType};base64,${result.image}`;
+                document.getElementById('imagePreview').src = newImageUrl;
+                imageBase64 = result.image;
+                addMessage('✅ Imagen editada correctamente. Puedes seguir editando.', 'assistant');
+                
+                const downloadBtn = `<button class="btn btn-sm btn-success mt-2" onclick="downloadImage()">💾 Descargar imagen</button>`;
+                document.getElementById('chatMessages').lastChild.innerHTML += downloadBtn;
+            }
+        } catch (error) {
+            addMessage(`❌ Error: ${error.message}`, 'assistant');
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '✨ Editar';
+        }
+    }
+
+    function downloadImage() {
+        const link = document.createElement('a');
+        link.href = `data:${imageMimeType};base64,${imageBase64}`;
+        link.download = `edited-${Date.now()}.png`;
+        link.click();
+    }
+
+    function addMessage(text, role) {
+        const container = document.getElementById('chatMessages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${role}`;
+        messageDiv.innerHTML = `<strong>${role === 'user' ? 'Tú' : 'IA'}</strong><div class="mt-1">${text.replace(/\\n/g, '<br>')}</div>`;
+        container.appendChild(messageDiv);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            editImageAI();
+        }
+    }
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

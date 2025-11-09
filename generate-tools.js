@@ -22,14 +22,23 @@ async function generateIndex(toolsIndex) {
 
     let toolsGridHtml = '';
     for (const [cat, items] of Object.entries(byCat)) {
-        toolsGridHtml += `<section class="mb-4">\n`;
-        toolsGridHtml += `  <h3 class="h5 mb-3">${cat}</h3>\n`;
+        const sectionId = cat === 'IA' ? ' id="IA"' : '';
+        toolsGridHtml += `<section class="mb-4"${sectionId}>\n`;
+        toolsGridHtml += `  <h3 class="h5 mb-3">${cat === 'IA' ? '🤖 ' + cat + ' (Inteligencia Artificial)' : cat}</h3>\n`;
+        
+        if (cat === 'IA') {
+            toolsGridHtml += `  <div class="alert alert-info">\n`;
+            toolsGridHtml += `    <strong>🔑 Requiere API Key:</strong> Estas herramientas usan Google Gemini. Necesitas tu propia API key (gratis, 1,500 req/día). <a href="tools/ai/chat-ai.html" class="alert-link">Configurar ahora</a>\n`;
+            toolsGridHtml += `  </div>\n`;
+        }
+        
         toolsGridHtml += `  <div class="row g-4">\n`;
 
         items.forEach(item => {
+            const cardClass = cat === 'IA' ? 'card h-100 border-primary' : 'card h-100';
             toolsGridHtml += `
     <div class="col-md-6 col-lg-4">
-        <div class="card h-100">
+        <div class="${cardClass}">
             <div class="card-body">
                 <h5 class="card-title">${item.title}</h5>
                 <p class="card-text">${item.description}</p>

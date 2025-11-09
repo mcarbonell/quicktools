@@ -1,0 +1,31 @@
+<div id="apiKeySetup" class="alert alert-warning">
+    <p class="mb-2">⚙️ Necesitas configurar tu API key de Google Gemini.</p>
+    <a href="chat-ai.html" class="btn btn-sm btn-primary">Configurar ahora</a>
+</div>
+
+<div id="toolSection" class="d-none">
+    <div class="mb-4">
+        <label class="form-label">Subir PDF</label>
+        <input type="file" id="pdfFile" class="form-control" accept=".pdf" onchange="loadPDF()">
+        <small class="text-muted">El PDF se procesa localmente, no se sube a ningún servidor</small>
+    </div>
+
+    <div id="pdfPreview" class="pdf-preview mb-4 d-none">
+        <strong>Vista previa del contenido:</strong>
+        <div id="pdfContent" class="mt-2"></div>
+    </div>
+
+    <div id="chatSection" class="d-none">
+        <div class="chat-container mb-3" id="chatMessages">
+            <div class="message assistant">
+                <strong>Asistente IA</strong>
+                <p class="mb-0 mt-2">PDF cargado. ¿Qué quieres saber sobre este documento?</p>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="userInput" class="form-control" placeholder="Pregunta sobre el PDF..." onkeypress="handleKeyPress(event)">
+            <button class="btn btn-primary" onclick="sendMessage()" id="sendBtn">📤 Enviar</button>
+        </div>
+    </div>
+</div>

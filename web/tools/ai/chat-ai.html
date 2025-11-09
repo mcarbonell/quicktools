@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chat con IA - QuickTools</title>
+    <meta name="description" content="Conversa con Google Gemini. Usa tu propia API key, 100% privado en tu navegador.">
+    <meta name="keywords" content="ia, chat, gemini, ai, conversacion">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Chat con IA — QuickTools">
+    <meta property="og:description" content="Conversa con Google Gemini. Usa tu propia API key, 100% privado en tu navegador.">
+    <meta property="og:url" content="/tools/ai/chat-ai.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="QuickTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+    .chat-container { height: 500px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: #f8f9fa; }
+    .message { margin-bottom: 1rem; padding: 0.75rem; border-radius: 8px; max-width: 80%; }
+    .message.user { background: #007bff; color: white; margin-left: auto; }
+    .message.assistant { background: white; border: 1px solid #dee2e6; }
+    .api-key-setup { background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; }
+    .typing-indicator { display: none; padding: 0.75rem; background: white; border: 1px solid #dee2e6; border-radius: 8px; max-width: 80px; }
+    .typing-indicator span { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #6c757d; margin: 0 2px; animation: typing 1.4s infinite; }
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-10px); } }
+</style>
+
+</head>
+
+<body>
+    <div class="container py-4">
+        <a href="../../index.html">← Volver</a>
+        <h1 class="h4 mt-3">Chat con IA</h1>
+        <p class="text-muted">Conversa con Google Gemini. Usa tu propia API key, 100% privado en tu navegador.</p>
+
+        <div id="apiKeySetup" class="api-key-setup">
+    <h5>⚙️ Configuración inicial</h5>
+    <p class="mb-3">Para usar esta herramienta necesitas una API key gratuita de Google AI Studio:</p>
+    <ol class="mb-3">
+        <li>Visita <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+        <li>Inicia sesión con tu cuenta de Google</li>
+        <li>Crea una API key (es gratis, 60 req/min)</li>
+        <li>Pégala aquí abajo 👇</li>
+    </ol>
+    <div class="input-group mb-2">
+        <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
+        <button class="btn btn-primary" onclick="saveApiKey()">💾 Guardar</button>
+    </div>
+    <small class="text-muted">🔒 Se guarda en localStorage de tu navegador, nunca en nuestros servidores.</small>
+</div>
+
+<div id="apiKeyManage" class="alert alert-success d-none">
+    <div class="d-flex justify-content-between align-items-center">
+        <span>✅ API Key configurada</span>
+        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Eliminar</button>
+    </div>
+</div>
+
+<div id="chatSection" class="d-none">
+    <div class="chat-container mb-3" id="chatMessages">
+        <div class="message assistant">
+            <strong>Asistente IA</strong>
+            <p class="mb-0 mt-2">¡Hola! Soy tu asistente con IA. ¿En qué puedo ayudarte hoy?</p>
+        </div>
+    </div>
+
+    <div class="typing-indicator mb-3" id="typingIndicator">
+        <span></span><span></span><span></span>
+    </div>
+
+    <div class="input-group">
+        <input type="text" id="userInput" class="form-control" placeholder="Escribe tu mensaje..." onkeypress="handleKeyPress(event)">
+        <button class="btn btn-primary" onclick="sendMessage()" id="sendBtn">📤 Enviar</button>
+    </div>
+
+    <div class="mt-3">
+        <button class="btn btn-sm btn-outline-secondary" onclick="clearChat()">🗑️ Limpiar chat</button>
+        <button class="btn btn-sm btn-outline-info" onclick="exportChat()">💾 Exportar</button>
+    </div>
+</div>
+
+    </div>
+
+    <script src="../../js/lib/gemini-api.js"></script>
+<script>
+    let gemini = null;
+
+    window.addEventListener('DOMContentLoaded', () => {
+        if (GeminiStorage.exists()) {
+            const apiKey = GeminiStorage.get();
+            gemini = new GeminiAPI(apiKey);
+            showChat();
+        }
+    });
+
+    function saveApiKey() {
+        const apiKey = document.getElementById('apiKeyInput').value.trim();
+        if (!apiKey) {
+            alert('❌ Por favor ingresa una API key');
+            return;
+        }
+
+        gemini = new GeminiAPI(apiKey);
+        
+        const btn = document.getElementById('sendBtn');
+        btn.disabled = true;
+        btn.textContent = '⏳ Validando...';
+        
+        gemini.validateKey().then(valid => {
+            if (valid) {
+                GeminiStorage.save(apiKey);
+                showChat();
+                alert('✅ API Key guardada correctamente');
+            } else {
+                alert('❌ API Key inválida. Verifica que sea correcta.');
+            }
+        }).catch(error => {
+            console.error('Validation error:', error);
+            alert(`❌ Error al validar: ${error.message}\\n\\nVerifica:\\n1. Que la API key sea correcta\\n2. Que tengas habilitada la API de Gemini\\n3. Tu conexión a internet`);
+        }).finally(() => {
+            btn.disabled = false;
+            btn.textContent = '📤 Enviar';
+        });
+    }
+
+    function removeApiKey() {
+        if (confirm('¿Seguro que quieres eliminar la API key?')) {
+            GeminiStorage.remove();
+            location.reload();
+        }
+    }
+
+    function showChat() {
+        document.getElementById('apiKeySetup').classList.add('d-none');
+        document.getElementById('apiKeyManage').classList.remove('d-none');
+        document.getElementById('chatSection').classList.remove('d-none');
+    }
+
+    async function sendMessage() {
+        const input = document.getElementById('userInput');
+        const message = input.value.trim();
+        
+        if (!message) return;
+
+        addMessage(message, 'user');
+        input.value = '';
+
+        document.getElementById('typingIndicator').style.display = 'block';
+        document.getElementById('sendBtn').disabled = true;
+
+        try {
+            const response = await gemini.chat(message);
+            addMessage(response, 'assistant');
+        } catch (error) {
+            addMessage(`❌ Error: ${error.message}`, 'assistant');
+        } finally {
+            document.getElementById('typingIndicator').style.display = 'none';
+            document.getElementById('sendBtn').disabled = false;
+            input.focus();
+        }
+    }
+
+    function addMessage(text, role) {
+        const container = document.getElementById('chatMessages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${role}`;
+        
+        const label = role === 'user' ? 'Tú' : 'Asistente IA';
+        const formattedText = formatMessage(text);
+        
+        messageDiv.innerHTML = `
+            <strong>${label}</strong>
+            <div class="mt-2">${formattedText}</div>
+        `;
+        
+        container.appendChild(messageDiv);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    function formatMessage(text) {
+        text = text.replace(/```(\\w+)?\\n([\\s\\S]*?)```/g, '<pre><code>$2</code></pre>');
+        text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+        text = text.replace(/\\n/g, '<br>');
+        return text;
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            sendMessage();
+        }
+    }
+
+    function clearChat() {
+        if (confirm('¿Limpiar todo el chat?')) {
+            document.getElementById('chatMessages').innerHTML = `
+                <div class="message assistant">
+                    <strong>Asistente IA</strong>
+                    <p class="mb-0 mt-2">¡Hola! Soy tu asistente con IA. ¿En qué puedo ayudarte hoy?</p>
+                </div>
+            `;
+        }
+    }
+
+    function exportChat() {
+        const messages = document.getElementById('chatMessages').innerText;
+        const blob = new Blob([messages], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `chat-ia-${new Date().toISOString().slice(0,10)}.txt`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

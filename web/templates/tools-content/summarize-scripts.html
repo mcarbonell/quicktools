@@ -1,0 +1,56 @@
+<script src="../../js/lib/gemini-api.js"></script>
+<script>
+    let gemini = null;
+
+    window.addEventListener('DOMContentLoaded', () => {
+        if (GeminiStorage.exists()) {
+            gemini = new GeminiAPI(GeminiStorage.get());
+            document.getElementById('apiKeySetup').classList.add('d-none');
+            document.getElementById('toolSection').classList.remove('d-none');
+        }
+
+        document.getElementById('inputText').addEventListener('input', (e) => {
+            document.getElementById('charCount').textContent = e.target.value.length;
+        });
+    });
+
+    async function summarize() {
+        const text = document.getElementById('inputText').value.trim();
+        const type = document.getElementById('summaryType').value;
+
+        if (!text) {
+            alert('❌ Por favor ingresa un texto');
+            return;
+        }
+
+        const prompts = {
+            short: 'Resume el siguiente texto en 3-5 líneas máximo:',
+            medium: 'Resume el siguiente texto en un párrafo conciso:',
+            long: 'Resume el siguiente texto de forma detallada:',
+            bullets: 'Extrae los puntos clave del siguiente texto en formato de lista:'
+        };
+
+        const btn = document.getElementById('summarizeBtn');
+        btn.disabled = true;
+        btn.textContent = '⏳ Resumiendo...';
+        document.getElementById('outputText').value = '';
+
+        try {
+            const prompt = `${prompts[type]}\\n\\n${text}`;
+            const result = await gemini.chat(prompt);
+            document.getElementById('outputText').value = result;
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '✨ Resumir';
+        }
+    }
+
+    function copyResult() {
+        const output = document.getElementById('outputText');
+        output.select();
+        document.execCommand('copy');
+        alert('✅ Resumen copiado al portapapeles');
+    }
+</script>

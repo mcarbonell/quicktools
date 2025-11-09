@@ -329,5 +329,70 @@
             "tiempo",
             "utilidad"
         ]
+    },
+    {
+        "title": "Chat con IA",
+        "slug": "tools/ai/chat-ai.html",
+        "description": "Conversa con Google Gemini. Usa tu propia API key, 100% privado en tu navegador.",
+        "category": "IA",
+        "tags": [
+            "ia",
+            "chat",
+            "gemini",
+            "ai",
+            "conversacion"
+        ]
+    },
+    {
+        "title": "Resumir Texto con IA",
+        "slug": "tools/ai/summarize.html",
+        "description": "Resume textos largos automáticamente con IA. Varios tipos de resumen disponibles.",
+        "category": "IA",
+        "tags": [
+            "ia",
+            "resumir",
+            "texto",
+            "ai",
+            "summary"
+        ]
+    },
+    {
+        "title": "Mejorar Texto con IA",
+        "slug": "tools/ai/improve-text.html",
+        "description": "Mejora gramática, estilo y claridad de tus textos con IA. Soporte multiidioma.",
+        "category": "IA",
+        "tags": [
+            "ia",
+            "mejorar",
+            "texto",
+            "gramatica",
+            "ai"
+        ]
+    },
+    {
+        "title": "Chat con PDF",
+        "slug": "tools/ai/chat-pdf.html",
+        "description": "Sube un PDF y haz preguntas sobre su contenido con IA. Todo procesado localmente.",
+        "category": "IA",
+        "tags": [
+            "ia",
+            "pdf",
+            "chat",
+            "analizar",
+            "ai"
+        ]
+    },
+    {
+        "title": "Editar Imagen con IA",
+        "slug": "tools/ai/edit-image.html",
+        "description": "Edita imágenes con instrucciones de texto usando Gemini 2.5 Flash Image (Nano Banana).",
+        "category": "IA",
+        "tags": [
+            "ia",
+            "imagen",
+            "editar",
+            "ai",
+            "nano-banana"
+        ]
     }
 ]
