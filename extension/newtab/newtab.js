@@ -14,9 +14,9 @@ class QuickToolsNewTab {
 
         this.quickTimer = {
             isRunning: false,
-            elapsed: 0,
-            startTime: 0,
-            interval: null
+            remainingTime: 0, // in seconds
+            interval: null,
+            endTime: 0
         };
 
         this.init();
@@ -45,6 +45,8 @@ class QuickToolsNewTab {
             this.renderNotes();
             this.renderWidgets();
             this.updateTier();
+            this.applyTheme();
+            this.initTimer();
 
             console.log('✅ QuickTools New Tab inicializado');
 
@@ -263,7 +265,8 @@ class QuickToolsNewTab {
                     title: 'Captura de pantalla',
                     description: `${this.getTimeAgo(capture.timestamp)}`,
                     icon: '📸',
-                    timestamp: capture.timestamp
+                    timestamp: capture.timestamp,
+                    url: capture.url
                 });
             });
         }
@@ -279,7 +282,8 @@ class QuickToolsNewTab {
                     title: tool.name,
                     description: `${count} usos hoy`,
                     icon: tool.icon,
-                    timestamp: Date.now() - (count * 60000) // Mock timestamp
+                    timestamp: Date.now() - (count * 60000), // Mock timestamp
+                    toolId: tool.id
                 });
             }
         });
@@ -315,10 +319,10 @@ class QuickToolsNewTab {
         // Quick actions
         document.getElementById('edit-favorites').onclick = () => this.showModal('favorites-modal');
         document.getElementById('new-note-btn').onclick = () => this.createNewNote();
-        document.getElementById('view-all-recent').onclick = () => this.showAllRecent();
+        document.getElementById('clear-recent-btn').onclick = () => this.clearRecentActivity();
 
-        // Timer
-        this.setupQuickTimer();
+        // Timer controls
+        // this.setupQuickTimerControls();
 
         // Weather (mock for now)
         this.updateWeather();
@@ -329,11 +333,73 @@ class QuickToolsNewTab {
                 this.closeModal(e.target.id);
             }
         });
+
+        // Data-action event handlers for CSP compliance
+        document.addEventListener('click', (e) => {
+            const action = e.target.dataset.action;
+            if (!action) return;
+
+            e.preventDefault();
+            e.stopPropagation();
+
+            switch (action) {
+                // Timer controls
+                case 'add-time':
+                    this.addTime(parseInt(e.target.dataset.time, 10));
+                    break;
+                case 'start-timer':
+                    this.startTimer();
+                    break;
+                case 'stop-timer':
+                    this.stopTimer();
+                    break;
+                case 'reset-timer':
+                    this.resetTimer();
+                    break;
+
+                // Modal controls
+                case 'close-modal':
+                    const modalId = e.target.dataset.modal;
+                    if (modalId) {
+                        this.closeModal(modalId);
+                    }
+                    break;
+                case 'save-favorites':
+                    this.saveFavorites();
+                    break;
+                case 'save-note':
+                    this.saveNote();
+                    break;
+                case 'delete-note':
+                    this.deleteNote();
+                    break;
+                case 'export-analytics':
+                    this.exportAnalytics();
+                    break;
+                case 'save-settings':
+                    this.saveNewTabSettings();
+                    break;
+            }
+        });
+
+        // Handle timer preset buttons
+        document.querySelectorAll('.preset-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const seconds = parseInt(e.target.dataset.preset);
+                if (seconds) {
+                    this.setQuickTimer(seconds);
+                }
+            });
+        });
     }
 
-    setupQuickTimer() {
-        this.updateQuickTimer();
+    initTimer() {
+        this.quickTimer.display = document.getElementById('timer-display');
+        this.quickTimer.startBtn = document.getElementById('start-timer-btn');
+        this.quickTimer.stopBtn = document.getElementById('stop-timer-btn');
+        this.updateTimerDisplay();
     }
+
 
     // ====================
     // SEARCH FUNCTIONALITY
@@ -637,9 +703,13 @@ class QuickToolsNewTab {
             container.innerHTML = `
                 <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
                     <p>No hay notas aún</p>
-                    <button class="btn" onclick="window.quickToolsNewTab.createNewNote()">+ Crear primera nota</button>
                 </div>
             `;
+            const button = document.createElement('button');
+            button.className = 'btn';
+            button.textContent = '+ Crear primera nota';
+            button.addEventListener('click', () => this.createNewNote());
+            container.firstElementChild.appendChild(button);
             return;
         }
 
@@ -756,7 +826,9 @@ class QuickToolsNewTab {
 
     handleRecentItemClick(item) {
         if (item.type === 'capture') {
-            this.showToast('Abriendo captura...', 'info');
+            if (item.url) {
+                chrome.tabs.create({ url: item.url });
+            }
         } else if (item.type === 'tool') {
             const tool = this.tools.find(t => t.id === item.toolId);
             if (tool) {
@@ -876,45 +948,74 @@ class QuickToolsNewTab {
     // QUICK TIMER
     // ====================
 
-    startQuickTimer() {
-        if (this.quickTimer.isRunning) return;
-
-        this.quickTimer.isRunning = true;
-        this.quickTimer.startTime = Date.now() - this.quickTimer.elapsed;
-
-        this.quickTimer.interval = setInterval(() => {
-            this.quickTimer.elapsed = Date.now() - this.quickTimer.startTime;
-            this.updateQuickTimer();
-        }, 1000);
+    addTime(seconds) {
+        if (!this.quickTimer.isRunning) {
+            this.quickTimer.remainingTime += seconds;
+            this.updateTimerDisplay();
+        }
     }
 
-    pauseQuickTimer() {
-        if (!this.quickTimer.isRunning) return;
+    startTimer() {
+        if (this.quickTimer.remainingTime > 0 && !this.quickTimer.isRunning) {
+            this.quickTimer.isRunning = true;
+            this.quickTimer.endTime = Date.now() + this.quickTimer.remainingTime * 1000;
+            this.quickTimer.interval = setInterval(() => this.timerTick(), 1000);
+            this.quickTimer.startBtn.style.display = 'none';
+            this.quickTimer.stopBtn.style.display = 'inline-block';
+            this.trackToolUsage('timer', 'newtab');
+        }
+    }
 
+    stopTimer() {
         this.quickTimer.isRunning = false;
         clearInterval(this.quickTimer.interval);
+        this.quickTimer.remainingTime = Math.round((this.quickTimer.endTime - Date.now()) / 1000);
+        if (this.quickTimer.remainingTime < 0) this.quickTimer.remainingTime = 0;
+        this.quickTimer.startBtn.style.display = 'inline-block';
+        this.quickTimer.stopBtn.style.display = 'none';
+        this.updateTimerDisplay();
     }
 
-    resetQuickTimer() {
-        this.quickTimer.isRunning = false;
-        this.quickTimer.elapsed = 0;
-        clearInterval(this.quickTimer.interval);
-        this.updateQuickTimer();
+    resetTimer() {
+        this.stopTimer();
+        this.quickTimer.remainingTime = 0;
+        this.updateTimerDisplay();
     }
 
-    setQuickTimer(seconds) {
-        this.quickTimer.elapsed = seconds * 1000;
-        this.updateQuickTimer();
+    timerTick() {
+        const remaining = this.quickTimer.endTime - Date.now();
+        if (remaining <= 0) {
+            this.stopTimer();
+            this.quickTimer.remainingTime = 0;
+            this.updateTimerDisplay();
+            this.playAlarm();
+            return;
+        }
+        this.quickTimer.remainingTime = Math.round(remaining / 1000);
+        this.updateTimerDisplay();
     }
 
-    updateQuickTimer() {
-        const display = document.getElementById('quick-timer-display');
-        const elapsed = this.quickTimer.elapsed;
-        const totalSeconds = Math.floor(elapsed / 1000);
-        const minutes = Math.floor(totalSeconds / 60);
-        const seconds = totalSeconds % 60;
+    updateTimerDisplay() {
+        const minutes = Math.floor(this.quickTimer.remainingTime / 60);
+        const seconds = this.quickTimer.remainingTime % 60;
+        this.quickTimer.display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
 
-        display.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    playAlarm() {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(440, audioContext.currentTime); // A4 pitch
+        gainNode.gain.setValueAtTime(1, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 1);
+
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 1);
     }
 
     // ====================
@@ -991,6 +1092,47 @@ class QuickToolsNewTab {
         // Update UI
         this.loadFavoritesModal();
         this.renderQuickAccess();
+    }
+
+    async saveFavorites() {
+        this.settings.quickAccess = this.quickAccess;
+        await chrome.storage.local.set({ settings: this.settings });
+        this.showToast('Favoritos guardados', 'success');
+        this.closeModal('favorites-modal');
+    }
+
+    async saveNewTabSettings() {
+        const newSettings = {
+            theme: document.getElementById('theme-select').value,
+            accentColor: document.getElementById('accent-color').value,
+            autoCapture: document.getElementById('auto-capture').checked,
+            saveToClipboard: document.getElementById('save-to-clipboard').checked,
+            enableAnalytics: document.getElementById('enable-analytics').checked,
+            showWeather: document.getElementById('show-weather').checked,
+            showShortcuts: document.getElementById('show-shortcuts').checked,
+            showProductivity: document.getElementById('show-productivity').checked,
+        };
+
+        this.settings = { ...this.settings, ...newSettings };
+
+        await chrome.storage.local.set({ settings: this.settings });
+
+        this.showToast('Configuración guardada', 'success');
+        this.closeModal('settings-modal');
+        
+        this.applyTheme();
+        this.renderWidgets();
+    }
+
+    applyTheme() {
+        const theme = this.settings.theme;
+        if (theme === 'auto') {
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', theme);
+        }
+        document.documentElement.style.setProperty('--primary-color', this.settings.accentColor);
     }
 
     loadAnalyticsModal() {
@@ -1109,8 +1251,29 @@ class QuickToolsNewTab {
         this.showToast(`Color ${color} copiado`, 'success');
     }
 
-    showAllRecent() {
-        this.showToast('Función de ver todo próximamente', 'info');
+    async clearRecentActivity() {
+        if (confirm('¿Estás seguro de que quieres borrar la actividad reciente? Esto eliminará el historial de capturas y el uso de herramientas de hoy.')) {
+            try {
+                // Clear captures from storage
+                await chrome.storage.local.set({ captures: [] });
+
+                // Clear today's tool usage from analytics
+                const today = new Date().toDateString();
+                if (this.analytics.dailyUsage && this.analytics.dailyUsage[today]) {
+                    this.analytics.dailyUsage[today] = {};
+                    await chrome.storage.local.set({ analytics: this.analytics });
+                }
+
+                // Reload and re-render the recent items list
+                await this.loadRecentItems();
+                this.renderRecentItems();
+
+                this.showToast('Actividad reciente borrada', 'success');
+            } catch (error) {
+                console.error('Error borrando la actividad reciente:', error);
+                this.showToast('No se pudo borrar la actividad', 'error');
+            }
+        }
     }
 
     exportAnalytics() {
@@ -1146,88 +1309,6 @@ class QuickToolsNewTab {
 }
 
 // ====================
-// GLOBAL FUNCTIONS
-// ====================
-
-function closeModal(modalId) {
-    if (window.quickToolsNewTab) {
-        window.quickToolsNewTab.closeModal(modalId);
-    }
-}
-
-function saveNewTabSettings() {
-    if (!window.quickToolsNewTab) return;
-
-    const settings = {
-        theme: document.getElementById('theme-select').value,
-        accentColor: document.getElementById('accent-color').value,
-        autoCapture: document.getElementById('auto-capture').checked,
-        saveToClipboard: document.getElementById('save-to-clipboard').checked,
-        enableAnalytics: document.getElementById('enable-analytics').checked,
-        showWeather: document.getElementById('show-weather').checked,
-        showShortcuts: document.getElementById('show-shortcuts').checked,
-        showProductivity: document.getElementById('show-productivity').checked,
-        quickAccess: window.quickToolsNewTab.quickAccess
-    };
-
-    chrome.runtime.sendMessage({
-        action: 'update-settings',
-        settings: settings
-    });
-
-    window.quickToolsNewTab.showToast('Configuración guardada', 'success');
-    closeModal('settings-modal');
-}
-
-function saveFavorites() {
-    // Favorites are already updated in real-time
-    window.quickToolsNewTab.showToast('Favoritos guardados', 'success');
-    closeModal('favorites-modal');
-}
-
-function saveNote() {
-    if (window.quickToolsNewTab) {
-        window.quickToolsNewTab.saveNote();
-    }
-}
-
-function deleteNote() {
-    if (window.quickToolsNewTab) {
-        window.quickToolsNewTab.deleteNote();
-    }
-}
-
-function startQuickTimer() {
-    if (window.quickToolsNewTab) {
-        window.quickToolsNewTab.startQuickTimer();
-    }
-}
-
-function pauseQuickTimer() {
-    if (window.quickToolsNewTab) {
-        window.quickToolsNewTab.pauseQuickTimer();
-    }
-}
-
-function resetQuickTimer() {
-    if (window.quickToolsNewTab) {
-        window.quickToolsNewTab.resetQuickTimer();
-    }
-}
-
-function setQuickTimer(seconds) {
-    if (window.quickToolsNewTab) {
-        window.quickToolsNewTab.setQuickTimer(seconds);
-    }
-}
-
-function exportAnalytics() {
-    if (window.quickToolsNewTab) {
-        window.quickToolsNewTab.exportAnalytics();
-    }
-}
-
-// ====================
 // INITIALIZATION
 // ====================
 
@@ -1239,6 +1320,5 @@ if (document.readyState === 'loading') {
 }
 
 function initializeApp() {
-    console.log('🚀 Inicializando QuickTools New Tab...');
-    window.quickToolsNewTab = new QuickToolsNewTab();
+    new QuickToolsNewTab();
 }

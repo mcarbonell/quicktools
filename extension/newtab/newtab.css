@@ -42,15 +42,13 @@
 }
 
 /* Dark theme */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: #0f172a;
-        --surface: #1e293b;
-        --text-primary: #f1f5f9;
-        --text-secondary: #94a3b8;
-        --border: #334155;
-        --secondary-color: #334155;
-    }
+html[data-theme="dark"] {
+    --background: #0f172a;
+    --surface: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border: #334155;
+    --secondary-color: #334155;
 }
 
 * {
@@ -586,47 +584,14 @@ body {
 
 .timer-controls {
     display: flex;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
     justify-content: center;
     margin-bottom: var(--spacing-lg);
 }
 
-.timer-btn {
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    background: var(--primary-color);
-    color: white;
-    font-size: var(--font-md);
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.timer-btn:hover {
-    background: var(--primary-hover);
-    transform: scale(1.1);
-}
-
-.timer-presets {
+.timer-actions {
     display: flex;
-    gap: var(--spacing-xs);
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.preset-btn {
-    padding: var(--spacing-xs) var(--spacing-sm);
-    background: var(--background);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    font-size: var(--font-xs);
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.preset-btn:hover {
-    background: var(--secondary-color);
+    justify-content: space-around;
 }
 
 /* Color Palette */

@@ -60,14 +60,12 @@ body {
     line-height: 1.5;
     color: var(--text-primary);
     background: var(--background);
-    width: 400px;
-    min-height: 500px;
-    max-height: 600px;
     overflow-x: hidden;
 }
 
 /* App Container */
 #app {
+    width: 380px;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -630,66 +628,6 @@ body {
 
 .color-palette-item:hover {
     transform: scale(1.1);
-}
-
-/* Timer */
-.timer-display {
-    font-size: var(--font-2xl);
-    font-weight: 600;
-    text-align: center;
-    margin: var(--spacing-xl) 0;
-    font-family: 'Monaco', 'Consolas', monospace;
-    color: var(--primary-color);
-}
-
-.timer-controls {
-    display: flex;
-    gap: var(--spacing-md);
-    justify-content: center;
-    margin-bottom: var(--spacing-lg);
-}
-
-.timer-modes {
-    display: flex;
-    gap: var(--spacing-sm);
-    justify-content: center;
-    margin-bottom: var(--spacing-lg);
-}
-
-.mode-btn {
-    padding: var(--spacing-sm) var(--spacing-lg);
-    border: 1px solid var(--border);
-    background: var(--surface);
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.mode-btn.active {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-}
-
-.timer-presets {
-    display: flex;
-    gap: var(--spacing-sm);
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.preset-btn {
-    padding: var(--spacing-xs) var(--spacing-md);
-    border: 1px solid var(--border);
-    background: var(--surface);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    font-size: var(--font-xs);
-    transition: all 0.2s;
-}
-
-.preset-btn:hover {
-    background: var(--secondary-color);
 }
 
 /* Capture */

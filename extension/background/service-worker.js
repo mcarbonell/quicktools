@@ -5,6 +5,8 @@
 // INICIALIZACIÓN
 // ====================
 
+let creating; // A promise to prevent race conditions
+
 // Cuando se instala la extensión
 chrome.runtime.onInstalled.addListener((details) => {
     console.log('🚀 QuickTools Extension instalado:', details.reason);
@@ -69,7 +71,7 @@ function generateUserId() {
 function showWelcomeNotification() {
     chrome.notifications.create({
         type: 'basic',
-        iconUrl: 'icons/icon-128x128.png',
+        iconUrl: chrome.runtime.getURL('icons/icon-128x128.png'),
         title: '¡Bienvenido a QuickTools!',
         message: 'Tu suite de productividad está lista. Usa Ctrl+Shift+Q para abrir.'
     });
@@ -175,7 +177,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
                 await handleImageColorPicker(info, tab);
                 break;
             case 'capture-screen':
-                await handleCaptureScreen(tab);
+                await captureScreen();
                 break;
             case 'quick-notes':
                 await handleQuickNotes(tab);
@@ -236,10 +238,6 @@ async function handleImageColorPicker(info, tab) {
     await openColorPicker(info.srcUrl);
 }
 
-async function handleCaptureScreen(tab) {
-    await captureScreen();
-}
-
 async function handleQuickNotes(tab) {
     await openQuickNotes();
 }
@@ -269,56 +267,42 @@ async function openColorPicker(imageUrl) {
     // El popup manejará la imagen
 }
 
+// New captureScreen function using offscreen document
 async function captureScreen() {
-    try {
-        const stream = await navigator.mediaDevices.getDisplayMedia({
-            video: { mediaSource: 'screen' },
-            audio: false
-        });
-
-        // Crear video element para captura
-        const video = document.createElement('video');
-        video.srcObject = stream;
-
-        video.onloadedmetadata = () => {
-            const canvas = document.createElement('canvas');
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(video, 0, 0);
-
-            canvas.toBlob((blob) => {
-                const url = URL.createObjectURL(blob);
-                showNotification('Captura completada', 'success');
-
-                // Guardar captura
-                chrome.storage.local.get('captures', (data) => {
-                    const captures = data.captures || [];
-                    captures.unshift({
-                        id: Date.now(),
-                        url: url,
-                        timestamp: Date.now(),
-                        type: 'screen'
-                    });
-
-                    chrome.storage.local.set({
-                        captures: captures.slice(0, 20) // Keep last 20
-                    });
-                });
-            });
-        };
-
-        // Stop stream after capture
-        setTimeout(() => {
-            stream.getTracks().forEach(track => track.stop());
-        }, 1000);
-
-    } catch (error) {
-        console.error('❌ Error capturando pantalla:', error);
-        showNotification('Error capturando pantalla: ' + error.message, 'error');
-    }
+    await setupOffscreenDocument('background/offscreen.html');
+    // Send a message to the offscreen document to start the capture
+    // We need to use chrome.runtime.sendMessage, not chrome.tabs.sendMessage
+    chrome.runtime.sendMessage({
+        action: 'start-capture',
+        target: 'offscreen'
+    });
 }
+
+async function setupOffscreenDocument(path) {
+  // Check all existing contexts for a matching document
+  const existingContexts = await chrome.runtime.getContexts({
+    contextTypes: [chrome.runtime.ContextType.OFFSCREEN_DOCUMENT],
+    documentUrls: [chrome.runtime.getURL(path)]
+  });
+
+  if (existingContexts.length > 0) {
+    return;
+  }
+
+  // create offscreen document
+  if (creating) {
+    await creating;
+  } else {
+    creating = chrome.offscreen.createDocument({
+      url: path,
+      reasons: [chrome.offscreen.Reason.USER_MEDIA],
+      justification: 'Screen capture requires getDisplayMedia API, which is only available in a document context.',
+    });
+    await creating;
+    creating = null;
+  }
+}
+
 
 // ====================
 // CLIPBOARD & STORAGE
@@ -326,8 +310,18 @@ async function captureScreen() {
 
 async function copyToClipboard(text) {
     try {
-        await navigator.clipboard.writeText(text);
-        return true;
+        const [tab] = await chrome.tabs.query({active: true, currentWindow: true});
+        if (tab) {
+            await chrome.scripting.executeScript({
+                target: {tabId: tab.id},
+                func: (textToCopy) => {
+                    navigator.clipboard.writeText(textToCopy);
+                },
+                args: [text]
+            });
+            return true;
+        }
+        return false;
     } catch (error) {
         console.error('❌ Error copiando al portapapeles:', error);
         return false;
@@ -366,18 +360,20 @@ async function trackToolUsage(toolId, source) {
 // NOTIFICATIONS
 // ====================
 
-function showNotification(message, type = 'info') {
+function showNotification(message, type = 'info', buttons = [], notificationId = undefined, requireInteraction = false) {
     const icons = {
         success: 'icons/icon-128x128.png',
         error: 'icons/icon-128x128.png',
         info: 'icons/icon-128x128.png'
     };
 
-    chrome.notifications.create({
+    chrome.notifications.create(notificationId, {
         type: 'basic',
-        iconUrl: icons[type],
+        iconUrl: chrome.runtime.getURL(icons[type]),
         title: 'QuickTools',
-        message: message
+        message: message,
+        buttons: buttons,
+        requireInteraction: requireInteraction
     });
 }
 
@@ -392,6 +388,11 @@ function showErrorNotification(error) {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     console.log('📨 Message received:', request.action);
 
+    // Ignore messages not from our extension parts (content script, offscreen, etc.)
+    if (sender.id !== chrome.runtime.id) {
+        return;
+    }
+
     switch (request.action) {
         case 'track-usage':
             trackToolUsage(request.toolId, request.source);
@@ -404,6 +405,37 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             return true; // Async response
         case 'update-settings':
             updateSettings(request.settings);
+            break;
+        case 'capture-screen':
+            captureScreen();
+            break;
+        case 'capture-success':
+            const notificationId = `capture-${Date.now()}`;
+            showNotification(
+                'Captura de pantalla completada.',
+                'success',
+                [{ title: 'Descargar' }],
+                notificationId,
+                true // requireInteraction
+            );
+
+            // Store the data URL to be used by the button listener
+            chrome.storage.session.set({ [notificationId]: request.dataUrl });
+
+            // Save to permanent storage as before
+            chrome.storage.local.get('captures', (data) => {
+                const captures = data.captures || [];
+                captures.unshift({
+                    id: Date.now(),
+                    url: request.dataUrl,
+                    timestamp: Date.now(),
+                    type: 'screen'
+                });
+                chrome.storage.local.set({ captures: captures.slice(0, 20) });
+            });
+            break;
+        case 'capture-failure':
+            showErrorNotification(request.error);
             break;
     }
 });
@@ -418,6 +450,25 @@ async function updateSettings(newSettings) {
     const settings = { ...data.settings, ...newSettings };
     await chrome.storage.local.set({ settings });
 }
+
+chrome.notifications.onButtonClicked.addListener(async (notificationId, buttonIndex) => {
+    if (!notificationId.startsWith('capture-')) return;
+
+    const data = await chrome.storage.session.get(notificationId);
+    const dataUrl = data[notificationId];
+
+    if (dataUrl && buttonIndex === 0) { // "Descargar"
+        chrome.downloads.download({
+            url: dataUrl,
+            filename: `QuickTools-Capture-${Date.now()}.png`,
+            saveAs: true
+        });
+    }
+
+    // Clean up
+    chrome.notifications.clear(notificationId);
+    chrome.storage.session.remove(notificationId);
+});
 
 // ====================
 // SYNC & CLOUD
