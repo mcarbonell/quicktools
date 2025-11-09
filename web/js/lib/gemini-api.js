@@ -6,7 +6,7 @@ class GeminiAPI {
   constructor(apiKey) {
     this.apiKey = apiKey;
     this.baseUrl = 'https://generativelanguage.googleapis.com/v1beta';
-    this.model = 'gemini-2.0-flash-exp';
+    this.model = 'gemini-2.0-flash';
   }
 
   /**
