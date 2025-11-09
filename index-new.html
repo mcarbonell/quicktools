@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QuickTools — Herramientas Online Rápidas y 100% Privadas</title>
+    <meta name="description" content="Una colección de utilidades que funcionan completamente en tu navegador. Tus datos y archivos nunca salen de tu dispositivo.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style-new.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#0EA5E9"/>
+                    <path d="M2 17L12 22L22 17" stroke="#0EA5E9" stroke-width="2"/>
+                    <path d="M2 12L12 17L22 12" stroke="#0EA5E9" stroke-width="2"/>
+                </svg>
+                <span>QuickTools</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Herramientas Online<br>Rápidas y 100% Privadas</h1>
+            <p class="hero-subtitle">Una colección de utilidades que funcionan completamente en tu navegador. Tus datos y archivos nunca salen de tu dispositivo.</p>
+            
+            <div class="search-box">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="9" cy="9" r="7" stroke="#94A3B8" stroke-width="2"/>
+                    <path d="M14 14L18 18" stroke="#94A3B8" stroke-width="2"/>
+                </svg>
+                <input type="text" placeholder="Buscar herramienta (ej: 'PDF', 'QR')..." id="searchInput">
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Banner -->
+    <section class="privacy-banner">
+        <div class="container">
+            <div class="privacy-content">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L4 6V11C4 16 7 20 12 22C17 20 20 16 20 11V6L12 2Z" stroke="#0EA5E9" stroke-width="2" fill="none"/>
+                    <path d="M9 12L11 14L15 10" stroke="#0EA5E9" stroke-width="2"/>
+                </svg>
+                <div>
+                    <strong>Sin registro, procesamiento 100% local en tu navegador, sin subir archivos a internet.</strong>
+                    <div class="privacy-subtitle">¡Tus datos, tu privacidad!</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Grid -->
+    <section class="tools-section">
+        <div class="container">
+            <h2 class="section-title">Todas las Herramientas</h2>
+            
+            <div class="tools-grid" id="toolsGrid">
+                <!-- Formateador JSON -->
+                <div class="tool-card" data-keywords="json formatear validar">
+                    <div class="tool-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="6" y="6" width="20" height="20" rx="2" stroke="#0EA5E9" stroke-width="2"/>
+                            <path d="M10 12H22M10 16H18M10 20H22" stroke="#0EA5E9" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Formateador JSON</h3>
+                    <p class="tool-description">Valida, formatéa y embellece tus datos JSON al instante.</p>
+                    <a href="tools/data/json-formatter.html" class="tool-link">Abrir →</a>
+                </div>
+
+                <!-- Conversor de Imágenes -->
+                <div class="tool-card" data-keywords="imagen convertir jpg png webp">
+                    <div class="tool-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="4" y="8" width="24" height="16" rx="2" stroke="#0EA5E9" stroke-width="2"/>
+                            <circle cx="10" cy="14" r="2" fill="#0EA5E9"/>
+                            <path d="M4 20L10 14L16 20L22 14L28 20" stroke="#0EA5E9" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Conversor de Imágenes</h3>
+                    <p class="tool-description">Convierte tus imágenes a diferentes formatos como JPG, PNG o WEBP.</p>
+                    <a href="tools/image/convert-image.html" class="tool-link">Abrir →</a>
+                </div>
+
+                <!-- Utilidades PDF -->
+                <div class="tool-card" data-keywords="pdf unir dividir comprimir">
+                    <div class="tool-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M8 4H20L26 10V28H8V4Z" stroke="#0EA5E9" stroke-width="2"/>
+                            <path d="M20 4V10H26" stroke="#0EA5E9" stroke-width="2"/>
+                            <path d="M12 16H20M12 20H20" stroke="#0EA5E9" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Utilidades PDF</h3>
+                    <p class="tool-description">Combina, divide o comprime tus documentos PDF con facilidad.</p>
+                    <a href="tools/files/merge-pdfs.html" class="tool-link">Abrir →</a>
+                </div>
+
+                <!-- Generador de QR -->
+                <div class="tool-card" data-keywords="qr codigo generar url">
+                    <div class="tool-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="6" y="6" width="8" height="8" stroke="#0EA5E9" stroke-width="2"/>
+                            <rect x="18" y="6" width="8" height="8" stroke="#0EA5E9" stroke-width="2"/>
+                            <rect x="6" y="18" width="8" height="8" stroke="#0EA5E9" stroke-width="2"/>
+                            <path d="M18 18H20M22 18H24M26 18H26M18 22H22M24 22H26M18 26H20M22 26H26" stroke="#0EA5E9" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Generador de QR</h3>
+                    <p class="tool-description">Crea códigos QR para URLs, texto, Wi-Fi y más.</p>
+                    <a href="tools/utils/qr-generator.html" class="tool-link">Abrir →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Términos del Servicio</a>
+                <a href="#">Contacto</a>
+            </div>
+            <p class="footer-copyright">© 2025 Quick Tools. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>

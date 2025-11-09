@@ -44,9 +44,10 @@ extension/
 │   ├── options.css
 │   └── options.js
 └── icons/                # Iconos de la extensión
-    ├── icon16.svg
-    ├── icon48.svg
-    └── icon128.svg
+    ├── icon16x16.png
+    ├── icon32x32.png
+    ├── icon48x48.png
+    └── icon128x128.png
 ```
 
 ## 🛠️ Instalación
