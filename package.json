@@ -1,22 +1,24 @@
 {
-    "name": "quicktools",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "test": "node tests/validate-conversions.js && node tests/validate-format-edgecases.js"
-    },
-    "description": "Proyecto MVP con 5 herramientas que funcionan 100% en el navegador. Estructura mínima para desplegar en GitHub Pages o abrir localmente.",
-    "main": "index.js",
-    "directories": {
-        "test": "tests"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "type": "commonjs",
-    "dependencies": {
-        "@iarna/toml": "^2.2.5",
-        "fast-xml-parser": "^4.3.0",
-        "js-yaml": "^4.1.0"
-    }
+  "name": "quicktools",
+  "version": "1.0.0",
+  "description": "Fast, secure online tools. Everything processed in your browser.",
+  "main": "generate-site.js",
+  "scripts": {
+    "build": "node generate-site.js",
+    "build:old": "node generate-tools.js",
+    "test": "node tests/run-all-tests.js",
+    "serve": "npx http-server web -p 8000"
+  },
+  "keywords": [
+    "tools",
+    "online",
+    "browser",
+    "privacy",
+    "converter"
+  ],
+  "author": "QuickTools Team",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
 }

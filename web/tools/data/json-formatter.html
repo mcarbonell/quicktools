@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -11,7 +11,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Formatear JSON — QuickTools">
     <meta property="og:description" content="Formatea, valida y minifica JSON al instante.">
-    <meta property="og:url" content="/tools/data/json-formatter.html">
+    <meta property="og:url" content="https://quicktools.dev/tools/data/json-formatter.html">
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#0d6efd">
@@ -19,6 +19,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="QuickTools">
     <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/data/json-formatter.html">
+    <link rel="alternate" hreflang="es" href="https://quicktools.dev/es/tools/data/json-formatter.html">
+    <link rel="alternate" hreflang="x-default" href="https://quicktools.dev/tools/data/json-formatter.html">
+
     <!-- Schema.org markup -->
     <script type="application/ld+json">
     
@@ -30,14 +35,17 @@
 
 <body>
     <div class="container py-4">
-        <a href="../../index.html">← Volver</a>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a href="../../index.html" id="backLink">← Back</a>
+            <div id="languageSelector"></div>
+        </div>
         <h1 class="h4 mt-3">Formatear JSON</h1>
         <p class="text-muted">Formatea, valida y minifica JSON al instante.</p>
 
         <div class="position-relative">
     <textarea id="jsonInput" rows="12" class="form-control mb-2" placeholder='{"key": "value"}'></textarea>
     <button id="copyBtn" class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-2"
-        title="Copiar al portapapeles">
+        title="Copy">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard"
             viewBox="0 0 16 16">
             <path
@@ -48,15 +56,20 @@
     </button>
 </div>
 <div class="mb-3">
-    <button id="prettyBtn" class="btn btn-outline-primary me-2">Formatear</button>
-    <button id="minifyBtn" class="btn btn-outline-secondary me-2">Minificar</button>
+    <button id="prettyBtn" class="btn btn-outline-primary me-2">Format</button>
+    <button id="minifyBtn" class="btn btn-outline-secondary me-2">Minify</button>
     <button id="validateBtn" class="btn btn-outline-success">Validar</button>
 </div>
 <div id="jsonMsg" class="mb-2"></div>
     </div>
 
-    <script src="../../js/tools/json-formatter.js"></script>
+    
+    <script>
+        window.toolTranslations = {"title":"Format JSON","description":"Format, validate and minify JSON instantly.","inputLabel":"Input JSON","outputLabel":"Formatted JSON","formatButton":"Format","minifyButton":"Minify","copyButton":"Copy","clearButton":"Clear","validJson":"✅ Valid JSON","invalidJson":"❌ Invalid JSON","copied":"✅ Copied to clipboard","formatted":"JSON formatted.","minified":"JSON minified.","noText":"No text to copy.","error":"Error copying"};
+    </script>
+<script src="../../js/tools/json-formatter.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/i18n/language-selector.js"></script>
 
     <!-- Service Worker Registration -->
     <script>

@@ -1,7 +1,7 @@
 <div class="position-relative">
     <textarea id="jsonInput" rows="12" class="form-control mb-2" placeholder='{"key": "value"}'></textarea>
     <button id="copyBtn" class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-2"
-        title="Copiar al portapapeles">
+        title="{{t.copyButton}}">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard"
             viewBox="0 0 16 16">
             <path
@@ -12,8 +12,8 @@
     </button>
 </div>
 <div class="mb-3">
-    <button id="prettyBtn" class="btn btn-outline-primary me-2">Formatear</button>
-    <button id="minifyBtn" class="btn btn-outline-secondary me-2">Minificar</button>
+    <button id="prettyBtn" class="btn btn-outline-primary me-2">{{t.formatButton}}</button>
+    <button id="minifyBtn" class="btn btn-outline-secondary me-2">{{t.minifyButton}}</button>
     <button id="validateBtn" class="btn btn-outline-success">Validar</button>
 </div>
 <div id="jsonMsg" class="mb-2"></div>

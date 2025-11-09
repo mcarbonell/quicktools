@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resumir Texto con IA - QuickTools</title>
+    <meta name="description" content="Resume textos largos automáticamente con IA. Varios tipos de resumen disponibles.">
+    <meta name="keywords" content="ia, resumir, texto, ai, summary">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Resumir Texto con IA — QuickTools">
+    <meta property="og:description" content="Resume textos largos automáticamente con IA. Varios tipos de resumen disponibles.">
+    <meta property="og:url" content="https://quicktools.dev/es/tools/ai/summarize.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="QuickTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/ai/summarize.html">
+    <link rel="alternate" hreflang="es" href="https://quicktools.dev/es/tools/ai/summarize.html">
+    <link rel="alternate" hreflang="x-default" href="https://quicktools.dev/tools/ai/summarize.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a href="../../index.html" id="backLink">← Back</a>
+            <div id="languageSelector"></div>
+        </div>
+        <h1 class="h4 mt-3">Resumir Texto con IA</h1>
+        <p class="text-muted">Resume textos largos automáticamente con IA. Varios tipos de resumen disponibles.</p>
+
+        <div id="apiKeySetup" class="alert alert-warning">
+    <p class="mb-2">⚙️ Necesitas configurar tu API key de Google Gemini.</p>
+    <a href="chat-ai.html" class="btn btn-sm btn-primary">Configurar ahora</a>
+</div>
+
+<div id="toolSection" class="d-none">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Texto original</label>
+            <textarea id="inputText" class="form-control" rows="12" placeholder="Pega aquí el texto que quieres resumir..."></textarea>
+            <small class="text-muted">Caracteres: <span id="charCount">0</span></small>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Resumen</label>
+            <textarea id="outputText" class="form-control" rows="12" readonly placeholder="El resumen aparecerá aquí..."></textarea>
+            <button class="btn btn-sm btn-outline-secondary mt-2" onclick="copyResult()">📋 Copiar</button>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tipo de resumen</label>
+        <select id="summaryType" class="form-select">
+            <option value="short">Corto (3-5 líneas)</option>
+            <option value="medium" selected>Medio (1 párrafo)</option>
+            <option value="long">Largo (varios párrafos)</option>
+            <option value="bullets">Puntos clave</option>
+        </select>
+    </div>
+
+    <button class="btn btn-primary" onclick="summarize()" id="summarizeBtn">✨ Resumir</button>
+</div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {};
+    </script>
+<script src="../../js/lib/gemini-api.js"></script>
+<script>
+    let gemini = null;
+
+    window.addEventListener('DOMContentLoaded', () => {
+        if (GeminiStorage.exists()) {
+            gemini = new GeminiAPI(GeminiStorage.get());
+            document.getElementById('apiKeySetup').classList.add('d-none');
+            document.getElementById('toolSection').classList.remove('d-none');
+        }
+
+        document.getElementById('inputText').addEventListener('input', (e) => {
+            document.getElementById('charCount').textContent = e.target.value.length;
+        });
+    });
+
+    async function summarize() {
+        const text = document.getElementById('inputText').value.trim();
+        const type = document.getElementById('summaryType').value;
+
+        if (!text) {
+            alert('❌ Por favor ingresa un texto');
+            return;
+        }
+
+        const prompts = {
+            short: 'Resume el siguiente texto en 3-5 líneas máximo:',
+            medium: 'Resume el siguiente texto en un párrafo conciso:',
+            long: 'Resume el siguiente texto de forma detallada:',
+            bullets: 'Extrae los puntos clave del siguiente texto en formato de lista:'
+        };
+
+        const btn = document.getElementById('summarizeBtn');
+        btn.disabled = true;
+        btn.textContent = '⏳ Resumiendo...';
+        document.getElementById('outputText').value = '';
+
+        try {
+            const prompt = `${prompts[type]}\\n\\n${text}`;
+            const result = await gemini.chat(prompt);
+            document.getElementById('outputText').value = result;
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '✨ Resumir';
+        }
+    }
+
+    function copyResult() {
+        const output = document.getElementById('outputText');
+        output.select();
+        document.execCommand('copy');
+        alert('✅ Resumen copiado al portapapeles');
+    }
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

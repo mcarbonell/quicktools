@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QuickTools — Herramientas Online Rápidas y Seguras</title>
+    <meta name="description"
+        content="Fast, secure online tools. Everything processed in your browser. No uploads, no registration.">
+    <meta name="keywords"
+        content="online tools, image converter, json formatter, pdf text extractor, browser based, privacy">
+    <meta name="author" content="QuickTools">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://quicktools.dev/">
+    <meta property="og:title" content="QuickTools — Fast & Secure Online Tools">
+    <meta property="og:description"
+        content="Fast, secure online tools. Everything processed in your browser. No uploads, no registration.">
+    <meta property="og:image" content="https://quicktools.dev/img/og-image.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://quicktools.dev/">
+    <meta property="twitter:title" content="QuickTools — Fast & Secure Online Tools">
+    <meta property="twitter:description"
+        content="Fast, secure online tools. Everything processed in your browser. No uploads, no registration.">
+    <meta property="twitter:image" content="https://quicktools.dev/img/og-image.png">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="QuickTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://quicktools.dev/">
+    <link rel="alternate" hreflang="es" href="https://quicktools.dev/es/">
+    <link rel="alternate" hreflang="x-default" href="https://quicktools.dev/">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">QuickTools</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#" id="navHome">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tools" id="navTools">Herramientas</a></li>
+                    <li class="nav-item"><div id="languageSelector" class="nav-link p-0"></div></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="py-5 bg-light border-bottom">
+        <div class="container">
+            <h1 class="display-6" id="heroTitle">QuickTools</h1>
+            <p class="lead" id="heroSubtitle">33 herramientas potentes que funcionan 100% en tu navegador. Sin subidas, sin registro, privacidad completa.</p>
+            <div class="alert alert-success mt-3">
+                <strong id="newBadge">🎉 ¡NUEVO!</strong> <span id="aiAnnouncement">Herramientas con IA: Chat, resumir, editar imágenes y más.</span> <a href="#IA" class="alert-link" id="aiLink">Ver herramientas IA →</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-5" id="tools">
+        <div class="row mb-4">
+            <div class="col-12">
+                <!-- Placeholder para AdSense (banner) -->
+                <div class="ads-placeholder text-center p-3 mb-3">[AdSense banner placeholder]</div>
+            </div>
+        </div>
+
+        <div id="toolsGrid">
+            <section class="mb-4">
+  <h3 class="h5 mb-3">Imagen</h3>
+  <div class="row g-4">
+
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Redimensionar imagen</h5>
+                <p class="card-text">Redimensiona imágenes en el navegador manteniendo la proporción.</p>
+                <a href="tools/image/image-resizer.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Convertir formato de imagen</h5>
+                <p class="card-text">Convierte JPG, PNG y WebP sin subir archivos.</p>
+                <a href="tools/image/convert-image.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Generador de Paleta de Colores</h5>
+                <p class="card-text">Extrae la paleta de colores dominante de cualquier imagen.</p>
+                <a href="tools/image/color-palette-generator.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Visor y Limpiador EXIF</h5>
+                <p class="card-text">Visualiza los metadatos EXIF de tus imágenes y elimina la información privada.</p>
+                <a href="tools/image/exif-viewer-cleaner.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Recortar Imagen</h5>
+                <p class="card-text">Recorta tus imágenes online de forma sencilla y precisa.</p>
+                <a href="tools/image/image-cropper.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Comprimir Imagen</h5>
+                <p class="card-text">Reduce el tamaño de tus imágenes (JPG, PNG, WebP) sin perder calidad visible.</p>
+                <a href="tools/image/image-compressor.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+<section class="mb-4">
+  <h3 class="h5 mb-3">Datos</h3>
+  <div class="row g-4">
+
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Formatear JSON</h5>
+                <p class="card-text">Formatea, valida y minifica JSON al instante.</p>
+                <a href="tools/data/json-formatter.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">CSV ↔ JSON</h5>
+                <p class="card-text">Convierte CSV a JSON y JSON a CSV en el navegador. Soporta arrastrar y soltar.</p>
+                <a href="tools/data/csv-json.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">YAML ↔ JSON</h5>
+                <p class="card-text">Convierte YAML a JSON y JSON a YAML en el navegador.</p>
+                <a href="tools/data/yaml-json.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">XML ↔ JSON</h5>
+                <p class="card-text">Convierte XML a JSON y JSON a XML en el navegador.</p>
+                <a href="tools/data/xml-json.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">TOML ↔ JSON</h5>
+                <p class="card-text">Convierte TOML a JSON y JSON a TOML en el navegador.</p>
+                <a href="tools/data/toml-json.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+<section class="mb-4">
+  <h3 class="h5 mb-3">Archivos</h3>
+  <div class="row g-4">
+
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Extraer texto de PDF</h5>
+                <p class="card-text">Extrae texto de archivos PDF en el navegador usando PDF.js.</p>
+                <a href="tools/files/pdf-to-text.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Unir PDFs</h5>
+                <p class="card-text">Combina varios archivos PDF en uno solo directamente en tu navegador.</p>
+                <a href="tools/files/merge-pdfs.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Dividir PDF</h5>
+                <p class="card-text">Divide un PDF en varias partes o extrae páginas específicas.</p>
+                <a href="tools/files/split-pdf.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Comprimir PDF</h5>
+                <p class="card-text">Reduce el tamaño de un PDF comprimiendo las imágenes que contiene.</p>
+                <a href="tools/files/compress-pdf.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+<section class="mb-4">
+  <h3 class="h5 mb-3">Conversores</h3>
+  <div class="row g-4">
+
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">PDF a Imagen</h5>
+                <p class="card-text">Convierte cada página de un PDF a imágenes JPG o PNG.</p>
+                <a href="tools/files/pdf-to-image.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Imagen a PDF</h5>
+                <p class="card-text">Convierte una o varias imágenes (JPG, PNG) a un archivo PDF.</p>
+                <a href="tools/files/image-to-pdf.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+<section class="mb-4">
+  <h3 class="h5 mb-3">Generadores</h3>
+  <div class="row g-4">
+
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Generador de Lorem Ipsum</h5>
+                <p class="card-text">Genera texto Lorem Ipsum para tus proyectos de diseño y desarrollo.</p>
+                <a href="tools/text/lorem-ipsum-generator.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+<section class="mb-4">
+  <h3 class="h5 mb-3">Texto</h3>
+  <div class="row g-4">
+
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Limpiar texto</h5>
+                <p class="card-text">Elimina espacios extra, normaliza saltos de línea y cuenta palabras.</p>
+                <a href="tools/text/text-cleaner.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Codificar/Decodificar URL</h5>
+                <p class="card-text">Codifica y decodifica URLs y parámetros. Funciona offline en tu navegador.</p>
+                <a href="tools/text/url-encoder.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Codificar/Decodificar Base64</h5>
+                <p class="card-text">Codifica y decodifica texto en Base64. Funciona offline en tu navegador.</p>
+                <a href="tools/text/base64.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Codificar/Decodificar HTML</h5>
+                <p class="card-text">Codifica y decodifica entidades HTML. Funciona offline en tu navegador.</p>
+                <a href="tools/text/html-encoder.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Comparar Textos</h5>
+                <p class="card-text">Compara dos textos y encuentra las diferencias entre ellos.</p>
+                <a href="tools/text/diff.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+<section class="mb-4">
+  <h3 class="h5 mb-3">Utilidades</h3>
+  <div class="row g-4">
+
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Generador de QR</h5>
+                <p class="card-text">Genera códigos QR desde texto o URL y permite descargar la imagen.</p>
+                <a href="tools/utils/qr-generator.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Generador de contraseñas</h5>
+                <p class="card-text">Generador seguro de contraseñas con opciones de longitud y tipos de caracteres.</p>
+                <a href="tools/utils/password-generator.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Calculadora de Hashes</h5>
+                <p class="card-text">Calcula hashes MD5, SHA-1, SHA-256 y SHA-512 para texto.</p>
+                <a href="tools/utils/hash-calculator.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Selector y Conversor de Color</h5>
+                <p class="card-text">Selecciona colores y conviértelos entre formatos HEX, RGB y HSL.</p>
+                <a href="tools/utils/color-picker-converter.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Cronómetro y Temporizador</h5>
+                <p class="card-text">Un cronómetro y temporizador online simple y fácil de usar.</p>
+                <a href="tools/utils/stopwatch-timer.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+<section class="mb-4" id="IA">
+  <h3 class="h5 mb-3">🤖 IA</h3>
+  <div class="alert alert-info">
+    <strong>🔑 Requiere API Key:</strong> Estas herramientas usan Google Gemini. <a href="tools/ai/chat-ai.html" class="alert-link">Configurar ahora</a>
+  </div>
+  <div class="row g-4">
+
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-primary">
+            <div class="card-body">
+                <h5 class="card-title">Chat con IA</h5>
+                <p class="card-text">Conversa con Google Gemini. Usa tu propia API key, 100% privado en tu navegador.</p>
+                <a href="tools/ai/chat-ai.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-primary">
+            <div class="card-body">
+                <h5 class="card-title">Resumir Texto con IA</h5>
+                <p class="card-text">Resume textos largos automáticamente con IA. Varios tipos de resumen disponibles.</p>
+                <a href="tools/ai/summarize.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-primary">
+            <div class="card-body">
+                <h5 class="card-title">Mejorar Texto con IA</h5>
+                <p class="card-text">Mejora gramática, estilo y claridad de tus textos con IA. Soporte multiidioma.</p>
+                <a href="tools/ai/improve-text.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-primary">
+            <div class="card-body">
+                <h5 class="card-title">Chat con PDF</h5>
+                <p class="card-text">Sube un PDF y haz preguntas sobre su contenido con IA. Todo procesado localmente.</p>
+                <a href="tools/ai/chat-pdf.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 border-primary">
+            <div class="card-body">
+                <h5 class="card-title">Editar Imagen con IA</h5>
+                <p class="card-text">Edita imágenes con instrucciones de texto usando Gemini 2.5 Flash Image (Nano Banana).</p>
+                <a href="tools/ai/edit-image.html" class="btn btn-primary">Abrir herramienta</a>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+        </div>
+    </main>
+
+    <footer class="bg-light py-4 mt-auto border-top">
+        <div class="container text-center small">
+            © QuickTools — <span id="footerTagline">Herramientas en tu navegador</span>. <a href="privacy.html" id="footerPrivacy">Política de Privacidad</a> • <a
+                href="#" id="footerContact">Contact</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

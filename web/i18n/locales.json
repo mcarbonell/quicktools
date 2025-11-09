@@ -1,0 +1,18 @@
+{
+  "locales": [
+    {
+      "code": "en",
+      "name": "English",
+      "nativeName": "English",
+      "flag": "🇬🇧",
+      "default": true
+    },
+    {
+      "code": "es",
+      "name": "Spanish",
+      "nativeName": "Español",
+      "flag": "🇪🇸",
+      "default": false
+    }
+  ]
+}

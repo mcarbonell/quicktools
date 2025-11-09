@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Limpiar texto - QuickTools</title>
+    <meta name="description" content="Elimina espacios extra, normaliza saltos de línea y cuenta palabras.">
+    <meta name="keywords" content="text, clean, count">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Limpiar texto — QuickTools">
+    <meta property="og:description" content="Elimina espacios extra, normaliza saltos de línea y cuenta palabras.">
+    <meta property="og:url" content="https://quicktools.dev/es/tools/text/text-cleaner.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="QuickTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/text/text-cleaner.html">
+    <link rel="alternate" hreflang="es" href="https://quicktools.dev/es/tools/text/text-cleaner.html">
+    <link rel="alternate" hreflang="x-default" href="https://quicktools.dev/tools/text/text-cleaner.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <meta property="og:url" content="https://quicktools.dev/tools/text/text-cleaner.html">
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a href="../../index.html" id="backLink">← Back</a>
+            <div id="languageSelector"></div>
+        </div>
+        <h1 class="h4 mt-3">Limpiar texto</h1>
+        <p class="text-muted">Elimina espacios extra, normaliza saltos de línea y cuenta palabras.</p>
+
+        <div class="position-relative">
+    <textarea id="textInput" rows="12" class="form-control mb-2"></textarea>
+    <button id="copyBtn" class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-2"
+        title="Copiar al portapapeles">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard"
+            viewBox="0 0 16 16">
+            <path
+                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+            <path
+                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+        </svg>
+    </button>
+</div>
+<div class="mb-3">
+    <button id="cleanBtn" class="btn btn-primary me-2">Limpiar</button>
+    <button id="countBtn" class="btn btn-outline-secondary">Contar palabras</button>
+</div>
+<div id="result" class="mt-2 small text-muted"></div>
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","cleanButton":"Limpiar","wordCount":"Palabras","charCount":"Caracteres"};
+    </script>
+<script src="../../js/tools/text-cleaner.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

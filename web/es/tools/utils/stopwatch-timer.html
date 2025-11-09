@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cronómetro y Temporizador - QuickTools</title>
+    <meta name="description" content="Un cronómetro y temporizador online simple y fácil de usar.">
+    <meta name="keywords" content="cronometro, temporizador, tiempo, utilidad">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cronómetro y Temporizador — QuickTools">
+    <meta property="og:description" content="Un cronómetro y temporizador online simple y fácil de usar.">
+    <meta property="og:url" content="https://quicktools.dev/es/tools/utils/stopwatch-timer.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="QuickTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/utils/stopwatch-timer.html">
+    <link rel="alternate" hreflang="es" href="https://quicktools.dev/es/tools/utils/stopwatch-timer.html">
+    <link rel="alternate" hreflang="x-default" href="https://quicktools.dev/tools/utils/stopwatch-timer.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+    .display-time {
+        font-size: 3rem;
+        font-family: 'monospace';
+    }
+
+    .lap-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .lap-item:last-child {
+        border-bottom: none;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a href="../../index.html" id="backLink">← Back</a>
+            <div id="languageSelector"></div>
+        </div>
+        <h1 class="h4 mt-3">Cronómetro y Temporizador</h1>
+        <p class="text-muted">Un cronómetro y temporizador online simple y fácil de usar.</p>
+
+        <div class="row mt-4">
+    <!-- Cronómetro -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Cronómetro</div>
+            <div class="card-body text-center">
+                <div id="stopwatch-display" class="display-time mb-3">00:00:00.000</div>
+                <div class="d-flex justify-content-center gap-2 mb-3">
+                    <button id="stopwatch-start" class="btn btn-success">Iniciar</button>
+                    <button id="stopwatch-stop" class="btn btn-danger" disabled>Detener</button>
+                    <button id="stopwatch-lap" class="btn btn-info" disabled>Vuelta</button>
+                    <button id="stopwatch-reset" class="btn btn-warning" disabled>Reiniciar</button>
+                </div>
+                <ul id="stopwatch-laps" class="list-group mt-3 text-start"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Temporizador -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Temporizador</div>
+            <div class="card-body text-center">
+                <div id="timer-display" class="display-time mb-3">00:00:00</div>
+                <div class="d-flex justify-content-center gap-2 mb-3">
+                    <input type="number" id="timer-hours" class="form-control w-25 text-center" placeholder="HH" min="0"
+                        value="0">
+                    <input type="number" id="timer-minutes" class="form-control w-25 text-center" placeholder="MM"
+                        min="0" max="59" value="0">
+                    <input type="number" id="timer-seconds" class="form-control w-25 text-center" placeholder="SS"
+                        min="0" max="59" value="0">
+                </div>
+                <div class="d-flex justify-content-center gap-2">
+                    <button id="timer-start" class="btn btn-success">Iniciar</button>
+                    <button id="timer-pause" class="btn btn-primary" disabled>Pausar</button>
+                    <button id="timer-reset" class="btn btn-warning" disabled>Reiniciar</button>
+                </div>
+                <audio id="timer-alarm" src="" preload="auto"></audio>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {};
+    </script>
+<script src="../../js/tools/stopwatch-timer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

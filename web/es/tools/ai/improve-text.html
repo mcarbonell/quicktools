@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mejorar Texto con IA - QuickTools</title>
+    <meta name="description" content="Mejora gramática, estilo y claridad de tus textos con IA. Soporte multiidioma.">
+    <meta name="keywords" content="ia, mejorar, texto, gramatica, ai">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mejorar Texto con IA — QuickTools">
+    <meta property="og:description" content="Mejora gramática, estilo y claridad de tus textos con IA. Soporte multiidioma.">
+    <meta property="og:url" content="https://quicktools.dev/es/tools/ai/improve-text.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="QuickTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/ai/improve-text.html">
+    <link rel="alternate" hreflang="es" href="https://quicktools.dev/es/tools/ai/improve-text.html">
+    <link rel="alternate" hreflang="x-default" href="https://quicktools.dev/tools/ai/improve-text.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a href="../../index.html" id="backLink">← Back</a>
+            <div id="languageSelector"></div>
+        </div>
+        <h1 class="h4 mt-3">Mejorar Texto con IA</h1>
+        <p class="text-muted">Mejora gramática, estilo y claridad de tus textos con IA. Soporte multiidioma.</p>
+
+        <div id="apiKeySetup" class="alert alert-warning">
+    <p class="mb-2">⚙️ Necesitas configurar tu API key de Google Gemini.</p>
+    <a href="chat-ai.html" class="btn btn-sm btn-primary">Configurar ahora</a>
+</div>
+
+<div id="toolSection" class="d-none">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Texto original</label>
+            <textarea id="inputText" class="form-control" rows="12" placeholder="Escribe o pega tu texto aquí..."></textarea>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Texto mejorado</label>
+            <textarea id="outputText" class="form-control" rows="12" readonly placeholder="El texto mejorado aparecerá aquí..."></textarea>
+            <button class="btn btn-sm btn-outline-secondary mt-2" onclick="copyResult()">📋 Copiar</button>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">Tipo de mejora</label>
+            <select id="improveType" class="form-select">
+                <option value="grammar">Gramática y ortografía</option>
+                <option value="style">Estilo y claridad</option>
+                <option value="formal">Hacer más formal</option>
+                <option value="casual">Hacer más casual</option>
+                <option value="concise">Hacer más conciso</option>
+                <option value="expand">Expandir y detallar</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Idioma</label>
+            <select id="language" class="form-select">
+                <option value="es">Español</option>
+                <option value="en">Inglés</option>
+                <option value="pt">Portugués</option>
+                <option value="fr">Francés</option>
+            </select>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="improveText()" id="improveBtn">✨ Mejorar texto</button>
+</div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {};
+    </script>
+<script src="../../js/lib/gemini-api.js"></script>
+<script>
+    let gemini = null;
+
+    window.addEventListener('DOMContentLoaded', () => {
+        if (GeminiStorage.exists()) {
+            gemini = new GeminiAPI(GeminiStorage.get());
+            document.getElementById('apiKeySetup').classList.add('d-none');
+            document.getElementById('toolSection').classList.remove('d-none');
+        }
+    });
+
+    async function improveText() {
+        const text = document.getElementById('inputText').value.trim();
+        const type = document.getElementById('improveType').value;
+        const lang = document.getElementById('language').value;
+
+        if (!text) {
+            alert('❌ Por favor ingresa un texto');
+            return;
+        }
+
+        const languages = { es: 'español', en: 'inglés', pt: 'portugués', fr: 'francés' };
+        
+        const prompts = {
+            grammar: `Corrige la gramática y ortografía del siguiente texto en ${languages[lang]}. Mantén el mismo tono y estilo:`,
+            style: `Mejora el estilo y claridad del siguiente texto en ${languages[lang]}. Hazlo más legible y profesional:`,
+            formal: `Reescribe el siguiente texto en ${languages[lang]} de forma más formal y profesional:`,
+            casual: `Reescribe el siguiente texto en ${languages[lang]} de forma más casual y amigable:`,
+            concise: `Reescribe el siguiente texto en ${languages[lang]} de forma más concisa, eliminando redundancias:`,
+            expand: `Expande y detalla el siguiente texto en ${languages[lang]}, añadiendo más información y contexto:`
+        };
+
+        const btn = document.getElementById('improveBtn');
+        btn.disabled = true;
+        btn.textContent = '⏳ Mejorando...';
+        document.getElementById('outputText').value = '';
+
+        try {
+            const prompt = `${prompts[type]}\\n\\n${text}`;
+            const result = await gemini.chat(prompt);
+            document.getElementById('outputText').value = result;
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '✨ Mejorar texto';
+        }
+    }
+
+    function copyResult() {
+        const output = document.getElementById('outputText');
+        output.select();
+        document.execCommand('copy');
+        alert('✅ Texto copiado al portapapeles');
+    }
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

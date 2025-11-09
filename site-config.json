@@ -1,0 +1,25 @@
+{
+  "domain": "quicktools.dev",
+  "defaultLanguage": "en",
+  "languages": ["en", "es"],
+  "siteName": "QuickTools",
+  "description": {
+    "en": "Fast, secure online tools. Everything processed in your browser.",
+    "es": "Herramientas online rápidas y seguras. Todo se procesa en tu navegador."
+  },
+  "author": "QuickTools Team",
+  "version": "1.0.0",
+  "buildDate": "",
+  "analytics": {
+    "googleAnalytics": "",
+    "googleAdsense": ""
+  },
+  "social": {
+    "twitter": "@quicktools",
+    "github": "https://github.com/mcarbonell/quicktools"
+  },
+  "contact": {
+    "email": "contact@quicktools.dev",
+    "support": "support@quicktools.dev"
+  }
+}

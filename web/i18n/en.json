@@ -1,0 +1,183 @@
+{
+  "common": {
+    "title": "QuickTools",
+    "tagline": "Fast, secure online tools. Everything processed in your browser.",
+    "backToHome": "← Back to Home",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More",
+    "tryNow": "Try Now",
+    "openTool": "Open Tool",
+    "copy": "Copy",
+    "download": "Download",
+    "upload": "Upload",
+    "clear": "Clear",
+    "reset": "Reset",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "loading": "Loading...",
+    "processing": "Processing...",
+    "success": "Success!",
+    "error": "Error",
+    "privacyFirst": "100% Private",
+    "noRegistration": "No Registration",
+    "browserBased": "Browser-Based",
+    "freeForever": "Free Forever"
+  },
+  "nav": {
+    "home": "Home",
+    "tools": "Tools",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "hero": {
+    "title": "Fast & Secure Online Tools",
+    "subtitle": "33 powerful tools that work 100% in your browser. No uploads, no registration, complete privacy.",
+    "cta": "Explore Tools",
+    "newBadge": "NEW!",
+    "aiToolsAnnouncement": "AI-powered tools: Chat, summarize, edit images and more.",
+    "viewAiTools": "View AI tools →"
+  },
+  "categories": {
+    "image": "Image",
+    "files": "Files",
+    "data": "Data",
+    "text": "Text",
+    "utils": "Utilities",
+    "converters": "Converters",
+    "generators": "Generators",
+    "ai": "AI (Artificial Intelligence)"
+  },
+  "footer": {
+    "tagline": "Tools in your browser",
+    "madeWith": "Made with",
+    "by": "by",
+    "allRightsReserved": "All rights reserved",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "contact": "Contact"
+    }
+  },
+  "ai": {
+    "requiresApiKey": "Requires API Key",
+    "apiKeyInfo": "These tools use Google Gemini. You need your own API key (free, 1,500 req/day).",
+    "configureNow": "Configure Now",
+    "apiKeySetup": {
+      "title": "Initial Setup",
+      "description": "To use this tool you need a free API key from Google AI Studio:",
+      "step1": "Visit Google AI Studio",
+      "step2": "Sign in with your Google account",
+      "step3": "Create an API key (it's free, 60 req/min)",
+      "step4": "Paste it below 👇",
+      "placeholder": "AIzaSy...",
+      "saveButton": "💾 Save",
+      "privacyNote": "🔒 Stored in your browser's localStorage, never on our servers."
+    },
+    "apiKeyConfigured": "✅ API Key configured",
+    "removeApiKey": "🗑️ Remove",
+    "validating": "⏳ Validating...",
+    "invalidKey": "❌ Invalid API Key. Please verify it's correct.",
+    "validationError": "❌ Validation error: {{error}}\n\nVerify:\n1. API key is correct\n2. Gemini API is enabled\n3. Your internet connection"
+  },
+  "tools": {
+    "chat": {
+      "title": "AI Chat",
+      "description": "Chat with Google Gemini. Use your own API key, 100% private in your browser.",
+      "placeholder": "Type your message...",
+      "send": "📤 Send",
+      "clearChat": "🗑️ Clear chat",
+      "export": "💾 Export",
+      "greeting": "Hello! I'm your AI assistant. How can I help you today?",
+      "you": "You",
+      "assistant": "AI Assistant"
+    },
+    "summarize": {
+      "title": "Summarize Text with AI",
+      "description": "Automatically summarize long texts with AI. Multiple summary types available.",
+      "inputLabel": "Original text",
+      "inputPlaceholder": "Paste the text you want to summarize here...",
+      "outputLabel": "Summary",
+      "outputPlaceholder": "The summary will appear here...",
+      "typeLabel": "Summary type",
+      "types": {
+        "short": "Short (3-5 lines)",
+        "medium": "Medium (1 paragraph)",
+        "long": "Long (detailed)",
+        "bullets": "Key points"
+      },
+      "summarizeButton": "✨ Summarize",
+      "summarizing": "⏳ Summarizing...",
+      "characters": "Characters"
+    },
+    "improveText": {
+      "title": "Improve Text with AI",
+      "description": "Improve grammar, style and clarity of your texts with AI. Multi-language support.",
+      "inputLabel": "Original text",
+      "inputPlaceholder": "Write or paste your text here...",
+      "outputLabel": "Improved text",
+      "outputPlaceholder": "The improved text will appear here...",
+      "typeLabel": "Improvement type",
+      "types": {
+        "grammar": "Grammar and spelling",
+        "style": "Style and clarity",
+        "formal": "Make more formal",
+        "casual": "Make more casual",
+        "concise": "Make more concise",
+        "expand": "Expand and detail"
+      },
+      "languageLabel": "Language",
+      "languages": {
+        "es": "Spanish",
+        "en": "English",
+        "pt": "Portuguese",
+        "fr": "French"
+      },
+      "improveButton": "✨ Improve text",
+      "improving": "⏳ Improving..."
+    },
+    "chatPdf": {
+      "title": "Chat with PDF",
+      "description": "Upload a PDF and ask questions about its content with AI. Everything processed locally.",
+      "uploadLabel": "Upload PDF",
+      "uploadNote": "The PDF is processed locally, not uploaded to any server",
+      "previewTitle": "Content preview:",
+      "chatPlaceholder": "Ask about the PDF...",
+      "greeting": "PDF loaded. What do you want to know about this document?",
+      "send": "📤 Send"
+    },
+    "editImage": {
+      "title": "Edit Image with AI",
+      "description": "Edit images with text instructions using Gemini 2.5 Flash Image (Nano Banana).",
+      "uploadLabel": "Upload Image",
+      "conversationLabel": "Conversation",
+      "inputPlaceholder": "Describe the changes you want to make...",
+      "editButton": "✨ Edit",
+      "editing": "⏳ Editing...",
+      "imageLoaded": "Image loaded. What do you want to know about it?",
+      "imageEdited": "✅ Image edited successfully. You can continue editing.",
+      "downloadButton": "💾 Download image",
+      "examples": {
+        "title": "💡 Editing examples:",
+        "ex1": "Change the background to a beach at sunset",
+        "ex2": "Add a wizard hat",
+        "ex3": "Convert to watercolor style",
+        "ex4": "Adjust colors to warm tones"
+      }
+    }
+  },
+  "errors": {
+    "generic": "An error occurred. Please try again.",
+    "noApiKey": "❌ Please enter an API key",
+    "noText": "❌ Please enter some text",
+    "noFile": "❌ Please upload a file",
+    "noImage": "❌ Please upload an image",
+    "uploadImage": "❌ Upload an image and describe the changes",
+    "rateLimitExceeded": "You exceeded your current quota. Please check your plan and billing details.",
+    "copied": "✅ Copied to clipboard",
+    "confirmClear": "Clear all chat?",
+    "confirmRemoveKey": "Are you sure you want to remove the API key?"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "en": {
+    "title": "Format JSON",
+    "description": "Format, validate and minify JSON instantly.",
+    "inputLabel": "Input JSON",
+    "outputLabel": "Formatted JSON",
+    "formatButton": "Format",
+    "minifyButton": "Minify",
+    "copyButton": "Copy",
+    "clearButton": "Clear",
+    "validJson": "✅ Valid JSON",
+    "invalidJson": "❌ Invalid JSON",
+    "copied": "✅ Copied to clipboard",
+    "formatted": "JSON formatted.",
+    "minified": "JSON minified.",
+    "noText": "No text to copy.",
+    "error": "Error copying"
+  },
+  "es": {
+    "title": "Formatear JSON",
+    "description": "Formatea, valida y minifica JSON al instante.",
+    "inputLabel": "JSON de entrada",
+    "outputLabel": "JSON formateado",
+    "formatButton": "Formatear",
+    "minifyButton": "Minificar",
+    "copyButton": "Copiar",
+    "clearButton": "Limpiar",
+    "validJson": "✅ JSON válido",
+    "invalidJson": "❌ JSON inválido",
+    "copied": "✅ Copiado al portapapeles",
+    "formatted": "JSON formateado.",
+    "minified": "JSON minificado.",
+    "noText": "No hay texto para copiar.",
+    "error": "Error al copiar"
+  }
+}

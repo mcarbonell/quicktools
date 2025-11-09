@@ -1,0 +1,183 @@
+{
+  "common": {
+    "title": "QuickTools",
+    "tagline": "Herramientas online rápidas y seguras. Todo se procesa en tu navegador.",
+    "backToHome": "← Volver al inicio",
+    "getStarted": "Comenzar",
+    "learnMore": "Saber más",
+    "tryNow": "Probar ahora",
+    "openTool": "Abrir herramienta",
+    "copy": "Copiar",
+    "download": "Descargar",
+    "upload": "Subir",
+    "clear": "Limpiar",
+    "reset": "Reiniciar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "loading": "Cargando...",
+    "processing": "Procesando...",
+    "success": "¡Éxito!",
+    "error": "Error",
+    "privacyFirst": "100% Privado",
+    "noRegistration": "Sin Registro",
+    "browserBased": "En el Navegador",
+    "freeForever": "Gratis Siempre"
+  },
+  "nav": {
+    "home": "Inicio",
+    "tools": "Herramientas",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "privacy": "Privacidad",
+    "terms": "Términos"
+  },
+  "hero": {
+    "title": "Herramientas Online Rápidas y Seguras",
+    "subtitle": "33 herramientas potentes que funcionan 100% en tu navegador. Sin subidas, sin registro, privacidad completa.",
+    "cta": "Explorar Herramientas",
+    "newBadge": "¡NUEVO!",
+    "aiToolsAnnouncement": "Herramientas con IA: Chat, resumir, editar imágenes y más.",
+    "viewAiTools": "Ver herramientas IA →"
+  },
+  "categories": {
+    "image": "Imagen",
+    "files": "Archivos",
+    "data": "Datos",
+    "text": "Texto",
+    "utils": "Utilidades",
+    "converters": "Conversores",
+    "generators": "Generadores",
+    "ai": "IA (Inteligencia Artificial)"
+  },
+  "footer": {
+    "tagline": "Herramientas en tu navegador",
+    "madeWith": "Hecho con",
+    "by": "por",
+    "allRightsReserved": "Todos los derechos reservados",
+    "links": {
+      "privacy": "Política de Privacidad",
+      "terms": "Términos de Servicio",
+      "contact": "Contacto"
+    }
+  },
+  "ai": {
+    "requiresApiKey": "Requiere API Key",
+    "apiKeyInfo": "Estas herramientas usan Google Gemini. Necesitas tu propia API key (gratis, 1,500 req/día).",
+    "configureNow": "Configurar ahora",
+    "apiKeySetup": {
+      "title": "Configuración inicial",
+      "description": "Para usar esta herramienta necesitas una API key gratuita de Google AI Studio:",
+      "step1": "Visita Google AI Studio",
+      "step2": "Inicia sesión con tu cuenta de Google",
+      "step3": "Crea una API key (es gratis, 60 req/min)",
+      "step4": "Pégala aquí abajo 👇",
+      "placeholder": "AIzaSy...",
+      "saveButton": "💾 Guardar",
+      "privacyNote": "🔒 Se guarda en localStorage de tu navegador, nunca en nuestros servidores."
+    },
+    "apiKeyConfigured": "✅ API Key configurada",
+    "removeApiKey": "🗑️ Eliminar",
+    "validating": "⏳ Validando...",
+    "invalidKey": "❌ API Key inválida. Verifica que sea correcta.",
+    "validationError": "❌ Error al validar: {{error}}\n\nVerifica:\n1. Que la API key sea correcta\n2. Que tengas habilitada la API de Gemini\n3. Tu conexión a internet"
+  },
+  "tools": {
+    "chat": {
+      "title": "Chat con IA",
+      "description": "Conversa con Google Gemini. Usa tu propia API key, 100% privado en tu navegador.",
+      "placeholder": "Escribe tu mensaje...",
+      "send": "📤 Enviar",
+      "clearChat": "🗑️ Limpiar chat",
+      "export": "💾 Exportar",
+      "greeting": "¡Hola! Soy tu asistente con IA. ¿En qué puedo ayudarte hoy?",
+      "you": "Tú",
+      "assistant": "Asistente IA"
+    },
+    "summarize": {
+      "title": "Resumir Texto con IA",
+      "description": "Resume textos largos automáticamente con IA. Varios tipos de resumen disponibles.",
+      "inputLabel": "Texto original",
+      "inputPlaceholder": "Pega aquí el texto que quieres resumir...",
+      "outputLabel": "Resumen",
+      "outputPlaceholder": "El resumen aparecerá aquí...",
+      "typeLabel": "Tipo de resumen",
+      "types": {
+        "short": "Corto (3-5 líneas)",
+        "medium": "Medio (1 párrafo)",
+        "long": "Largo (detallado)",
+        "bullets": "Puntos clave"
+      },
+      "summarizeButton": "✨ Resumir",
+      "summarizing": "⏳ Resumiendo...",
+      "characters": "Caracteres"
+    },
+    "improveText": {
+      "title": "Mejorar Texto con IA",
+      "description": "Mejora gramática, estilo y claridad de tus textos con IA. Soporte multiidioma.",
+      "inputLabel": "Texto original",
+      "inputPlaceholder": "Escribe o pega tu texto aquí...",
+      "outputLabel": "Texto mejorado",
+      "outputPlaceholder": "El texto mejorado aparecerá aquí...",
+      "typeLabel": "Tipo de mejora",
+      "types": {
+        "grammar": "Gramática y ortografía",
+        "style": "Estilo y claridad",
+        "formal": "Hacer más formal",
+        "casual": "Hacer más casual",
+        "concise": "Hacer más conciso",
+        "expand": "Expandir y detallar"
+      },
+      "languageLabel": "Idioma",
+      "languages": {
+        "es": "Español",
+        "en": "Inglés",
+        "pt": "Portugués",
+        "fr": "Francés"
+      },
+      "improveButton": "✨ Mejorar texto",
+      "improving": "⏳ Mejorando..."
+    },
+    "chatPdf": {
+      "title": "Chat con PDF",
+      "description": "Sube un PDF y haz preguntas sobre su contenido con IA. Todo procesado localmente.",
+      "uploadLabel": "Subir PDF",
+      "uploadNote": "El PDF se procesa localmente, no se sube a ningún servidor",
+      "previewTitle": "Vista previa del contenido:",
+      "chatPlaceholder": "Pregunta sobre el PDF...",
+      "greeting": "PDF cargado. ¿Qué quieres saber sobre este documento?",
+      "send": "📤 Enviar"
+    },
+    "editImage": {
+      "title": "Editar Imagen con IA",
+      "description": "Edita imágenes con instrucciones de texto usando Gemini 2.5 Flash Image (Nano Banana).",
+      "uploadLabel": "Subir Imagen",
+      "conversationLabel": "Conversación",
+      "inputPlaceholder": "Describe los cambios que quieres hacer...",
+      "editButton": "✨ Editar",
+      "editing": "⏳ Editando...",
+      "imageLoaded": "Imagen cargada. ¿Qué quieres saber sobre ella?",
+      "imageEdited": "✅ Imagen editada correctamente. Puedes seguir editando.",
+      "downloadButton": "💾 Descargar imagen",
+      "examples": {
+        "title": "💡 Ejemplos de edición:",
+        "ex1": "Cambia el fondo a una playa al atardecer",
+        "ex2": "Añade un sombrero de mago",
+        "ex3": "Convierte en estilo acuarela",
+        "ex4": "Ajusta los colores a tonos cálidos"
+      }
+    }
+  },
+  "errors": {
+    "generic": "Ocurrió un error. Por favor intenta de nuevo.",
+    "noApiKey": "❌ Por favor ingresa una API key",
+    "noText": "❌ Por favor ingresa un texto",
+    "noFile": "❌ Por favor sube un archivo",
+    "noImage": "❌ Por favor sube una imagen",
+    "uploadImage": "❌ Sube una imagen y describe los cambios",
+    "rateLimitExceeded": "Has excedido tu cuota actual. Por favor verifica tu plan y detalles de facturación.",
+    "copied": "✅ Copiado al portapapeles",
+    "confirmClear": "¿Limpiar todo el chat?",
+    "confirmRemoveKey": "¿Seguro que quieres eliminar la API key?"
+  }
+}
