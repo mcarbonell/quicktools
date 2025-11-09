@@ -15,7 +15,16 @@
     "outputLabel": "Output",
     "textLabel": "Text",
     "fileLabel": "File",
-    "convertButton": "Convert"
+    "convertButton": "Convert",
+    "selectImagesLabel": "Select images (JPG, PNG)",
+    "dropMessage": "Drag your images here or click to select",
+    "pageSizeLabel": "Page size",
+    "a4Option": "A4 (210 x 297 mm)",
+    "letterOption": "Letter (216 x 279 mm)",
+    "orientationLabel": "Orientation",
+    "portraitOption": "Portrait",
+    "landscapeOption": "Landscape",
+    "convertToPdfButton": "Convert to PDF"
   },
   "es": {
     "copyButton": "Copiar",
@@ -33,6 +42,15 @@
     "outputLabel": "Salida",
     "textLabel": "Texto",
     "fileLabel": "Archivo",
-    "convertButton": "Convertir"
+    "convertButton": "Convertir",
+    "selectImagesLabel": "Selecciona imágenes (JPG, PNG)",
+    "dropMessage": "Arrastra tus imágenes aquí o haz clic para seleccionar",
+    "pageSizeLabel": "Tamaño de página",
+    "a4Option": "A4 (210 x 297 mm)",
+    "letterOption": "Carta (216 x 279 mm)",
+    "orientationLabel": "Orientación",
+    "portraitOption": "Vertical",
+    "landscapeOption": "Horizontal",
+    "convertToPdfButton": "Convertir a PDF"
   }
 }

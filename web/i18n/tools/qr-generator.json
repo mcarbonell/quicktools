@@ -15,7 +15,19 @@
     "outputLabel": "Output",
     "textLabel": "Text",
     "fileLabel": "File",
-    "generateButton": "Generate QR"
+    "generateButton": "Generate",
+    "qrTextLabel": "Text or URL",
+    "qrTextPlaceholder": "https://example.com",
+    "sizeLabel": "Size (px)",
+    "errorCorrectionLabel": "Error correction",
+    "lLevelOption": "L - Low",
+    "mLevelOption": "M - Medium",
+    "qLevelOption": "Q - High",
+    "hLevelOption": "H - Very high",
+    "quietZoneLabel": "Quiet zone",
+    "downloadPngButton": "Download PNG",
+    "copyImageButton": "Copy image",
+    "qrPreviewPlaceholder": "QR will appear here"
   },
   "es": {
     "copyButton": "Copiar",
@@ -33,6 +45,18 @@
     "outputLabel": "Salida",
     "textLabel": "Texto",
     "fileLabel": "Archivo",
-    "generateButton": "Generar QR"
+    "generateButton": "Generar QR",
+    "qrTextLabel": "Texto o URL",
+    "qrTextPlaceholder": "https://ejemplo.com",
+    "sizeLabel": "Tamaño (px)",
+    "errorCorrectionLabel": "Corrección de errores",
+    "lLevelOption": "L - Baja",
+    "mLevelOption": "M - Media",
+    "qLevelOption": "Q - Alta",
+    "hLevelOption": "H - Muy alta",
+    "quietZoneLabel": "Zona silenciosa",
+    "downloadPngButton": "Descargar PNG",
+    "copyImageButton": "Copiar imagen",
+    "qrPreviewPlaceholder": "Aquí aparecerá el QR"
   }
 }

@@ -15,7 +15,11 @@
     "outputLabel": "Output",
     "textLabel": "Text",
     "fileLabel": "File",
-    "splitButton": "Split PDF"
+    "splitButton": "Split PDF",
+    "selectPdfFileLabel": "Select a PDF file",
+    "dropMessage": "Drag your PDF here or click to select",
+    "pagesToExtractLabel": "Pages to extract (e.g.: 1, 3-5, 8)",
+    "pagesPlaceholder": "1, 3-5, 8"
   },
   "es": {
     "copyButton": "Copiar",
@@ -33,6 +37,10 @@
     "outputLabel": "Salida",
     "textLabel": "Texto",
     "fileLabel": "Archivo",
-    "splitButton": "Dividir PDF"
+    "splitButton": "Dividir PDF",
+    "selectPdfFileLabel": "Selecciona un archivo PDF",
+    "dropMessage": "Arrastra tu PDF aquí o haz clic para seleccionar",
+    "pagesToExtractLabel": "Páginas a extraer (ej: 1, 3-5, 8)",
+    "pagesPlaceholder": "1, 3-5, 8"
   }
 }

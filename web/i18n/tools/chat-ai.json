@@ -1,0 +1,38 @@
+{
+  "en": {
+    "initialSetupTitle": "⚙️ Initial Setup",
+    "apiKeyInstruction": "To use this tool, you need a free API key from Google AI Studio:",
+    "visitLabel": "Visit",
+    "loginGoogleAccount": "Log in with your Google account",
+    "createApiKey": "Create an API key (it's free, 60 req/min)",
+    "pasteApiKey": "Paste it below 👇",
+    "saveButton": "💾 Save",
+    "localStorageInfo": "🔒 Saved in your browser's localStorage, never on our servers.",
+    "apiKeyConfigured": "✅ API Key configured",
+    "removeButton": "🗑️ Remove",
+    "assistantName": "AI Assistant",
+    "assistantWelcomeMessage": "Hi! I'm your AI assistant. How can I help you today?",
+    "typeYourMessagePlaceholder": "Type your message...",
+    "sendButton": "📤 Send",
+    "clearChatButton": "🗑️ Clear chat",
+    "exportButton": "💾 Export"
+  },
+  "es": {
+    "initialSetupTitle": "⚙️ Configuración inicial",
+    "apiKeyInstruction": "Para usar esta herramienta necesitas una API key gratuita de Google AI Studio:",
+    "visitLabel": "Visita",
+    "loginGoogleAccount": "Inicia sesión con tu cuenta de Google",
+    "createApiKey": "Crea una API key (es gratis, 60 req/min)",
+    "pasteApiKey": "Pégala aquí abajo 👇",
+    "saveButton": "💾 Guardar",
+    "localStorageInfo": "🔒 Se guarda en localStorage de tu navegador, nunca en nuestros servidores.",
+    "apiKeyConfigured": "✅ API Key configurada",
+    "removeButton": "🗑️ Eliminar",
+    "assistantName": "Asistente IA",
+    "assistantWelcomeMessage": "¡Hola! Soy tu asistente con IA. ¿En qué puedo ayudarte hoy?",
+    "typeYourMessagePlaceholder": "Escribe tu mensaje...",
+    "sendButton": "📤 Enviar",
+    "clearChatButton": "🗑️ Limpiar chat",
+    "exportButton": "💾 Exportar"
+  }
+}

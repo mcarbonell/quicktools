@@ -15,7 +15,19 @@
     "outputLabel": "Output",
     "textLabel": "Text",
     "fileLabel": "File",
-    "calculateButton": "Calculate"
+    "calculateButton": "Calculate",
+    "inputTextLabel": "Input text:",
+    "inputTextPlaceholder": "Enter text here...",
+    "hashTypeLabel": "Hash type:",
+    "md5Option": "MD5",
+    "sha1Option": "SHA-1",
+    "sha256Option": "SHA-256",
+    "sha512Option": "SHA-512",
+    "calculateHashButton": "Calculate Hash",
+    "copyHashButton": "Copy Hash",
+    "hashResultLabel": "Hash result:",
+    "hashResultPlaceholder": "(Hash will appear here)",
+    "backToHomeButton": "Back to home"
   },
   "es": {
     "copyButton": "Copiar",
@@ -33,6 +45,18 @@
     "outputLabel": "Salida",
     "textLabel": "Texto",
     "fileLabel": "Archivo",
-    "calculateButton": "Calcular"
+    "calculateButton": "Calcular",
+    "inputTextLabel": "Texto de entrada:",
+    "inputTextPlaceholder": "Introduce el texto aquí...",
+    "hashTypeLabel": "Tipo de Hash:",
+    "md5Option": "MD5",
+    "sha1Option": "SHA-1",
+    "sha256Option": "SHA-256",
+    "sha512Option": "SHA-512",
+    "calculateHashButton": "Calcular Hash",
+    "copyHashButton": "Copiar Hash",
+    "hashResultLabel": "Resultado del Hash:",
+    "hashResultPlaceholder": "(El hash aparecerá aquí)",
+    "backToHomeButton": "Volver al inicio"
   }
 }

@@ -16,7 +16,13 @@
     "textLabel": "Text",
     "fileLabel": "File",
     "widthLabel": "Width",
-    "heightLabel": "Height"
+    "heightLabel": "Height",
+    "imageResizerDescription": "Upload an image, specify the width (px) and download the resized image.",
+    "dropMessage": "Drag an image here or click to select",
+    "keepRatioLabel": "Maintain aspect ratio",
+    "widthPlaceholder": "e.g. 800",
+    "resizeButton": "Resize and download",
+    "previewLabel": "Preview:"
   },
   "es": {
     "copyButton": "Copiar",
@@ -35,6 +41,12 @@
     "textLabel": "Texto",
     "fileLabel": "Archivo",
     "widthLabel": "Ancho",
-    "heightLabel": "Alto"
+    "heightLabel": "Alto",
+    "imageResizerDescription": "Sube una imagen, indica el ancho (px) y descarga la imagen redimensionada.",
+    "dropMessage": "Arrastra una imagen aquí o haz clic para seleccionar",
+    "keepRatioLabel": "Mantener proporción",
+    "widthPlaceholder": "p. ej. 800",
+    "resizeButton": "Redimensionar y descargar",
+    "previewLabel": "Vista previa:"
   }
 }

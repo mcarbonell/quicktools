@@ -1,19 +1,19 @@
 <div class="mb-3">
-    <label for="image-input" class="form-label">Selecciona una imagen</label>
+    <label for="image-input" class="form-label">{{t.selectImageLabel}}</label>
     <div class="drop-zone mb-2" id="dropZone">
         <input class="form-control d-none" type="file" id="image-input" accept="image/*">
         <div class="drop-message">
-            Arrastra tu imagen aquí o haz clic para seleccionar
+            {{t.dropMessage}}
         </div>
     </div>
 </div>
 
 <div class="mb-3">
-    <label for="color-count" class="form-label">Número de colores en la paleta (2-10)</label>
+    <label for="color-count" class="form-label">{{t.colorCountLabel}}</label>
     <input type="range" class="form-range" min="2" max="10" step="1" id="color-count" value="5">
 </div>
 
-<button id="extract-btn" class="btn btn-primary">Extraer Paleta</button>
+<button id="extract-btn" class="btn btn-primary">{{t.extractPaletteButton}}</button>
 
 <div id="image-preview" class="mt-3">
     <img id="preview" class="img-fluid" style="max-height: 300px; display: none;">

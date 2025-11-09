@@ -1,31 +1,32 @@
 <div id="apiKeySetup" class="alert alert-warning">
-    <p class="mb-2">⚙️ Necesitas configurar tu API key de Google Gemini.</p>
-    <a href="chat-ai.html" class="btn btn-sm btn-primary">Configurar ahora</a>
+    <p class="mb-2">{{t.apiKeySetupTitle}}</p>
+    <a href="chat-ai.html" class="btn btn-sm btn-primary">{{t.configureNowButton}}</a>
 </div>
 
 <div id="toolSection" class="d-none">
     <div class="row">
         <div class="col-md-6 mb-3">
-            <label class="form-label">Texto original</label>
-            <textarea id="inputText" class="form-control" rows="12" placeholder="Pega aquí el texto que quieres resumir..."></textarea>
-            <small class="text-muted">Caracteres: <span id="charCount">0</span></small>
+            <label class="form-label">{{t.originalTextLabel}}</label>
+            <textarea id="inputText" class="form-control" rows="12" placeholder="{{t.inputTextPlaceholder}}"></textarea>
+            <small class="text-muted">{{t.charactersLabel}} <span id="charCount">0</span></small>
         </div>
         <div class="col-md-6 mb-3">
-            <label class="form-label">Resumen</label>
-            <textarea id="outputText" class="form-control" rows="12" readonly placeholder="El resumen aparecerá aquí..."></textarea>
-            <button class="btn btn-sm btn-outline-secondary mt-2" onclick="copyResult()">📋 Copiar</button>
+            <label class="form-label">{{t.summaryLabel}}</label>
+            <textarea id="outputText" class="form-control" rows="12" readonly
+                placeholder="{{t.outputTextPlaceholder}}"></textarea>
+            <button class="btn btn-sm btn-outline-secondary mt-2" onclick="copyResult()">{{t.copyButton}}</button>
         </div>
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Tipo de resumen</label>
+        <label class="form-label">{{t.summaryTypeLabel}}</label>
         <select id="summaryType" class="form-select">
-            <option value="short">Corto (3-5 líneas)</option>
-            <option value="medium" selected>Medio (1 párrafo)</option>
-            <option value="long">Largo (varios párrafos)</option>
-            <option value="bullets">Puntos clave</option>
+            <option value="short">{{t.shortOption}}</option>
+            <option value="medium" selected>{{t.mediumOption}}</option>
+            <option value="long">{{t.longOption}}</option>
+            <option value="bullets">{{t.bulletsOption}}</option>
         </select>
     </div>
 
-    <button class="btn btn-primary" onclick="summarize()" id="summarizeBtn">✨ Resumir</button>
+    <button class="btn btn-primary" onclick="summarize()" id="summarizeBtn">{{t.summarizeButton}}</button>
 </div>

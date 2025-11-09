@@ -15,7 +15,22 @@
     "outputLabel": "Output",
     "textLabel": "Text",
     "fileLabel": "File",
-    "compareButton": "Compare"
+    "compareButton": "Compare",
+    "originalTextLabel": "Original text",
+    "modifiedTextLabel": "Modified text",
+    "compareTextsButton": "Compare texts",
+    "copyResultButton": "Copy result",
+    "ignoreCaseLabel": "Ignore case",
+    "ignoreWhitespaceLabel": "Ignore whitespace",
+    "differencesFoundTitle": "Differences found",
+    "resultsWillAppearHerePlaceholder": "Results will appear here...",
+    "legendTitle": "Legend:",
+    "greenLabel": "Green",
+    "redLabel": "Red",
+    "yellowLabel": "Yellow",
+    "addedText": "Added text",
+    "removedText": "Removed text",
+    "modifiedText": "Modified text"
   },
   "es": {
     "copyButton": "Copiar",
@@ -33,6 +48,21 @@
     "outputLabel": "Salida",
     "textLabel": "Texto",
     "fileLabel": "Archivo",
-    "compareButton": "Comparar"
+    "compareButton": "Comparar",
+    "originalTextLabel": "Texto original",
+    "modifiedTextLabel": "Texto modificado",
+    "compareTextsButton": "Comparar textos",
+    "copyResultButton": "Copiar resultado",
+    "ignoreCaseLabel": "Ignorar mayúsculas/minúsculas",
+    "ignoreWhitespaceLabel": "Ignorar espacios en blanco",
+    "differencesFoundTitle": "Diferencias encontradas",
+    "resultsWillAppearHerePlaceholder": "Los resultados aparecerán aquí...",
+    "legendTitle": "Leyenda:",
+    "greenLabel": "Verde",
+    "redLabel": "Rojo",
+    "yellowLabel": "Amarillo",
+    "addedText": "Texto añadido",
+    "removedText": "Texto eliminado",
+    "modifiedText": "Texto modificado"
   }
 }

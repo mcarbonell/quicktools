@@ -16,7 +16,14 @@
     "textLabel": "Text",
     "fileLabel": "File",
     "convertButton": "Convert",
-    "formatLabel": "Format"
+    "formatLabel": "Format",
+    "imageConvertDescription": "Upload an image and choose the output format.",
+    "dropMessage": "Drag an image here or click to select",
+    "pngOption": "PNG",
+    "jpgOption": "JPG (quality 0.92)",
+    "webpOption": "WebP",
+    "convertAndDownloadButton": "Convert and download",
+    "previewLabel": "Preview:"
   },
   "es": {
     "copyButton": "Copiar",
@@ -35,6 +42,13 @@
     "textLabel": "Texto",
     "fileLabel": "Archivo",
     "convertButton": "Convertir",
-    "formatLabel": "Formato"
+    "formatLabel": "Formato",
+    "imageConvertDescription": "Sube una imagen y elige el formato de salida.",
+    "dropMessage": "Arrastra una imagen aquí o haz clic para seleccionar",
+    "pngOption": "PNG",
+    "jpgOption": "JPG (calidad 0.92)",
+    "webpOption": "WebP",
+    "convertAndDownloadButton": "Convertir y descargar",
+    "previewLabel": "Vista previa:"
   }
 }

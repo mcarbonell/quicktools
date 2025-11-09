@@ -16,7 +16,14 @@
     "textLabel": "Text",
     "fileLabel": "File",
     "startButton": "Start",
-    "stopButton": "Stop"
+    "stopButton": "Stop",
+    "pauseButton": "Pause",
+    "lapButton": "Lap",
+    "stopwatchTitle": "Stopwatch",
+    "timerTitle": "Timer",
+    "hoursPlaceholder": "HH",
+    "minutesPlaceholder": "MM",
+    "secondsPlaceholder": "SS"
   },
   "es": {
     "copyButton": "Copiar",
@@ -35,6 +42,13 @@
     "textLabel": "Texto",
     "fileLabel": "Archivo",
     "startButton": "Iniciar",
-    "stopButton": "Detener"
+    "stopButton": "Detener",
+    "pauseButton": "Pausar",
+    "lapButton": "Vuelta",
+    "stopwatchTitle": "Cronómetro",
+    "timerTitle": "Temporizador",
+    "hoursPlaceholder": "HH",
+    "minutesPlaceholder": "MM",
+    "secondsPlaceholder": "SS"
   }
 }

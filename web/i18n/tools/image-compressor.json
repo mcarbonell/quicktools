@@ -16,7 +16,16 @@
     "textLabel": "Text",
     "fileLabel": "File",
     "qualityLabel": "Quality",
-    "compressButton": "Compress"
+    "compressButton": "Compress",
+    "imageCompressorDescription": "Reduce the size of your images (JPG, PNG, WebP) without losing visible quality.",
+    "dropMessage": "Drag and drop an image here or click to select",
+    "compressionQualityLabel": "Compression quality:",
+    "compressImageButton": "Compress Image",
+    "downloadImageButton": "Download Image",
+    "originalLabel": "Original:",
+    "compressedLabel": "Compressed:",
+    "sizeLabel": "Size:",
+    "backToHomeButton": "Back to home"
   },
   "es": {
     "copyButton": "Copiar",
@@ -35,6 +44,15 @@
     "textLabel": "Texto",
     "fileLabel": "Archivo",
     "qualityLabel": "Calidad",
-    "compressButton": "Comprimir"
+    "compressButton": "Comprimir",
+    "imageCompressorDescription": "Reduce el tamaño de tus imágenes (JPG, PNG, WebP) sin perder calidad visible.",
+    "dropMessage": "Arrastra y suelta una imagen aquí o haz clic para seleccionar",
+    "compressionQualityLabel": "Calidad de compresión:",
+    "compressImageButton": "Comprimir Imagen",
+    "downloadImageButton": "Descargar Imagen",
+    "originalLabel": "Original:",
+    "compressedLabel": "Comprimida:",
+    "sizeLabel": "Tamaño:",
+    "backToHomeButton": "Volver al inicio"
   }
 }

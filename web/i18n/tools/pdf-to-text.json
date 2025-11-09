@@ -15,7 +15,10 @@
     "outputLabel": "Output",
     "textLabel": "Text",
     "fileLabel": "File",
-    "extractButton": "Extract Text"
+    "extractButton": "Extract Text",
+    "dropMessage": "Drag a PDF here or click to select",
+    "outputPlaceholder": "Extracted text will appear here...",
+    "copyTooltip": "Copy to clipboard"
   },
   "es": {
     "copyButton": "Copiar",
@@ -33,6 +36,9 @@
     "outputLabel": "Salida",
     "textLabel": "Texto",
     "fileLabel": "Archivo",
-    "extractButton": "Extraer Texto"
+    "extractButton": "Extraer Texto",
+    "dropMessage": "Arrastra un PDF aquí o haz clic para seleccionar",
+    "outputPlaceholder": "Aquí aparecerá el texto extraído...",
+    "copyTooltip": "Copiar al portapapeles"
   }
 }

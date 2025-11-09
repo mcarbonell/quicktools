@@ -1,0 +1,34 @@
+{
+    "en": {
+        "apiKeySetupTitle": "⚙️ You need to configure your Google Gemini API key.",
+        "configureNowButton": "Configure now",
+        "originalTextLabel": "Original text",
+        "inputTextPlaceholder": "Paste the text you want to summarize here...",
+        "charactersLabel": "Characters:",
+        "summaryLabel": "Summary",
+        "outputTextPlaceholder": "The summary will appear here...",
+        "copyButton": "📋 Copy",
+        "summaryTypeLabel": "Summary type",
+        "shortOption": "Short (3-5 lines)",
+        "mediumOption": "Medium (1 paragraph)",
+        "longOption": "Long (several paragraphs)",
+        "bulletsOption": "Key points",
+        "summarizeButton": "✨ Summarize"
+    },
+    "es": {
+        "apiKeySetupTitle": "⚙️ Necesitas configurar tu API key de Google Gemini.",
+        "configureNowButton": "Configurar ahora",
+        "originalTextLabel": "Texto original",
+        "inputTextPlaceholder": "Pega aquí el texto que quieres resumir...",
+        "charactersLabel": "Caracteres:",
+        "summaryLabel": "Resumen",
+        "outputTextPlaceholder": "El resumen aparecerá aquí...",
+        "copyButton": "📋 Copiar",
+        "summaryTypeLabel": "Tipo de resumen",
+        "shortOption": "Corto (3-5 líneas)",
+        "mediumOption": "Medio (1 párrafo)",
+        "longOption": "Largo (varios párrafos)",
+        "bulletsOption": "Puntos clave",
+        "summarizeButton": "✨ Resumir"
+    }
+}

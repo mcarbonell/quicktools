@@ -1,80 +1,78 @@
 <div class="mb-3">
-    <label for="inputText" class="form-label">Texto a codificar/decodificar</label>
-    <textarea id="inputText" rows="3" class="form-control" placeholder="Escribe o pega el texto aquí..."></textarea>
+    <label for="inputText" class="form-label">{{t.inputHtmlTextLabel}}</label>
+    <textarea id="inputText" rows="3" class="form-control" placeholder="{{t.textPlaceholder}}"></textarea>
 </div>
 
 <div class="mb-3 d-flex gap-2 flex-wrap">
-    <button id="encodeBtn" class="btn btn-primary">Codificar HTML</button>
-    <button id="encodeAllBtn" class="btn btn-primary">Codificar todo</button>
-    <button id="decodeBtn" class="btn btn-primary">Decodificar HTML</button>
+    <button id="encodeBtn" class="btn btn-primary">{{t.encodeHtmlButton}}</button>
+    <button id="encodeAllBtn" class="btn btn-primary">{{t.encodeAllButton}}</button>
+    <button id="decodeBtn" class="btn btn-primary">{{t.decodeHtmlButton}}</button>
     <button id="copyBtn" class="btn btn-outline-secondary">{{t.copyButton}}</button>
 </div>
 
 <div class="mb-3">
-    <label for="outputText" class="form-label">Resultado</label>
-    <textarea id="outputText" rows="3" class="form-control" readonly
-        placeholder="Aquí aparecerá el texto codificado o decodificado..."></textarea>
+    <label for="outputText" class="form-label">{{t.resultLabel}}</label>
+    <textarea id="outputText" rows="3" class="form-control" readonly placeholder="{{t.resultPlaceholder}}"></textarea>
 </div>
 
 <div class="alert alert-info small">
-    <strong>Modos de codificación:</strong><br>
-    • <strong>Codificar HTML:</strong> Convierte solo los caracteres especiales necesarios (&lt; &gt; &amp;
-    &quot; &#39;)<br>
-    • <strong>Codificar todo:</strong> Convierte todos los caracteres no ASCII a entidades HTML<br>
-    • <strong>Decodificar HTML:</strong> Convierte todas las entidades HTML a sus caracteres correspondientes
+    <strong>{{t.encodingModesTitle}}</strong><br>
+    • <strong>{{t.encodeHtmlMode}}</strong><br>
+    • <strong>{{t.encodeAllMode}}</strong><br>
+    • <strong>{{t.decodeHtmlMode}}</strong>
 </div>
 
 <div class="mt-4">
-    <h5>Referencias comunes</h5>
+    <h5>{{t.commonReferencesTitle}}</h5>
     <div class="table-responsive">
         <table class="table table-sm">
             <thead>
                 <tr>
-                    <th>Carácter</th>
-                    <th>Entidad</th>
-                    <th>Descripción</th>
+                    <th>{{t.characterHeader}}</th>
+                    <th>{{t.entityHeader}}</th>
+                    <th>{{t.descriptionHeader}}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>&lt;</td>
-                    <td>&amp;lt;</td>
-                    <td>Menor que</td>
+                    <td>&lt;</td>
+                    <td>{{t.lessThanLabel}}</td>
                 </tr>
                 <tr>
                     <td>&gt;</td>
-                    <td>&amp;gt;</td>
-                    <td>Mayor que</td>
+                    <td>&gt;</td>
+                    <td>{{t.greaterThanLabel}}</td>
                 </tr>
                 <tr>
+                    <td>&</td>
                     <td>&amp;</td>
-                    <td>&amp;amp;</td>
-                    <td>Ampersand</td>
+                    <td>{{t.ampersandLabel}}</td>
                 </tr>
                 <tr>
+                    <td>"</td>
                     <td>&quot;</td>
-                    <td>&amp;quot;</td>
-                    <td>Comilla doble</td>
+                    <td>{{t.doubleQuoteLabel}}</td>
                 </tr>
                 <tr>
+                    <td>'</td>
                     <td>&#39;</td>
-                    <td>&amp;#39;</td>
-                    <td>Comilla simple</td>
+                    <td>{{t.singleQuoteLabel}}</td>
                 </tr>
                 <tr>
                     <td>©</td>
-                    <td>&amp;copy;</td>
-                    <td>Copyright</td>
+                    <td>&copy;</td>
+                    <td>{{t.copyrightLabel}}</td>
                 </tr>
                 <tr>
                     <td>®</td>
-                    <td>&amp;reg;</td>
-                    <td>Marca registrada</td>
+                    <td>&reg;</td>
+                    <td>{{t.registeredLabel}}</td>
                 </tr>
                 <tr>
                     <td>€</td>
-                    <td>&amp;euro;</td>
-                    <td>Euro</td>
+                    <td>&euro;</td>
+                    <td>{{t.euroLabel}}</td>
                 </tr>
             </tbody>
         </table>

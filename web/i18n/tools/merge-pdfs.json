@@ -15,7 +15,9 @@
     "outputLabel": "Output",
     "textLabel": "Text",
     "fileLabel": "File",
-    "mergeButton": "Merge PDFs"
+    "mergeButton": "Merge PDFs",
+    "selectPdfFilesLabel": "Select PDF files",
+    "dropMessage": "Drag your PDFs here or click to select"
   },
   "es": {
     "copyButton": "Copiar",
@@ -33,6 +35,8 @@
     "outputLabel": "Salida",
     "textLabel": "Texto",
     "fileLabel": "Archivo",
-    "mergeButton": "Unir PDFs"
+    "mergeButton": "Unir PDFs",
+    "selectPdfFilesLabel": "Selecciona los archivos PDF",
+    "dropMessage": "Arrastra tus PDFs aquí o haz clic para seleccionar"
   }
 }

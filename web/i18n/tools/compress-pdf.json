@@ -15,7 +15,11 @@
     "outputLabel": "Output",
     "textLabel": "Text",
     "fileLabel": "File",
-    "compressButton": "Compress"
+    "compressButton": "Compress",
+    "selectPdfFileLabel": "Select a PDF file",
+    "dropMessage": "Drag your PDF file here or click to select",
+    "imageQualityLabel": "Image quality (0.1 - 1.0)",
+    "compressPdfButton": "Compress PDF"
   },
   "es": {
     "copyButton": "Copiar",
@@ -33,6 +37,10 @@
     "outputLabel": "Salida",
     "textLabel": "Texto",
     "fileLabel": "Archivo",
-    "compressButton": "Comprimir"
+    "compressButton": "Comprimir",
+    "selectPdfFileLabel": "Selecciona un archivo PDF",
+    "dropMessage": "Arrastra tu archivo PDF aquí o haz clic para seleccionar",
+    "imageQualityLabel": "Calidad de imagen (0.1 - 1.0)",
+    "compressPdfButton": "Comprimir PDF"
   }
 }

@@ -1,16 +1,16 @@
 <div class="drop-zone mb-3" id="dropZone">
     <input type="file" id="pdfInput" accept="application/pdf" class="d-none">
     <div class="drop-message">
-        Arrastra un PDF aquí o haz clic para seleccionar
+        {{t.dropMessage}}
     </div>
 </div>
 <div class="mb-3">
-    <button id="extractBtn" class="btn btn-primary">Extraer texto</button>
+    <button id="extractBtn" class="btn btn-primary">{{t.extractButton}}</button>
 </div>
 <div class="position-relative">
-    <textarea id="pdfText" rows="16" class="form-control" placeholder="Aquí aparecerá el texto extraído..."></textarea>
+    <textarea id="pdfText" rows="16" class="form-control" placeholder="{{t.outputPlaceholder}}"></textarea>
     <button id="copyBtn" class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-2"
-        title="Copiar al portapapeles">
+        title="{{t.copyTooltip}}">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard"
             viewBox="0 0 16 16">
             <path

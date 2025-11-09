@@ -1,0 +1,32 @@
+{
+    "en": {
+        "apiKeySetupTitle": "⚙️ You need to configure your Google Gemini API key.",
+        "configureNowButton": "Configure now",
+        "uploadImageLabel": "Upload Image",
+        "imageFilePlaceholder": "Choose an image file",
+        "conversationLabel": "Conversation",
+        "imagePreviewAlt": "Preview",
+        "inputPlaceholder": "Describe the changes you want to make...",
+        "editButton": "✨ Edit",
+        "examplesTitle": "💡 Editing examples:",
+        "example1": "Change the background to a beach at sunset",
+        "example2": "Add a wizard hat",
+        "example3": "Convert to watercolor style",
+        "example4": "Adjust colors to warm tones"
+    },
+    "es": {
+        "apiKeySetupTitle": "⚙️ Necesitas configurar tu API key de Google Gemini.",
+        "configureNowButton": "Configurar ahora",
+        "uploadImageLabel": "Subir Imagen",
+        "imageFilePlaceholder": "Selecciona un archivo de imagen",
+        "conversationLabel": "Conversación",
+        "imagePreviewAlt": "Vista previa",
+        "inputPlaceholder": "Describe los cambios que quieres hacer...",
+        "editButton": "✨ Editar",
+        "examplesTitle": "💡 Ejemplos de edición:",
+        "example1": "Cambia el fondo a una playa al atardecer",
+        "example2": "Añade un sombrero de mago",
+        "example3": "Convierte en estilo acuarela",
+        "example4": "Ajusta los colores a tonos cálidos"
+    }
+}

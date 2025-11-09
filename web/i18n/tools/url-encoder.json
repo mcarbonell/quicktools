@@ -16,7 +16,18 @@
     "textLabel": "Text",
     "fileLabel": "File",
     "encodeButton": "Encode",
-    "decodeButton": "Decode"
+    "decodeButton": "Decode",
+    "inputUrlTextLabel": "Text to encode/decode",
+    "textPlaceholder": "For example: https://example.com/path?param=value with spaces",
+    "encodeUrlButton": "Encode URL",
+    "encodeComponentButton": "Encode component",
+    "decodeUrlButton": "Decode URL",
+    "decodeComponentButton": "Decode component",
+    "resultLabel": "Result",
+    "resultPlaceholder": "Encoded or decoded text will appear here...",
+    "differencesTitle": "Differences between URL and component encoding:",
+    "encodeUriDescription": "• encodeURI: Encodes a complete URL preserving special characters like",
+    "encodeUriComponentDescription": "• encodeURIComponent: Encodes a URL component (like a parameter), escaping more characters"
   },
   "es": {
     "copyButton": "Copiar",
@@ -35,6 +46,17 @@
     "textLabel": "Texto",
     "fileLabel": "Archivo",
     "encodeButton": "Codificar",
-    "decodeButton": "Decodificar"
+    "decodeButton": "Decodificar",
+    "inputUrlTextLabel": "Texto a codificar/decodificar",
+    "textPlaceholder": "Por ejemplo: https://ejemplo.com/ruta?param=valor con espacios",
+    "encodeUrlButton": "Codificar URL",
+    "encodeComponentButton": "Codificar componente",
+    "decodeUrlButton": "Decodificar URL",
+    "decodeComponentButton": "Decodificar componente",
+    "resultLabel": "Resultado",
+    "resultPlaceholder": "Aquí aparecerá el texto codificado o decodificado...",
+    "differencesTitle": "Diferencias entre codificar URL y componente:",
+    "encodeUriDescription": "• encodeURI: Codifica una URL completa preservando caracteres especiales como",
+    "encodeUriComponentDescription": "• encodeURIComponent: Codifica un componente de URL (como un parámetro), escapando más caracteres"
   }
 }

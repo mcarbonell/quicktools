@@ -15,7 +15,15 @@
     "outputLabel": "Output",
     "textLabel": "Text",
     "fileLabel": "File",
-    "convertButton": "Convert"
+    "convertButton": "Convert",
+    "inputTomlJsonLabel": "Input (TOML or JSON)",
+    "inputPlaceholder": "Paste your TOML or JSON here...",
+    "tomlToJsonButton": "TOML → JSON",
+    "jsonToTomlButton": "JSON → TOML",
+    "prettyJsonButton": "Prettify JSON",
+    "copyResultButton": "Copy result",
+    "resultLabel": "Result",
+    "resultPlaceholder": "Result will appear here..."
   },
   "es": {
     "copyButton": "Copiar",
@@ -33,6 +41,14 @@
     "outputLabel": "Salida",
     "textLabel": "Texto",
     "fileLabel": "Archivo",
-    "convertButton": "Convertir"
+    "convertButton": "Convertir",
+    "inputTomlJsonLabel": "Entrada (TOML o JSON)",
+    "inputPlaceholder": "Pega tu TOML o JSON aquí...",
+    "tomlToJsonButton": "TOML → JSON",
+    "jsonToTomlButton": "JSON → TOML",
+    "prettyJsonButton": "Prettify JSON",
+    "copyResultButton": "Copiar resultado",
+    "resultLabel": "Resultado",
+    "resultPlaceholder": "Aquí aparecerá el resultado..."
   }
 }

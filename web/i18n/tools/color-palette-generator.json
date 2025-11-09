@@ -15,7 +15,11 @@
     "outputLabel": "Output",
     "textLabel": "Text",
     "fileLabel": "File",
-    "generateButton": "Generate Palette"
+    "generateButton": "Generate Palette",
+    "selectImageLabel": "Select an image",
+    "dropMessage": "Drag your image here or click to select",
+    "colorCountLabel": "Number of colors in palette (2-10)",
+    "extractPaletteButton": "Extract Palette"
   },
   "es": {
     "copyButton": "Copiar",
@@ -33,6 +37,10 @@
     "outputLabel": "Salida",
     "textLabel": "Texto",
     "fileLabel": "Archivo",
-    "generateButton": "Generar Paleta"
+    "generateButton": "Generar Paleta",
+    "selectImageLabel": "Selecciona una imagen",
+    "dropMessage": "Arrastra tu imagen aquí o haz clic para seleccionar",
+    "colorCountLabel": "Número de colores en la paleta (2-10)",
+    "extractPaletteButton": "Extraer Paleta"
   }
 }

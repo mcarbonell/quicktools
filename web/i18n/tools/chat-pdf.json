@@ -1,0 +1,26 @@
+{
+    "en": {
+        "apiKeySetupTitle": "⚙️ You need to configure your Google Gemini API key.",
+        "configureNowButton": "Configure now",
+        "uploadPDFLabel": "Upload PDF",
+        "pdfFilePlaceholder": "Choose a PDF file",
+        "pdfProcessingInfo": "The PDF is processed locally, not uploaded to any server",
+        "pdfPreviewTitle": "Preview of content:",
+        "assistantName": "AI Assistant",
+        "assistantWelcomeMessage": "PDF loaded. What do you want to know about this document?",
+        "questionPlaceholder": "Ask about the PDF...",
+        "sendButton": "📤 Send"
+    },
+    "es": {
+        "apiKeySetupTitle": "⚙️ Necesitas configurar tu API key de Google Gemini.",
+        "configureNowButton": "Configurar ahora",
+        "uploadPDFLabel": "Subir PDF",
+        "pdfFilePlaceholder": "Selecciona un archivo PDF",
+        "pdfProcessingInfo": "El PDF se procesa localmente, no se sube a ningún servidor",
+        "pdfPreviewTitle": "Vista previa del contenido:",
+        "assistantName": "Asistente IA",
+        "assistantWelcomeMessage": "PDF cargado. ¿Qué quieres saber sobre este documento?",
+        "questionPlaceholder": "Pregunta sobre el PDF...",
+        "sendButton": "📤 Enviar"
+    }
+}

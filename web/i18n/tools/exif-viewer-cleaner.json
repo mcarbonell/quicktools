@@ -16,7 +16,13 @@
     "textLabel": "Text",
     "fileLabel": "File",
     "viewButton": "View EXIF",
-    "cleanButton": "Remove EXIF"
+    "cleanButton": "Remove EXIF",
+    "selectImageLabel": "Select an image",
+    "dropMessage": "Drag your image here or click to select",
+    "cleanExifButton": "Remove EXIF Metadata",
+    "exifMetadataTitle": "EXIF Metadata:",
+    "cleanedImageTitle": "Clean Image (no EXIF):",
+    "downloadCleanImageButton": "Download Clean Image"
   },
   "es": {
     "copyButton": "Copiar",
@@ -35,6 +41,12 @@
     "textLabel": "Texto",
     "fileLabel": "Archivo",
     "viewButton": "Ver EXIF",
-    "cleanButton": "Eliminar EXIF"
+    "cleanButton": "Eliminar EXIF",
+    "selectImageLabel": "Selecciona una imagen",
+    "dropMessage": "Arrastra tu imagen aquí o haz clic para seleccionar",
+    "cleanExifButton": "Eliminar Metadatos EXIF",
+    "exifMetadataTitle": "Metadatos EXIF:",
+    "cleanedImageTitle": "Imagen Limpia (sin EXIF):",
+    "downloadCleanImageButton": "Descargar Imagen Limpia"
   }
 }

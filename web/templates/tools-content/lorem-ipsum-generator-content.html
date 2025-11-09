@@ -1,23 +1,23 @@
 <div class="mb-3">
-    <label for="amount-input" class="form-label">Cantidad</label>
+    <label for="amount-input" class="form-label">{{t.countLabel}}</label>
     <input type="number" class="form-control" id="amount-input" value="5" min="1">
 </div>
 
 <div class="mb-3">
-    <label for="unit-select" class="form-label">Unidad</label>
+    <label for="unit-select" class="form-label">{{t.unitLabel}}</label>
     <select class="form-select" id="unit-select">
-        <option value="paragraphs">{{t.paragraphsLabel}}</option>
-        <option value="sentences">Oraciones</option>
-        <option value="words">Palabras</option>
+        <option value="paragraphs">{{t.paragraphsOption}}</option>
+        <option value="sentences">{{t.sentencesOption}}</option>
+        <option value="words">{{t.wordsOption}}</option>
     </select>
 </div>
 
-<button id="generate-btn" class="btn btn-primary">Generar Lorem Ipsum</button>
+<button id="generate-btn" class="btn btn-primary">{{t.generateLoremIpsumButton}}</button>
 
 <div class="position-relative mt-3">
     <textarea id="lorem-ipsum-output" rows="10" class="form-control" readonly></textarea>
     <button id="copy-btn" class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-2"
-        title="Copiar al portapapeles">
+        title="{{t.copyToClipboard}}">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard"
             viewBox="0 0 16 16">
             <path

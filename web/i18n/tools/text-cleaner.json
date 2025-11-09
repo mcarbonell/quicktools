@@ -17,7 +17,9 @@
     "fileLabel": "File",
     "cleanButton": "Clean",
     "wordCount": "Words",
-    "charCount": "Characters"
+    "charCount": "Characters",
+    "countWordsButton": "Count words",
+    "copyToClipboardTitle": "Copy to clipboard"
   },
   "es": {
     "copyButton": "Copiar",
@@ -37,6 +39,8 @@
     "fileLabel": "Archivo",
     "cleanButton": "Limpiar",
     "wordCount": "Palabras",
-    "charCount": "Caracteres"
+    "charCount": "Caracteres",
+    "countWordsButton": "Contar palabras",
+    "copyToClipboardTitle": "Copiar al portapapeles"
   }
 }
