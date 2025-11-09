@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-const projectRoot = 'C:\\Users\\mrcm_\\Local\\proj\\quicktools';
+const projectRoot = 'C:\\Users\\mrcm_\\Local\\proj\\quicktools\\web';
 const backupDir = path.join(projectRoot, 'tools_backup');
 const templatesDir = path.join(projectRoot, 'templates');
 const toolsContentDir = path.join(templatesDir, 'tools-content');
@@ -10,7 +10,7 @@ const toolsIndexPath = path.join(dataDir, 'tools-index.json');
 
 async function extractParts(tool, sourceHtmlPath) {
     const toolFileName = path.basename(tool.slug, '.html');
-    
+
     try {
         const htmlContent = await fs.readFile(sourceHtmlPath, 'utf8');
 
@@ -34,17 +34,17 @@ async function extractParts(tool, sourceHtmlPath) {
         }
 
         const bodyContent = htmlContent.substring(bodyStartIndex + bodyStartTag.length, bodyEndIndex);
-        
+
         const pEndTag = '</p>';
         const h1EndTag = '</h1>';
         const pEndIndex = bodyContent.lastIndexOf(pEndTag);
         const h1EndIndex = bodyContent.lastIndexOf(h1EndTag);
-        
+
         let headerEndIndex = -1;
         if (pEndIndex !== -1 && pEndIndex < 300) { // Heuristic: header p is near the top
-             headerEndIndex = pEndIndex + pEndTag.length;
+            headerEndIndex = pEndIndex + pEndTag.length;
         } else if (h1EndIndex !== -1 && h1EndIndex < 200) { // Heuristic: header h1 is near the top
-             headerEndIndex = h1EndIndex + h1EndTag.length;
+            headerEndIndex = h1EndIndex + h1EndTag.length;
         }
 
         if (headerEndIndex === -1) {

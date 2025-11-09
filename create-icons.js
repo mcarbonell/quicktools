@@ -21,7 +21,7 @@ async function createIcons() {
     }
 
     const sizes = [72, 96, 128, 144, 152, 192, 384, 512];
-    const iconDir = path.join(__dirname, 'icons');
+    const iconDir = path.join(__dirname, 'web\\icons');
 
     // Asegurar que el directorio existe
     await fs.mkdir(iconDir, { recursive: true });

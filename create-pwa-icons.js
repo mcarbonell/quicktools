@@ -83,7 +83,7 @@ const createSVGIcon = (size) => {
 };
 
 async function createPWAIcons() {
-    const iconDir = path.join(__dirname, 'icons');
+    const iconDir = path.join(__dirname, 'web\\icons');
 
     try {
         // Crear directorio de iconos

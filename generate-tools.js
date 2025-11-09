@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-const projectRoot = 'C:\\Users\\mrcm_\\Local\\proj\\quicktools';
+const projectRoot = 'C:\\Users\\mrcm_\\Local\\proj\\quicktools\\web';
 const templatesDir = path.join(projectRoot, 'templates');
 const toolsContentDir = path.join(templatesDir, 'tools-content');
 const dataDir = path.join(projectRoot, 'data');
@@ -11,9 +11,9 @@ const toolsIndexPath = path.join(dataDir, 'tools-index.json');
 
 async function generateIndex(toolsIndex) {
     console.log('Iniciando la generación del index.html...');
-    
+
     const indexTemplate = await fs.readFile(indexTemplatePath, 'utf8');
-    
+
     // Group tools by category
     const byCat = toolsIndex.reduce((acc, t) => {
         (acc[t.category] = acc[t.category] || []).push(t);
@@ -25,7 +25,7 @@ async function generateIndex(toolsIndex) {
         toolsGridHtml += `<section class="mb-4">\n`;
         toolsGridHtml += `  <h3 class="h5 mb-3">${cat}</h3>\n`;
         toolsGridHtml += `  <div class="row g-4">\n`;
-        
+
         items.forEach(item => {
             toolsGridHtml += `
     <div class="col-md-6 col-lg-4">

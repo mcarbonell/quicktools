@@ -61,55 +61,129 @@ QuickTools es una suite de 28 utilidades web que funcionan completamente del lad
 
 ## 🚀 Empezar Localmente
 
-### Opción 1: Abrir directamente (recomendado para prueba rápida)
+### 🌐 Acceder a la Web (Para usuarios finales)
 ```bash
 # Clona el repositorio
 git clone https://github.com/tu-usuario/quicktools.git
 cd quicktools
 
-# Abre index.html en tu navegador
-# Doble clic en index.html o:
-start index.html  # Windows
-open index.html   # macOS
+# Abre la web en tu navegador
+start web/index.html  # Windows
+open web/index.html   # macOS
 ```
 
-### Opción 2: Servidor local (recomendado para desarrollo)
+### 🖥️ Servidor local (recomendado para desarrollo)
 ```bash
-# Con Python (preinstalado en la mayoría de sistemas)
+# Con Node.js (en la raíz del proyecto)
+npx http-server web -p 8000
+
+# Con Python (desde la carpeta web)
+cd web
 python -m http.server 8000
-
-# O con Node.js (requiere npm)
-npx http-server -p 8000
-
-# O con PowerShell (Windows)
-npx http-server -p 8000
 ```
 
 Luego visita **http://localhost:8000** en tu navegador.
 
+### 📁 Servidor con estructura completa (recomendado para testing)
+```bash
+# Desde la raíz del proyecto (permite acceso a tests, extensión, etc.)
+npx http-server -p 8000
+
+# La web estará en http://localhost:8000/web/
+# Los tests en http://localhost:8000/tests/
+```
+
 ## 🏗️ Arquitectura del Proyecto
 
 ```
-quicktools/
-├── index.html                 # Página principal con catálogo
-├── tools/                     # Páginas individuales de herramientas
-│   ├── image/                 # Herramientas de imagen
-│   ├── files/                 # Herramientas de archivos
-│   ├── data/                  # Herramientas de datos
-│   ├── text/                  # Herramientas de texto
-│   └── utils/                 # Utilidades varias
-├── js/
-│   ├── main.js               # Funcionalidad común
-│   └── tools/                # JavaScript específico por herramienta
-├── css/
-│   └── style.css             # Estilos personalizados
-├── data/
-│   └── tools-index.json      # Catálogo de herramientas
-├── templates/                # Sistema de generación de páginas
-└── ads/                      # Configuración de anuncios
+quicktools/                          # 📁 Raíz del proyecto
+├── web/                            # 🌐 Aplicación web (se despliega en producción)
+│   ├── index.html                  # Página principal con catálogo
+│   ├── manifest.json               # PWA Manifest
+│   ├── privacy.html                # Política de privacidad
+│   ├── sitemap.xml                 # Sitemap para SEO
+│   ├── tools/                      # Páginas individuales de herramientas
+│   │   ├── image/                  # 🖼️ Herramientas de imagen (7)
+│   │   ├── files/                  # 📁 Herramientas de archivos (6)
+│   │   ├── data/                   # 📊 Herramientas de datos (5)
+│   │   ├── text/                   # 📝 Herramientas de texto (6)
+│   │   └── utils/                  # 🔧 Utilidades varias (4)
+│   ├── js/                         # JavaScript
+│   │   ├── main.js                 # Funcionalidad común
+│   │   ├── service-worker.js       # Service Worker PWA
+│   │   ├── tools/                  # JS específico por herramienta
+│   │   ├── lib/                    # Librerías auxiliares
+│   │   └── vendor/                 # Dependencias externas
+│   ├── css/                        # Estilos
+│   │   ├── style.css               # Estilos personalizados
+│   │   └── *.css                   # Otros estilos
+│   ├── data/                       # Datos
+│   │   └── tools-index.json        # Catálogo de herramientas
+│   ├── icons/                      # Iconos PWA
+│   ├── templates/                  # Templates HTML
+│   ├── ads/                        # Configuración de anuncios
+│   └── generate-tools.js           # Script de generación (build)
+├── extension/                      # 🧩 Extensión de navegador
+│   ├── manifest.json               # Extension Manifest V3
+│   ├── background/                 # Service Worker de extensión
+│   ├── content/                    # Content Scripts
+│   ├── popup/                      # Ventana emergente
+│   ├── options/                    # Página de opciones
+│   ├── newtab/                     # Nueva pestaña personalizada
+│   └── icons/                      # Iconos de extensión
+├── tests/                          # 🧪 Tests y validación
+│   ├── *.test.js                   # Tests Node.js
+│   ├── run-all-tests.js            # Runner de tests
+│   ├── pwa-validation.js           # Validación PWA
+│   └── web-tests.html              # Tests en navegador
+├── local_docs/                     # 📚 Documentación interna
+│   ├── PROYECTO_QUICKTOOLS.md      # Documentación del proyecto
+│   ├── ROADMAP_QUICKTOOLS.md       # Roadmap
+│   ├── ANALISIS_TECNICO.md         # Análisis técnico
+│   └── *.md                        # Otros documentos
+├── tools_backup/                   # 💾 Backup de herramientas
+├── web_design/                     # 🎨 Mockups y diseños
+├── scripts/                        # 🛠️ Scripts de desarrollo
+│   ├── create-icons.js             # Generación de iconos
+│   ├── create-pwa-icons.js         # Iconos PWA
+│   ├── extract-content.js          # Extracción de contenido
+│   └── generate-tools.js           # Generación automática
+├── package.json                    # Configuración Node.js
+├── index.html                      # Redirect a web/
+└── sw.js                          # Service Worker PWA (raíz)
 ```
 
-## 🛠️ Tecnologías Utilizadas
+### 📦 Estructura de Despliegue
+
+**Para producción:** Solo se despliega la carpeta `web/` que contiene la aplicación web completa.
+
+**Para desarrollo local:** Se puede acceder a todo el proyecto desde la raíz, permitiendo testing, desarrollo de la extensión y acceso a documentación.
+
+## 🧩 Extensión de Navegador
+
+QuickTools también incluye una **extensión de navegador** con 30+ herramientas para productividad:
+
+### � Funcionalidades
+- **Popup rápido** con herramientas más usadas
+- **Nueva pestaña personalizada** con acceso completo
+- **Context Menus** para texto seleccionado
+- **Background processing** con Service Workers
+- **Sincronización** con la versión web
+
+### 📦 Instalación
+```bash
+# Desarrollo: Carga manual desde carpeta extension/
+# Producción: Subir a Chrome Web Store / Firefox Add-ons
+```
+
+### 🎯 Características Técnicas
+- **Manifest V3** compatible
+- **Offline ready** con caching inteligente
+- **Cross-origin requests** permitidos
+- **Keyboard shortcuts** configurables
+- **Local storage** para preferencias
+
+## �🛠️ Tecnologías Utilizadas
 
 | Componente | Tecnología | Versión |
 |------------|------------|---------|
@@ -119,6 +193,8 @@ quicktools/
 | **Data Formats** | js-yaml, fast-xml-parser, @iarna/toml | - |
 | **Image Processing** | Canvas API | - |
 | **Build System** | Node.js scripts | - |
+| **Extension** | Chrome Extension API | Manifest V3 |
+| **PWA** | Service Workers, Web App Manifest | - |
 
 ## 📱 Compatibilidad
 
@@ -130,30 +206,59 @@ quicktools/
 
 ## 🌐 Despliegue
 
-### GitHub Pages (recomendado)
+### GitHub Pages (recomendado para web/)
 ```bash
 # Activa GitHub Pages en la configuración del repositorio
 # Source: Deploy from a branch
 # Branch: main
+# Folder: /web (como root del sitio)
 ```
 
-### Netlify/Vercel
+### Netlify/Vercel (recomendado para web/)
 ```bash
 # Conecta tu repositorio
 # Build command: (vacío para sitio estático)
-# Publish directory: ./
+# Publish directory: web
+```
+
+### Extensión de Navegador (Chrome/Firefox)
+```bash
+# Despliegue manual desde extension/
+# Chrome: Ve a chrome://extensions/ y carga el directorio extension/
+# Firefox: Ve a about:debugging y carga el directorio extension/
+```
+
+### Despliegue Completo (raíz + web/)
+```bash
+# Para testing completo, despliega toda la estructura
+# Publish directory: . (raíz completa)
 ```
 
 ## 🧪 Testing
 
 ```bash
-# Ejecutar tests de validación
+# Desde la raíz del proyecto
+cd quicktools
 npm test
 
-# Tests incluidos:
-# - Validación de conversiones de formato
-# - Edge cases en formateo
-# - Manejo de archivos corruptos
+# O directamente
+node tests/run-all-tests.js
+```
+
+### 📊 Tests Incluidos
+- ✅ **Validación de conversiones** de formato (CSV, JSON, YAML, XML, TOML)
+- ✅ **Edge cases** en formateo y parsing
+- ✅ **Manejo de archivos corruptos** y malformados
+- ✅ **Tests PWA** (Service Worker, manifest, caching)
+- ✅ **Validación de estructura** de archivos
+- ✅ **Tests de la extensión** de navegador
+- ✅ **Tests interactivos** en navegador
+
+### 🌐 Tests en Navegador
+```bash
+# Abre la interfaz de tests
+start tests/web-tests.html    # Windows
+open tests/web-tests.html     # macOS
 ```
 
 ## 📈 Roadmap
