@@ -6,7 +6,7 @@
 class CookieConsent {
     constructor() {
         this.consentKey = 'cookies_accepted';
-        this.gaId = 'G-XXXXXXXXXX'; // TODO: Reemplazar con Measurement ID real
+        this.gaId = 'G-9XTNQMQKE2';
         this.init();
     }
 
