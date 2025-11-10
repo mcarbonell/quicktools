@@ -1,26 +1,7 @@
 {
-  "version": 2,
-  "name": "fasttools",
   "buildCommand": "npm run build",
   "outputDirectory": "web",
   "installCommand": "npm install",
-  "framework": null,
-  "public": true,
-  "regions": ["iad1"],
-  "routes": [
-    {
-      "src": "/sitemap.xml",
-      "dest": "/sitemap.xml"
-    },
-    {
-      "src": "/robots.txt",
-      "dest": "/robots.txt"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/sw.js",
