@@ -1,7 +1,7 @@
-# 🎯 Plan de Pulido Pre-Lanzamiento - QuickTools
+# 🎯 Plan de Pulido Pre-Lanzamiento - FastTools
 
 **Fecha:** Enero 2025  
-**Objetivo:** Preparar QuickTools para lanzamiento público internacional  
+**Objetivo:** Preparar FastTools para lanzamiento público internacional  
 **Timeline:** 2.5 semanas (13 días laborables)  
 **Estado:** 📋 Listo para ejecutar
 
@@ -24,7 +24,8 @@
 - 🔄 Documentación técnica
 
 ### ⏳ Pendiente
-- ⏳ Dominio + hosting profesional
+- ✅ Dominio fasttools.tools (REGISTRADO)
+- ⏳ Hosting profesional (Vercel)
 - ⏳ Diseño UI/UX moderno
 - ⏳ Contenido SEO optimizado
 - ⏳ Testing exhaustivo cross-browser
@@ -69,7 +70,7 @@ Antes del lanzamiento público, QuickTools necesita:
    - No justificado para MVP
 ```
 
-**Decisión:** `quicktools.dev` (mejor relación calidad-precio)
+**Decisión:** ✅ `fasttools.tools` (€10.95/año con descuento - REGISTRADO)
 
 #### Hosting Recomendado
 ```
@@ -99,14 +100,14 @@ Antes del lanzamiento público, QuickTools necesita:
 #### Checklist Infraestructura
 ```
 Día 1:
-□ Comprar dominio quicktools.dev
+✅ Comprar dominio fasttools.tools (COMPLETADO)
 □ Crear cuenta Vercel
 □ Conectar repositorio GitHub
 □ Configurar build settings
 □ Deploy inicial
 
 Día 2:
-□ Configurar DNS en dominio
+□ Configurar DNS en fasttools.tools
 □ Verificar SSL (automático)
 □ Setup custom domain en Vercel
 □ Configurar redirects (www → apex)
@@ -696,7 +697,7 @@ npm run build
 <meta property="og:title" content="[Tool Name] - QuickTools">
 <meta property="og:description" content="[Description]">
 <meta property="og:image" content="/og-images/[tool].png">
-<meta property="og:url" content="https://quicktools.dev/tools/[category]/[tool].html">
+<meta property="og:url" content="https://fasttools.tools/tools/[category]/[tool].html">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
@@ -1078,7 +1079,7 @@ Design:
 ### Esta Semana
 ```
 1. ✅ Completar Quick Wins
-2. 🛒 Comprar dominio quicktools.dev
+2. ✅ Comprar dominio fasttools.tools (COMPLETADO)
 3. ⚙️ Setup Vercel + Deploy
 4. 🎨 Empezar Fase 2 (Diseño)
 ```

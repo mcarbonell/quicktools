@@ -1,6 +1,6 @@
 /**
- * Simple i18n system for QuickTools
- * Usage: i18n.t('common.title') → "QuickTools"
+ * Simple i18n system for FastTools
+ * Usage: i18n.t('common.title') → "FastTools"
  */
 class I18n {
   constructor() {

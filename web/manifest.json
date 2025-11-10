@@ -1,6 +1,6 @@
 {
-    "name": "QuickTools - Herramientas Online",
-    "short_name": "QuickTools",
+    "name": "FastTools - Herramientas Online",
+    "short_name": "FastTools",
     "description": "Herramientas online rápidas, seguras y sin registro. Todo se procesa en tu navegador.",
     "start_url": "/index.html",
     "display": "standalone",
@@ -109,14 +109,14 @@
             "sizes": "1280x720",
             "type": "image/png",
             "platform": "wide",
-            "label": "Vista principal de QuickTools en escritorio"
+            "label": "Vista principal de FastTools en escritorio"
         },
         {
             "src": "screenshots/mobile-1.png",
             "sizes": "390x844",
             "type": "image/png",
             "platform": "narrow",
-            "label": "QuickTools en móvil"
+            "label": "FastTools en móvil"
         }
     ],
     "related_applications": [],

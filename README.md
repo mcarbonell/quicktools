@@ -1,4 +1,4 @@
-# QuickTools — Herramientas Online 100% en el Navegador
+# FastTools — Herramientas Online 100% en el Navegador
 
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Glossary/HTML5)
@@ -7,7 +7,7 @@
 
 > **Herramientas online rápidas, seguras y sin registro. Todo se procesa en tu navegador.**
 
-QuickTools es una suite de 28 utilidades web que funcionan completamente del lado del cliente, sin necesidad de subir archivos a servidores. Privacidad total, acceso instantáneo y compatible con dispositivos móviles.
+FastTools es una suite de 28 utilidades web que funcionan completamente del lado del cliente, sin necesidad de subir archivos a servidores. Privacidad total, acceso instantáneo y compatible con dispositivos móviles.
 
 ## ✨ Características Principales
 
@@ -64,8 +64,8 @@ QuickTools es una suite de 28 utilidades web que funcionan completamente del lad
 ### 🌐 Acceder a la Web (Para usuarios finales)
 ```bash
 # Clona el repositorio
-git clone https://github.com/tu-usuario/quicktools.git
-cd quicktools
+git clone https://github.com/tu-usuario/fasttools.git
+cd fasttools
 
 # Abre la web en tu navegador
 start web/index.html  # Windows
@@ -96,7 +96,7 @@ npx http-server -p 8000
 ## 🏗️ Arquitectura del Proyecto
 
 ```
-quicktools/                          # 📁 Raíz del proyecto
+fasttools/                          # 📁 Raíz del proyecto
 ├── web/                            # 🌐 Aplicación web (se despliega en producción)
 │   ├── index.html                  # Página principal con catálogo
 │   ├── manifest.json               # PWA Manifest
@@ -161,7 +161,7 @@ quicktools/                          # 📁 Raíz del proyecto
 
 ## 🧩 Extensión de Navegador
 
-QuickTools también incluye una **extensión de navegador** con 30+ herramientas para productividad:
+FastTools también incluye una **extensión de navegador** con 30+ herramientas para productividad:
 
 ### � Funcionalidades
 - **Popup rápido** con herramientas más usadas
@@ -238,7 +238,7 @@ QuickTools también incluye una **extensión de navegador** con 30+ herramientas
 
 ```bash
 # Desde la raíz del proyecto
-cd quicktools
+cd fasttools
 npm test
 
 # O directamente
@@ -284,7 +284,7 @@ Las contribuciones son bienvenidas. Por favor:
 
 ## 🧪 Testing y Validación
 
-QuickTools incluye una **suite completa de testing y validación PWA** para garantizar la calidad y funcionalidad:
+FastTools incluye una **suite completa de testing y validación PWA** para garantizar la calidad y funcionalidad:
 
 ### 📊 Estado de Testing
 - ✅ **27/27 tests pasando (100%)**
@@ -331,10 +331,10 @@ Este proyecto está bajo la licencia ISC - ver el archivo [LICENSE](LICENSE) par
 
 ## 🔗 Enlaces
 
-- **Demo**: https://quicktools.dev
+- **Demo**: https://fasttools.tools
 - **Documentación**: [docs/PROYECTO_QUICKTOOLS.md](docs/PROYECTO_QUICKTOOLS.md)
-- **Issues**: https://github.com/tu-usuario/quicktools/issues
-- **Discussions**: https://github.com/tu-usuario/quicktools/discussions
+- **Issues**: https://github.com/tu-usuario/fasttools/issues
+- **Discussions**: https://github.com/tu-usuario/fasttools/discussions
 
 ---
 

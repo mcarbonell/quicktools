@@ -109,8 +109,8 @@ async function generateIndex(toolsIndex, lang) {
     
     // Replace meta tags and content with translations
     const pageTitle = lang === 'en' 
-        ? 'QuickTools — Fast & Secure Online Tools'
-        : 'QuickTools — Herramientas Online Rápidas y Seguras';
+        ? 'FastTools — Fast & Secure Online Tools'
+        : 'FastTools — Herramientas Online Rápidas y Seguras';
     const pageDesc = translations.hero?.subtitle || 'Fast, secure online tools. Everything processed in your browser.';
     
     finalIndexHtml = finalIndexHtml.replace(
@@ -125,7 +125,7 @@ async function generateIndex(toolsIndex, lang) {
     // Replace hero content
     finalIndexHtml = finalIndexHtml.replace(
         /<h1 class="display-6" id="heroTitle">.*?<\/h1>/,
-        `<h1 class="display-6" id="heroTitle">${translations.common?.title || 'QuickTools'}</h1>`
+        `<h1 class="display-6" id="heroTitle">${translations.common?.title || 'FastTools'}</h1>`
     );
     finalIndexHtml = finalIndexHtml.replace(
         /<p class="lead" id="heroSubtitle">.*?<\/p>/,
@@ -316,7 +316,7 @@ async function generateSitemap(toolsIndex) {
 // Main execution
 async function main() {
     try {
-        console.log('=== QuickTools Site Generator ===\n');
+        console.log('=== FastTools Site Generator ===\n');
         console.log(`Dominio: ${siteConfig.domain}`);
         console.log(`Idiomas: ${siteConfig.languages.join(', ')}`);
         console.log(`Idioma por defecto: ${siteConfig.defaultLanguage}\n`);

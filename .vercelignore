@@ -1,0 +1,27 @@
+# Vercel ignore file
+# Archivos y carpetas que NO se deben subir a Vercel
+
+# Development
+node_modules/
+.git/
+.vscode/
+
+# Documentation
+local_docs/
+web_design/
+tools_backup/
+
+# Tests
+tests/
+
+# Scripts
+scripts/
+
+# Extension (no necesaria en web)
+extension/
+
+# Otros
+*.log
+.DS_Store
+.env
+.env.local
