@@ -1,8 +1,8 @@
-// sw.js - Service Worker para QuickTools
+// sw.js - Service Worker para FastTools
 // Cache name con version para invalidar cache cuando actualicemos
-const CACHE_NAME = 'quicktools-v1.0.0';
-const STATIC_CACHE = 'quicktools-static-v1.0.0';
-const DYNAMIC_CACHE = 'quicktools-dynamic-v1.0.0';
+const CACHE_NAME = 'fasttools-v2.0.0';
+const STATIC_CACHE = 'fasttools-static-v2.0.0';
+const DYNAMIC_CACHE = 'fasttools-dynamic-v2.0.0';
 
 // Recursos críticos que deben estar siempre en cache
 const STATIC_ASSETS = [
@@ -36,7 +36,7 @@ const MAX_CACHE_SIZE = 50; // Máximo número de items en cache dinámico
  * Se ejecuta cuando el SW se instala por primera vez
  */
 self.addEventListener('install', (event) => {
-    console.log('[SW] Installing Service Worker v1.0.0');
+    console.log('[SW] Installing Service Worker v2.0.0');
 
     event.waitUntil(
         (async () => {
@@ -63,7 +63,7 @@ self.addEventListener('install', (event) => {
  * Se ejecuta cuando el SW toma control de la página
  */
 self.addEventListener('activate', (event) => {
-    console.log('[SW] Activating Service Worker v1.0.0');
+    console.log('[SW] Activating Service Worker v2.0.0');
 
     event.waitUntil(
         (async () => {
@@ -76,7 +76,7 @@ self.addEventListener('activate', (event) => {
                     .filter(cacheName =>
                         cacheName !== STATIC_CACHE &&
                         cacheName !== DYNAMIC_CACHE &&
-                        cacheName.startsWith('quicktools-')
+                        (cacheName.startsWith('quicktools-') || cacheName.startsWith('fasttools-'))
                     )
                     .map(cacheName => {
                         console.log('[SW] Deleting old cache:', cacheName);
@@ -307,7 +307,7 @@ async function getOfflinePage() {
         <body>
             <div class="offline-container">
                 <h1>🌐 Modo Offline</h1>
-                <p>Parece que no tienes conexión a internet. Pero no te preocupes, QuickTools puede seguir funcionando con muchas de sus herramientas.</p>
+                <p>Parece que no tienes conexión a internet. Pero no te preocupes, FastTools puede seguir funcionando con muchas de sus herramientas.</p>
                 <p>Las herramientas de procesamiento local funcionan sin conexión. ¡Inténtalo de nuevo cuando tengas internet!</p>
                 <button class="retry-btn" onclick="window.location.reload()">
                     🔄 Intentar de nuevo
