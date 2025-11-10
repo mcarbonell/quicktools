@@ -437,10 +437,18 @@
         </div>
     </main>
 
-    <footer class="bg-light py-4 mt-auto border-top">
-        <div class="container text-center small">
-            © FastTools — <span id="footerTagline">Herramientas en tu navegador</span>. <a href="privacy.html" id="footerPrivacy">Política de Privacidad</a> • <a
-                href="#" id="footerContact">Contact</a>
+    <footer>
+        <div class="container text-center">
+            <div style="margin-bottom: 1rem;">
+                <strong style="font-size: 1.25rem; color: var(--primary);">FastTools</strong>
+            </div>
+            <div class="small" style="color: var(--text-secondary);">
+                © 2025 FastTools — <span id="footerTagline">Herramientas en tu navegador</span>
+            </div>
+            <div class="small" style="margin-top: 0.5rem;">
+                <a href="privacy.html" id="footerPrivacy">Política de Privacidad</a> • 
+                <a href="mailto:contact@fasttools.tools" id="footerContact">Contacto</a>
+            </div>
         </div>
     </footer>
 
@@ -449,6 +457,18 @@
     <script src="js/main.js"></script>
     <script src="/js/cookie-consent.js"></script>
     <script src="/js/analytics.js"></script>
+    
+    <!-- Navbar scroll effect -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 
     <!-- Service Worker Registration -->
     <script>

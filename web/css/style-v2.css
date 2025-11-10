@@ -198,12 +198,51 @@ a:hover {
   border: 1px solid var(--border-light);
   padding: var(--spacing-lg);
   transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 0;
+  background: linear-gradient(180deg, var(--primary), var(--primary-light));
+  transition: height var(--transition-base);
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-xl);
   border-color: var(--primary-light);
+}
+
+.card:hover::before {
+  height: 100%;
+}
+
+.card-body {
+  position: relative;
+  z-index: 1;
+}
+
+.card-title {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.card-text {
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
 }
 
 /* Tool Cards */
@@ -510,28 +549,135 @@ a:hover {
 }
 
 /* ====================
+   NAVIGATION
+   ==================== */
+
+.navbar {
+  background: var(--primary) !important;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}
+
+.navbar.scrolled {
+  background: rgba(19, 164, 236, 0.95) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.navbar-brand {
+  font-weight: var(--font-bold);
+  font-size: var(--text-xl);
+  letter-spacing: -0.02em;
+}
+
+.nav-link {
+  font-weight: var(--font-medium);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: all var(--transition-fast);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
+/* ====================
+   FOOTER
+   ==================== */
+
+footer {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-top: 1px solid var(--border-light);
+  padding: 3rem 0 2rem;
+  margin-top: 4rem;
+}
+
+footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+footer a {
+  color: var(--text-secondary);
+  font-weight: var(--font-medium);
+  transition: color var(--transition-fast);
+}
+
+footer a:hover {
+  color: var(--primary);
+}
+
+/* ====================
+   SECTIONS
+   ==================== */
+
+section h3 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+section h3::before {
+  content: '';
+  width: 4px;
+  height: 28px;
+  background: linear-gradient(180deg, var(--primary), var(--primary-light));
+  border-radius: var(--radius-sm);
+}
+
+/* ====================
    RESPONSIVE
    ==================== */
 
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: var(--text-4xl);
+  .hero h1 {
+    font-size: 2.5rem;
   }
   
-  .hero-subtitle {
-    font-size: var(--text-2xl);
+  .hero p.lead {
+    font-size: 1.1rem;
   }
   
-  .hero-description {
-    font-size: var(--text-lg);
+  .hero .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero .btn-hero {
+    width: 100%;
+    justify-content: center;
   }
   
   .tool-grid {
     grid-template-columns: 1fr;
   }
   
-  .feature-grid {
+  .features-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .navbar-brand {
+    font-size: var(--text-lg);
   }
 }
 
