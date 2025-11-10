@@ -278,104 +278,166 @@ a:hover {
    ==================== */
 
 .hero {
-  padding: var(--spacing-4xl) 0;
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 50%, #0369a1 100%);
+  color: white;
+  padding: 5rem 0 6rem;
   text-align: center;
-  background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-.hero-title {
-  font-size: var(--text-5xl);
-  font-weight: var(--font-black);
-  color: var(--text-primary);
-  margin-bottom: var(--spacing-md);
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  margin-bottom: 1.5rem;
   line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.hero-subtitle {
-  display: block;
-  font-size: var(--text-3xl);
-  color: var(--primary);
-  margin-top: var(--spacing-sm);
-}
-
-.hero-description {
-  font-size: var(--text-xl);
-  color: var(--text-secondary);
+.hero p.lead {
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  opacity: 0.95;
   max-width: 700px;
-  margin: 0 auto var(--spacing-xl);
+  margin: 0 auto 2rem;
+  line-height: 1.6;
 }
 
-.hero-badges {
+.hero .cta-buttons {
   display: flex;
-  gap: var(--spacing-md);
+  gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: var(--spacing-xl);
+  margin-top: 2rem;
 }
 
-.badge {
+.hero .btn-hero {
+  padding: 0.875rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  background-color: var(--bg-white);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-full);
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  color: var(--text-primary);
-  box-shadow: var(--shadow-sm);
+  gap: 0.5rem;
+}
+
+.hero .btn-hero-primary {
+  background: white;
+  color: var(--primary);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+.hero .btn-hero-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  color: var(--primary-dark);
+}
+
+.hero .btn-hero-secondary {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: 2px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+}
+
+.hero .btn-hero-secondary:hover {
+  background: rgba(255,255,255,0.25);
+  border-color: rgba(255,255,255,0.5);
+  transform: translateY(-2px);
+}
+
+.hero .alert {
+  max-width: 700px;
+  margin: 2rem auto 0;
+  background: rgba(255,255,255,0.95);
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 /* ====================
    FEATURE CARDS
    ==================== */
 
-.features {
-  padding: var(--spacing-3xl) 0;
+.features-section {
+  padding: 4rem 0;
+  background: var(--bg-light);
 }
 
-.feature-grid {
+.features-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  color: var(--text-primary);
+}
+
+.features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-xl);
-  margin-top: var(--spacing-2xl);
+  gap: 2rem;
 }
 
 .feature-card {
-  background-color: var(--bg-white);
+  background: white;
   border-radius: var(--radius-xl);
-  border: 1px solid var(--border-light);
-  padding: var(--spacing-xl);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition-base);
+  border: 1px solid var(--border-light);
+  text-align: center;
 }
 
 .feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-8px);
+  border-color: var(--primary-light);
 }
 
-.feature-icon {
+.feature-card .icon {
   width: 64px;
   height: 64px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(19, 164, 236, 0.1);
-  border-radius: var(--radius-lg);
-  font-size: var(--text-4xl);
-  margin-bottom: var(--spacing-md);
+  color: white;
+  font-size: 2rem;
+}
+
+.feature-card .material-symbols-outlined {
+  font-size: 2rem;
 }
 
 .feature-card h3 {
-  font-size: var(--text-xl);
-  font-weight: var(--font-semibold);
-  margin-bottom: var(--spacing-sm);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
 }
 
 .feature-card p {
-  font-size: var(--text-base);
   color: var(--text-secondary);
+  line-height: 1.7;
   margin: 0;
 }
 
