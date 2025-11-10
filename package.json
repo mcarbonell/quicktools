@@ -6,7 +6,8 @@
   "scripts": {
     "build": "node generate-site.js",
     "build:old": "node generate-tools.js",
-    "test": "node tests/run-all-tests.js",
+    "test": "node tests/automated-qa.js",
+    "test:old": "node tests/run-all-tests.js",
     "serve": "npx http-server web -p 8000"
   },
   "keywords": [
@@ -16,7 +17,7 @@
     "privacy",
     "converter"
   ],
-  "author": "QuickTools Team",
+  "author": "FastTools Team",
   "license": "ISC",
   "devDependencies": {
     "http-server": "^14.1.1"
