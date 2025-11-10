@@ -34,6 +34,16 @@
 - ✅ Section headers con barra lateral
 - ✅ Responsive mobile optimizado
 
+### Tool Pages (Día 6)
+- ✅ Layout moderno con tool-header
+- ✅ Botón back con icono Material
+- ✅ Drop zones mejoradas con hover
+- ✅ Form controls modernos con focus states
+- ✅ Toast notification system (toast.js)
+- ✅ Progress indicators con shimmer
+- ✅ Spinner animations
+- ✅ Template base.html actualizado
+
 ---
 
 ## 🔜 Ahora Mismo (Desplegando)
@@ -50,15 +60,7 @@
 
 ### 1. Continuar Diseño (Día 4-7)
 
-**Día 6: Tool Pages** ⭅️ SIGUIENTE
-```
-□ Layout herramientas individual
-□ Botones y controles modernos
-□ Toast notifications
-□ Progress indicators
-```
-
-**Día 7: Refinamiento**
+**Día 7: Refinamiento** ⬅️ SIGUIENTE
 ```
 □ Animaciones finales
 □ Dark mode toggle (opcional)
