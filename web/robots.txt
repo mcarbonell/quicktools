@@ -1,9 +1,15 @@
-# robots.txt for FastTools
+# FastTools - Robots.txt
 User-agent: *
 Allow: /
 
 # Sitemaps
 Sitemap: https://fasttools.tools/sitemap.xml
 
-# Disallow admin/private areas (if any in future)
-# Disallow: /admin/
+# Disallow admin/config files
+Disallow: /config/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Allow all tools
+Allow: /tools/
+Allow: /es/tools/
