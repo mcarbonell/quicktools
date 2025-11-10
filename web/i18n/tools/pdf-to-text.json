@@ -18,7 +18,13 @@
     "extractButton": "Extract Text",
     "dropMessage": "Drag a PDF here or click to select",
     "outputPlaceholder": "Extracted text will appear here...",
-    "copyTooltip": "Copy to clipboard"
+    "copyTooltip": "Copy to clipboard",
+    "pdfLoaded": "PDF loaded: {filename}",
+    "selectValidPdf": "Please select a valid PDF file.",
+    "selectPdfFirst": "Select a PDF file first.",
+    "extractingText": "Extracting text...",
+    "pdfExtractError": "Error extracting PDF",
+    "copyError": "Error copying"
   },
   "es": {
     "copyButton": "Copiar",
@@ -39,6 +45,12 @@
     "extractButton": "Extraer Texto",
     "dropMessage": "Arrastra un PDF aquí o haz clic para seleccionar",
     "outputPlaceholder": "Aquí aparecerá el texto extraído...",
-    "copyTooltip": "Copiar al portapapeles"
+    "copyTooltip": "Copiar al portapapeles",
+    "pdfLoaded": "PDF cargado: {filename}",
+    "selectValidPdf": "Por favor, selecciona un archivo PDF válido.",
+    "selectPdfFirst": "Selecciona un archivo PDF primero.",
+    "extractingText": "Extrayendo texto...",
+    "pdfExtractError": "Error extrayendo PDF",
+    "copyError": "Error al copiar"
   }
 }

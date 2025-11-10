@@ -16,7 +16,7 @@ function handleFile(file) {
     if (!file) return;
     pdfInput.files = new DataTransfer().files;
     pdfInput.files = file ? new DataTransfer().files = [file] : new DataTransfer().files;
-    dropZone.querySelector('.drop-message').textContent = `Archivo cargado: ${file.name}`;
+    const fileMsg = (t.fileLoaded || 'Archivo cargado: {filename}').replace('{filename}', file.name); dropZone.querySelector('.drop-message').textContent = fileMsg;
 }
 
 // Eventos de drag & drop
@@ -43,11 +43,11 @@ pdfInput.addEventListener('change', (e) => {
 
 convertBtn.addEventListener('click', async () => {
     if (!pdfInput.files.length) {
-        alert('Por favor, selecciona un archivo PDF.');
+        alert(t.selectPdfFile || 'Por favor, selecciona un archivo PDF.');
         return;
     }
 
-    outputDiv.innerHTML = '<p>Procesando... esto puede tardar un momento.</p>';
+    outputDiv.innerHTML = `<p>${t.processingMayTakeTime || 'Procesando... esto puede tardar un momento.'}</p>`;
 
     try {
         const pdfBytes = await pdfInput.files[0].arrayBuffer();
@@ -74,13 +74,13 @@ convertBtn.addEventListener('click', async () => {
             imageContainer.innerHTML = `
                 <p>${imageName}</p>
                 <img src="${imageUrl}" class="img-fluid mb-2">
-                <a href="${imageUrl}" download="${imageName}" class="btn btn-secondary">Descargar</a>
+                <a href="${imageUrl}" download="${imageName}" class="btn btn-secondary">${t.downloadButtonText || 'Descargar'}</a>
             `;
             outputDiv.appendChild(imageContainer);
         }
 
     } catch (error) {
-        console.error('Error al convertir el PDF:', error);
-        outputDiv.innerHTML = '<p>Ocurrió un error al convertir el PDF.</p>';
+        console.error((t.errorConvertingPdf || 'Error al convertir el PDF:'), error);
+        outputDiv.innerHTML = `<p>${t.errorConvertingGeneric || 'Ocurrió un error al convertir el PDF.'}</p>`;
     }
 });

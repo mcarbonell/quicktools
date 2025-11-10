@@ -15,7 +15,7 @@ dropZoneCI?.addEventListener('click', () => fileInputCI.click());
 
 function handleImageFile(file) {
     if (!file || !file.type.startsWith('image/')) {
-        alert('Por favor selecciona un archivo de imagen válido.');
+        alert(t.selectValidImage || 'Por favor selecciona un archivo de imagen válido.');
         return;
     }
     const im = new Image();
@@ -25,7 +25,7 @@ function handleImageFile(file) {
         previewCanvasCI.height = im.height;
         ctxCI.clearRect(0, 0, previewCanvasCI.width, previewCanvasCI.height);
         ctxCI.drawImage(im, 0, 0);
-        dropZoneCI.querySelector('.drop-message').textContent = `Imagen cargada: ${file.name}`;
+        const imgMsg = (t.imageLoaded || 'Imagen cargada: {filename}').replace('{filename}', file.name); dropZoneCI.querySelector('.drop-message').textContent = imgMsg;
     };
     im.src = URL.createObjectURL(file);
 }
@@ -53,7 +53,7 @@ fileInputCI?.addEventListener('change', (e) => {
 });
 
 convertBtn?.addEventListener('click', () => {
-    if (!imgCI) return alert('Sube primero una imagen.');
+    if (!imgCI) return alert(t.uploadImageFirst || 'Sube primero una imagen.');
     const mime = formatSelect.value || 'image/png';
     const off = document.createElement('canvas');
     off.width = imgCI.width;

@@ -31,20 +31,20 @@ function getTomlLib() {
 tomlToJsonBtn?.addEventListener('click', () => {
     const input = inputText.value;
     if (!input.trim()) {
-        showMsg('Introduce TOML para convertir', true);
+        showMsg(t.enterTomlToConvert || 'Introduce TOML para convertir', true);
         return;
     }
     const lib = getTomlLib();
     if (!lib || typeof lib.parse !== 'function') {
-        showMsg('Librería TOML no encontrada. Comprueba la carga del CDN o añade manualmente una librería TOML.', true);
+        showMsg(t.tomlLibraryNotFound || 'Librería TOML no encontrada. Comprueba la carga del CDN o añade manualmente una librería TOML.', true);
         return;
     }
     try {
         const obj = lib.parse(input);
         outputText.value = JSON.stringify(obj, null, 2);
-        showMsg('TOML convertido a JSON');
+        showMsg(t.tomlConvertedToJson || 'TOML convertido a JSON');
     } catch (e) {
-        showMsg('Error al parsear TOML: ' + e.message, true);
+        showMsg((t.tomlParseError || 'Error al parsear TOML') + ': ' + e.message, true);
     }
 });
 
@@ -52,28 +52,28 @@ tomlToJsonBtn?.addEventListener('click', () => {
 jsonToTomlBtn?.addEventListener('click', () => {
     const input = inputText.value;
     if (!input.trim()) {
-        showMsg('Introduce JSON para convertir', true);
+        showMsg(t.enterJsonToConvert || 'Introduce JSON para convertir', true);
         return;
     }
     const lib = getTomlLib();
     if (!lib || typeof lib.stringify !== 'function') {
-        showMsg('Librería TOML con stringify no encontrada. Comprueba la carga del CDN o añade manualmente una librería TOML.', true);
+        showMsg(t.tomlStringifyNotFound || 'Librería TOML con stringify no encontrada. Comprueba la carga del CDN o añade manualmente una librería TOML.', true);
         return;
     }
     try {
         const obj = JSON.parse(input);
         const tomlStr = lib.stringify(obj);
         outputText.value = tomlStr;
-        showMsg('JSON convertido a TOML');
+        showMsg(t.jsonConvertedToToml || 'JSON convertido a TOML');
     } catch (e) {
-        showMsg('Error al convertir JSON a TOML: ' + e.message, true);
+        showMsg((t.jsonConvertError || 'Error al convertir JSON a TOML') + ': ' + e.message, true);
     }
 });
 
 prettyJsonBtn?.addEventListener('click', () => {
     const input = inputText.value;
     if (!input.trim()) {
-        showMsg('Introduce JSON para formatear', true);
+        showMsg(t.enterJsonToFormat || 'Introduce JSON para formatear', true);
         return;
     }
     try {
@@ -81,12 +81,12 @@ prettyJsonBtn?.addEventListener('click', () => {
         outputText.value = JSON.stringify(obj, null, 2);
         showMsg(t.formatted || 'JSON formateado');
     } catch (e) {
-        showMsg('Error al parsear JSON: ' + e.message, true);
+        showMsg((t.jsonParseError || 'Error al parsear JSON') + ': ' + e.message, true);
     }
 });
 
 copyBtn?.addEventListener('click', async () => {
-    if (!outputText.value) { showMsg('No hay resultado para copiar', true); return; }
+    if (!outputText.value) { showMsg(t.noResultToCopy || 'No hay resultado para copiar', true); return; }
     try {
         await navigator.clipboard.writeText(outputText.value);
         const original = copyBtn.textContent;
@@ -94,6 +94,6 @@ copyBtn?.addEventListener('click', async () => {
         showMsg(t.copied || 'Copiado al portapapeles');
         setTimeout(() => { copyBtn.innerHTML = original; showMsg(''); }, 1200);
     } catch (e) {
-        try { outputText.select(); document.execCommand('copy'); showMsg(t.copied || 'Copiado al portapapeles'); } catch (err) { showMsg('Error al copiar: ' + err.message, true); }
+        try { outputText.select(); document.execCommand('copy'); showMsg(t.copied || 'Copiado al portapapeles'); } catch (err) { showMsg((t.copyError || 'Error al copiar') + ': ' + err.message, true); }
     }
 });

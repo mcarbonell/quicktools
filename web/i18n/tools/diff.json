@@ -30,7 +30,12 @@
     "yellowLabel": "Yellow",
     "addedText": "Added text",
     "removedText": "Removed text",
-    "modifiedText": "Modified text"
+    "modifiedText": "Modified text",
+    "pleaseEnterTextToCompare": "Please enter some text to compare",
+    "textsComparedSuccessfully": "Texts compared successfully",
+    "compareError": "Error comparing texts",
+    "noResultToCopy": "No result to copy",
+    "copyError": "Error copying"
   },
   "es": {
     "copyButton": "Copiar",
@@ -63,6 +68,11 @@
     "yellowLabel": "Amarillo",
     "addedText": "Texto añadido",
     "removedText": "Texto eliminado",
-    "modifiedText": "Texto modificado"
+    "modifiedText": "Texto modificado",
+    "pleaseEnterTextToCompare": "Por favor, introduce algún texto para comparar",
+    "textsComparedSuccessfully": "Textos comparados exitosamente",
+    "compareError": "Error al comparar los textos",
+    "noResultToCopy": "No hay resultado para copiar",
+    "copyError": "Error al copiar"
   }
 }

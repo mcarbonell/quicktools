@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // diff.js - Comparador de textos
     const text1 = document.getElementById('text1');
 
-// Get translations (injected by generator)
-const t = window.toolTranslations || {};
+    // Get translations (injected by generator)
+    const t = window.toolTranslations || {};
     const text2 = document.getElementById('text2');
     const compareBtn = document.getElementById('compareBtn');
     const copyBtn = document.getElementById('copyBtn');
@@ -60,7 +60,7 @@ const t = window.toolTranslations || {};
         const input2 = normalizeText(text2.value);
 
         if (!input1 && !input2) {
-            msg.textContent = 'Por favor, introduce algún texto para comparar';
+            msg.textContent = t.pleaseEnterTextToCompare || 'Por favor, introduce algún texto para comparar';
             return;
         }
 
@@ -77,16 +77,16 @@ const t = window.toolTranslations || {};
 
             // Mostrar resultado
             diffResult.innerHTML = prettyDiff(diffs);
-            msg.textContent = 'Textos comparados exitosamente';
+            msg.textContent = t.textsComparedSuccessfully || 'Textos comparados exitosamente';
         } catch (e) {
-            msg.textContent = 'Error al comparar los textos: ' + e.message;
+            msg.textContent = (t.compareError || 'Error al comparar los textos') + ': ' + e.message;
         }
     });
 
     // Copiar al portapapeles
     copyBtn?.addEventListener('click', async () => {
-        if (!diffResult.textContent || diffResult.textContent === 'Los resultados aparecerán aquí...') {
-            msg.textContent = 'No hay resultado para copiar';
+        if (!diffResult.textContent || diffResult.textContent === (t.resultsWillAppearHerePlaceholder || 'Los resultados aparecerán aquí...')) {
+            msg.textContent = t.noResultToCopy || 'No hay resultado para copiar';
             return;
         }
         try {
@@ -121,7 +121,7 @@ const t = window.toolTranslations || {};
                     msg.textContent = '';
                 }, 1800);
             } catch (err) {
-                msg.textContent = 'Error al copiar: ' + e.message;
+                msg.textContent = (t.copyError || 'Error al copiar') + ': ' + e.message;
             }
         }
     });

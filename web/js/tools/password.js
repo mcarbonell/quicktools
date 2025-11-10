@@ -50,7 +50,7 @@ function generatePassword() {
     const len = Math.max(4, Math.min(256, Number(lengthInput.value) || 16));
     const charset = getCharset();
     if (!charset) {
-        showMsg('Selecciona al menos un tipo de carácter', true);
+        showMsg(t.selectCharacterTypes || 'Selecciona al menos un tipo de carácter', true);
         return '';
     }
 
@@ -102,13 +102,13 @@ function updateStrength(pw) {
     let pct = Math.min(100, Math.round((entropy / 80) * 100)); // 80 bits considered very strong
     strengthBar.style.width = pct + '%';
     strengthBar.classList.remove('bg-success', 'bg-warning', 'bg-danger');
-    if (entropy >= 80) { strengthBar.classList.add('bg-success'); strengthText.textContent = `${entropy} bits — Muy fuerte`; }
-    else if (entropy >= 50) { strengthBar.classList.add('bg-warning'); strengthText.textContent = `${entropy} bits — Bien`; }
-    else { strengthBar.classList.add('bg-danger'); strengthText.textContent = `${entropy} bits — Débil`; }
+    if (entropy >= 80) { strengthBar.classList.add('bg-success'); strengthText.textContent = (t.entropyBitsStrong || '{entropy} bits — Muy fuerte').replace('{entropy}', entropy); }
+    else if (entropy >= 50) { strengthBar.classList.add('bg-warning'); strengthText.textContent = (t.entropyBitsGood || '{entropy} bits — Bien').replace('{entropy}', entropy); }
+    else { strengthBar.classList.add('bg-danger'); strengthText.textContent = (t.entropyBitsWeak || '{entropy} bits — Débil').replace('{entropy}', entropy); }
 }
 
 function setResult(pw) {
-    result.textContent = pw || '(aquí aparecerá la contraseña)';
+    result.textContent = pw || (t.passwordWillAppearHere || '(aquí aparecerá la contraseña)');
     if (pw) { copyBtn.disabled = false; } else { copyBtn.disabled = true; }
     updateStrength(pw);
 }
@@ -151,38 +151,38 @@ function fallbackCopyTextToClipboard(text) {
 
 async function copyPassword() {
     const text = result.textContent;
-    if (!text || text.includes('(aquí aparecerá')) return;
+    if (!text || text.includes(t.passwordWillAppearHere || '(aquí aparecerá')) return;
 
     // Primero intenta la API moderna
     try {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             await navigator.clipboard.writeText(text);
-            showMsg('Contraseña copiada al portapapeles');
+            showMsg(t.passwordCopied || 'Contraseña copiada al portapapeles');
             return;
         }
     } catch (e) {
         // Si falla por políticas de permisos, intentaremos el fallback
-        console.warn('navigator.clipboard.writeText falló:', e);
+        console.warn(t.clipboardFailed || 'navigator.clipboard.writeText falló:', e);
     }
 
     // Fallback a execCommand
     try {
         await fallbackCopyTextToClipboard(text);
-        showMsg('Contraseña copiada al portapapeles (fallback)');
+        showMsg(t.passwordCopiedFallback || 'Contraseña copiada al portapapeles (fallback)');
     } catch (e) {
-        showMsg('Error al copiar: ' + (e && e.message ? e.message : e), true);
-        console.error('Copy failed:', e);
+        showMsg((t.copyError || 'Error al copiar') + ': ' + (e && e.message ? e.message : e), true);
+        console.error(t.execCommandFailed || 'Copy failed:', e);
     }
 }
 
 generateBtn?.addEventListener('click', () => {
     const pw = generatePassword();
-    if (pw) { setResult(pw); showMsg('Contraseña generada'); }
+    if (pw) { setResult(pw); showMsg(t.passwordGenerated || 'Contraseña generada'); }
 });
 
 reloadBtn?.addEventListener('click', () => {
     const pw = generatePassword();
-    if (pw) { setResult(pw); showMsg('Contraseña regenerada'); }
+    if (pw) { setResult(pw); showMsg(t.passwordRegenerated || 'Contraseña regenerada'); }
 });
 
 copyBtn?.addEventListener('click', copyPassword);

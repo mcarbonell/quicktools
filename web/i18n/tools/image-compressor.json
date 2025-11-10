@@ -25,7 +25,16 @@
     "originalLabel": "Original:",
     "compressedLabel": "Compressed:",
     "sizeLabel": "Size:",
-    "backToHomeButton": "Back to home"
+    "backToHomeButton": "Back to home",
+    "selectValidImage": "Please drag and drop a valid image file or click to select.",
+    "imageLoaded": "Image loaded: {filename} ({size})",
+    "loadImageFirst": "First, load an image.",
+    "compressingImage": "Compressing image...",
+    "imageCompressed": "Image compressed. Reduction: {reduction}%",
+    "errorCompressing": "Error compressing image:",
+    "compressImageFirst": "First, compress an image.",
+    "imageDownloaded": "Image downloaded.",
+    "notAvailable": "N/A"
   },
   "es": {
     "copyButton": "Copiar",
@@ -53,6 +62,15 @@
     "originalLabel": "Original:",
     "compressedLabel": "Comprimida:",
     "sizeLabel": "Tamaño:",
-    "backToHomeButton": "Volver al inicio"
+    "backToHomeButton": "Volver al inicio",
+    "selectValidImage": "Por favor, arrastra o selecciona un archivo de imagen válido.",
+    "imageLoaded": "Imagen cargada: {filename} ({size})",
+    "loadImageFirst": "Primero, carga una imagen.",
+    "compressingImage": "Comprimiendo imagen...",
+    "imageCompressed": "Imagen comprimida. Reducción: {reduction}%",
+    "errorCompressing": "Error al comprimir la imagen:",
+    "compressImageFirst": "Primero, comprime una imagen.",
+    "imageDownloaded": "Imagen descargada.",
+    "notAvailable": "N/A"
   }
 }

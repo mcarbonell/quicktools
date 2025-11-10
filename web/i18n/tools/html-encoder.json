@@ -39,7 +39,16 @@
     "singleQuoteLabel": "Single quote",
     "copyrightLabel": "Copyright",
     "registeredLabel": "Registered trademark",
-    "euroLabel": "Euro"
+    "euroLabel": "Euro",
+    "pleaseEnterTextToEncode": "Enter text to encode",
+    "htmlTextEncoded": "Text encoded in HTML",
+    "htmlAllTextEncoded": "All text encoded in HTML",
+    "encodeError": "Error encoding",
+    "pleaseEnterHtmlToDecode": "Enter HTML text to decode",
+    "htmlTextDecoded": "Text decoded from HTML",
+    "decodeError": "Error decoding - input appears invalid",
+    "noResultToCopy": "No result to copy",
+    "copyError": "Error copying"
   },
   "es": {
     "copyButton": "Copiar",
@@ -81,6 +90,15 @@
     "singleQuoteLabel": "Comilla simple",
     "copyrightLabel": "Copyright",
     "registeredLabel": "Marca registrada",
-    "euroLabel": "Euro"
+    "euroLabel": "Euro",
+    "pleaseEnterTextToEncode": "Introduce texto para codificar",
+    "htmlTextEncoded": "Texto codificado en HTML",
+    "htmlAllTextEncoded": "Texto codificado completamente en HTML",
+    "encodeError": "Error al codificar",
+    "pleaseEnterHtmlToDecode": "Introduce texto HTML para decodificar",
+    "htmlTextDecoded": "Texto decodificado de HTML",
+    "decodeError": "Error al decodificar - la entrada parece inválida",
+    "noResultToCopy": "No hay resultado para copiar",
+    "copyError": "Error al copiar"
   }
 }

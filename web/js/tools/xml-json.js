@@ -119,30 +119,30 @@ function escapeXml(str) {
 xmlToJsonBtn?.addEventListener('click', () => {
     const input = inputText.value.trim();
     if (!input) {
-        showMsg('Introduce XML para convertir', true);
+        showMsg(t.enterXmlToConvert || 'Introduce XML para convertir', true);
         return;
     }
     try {
         const parser = new DOMParser();
         const doc = parser.parseFromString(input, 'application/xml');
         if (doc.querySelector('parsererror')) {
-            throw new Error(doc.querySelector('parsererror').textContent || 'Error al parsear XML');
+            throw new Error(doc.querySelector('parsererror').textContent || t.xmlParseError || 'Error al parsear XML');
         }
         const root = doc.documentElement;
         const keepAttributes = preserveAttributes?.checked ?? true;
         const result = {};
         result[root.nodeName] = nodeToObject(root, keepAttributes);
         outputText.value = JSON.stringify(result, null, 2);
-        showMsg('XML convertido a JSON');
+        showMsg(t.xmlConvertedToJson || 'XML convertido a JSON');
     } catch (e) {
-        showMsg('Error al parsear XML: ' + e.message, true);
+        showMsg((t.xmlParseError || 'Error al parsear XML') + ': ' + e.message, true);
     }
 });
 
 jsonToXmlBtn?.addEventListener('click', () => {
     const input = inputText.value.trim();
     if (!input) {
-        showMsg('Introduce JSON para convertir', true);
+        showMsg(t.enterJsonToConvert || 'Introduce JSON para convertir', true);
         return;
     }
     try {
@@ -150,16 +150,16 @@ jsonToXmlBtn?.addEventListener('click', () => {
         const keepAttributes = preserveAttributes?.checked ?? true;
         const xml = objectToXml(obj, keepAttributes);
         outputText.value = xml;
-        showMsg('JSON convertido a XML');
+        showMsg(t.jsonConvertedToXml || 'JSON convertido a XML');
     } catch (e) {
-        showMsg('Error al parsear JSON: ' + e.message, true);
+        showMsg((t.jsonParseError || 'Error al parsear JSON') + ': ' + e.message, true);
     }
 });
 
 prettyJsonBtn?.addEventListener('click', () => {
     const input = inputText.value.trim();
     if (!input) {
-        showMsg('Introduce JSON para formatear', true);
+        showMsg(t.enterJsonToFormat || 'Introduce JSON para formatear', true);
         return;
     }
     try {
@@ -167,13 +167,13 @@ prettyJsonBtn?.addEventListener('click', () => {
         outputText.value = JSON.stringify(obj, null, 2);
         showMsg(t.formatted || 'JSON formateado');
     } catch (e) {
-        showMsg('Error al parsear JSON: ' + e.message, true);
+        showMsg((t.jsonParseError || 'Error al parsear JSON') + ': ' + e.message, true);
     }
 });
 
 copyBtn?.addEventListener('click', async () => {
     if (!outputText.value) {
-        showMsg('No hay resultado para copiar', true);
+        showMsg(t.noResultToCopy || 'No hay resultado para copiar', true);
         return;
     }
     try {
@@ -197,7 +197,7 @@ copyBtn?.addEventListener('click', async () => {
                 showMsg('');
             }, 1400);
         } catch (err) {
-            showMsg('Error al copiar: ' + e.message, true);
+            showMsg((t.copyError || 'Error al copiar') + ': ' + e.message, true);
         }
     }
 });

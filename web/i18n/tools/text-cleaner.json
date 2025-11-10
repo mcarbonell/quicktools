@@ -19,7 +19,10 @@
     "wordCount": "Words",
     "charCount": "Characters",
     "countWordsButton": "Count words",
-    "copyToClipboardTitle": "Copy to clipboard"
+    "copyToClipboardTitle": "Copy to clipboard",
+    "textCleaned": "Text cleaned.",
+    "wordCountFormat": "Words: {count}",
+    "copyError": "Error copying"
   },
   "es": {
     "copyButton": "Copiar",
@@ -41,6 +44,9 @@
     "wordCount": "Palabras",
     "charCount": "Caracteres",
     "countWordsButton": "Contar palabras",
-    "copyToClipboardTitle": "Copiar al portapapeles"
+    "copyToClipboardTitle": "Copiar al portapapeles",
+    "textCleaned": "Texto limpiado.",
+    "wordCountFormat": "Palabras: {count}",
+    "copyError": "Error al copiar"
   }
 }

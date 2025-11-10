@@ -18,7 +18,7 @@ function handleFile(file) {
     dataTransfer.items.add(file);
     pdfInput.files = dataTransfer.files;
 
-    dropZone.querySelector('.drop-message').textContent = `Archivo cargado: ${file.name}`;
+    const fileMsg = (t.fileLoaded || 'Archivo cargado: {filename}').replace('{filename}', file.name); dropZone.querySelector('.drop-message').textContent = fileMsg;
 }
 
 // Eventos de drag & drop
@@ -45,16 +45,16 @@ pdfInput.addEventListener('change', (e) => {
 
 splitBtn.addEventListener('click', async () => {
     if (!pdfInput.files.length) {
-        alert('Por favor, selecciona un archivo PDF.');
+        alert(t.selectPdfFile || 'Por favor, selecciona un archivo PDF.');
         return;
     }
 
     if (!pagesInput.value) {
-        alert('Por favor, especifica las páginas a extraer.');
+        alert(t.specifyPages || 'Por favor, especifica las páginas a extraer.');
         return;
     }
 
-    outputDiv.innerHTML = '<p>Procesando...</p>';
+    outputDiv.innerHTML = `<p>${t.processingText || 'Procesando...'}</p>`;
 
     try {
         const pdfBytes = await pdfInput.files[0].arrayBuffer();
@@ -62,7 +62,7 @@ splitBtn.addEventListener('click', async () => {
         const pageRanges = parsePageRanges(pagesInput.value, pdfDoc.getPageCount());
 
         if (!pageRanges.length) {
-            alert('Las páginas especificadas no son válidas.');
+            alert(t.invalidPages || 'Las páginas especificadas no son válidas.');
             outputDiv.innerHTML = '';
             return;
         }
@@ -75,11 +75,11 @@ splitBtn.addEventListener('click', async () => {
         const blob = new Blob([newPdfBytes], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
 
-        outputDiv.innerHTML = `<a href="${url}" download="split.pdf">Descargar PDF dividido</a>`;
+        outputDiv.innerHTML = `<a href="${url}" download="split.pdf">${t.downloadSplitPdf || 'Descargar PDF dividido'}</a>`;
 
     } catch (error) {
-        console.error('Error al dividir el PDF:', error);
-        outputDiv.innerHTML = '<p>Ocurrió un error al dividir el PDF. Por favor, inténtalo de nuevo.</p>';
+        console.error((t.errorSplittingPdf || 'Error al dividir el PDF:'), error);
+        outputDiv.innerHTML = `<p>${t.errorSplittingGeneric || 'Ocurrió un error al dividir el PDF. Por favor, inténtalo de nuevo.'}</p>`;
     }
 });
 

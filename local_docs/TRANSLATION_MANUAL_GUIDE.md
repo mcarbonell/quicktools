@@ -209,17 +209,17 @@ Reemplaza el texto español con el placeholder:
 - [x] `edit-image-content.html` ✅
 
 ### Otras Herramientas
-- [ ] `lorem-ipsum-generator-content.html` ← **EJEMPLO ARRIBA**
-- [ ] `base64-content.html`
-- [ ] `csv-json-content.html`
-- [ ] `diff-content.html`
-- [ ] `hash-calculator-content.html`
-- [ ] `html-encoder-content.html`
-- [ ] `password-generator-content.html`
-- [ ] `qr-generator-content-content.html`
-- [ ] `stopwatch-timer-content.html`
-- [ ] `text-cleaner-content.html`
-- [ ] `url-encoder-content.html`
+- [x] `lorem-ipsum-generator-content.html` ✅
+- [x] `base64-content.html` ✅
+- [x] `csv-json-content.html` ✅
+- [x] `diff-content.html` ✅
+- [x] `hash-calculator-content.html` ✅
+- [x] `html-encoder-content.html` ✅
+- [x] `password-generator-content.html` ✅
+- [x] `qr-generator-content-content.html` ✅
+- [x] `stopwatch-timer-content.html` ✅
+- [x] `text-cleaner-content.html` ✅
+- [x] `url-encoder-content.html` ✅
 
 
 

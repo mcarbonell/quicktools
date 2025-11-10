@@ -29,7 +29,7 @@
     
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <style>
     .chat-container { height: 500px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: #f8f9fa; }
     .message { margin-bottom: 1rem; padding: 0.75rem; border-radius: 8px; max-width: 80%; }
@@ -48,40 +48,40 @@
 <body>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="../../index.html" id="backLink">← Back</a>
+            <a href="/index.html" id="backLink">← Back</a>
             <div id="languageSelector"></div>
         </div>
-        <h1 class="h4 mt-3">Chat con IA</h1>
-        <p class="text-muted">Conversa con Google Gemini. Usa tu propia API key, 100% privado en tu navegador.</p>
+        <h1 class="h4 mt-3">AI Chat</h1>
+        <p class="text-muted">Chat with Google Gemini. Use your own API key, 100% private in your browser.</p>
 
         <div id="apiKeySetup" class="api-key-setup">
-    <h5>⚙️ Configuración inicial</h5>
-    <p class="mb-3">Para usar esta herramienta necesitas una API key gratuita de Google AI Studio:</p>
+    <h5>⚙️ Initial Setup</h5>
+    <p class="mb-3">To use this tool, you need a free API key from Google AI Studio:</p>
     <ol class="mb-3">
-        <li>Visita <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
-        <li>Inicia sesión con tu cuenta de Google</li>
-        <li>Crea una API key (es gratis, 60 req/min)</li>
-        <li>Pégala aquí abajo 👇</li>
+        <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+        <li>Log in with your Google account</li>
+        <li>Create an API key (it's free, 60 req/min)</li>
+        <li>Paste it below 👇</li>
     </ol>
     <div class="input-group mb-2">
         <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
-        <button class="btn btn-primary" onclick="saveApiKey()">💾 Guardar</button>
+        <button class="btn btn-primary" onclick="saveApiKey()">💾 Save</button>
     </div>
-    <small class="text-muted">🔒 Se guarda en localStorage de tu navegador, nunca en nuestros servidores.</small>
+    <small class="text-muted">🔒 Saved in your browser's localStorage, never on our servers.</small>
 </div>
 
 <div id="apiKeyManage" class="alert alert-success d-none">
     <div class="d-flex justify-content-between align-items-center">
-        <span>✅ API Key configurada</span>
-        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Eliminar</button>
+        <span>✅ API Key configured</span>
+        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Remove</button>
     </div>
 </div>
 
 <div id="chatSection" class="d-none">
     <div class="chat-container mb-3" id="chatMessages">
         <div class="message assistant">
-            <strong>Asistente IA</strong>
-            <p class="mb-0 mt-2">¡Hola! Soy tu asistente con IA. ¿En qué puedo ayudarte hoy?</p>
+            <strong>AI Assistant</strong>
+            <p class="mb-0 mt-2">Hi! I'm your AI assistant. How can I help you today?</p>
         </div>
     </div>
 
@@ -90,23 +90,23 @@
     </div>
 
     <div class="input-group">
-        <input type="text" id="userInput" class="form-control" placeholder="Escribe tu mensaje..." onkeypress="handleKeyPress(event)">
-        <button class="btn btn-primary" onclick="sendMessage()" id="sendBtn">📤 Enviar</button>
+        <input type="text" id="userInput" class="form-control" placeholder="Type your message..."
+            onkeypress="handleKeyPress(event)">
+        <button class="btn btn-primary" onclick="sendMessage()" id="sendBtn">📤 Send</button>
     </div>
 
     <div class="mt-3">
-        <button class="btn btn-sm btn-outline-secondary" onclick="clearChat()">🗑️ Limpiar chat</button>
-        <button class="btn btn-sm btn-outline-info" onclick="exportChat()">💾 Exportar</button>
+        <button class="btn btn-sm btn-outline-secondary" onclick="clearChat()">🗑️ Clear chat</button>
+        <button class="btn btn-sm btn-outline-info" onclick="exportChat()">💾 Export</button>
     </div>
 </div>
-
     </div>
 
     
     <script>
-        window.toolTranslations = {};
+        window.toolTranslations = {"initialSetupTitle":"⚙️ Initial Setup","apiKeyInstruction":"To use this tool, you need a free API key from Google AI Studio:","visitLabel":"Visit","loginGoogleAccount":"Log in with your Google account","createApiKey":"Create an API key (it's free, 60 req/min)","pasteApiKey":"Paste it below 👇","saveButton":"💾 Save","localStorageInfo":"🔒 Saved in your browser's localStorage, never on our servers.","apiKeyConfigured":"✅ API Key configured","removeButton":"🗑️ Remove","assistantName":"AI Assistant","assistantWelcomeMessage":"Hi! I'm your AI assistant. How can I help you today?","typeYourMessagePlaceholder":"Type your message...","sendButton":"📤 Send","clearChatButton":"🗑️ Clear chat","exportButton":"💾 Export"};
     </script>
-<script src="../../js/lib/gemini-api.js"></script>
+<script src="/js/lib/gemini-api.js"></script>
 <script>
     let gemini = null;
 

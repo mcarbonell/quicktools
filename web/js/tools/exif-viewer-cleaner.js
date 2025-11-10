@@ -20,7 +20,7 @@ function handleFile(file) {
     dataTransfer.items.add(file);
     imageInput.files = dataTransfer.files;
 
-    dropZone.querySelector('.drop-message').textContent = `Imagen cargada: ${file.name}`;
+    const imgMsg = (t.imageLoaded || 'Imagen cargada: {filename}').replace('{filename}', file.name); dropZone.querySelector('.drop-message').textContent = imgMsg;
 
     try {
         exifr.parse(file).then(exif => {
@@ -28,19 +28,19 @@ function handleFile(file) {
                 exifDataPre.textContent = JSON.stringify(exif, null, 2);
                 cleanExifBtn.style.display = 'block';
             } else {
-                exifDataPre.textContent = 'No se encontraron metadatos EXIF.';
+                exifDataPre.textContent = t.noExifFound || 'No se encontraron metadatos EXIF.';
                 cleanExifBtn.style.display = 'none';
             }
             cleanedImageOutput.style.display = 'none';
         }).catch(error => {
-            console.error('Error al leer metadatos EXIF:', error);
-            exifDataPre.textContent = 'Error al leer metadatos EXIF.';
+            console.error((t.errorReadingExif || 'Error al leer metadatos EXIF:'), error);
+            exifDataPre.textContent = t.errorReadingExifGeneric || 'Error al leer metadatos EXIF.';
             cleanExifBtn.style.display = 'none';
             cleanedImageOutput.style.display = 'none';
         });
     } catch (error) {
-        console.error('Error al leer metadatos EXIF:', error);
-        exifDataPre.textContent = 'Error al leer metadatos EXIF.';
+        console.error((t.errorReadingExif || 'Error al leer metadatos EXIF:'), error);
+        exifDataPre.textContent = t.errorReadingExifGeneric || 'Error al leer metadatos EXIF.';
         cleanExifBtn.style.display = 'none';
         cleanedImageOutput.style.display = 'none';
     }
@@ -96,8 +96,8 @@ cleanExifBtn.addEventListener('click', async () => {
         reader.readAsDataURL(file);
 
     } catch (error) {
-        console.error('Error al limpiar metadatos EXIF:', error);
+        console.error((t.errorCleaningExif || 'Error al limpiar metadatos EXIF:'), error);
         cleanedImageOutput.style.display = 'none';
-        alert('Ocurrió un error al limpiar los metadatos EXIF.');
+        alert(t.errorCleaningExifGeneric || 'Ocurrió un error al limpiar los metadatos EXIF.');
     }
 });

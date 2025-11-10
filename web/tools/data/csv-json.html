@@ -29,54 +29,54 @@
     
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <meta property="og:url" content="https://quicktools.dev/tools/data/csv-json.html">
 </head>
 
 <body>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="../../index.html" id="backLink">← Back</a>
+            <a href="/index.html" id="backLink">← Back</a>
             <div id="languageSelector"></div>
         </div>
         <h1 class="h4 mt-3">CSV ↔ JSON</h1>
-        <p class="text-muted">Convierte CSV a JSON y JSON a CSV en el navegador. Soporta arrastrar y soltar.</p>
+        <p class="text-muted">Convert CSV to JSON and JSON to CSV in the browser. Supports drag and drop.</p>
 
         <div id="dropZone" class="drop-zone mb-3">
     <input type="file" id="fileInput" accept="text/csv,application/vnd.ms-excel" class="d-none">
-    <div class="drop-message">Arrastra un CSV aquí o haz clic para seleccionar</div>
+    <div class="drop-message">Drag a CSV here or click to select</div>
 </div>
 
 <div class="mb-3">
     <label for="inputArea" class="form-label">Input</label>
-    <textarea id="inputArea" rows="10" class="form-control" placeholder="Pega CSV o JSON aquí..."></textarea>
+    <textarea id="inputArea" rows="10" class="form-control" placeholder="Paste CSV or JSON here..."></textarea>
 </div>
 
 <div class="mb-3 d-flex gap-2 flex-wrap">
     <button id="csvToJsonBtn" class="btn btn-primary">CSV → JSON</button>
     <button id="jsonToCsvBtn" class="btn btn-primary">JSON → CSV</button>
-    <button id="validateJsonBtn" class="btn btn-outline-secondary">Validar JSON</button>
+    <button id="validateJsonBtn" class="btn btn-outline-secondary">Validate JSON</button>
     <button id="copyBtn" class="btn btn-outline-secondary">Copy</button>
     <button id="downloadBtn" class="btn btn-success">Download</button>
 </div>
 
 <div class="mb-3 d-flex align-items-center gap-2">
-    <label for="delimiterSelect" class="form-label mb-0">Delimitador:</label>
+    <label for="delimiterSelect" class="form-label mb-0">Delimiter:</label>
     <select id="delimiterSelect" class="form-select w-auto">
-        <option value=",">Coma (,)</option>
-        <option value=";">Punto y coma (;)</option>
+        <option value=",">Comma (,)</option>
+        <option value=";">Semicolon (;)</option>
         <option value="\t">Tab (\t)</option>
         <option value="|">Pipe (|)</option>
-        <option value="auto" selected>Detectar automáticamente</option>
-        <option value="custom">Personalizado</option>
+        <option value="auto" selected>Auto detect</option>
+        <option value="custom">Custom</option>
     </select>
-    <input id="customDelimiter" class="form-control w-auto d-none" placeholder="Escribe el delimitador"
+    <input id="customDelimiter" class="form-control w-auto d-none" placeholder="Enter delimiter"
         style="max-width:120px">
 </div>
 
 <div class="mb-3 position-relative">
-    <label for="resultArea" class="form-label">Resultado</label>
-    <textarea id="resultArea" rows="10" class="form-control" placeholder="Aquí aparecerá el resultado..."></textarea>
+    <label for="resultArea" class="form-label">Result</label>
+    <textarea id="resultArea" rows="10" class="form-control" placeholder="Result will appear here..."></textarea>
 </div>
 
 <div id="msg" class="text-muted small"></div>
@@ -84,10 +84,10 @@
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","convertButton":"Convert"};
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","convertButton":"Convert","dropMessage":"Drag a CSV here or click to select","csvJsonPlaceholder":"Paste CSV or JSON here...","csvToJsonButton":"CSV → JSON","jsonToCsvButton":"JSON → CSV","validateJsonButton":"Validate JSON","delimiterLabel":"Delimiter:","commaOption":"Comma (,)","semicolonOption":"Semicolon (;)","tabOption":"Tab (\\t)","pipeOption":"Pipe (|)","autoDetectOption":"Auto detect","customOption":"Custom","customDelimiterPlaceholder":"Enter delimiter","resultLabel":"Result","resultPlaceholder":"Result will appear here...","selectCsvFile":"Please select a CSV file.","fileLoaded":"File loaded: {filename}","detectedDelimiter":"Detected delimiter: {delimiter}","noDelimiterUsingComma":"No delimiter detected, using comma.","jsonMustBeArray":"JSON must be an array.","noRows":"No rows.","csvLibraryNotAvailable":"CSV library not available in browser.","convertedRows":"Converted: {count} rows","csvParseError":"Error parsing CSV","enterCsvOrFile":"Enter CSV or load a file.","enterJsonOrFile":"Enter JSON or load a file.","convertedToCsv":"Converted to CSV ({lines} lines)","jsonConvertError":"Error converting JSON","invalidJson":"Invalid JSON: {error}","noResultToCopy":"No result to copy.","copyError":"Error copying","noResultToDownload":"No result to download.","downloadStarted":"Download started.","csvLibraryUnavailable":"CSV library not available.","pastedContent":"Content pasted","autoDetectionActive":"Auto-detection active","delimiterTabFormat":"{delimiter} (tab)"};
     </script>
-<script src="../../js/lib/csv-parser.js"></script>
-<script src="../../js/tools/csv-json.js"></script>
+<script src="/js/lib/csv-parser.js"></script>
+<script src="/js/tools/csv-json.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/i18n/language-selector.js"></script>
 

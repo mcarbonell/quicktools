@@ -29,7 +29,7 @@
     
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <style>
     .diff-added {
         background-color: #e6ffe6;
@@ -73,56 +73,55 @@
 <body>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="../../index.html" id="backLink">← Back</a>
+            <a href="/index.html" id="backLink">← Back</a>
             <div id="languageSelector"></div>
         </div>
-        <h1 class="h4 mt-3">Comparar Textos</h1>
-        <p class="text-muted">Compara dos textos y encuentra las diferencias entre ellos.</p>
+        <h1 class="h4 mt-3">Compare Texts</h1>
+        <p class="text-muted">Compare two texts and find the differences between them.</p>
 
         <div class="row mb-3">
     <div class="col-md-6">
         <div class="form-floating mb-3">
             <textarea id="text1" class="form-control" style="height: 200px" placeholder="Text"></textarea>
-            <label for="text1">Texto original</label>
+            <label for="text1">Original text</label>
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-floating mb-3">
-            <textarea id="text2" class="form-control" style="height: 200px"
-                placeholder="Text"></textarea>
-            <label for="text2">Texto modificado</label>
+            <textarea id="text2" class="form-control" style="height: 200px" placeholder="Text"></textarea>
+            <label for="text2">Modified text</label>
         </div>
     </div>
 </div>
 
 <div class="mb-3 d-flex gap-2 flex-wrap align-items-center">
-    <button id="compareBtn" class="btn btn-primary">Comparar textos</button>
-    <button id="copyBtn" class="btn btn-outline-secondary">Copiar resultado</button>
+    <button id="compareBtn" class="btn btn-primary">Compare texts</button>
+    <button id="copyBtn" class="btn btn-outline-secondary">Copy result</button>
 
     <div class="form-check form-check-inline ms-2">
         <input class="form-check-input" type="checkbox" id="ignoreCase" value="true">
-        <label class="form-check-label" for="ignoreCase">Ignorar mayúsculas/minúsculas</label>
+        <label class="form-check-label" for="ignoreCase">Ignore case</label>
     </div>
     <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="ignoreWhitespace" value="true">
-        <label class="form-check-label" for="ignoreWhitespace">Ignorar espacios en blanco</label>
+        <label class="form-check-label" for="ignoreWhitespace">Ignore whitespace</label>
     </div>
 </div>
 
 <div class="card mb-3">
     <div class="card-header">
-        <h5 class="card-title mb-0">Diferencias encontradas</h5>
+        <h5 class="card-title mb-0">Differences found</h5>
     </div>
     <div class="card-body">
-        <pre id="diffResult" class="mb-0">Los resultados aparecerán aquí...</pre>
+        <pre id="diffResult" class="mb-0">Results will appear here...</pre>
     </div>
 </div>
 
 <div class="alert alert-info small">
-    <strong>Leyenda:</strong><br>
-    <span class="diff-added px-1">Verde</span> - Texto añadido<br>
-    <span class="diff-removed px-1">Rojo</span> - Texto eliminado<br>
-    <span class="diff-modified px-1">Amarillo</span> - Texto modificado
+    <strong>Legend:</strong><br>
+    <span class="diff-added px-1">Green</span> - Added text<br>
+    <span class="diff-removed px-1">Red</span> - Removed text<br>
+    <span class="diff-modified px-1">Yellow</span> - Modified text
 </div>
 
 <div id="msg" class="text-muted small"></div>
@@ -130,10 +129,10 @@
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","compareButton":"Compare"};
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","compareButton":"Compare","originalTextLabel":"Original text","modifiedTextLabel":"Modified text","compareTextsButton":"Compare texts","copyResultButton":"Copy result","ignoreCaseLabel":"Ignore case","ignoreWhitespaceLabel":"Ignore whitespace","differencesFoundTitle":"Differences found","resultsWillAppearHerePlaceholder":"Results will appear here...","legendTitle":"Legend:","greenLabel":"Green","redLabel":"Red","yellowLabel":"Yellow","addedText":"Added text","removedText":"Removed text","modifiedText":"Modified text","pleaseEnterTextToCompare":"Please enter some text to compare","textsComparedSuccessfully":"Texts compared successfully","compareError":"Error comparing texts","noResultToCopy":"No result to copy","copyError":"Error copying"};
     </script>
-<script src="../../js/vendor/diff_match_patch.js"></script>
-<script src="../../js/tools/diff.js"></script>
+<script src="/js/vendor/diff_match_patch.js"></script>
+<script src="/js/tools/diff.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/i18n/language-selector.js"></script>
 

@@ -14,7 +14,7 @@ dropZone?.addEventListener('click', () => imageInput.click());
 function handleFiles(files) {
     if (files.length === 0) return;
     imageInput.files = files;
-    dropZone.querySelector('.drop-message').textContent = `${files.length} archivo(s) seleccionado(s)`;
+    const filesMsg = (t.filesSelected || '{count} archivo(s) seleccionado(s)').replace('{count}', files.length); dropZone.querySelector('.drop-message').textContent = filesMsg;
 }
 
 // Eventos de drag & drop
@@ -40,11 +40,11 @@ imageInput.addEventListener('change', (e) => {
 
 convertBtn.addEventListener('click', async () => {
     if (!imageInput.files.length) {
-        alert('Por favor, selecciona al menos una imagen.');
+        alert(t.selectAtLeastOneImage || 'Por favor, selecciona al menos una imagen.');
         return;
     }
 
-    outputDiv.innerHTML = '<p>Procesando... esto puede tardar un momento.</p>';
+    outputDiv.innerHTML = `<p>${t.processingMayTakeTime || 'Procesando... esto puede tardar un momento.'}</p>`;
 
     try {
         const pdfDoc = await PDFLib.PDFDocument.create();
@@ -98,10 +98,10 @@ convertBtn.addEventListener('click', async () => {
         const blob = new Blob([pdfBytes], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
 
-        outputDiv.innerHTML = `<a href="${url}" download="converted.pdf">Descargar PDF</a>`;
+        outputDiv.innerHTML = `<a href="${url}" download="converted.pdf">${t.downloadPdf || 'Descargar PDF'}</a>`;
 
     } catch (error) {
-        console.error('Error al convertir imagen a PDF:', error);
-        outputDiv.innerHTML = '<p>Ocurrió un error al convertir la imagen a PDF. Asegúrate de que los archivos son imágenes válidas.</p>';
+        console.error((t.errorConvertingImageToPdf || 'Error al convertir imagen a PDF:'), error);
+        outputDiv.innerHTML = `<p>${t.errorConvertingImageGeneric || 'Ocurrió un error al convertir la imagen a PDF. Asegúrate de que los archivos son imágenes válidas.'}</p>`;
     }
 });

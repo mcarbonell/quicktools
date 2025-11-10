@@ -27,7 +27,16 @@
     "copyHashButton": "Copy Hash",
     "hashResultLabel": "Hash result:",
     "hashResultPlaceholder": "(Hash will appear here)",
-    "backToHomeButton": "Back to home"
+    "backToHomeButton": "Back to home",
+    "enterTextToHash": "Please enter the text to hash.",
+    "md5NotSupported": "MD5 is not directly supported by the Web Crypto API. Use SHA-1, SHA-256 or SHA-512.",
+    "hashCalculated": "Hash calculated successfully.",
+    "hashCalculateError": "Error calculating hash",
+    "hashCopied": "Hash copied to clipboard",
+    "clipboardFailed": "navigator.clipboard.writeText failed:",
+    "hashCopiedFallback": "Hash copied to clipboard (fallback)",
+    "copyError": "Error copying",
+    "execCopyFailed": "Copy failed:"
   },
   "es": {
     "copyButton": "Copiar",
@@ -57,6 +66,15 @@
     "copyHashButton": "Copiar Hash",
     "hashResultLabel": "Resultado del Hash:",
     "hashResultPlaceholder": "(El hash aparecerá aquí)",
-    "backToHomeButton": "Volver al inicio"
+    "backToHomeButton": "Volver al inicio",
+    "enterTextToHash": "Por favor, introduce el texto a hashear.",
+    "md5NotSupported": "MD5 no es soportado directamente por la API Web Crypto. Usa SHA-1, SHA-256 o SHA-512.",
+    "hashCalculated": "Hash calculado correctamente.",
+    "hashCalculateError": "Error al calcular el hash",
+    "hashCopied": "Hash copiado al portapapeles",
+    "clipboardFailed": "navigator.clipboard.writeText falló:",
+    "hashCopiedFallback": "Hash copiado al portapapeles (fallback)",
+    "copyError": "Error al copiar",
+    "execCopyFailed": "Copy failed:"
   }
 }

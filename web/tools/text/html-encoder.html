@@ -29,95 +29,93 @@
     
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     
 </head>
 
 <body>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="../../index.html" id="backLink">← Back</a>
+            <a href="/index.html" id="backLink">← Back</a>
             <div id="languageSelector"></div>
         </div>
-        <h1 class="h4 mt-3">Codificar/Decodificar HTML</h1>
-        <p class="text-muted">Codifica y decodifica entidades HTML. Funciona offline en tu navegador.</p>
+        <h1 class="h4 mt-3">Encode/Decode HTML</h1>
+        <p class="text-muted">Encode and decode HTML entities. Works offline in your browser.</p>
 
         <div class="mb-3">
-    <label for="inputText" class="form-label">Texto a codificar/decodificar</label>
-    <textarea id="inputText" rows="3" class="form-control" placeholder="Escribe o pega el texto aquí..."></textarea>
+    <label for="inputText" class="form-label">Text to encode/decode</label>
+    <textarea id="inputText" rows="3" class="form-control" placeholder="Type or paste text here..."></textarea>
 </div>
 
 <div class="mb-3 d-flex gap-2 flex-wrap">
-    <button id="encodeBtn" class="btn btn-primary">Codificar HTML</button>
-    <button id="encodeAllBtn" class="btn btn-primary">Codificar todo</button>
-    <button id="decodeBtn" class="btn btn-primary">Decodificar HTML</button>
+    <button id="encodeBtn" class="btn btn-primary">Encode HTML</button>
+    <button id="encodeAllBtn" class="btn btn-primary">Encode all</button>
+    <button id="decodeBtn" class="btn btn-primary">Decode HTML</button>
     <button id="copyBtn" class="btn btn-outline-secondary">Copy</button>
 </div>
 
 <div class="mb-3">
-    <label for="outputText" class="form-label">Resultado</label>
-    <textarea id="outputText" rows="3" class="form-control" readonly
-        placeholder="Aquí aparecerá el texto codificado o decodificado..."></textarea>
+    <label for="outputText" class="form-label">Result</label>
+    <textarea id="outputText" rows="3" class="form-control" readonly placeholder="Encoded or decoded text will appear here..."></textarea>
 </div>
 
 <div class="alert alert-info small">
-    <strong>Modos de codificación:</strong><br>
-    • <strong>Codificar HTML:</strong> Convierte solo los caracteres especiales necesarios (&lt; &gt; &amp;
-    &quot; &#39;)<br>
-    • <strong>Codificar todo:</strong> Convierte todos los caracteres no ASCII a entidades HTML<br>
-    • <strong>Decodificar HTML:</strong> Convierte todas las entidades HTML a sus caracteres correspondientes
+    <strong>Encoding modes:</strong><br>
+    • <strong>Encode HTML: Converts only necessary special characters</strong><br>
+    • <strong>Encode all: Converts all non-ASCII characters to HTML entities</strong><br>
+    • <strong>Decode HTML: Converts all HTML entities to their corresponding characters</strong>
 </div>
 
 <div class="mt-4">
-    <h5>Referencias comunes</h5>
+    <h5>Common references</h5>
     <div class="table-responsive">
         <table class="table table-sm">
             <thead>
                 <tr>
-                    <th>Carácter</th>
-                    <th>Entidad</th>
-                    <th>Descripción</th>
+                    <th>Character</th>
+                    <th>Entity</th>
+                    <th>Description</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>&lt;</td>
-                    <td>&amp;lt;</td>
-                    <td>Menor que</td>
+                    <td>&lt;</td>
+                    <td>Less than</td>
                 </tr>
                 <tr>
                     <td>&gt;</td>
-                    <td>&amp;gt;</td>
-                    <td>Mayor que</td>
+                    <td>&gt;</td>
+                    <td>Greater than</td>
                 </tr>
                 <tr>
+                    <td>&</td>
                     <td>&amp;</td>
-                    <td>&amp;amp;</td>
                     <td>Ampersand</td>
                 </tr>
                 <tr>
+                    <td>"</td>
                     <td>&quot;</td>
-                    <td>&amp;quot;</td>
-                    <td>Comilla doble</td>
+                    <td>Double quote</td>
                 </tr>
                 <tr>
+                    <td>'</td>
                     <td>&#39;</td>
-                    <td>&amp;#39;</td>
-                    <td>Comilla simple</td>
+                    <td>Single quote</td>
                 </tr>
                 <tr>
                     <td>©</td>
-                    <td>&amp;copy;</td>
+                    <td>&copy;</td>
                     <td>Copyright</td>
                 </tr>
                 <tr>
                     <td>®</td>
-                    <td>&amp;reg;</td>
-                    <td>Marca registrada</td>
+                    <td>&reg;</td>
+                    <td>Registered trademark</td>
                 </tr>
                 <tr>
                     <td>€</td>
-                    <td>&amp;euro;</td>
+                    <td>&euro;</td>
                     <td>Euro</td>
                 </tr>
             </tbody>
@@ -130,9 +128,9 @@
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","encodeButton":"Encode","decodeButton":"Decode"};
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","encodeButton":"Encode","decodeButton":"Decode","inputHtmlTextLabel":"Text to encode/decode","textPlaceholder":"Type or paste text here...","encodeHtmlButton":"Encode HTML","encodeAllButton":"Encode all","decodeHtmlButton":"Decode HTML","resultLabel":"Result","resultPlaceholder":"Encoded or decoded text will appear here...","encodingModesTitle":"Encoding modes:","encodeHtmlMode":"Encode HTML: Converts only necessary special characters","encodeAllMode":"Encode all: Converts all non-ASCII characters to HTML entities","decodeHtmlMode":"Decode HTML: Converts all HTML entities to their corresponding characters","commonReferencesTitle":"Common references","characterHeader":"Character","entityHeader":"Entity","descriptionHeader":"Description","lessThanLabel":"Less than","greaterThanLabel":"Greater than","ampersandLabel":"Ampersand","doubleQuoteLabel":"Double quote","singleQuoteLabel":"Single quote","copyrightLabel":"Copyright","registeredLabel":"Registered trademark","euroLabel":"Euro","pleaseEnterTextToEncode":"Enter text to encode","htmlTextEncoded":"Text encoded in HTML","htmlAllTextEncoded":"All text encoded in HTML","encodeError":"Error encoding","pleaseEnterHtmlToDecode":"Enter HTML text to decode","htmlTextDecoded":"Text decoded from HTML","decodeError":"Error decoding - input appears invalid","noResultToCopy":"No result to copy","copyError":"Error copying"};
     </script>
-<script src="../../js/tools/html-encoder.js"></script>
+<script src="/js/tools/html-encoder.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/i18n/language-selector.js"></script>
 

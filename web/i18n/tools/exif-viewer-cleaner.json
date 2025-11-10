@@ -22,7 +22,13 @@
     "cleanExifButton": "Remove EXIF Metadata",
     "exifMetadataTitle": "EXIF Metadata:",
     "cleanedImageTitle": "Clean Image (no EXIF):",
-    "downloadCleanImageButton": "Download Clean Image"
+    "downloadCleanImageButton": "Download Clean Image",
+    "imageLoaded": "Image loaded: {filename}",
+    "noExifFound": "No EXIF metadata found.",
+    "errorReadingExif": "Error reading EXIF metadata:",
+    "errorReadingExifGeneric": "Error reading EXIF metadata.",
+    "errorCleaningExif": "Error cleaning EXIF metadata:",
+    "errorCleaningExifGeneric": "An error occurred while cleaning EXIF metadata."
   },
   "es": {
     "copyButton": "Copiar",
@@ -47,6 +53,12 @@
     "cleanExifButton": "Eliminar Metadatos EXIF",
     "exifMetadataTitle": "Metadatos EXIF:",
     "cleanedImageTitle": "Imagen Limpia (sin EXIF):",
-    "downloadCleanImageButton": "Descargar Imagen Limpia"
+    "downloadCleanImageButton": "Descargar Imagen Limpia",
+    "imageLoaded": "Imagen cargada: {filename}",
+    "noExifFound": "No se encontraron metadatos EXIF.",
+    "errorReadingExif": "Error al leer metadatos EXIF:",
+    "errorReadingExifGeneric": "Error al leer metadatos EXIF.",
+    "errorCleaningExif": "Error al limpiar metadatos EXIF:",
+    "errorCleaningExifGeneric": "Ocurrió un error al limpiar los metadatos EXIF."
   }
 }

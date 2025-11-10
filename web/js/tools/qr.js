@@ -21,7 +21,7 @@ function showMsg(text, isError = false) {
 }
 
 function clearPreview() {
-    qrPreview.innerHTML = 'Aquí aparecerá el QR';
+    qrPreview.innerHTML = t.qrWillAppearHere || 'Aquí aparecerá el QR';
     downloadBtn.disabled = true;
     copyBtn.disabled = true;
     qrInstance = null;
@@ -30,7 +30,7 @@ function clearPreview() {
 function generateQR() {
     const text = qrText.value.trim();
     if (!text) {
-        showMsg('Introduce texto o URL para generar', true);
+        showMsg(t.enterTextToGenerate || 'Introduce texto o URL para generar', true);
         return;
     }
     const size = Math.max(64, Math.min(2048, Number(sizeInput.value) || 256));
@@ -65,17 +65,17 @@ function generateQR() {
                 downloadBtn.disabled = true;
                 copyBtn.disabled = true;
             }
-            showMsg('QR generado');
+            showMsg(t.qrGenerated || 'QR generado');
         }, 80);
     } catch (e) {
-        showMsg('Error al generar QR: ' + e.message, true);
+        showMsg((t.qrGenerateError || 'Error al generar QR') + ': ' + e.message, true);
     }
 }
 
 async function downloadPNG() {
     try {
         const canvas = qrPreview.querySelector('canvas');
-        if (!canvas) { showMsg('No hay QR para descargar', true); return; }
+        if (!canvas) { showMsg(t.noQrToDownload || 'No hay QR para descargar', true); return; }
         const dataUrl = canvas.toDataURL('image/png');
         const a = document.createElement('a');
         a.href = dataUrl;
@@ -83,31 +83,31 @@ async function downloadPNG() {
         document.body.appendChild(a);
         a.click();
         a.remove();
-        showMsg('Descargando PNG');
+        showMsg(t.downloadingPng || 'Descargando PNG');
     } catch (e) {
-        showMsg('Error al descargar: ' + e.message, true);
+        showMsg((t.downloadError || 'Error al descargar') + ': ' + e.message, true);
     }
 }
 
 async function copyImage() {
     try {
         const canvas = qrPreview.querySelector('canvas');
-        if (!canvas) { showMsg('No hay QR para copiar', true); return; }
+        if (!canvas) { showMsg(t.noQrToCopy || 'No hay QR para copiar', true); return; }
         // Convertir a blob
         const blob = await new Promise(resolve => canvas.toBlob(resolve));
         // Copiar al portapapeles (ClipboardItem)
         const item = new ClipboardItem({ 'image/png': blob });
         await navigator.clipboard.write([item]);
-        showMsg('Imagen copiada al portapapeles');
+        showMsg(t.imageCopied || 'Imagen copiada al portapapeles');
     } catch (e) {
         // Fallback: copiar dataURL en texto
         try {
             const canvas = qrPreview.querySelector('canvas');
             const dataUrl = canvas.toDataURL('image/png');
             await navigator.clipboard.writeText(dataUrl);
-            showMsg('Data URL copiada al portapapeles (fallback)');
+            showMsg(t.dataUrlCopied || 'Data URL copiada al portapapeles (fallback)');
         } catch (err) {
-            showMsg('Error al copiar: ' + (e.message || err.message), true);
+            showMsg((t.copyError || 'Error al copiar') + ': ' + (e.message || err.message), true);
         }
     }
 }

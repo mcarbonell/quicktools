@@ -28,7 +28,15 @@
     "base64UseCase1": "• Sending binary data by email",
     "base64UseCase2": "• Encoding inline images in HTML/CSS",
     "base64UseCase3": "• Transmitting data that may contain special characters",
-    "base64UseCase4": "• Storing binary data in text formats"
+    "base64UseCase4": "• Storing binary data in text formats",
+    "enterTextToEncode": "Enter text to encode",
+    "textEncodedBase64": "Text encoded in Base64",
+    "encodeError": "Error encoding",
+    "enterBase64ToDecode": "Enter Base64 text to decode",
+    "textDecodedBase64": "Text decoded from Base64",
+    "decodeError": "Error decoding - input doesn't appear to be valid Base64",
+    "noResultToCopy": "No result to copy",
+    "copyError": "Error copying"
   },
   "es": {
     "copyButton": "Copiar",
@@ -59,6 +67,14 @@
     "base64UseCase1": "• Enviar datos binarios por email",
     "base64UseCase2": "• Codificar imágenes en línea en HTML/CSS",
     "base64UseCase3": "• Transmitir datos que podrían contener caracteres especiales",
-    "base64UseCase4": "• Almacenar datos binarios en formatos de texto"
+    "base64UseCase4": "• Almacenar datos binarios en formatos de texto",
+    "enterTextToEncode": "Introduce texto para codificar",
+    "textEncodedBase64": "Texto codificado en Base64",
+    "encodeError": "Error al codificar",
+    "enterBase64ToDecode": "Introduce texto Base64 para decodificar",
+    "textDecodedBase64": "Texto decodificado de Base64",
+    "decodeError": "Error al decodificar - la entrada no parece ser Base64 válido",
+    "noResultToCopy": "No hay resultado para copiar",
+    "copyError": "Error al copiar"
   }
 }

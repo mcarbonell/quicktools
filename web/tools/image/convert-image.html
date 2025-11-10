@@ -29,38 +29,38 @@
     
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     
 </head>
 
 <body>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="../../index.html" id="backLink">← Back</a>
+            <a href="/index.html" id="backLink">← Back</a>
             <div id="languageSelector"></div>
         </div>
-        <h1 class="h4 mt-3">Convertir formato de imagen</h1>
-        <p class="text-muted">Convierte JPG, PNG y WebP sin subir archivos.</p>
+        <h1 class="h4 mt-3">Convert Image Format</h1>
+        <p class="text-muted">Convert JPG, PNG and WebP without uploading files.</p>
 
-        <p class="text-muted">Sube una imagen y elige el formato de salida.</p>
+        <p class="text-muted">Upload an image and choose the output format.</p>
 
 <div class="row g-3">
     <div class="col-md-6">
         <div class="drop-zone mb-2" id="dropZone">
             <input type="file" id="fileInput" accept="image/*" class="d-none">
             <div class="drop-message">
-                Arrastra una imagen aquí o haz clic para seleccionar
+                Drag an image here or click to select
             </div>
         </div>
         <select id="formatSelect" class="form-select mb-2">
             <option value="image/png">PNG</option>
-            <option value="image/jpeg">JPG (calidad 0.92)</option>
+            <option value="image/jpeg">JPG (quality 0.92)</option>
             <option value="image/webp">WebP</option>
         </select>
-        <button id="convertBtn" class="btn btn-primary">Convertir y descargar</button>
+        <button id="convertBtn" class="btn btn-primary">Convert and download</button>
     </div>
     <div class="col-md-6">
-        <p>Vista previa:</p>
+        <p>Preview:</p>
         <div class="border p-2"><canvas id="previewCanvas" style="max-width:100%"></canvas></div>
     </div>
 </div>
@@ -68,9 +68,9 @@
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","convertButton":"Convert","formatLabel":"Format"};
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","convertButton":"Convert","formatLabel":"Format","imageConvertDescription":"Upload an image and choose the output format.","dropMessage":"Drag an image here or click to select","pngOption":"PNG","jpgOption":"JPG (quality 0.92)","webpOption":"WebP","convertAndDownloadButton":"Convert and download","previewLabel":"Preview:","selectValidImage":"Please select a valid image file.","imageLoaded":"Image loaded: {filename}","uploadImageFirst":"Upload an image first."};
     </script>
-<script src="../../js/tools/convert-image.js"></script>
+<script src="/js/tools/convert-image.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/i18n/language-selector.js"></script>
 

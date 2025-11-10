@@ -27,9 +27,9 @@ dropZonePDF?.addEventListener('drop', (e) => {
     const file = e.dataTransfer?.files[0];
     if (file?.type === 'application/pdf') {
         pdfInput.files = e.dataTransfer.files;
-        dropZonePDF.querySelector('.drop-message').textContent = `PDF cargado: ${file.name}`;
+        const pdfMsg = (t.pdfLoaded || 'PDF cargado: {filename}').replace('{filename}', file.name); dropZonePDF.querySelector('.drop-message').textContent = pdfMsg;
     } else {
-        alert('Por favor, selecciona un archivo PDF válido.');
+        alert(t.selectValidPdf || 'Por favor, selecciona un archivo PDF válido.');
     }
 });
 
@@ -37,14 +37,14 @@ dropZonePDF?.addEventListener('drop', (e) => {
 pdfInput?.addEventListener('change', (e) => {
     const file = e.target.files?.[0];
     if (file) {
-        dropZonePDF.querySelector('.drop-message').textContent = `PDF cargado: ${file.name}`;
+        const pdfMsg = (t.pdfLoaded || 'PDF cargado: {filename}').replace('{filename}', file.name); dropZonePDF.querySelector('.drop-message').textContent = pdfMsg;
     }
 });
 
 extractBtn?.addEventListener('click', async () => {
     const f = pdfInput.files && pdfInput.files[0];
-    if (!f) return alert('Selecciona un archivo PDF primero.');
-    pdfText.value = 'Extrayendo texto...';
+    if (!f) return alert(t.selectPdfFirst || 'Selecciona un archivo PDF primero.');
+    pdfText.value = t.extractingText || 'Extrayendo texto...';
     const arrayBuffer = await f.arrayBuffer();
     const uint8 = new Uint8Array(arrayBuffer);
 
@@ -61,7 +61,7 @@ extractBtn?.addEventListener('click', async () => {
         pdfText.value = fullText;
     } catch (e) {
         pdfText.value = '';
-        alert('Error extrayendo PDF: ' + e.message);
+        alert((t.pdfExtractError || 'Error extrayendo PDF') + ': ' + e.message);
     }
 });
 
@@ -96,7 +96,7 @@ copyBtn?.addEventListener('click', async () => {
                 copyBtn.innerHTML = originalText;
             }, 2000);
         } catch (err) {
-            alert('Error al copiar: ' + e.message + '\n' + (err?.message || ''));
+            alert((t.copyError || 'Error al copiar') + ': ' + e.message + '\n' + (err?.message || ''));
         }
     }
 });

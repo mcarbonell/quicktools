@@ -29,41 +29,39 @@
     
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     
 </head>
 
 <body>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="../../index.html" id="backLink">← Back</a>
+            <a href="/index.html" id="backLink">← Back</a>
             <div id="languageSelector"></div>
         </div>
         <h1 class="h4 mt-3">XML ↔ JSON</h1>
-        <p class="text-muted">Convierte XML a JSON y JSON a XML en el navegador.</p>
+        <p class="text-muted">Convert XML to JSON and JSON to XML in the browser.</p>
 
         <div class="mb-3">
-    <label for="inputText" class="form-label">Entrada (XML o JSON)</label>
-    <textarea id="inputText" rows="10" class="form-control" placeholder="Pega tu XML o JSON aquí..."></textarea>
+    <label for="inputText" class="form-label">Input (XML or JSON)</label>
+    <textarea id="inputText" rows="10" class="form-control" placeholder="Paste your XML or JSON here..."></textarea>
 </div>
 
 <div class="mb-3 d-flex gap-2 flex-wrap">
     <button id="xmlToJsonBtn" class="btn btn-primary">XML → JSON</button>
     <button id="jsonToXmlBtn" class="btn btn-primary">JSON → XML</button>
     <button id="prettyJsonBtn" class="btn btn-secondary">Prettify JSON</button>
-    <button id="copyBtn" class="btn btn-outline-secondary">Copiar resultado</button>
+    <button id="copyBtn" class="btn btn-outline-secondary">Copy result</button>
 </div>
 
 <div class="mb-3">
-    <label for="outputText" class="form-label">Resultado</label>
-    <textarea id="outputText" rows="10" class="form-control" readonly
-        placeholder="Aquí aparecerá el resultado..."></textarea>
+    <label for="outputText" class="form-label">Result</label>
+    <textarea id="outputText" rows="10" class="form-control" readonly placeholder="Result will appear here..."></textarea>
 </div>
 
 <div class="form-check mb-2">
     <input class="form-check-input" type="checkbox" id="preserveAttributes" checked>
-    <label class="form-check-label" for="preserveAttributes">Preservar atributos como objetos (por
-        defecto)</label>
+    <label class="form-check-label" for="preserveAttributes">Preserve attributes as objects (default)</label>
 </div>
 
 <div id="msg" class="text-muted small"></div>
@@ -71,10 +69,10 @@
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","convertButton":"Convert"};
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","convertButton":"Convert","inputXmlJsonLabel":"Input (XML or JSON)","inputPlaceholder":"Paste your XML or JSON here...","xmlToJsonButton":"XML → JSON","jsonToXmlButton":"JSON → XML","prettyJsonButton":"Prettify JSON","copyResultButton":"Copy result","resultLabel":"Result","resultPlaceholder":"Result will appear here...","preserveAttributesLabel":"Preserve attributes as objects (default)","enterXmlToConvert":"Enter XML to convert","xmlParseError":"Error parsing XML","xmlConvertedToJson":"XML converted to JSON","enterJsonToConvert":"Enter JSON to convert","jsonConvertedToXml":"JSON converted to XML","jsonParseError":"Error parsing JSON","enterJsonToFormat":"Enter JSON to format","noResultToCopy":"No result to copy","copyError":"Error copying"};
     </script>
 <script src="https://cdn.jsdelivr.net/npm/fast-xml-parser@4.3.0/dist/fast-xml-parser.min.js"></script>
-<script src="../../js/tools/xml-json.js"></script>
+<script src="/js/tools/xml-json.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/i18n/language-selector.js"></script>
 

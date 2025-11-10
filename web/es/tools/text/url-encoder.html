@@ -29,14 +29,14 @@
     
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     
 </head>
 
 <body>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="../../index.html" id="backLink">← Back</a>
+            <a href="/index.html" id="backLink">← Back</a>
             <div id="languageSelector"></div>
         </div>
         <h1 class="h4 mt-3">Codificar/Decodificar URL</h1>
@@ -64,10 +64,8 @@
 
 <div class="alert alert-info small">
     <strong>Diferencias entre codificar URL y componente:</strong><br>
-    • <code>encodeURI</code>: Codifica una URL completa preservando caracteres especiales como
-    <code>/ ? : @ & = + $ #</code><br>
-    • <code>encodeURIComponent</code>: Codifica un componente de URL (como un parámetro), escapando más
-    caracteres
+    • encodeURI: Codifica una URL completa preservando caracteres especiales como <code>/ ? : @ & = + $ #</code><br>
+    • encodeURIComponent: Codifica un componente de URL (como un parámetro), escapando más caracteres
 </div>
 
 <div id="msg" class="text-muted small"></div>
@@ -75,9 +73,9 @@
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","encodeButton":"Codificar","decodeButton":"Decodificar"};
+        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","encodeButton":"Codificar","decodeButton":"Decodificar","inputUrlTextLabel":"Texto a codificar/decodificar","textPlaceholder":"Por ejemplo: https://ejemplo.com/ruta?param=valor con espacios","encodeUrlButton":"Codificar URL","encodeComponentButton":"Codificar componente","decodeUrlButton":"Decodificar URL","decodeComponentButton":"Decodificar componente","resultLabel":"Resultado","resultPlaceholder":"Aquí aparecerá el texto codificado o decodificado...","differencesTitle":"Diferencias entre codificar URL y componente:","encodeUriDescription":"• encodeURI: Codifica una URL completa preservando caracteres especiales como","encodeUriComponentDescription":"• encodeURIComponent: Codifica un componente de URL (como un parámetro), escapando más caracteres","pleaseEnterTextToEncode":"Introduce texto para codificar","pleaseEnterTextToDecode":"Introduce texto para decodificar","urlEncoded":"URL codificada","componentEncoded":"Componente codificado","urlDecoded":"URL decodificada","componentDecoded":"Componente decodificado","encodeError":"Error al codificar","decodeError":"Error al decodificar - la entrada parece inválida","noResultToCopy":"No hay resultado para copiar","copyError":"Error al copiar"};
     </script>
-<script src="../../js/tools/url-encoder.js"></script>
+<script src="/js/tools/url-encoder.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/i18n/language-selector.js"></script>
 

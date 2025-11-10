@@ -12,7 +12,7 @@ dropZone?.addEventListener('click', () => pdfInput.click());
 function handleFiles(files) {
     if (files.length === 0) return;
     pdfInput.files = files;
-    dropZone.querySelector('.drop-message').textContent = `${files.length} archivo(s) seleccionado(s)`;
+    const filesMsg = (t.filesSelected || '{count} archivo(s) seleccionado(s)').replace('{count}', files.length); dropZone.querySelector('.drop-message').textContent = filesMsg;
 }
 
 // Eventos de drag & drop
@@ -38,11 +38,11 @@ pdfInput.addEventListener('change', (e) => {
 
 mergeBtn.addEventListener('click', async () => {
     if (pdfInput.files.length < 2) {
-        alert('Por favor, selecciona al menos dos archivos PDF.');
+        alert(t.selectAtLeastTwo || 'Por favor, selecciona al menos dos archivos PDF.');
         return;
     }
 
-    outputDiv.innerHTML = '<p>Procesando...</p>';
+    outputDiv.innerHTML = `<p>${t.processingText || 'Procesando...'}</p>`;
 
     try {
         const mergedPdf = await PDFLib.PDFDocument.create();
@@ -61,9 +61,9 @@ mergeBtn.addEventListener('click', async () => {
         const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
 
-        outputDiv.innerHTML = `<a href="${url}" download="merged.pdf">Descargar PDF unido</a>`;
+        outputDiv.innerHTML = `<a href="${url}" download="merged.pdf">${t.downloadMergedPdf || 'Descargar PDF unido'}</a>`;
     } catch (error) {
-        console.error('Error al unir los PDFs:', error);
-        outputDiv.innerHTML = '<p>Ocurrió un error al unir los PDFs. Por favor, inténtalo de nuevo.</p>';
+        console.error((t.errorMergingPdfs || 'Error al unir los PDFs:'), error);
+        outputDiv.innerHTML = `<p>${t.errorMergingGeneric || 'Ocurrió un error al unir los PDFs. Por favor, inténtalo de nuevo.'}</p>`;
     }
 });

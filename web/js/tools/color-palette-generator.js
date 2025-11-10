@@ -21,7 +21,7 @@ function handleFile(file) {
     dataTransfer.items.add(file);
     imageInput.files = dataTransfer.files;
 
-    dropZone.querySelector('.drop-message').textContent = `Imagen cargada: ${file.name}`;
+    const imgMsg = (t.imageLoaded || 'Imagen cargada: {filename}').replace('{filename}', file.name); dropZone.querySelector('.drop-message').textContent = imgMsg;
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -56,7 +56,7 @@ imageInput.addEventListener('change', (event) => {
 
 extractBtn.addEventListener('click', () => {
     if (!previewImg.src || previewImg.style.display === 'none') {
-        alert('Por favor, sube una imagen primero.');
+        alert(t.uploadImageFirst || 'Por favor, sube una imagen primero.');
         return;
     }
 
@@ -96,8 +96,8 @@ function extractColors() {
             paletteDisplay.appendChild(colorSwatch);
         });
     } catch (error) {
-        console.error('Error al extraer la paleta de colores:', error);
-        paletteDisplay.innerHTML = '<p class="text-danger">No se pudo extraer la paleta de colores. Asegúrate de que la imagen es válida y no está corrupta.</p>';
+        console.error((t.errorExtractingPalette || 'Error al extraer la paleta de colores:'), error);
+        paletteDisplay.innerHTML = `<p class="text-danger">${t.errorExtractingPaletteGeneric || 'No se pudo extraer la paleta de colores. Asegúrate de que la imagen es válida y no está corrupta.'}</p>`;
     }
 }
 

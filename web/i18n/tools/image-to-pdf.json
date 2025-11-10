@@ -24,7 +24,13 @@
     "orientationLabel": "Orientation",
     "portraitOption": "Portrait",
     "landscapeOption": "Landscape",
-    "convertToPdfButton": "Convert to PDF"
+    "convertToPdfButton": "Convert to PDF",
+    "filesSelected": "{count} file(s) selected",
+    "selectAtLeastOneImage": "Please select at least one image.",
+    "processingMayTakeTime": "Processing... this may take a moment.",
+    "downloadPdf": "Download PDF",
+    "errorConvertingImageToPdf": "Error converting image to PDF:",
+    "errorConvertingImageGeneric": "An error occurred while converting the image to PDF. Make sure the files are valid images."
   },
   "es": {
     "copyButton": "Copiar",
@@ -51,6 +57,12 @@
     "orientationLabel": "Orientación",
     "portraitOption": "Vertical",
     "landscapeOption": "Horizontal",
-    "convertToPdfButton": "Convertir a PDF"
+    "convertToPdfButton": "Convertir a PDF",
+    "filesSelected": "{count} archivo(s) seleccionado(s)",
+    "selectAtLeastOneImage": "Por favor, selecciona al menos una imagen.",
+    "processingMayTakeTime": "Procesando... esto puede tardar un momento.",
+    "downloadPdf": "Descargar PDF",
+    "errorConvertingImageToPdf": "Error al convertir imagen a PDF:",
+    "errorConvertingImageGeneric": "Ocurrió un error al convertir la imagen a PDF. Asegúrate de que los archivos son imágenes válidas."
   }
 }

@@ -19,7 +19,9 @@
     "selectImageLabel": "Select an image",
     "dropMessage": "Drag your image here or click to select",
     "imageToCropAlt": "Image to crop",
-    "cropAndDownloadButton": "Crop and Download"
+    "cropAndDownloadButton": "Crop and Download",
+    "imageLoaded": "Image loaded: {filename}",
+    "downloadCroppedImage": "Download Cropped Image"
   },
   "es": {
     "copyButton": "Copiar",
@@ -41,6 +43,8 @@
     "selectImageLabel": "Selecciona una imagen",
     "dropMessage": "Arrastra tu imagen aquí o haz clic para seleccionar",
     "imageToCropAlt": "Imagen a recortar",
-    "cropAndDownloadButton": "Recortar y Descargar"
+    "cropAndDownloadButton": "Recortar y Descargar",
+    "imageLoaded": "Imagen cargada: {filename}",
+    "downloadCroppedImage": "Descargar Imagen Recortada"
   }
 }

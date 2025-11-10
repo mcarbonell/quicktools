@@ -59,7 +59,7 @@ const t = window.toolTranslations || {};
             const lapTime = formatTime(stopwatchElapsedTime);
             const listItem = document.createElement('li');
             listItem.classList.add('list-group-item', 'lap-item');
-            listItem.innerHTML = `<span>Vuelta ${lapCounter}</span><span>${lapTime}</span>`;
+            listItem.innerHTML = `<span>${(t.lapText || 'Vuelta {number}').replace('{number}', lapCounter)}</span><span>${lapTime}</span>`;
             stopwatchLaps.prepend(listItem);
         }
     });
@@ -112,7 +112,7 @@ const t = window.toolTranslations || {};
             timerStartBtn.disabled = false;
             timerPauseBtn.disabled = true;
             timerResetBtn.disabled = true;
-            alert('¡Tiempo terminado!');
+            alert(t.timeFinished || '¡Tiempo terminado!');
             return;
         }
         timerDisplay.textContent = formatTimerTime(timerRemainingTime);
@@ -135,7 +135,7 @@ const t = window.toolTranslations || {};
             if (timerRemainingTime <= 0) {
                 setTimerDuration(); // Set duration if not already set or reset
                 if (timerRemainingTime <= 0) {
-                    alert('Por favor, establece una duración para el temporizador.');
+                    alert(t.setTimerDuration || 'Por favor, establece una duración para el temporizador.');
                     return;
                 }
             }

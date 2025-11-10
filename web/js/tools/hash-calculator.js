@@ -20,7 +20,7 @@ async function calculateHash() {
     const algorithm = hashType.value;
 
     if (!text) {
-        showMsg('Por favor, introduce el texto a hashear.', true);
+        showMsg(t.enterTextToHash || 'Por favor, introduce el texto a hashear.', true);
         resultHash.value = '';
         copyBtn.disabled = true;
         return;
@@ -34,7 +34,7 @@ async function calculateHash() {
         if (algorithm === 'MD5') {
             // MD5 no es parte de SubtleCrypto estándar, se necesitaría una librería externa
             // Por simplicidad, para MD5 mostraremos un mensaje o usaremos un polyfill/librería si se desea.
-            showMsg('MD5 no es soportado directamente por la API Web Crypto. Usa SHA-1, SHA-256 o SHA-512.', true);
+            showMsg(t.md5NotSupported || 'MD5 no es soportado directamente por la API Web Crypto. Usa SHA-1, SHA-256 o SHA-512.', true);
             resultHash.value = '';
             copyBtn.disabled = true;
             return;
@@ -47,10 +47,10 @@ async function calculateHash() {
 
         resultHash.value = hexHash;
         copyBtn.disabled = false;
-        showMsg('Hash calculado correctamente.');
+        showMsg(t.hashCalculated || 'Hash calculado correctamente.');
 
     } catch (e) {
-        showMsg('Error al calcular el hash: ' + e.message, true);
+        showMsg((t.hashCalculateError || 'Error al calcular el hash') + ': ' + e.message, true);
         resultHash.value = '';
         copyBtn.disabled = true;
     }
@@ -58,25 +58,25 @@ async function calculateHash() {
 
 async function copyHash() {
     const text = resultHash.value;
-    if (!text || text.includes('(El hash aparecerá aquí)')) return;
+    if (!text || text.includes(t.hashResultPlaceholder || '(El hash aparecerá aquí)')) return;
 
     try {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             await navigator.clipboard.writeText(text);
-            showMsg('Hash copiado al portapapeles');
+            showMsg(t.hashCopied || 'Hash copiado al portapapeles');
             return;
         }
     } catch (e) {
-        console.warn('navigator.clipboard.writeText falló:', e);
+        console.warn(t.clipboardFailed || 'navigator.clipboard.writeText falló:', e);
     }
 
     // Fallback a execCommand
     try {
         await fallbackCopyTextToClipboard(text);
-        showMsg('Hash copiado al portapapeles (fallback)');
+        showMsg(t.hashCopiedFallback || 'Hash copiado al portapapeles (fallback)');
     } catch (e) {
-        showMsg('Error al copiar: ' + (e && e.message ? e.message : e), true);
-        console.error('Copy failed:', e);
+        showMsg((t.copyError || 'Error al copiar') + ': ' + (e && e.message ? e.message : e), true);
+        console.error(t.execCopyFailed || 'Copy failed:', e);
     }
 }
 

@@ -38,7 +38,7 @@ generateBtn.addEventListener('click', () => {
     const amount = parseInt(amountInput.value, 10);
     const unit = unitSelect.value;
     if (isNaN(amount) || amount < 1) {
-        alert('Por favor, introduce una cantidad válida (mínimo 1).');
+        alert(t.invalidAmount || 'Por favor, introduce una cantidad válida (mínimo 1).');
         return;
     }
     loremIpsumOutput.value = generateLoremIpsum(amount, unit);
@@ -47,7 +47,7 @@ generateBtn.addEventListener('click', () => {
 copyBtn.addEventListener('click', () => {
     loremIpsumOutput.select();
     document.execCommand('copy');
-    alert('Texto copiado al portapapeles!');
+    alert(t.textCopied || 'Texto copiado al portapapeles!');
 });
 
 // Initial generation

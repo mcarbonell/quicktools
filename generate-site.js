@@ -10,7 +10,7 @@ const dataDir = path.join(projectRoot, 'data');
 const i18nDir = path.join(projectRoot, 'i18n');
 const baseTemplatePath = path.join(templatesDir, 'base.html');
 const indexTemplatePath = path.join(templatesDir, 'index-base.html');
-const toolsIndexPath = path.join(dataDir, 'tools-index.json');
+const toolsIndexPath = path.join(dataDir, 'tools-index-es.json'); // Using Spanish as base for iteration
 
 // Load translations
 async function loadTranslations(lang) {
@@ -231,8 +231,8 @@ async function generateTools(toolsIndex, lang) {
         generatedHtml = generatedHtml.replace(/{{og_description}}/g, tool.description || '');
         generatedHtml = generatedHtml.replace(/{{og_url}}/g, `https://${siteConfig.domain}/${lang === siteConfig.defaultLanguage ? '' : lang + '/'}${toolSlug}`);
         generatedHtml = generatedHtml.replace(/{{head_extra}}/g, headExtra);
-        generatedHtml = generatedHtml.replace(/{{tool_title}}/g, tool.title || '');
-        generatedHtml = generatedHtml.replace(/{{tool_description}}/g, tool.description || '');
+        generatedHtml = generatedHtml.replace(/{{tool_title}}/g, translatedTool.title || '');
+        generatedHtml = generatedHtml.replace(/{{tool_description}}/g, translatedTool.description || '');
         generatedHtml = generatedHtml.replace(/{{tool_content}}/g, toolContent);
         // Inject translations as global variable for JS
         const translationsScript = `

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://quicktools.dev/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/"/>
@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/"/>
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/image/image-resizer.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/image/image-resizer.html"/>
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/image/image-resizer.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/image/image-resizer.html"/>
@@ -34,7 +34,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/image/convert-image.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/image/convert-image.html"/>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/image/convert-image.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/image/convert-image.html"/>
@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/data/json-formatter.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/data/json-formatter.html"/>
@@ -58,7 +58,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/data/json-formatter.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/data/json-formatter.html"/>
@@ -66,7 +66,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/data/csv-json.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/data/csv-json.html"/>
@@ -74,7 +74,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/data/csv-json.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/data/csv-json.html"/>
@@ -82,7 +82,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/files/pdf-to-text.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/files/pdf-to-text.html"/>
@@ -90,7 +90,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/files/pdf-to-text.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/files/pdf-to-text.html"/>
@@ -98,7 +98,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/files/merge-pdfs.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/files/merge-pdfs.html"/>
@@ -106,7 +106,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/files/merge-pdfs.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/files/merge-pdfs.html"/>
@@ -114,7 +114,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/files/split-pdf.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/files/split-pdf.html"/>
@@ -122,7 +122,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/files/split-pdf.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/files/split-pdf.html"/>
@@ -130,7 +130,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/files/compress-pdf.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/files/compress-pdf.html"/>
@@ -138,7 +138,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/files/compress-pdf.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/files/compress-pdf.html"/>
@@ -146,7 +146,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/files/pdf-to-image.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/files/pdf-to-image.html"/>
@@ -154,7 +154,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/files/pdf-to-image.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/files/pdf-to-image.html"/>
@@ -162,7 +162,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/files/image-to-pdf.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/files/image-to-pdf.html"/>
@@ -170,7 +170,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/files/image-to-pdf.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/files/image-to-pdf.html"/>
@@ -178,7 +178,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/image/color-palette-generator.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/image/color-palette-generator.html"/>
@@ -186,7 +186,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/image/color-palette-generator.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/image/color-palette-generator.html"/>
@@ -194,7 +194,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/image/exif-viewer-cleaner.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/image/exif-viewer-cleaner.html"/>
@@ -202,7 +202,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/image/exif-viewer-cleaner.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/image/exif-viewer-cleaner.html"/>
@@ -210,7 +210,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/text/lorem-ipsum-generator.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/text/lorem-ipsum-generator.html"/>
@@ -218,7 +218,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/text/lorem-ipsum-generator.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/text/lorem-ipsum-generator.html"/>
@@ -226,7 +226,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/image/image-cropper.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/image/image-cropper.html"/>
@@ -234,7 +234,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/image/image-cropper.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/image/image-cropper.html"/>
@@ -242,7 +242,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/text/text-cleaner.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/text/text-cleaner.html"/>
@@ -250,7 +250,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/text/text-cleaner.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/text/text-cleaner.html"/>
@@ -258,7 +258,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/text/url-encoder.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/text/url-encoder.html"/>
@@ -266,7 +266,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/text/url-encoder.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/text/url-encoder.html"/>
@@ -274,7 +274,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/text/base64.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/text/base64.html"/>
@@ -282,7 +282,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/text/base64.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/text/base64.html"/>
@@ -290,7 +290,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/text/html-encoder.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/text/html-encoder.html"/>
@@ -298,7 +298,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/text/html-encoder.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/text/html-encoder.html"/>
@@ -306,7 +306,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/text/diff.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/text/diff.html"/>
@@ -314,7 +314,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/text/diff.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/text/diff.html"/>
@@ -322,7 +322,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/data/yaml-json.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/data/yaml-json.html"/>
@@ -330,7 +330,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/data/yaml-json.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/data/yaml-json.html"/>
@@ -338,7 +338,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/data/xml-json.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/data/xml-json.html"/>
@@ -346,7 +346,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/data/xml-json.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/data/xml-json.html"/>
@@ -354,7 +354,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/data/toml-json.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/data/toml-json.html"/>
@@ -362,7 +362,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/data/toml-json.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/data/toml-json.html"/>
@@ -370,7 +370,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/utils/qr-generator.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/utils/qr-generator.html"/>
@@ -378,7 +378,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/utils/qr-generator.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/utils/qr-generator.html"/>
@@ -386,7 +386,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/utils/password-generator.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/utils/password-generator.html"/>
@@ -394,7 +394,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/utils/password-generator.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/utils/password-generator.html"/>
@@ -402,7 +402,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/utils/hash-calculator.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/utils/hash-calculator.html"/>
@@ -410,7 +410,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/utils/hash-calculator.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/utils/hash-calculator.html"/>
@@ -418,7 +418,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/image/image-compressor.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/image/image-compressor.html"/>
@@ -426,7 +426,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/image/image-compressor.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/image/image-compressor.html"/>
@@ -434,7 +434,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/utils/color-picker-converter.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/utils/color-picker-converter.html"/>
@@ -442,7 +442,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/utils/color-picker-converter.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/utils/color-picker-converter.html"/>
@@ -450,7 +450,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/utils/stopwatch-timer.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/utils/stopwatch-timer.html"/>
@@ -458,7 +458,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/utils/stopwatch-timer.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/utils/stopwatch-timer.html"/>
@@ -466,7 +466,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/ai/chat-ai.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/ai/chat-ai.html"/>
@@ -474,7 +474,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/ai/chat-ai.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/ai/chat-ai.html"/>
@@ -482,7 +482,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/ai/summarize.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/ai/summarize.html"/>
@@ -490,7 +490,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/ai/summarize.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/ai/summarize.html"/>
@@ -498,7 +498,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/ai/improve-text.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/ai/improve-text.html"/>
@@ -506,7 +506,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/ai/improve-text.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/ai/improve-text.html"/>
@@ -514,7 +514,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/ai/chat-pdf.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/ai/chat-pdf.html"/>
@@ -522,7 +522,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/ai/chat-pdf.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/ai/chat-pdf.html"/>
@@ -530,7 +530,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/tools/ai/edit-image.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/ai/edit-image.html"/>
@@ -538,7 +538,7 @@
   </url>
   <url>
     <loc>https://quicktools.dev/es/tools/ai/edit-image.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://quicktools.dev/tools/ai/edit-image.html"/>

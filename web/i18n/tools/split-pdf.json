@@ -19,7 +19,15 @@
     "selectPdfFileLabel": "Select a PDF file",
     "dropMessage": "Drag your PDF here or click to select",
     "pagesToExtractLabel": "Pages to extract (e.g.: 1, 3-5, 8)",
-    "pagesPlaceholder": "1, 3-5, 8"
+    "pagesPlaceholder": "1, 3-5, 8",
+    "fileLoaded": "File loaded: {filename}",
+    "selectPdfFile": "Please select a PDF file.",
+    "specifyPages": "Please specify the pages to extract.",
+    "processingText": "Processing...",
+    "invalidPages": "The specified pages are not valid.",
+    "downloadSplitPdf": "Download split PDF",
+    "errorSplittingPdf": "Error splitting PDF:",
+    "errorSplittingGeneric": "An error occurred while splitting the PDF. Please try again."
   },
   "es": {
     "copyButton": "Copiar",
@@ -41,6 +49,14 @@
     "selectPdfFileLabel": "Selecciona un archivo PDF",
     "dropMessage": "Arrastra tu PDF aquí o haz clic para seleccionar",
     "pagesToExtractLabel": "Páginas a extraer (ej: 1, 3-5, 8)",
-    "pagesPlaceholder": "1, 3-5, 8"
+    "pagesPlaceholder": "1, 3-5, 8",
+    "fileLoaded": "Archivo cargado: {filename}",
+    "selectPdfFile": "Por favor, selecciona un archivo PDF.",
+    "specifyPages": "Por favor, especifica las páginas a extraer.",
+    "processingText": "Procesando...",
+    "invalidPages": "Las páginas especificadas no son válidas.",
+    "downloadSplitPdf": "Descargar PDF dividido",
+    "errorSplittingPdf": "Error al dividir el PDF:",
+    "errorSplittingGeneric": "Ocurrió un error al dividir el PDF. Por favor, inténtalo de nuevo."
   }
 }

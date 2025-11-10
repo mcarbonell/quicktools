@@ -13,7 +13,7 @@ const msg = document.getElementById('msg');
 encodeBtn?.addEventListener('click', () => {
     const input = inputText.value;
     if (!input.trim()) {
-        msg.textContent = 'Introduce texto para codificar';
+        msg.textContent = t.enterTextToEncode || 'Introduce texto para codificar';
         return;
     }
     try {
@@ -23,9 +23,9 @@ encodeBtn?.addEventListener('click', () => {
         // Convertimos el array de bytes a una cadena base64
         const base64 = btoa(String.fromCharCode(...data));
         outputText.value = base64;
-        msg.textContent = 'Texto codificado en Base64';
+        msg.textContent = t.textEncodedBase64 || 'Texto codificado en Base64';
     } catch (e) {
-        msg.textContent = 'Error al codificar: ' + e.message;
+        msg.textContent = (t.encodeError || 'Error al codificar') + ': ' + e.message;
     }
 });
 
@@ -33,7 +33,7 @@ encodeBtn?.addEventListener('click', () => {
 decodeBtn?.addEventListener('click', () => {
     const input = inputText.value;
     if (!input.trim()) {
-        msg.textContent = 'Introduce texto Base64 para decodificar';
+        msg.textContent = t.enterBase64ToDecode || 'Introduce texto Base64 para decodificar';
         return;
     }
     try {
@@ -44,16 +44,16 @@ decodeBtn?.addEventListener('click', () => {
         const decoder = new TextDecoder();
         const text = decoder.decode(bytes);
         outputText.value = text;
-        msg.textContent = 'Texto decodificado de Base64';
+        msg.textContent = t.textDecodedBase64 || 'Texto decodificado de Base64';
     } catch (e) {
-        msg.textContent = 'Error al decodificar - la entrada no parece ser Base64 válido';
+        msg.textContent = t.decodeError || 'Error al decodificar - la entrada no parece ser Base64 válido';
     }
 });
 
 // Copiar al portapapeles con fallback
 copyBtn?.addEventListener('click', async () => {
     if (!outputText.value) {
-        msg.textContent = 'No hay resultado para copiar';
+        msg.textContent = t.noResultToCopy || 'No hay resultado para copiar';
         return;
     }
     try {
@@ -77,7 +77,7 @@ copyBtn?.addEventListener('click', async () => {
                 msg.textContent = '';
             }, 1800);
         } catch (err) {
-            msg.textContent = 'Error al copiar: ' + e.message;
+            msg.textContent = (t.copyError || 'Error al copiar') + ': ' + e.message;
         }
     }
 });

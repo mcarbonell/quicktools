@@ -21,7 +21,13 @@
     "imageFormatLabel": "Image format",
     "jpgOption": "JPG",
     "pngOption": "PNG",
-    "convertToImageButton": "Convert to Image"
+    "convertToImageButton": "Convert to Image",
+    "fileLoaded": "File loaded: {filename}",
+    "selectPdfFile": "Please select a PDF file.",
+    "processingMayTakeTime": "Processing... this may take a moment.",
+    "downloadButtonText": "Download",
+    "errorConvertingPdf": "Error converting PDF:",
+    "errorConvertingGeneric": "An error occurred while converting the PDF."
   },
   "es": {
     "copyButton": "Copiar",
@@ -45,6 +51,12 @@
     "imageFormatLabel": "Formato de imagen",
     "jpgOption": "JPG",
     "pngOption": "PNG",
-    "convertToImageButton": "Convertir a Imagen"
+    "convertToImageButton": "Convertir a Imagen",
+    "fileLoaded": "Archivo cargado: {filename}",
+    "selectPdfFile": "Por favor, selecciona un archivo PDF.",
+    "processingMayTakeTime": "Procesando... esto puede tardar un momento.",
+    "downloadButtonText": "Descargar",
+    "errorConvertingPdf": "Error al convertir el PDF:",
+    "errorConvertingGeneric": "Ocurrió un error al convertir el PDF."
   }
 }

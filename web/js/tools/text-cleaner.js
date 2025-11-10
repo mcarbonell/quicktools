@@ -20,12 +20,12 @@ function countWords(s) {
 
 cleanBtn?.addEventListener('click', () => {
     textInput.value = cleanText(textInput.value);
-    resultDiv.textContent = 'Texto limpiado.';
+    resultDiv.textContent = t.textCleaned || 'Texto limpiado.';
 });
 
 countBtn?.addEventListener('click', () => {
     const cnt = countWords(textInput.value);
-    resultDiv.textContent = `Palabras: ${cnt}`;
+    resultDiv.textContent = (t.wordCountFormat || 'Palabras: {count}').replace('{count}', cnt);
 });
 
 copyBtn?.addEventListener('click', async () => {
@@ -63,7 +63,7 @@ copyBtn?.addEventListener('click', async () => {
                 resultDiv.textContent = '';
             }, 2000);
         } catch (err) {
-            resultDiv.textContent = 'Error al copiar: ' + e.message + '\n' + (err?.message || '');
+            resultDiv.textContent = (t.copyError || 'Error al copiar') + ': ' + e.message + '\n' + (err?.message || '');
         }
     }
 });

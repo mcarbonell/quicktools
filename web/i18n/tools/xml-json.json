@@ -24,7 +24,16 @@
     "copyResultButton": "Copy result",
     "resultLabel": "Result",
     "resultPlaceholder": "Result will appear here...",
-    "preserveAttributesLabel": "Preserve attributes as objects (default)"
+    "preserveAttributesLabel": "Preserve attributes as objects (default)",
+    "enterXmlToConvert": "Enter XML to convert",
+    "xmlParseError": "Error parsing XML",
+    "xmlConvertedToJson": "XML converted to JSON",
+    "enterJsonToConvert": "Enter JSON to convert",
+    "jsonConvertedToXml": "JSON converted to XML",
+    "jsonParseError": "Error parsing JSON",
+    "enterJsonToFormat": "Enter JSON to format",
+    "noResultToCopy": "No result to copy",
+    "copyError": "Error copying"
   },
   "es": {
     "copyButton": "Copiar",
@@ -51,6 +60,15 @@
     "copyResultButton": "Copiar resultado",
     "resultLabel": "Resultado",
     "resultPlaceholder": "Aquí aparecerá el resultado...",
-    "preserveAttributesLabel": "Preservar atributos como objetos (por defecto)"
+    "preserveAttributesLabel": "Preservar atributos como objetos (por defecto)",
+    "enterXmlToConvert": "Introduce XML para convertir",
+    "xmlParseError": "Error al parsear XML",
+    "xmlConvertedToJson": "XML convertido a JSON",
+    "enterJsonToConvert": "Introduce JSON para convertir",
+    "jsonConvertedToXml": "JSON convertido a XML",
+    "jsonParseError": "Error al parsear JSON",
+    "enterJsonToFormat": "Introduce JSON para formatear",
+    "noResultToCopy": "No hay resultado para copiar",
+    "copyError": "Error al copiar"
   }
 }

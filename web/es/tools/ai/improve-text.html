@@ -29,14 +29,14 @@
     
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     
 </head>
 
 <body>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="../../index.html" id="backLink">← Back</a>
+            <a href="/index.html" id="backLink">← Back</a>
             <div id="languageSelector"></div>
         </div>
         <h1 class="h4 mt-3">Mejorar Texto con IA</h1>
@@ -55,7 +55,8 @@
         </div>
         <div class="col-md-6 mb-3">
             <label class="form-label">Texto mejorado</label>
-            <textarea id="outputText" class="form-control" rows="12" readonly placeholder="El texto mejorado aparecerá aquí..."></textarea>
+            <textarea id="outputText" class="form-control" rows="12" readonly
+                placeholder="El texto mejorado aparecerá aquí..."></textarea>
             <button class="btn btn-sm btn-outline-secondary mt-2" onclick="copyResult()">📋 Copiar</button>
         </div>
     </div>
@@ -85,14 +86,13 @@
 
     <button class="btn btn-primary" onclick="improveText()" id="improveBtn">✨ Mejorar texto</button>
 </div>
-
     </div>
 
     
     <script>
-        window.toolTranslations = {};
+        window.toolTranslations = {"apiKeySetupTitle":"⚙️ Necesitas configurar tu API key de Google Gemini.","configureNowButton":"Configurar ahora","originalTextLabel":"Texto original","inputTextPlaceholder":"Escribe o pega tu texto aquí...","improvedTextLabel":"Texto mejorado","outputTextPlaceholder":"El texto mejorado aparecerá aquí...","copyButton":"📋 Copiar","improveTypeLabel":"Tipo de mejora","grammarOption":"Gramática y ortografía","styleOption":"Estilo y claridad","formalOption":"Hacer más formal","casualOption":"Hacer más casual","conciseOption":"Hacer más conciso","expandOption":"Expandir y detallar","languageLabel":"Idioma","spanishOption":"Español","englishOption":"Inglés","portugueseOption":"Portugués","frenchOption":"Francés","improveTextButton":"✨ Mejorar texto"};
     </script>
-<script src="../../js/lib/gemini-api.js"></script>
+<script src="/js/lib/gemini-api.js"></script>
 <script>
     let gemini = null;
 

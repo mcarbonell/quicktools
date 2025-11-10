@@ -23,7 +23,19 @@
     "prettyJsonButton": "Prettify JSON",
     "copyResultButton": "Copy result",
     "resultLabel": "Result",
-    "resultPlaceholder": "Result will appear here..."
+    "resultPlaceholder": "Result will appear here...",
+    "enterTomlToConvert": "Enter TOML to convert",
+    "tomlLibraryNotFound": "TOML library not found. Check CDN loading or manually add a TOML library.",
+    "tomlStringifyNotFound": "TOML library with stringify not found. Check CDN loading or manually add a TOML library.",
+    "tomlConvertedToJson": "TOML converted to JSON",
+    "tomlParseError": "Error parsing TOML",
+    "enterJsonToConvert": "Enter JSON to convert",
+    "jsonConvertedToToml": "JSON converted to TOML",
+    "jsonConvertError": "Error converting JSON to TOML",
+    "enterJsonToFormat": "Enter JSON to format",
+    "jsonParseError": "Error parsing JSON",
+    "noResultToCopy": "No result to copy",
+    "copyError": "Error copying"
   },
   "es": {
     "copyButton": "Copiar",
@@ -49,6 +61,18 @@
     "prettyJsonButton": "Prettify JSON",
     "copyResultButton": "Copiar resultado",
     "resultLabel": "Resultado",
-    "resultPlaceholder": "Aquí aparecerá el resultado..."
+    "resultPlaceholder": "Aquí aparecerá el resultado...",
+    "enterTomlToConvert": "Introduce TOML para convertir",
+    "tomlLibraryNotFound": "Librería TOML no encontrada. Comprueba la carga del CDN o añade manualmente una librería TOML.",
+    "tomlStringifyNotFound": "Librería TOML con stringify no encontrada. Comprueba la carga del CDN o añade manualmente una librería TOML.",
+    "tomlConvertedToJson": "TOML convertido a JSON",
+    "tomlParseError": "Error al parsear TOML",
+    "enterJsonToConvert": "Introduce JSON para convertir",
+    "jsonConvertedToToml": "JSON convertido a TOML",
+    "jsonConvertError": "Error al convertir JSON a TOML",
+    "enterJsonToFormat": "Introduce JSON para formatear",
+    "jsonParseError": "Error al parsear JSON",
+    "noResultToCopy": "No hay resultado para copiar",
+    "copyError": "Error al copiar"
   }
 }

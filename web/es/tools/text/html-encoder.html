@@ -29,14 +29,14 @@
     
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     
 </head>
 
 <body>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="../../index.html" id="backLink">← Back</a>
+            <a href="/index.html" id="backLink">← Back</a>
             <div id="languageSelector"></div>
         </div>
         <h1 class="h4 mt-3">Codificar/Decodificar HTML</h1>
@@ -56,16 +56,14 @@
 
 <div class="mb-3">
     <label for="outputText" class="form-label">Resultado</label>
-    <textarea id="outputText" rows="3" class="form-control" readonly
-        placeholder="Aquí aparecerá el texto codificado o decodificado..."></textarea>
+    <textarea id="outputText" rows="3" class="form-control" readonly placeholder="Aquí aparecerá el texto codificado o decodificado..."></textarea>
 </div>
 
 <div class="alert alert-info small">
     <strong>Modos de codificación:</strong><br>
-    • <strong>Codificar HTML:</strong> Convierte solo los caracteres especiales necesarios (&lt; &gt; &amp;
-    &quot; &#39;)<br>
-    • <strong>Codificar todo:</strong> Convierte todos los caracteres no ASCII a entidades HTML<br>
-    • <strong>Decodificar HTML:</strong> Convierte todas las entidades HTML a sus caracteres correspondientes
+    • <strong>Codificar HTML: Convierte solo los caracteres especiales necesarios</strong><br>
+    • <strong>Codificar todo: Convierte todos los caracteres no ASCII a entidades HTML</strong><br>
+    • <strong>Decodificar HTML: Convierte todas las entidades HTML a sus caracteres correspondientes</strong>
 </div>
 
 <div class="mt-4">
@@ -82,42 +80,42 @@
             <tbody>
                 <tr>
                     <td>&lt;</td>
-                    <td>&amp;lt;</td>
+                    <td>&lt;</td>
                     <td>Menor que</td>
                 </tr>
                 <tr>
                     <td>&gt;</td>
-                    <td>&amp;gt;</td>
+                    <td>&gt;</td>
                     <td>Mayor que</td>
                 </tr>
                 <tr>
+                    <td>&</td>
                     <td>&amp;</td>
-                    <td>&amp;amp;</td>
                     <td>Ampersand</td>
                 </tr>
                 <tr>
+                    <td>"</td>
                     <td>&quot;</td>
-                    <td>&amp;quot;</td>
                     <td>Comilla doble</td>
                 </tr>
                 <tr>
+                    <td>'</td>
                     <td>&#39;</td>
-                    <td>&amp;#39;</td>
                     <td>Comilla simple</td>
                 </tr>
                 <tr>
                     <td>©</td>
-                    <td>&amp;copy;</td>
+                    <td>&copy;</td>
                     <td>Copyright</td>
                 </tr>
                 <tr>
                     <td>®</td>
-                    <td>&amp;reg;</td>
+                    <td>&reg;</td>
                     <td>Marca registrada</td>
                 </tr>
                 <tr>
                     <td>€</td>
-                    <td>&amp;euro;</td>
+                    <td>&euro;</td>
                     <td>Euro</td>
                 </tr>
             </tbody>
@@ -130,9 +128,9 @@
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","encodeButton":"Codificar","decodeButton":"Decodificar"};
+        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","encodeButton":"Codificar","decodeButton":"Decodificar","inputHtmlTextLabel":"Texto a codificar/decodificar","textPlaceholder":"Escribe o pega el texto aquí...","encodeHtmlButton":"Codificar HTML","encodeAllButton":"Codificar todo","decodeHtmlButton":"Decodificar HTML","resultLabel":"Resultado","resultPlaceholder":"Aquí aparecerá el texto codificado o decodificado...","encodingModesTitle":"Modos de codificación:","encodeHtmlMode":"Codificar HTML: Convierte solo los caracteres especiales necesarios","encodeAllMode":"Codificar todo: Convierte todos los caracteres no ASCII a entidades HTML","decodeHtmlMode":"Decodificar HTML: Convierte todas las entidades HTML a sus caracteres correspondientes","commonReferencesTitle":"Referencias comunes","characterHeader":"Carácter","entityHeader":"Entidad","descriptionHeader":"Descripción","lessThanLabel":"Menor que","greaterThanLabel":"Mayor que","ampersandLabel":"Ampersand","doubleQuoteLabel":"Comilla doble","singleQuoteLabel":"Comilla simple","copyrightLabel":"Copyright","registeredLabel":"Marca registrada","euroLabel":"Euro","pleaseEnterTextToEncode":"Introduce texto para codificar","htmlTextEncoded":"Texto codificado en HTML","htmlAllTextEncoded":"Texto codificado completamente en HTML","encodeError":"Error al codificar","pleaseEnterHtmlToDecode":"Introduce texto HTML para decodificar","htmlTextDecoded":"Texto decodificado de HTML","decodeError":"Error al decodificar - la entrada parece inválida","noResultToCopy":"No hay resultado para copiar","copyError":"Error al copiar"};
     </script>
-<script src="../../js/tools/html-encoder.js"></script>
+<script src="/js/tools/html-encoder.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/i18n/language-selector.js"></script>
 

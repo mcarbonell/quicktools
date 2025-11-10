@@ -33,12 +33,12 @@ function formatBytes(bytes) {
 
 function handleFile(file) {
     if (!file || !file.type.startsWith('image/')) {
-        showMsg('Por favor, arrastra o selecciona un archivo de imagen válido.', true);
+        showMsg(t.selectValidImage || 'Por favor, arrastra o selecciona un archivo de imagen válido.', true);
         return;
     }
 
     originalFile = file;
-    showMsg(`Imagen cargada: ${file.name} (${formatBytes(file.size)})`);
+    const imgLoaded = (t.imageLoaded || 'Imagen cargada: {filename} ({size})').replace('{filename}', file.name).replace('{size}', formatBytes(file.size)); showMsg(imgLoaded);
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -47,7 +47,7 @@ function handleFile(file) {
         compressBtn.disabled = false;
         downloadBtn.disabled = true;
         compressedPreview.src = '';
-        compressedSize.textContent = 'N/A';
+        compressedSize.textContent = t.notAvailable || 'N/A';
     };
     reader.readAsDataURL(file);
 }
@@ -78,11 +78,11 @@ qualityRange.addEventListener('input', () => {
 
 compressBtn.addEventListener('click', () => {
     if (!originalFile) {
-        showMsg('Primero, carga una imagen.', true);
+        showMsg(t.loadImageFirst || 'Primero, carga una imagen.', true);
         return;
     }
 
-    showMsg('Comprimiendo imagen...');
+    showMsg(t.compressingImage || 'Comprimiendo imagen...');
     compressBtn.disabled = true;
     downloadBtn.disabled = true;
 
@@ -95,12 +95,12 @@ compressBtn.addEventListener('click', () => {
                 compressedPreview.src = e.target.result;
                 compressedSize.textContent = formatBytes(compressedBlob.size);
                 downloadBtn.disabled = false;
-                showMsg(`Imagen comprimida. Reducción: ${((1 - compressedBlob.size / originalFile.size) * 100).toFixed(2)}%`);
+                const reduction = ((1 - compressedBlob.size / originalFile.size) * 100).toFixed(2); showMsg((t.imageCompressed || 'Imagen comprimida. Reducción: {reduction}%').replace('{reduction}', reduction));
             };
             reader.readAsDataURL(compressedBlob);
         },
         error(err) {
-            showMsg('Error al comprimir la imagen: ' + err.message, true);
+            showMsg((t.errorCompressing || 'Error al comprimir la imagen:') + ' ' + err.message, true);
             compressBtn.disabled = false;
         },
     });
@@ -108,7 +108,7 @@ compressBtn.addEventListener('click', () => {
 
 downloadBtn.addEventListener('click', () => {
     if (!compressedBlob) {
-        showMsg('Primero, comprime una imagen.', true);
+        showMsg(t.compressImageFirst || 'Primero, comprime una imagen.', true);
         return;
     }
     const url = URL.createObjectURL(compressedBlob);
@@ -119,5 +119,5 @@ downloadBtn.addEventListener('click', () => {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    showMsg('Imagen descargada.');
+    showMsg(t.imageDownloaded || 'Imagen descargada.');
 });

@@ -15,7 +15,7 @@ dropZone?.addEventListener('click', () => fileInput.click());
 
 function handleFile(file) {
     if (!file || !file.type.startsWith('image/')) {
-        alert('Por favor selecciona un archivo de imagen válido.');
+        alert(t.selectValidImage || 'Por favor selecciona un archivo de imagen válido.');
         return;
     }
     const img = new Image();
@@ -26,7 +26,7 @@ function handleFile(file) {
         ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
         ctx.drawImage(img, 0, 0);
         widthInput.value = img.width;
-        dropZone.querySelector('.drop-message').textContent = `Imagen cargada: ${file.name}`;
+        const imgMsg = (t.imageLoaded || 'Imagen cargada: {filename}').replace('{filename}', file.name); dropZone.querySelector('.drop-message').textContent = imgMsg;
     };
     img.src = URL.createObjectURL(file);
 }
@@ -56,9 +56,9 @@ fileInput?.addEventListener('change', (e) => {
 });
 
 resizeBtn?.addEventListener('click', async () => {
-    if (!currentImage) return alert('Sube primero una imagen.');
+    if (!currentImage) return alert(t.uploadImageFirst || 'Sube primero una imagen.');
     let targetW = parseInt(widthInput.value, 10);
-    if (!targetW || targetW <= 0) return alert('Ancho inválido');
+    if (!targetW || targetW <= 0) return alert(t.invalidWidth || 'Ancho inválido');
     let targetH = currentImage.height * (targetW / currentImage.width);
     const off = document.createElement('canvas');
     off.width = targetW;

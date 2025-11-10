@@ -19,7 +19,16 @@
     "selectPdfFileLabel": "Select a PDF file",
     "dropMessage": "Drag your PDF file here or click to select",
     "imageQualityLabel": "Image quality (0.1 - 1.0)",
-    "compressPdfButton": "Compress PDF"
+    "compressPdfButton": "Compress PDF",
+    "fileSelected": "File selected: {filename}",
+    "selectPdfFile": "Please select a PDF file.",
+    "processingMayTakeTime": "Processing... this may take a moment.",
+    "compressionCompleted": "Compression completed.",
+    "originalSize": "Original size: {size} MB",
+    "newSize": "New size: {size} MB",
+    "downloadCompressedPdf": "Download compressed PDF",
+    "errorCompressingPdf": "Error compressing PDF:",
+    "errorCompressingGeneric": "An error occurred while compressing the PDF. This PDF may not be compressible."
   },
   "es": {
     "copyButton": "Copiar",
@@ -41,6 +50,15 @@
     "selectPdfFileLabel": "Selecciona un archivo PDF",
     "dropMessage": "Arrastra tu archivo PDF aquí o haz clic para seleccionar",
     "imageQualityLabel": "Calidad de imagen (0.1 - 1.0)",
-    "compressPdfButton": "Comprimir PDF"
+    "compressPdfButton": "Comprimir PDF",
+    "fileSelected": "Archivo seleccionado: {filename}",
+    "selectPdfFile": "Por favor, selecciona un archivo PDF.",
+    "processingMayTakeTime": "Procesando... esto puede tardar un momento.",
+    "compressionCompleted": "Compresión completada.",
+    "originalSize": "Tamaño original: {size} MB",
+    "newSize": "Tamaño nuevo: {size} MB",
+    "downloadCompressedPdf": "Descargar PDF comprimido",
+    "errorCompressingPdf": "Error al comprimir el PDF:",
+    "errorCompressingGeneric": "Ocurrió un error al comprimir el PDF. Es posible que este PDF no se pueda comprimir."
   }
 }

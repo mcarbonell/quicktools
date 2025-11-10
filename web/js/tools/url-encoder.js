@@ -15,63 +15,63 @@ const msg = document.getElementById('msg');
 encodeBtn?.addEventListener('click', () => {
     const input = inputText.value;
     if (!input.trim()) {
-        msg.textContent = 'Introduce texto para codificar';
+        msg.textContent = t.pleaseEnterTextToEncode || 'Introduce texto para codificar';
         return;
     }
     try {
         outputText.value = encodeURI(input);
-        msg.textContent = 'URL codificada';
+        msg.textContent = t.urlEncoded || 'URL codificada';
     } catch (e) {
-        msg.textContent = 'Error al codificar: ' + e.message;
+        msg.textContent = (t.encodeError || 'Error al codificar') + ': ' + e.message;
     }
 });
 
 encodeComponentBtn?.addEventListener('click', () => {
     const input = inputText.value;
     if (!input.trim()) {
-        msg.textContent = 'Introduce texto para codificar';
+        msg.textContent = t.pleaseEnterTextToEncode || 'Introduce texto para codificar';
         return;
     }
     try {
         outputText.value = encodeURIComponent(input);
-        msg.textContent = 'Componente codificado';
+        msg.textContent = t.componentEncoded || 'Componente codificado';
     } catch (e) {
-        msg.textContent = 'Error al codificar: ' + e.message;
+        msg.textContent = (t.encodeError || 'Error al codificar') + ': ' + e.message;
     }
 });
 
 decodeBtn?.addEventListener('click', () => {
     const input = inputText.value;
     if (!input.trim()) {
-        msg.textContent = 'Introduce texto para decodificar';
+        msg.textContent = t.pleaseEnterTextToDecode || 'Introduce texto para decodificar';
         return;
     }
     try {
         outputText.value = decodeURI(input);
-        msg.textContent = 'URL decodificada';
+        msg.textContent = t.urlDecoded || 'URL decodificada';
     } catch (e) {
-        msg.textContent = 'Error al decodificar - la entrada parece inválida';
+        msg.textContent = t.decodeError || 'Error al decodificar - la entrada parece inválida';
     }
 });
 
 decodeComponentBtn?.addEventListener('click', () => {
     const input = inputText.value;
     if (!input.trim()) {
-        msg.textContent = 'Introduce texto para decodificar';
+        msg.textContent = t.pleaseEnterTextToDecode || 'Introduce texto para decodificar';
         return;
     }
     try {
         outputText.value = decodeURIComponent(input);
-        msg.textContent = 'Componente decodificado';
+        msg.textContent = t.componentDecoded || 'Componente decodificado';
     } catch (e) {
-        msg.textContent = 'Error al decodificar - la entrada parece inválida';
+        msg.textContent = t.decodeError || 'Error al decodificar - la entrada parece inválida';
     }
 });
 
 // Copiar al portapapeles con fallback
 copyBtn?.addEventListener('click', async () => {
     if (!outputText.value) {
-        msg.textContent = 'No hay resultado para copiar';
+        msg.textContent = t.noResultToCopy || 'No hay resultado para copiar';
         return;
     }
     try {
@@ -95,7 +95,7 @@ copyBtn?.addEventListener('click', async () => {
                 msg.textContent = '';
             }, 1800);
         } catch (err) {
-            msg.textContent = 'Error al copiar: ' + e.message;
+            msg.textContent = (t.copyError || 'Error al copiar') + ': ' + e.message;
         }
     }
 });

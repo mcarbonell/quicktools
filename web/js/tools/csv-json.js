@@ -26,11 +26,11 @@ dropZone?.addEventListener('drop', (e) => {
     const f = e.dataTransfer?.files?.[0];
     if (!f) return;
     if (!f.type.includes('csv') && !f.name.toLowerCase().endsWith('.csv')) {
-        alert('Por favor, selecciona un archivo CSV.');
+        alert(t.selectCsvFile || 'Por favor, selecciona un archivo CSV.');
         return;
     }
     const reader = new FileReader();
-    reader.onload = () => { inputArea.value = reader.result; msg.textContent = `Archivo cargado: ${f.name}`; runAutoDetectIfNeeded && runAutoDetectIfNeeded(`Archivo cargado: ${f.name}`); };
+    reader.onload = () => { inputArea.value = reader.result; const fileMsg = (t.fileLoaded || 'Archivo cargado: {filename}').replace('{filename}', f.name); msg.textContent = fileMsg; runAutoDetectIfNeeded && runAutoDetectIfNeeded(fileMsg); };
     reader.readAsText(f);
 });
 
@@ -38,7 +38,7 @@ fileInput?.addEventListener('change', (e) => {
     const f = e.target.files?.[0];
     if (!f) return;
     const reader = new FileReader();
-    reader.onload = () => { inputArea.value = reader.result; msg.textContent = `Archivo cargado: ${f.name}`; runAutoDetectIfNeeded && runAutoDetectIfNeeded(`Archivo cargado: ${f.name}`); };
+    reader.onload = () => { inputArea.value = reader.result; const fileMsg = (t.fileLoaded || 'Archivo cargado: {filename}').replace('{filename}', f.name); msg.textContent = fileMsg; runAutoDetectIfNeeded && runAutoDetectIfNeeded(fileMsg); };
     reader.readAsText(f);
 });
 
@@ -63,12 +63,12 @@ function getDelimiter() {
     if (v === 'custom') return customDelimiter?.value || ',';
     if (v === 'auto') {
         if (detectedDelimiterCache) {
-            msg.textContent = `Delimitador detectado: ${detectedDelimiterCache === '\t' ? '\\t (tab)' : detectedDelimiterCache}`;
+            const delimiterText = detectedDelimiterCache === '\t' ? (t.delimiterTabFormat || '{delimiter} (tab)').replace('{delimiter}', '\\t') : detectedDelimiterCache; msg.textContent = (t.detectedDelimiter || 'Delimitador detectado: {delimiter}').replace('{delimiter}', delimiterText);
             return detectedDelimiterCache;
         }
         const detected = detectDelimiter(inputArea.value || '');
         detectedDelimiterCache = detected || null;
-        msg.textContent = detected ? `Delimitador detectado: ${detected === '\t' ? '\\t (tab)' : detected}` : 'No se detectó delimitador, usando coma.';
+        const delimiterText = detected === '\t' ? (t.delimiterTabFormat || '{delimiter} (tab)').replace('{delimiter}', '\\t') : detected; msg.textContent = detected ? (t.detectedDelimiter || 'Delimitador detectado: {delimiter}').replace('{delimiter}', delimiterText) : (t.noDelimiterUsingComma || 'No se detectó delimitador, usando coma.');
         return detected || ',';
     }
     if (v === '\t') return '\t';
@@ -77,7 +77,7 @@ function getDelimiter() {
 
 function jsonToCsv(json, delimiter = ',') {
     // json: array of objects OR array of arrays
-    if (!Array.isArray(json)) throw new Error('JSON debe ser un array.');
+    if (!Array.isArray(json)) throw new Error(t.jsonMustBeArray || 'JSON debe ser un array.');
     if (json.length === 0) return '';
     // If array of arrays, just join
     if (Array.isArray(json[0])) {
@@ -146,26 +146,27 @@ function runAutoDetectIfNeeded(contextMsg) {
     if (delimiterSelect?.value !== 'auto') return;
     detectedDelimiterCache = detectDelimiter(inputArea.value || '') || null;
     if (detectedDelimiterCache) {
-        if (contextMsg) msg.textContent = `${contextMsg} — Delimitador detectado: ${detectedDelimiterCache === '\t' ? '\\t (tab)' : detectedDelimiterCache}`;
-        else msg.textContent = `Delimitador detectado: ${detectedDelimiterCache === '\t' ? '\\t (tab)' : detectedDelimiterCache}`;
+        const delimiterText = detectedDelimiterCache === '\t' ? (t.delimiterTabFormat || '{delimiter} (tab)').replace('{delimiter}', '\\t') : detectedDelimiterCache;
+        if (contextMsg) msg.textContent = `${contextMsg} — ${(t.detectedDelimiter || 'Delimitador detectado: {delimiter}').replace('{delimiter}', delimiterText)}`;
+        else msg.textContent = (t.detectedDelimiter || 'Delimitador detectado: {delimiter}').replace('{delimiter}', delimiterText);
     } else {
-        if (contextMsg) msg.textContent = `${contextMsg} — No se detectó delimitador, usando coma.`;
+        if (contextMsg) msg.textContent = `${contextMsg} — ${t.noDelimiterUsingComma || 'No se detectó delimitador, usando coma.'}`;
     }
 }
 
 // Detect automatically after paste into textarea
 inputArea?.addEventListener('paste', () => {
-    setTimeout(() => runAutoDetectIfNeeded('Contenido pegado'), 50);
+    setTimeout(() => runAutoDetectIfNeeded(t.pastedContent || 'Contenido pegado'), 50);
 });
 
 csvToJsonBtn?.addEventListener('click', () => {
     const csv = inputArea.value;
-    if (!csv.trim()) { msg.textContent = 'Introduce CSV o carga un archivo.'; return; }
+    if (!csv.trim()) { msg.textContent = t.enterCsvOrFile || 'Introduce CSV o carga un archivo.'; return; }
     try {
         const delim = getDelimiter();
-        if (!CSVLib || !CSVLib.parseCSV) throw new Error('CSV library no disponible en el navegador.');
+        if (!CSVLib || !CSVLib.parseCSV) throw new Error(t.csvLibraryNotAvailable || 'CSV library no disponible en el navegador.');
         const rows = CSVLib.parseCSV(csv, delim);
-        if (!rows || rows.length === 0) { resultArea.value = '[]'; msg.textContent = 'Sin filas.'; return; }
+        if (!rows || rows.length === 0) { resultArea.value = '[]'; msg.textContent = t.noRows || 'Sin filas.'; return; }
         const headers = rows[0].map(h => h.trim());
         const data = rows.slice(1).map(r => {
             const obj = {};
@@ -175,23 +176,23 @@ csvToJsonBtn?.addEventListener('click', () => {
             return obj;
         });
         resultArea.value = JSON.stringify(data, null, 2);
-        msg.textContent = `Convertido: ${data.length} filas`;
+        msg.textContent = (t.convertedRows || 'Convertido: {count} filas').replace('{count}', data.length);
     } catch (e) {
-        msg.textContent = 'Error al parsear CSV: ' + e.message;
+        msg.textContent = (t.csvParseError || 'Error al parsear CSV') + ': ' + e.message;
     }
 });
 
 jsonToCsvBtn?.addEventListener('click', () => {
     const txt = inputArea.value;
-    if (!txt.trim()) { msg.textContent = 'Introduce JSON o carga un archivo.'; return; }
+    if (!txt.trim()) { msg.textContent = t.enterJsonOrFile || 'Introduce JSON o carga un archivo.'; return; }
     try {
         const parsed = JSON.parse(txt);
         const delim = getDelimiter();
         const csv = jsonToCsv(parsed, delim);
         resultArea.value = csv;
-        msg.textContent = `Convertido a CSV (${csv.split('\n').length} líneas)`;
+        msg.textContent = (t.convertedToCsv || 'Convertido a CSV ({lines} líneas)').replace('{lines}', csv.split('\n').length);
     } catch (e) {
-        msg.textContent = 'Error al convertir JSON: ' + e.message;
+        msg.textContent = (t.jsonConvertError || 'Error al convertir JSON') + ': ' + e.message;
     }
 });
 
@@ -201,13 +202,13 @@ validateJsonBtn?.addEventListener('click', () => {
         JSON.parse(txt);
         msg.textContent = t.validJson || 'JSON válido';
     } catch (e) {
-        msg.textContent = 'JSON inválido: ' + e.message;
+        msg.textContent = (t.invalidJson || 'JSON inválido: {error}').replace('{error}', e.message);
     }
 });
 
 copyBtn?.addEventListener('click', async () => {
     try {
-        if (resultArea.value.trim() === '') { msg.textContent = 'No hay resultado para copiar.'; return; }
+        if (resultArea.value.trim() === '') { msg.textContent = t.noResultToCopy || 'No hay resultado para copiar.'; return; }
         await navigator.clipboard.writeText(resultArea.value);
         const originalText = copyBtn.innerHTML;
         copyBtn.innerHTML = '✔';
@@ -222,14 +223,14 @@ copyBtn?.addEventListener('click', async () => {
             msg.textContent = t.copied || 'Copiado al portapapeles';
             setTimeout(() => { copyBtn.innerHTML = originalText; msg.textContent = ''; }, 1800);
         } catch (err) {
-            msg.textContent = 'Error al copiar: ' + (e?.message || '') + (err ? ' / ' + err.message : '');
+            msg.textContent = (t.copyError || 'Error al copiar') + ': ' + (e?.message || '') + (err ? ' / ' + err.message : '');
         }
     }
 });
 
 downloadBtn?.addEventListener('click', () => {
     const txt = resultArea.value;
-    if (!txt) { msg.textContent = 'No hay resultado para descargar.'; return; }
+    if (!txt) { msg.textContent = t.noResultToDownload || 'No hay resultado para descargar.'; return; }
     const isJson = txt.trim().startsWith('{') || txt.trim().startsWith('[');
     const blob = new Blob([txt], { type: isJson ? 'application/json' : 'text/csv' });
     const url = URL.createObjectURL(blob);
@@ -240,12 +241,12 @@ downloadBtn?.addEventListener('click', () => {
     a.click();
     a.remove();
     URL.revokeObjectURL(url);
-    msg.textContent = 'Descarga iniciada.';
+    msg.textContent = t.downloadStarted || 'Descarga iniciada.';
 });
 
 // Helper conversion wrapper
 function csvToJsonWrapper(csv) {
-    if (!CSVLib || !CSVLib.csvToJson) throw new Error('CSV library no disponible.');
+    if (!CSVLib || !CSVLib.csvToJson) throw new Error(t.csvLibraryUnavailable || 'CSV library no disponible.');
     return CSVLib.csvToJson(csv);
 }
 // Nota: la librería CSV queda expuesta en window.__qt_csv por `js/lib/csv-parser.js`
@@ -253,7 +254,7 @@ function csvToJsonWrapper(csv) {
 // Si la opción por defecto es 'auto', ejecutar detección al cargar la página
 setTimeout(() => {
     try {
-        if (delimiterSelect?.value === 'auto') runAutoDetectIfNeeded('Auto-detección activada');
+        if (delimiterSelect?.value === 'auto') runAutoDetectIfNeeded(t.autoDetectionActive || 'Auto-detección activada');
     } catch (e) {
         // no-op
     }

@@ -7,7 +7,16 @@
     "prettifyJsonButton": "Prettify JSON",
     "copyResultButton": "Copy Result",
     "outputLabel": "Result",
-    "outputPlaceholder": "The result will appear here..."
+    "outputPlaceholder": "The result will appear here...",
+    "enterYamlToConvert": "Enter YAML to convert",
+    "yamlConvertedToJson": "YAML converted to JSON",
+    "yamlParseError": "Error parsing YAML",
+    "enterJsonToConvert": "Enter JSON to convert",
+    "jsonConvertedToYaml": "JSON converted to YAML",
+    "jsonParseError": "Error parsing JSON",
+    "enterJsonToFormat": "Enter JSON to format",
+    "noResultToCopy": "No result to copy",
+    "copyError": "Error copying"
   },
   "es": {
     "inputLabel": "Entrada (YAML o JSON)",
@@ -17,6 +26,15 @@
     "prettifyJsonButton": "Prettify JSON",
     "copyResultButton": "Copiar resultado",
     "outputLabel": "Resultado",
-    "outputPlaceholder": "Aquí aparecerá el resultado..."
+    "outputPlaceholder": "Aquí aparecerá el resultado...",
+    "enterYamlToConvert": "Introduce YAML para convertir",
+    "yamlConvertedToJson": "YAML convertido a JSON",
+    "yamlParseError": "Error al parsear YAML",
+    "enterJsonToConvert": "Introduce JSON para convertir",
+    "jsonConvertedToYaml": "JSON convertido a YAML",
+    "jsonParseError": "Error al parsear JSON",
+    "enterJsonToFormat": "Introduce JSON para formatear",
+    "noResultToCopy": "No hay resultado para copiar",
+    "copyError": "Error al copiar"
   }
 }

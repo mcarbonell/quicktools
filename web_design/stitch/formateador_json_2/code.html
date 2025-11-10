@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Formateador y Validador de JSON - Quick Tools</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13a4ec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101c22",
+                        "surface-dark": "#18262f",
+                        "border-dark": "#2d3f4d"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .CodeMirror {
+            height: 400px;
+            font-family: monospace;
+            border-radius: 0.5rem;
+            background-color: #f6f7f8;
+        }
+        .dark .CodeMirror {
+             background-color: #18262f;
+        }
+        .CodeMirror, .CodeMirror-gutters {
+            border: 1px solid #cfdfe7;
+        }
+        .dark .CodeMirror, .dark .CodeMirror-gutters {
+            border: 1px solid #2d3f4d;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0d171b] dark:text-slate-50">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e7eff3] dark:border-border-dark px-4 sm:px-10 py-3 sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm z-10">
+<div class="flex items-center gap-4 text-[#0d171b] dark:text-slate-50">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-[#0d171b] dark:text-slate-50 text-lg font-bold leading-tight tracking-[-0.015em]">Quick Tools</h2>
+</div>
+<div class="hidden lg:flex flex-1 justify-end items-center gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-[#0d171b] dark:text-slate-50 text-sm font-medium leading-normal text-primary" href="#">JSON Formatter</a>
+<a class="text-[#0d171b] dark:text-slate-50 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Image Converter</a>
+<a class="text-[#0d171b] dark:text-slate-50 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">PDF Utilities</a>
+<a class="text-[#0d171b] dark:text-slate-50 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">QR Generator</a>
+</nav>
+</div>
+<button class="lg:hidden p-2 -mr-2">
+<span class="material-symbols-outlined text-[#0d171b] dark:text-slate-50">menu</span>
+</button>
+</header>
+<main class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+<div class="flex flex-col gap-6">
+<div class="flex flex-wrap justify-between items-center gap-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-[#0d171b] dark:text-slate-50 text-3xl sm:text-4xl font-black leading-tight tracking-[-0.033em]">Formateador y Validador de JSON</h1>
+<p class="text-[#4c809a] dark:text-slate-400 text-base font-normal leading-normal">Pega tu código JSON para formatearlo, validarlo y hacerlo más legible al instante.</p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-3 border border-[#e7eff3] dark:border-border-dark bg-background-light dark:bg-surface-dark rounded-xl">
+<div class="flex flex-wrap items-center gap-2">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-primary text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="material-symbols-outlined text-base">format_align_left</span>
+<span class="truncate">Formatear</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-[#e7eff3] dark:bg-slate-50/10 text-[#0d171b] dark:text-slate-50 text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="material-symbols-outlined text-base">task_alt</span>
+<span class="truncate">Validar</span>
+</button>
+</div>
+<div class="flex flex-wrap items-center gap-4">
+<div class="flex items-center gap-2">
+<label class="text-sm font-medium text-[#4c809a] dark:text-slate-400" for="indentation">Sangría:</label>
+<select class="form-select w-full min-w-0 rounded-lg text-[#0d171b] dark:text-slate-50 focus:outline-0 focus:ring-0 border border-[#cfdfe7] dark:border-border-dark bg-background-light dark:bg-surface-dark focus:border-primary text-sm font-normal" id="indentation" name="indentation">
+<option>2 Espacios</option>
+<option>4 Espacios</option>
+<option>Tabulaciones</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center p-2 rounded-lg text-[#4c809a] dark:text-slate-400 hover:bg-[#e7eff3] dark:hover:bg-slate-50/10 transition-colors" title="Copiar Resultado">
+<span class="material-symbols-outlined text-xl">content_copy</span>
+</button>
+<button class="flex items-center justify-center p-2 rounded-lg text-[#4c809a] dark:text-slate-400 hover:bg-[#e7eff3] dark:hover:bg-slate-50/10 transition-colors" title="Limpiar Todo">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+</div>
+<div class="hidden items-center gap-2 p-3 rounded-lg bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800" id="status-indicator">
+<span class="material-symbols-outlined">check_circle</span>
+<p class="text-sm font-medium">JSON Válido</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-[#0d171b] dark:text-slate-50 text-base font-medium leading-normal" for="json-input">Input JSON</label>
+<textarea class="form-textarea flex w-full min-w-0 flex-1 resize-y overflow-auto rounded-lg text-[#0d171b] dark:text-slate-50 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#cfdfe7] dark:border-border-dark bg-background-light dark:bg-surface-dark min-h-96 placeholder:text-[#4c809a] dark:placeholder:text-slate-500 p-4 text-sm font-mono leading-normal" id="json-input" placeholder="Pega tu código JSON aquí..."></textarea>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[#0d171b] dark:text-slate-50 text-base font-medium leading-normal" for="json-output">Resultado</label>
+<div class="w-full flex-1 rounded-lg text-[#0d171b] dark:text-slate-50 border border-[#cfdfe7] dark:border-border-dark bg-[#e7eff3] dark:bg-surface-dark min-h-96 p-4 text-sm font-mono leading-normal relative overflow-auto">
+<pre class="whitespace-pre-wrap text-[#4c809a] dark:text-slate-500">El resultado formateado aparecerá aquí después de procesar.</pre>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

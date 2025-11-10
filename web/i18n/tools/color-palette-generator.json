@@ -19,7 +19,11 @@
     "selectImageLabel": "Select an image",
     "dropMessage": "Drag your image here or click to select",
     "colorCountLabel": "Number of colors in palette (2-10)",
-    "extractPaletteButton": "Extract Palette"
+    "extractPaletteButton": "Extract Palette",
+    "imageLoaded": "Image loaded: {filename}",
+    "uploadImageFirst": "Please upload an image first.",
+    "errorExtractingPalette": "Error extracting color palette:",
+    "errorExtractingPaletteGeneric": "Could not extract color palette. Make sure the image is valid and not corrupted."
   },
   "es": {
     "copyButton": "Copiar",
@@ -41,6 +45,10 @@
     "selectImageLabel": "Selecciona una imagen",
     "dropMessage": "Arrastra tu imagen aquí o haz clic para seleccionar",
     "colorCountLabel": "Número de colores en la paleta (2-10)",
-    "extractPaletteButton": "Extraer Paleta"
+    "extractPaletteButton": "Extraer Paleta",
+    "imageLoaded": "Imagen cargada: {filename}",
+    "uploadImageFirst": "Por favor, sube una imagen primero.",
+    "errorExtractingPalette": "Error al extraer la paleta de colores:",
+    "errorExtractingPaletteGeneric": "No se pudo extraer la paleta de colores. Asegúrate de que la imagen es válida y no está corrupta."
   }
 }

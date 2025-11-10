@@ -29,7 +29,7 @@
     
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <style>
     .chat-container { height: 400px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: #f8f9fa; }
     .message { margin-bottom: 1rem; padding: 0.75rem; border-radius: 8px; max-width: 80%; }
@@ -43,7 +43,7 @@
 <body>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="../../index.html" id="backLink">← Back</a>
+            <a href="/index.html" id="backLink">← Back</a>
             <div id="languageSelector"></div>
         </div>
         <h1 class="h4 mt-3">Chat con PDF</h1>
@@ -75,20 +75,20 @@
         </div>
 
         <div class="input-group">
-            <input type="text" id="userInput" class="form-control" placeholder="Pregunta sobre el PDF..." onkeypress="handleKeyPress(event)">
+            <input type="text" id="userInput" class="form-control" placeholder="Pregunta sobre el PDF..."
+                onkeypress="handleKeyPress(event)">
             <button class="btn btn-primary" onclick="sendMessage()" id="sendBtn">📤 Enviar</button>
         </div>
     </div>
 </div>
-
     </div>
 
     
     <script>
-        window.toolTranslations = {};
+        window.toolTranslations = {"apiKeySetupTitle":"⚙️ Necesitas configurar tu API key de Google Gemini.","configureNowButton":"Configurar ahora","uploadPDFLabel":"Subir PDF","pdfFilePlaceholder":"Selecciona un archivo PDF","pdfProcessingInfo":"El PDF se procesa localmente, no se sube a ningún servidor","pdfPreviewTitle":"Vista previa del contenido:","assistantName":"Asistente IA","assistantWelcomeMessage":"PDF cargado. ¿Qué quieres saber sobre este documento?","questionPlaceholder":"Pregunta sobre el PDF...","sendButton":"📤 Enviar"};
     </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="../../js/lib/gemini-api.js"></script>
+<script src="/js/lib/gemini-api.js"></script>
 <script>
     let gemini = null;
     let pdfText = '';

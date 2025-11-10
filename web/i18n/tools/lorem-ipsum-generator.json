@@ -6,7 +6,9 @@
     "sentencesOption": "Sentences",
     "wordsOption": "Words",
     "generateLoremIpsumButton": "Generate Lorem Ipsum",
-    "copyToClipboard": "Copy to clipboard"
+    "copyToClipboard": "Copy to clipboard",
+    "invalidAmount": "Please enter a valid amount (minimum 1).",
+    "textCopied": "Text copied to clipboard!"
   },
   "es": {
     "countLabel": "Cantidad",
@@ -15,6 +17,8 @@
     "sentencesOption": "Oraciones",
     "wordsOption": "Palabras",
     "generateLoremIpsumButton": "Generar Lorem Ipsum",
-    "copyToClipboard": "Copiar al portapapeles"
+    "copyToClipboard": "Copiar al portapapeles",
+    "invalidAmount": "Por favor, introduce una cantidad válida (mínimo 1).",
+    "textCopied": "Texto copiado al portapapeles!"
   }
 }

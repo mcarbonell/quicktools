@@ -29,7 +29,7 @@
     
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <style>
     #dropZone {
         border: 2px dashed #ccc;
@@ -55,7 +55,7 @@
 <body>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="../../index.html" id="backLink">← Back</a>
+            <a href="/index.html" id="backLink">← Back</a>
             <div id="languageSelector"></div>
         </div>
         <h1 class="h4 mt-3">Comprimir Imagen</h1>
@@ -69,7 +69,8 @@
 </div>
 
 <div class="mb-3">
-    <label for="qualityRange" class="form-label">Calidad de compresión: <span id="qualityValue">80</span>%</label>
+    <label for="qualityRange" class="form-label">Calidad de compresión: <span
+            id="qualityValue">80</span>%</label>
     <input type="range" class="form-range" id="qualityRange" min="0" max="100" value="80">
 </div>
 
@@ -100,10 +101,10 @@
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","qualityLabel":"Calidad","compressButton":"Comprimir"};
+        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","qualityLabel":"Calidad","compressButton":"Comprimir","imageCompressorDescription":"Reduce el tamaño de tus imágenes (JPG, PNG, WebP) sin perder calidad visible.","dropMessage":"Arrastra y suelta una imagen aquí o haz clic para seleccionar","compressionQualityLabel":"Calidad de compresión:","compressImageButton":"Comprimir Imagen","downloadImageButton":"Descargar Imagen","originalLabel":"Original:","compressedLabel":"Comprimida:","sizeLabel":"Tamaño:","backToHomeButton":"Volver al inicio","selectValidImage":"Por favor, arrastra o selecciona un archivo de imagen válido.","imageLoaded":"Imagen cargada: {filename} ({size})","loadImageFirst":"Primero, carga una imagen.","compressingImage":"Comprimiendo imagen...","imageCompressed":"Imagen comprimida. Reducción: {reduction}%","errorCompressing":"Error al comprimir la imagen:","compressImageFirst":"Primero, comprime una imagen.","imageDownloaded":"Imagen descargada.","notAvailable":"N/A"};
     </script>
 <script src="https://cdn.jsdelivr.net/npm/compressorjs@1.2.1/dist/compressor.min.js"></script>
-<script src="../../js/tools/image-compressor.js"></script>
+<script src="/js/tools/image-compressor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/i18n/language-selector.js"></script>
 

@@ -29,23 +29,23 @@
     
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <meta property="og:url" content="https://quicktools.dev/tools/text/text-cleaner.html">
 </head>
 
 <body>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="../../index.html" id="backLink">← Back</a>
+            <a href="/index.html" id="backLink">← Back</a>
             <div id="languageSelector"></div>
         </div>
-        <h1 class="h4 mt-3">Limpiar texto</h1>
-        <p class="text-muted">Elimina espacios extra, normaliza saltos de línea y cuenta palabras.</p>
+        <h1 class="h4 mt-3">Clean Text</h1>
+        <p class="text-muted">Remove extra spaces, normalize line breaks and count words.</p>
 
         <div class="position-relative">
     <textarea id="textInput" rows="12" class="form-control mb-2"></textarea>
     <button id="copyBtn" class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-2"
-        title="Copiar al portapapeles">
+        title="Copy to clipboard">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard"
             viewBox="0 0 16 16">
             <path
@@ -57,16 +57,16 @@
 </div>
 <div class="mb-3">
     <button id="cleanBtn" class="btn btn-primary me-2">Clear</button>
-    <button id="countBtn" class="btn btn-outline-secondary">Contar palabras</button>
+    <button id="countBtn" class="btn btn-outline-secondary">Count words</button>
 </div>
 <div id="result" class="mt-2 small text-muted"></div>
     </div>
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","cleanButton":"Clean","wordCount":"Words","charCount":"Characters"};
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","cleanButton":"Clean","wordCount":"Words","charCount":"Characters","countWordsButton":"Count words","copyToClipboardTitle":"Copy to clipboard","textCleaned":"Text cleaned.","wordCountFormat":"Words: {count}","copyError":"Error copying"};
     </script>
-<script src="../../js/tools/text-cleaner.js"></script>
+<script src="/js/tools/text-cleaner.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/i18n/language-selector.js"></script>
 

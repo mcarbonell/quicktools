@@ -27,7 +27,17 @@
     "resultPlaceholder": "Encoded or decoded text will appear here...",
     "differencesTitle": "Differences between URL and component encoding:",
     "encodeUriDescription": "• encodeURI: Encodes a complete URL preserving special characters like",
-    "encodeUriComponentDescription": "• encodeURIComponent: Encodes a URL component (like a parameter), escaping more characters"
+    "encodeUriComponentDescription": "• encodeURIComponent: Encodes a URL component (like a parameter), escaping more characters",
+    "pleaseEnterTextToEncode": "Enter text to encode",
+    "pleaseEnterTextToDecode": "Enter text to decode",
+    "urlEncoded": "URL encoded",
+    "componentEncoded": "Component encoded",
+    "urlDecoded": "URL decoded",
+    "componentDecoded": "Component decoded",
+    "encodeError": "Error encoding",
+    "decodeError": "Error decoding - input appears invalid",
+    "noResultToCopy": "No result to copy",
+    "copyError": "Error copying"
   },
   "es": {
     "copyButton": "Copiar",
@@ -57,6 +67,16 @@
     "resultPlaceholder": "Aquí aparecerá el texto codificado o decodificado...",
     "differencesTitle": "Diferencias entre codificar URL y componente:",
     "encodeUriDescription": "• encodeURI: Codifica una URL completa preservando caracteres especiales como",
-    "encodeUriComponentDescription": "• encodeURIComponent: Codifica un componente de URL (como un parámetro), escapando más caracteres"
+    "encodeUriComponentDescription": "• encodeURIComponent: Codifica un componente de URL (como un parámetro), escapando más caracteres",
+    "pleaseEnterTextToEncode": "Introduce texto para codificar",
+    "pleaseEnterTextToDecode": "Introduce texto para decodificar",
+    "urlEncoded": "URL codificada",
+    "componentEncoded": "Componente codificado",
+    "urlDecoded": "URL decodificada",
+    "componentDecoded": "Componente decodificado",
+    "encodeError": "Error al codificar",
+    "decodeError": "Error al decodificar - la entrada parece inválida",
+    "noResultToCopy": "No hay resultado para copiar",
+    "copyError": "Error al copiar"
   }
 }

@@ -29,7 +29,7 @@
     
     </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <style>
     .chat-container { height: 500px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: #f8f9fa; }
     .message { margin-bottom: 1rem; padding: 0.75rem; border-radius: 8px; max-width: 80%; }
@@ -48,7 +48,7 @@
 <body>
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="../../index.html" id="backLink">← Back</a>
+            <a href="/index.html" id="backLink">← Back</a>
             <div id="languageSelector"></div>
         </div>
         <h1 class="h4 mt-3">Chat con IA</h1>
@@ -90,7 +90,8 @@
     </div>
 
     <div class="input-group">
-        <input type="text" id="userInput" class="form-control" placeholder="Escribe tu mensaje..." onkeypress="handleKeyPress(event)">
+        <input type="text" id="userInput" class="form-control" placeholder="Escribe tu mensaje..."
+            onkeypress="handleKeyPress(event)">
         <button class="btn btn-primary" onclick="sendMessage()" id="sendBtn">📤 Enviar</button>
     </div>
 
@@ -99,14 +100,13 @@
         <button class="btn btn-sm btn-outline-info" onclick="exportChat()">💾 Exportar</button>
     </div>
 </div>
-
     </div>
 
     
     <script>
-        window.toolTranslations = {};
+        window.toolTranslations = {"initialSetupTitle":"⚙️ Configuración inicial","apiKeyInstruction":"Para usar esta herramienta necesitas una API key gratuita de Google AI Studio:","visitLabel":"Visita","loginGoogleAccount":"Inicia sesión con tu cuenta de Google","createApiKey":"Crea una API key (es gratis, 60 req/min)","pasteApiKey":"Pégala aquí abajo 👇","saveButton":"💾 Guardar","localStorageInfo":"🔒 Se guarda en localStorage de tu navegador, nunca en nuestros servidores.","apiKeyConfigured":"✅ API Key configurada","removeButton":"🗑️ Eliminar","assistantName":"Asistente IA","assistantWelcomeMessage":"¡Hola! Soy tu asistente con IA. ¿En qué puedo ayudarte hoy?","typeYourMessagePlaceholder":"Escribe tu mensaje...","sendButton":"📤 Enviar","clearChatButton":"🗑️ Limpiar chat","exportButton":"💾 Exportar"};
     </script>
-<script src="../../js/lib/gemini-api.js"></script>
+<script src="/js/lib/gemini-api.js"></script>
 <script>
     let gemini = null;
 

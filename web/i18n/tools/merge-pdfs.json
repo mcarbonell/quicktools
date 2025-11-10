@@ -17,7 +17,13 @@
     "fileLabel": "File",
     "mergeButton": "Merge PDFs",
     "selectPdfFilesLabel": "Select PDF files",
-    "dropMessage": "Drag your PDFs here or click to select"
+    "dropMessage": "Drag your PDFs here or click to select",
+    "filesSelected": "{count} file(s) selected",
+    "selectAtLeastTwo": "Please select at least two PDF files.",
+    "processingText": "Processing...",
+    "errorMergingPdfs": "Error merging PDFs:",
+    "errorMergingGeneric": "An error occurred while merging the PDFs. Please try again.",
+    "downloadMergedPdf": "Download merged PDF"
   },
   "es": {
     "copyButton": "Copiar",
@@ -37,6 +43,12 @@
     "fileLabel": "Archivo",
     "mergeButton": "Unir PDFs",
     "selectPdfFilesLabel": "Selecciona los archivos PDF",
-    "dropMessage": "Arrastra tus PDFs aquí o haz clic para seleccionar"
+    "dropMessage": "Arrastra tus PDFs aquí o haz clic para seleccionar",
+    "filesSelected": "{count} archivo(s) seleccionado(s)",
+    "selectAtLeastTwo": "Por favor, selecciona al menos dos archivos PDF.",
+    "processingText": "Procesando...",
+    "errorMergingPdfs": "Error al unir los PDFs:",
+    "errorMergingGeneric": "Ocurrió un error al unir los PDFs. Por favor, inténtalo de nuevo.",
+    "downloadMergedPdf": "Descargar PDF unido"
   }
 }

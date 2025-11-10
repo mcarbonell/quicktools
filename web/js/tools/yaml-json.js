@@ -18,39 +18,39 @@ function showMsg(text, isError = false) {
 yamlToJsonBtn?.addEventListener('click', () => {
     const input = inputText.value.trim();
     if (!input) {
-        showMsg('Introduce YAML para convertir', true);
+        showMsg(t.enterYamlToConvert || 'Introduce YAML para convertir', true);
         return;
     }
     try {
         const obj = jsyaml.load(input);
         const json = JSON.stringify(obj, null, 2);
         outputText.value = json;
-        showMsg('YAML convertido a JSON');
+        showMsg(t.yamlConvertedToJson || 'YAML convertido a JSON');
     } catch (e) {
-        showMsg('Error al parsear YAML: ' + e.message, true);
+        showMsg((t.yamlParseError || 'Error al parsear YAML') + ': ' + e.message, true);
     }
 });
 
 jsonToYamlBtn?.addEventListener('click', () => {
     const input = inputText.value.trim();
     if (!input) {
-        showMsg('Introduce JSON para convertir', true);
+        showMsg(t.enterJsonToConvert || 'Introduce JSON para convertir', true);
         return;
     }
     try {
         const obj = JSON.parse(input);
         const yaml = jsyaml.dump(obj, { noRefs: true, lineWidth: 1000 });
         outputText.value = yaml;
-        showMsg('JSON convertido a YAML');
+        showMsg(t.jsonConvertedToYaml || 'JSON convertido a YAML');
     } catch (e) {
-        showMsg('Error al parsear JSON: ' + e.message, true);
+        showMsg((t.jsonParseError || 'Error al parsear JSON') + ': ' + e.message, true);
     }
 });
 
 prettyJsonBtn?.addEventListener('click', () => {
     const input = inputText.value.trim();
     if (!input) {
-        showMsg('Introduce JSON para formatear', true);
+        showMsg(t.enterJsonToFormat || 'Introduce JSON para formatear', true);
         return;
     }
     try {
@@ -64,7 +64,7 @@ prettyJsonBtn?.addEventListener('click', () => {
 
 copyBtn?.addEventListener('click', async () => {
     if (!outputText.value) {
-        showMsg('No hay resultado para copiar', true);
+        showMsg(t.noResultToCopy || 'No hay resultado para copiar', true);
         return;
     }
     try {
@@ -88,7 +88,7 @@ copyBtn?.addEventListener('click', async () => {
                 showMsg('');
             }, 1400);
         } catch (err) {
-            showMsg('Error al copiar: ' + e.message, true);
+            showMsg((t.copyError || 'Error al copiar') + ': ' + e.message, true);
         }
     }
 });

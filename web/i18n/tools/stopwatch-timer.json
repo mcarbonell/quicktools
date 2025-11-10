@@ -23,7 +23,10 @@
     "timerTitle": "Timer",
     "hoursPlaceholder": "HH",
     "minutesPlaceholder": "MM",
-    "secondsPlaceholder": "SS"
+    "secondsPlaceholder": "SS",
+    "lapText": "Lap {number}",
+    "timeFinished": "Time's up!",
+    "setTimerDuration": "Please set a duration for the timer."
   },
   "es": {
     "copyButton": "Copiar",
@@ -49,6 +52,9 @@
     "timerTitle": "Temporizador",
     "hoursPlaceholder": "HH",
     "minutesPlaceholder": "MM",
-    "secondsPlaceholder": "SS"
+    "secondsPlaceholder": "SS",
+    "lapText": "Vuelta {number}",
+    "timeFinished": "¡Tiempo terminado!",
+    "setTimerDuration": "Por favor, establece una duración para el temporizador."
   }
 }

@@ -20,7 +20,7 @@ function handleFile(file) {
     dataTransfer.items.add(file);
     imageInput.files = dataTransfer.files;
 
-    dropZone.querySelector('.drop-message').textContent = `Imagen cargada: ${file.name}`;
+    const imgMsg = (t.imageLoaded || 'Imagen cargada: {filename}').replace('{filename}', file.name); dropZone.querySelector('.drop-message').textContent = imgMsg;
 
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -70,7 +70,7 @@ cropBtn.addEventListener('click', () => {
         downloadLink.href = croppedImageURL;
         downloadLink.download = 'cropped_image.png';
         downloadLink.classList.add('btn', 'btn-success', 'mt-2');
-        downloadLink.textContent = 'Descargar Imagen Recortada';
+        downloadLink.textContent = t.downloadCroppedImage || 'Descargar Imagen Recortada';
 
         const previewImage = document.createElement('img');
         previewImage.src = croppedImageURL;

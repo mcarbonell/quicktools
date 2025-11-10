@@ -23,15 +23,15 @@ const basicEntities = {
 encodeBtn?.addEventListener('click', () => {
     const input = inputText.value;
     if (!input.trim()) {
-        msg.textContent = 'Introduce texto para codificar';
+        msg.textContent = t.pleaseEnterTextToEncode || 'Introduce texto para codificar';
         return;
     }
     try {
         const encoded = input.replace(/[<>&"']/g, char => basicEntities[char]);
         outputText.value = encoded;
-        msg.textContent = 'Texto codificado en HTML';
+        msg.textContent = t.htmlTextEncoded || 'Texto codificado en HTML';
     } catch (e) {
-        msg.textContent = 'Error al codificar: ' + e.message;
+        msg.textContent = (t.encodeError || 'Error al codificar') + ': ' + e.message;
     }
 });
 
@@ -39,7 +39,7 @@ encodeBtn?.addEventListener('click', () => {
 encodeAllBtn?.addEventListener('click', () => {
     const input = inputText.value;
     if (!input.trim()) {
-        msg.textContent = 'Introduce texto para codificar';
+        msg.textContent = t.pleaseEnterTextToEncode || 'Introduce texto para codificar';
         return;
     }
     try {
@@ -53,9 +53,9 @@ encodeAllBtn?.addEventListener('click', () => {
             return `&#${code};`;
         }).join('');
         outputText.value = encoded;
-        msg.textContent = 'Texto codificado completamente en HTML';
+        msg.textContent = t.htmlAllTextEncoded || 'Texto codificado completamente en HTML';
     } catch (e) {
-        msg.textContent = 'Error al codificar: ' + e.message;
+        msg.textContent = (t.encodeError || 'Error al codificar') + ': ' + e.message;
     }
 });
 
@@ -63,7 +63,7 @@ encodeAllBtn?.addEventListener('click', () => {
 decodeBtn?.addEventListener('click', () => {
     const input = inputText.value;
     if (!input.trim()) {
-        msg.textContent = 'Introduce texto HTML para decodificar';
+        msg.textContent = t.pleaseEnterHtmlToDecode || 'Introduce texto HTML para decodificar';
         return;
     }
     try {
@@ -72,16 +72,16 @@ decodeBtn?.addEventListener('click', () => {
         textarea.innerHTML = input;
         const decoded = textarea.value;
         outputText.value = decoded;
-        msg.textContent = 'Texto decodificado de HTML';
+        msg.textContent = t.htmlTextDecoded || 'Texto decodificado de HTML';
     } catch (e) {
-        msg.textContent = 'Error al decodificar - la entrada parece inválida';
+        msg.textContent = t.decodeError || 'Error al decodificar - la entrada parece inválida';
     }
 });
 
 // Copiar al portapapeles con fallback
 copyBtn?.addEventListener('click', async () => {
     if (!outputText.value) {
-        msg.textContent = 'No hay resultado para copiar';
+        msg.textContent = t.noResultToCopy || 'No hay resultado para copiar';
         return;
     }
     try {
@@ -105,7 +105,7 @@ copyBtn?.addEventListener('click', async () => {
                 msg.textContent = '';
             }, 1800);
         } catch (err) {
-            msg.textContent = 'Error al copiar: ' + e.message;
+            msg.textContent = (t.copyError || 'Error al copiar') + ': ' + e.message;
         }
     }
 });

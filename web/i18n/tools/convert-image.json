@@ -23,7 +23,10 @@
     "jpgOption": "JPG (quality 0.92)",
     "webpOption": "WebP",
     "convertAndDownloadButton": "Convert and download",
-    "previewLabel": "Preview:"
+    "previewLabel": "Preview:",
+    "selectValidImage": "Please select a valid image file.",
+    "imageLoaded": "Image loaded: {filename}",
+    "uploadImageFirst": "Upload an image first."
   },
   "es": {
     "copyButton": "Copiar",
@@ -49,6 +52,9 @@
     "jpgOption": "JPG (calidad 0.92)",
     "webpOption": "WebP",
     "convertAndDownloadButton": "Convertir y descargar",
-    "previewLabel": "Vista previa:"
+    "previewLabel": "Vista previa:",
+    "selectValidImage": "Por favor selecciona un archivo de imagen válido.",
+    "imageLoaded": "Imagen cargada: {filename}",
+    "uploadImageFirst": "Sube primero una imagen."
   }
 }

@@ -16,7 +16,7 @@ function handleFile(file) {
         pdfInput.files = dataTransfer.files;
 
         // Update the drop zone message
-        dropZone.querySelector('.drop-message').textContent = `Archivo seleccionado: ${file.name}`;
+        const fileMsg = (t.fileSelected || 'Archivo seleccionado: {filename}').replace('{filename}', file.name); dropZone.querySelector('.drop-message').textContent = fileMsg;
     }
 }
 
@@ -48,11 +48,11 @@ pdfInput.addEventListener('change', (e) => {
 
 compressBtn.addEventListener('click', async () => {
     if (!pdfInput.files.length) {
-        alert('Por favor, selecciona un archivo PDF.');
+        alert(t.selectPdfFile || 'Por favor, selecciona un archivo PDF.');
         return;
     }
 
-    outputDiv.innerHTML = '<p>Procesando... esto puede tardar un momento.</p>';
+    outputDiv.innerHTML = `<p>${t.processingMayTakeTime || 'Procesando... esto puede tardar un momento.'}</p>`;
 
     try {
         const pdfBytes = await pdfInput.files[0].arrayBuffer();
@@ -110,15 +110,15 @@ compressBtn.addEventListener('click', async () => {
         const newSize = (blob.size / 1024 / 1024).toFixed(2);
 
         outputDiv.innerHTML = `
-            <p>Compresión completada.</p>
-            <p>Tamaño original: ${oldSize} MB</p>
-            <p>Tamaño nuevo: ${newSize} MB</p>
-            <a href="${url}" download="compressed.pdf">Descargar PDF comprimido</a>
+            <p>${t.compressionCompleted || 'Compresión completada.'}</p>
+            <p>${(t.originalSize || 'Tamaño original: {size} MB').replace('{size}', oldSize)}</p>
+            <p>${(t.newSize || 'Tamaño nuevo: {size} MB').replace('{size}', newSize)}</p>
+            <a href="${url}" download="compressed.pdf">${t.downloadCompressedPdf || 'Descargar PDF comprimido'}</a>
         `;
 
     } catch (error) {
-        console.error('Error al comprimir el PDF:', error);
-        outputDiv.innerHTML = '<p>Ocurrió un error al comprimir el PDF. Es posible que este PDF no se pueda comprimir.</p>';
+        console.error((t.errorCompressingPdf || 'Error al comprimir el PDF:'), error);
+        outputDiv.innerHTML = `<p>${t.errorCompressingGeneric || 'Ocurrió un error al comprimir el PDF. Es posible que este PDF no se pueda comprimir.'}</p>`;
     }
 });
 
