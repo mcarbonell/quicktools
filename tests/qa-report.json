@@ -1,0 +1,16 @@
+{
+  "timestamp": "2025-11-10T17:13:44.520Z",
+  "summary": {
+    "total": 134,
+    "passed": 133,
+    "failed": 1,
+    "skipped": 0,
+    "passRate": "99.25%"
+  },
+  "errors": [
+    {
+      "test": "Has GA4 Measurement ID",
+      "error": "Missing or wrong GA4 ID"
+    }
+  ]
+}
