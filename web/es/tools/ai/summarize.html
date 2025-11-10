@@ -44,12 +44,17 @@
 
 <body>
     <div class="container py-4">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <a href="/index.html" id="backLink">← Back</a>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
             <div id="languageSelector"></div>
         </div>
-        <h1 class="h4 mt-3">Resumir Texto con IA</h1>
-        <p class="text-muted">Resume textos largos automáticamente con IA. Varios tipos de resumen disponibles.</p>
+        <div class="tool-header">
+            <h1>Resumir Texto con IA</h1>
+            <p class="text-muted">Resume textos largos automáticamente con IA. Varios tipos de resumen disponibles.</p>
+        </div>
 
         <div id="apiKeySetup" class="alert alert-warning">
     <p class="mb-2">⚙️ Necesitas configurar tu API key de Google Gemini.</p>
@@ -147,6 +152,7 @@
 </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
     <script src="/i18n/language-selector.js"></script>
     <script src="/js/cookie-consent.js"></script>
     <script src="/js/analytics.js"></script>
