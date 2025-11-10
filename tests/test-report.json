@@ -1,22 +1,24 @@
 {
-  "timestamp": "2025-11-05T22:31:08.679Z",
-  "duration": 254,
+  "timestamp": "2025-11-10T17:14:45.700Z",
+  "duration": 152,
   "results": [
     {
       "name": "Estructura de Archivos",
-      "passed": 19,
+      "passed": 5,
       "total": 19,
       "errors": []
     },
     {
       "name": "Tests Node.js",
-      "passed": 2,
+      "passed": 1,
       "total": 2,
-      "errors": []
+      "errors": [
+        "csv-parser.test.js: Command failed: node \"C:\\Users\\mrcm_\\Local\\proj\\quicktools\\tests\\csv-parser.test.js\"\nnode:internal/modules/cjs/loader:1423\r\n  throw err;\r\n  ^\r\n\r\nError: Cannot find module '../js/lib/csv-parser'\r\nRequire stack:\r\n- C:\\Users\\mrcm_\\Local\\proj\\quicktools\\tests\\csv-parser.test.js\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1420:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1058:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1063:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1226:37)\r\n    at TracingChannel.traceSync (node:diagnostics_channel:328:14)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:244:24)\r\n    at Module.require (node:internal/modules/cjs/loader:1503:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\mrcm_\\Local\\proj\\quicktools\\tests\\csv-parser.test.js:2:33)\r\n    at Module._compile (node:internal/modules/cjs/loader:1760:14) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\mrcm_\\\\Local\\\\proj\\\\quicktools\\\\tests\\\\csv-parser.test.js'\r\n  ]\r\n}\r\n\r\nNode.js v24.10.0\r\n"
+      ]
     },
     {
       "name": "Sintaxis JavaScript",
-      "passed": 2,
+      "passed": 0,
       "total": 2,
       "errors": []
     },
@@ -28,32 +30,34 @@
     },
     {
       "name": "Herramientas Web",
-      "passed": 2,
+      "passed": 0,
       "total": 2,
       "errors": []
     }
   ],
   "summary": {
     "totalTests": 27,
-    "totalPassed": 27,
-    "totalErrors": 0,
-    "percentage": "100.0",
+    "totalPassed": 8,
+    "totalErrors": 1,
+    "percentage": "29.6",
     "details": [
       {
         "name": "Estructura de Archivos",
-        "passed": 19,
+        "passed": 5,
         "total": 19,
         "errors": []
       },
       {
         "name": "Tests Node.js",
-        "passed": 2,
+        "passed": 1,
         "total": 2,
-        "errors": []
+        "errors": [
+          "csv-parser.test.js: Command failed: node \"C:\\Users\\mrcm_\\Local\\proj\\quicktools\\tests\\csv-parser.test.js\"\nnode:internal/modules/cjs/loader:1423\r\n  throw err;\r\n  ^\r\n\r\nError: Cannot find module '../js/lib/csv-parser'\r\nRequire stack:\r\n- C:\\Users\\mrcm_\\Local\\proj\\quicktools\\tests\\csv-parser.test.js\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1420:15)\r\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1058:19)\r\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1063:22)\r\n    at Module._load (node:internal/modules/cjs/loader:1226:37)\r\n    at TracingChannel.traceSync (node:diagnostics_channel:328:14)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:244:24)\r\n    at Module.require (node:internal/modules/cjs/loader:1503:12)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\mrcm_\\Local\\proj\\quicktools\\tests\\csv-parser.test.js:2:33)\r\n    at Module._compile (node:internal/modules/cjs/loader:1760:14) {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: [\r\n    'C:\\\\Users\\\\mrcm_\\\\Local\\\\proj\\\\quicktools\\\\tests\\\\csv-parser.test.js'\r\n  ]\r\n}\r\n\r\nNode.js v24.10.0\r\n"
+        ]
       },
       {
         "name": "Sintaxis JavaScript",
-        "passed": 2,
+        "passed": 0,
         "total": 2,
         "errors": []
       },
@@ -65,7 +69,7 @@
       },
       {
         "name": "Herramientas Web",
-        "passed": 2,
+        "passed": 0,
         "total": 2,
         "errors": []
       }
