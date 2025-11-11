@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hash Calculator - FastTools</title>
+    <meta name="description" content="Calculate MD5, SHA-1, SHA-256 and SHA-512 hashes.">
+    <meta name="keywords" content="hash, md5, sha, security">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Calculadora de Hashes — FastTools">
+    <meta property="og:description" content="Calcula hashes MD5, SHA-1, SHA-256 y SHA-512.">
+    <meta property="og:url" content="https://fasttools.tools/tools/hash-calculator.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/hash-calculator.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/hash-calculator.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/tools/hash-calculator.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>Hash Calculator</h1>
+            <p class="text-muted">Calculate MD5, SHA-1, SHA-256 and SHA-512 hashes.</p>
+        </div>
+
+        <div class="mb-3">
+    <label for="inputText" class="form-label">Input text:</label>
+    <textarea class="form-control" id="inputText" rows="5" placeholder="Enter text here..."></textarea>
+</div>
+
+<div class="mb-3">
+    <label for="hashType" class="form-label">Hash type:</label>
+    <select class="form-select" id="hashType">
+        <option value="MD5">MD5</option>
+        <option value="SHA-1">SHA-1</option>
+        <option value="SHA-256" selected>SHA-256</option>
+        <option value="SHA-512">SHA-512</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <button id="calculateBtn" class="btn btn-primary me-2">Calculate Hash</button>
+    <button id="copyBtn" class="btn btn-secondary" disabled>Copy Hash</button>
+</div>
+
+<div class="mb-3">
+    <label for="resultHash" class="form-label">Hash result:</label>
+    <textarea class="form-control" id="resultHash" rows="2" readonly
+        placeholder="(Hash will appear here)"></textarea>
+</div>
+
+<div id="msg" class="mt-3 text-info"></div>
+
+<div class="mt-4">
+    <a href="../../index.html" class="btn btn-outline-secondary">Back to home</a>
+</div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What are cryptographic hashes and why are they essential?</h2>
+            <p class="mb-4"><strong>Cryptographic hash functions</strong> are mathematical algorithms that convert <strong>input data of any size</strong> into <strong>fixed-length outputs</strong> called hash values or digests. These <strong>one-way functions</strong> are crucial for <strong>data integrity verification</strong>, <strong>password storage</strong>, <strong>digital signatures</strong>, and <strong>blockchain technology</strong>. Popular algorithms include <strong>MD5</strong> (128-bit, legacy), <strong>SHA-1</strong> (160-bit, deprecated), <strong>SHA-256</strong> (256-bit, modern standard), and <strong>SHA-512</strong> (512-bit, maximum security). Hash values are <strong>unique fingerprints</strong> that change dramatically with any input modification. Learn more about <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function" target="_blank" rel="noopener">cryptographic hash functions</a> and <a href="https://en.wikipedia.org/wiki/Secure_Hash_Algorithm" target="_blank" rel="noopener">hash algorithms</a>.</p>
+            <h3 class="h5 mb-3">How to use the Hash Calculator tool?</h3>
+            <ol class="mb-4">
+                <li><strong>Enter your text</strong> in the input field that you want to hash</li>
+                <li><strong>Select the hash algorithm</strong>: MD5 (legacy), SHA-1 (deprecated), SHA-256 (recommended), or SHA-512 (maximum security)</li>
+                <li>Click <strong>'Calculate Hash'</strong> to generate the cryptographic hash value</li>
+                <li><strong>Copy the result</strong> using the copy button for your records</li>
+            </ol>
+            <h3 class="h5 mb-3">Common use cases for hash calculations</h3>
+            <ul class="mb-4">
+                <li><strong>Verify file integrity</strong> by comparing hash values before and after downloads</li>
+                <li><strong>Store password hashes</strong> instead of plain text passwords in databases</li>
+                <li><strong>Create digital signatures</strong> for documents and software authentication</li>
+                <li><strong>Generate unique identifiers</strong> for content deduplication and version control</li>
+                <li><strong>Validate API responses</strong> by comparing expected and actual hash values</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            Which hash algorithm should I use for security?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            For <strong>maximum security</strong>, use <strong>SHA-256 or SHA-512</strong>. <strong>Avoid MD5 and SHA-1</strong> for security purposes as they have known vulnerabilities. <strong>SHA-256</strong> is widely supported and recommended for most applications, while <strong>SHA-512</strong> provides extra security for high-risk data.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            Can hash values be reversed to get the original data?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            No! Hash functions are <strong>mathematically one-way</strong>. It's computationally <strong>practically impossible</strong> to reverse a hash value to get the original input. This <strong>irreversibility</strong> is what makes hashes essential for <strong>password storage</strong> and <strong>data integrity verification</strong>.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            Is this hash calculator safe?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! All hash calculations happen <strong>100% in your browser</strong> using secure cryptographic APIs. Your text never leaves your device and is not stored on any server, ensuring complete <strong>privacy and security</strong> of your sensitive data.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","calculateButton":"Calculate","inputTextLabel":"Input text:","inputTextPlaceholder":"Enter text here...","hashTypeLabel":"Hash type:","md5Option":"MD5","sha1Option":"SHA-1","sha256Option":"SHA-256","sha512Option":"SHA-512","calculateHashButton":"Calculate Hash","copyHashButton":"Copy Hash","hashResultLabel":"Hash result:","hashResultPlaceholder":"(Hash will appear here)","backToHomeButton":"Back to home","enterTextToHash":"Please enter the text to hash.","md5NotSupported":"MD5 is not directly supported by the Web Crypto API. Use SHA-1, SHA-256 or SHA-512.","hashCalculated":"Hash calculated successfully.","hashCalculateError":"Error calculating hash","hashCopied":"Hash copied to clipboard","clipboardFailed":"navigator.clipboard.writeText failed:","hashCopiedFallback":"Hash copied to clipboard (fallback)","copyError":"Error copying","execCopyFailed":"Copy failed:","seo":{"whatIsTitle":"What are cryptographic hashes and why are they essential?","whatIsContent":"**Cryptographic hash functions** are mathematical algorithms that convert **input data of any size** into **fixed-length outputs** called hash values or digests. These **one-way functions** are crucial for **data integrity verification**, **password storage**, **digital signatures**, and **blockchain technology**. Popular algorithms include **MD5** (128-bit, legacy), **SHA-1** (160-bit, deprecated), **SHA-256** (256-bit, modern standard), and **SHA-512** (512-bit, maximum security). Hash values are **unique fingerprints** that change dramatically with any input modification. Learn more about [cryptographic hash functions](https://en.wikipedia.org/wiki/Cryptographic_hash_function) and [hash algorithms](https://en.wikipedia.org/wiki/Secure_Hash_Algorithm).","howToTitle":"How to use the Hash Calculator tool?","howToSteps":["**Enter your text** in the input field that you want to hash","**Select the hash algorithm**: MD5 (legacy), SHA-1 (deprecated), SHA-256 (recommended), or SHA-512 (maximum security)","Click **'Calculate Hash'** to generate the cryptographic hash value","**Copy the result** using the copy button for your records"],"useCasesTitle":"Common use cases for hash calculations","useCases":["**Verify file integrity** by comparing hash values before and after downloads","**Store password hashes** instead of plain text passwords in databases","**Create digital signatures** for documents and software authentication","**Generate unique identifiers** for content deduplication and version control","**Validate API responses** by comparing expected and actual hash values"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"Which hash algorithm should I use for security?","answer":"For **maximum security**, use **SHA-256 or SHA-512**. **Avoid MD5 and SHA-1** for security purposes as they have known vulnerabilities. **SHA-256** is widely supported and recommended for most applications, while **SHA-512** provides extra security for high-risk data."},{"question":"Can hash values be reversed to get the original data?","answer":"No! Hash functions are **mathematically one-way**. It's computationally **practically impossible** to reverse a hash value to get the original input. This **irreversibility** is what makes hashes essential for **password storage** and **data integrity verification**."},{"question":"Is this hash calculator safe?","answer":"Yes! All hash calculations happen **100% in your browser** using secure cryptographic APIs. Your text never leaves your device and is not stored on any server, ensuring complete **privacy and security** of your sensitive data."}]}};
+    </script>
+<script src="/js/utils.js"></script>
+<script src="/js/tools/hash-calculator.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

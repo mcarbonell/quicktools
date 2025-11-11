@@ -1,251 +1,114 @@
 {
   "categories": [
     {
-      "id": "developers",
-      "slug": "developers",
+      "id": "image",
+      "slug": "image",
       "name": {
-        "es": "Desarrolladores",
-        "en": "Developers"
+        "es": "Imagen",
+        "en": "Image"
       },
-      "icon": "💻",
+      "icon": "🖼️",
       "description": {
-        "es": "Herramientas para programadores y desarrolladores web",
-        "en": "Tools for programmers and web developers"
+        "es": "Herramientas para editar y procesar imágenes",
+        "en": "Tools to edit and process images"
       }
     },
     {
-      "id": "designers",
-      "slug": "designers",
+      "id": "data",
+      "slug": "data",
       "name": {
-        "es": "Diseñadores",
-        "en": "Designers"
-      },
-      "icon": "🎨",
-      "description": {
-        "es": "Herramientas para diseñadores gráficos y creativos",
-        "en": "Tools for graphic designers and creatives"
-      }
-    },
-    {
-      "id": "writers",
-      "slug": "writers",
-      "name": {
-        "es": "Escritores",
-        "en": "Writers"
-      },
-      "icon": "✍️",
-      "description": {
-        "es": "Herramientas para escritores y creadores de contenido",
-        "en": "Tools for writers and content creators"
-      }
-    },
-    {
-      "id": "data-analysts",
-      "slug": "data-analysts",
-      "name": {
-        "es": "Analistas de Datos",
-        "en": "Data Analysts"
+        "es": "Datos",
+        "en": "Data"
       },
       "icon": "📊",
       "description": {
-        "es": "Herramientas para análisis y conversión de datos",
-        "en": "Tools for data analysis and conversion"
+        "es": "Conversión y formateo de datos",
+        "en": "Data conversion and formatting"
       }
     },
     {
-      "id": "marketers",
-      "slug": "marketers",
+      "id": "text",
+      "slug": "text",
       "name": {
-        "es": "Marketing",
-        "en": "Marketers"
+        "es": "Texto",
+        "en": "Text"
       },
-      "icon": "📱",
+      "icon": "📝",
       "description": {
-        "es": "Herramientas para marketing digital y SEO",
-        "en": "Tools for digital marketing and SEO"
+        "es": "Herramientas para procesar texto",
+        "en": "Text processing tools"
       }
     },
     {
-      "id": "productivity",
-      "slug": "productivity",
+      "id": "utils",
+      "slug": "utils",
       "name": {
-        "es": "Productividad",
-        "en": "Productivity"
+        "es": "Utilidades",
+        "en": "Utils"
       },
-      "icon": "⚡",
+      "icon": "🔧",
       "description": {
-        "es": "Herramientas para mejorar tu productividad diaria",
-        "en": "Tools to improve your daily productivity"
+        "es": "Utilidades generales",
+        "en": "General utilities"
       }
     },
     {
-      "id": "ai-tools",
-      "slug": "ai-tools",
+      "id": "ai",
+      "slug": "ai",
       "name": {
         "es": "IA",
         "en": "AI"
       },
       "icon": "🤖",
       "description": {
-        "es": "Herramientas potenciadas con inteligencia artificial",
+        "es": "Herramientas con inteligencia artificial",
         "en": "AI-powered tools"
+      }
+    },
+    {
+      "id": "files",
+      "slug": "files",
+      "name": {
+        "es": "Archivos",
+        "en": "Files"
+      },
+      "icon": "📁",
+      "description": {
+        "es": "Procesamiento de archivos PDF",
+        "en": "PDF file processing"
+      }
+    },
+    {
+      "id": "converters",
+      "slug": "converters",
+      "name": {
+        "es": "Conversores",
+        "en": "Converters"
+      },
+      "icon": "🔄",
+      "description": {
+        "es": "Conversión entre formatos",
+        "en": "Format conversion"
+      }
+    },
+    {
+      "id": "generators",
+      "slug": "generators",
+      "name": {
+        "es": "Generadores",
+        "en": "Generators"
+      },
+      "icon": "✨",
+      "description": {
+        "es": "Generadores de contenido",
+        "en": "Content generators"
       }
     }
   ],
   "tools": [
     {
-      "id": "json-formatter",
-      "slug": "tools/data/json-formatter.html",
-      "title": {
-        "es": "Formatear JSON",
-        "en": "Format JSON"
-      },
-      "description": {
-        "es": "Formatea, valida y minifica JSON al instante.",
-        "en": "Format, validate and minify JSON instantly."
-      },
-      "categories": ["developers", "data-analysts"],
-      "icon": "📋",
-      "tags": ["json", "validator", "copy"]
-    },
-    {
-      "id": "csv-json",
-      "slug": "tools/data/csv-json.html",
-      "title": {
-        "es": "CSV ↔ JSON",
-        "en": "CSV ↔ JSON"
-      },
-      "description": {
-        "es": "Convierte CSV a JSON y JSON a CSV en el navegador.",
-        "en": "Convert CSV to JSON and JSON to CSV in browser."
-      },
-      "categories": ["developers", "data-analysts"],
-      "icon": "📊",
-      "tags": ["csv", "json", "convert"]
-    },
-    {
-      "id": "yaml-json",
-      "slug": "tools/data/yaml-json.html",
-      "title": {
-        "es": "YAML ↔ JSON",
-        "en": "YAML ↔ JSON"
-      },
-      "description": {
-        "es": "Convierte YAML a JSON y JSON a YAML.",
-        "en": "Convert YAML to JSON and JSON to YAML."
-      },
-      "categories": ["developers"],
-      "icon": "🔄",
-      "tags": ["yaml", "json", "convert"]
-    },
-    {
-      "id": "xml-json",
-      "slug": "tools/data/xml-json.html",
-      "title": {
-        "es": "XML ↔ JSON",
-        "en": "XML ↔ JSON"
-      },
-      "description": {
-        "es": "Convierte XML a JSON y JSON a XML.",
-        "en": "Convert XML to JSON and JSON to XML."
-      },
-      "categories": ["developers", "data-analysts"],
-      "icon": "🔄",
-      "tags": ["xml", "json", "convert"]
-    },
-    {
-      "id": "toml-json",
-      "slug": "tools/data/toml-json.html",
-      "title": {
-        "es": "TOML ↔ JSON",
-        "en": "TOML ↔ JSON"
-      },
-      "description": {
-        "es": "Convierte TOML a JSON y JSON a TOML.",
-        "en": "Convert TOML to JSON and JSON to TOML."
-      },
-      "categories": ["developers"],
-      "icon": "🔄",
-      "tags": ["toml", "json", "convert"]
-    },
-    {
-      "id": "base64",
-      "slug": "tools/text/base64.html",
-      "title": {
-        "es": "Codificar/Decodificar Base64",
-        "en": "Encode/Decode Base64"
-      },
-      "description": {
-        "es": "Codifica y decodifica texto en Base64.",
-        "en": "Encode and decode text in Base64."
-      },
-      "categories": ["developers"],
-      "icon": "🔐",
-      "tags": ["text", "base64", "encode"]
-    },
-    {
-      "id": "url-encoder",
-      "slug": "tools/text/url-encoder.html",
-      "title": {
-        "es": "Codificar/Decodificar URL",
-        "en": "Encode/Decode URL"
-      },
-      "description": {
-        "es": "Codifica y decodifica URLs y parámetros.",
-        "en": "Encode and decode URLs and parameters."
-      },
-      "categories": ["developers", "marketers"],
-      "icon": "🔗",
-      "tags": ["text", "url", "encode"]
-    },
-    {
-      "id": "html-encoder",
-      "slug": "tools/text/html-encoder.html",
-      "title": {
-        "es": "Codificar/Decodificar HTML",
-        "en": "Encode/Decode HTML"
-      },
-      "description": {
-        "es": "Codifica y decodifica entidades HTML.",
-        "en": "Encode and decode HTML entities."
-      },
-      "categories": ["developers"],
-      "icon": "🏷️",
-      "tags": ["text", "html", "encode"]
-    },
-    {
-      "id": "hash-calculator",
-      "slug": "tools/utils/hash-calculator.html",
-      "title": {
-        "es": "Calculadora de Hashes",
-        "en": "Hash Calculator"
-      },
-      "description": {
-        "es": "Calcula hashes MD5, SHA-1, SHA-256 y SHA-512.",
-        "en": "Calculate MD5, SHA-1, SHA-256 and SHA-512 hashes."
-      },
-      "categories": ["developers"],
-      "icon": "#️⃣",
-      "tags": ["hash", "md5", "sha", "security"]
-    },
-    {
-      "id": "diff",
-      "slug": "tools/text/diff.html",
-      "title": {
-        "es": "Comparar Textos",
-        "en": "Compare Texts"
-      },
-      "description": {
-        "es": "Compara dos textos y encuentra las diferencias.",
-        "en": "Compare two texts and find differences."
-      },
-      "categories": ["developers", "writers"],
-      "icon": "🔀",
-      "tags": ["text", "diff", "compare"]
-    },
-    {
       "id": "image-resizer",
-      "slug": "tools/image/image-resizer.html",
+      "slug": "tools/image-resizer.html",
       "title": {
         "es": "Redimensionar imagen",
         "en": "Resize Image"
@@ -254,13 +117,13 @@
         "es": "Redimensiona imágenes en el navegador manteniendo la proporción.",
         "en": "Resize images in browser while maintaining aspect ratio."
       },
-      "categories": ["designers", "marketers"],
+      "categories": ["image"],
       "icon": "📐",
       "tags": ["image", "canvas", "drag-drop"]
     },
     {
       "id": "convert-image",
-      "slug": "tools/image/convert-image.html",
+      "slug": "tools/convert-image.html",
       "title": {
         "es": "Convertir formato de imagen",
         "en": "Convert Image Format"
@@ -269,118 +132,43 @@
         "es": "Convierte JPG, PNG y WebP sin subir archivos.",
         "en": "Convert JPG, PNG and WebP without uploading files."
       },
-      "categories": ["designers", "marketers"],
+      "categories": ["image", "converters"],
       "icon": "🔄",
       "tags": ["image", "convert", "download"]
     },
     {
-      "id": "image-compressor",
-      "slug": "tools/image/image-compressor.html",
+      "id": "json-formatter",
+      "slug": "tools/json-formatter.html",
       "title": {
-        "es": "Comprimir Imagen",
-        "en": "Compress Image"
+        "es": "Formatear JSON",
+        "en": "Format JSON"
       },
       "description": {
-        "es": "Reduce el tamaño de tus imágenes sin perder calidad visible.",
-        "en": "Reduce image size without losing visible quality."
+        "es": "Formatea, valida y minifica JSON al instante.",
+        "en": "Format, validate and minify JSON instantly."
       },
-      "categories": ["designers", "marketers"],
-      "icon": "📦",
-      "tags": ["image", "compress", "optimize"]
+      "categories": ["data"],
+      "icon": "📋",
+      "tags": ["json", "validator", "copy"]
     },
     {
-      "id": "image-cropper",
-      "slug": "tools/image/image-cropper.html",
+      "id": "csv-json",
+      "slug": "tools/csv-json.html",
       "title": {
-        "es": "Recortar Imagen",
-        "en": "Crop Image"
+        "es": "CSV ↔ JSON",
+        "en": "CSV ↔ JSON"
       },
       "description": {
-        "es": "Recorta tus imágenes online de forma sencilla y precisa.",
-        "en": "Crop your images online easily and precisely."
+        "es": "Convierte CSV a JSON y JSON a CSV en el navegador.",
+        "en": "Convert CSV to JSON and JSON to CSV in browser."
       },
-      "categories": ["designers", "marketers"],
-      "icon": "✂️",
-      "tags": ["image", "crop", "editor"]
-    },
-    {
-      "id": "color-palette-generator",
-      "slug": "tools/image/color-palette-generator.html",
-      "title": {
-        "es": "Generador de Paleta de Colores",
-        "en": "Color Palette Generator"
-      },
-      "description": {
-        "es": "Extrae la paleta de colores dominante de cualquier imagen.",
-        "en": "Extract dominant color palette from any image."
-      },
-      "categories": ["designers"],
-      "icon": "🎨",
-      "tags": ["image", "colors", "palette"]
-    },
-    {
-      "id": "color-picker-converter",
-      "slug": "tools/utils/color-picker-converter.html",
-      "title": {
-        "es": "Selector y Conversor de Color",
-        "en": "Color Picker & Converter"
-      },
-      "description": {
-        "es": "Selector de colores y conversor entre HEX, RGB y HSL.",
-        "en": "Color picker and converter between HEX, RGB and HSL."
-      },
-      "categories": ["designers", "developers"],
-      "icon": "🎨",
-      "tags": ["color", "picker", "converter"]
-    },
-    {
-      "id": "exif-viewer-cleaner",
-      "slug": "tools/image/exif-viewer-cleaner.html",
-      "title": {
-        "es": "Visor y Limpiador EXIF",
-        "en": "EXIF Viewer & Cleaner"
-      },
-      "description": {
-        "es": "Visualiza los metadatos EXIF y elimina información privada.",
-        "en": "View EXIF metadata and remove private information."
-      },
-      "categories": ["designers", "marketers"],
-      "icon": "🔍",
-      "tags": ["image", "exif", "privacy"]
-    },
-    {
-      "id": "text-cleaner",
-      "slug": "tools/text/text-cleaner.html",
-      "title": {
-        "es": "Limpiar texto",
-        "en": "Clean Text"
-      },
-      "description": {
-        "es": "Elimina espacios extra, normaliza saltos de línea y cuenta palabras.",
-        "en": "Remove extra spaces, normalize line breaks and count words."
-      },
-      "categories": ["writers", "marketers"],
-      "icon": "🧹",
-      "tags": ["text", "clean", "count"]
-    },
-    {
-      "id": "lorem-ipsum-generator",
-      "slug": "tools/text/lorem-ipsum-generator.html",
-      "title": {
-        "es": "Generador de Lorem Ipsum",
-        "en": "Lorem Ipsum Generator"
-      },
-      "description": {
-        "es": "Genera texto Lorem Ipsum para tus proyectos.",
-        "en": "Generate Lorem Ipsum text for your projects."
-      },
-      "categories": ["writers", "designers", "developers"],
-      "icon": "📝",
-      "tags": ["text", "lorem", "generator"]
+      "categories": ["data", "converters"],
+      "icon": "📊",
+      "tags": ["csv", "json", "convert"]
     },
     {
       "id": "pdf-to-text",
-      "slug": "tools/files/pdf-to-text.html",
+      "slug": "tools/pdf-to-text.html",
       "title": {
         "es": "Extraer texto de PDF",
         "en": "Extract Text from PDF"
@@ -389,13 +177,13 @@
         "es": "Extrae texto de archivos PDF en el navegador usando PDF.js.",
         "en": "Extract text from PDF files in browser using PDF.js."
       },
-      "categories": ["writers", "data-analysts"],
+      "categories": ["files"],
       "icon": "📄",
       "tags": ["pdf", "ocr-lite", "extract"]
     },
     {
       "id": "merge-pdfs",
-      "slug": "tools/files/merge-pdfs.html",
+      "slug": "tools/merge-pdfs.html",
       "title": {
         "es": "Unir PDFs",
         "en": "Merge PDFs"
@@ -404,13 +192,13 @@
         "es": "Combina varios archivos PDF en uno solo.",
         "en": "Combine multiple PDF files into one."
       },
-      "categories": ["productivity"],
+      "categories": ["files"],
       "icon": "🔗",
       "tags": ["pdf", "merge"]
     },
     {
       "id": "split-pdf",
-      "slug": "tools/files/split-pdf.html",
+      "slug": "tools/split-pdf.html",
       "title": {
         "es": "Dividir PDF",
         "en": "Split PDF"
@@ -419,13 +207,13 @@
         "es": "Divide un PDF en varias partes o extrae páginas específicas.",
         "en": "Split PDF into parts or extract specific pages."
       },
-      "categories": ["productivity"],
+      "categories": ["files"],
       "icon": "✂️",
       "tags": ["pdf", "split", "extract"]
     },
     {
       "id": "compress-pdf",
-      "slug": "tools/files/compress-pdf.html",
+      "slug": "tools/compress-pdf.html",
       "title": {
         "es": "Comprimir PDF",
         "en": "Compress PDF"
@@ -434,13 +222,13 @@
         "es": "Reduce el tamaño de un PDF comprimiendo las imágenes.",
         "en": "Reduce PDF size by compressing images."
       },
-      "categories": ["productivity"],
+      "categories": ["files"],
       "icon": "🗜️",
       "tags": ["pdf", "compress", "optimize"]
     },
     {
       "id": "pdf-to-image",
-      "slug": "tools/files/pdf-to-image.html",
+      "slug": "tools/pdf-to-image.html",
       "title": {
         "es": "PDF a Imagen",
         "en": "PDF to Image"
@@ -449,13 +237,13 @@
         "es": "Convierte cada página de un PDF a imágenes JPG o PNG.",
         "en": "Convert each PDF page to JPG or PNG images."
       },
-      "categories": ["designers", "productivity"],
+      "categories": ["files", "converters"],
       "icon": "🖼️",
       "tags": ["pdf", "image", "convert"]
     },
     {
       "id": "image-to-pdf",
-      "slug": "tools/files/image-to-pdf.html",
+      "slug": "tools/image-to-pdf.html",
       "title": {
         "es": "Imagen a PDF",
         "en": "Image to PDF"
@@ -464,13 +252,193 @@
         "es": "Convierte una o varias imágenes a un archivo PDF.",
         "en": "Convert one or multiple images to PDF file."
       },
-      "categories": ["designers", "productivity"],
+      "categories": ["converters"],
       "icon": "📑",
       "tags": ["image", "pdf", "convert"]
     },
     {
+      "id": "color-palette-generator",
+      "slug": "tools/color-palette-generator.html",
+      "title": {
+        "es": "Generador de Paleta de Colores",
+        "en": "Color Palette Generator"
+      },
+      "description": {
+        "es": "Extrae la paleta de colores dominante de cualquier imagen.",
+        "en": "Extract dominant color palette from any image."
+      },
+      "categories": ["image", "generators"],
+      "icon": "🎨",
+      "tags": ["image", "colors", "palette"]
+    },
+    {
+      "id": "exif-viewer-cleaner",
+      "slug": "tools/exif-viewer-cleaner.html",
+      "title": {
+        "es": "Visor y Limpiador EXIF",
+        "en": "EXIF Viewer & Cleaner"
+      },
+      "description": {
+        "es": "Visualiza los metadatos EXIF y elimina información privada.",
+        "en": "View EXIF metadata and remove private information."
+      },
+      "categories": ["image"],
+      "icon": "🔍",
+      "tags": ["image", "exif", "privacy"]
+    },
+    {
+      "id": "lorem-ipsum-generator",
+      "slug": "tools/lorem-ipsum-generator.html",
+      "title": {
+        "es": "Generador de Lorem Ipsum",
+        "en": "Lorem Ipsum Generator"
+      },
+      "description": {
+        "es": "Genera texto Lorem Ipsum para tus proyectos.",
+        "en": "Generate Lorem Ipsum text for your projects."
+      },
+      "categories": ["text", "generators"],
+      "icon": "📝",
+      "tags": ["text", "lorem", "generator"]
+    },
+    {
+      "id": "image-cropper",
+      "slug": "tools/image-cropper.html",
+      "title": {
+        "es": "Recortar Imagen",
+        "en": "Crop Image"
+      },
+      "description": {
+        "es": "Recorta tus imágenes online de forma sencilla y precisa.",
+        "en": "Crop your images online easily and precisely."
+      },
+      "categories": ["image"],
+      "icon": "✂️",
+      "tags": ["image", "crop", "editor"]
+    },
+    {
+      "id": "text-cleaner",
+      "slug": "tools/text-cleaner.html",
+      "title": {
+        "es": "Limpiar texto",
+        "en": "Clean Text"
+      },
+      "description": {
+        "es": "Elimina espacios extra, normaliza saltos de línea y cuenta palabras.",
+        "en": "Remove extra spaces, normalize line breaks and count words."
+      },
+      "categories": ["text"],
+      "icon": "🧹",
+      "tags": ["text", "clean", "count"]
+    },
+    {
+      "id": "url-encoder",
+      "slug": "tools/url-encoder.html",
+      "title": {
+        "es": "Codificar/Decodificar URL",
+        "en": "Encode/Decode URL"
+      },
+      "description": {
+        "es": "Codifica y decodifica URLs y parámetros.",
+        "en": "Encode and decode URLs and parameters."
+      },
+      "categories": ["text"],
+      "icon": "🔗",
+      "tags": ["text", "url", "encode"]
+    },
+    {
+      "id": "base64",
+      "slug": "tools/base64.html",
+      "title": {
+        "es": "Codificar/Decodificar Base64",
+        "en": "Encode/Decode Base64"
+      },
+      "description": {
+        "es": "Codifica y decodifica texto en Base64.",
+        "en": "Encode and decode text in Base64."
+      },
+      "categories": ["text"],
+      "icon": "🔐",
+      "tags": ["text", "base64", "encode"]
+    },
+    {
+      "id": "html-encoder",
+      "slug": "tools/html-encoder.html",
+      "title": {
+        "es": "Codificar/Decodificar HTML",
+        "en": "Encode/Decode HTML"
+      },
+      "description": {
+        "es": "Codifica y decodifica entidades HTML.",
+        "en": "Encode and decode HTML entities."
+      },
+      "categories": ["text"],
+      "icon": "🏷️",
+      "tags": ["text", "html", "encode"]
+    },
+    {
+      "id": "diff",
+      "slug": "tools/diff.html",
+      "title": {
+        "es": "Comparar Textos",
+        "en": "Compare Texts"
+      },
+      "description": {
+        "es": "Compara dos textos y encuentra las diferencias.",
+        "en": "Compare two texts and find differences."
+      },
+      "categories": ["text"],
+      "icon": "🔀",
+      "tags": ["text", "diff", "compare"]
+    },
+    {
+      "id": "yaml-json",
+      "slug": "tools/yaml-json.html",
+      "title": {
+        "es": "YAML ↔ JSON",
+        "en": "YAML ↔ JSON"
+      },
+      "description": {
+        "es": "Convierte YAML a JSON y JSON a YAML.",
+        "en": "Convert YAML to JSON and JSON to YAML."
+      },
+      "categories": ["data", "converters"],
+      "icon": "🔄",
+      "tags": ["yaml", "json", "convert"]
+    },
+    {
+      "id": "xml-json",
+      "slug": "tools/xml-json.html",
+      "title": {
+        "es": "XML ↔ JSON",
+        "en": "XML ↔ JSON"
+      },
+      "description": {
+        "es": "Convierte XML a JSON y JSON a XML.",
+        "en": "Convert XML to JSON and JSON to XML."
+      },
+      "categories": ["data", "converters"],
+      "icon": "🔄",
+      "tags": ["xml", "json", "convert"]
+    },
+    {
+      "id": "toml-json",
+      "slug": "tools/toml-json.html",
+      "title": {
+        "es": "TOML ↔ JSON",
+        "en": "TOML ↔ JSON"
+      },
+      "description": {
+        "es": "Convierte TOML a JSON y JSON a TOML.",
+        "en": "Convert TOML to JSON and JSON to TOML."
+      },
+      "categories": ["data", "converters"],
+      "icon": "🔄",
+      "tags": ["toml", "json", "convert"]
+    },
+    {
       "id": "qr-generator",
-      "slug": "tools/utils/qr-generator.html",
+      "slug": "tools/qr-generator.html",
       "title": {
         "es": "Generador de QR",
         "en": "QR Generator"
@@ -479,13 +447,13 @@
         "es": "Genera códigos QR desde texto o URL.",
         "en": "Generate QR codes from text or URL."
       },
-      "categories": ["marketers", "productivity"],
+      "categories": ["utils", "generators"],
       "icon": "📱",
       "tags": ["qr", "generator"]
     },
     {
       "id": "password-generator",
-      "slug": "tools/utils/password-generator.html",
+      "slug": "tools/password-generator.html",
       "title": {
         "es": "Generador de contraseñas",
         "en": "Password Generator"
@@ -494,13 +462,58 @@
         "es": "Generador seguro de contraseñas personalizables.",
         "en": "Secure customizable password generator."
       },
-      "categories": ["productivity", "developers"],
+      "categories": ["utils", "generators"],
       "icon": "🔑",
       "tags": ["password", "security", "generator"]
     },
     {
+      "id": "hash-calculator",
+      "slug": "tools/hash-calculator.html",
+      "title": {
+        "es": "Calculadora de Hashes",
+        "en": "Hash Calculator"
+      },
+      "description": {
+        "es": "Calcula hashes MD5, SHA-1, SHA-256 y SHA-512.",
+        "en": "Calculate MD5, SHA-1, SHA-256 and SHA-512 hashes."
+      },
+      "categories": ["utils"],
+      "icon": "#️⃣",
+      "tags": ["hash", "md5", "sha", "security"]
+    },
+    {
+      "id": "image-compressor",
+      "slug": "tools/image-compressor.html",
+      "title": {
+        "es": "Comprimir Imagen",
+        "en": "Compress Image"
+      },
+      "description": {
+        "es": "Reduce el tamaño de tus imágenes sin perder calidad visible.",
+        "en": "Reduce image size without losing visible quality."
+      },
+      "categories": ["image"],
+      "icon": "📦",
+      "tags": ["image", "compress", "optimize"]
+    },
+    {
+      "id": "color-picker-converter",
+      "slug": "tools/color-picker-converter.html",
+      "title": {
+        "es": "Selector y Conversor de Color",
+        "en": "Color Picker & Converter"
+      },
+      "description": {
+        "es": "Selector de colores y conversor entre HEX, RGB y HSL.",
+        "en": "Color picker and converter between HEX, RGB and HSL."
+      },
+      "categories": ["utils"],
+      "icon": "🎨",
+      "tags": ["color", "picker", "converter"]
+    },
+    {
       "id": "stopwatch-timer",
-      "slug": "tools/utils/stopwatch-timer.html",
+      "slug": "tools/stopwatch-timer.html",
       "title": {
         "es": "Cronómetro y Temporizador",
         "en": "Stopwatch & Timer"
@@ -509,13 +522,13 @@
         "es": "Cronómetro y temporizador con alarma.",
         "en": "Stopwatch and timer with alarm."
       },
-      "categories": ["productivity"],
+      "categories": ["utils"],
       "icon": "⏱️",
       "tags": ["timer", "stopwatch", "alarm"]
     },
     {
       "id": "chat-ai",
-      "slug": "tools/ai/chat-ai.html",
+      "slug": "tools/chat-ai.html",
       "title": {
         "es": "Chat con IA",
         "en": "AI Chat"
@@ -524,13 +537,13 @@
         "es": "Chatea con inteligencia artificial usando Google Gemini.",
         "en": "Chat with AI using Google Gemini."
       },
-      "categories": ["ai-tools", "productivity"],
+      "categories": ["ai"],
       "icon": "💬",
       "tags": ["ai", "chat", "gemini"]
     },
     {
       "id": "summarize-text-ai",
-      "slug": "tools/ai/summarize-text-ai.html",
+      "slug": "tools/summarize-text-ai.html",
       "title": {
         "es": "Resumir Texto con IA",
         "en": "Summarize Text with AI"
@@ -539,13 +552,13 @@
         "es": "Resume textos largos usando inteligencia artificial.",
         "en": "Summarize long texts using AI."
       },
-      "categories": ["ai-tools", "writers"],
+      "categories": ["ai", "text"],
       "icon": "📄",
       "tags": ["ai", "text", "summarize"]
     },
     {
       "id": "improve-text-ai",
-      "slug": "tools/ai/improve-text-ai.html",
+      "slug": "tools/improve-text-ai.html",
       "title": {
         "es": "Mejorar Texto con IA",
         "en": "Improve Text with AI"
@@ -554,13 +567,13 @@
         "es": "Mejora la redacción de tus textos con IA.",
         "en": "Improve your text writing with AI."
       },
-      "categories": ["ai-tools", "writers"],
+      "categories": ["ai", "text"],
       "icon": "✨",
       "tags": ["ai", "text", "improve"]
     },
     {
       "id": "chat-pdf",
-      "slug": "tools/ai/chat-pdf.html",
+      "slug": "tools/chat-pdf.html",
       "title": {
         "es": "Chat con PDF",
         "en": "Chat with PDF"
@@ -569,13 +582,13 @@
         "es": "Chatea con tus documentos PDF usando IA.",
         "en": "Chat with your PDF documents using AI."
       },
-      "categories": ["ai-tools", "productivity"],
+      "categories": ["ai", "files"],
       "icon": "📚",
       "tags": ["ai", "pdf", "chat"]
     },
     {
       "id": "edit-image-ai",
-      "slug": "tools/ai/edit-image-ai.html",
+      "slug": "tools/edit-image-ai.html",
       "title": {
         "es": "Editar Imagen con IA",
         "en": "Edit Image with AI"
@@ -584,7 +597,7 @@
         "es": "Edita imágenes usando inteligencia artificial.",
         "en": "Edit images using artificial intelligence."
       },
-      "categories": ["ai-tools", "designers"],
+      "categories": ["ai", "image"],
       "icon": "🎨",
       "tags": ["ai", "image", "edit"]
     }

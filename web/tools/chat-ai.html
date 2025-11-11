@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Chat - FastTools</title>
+    <meta name="description" content="Chat with AI using Google Gemini.">
+    <meta name="keywords" content="ai, chat, gemini">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Chat con IA — FastTools">
+    <meta property="og:description" content="Chatea con inteligencia artificial usando Google Gemini.">
+    <meta property="og:url" content="https://fasttools.tools/tools/chat-ai.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/chat-ai.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/chat-ai.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/tools/chat-ai.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    <style>
+    .chat-container { height: 500px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: #f8f9fa; }
+    .message { margin-bottom: 1rem; padding: 0.75rem; border-radius: 8px; max-width: 80%; }
+    .message.user { background: #007bff; color: white; margin-left: auto; }
+    .message.assistant { background: white; border: 1px solid #dee2e6; }
+    .api-key-setup { background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; }
+    .typing-indicator { display: none; padding: 0.75rem; background: white; border: 1px solid #dee2e6; border-radius: 8px; max-width: 80px; }
+    .typing-indicator span { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #6c757d; margin: 0 2px; animation: typing 1.4s infinite; }
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-10px); } }
+</style>
+
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>AI Chat</h1>
+            <p class="text-muted">Chat with AI using Google Gemini.</p>
+        </div>
+
+        <div id="apiKeySetup" class="api-key-setup">
+    <h5>⚙️ Initial Setup</h5>
+    <p class="mb-3">To use this tool, you need a free API key from Google AI Studio:</p>
+    <ol class="mb-3">
+        <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+        <li>Log in with your Google account</li>
+        <li>Create an API key (it's free, 60 req/min)</li>
+        <li>Paste it below 👇</li>
+    </ol>
+    <div class="input-group mb-2">
+        <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
+        <button class="btn btn-primary" onclick="saveApiKey()">💾 Save</button>
+    </div>
+    <small class="text-muted">🔒 Saved in your browser's localStorage, never on our servers.</small>
+</div>
+
+<div id="apiKeyManage" class="alert alert-success d-none">
+    <div class="d-flex justify-content-between align-items-center">
+        <span>✅ API Key configured</span>
+        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Remove</button>
+    </div>
+</div>
+
+<div id="chatSection" class="d-none">
+    <div class="chat-container mb-3" id="chatMessages">
+        <div class="message assistant">
+            <strong>AI Assistant</strong>
+            <p class="mb-0 mt-2">Hi! I'm your AI assistant. How can I help you today?</p>
+        </div>
+    </div>
+
+    <div class="typing-indicator mb-3" id="typingIndicator">
+        <span></span><span></span><span></span>
+    </div>
+
+    <div class="input-group">
+        <input type="text" id="userInput" class="form-control" placeholder="Type your message..."
+            onkeypress="handleKeyPress(event)">
+        <button class="btn btn-primary" onclick="sendMessage()" id="sendBtn">📤 Send</button>
+    </div>
+
+    <div class="mt-3">
+        <button class="btn btn-sm btn-outline-secondary" onclick="clearChat()">🗑️ Clear chat</button>
+        <button class="btn btn-sm btn-outline-info" onclick="exportChat()">💾 Export</button>
+    </div>
+</div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What is AI chat and how does it work?</h2>
+            <p class="mb-4"><strong>AI chat</strong> refers to <strong>conversational artificial intelligence</strong> that uses <strong>Large Language Models (LLMs)</strong> to understand and generate <strong>human-like responses</strong> to text inputs. These systems are trained on <strong>massive datasets</strong> to learn <strong>language patterns</strong>, <strong>context understanding</strong>, and <strong>knowledge across diverse topics</strong>. Modern AI chat tools can help with <strong>writing assistance</strong>, <strong>problem solving</strong>, <strong>learning support</strong>, <strong>creative tasks</strong>, and <strong>professional workflows</strong>. The technology behind <strong>AI conversational systems</strong> continues to evolve rapidly, offering increasingly sophisticated <strong>natural language processing</strong> capabilities. Learn more about <a href="https://en.wikipedia.org/wiki/Conversational_AI" target="_blank" rel="noopener">conversational AI</a> and <a href="https://en.wikipedia.org/wiki/Large_language_model" target="_blank" rel="noopener">large language models</a>.</p>
+            <h3 class="h5 mb-3">How to use the AI Chat tool?</h3>
+            <ol class="mb-4">
+                <li><strong>Get a free API key</strong> from Google AI Studio (60 requests per minute)</li>
+                <li><strong>Save the API key</strong> - it's stored locally in your browser for security</li>
+                <li><strong>Start chatting</strong> by typing your question or message in the input field</li>
+                <li><strong>Export conversations</strong> or clear chat history as needed</li>
+            </ol>
+            <h3 class="h5 mb-3">Common use cases for AI chat</h3>
+            <ul class="mb-4">
+                <li><strong>Writing assistance</strong> - brainstorm ideas, improve grammar, and enhance creativity</li>
+                <li><strong>Learning support</strong> - explain complex topics, answer questions, and provide tutoring</li>
+                <li><strong>Professional help</strong> - draft emails, create presentations, and solve business problems</li>
+                <li><strong>Creative projects</strong> - generate stories, poetry, scripts, and marketing content</li>
+                <li><strong>Technical support</strong> - debug code, explain algorithms, and provide programming guidance</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            How accurate and reliable are AI chat responses?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            AI chat systems are generally <strong>very capable</strong> but can occasionally produce <strong>incorrect information</strong>. Always <strong>verify important facts</strong> from <strong>reliable sources</strong>. For <strong>critical decisions</strong> or <strong>professional use</strong>, consult <strong>human experts</strong> or <strong>official documentation</strong>.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            Is my conversation data private and secure?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! The tool uses your <strong>own API key</strong> from Google AI Studio, ensuring your conversations <strong>never go through our servers</strong>. All <strong>processing happens directly</strong> between your browser and Google's AI service, maintaining <strong>complete privacy and security</strong>.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            What are the limitations of AI chat?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            AI chat has <strong>knowledge limitations</strong> (cutoff dates), can <strong>hallucinate information</strong>, and may <strong>struggle with very recent events</strong>. It's <strong>excellent for general assistance</strong> but shouldn't replace <strong>professional consultation</strong> for <strong>medical, legal, or financial matters</strong>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"initialSetupTitle":"⚙️ Initial Setup","apiKeyInstruction":"To use this tool, you need a free API key from Google AI Studio:","visitLabel":"Visit","loginGoogleAccount":"Log in with your Google account","createApiKey":"Create an API key (it's free, 60 req/min)","pasteApiKey":"Paste it below 👇","saveButton":"💾 Save","localStorageInfo":"🔒 Saved in your browser's localStorage, never on our servers.","apiKeyConfigured":"✅ API Key configured","removeButton":"🗑️ Remove","assistantName":"AI Assistant","assistantWelcomeMessage":"Hi! I'm your AI assistant. How can I help you today?","typeYourMessagePlaceholder":"Type your message...","sendButton":"📤 Send","clearChatButton":"🗑️ Clear chat","exportButton":"💾 Export","seo":{"whatIsTitle":"What is AI chat and how does it work?","whatIsContent":"**AI chat** refers to **conversational artificial intelligence** that uses **Large Language Models (LLMs)** to understand and generate **human-like responses** to text inputs. These systems are trained on **massive datasets** to learn **language patterns**, **context understanding**, and **knowledge across diverse topics**. Modern AI chat tools can help with **writing assistance**, **problem solving**, **learning support**, **creative tasks**, and **professional workflows**. The technology behind **AI conversational systems** continues to evolve rapidly, offering increasingly sophisticated **natural language processing** capabilities. Learn more about [conversational AI](https://en.wikipedia.org/wiki/Conversational_AI) and [large language models](https://en.wikipedia.org/wiki/Large_language_model).","howToTitle":"How to use the AI Chat tool?","howToSteps":["**Get a free API key** from Google AI Studio (60 requests per minute)","**Save the API key** - it's stored locally in your browser for security","**Start chatting** by typing your question or message in the input field","**Export conversations** or clear chat history as needed"],"useCasesTitle":"Common use cases for AI chat","useCases":["**Writing assistance** - brainstorm ideas, improve grammar, and enhance creativity","**Learning support** - explain complex topics, answer questions, and provide tutoring","**Professional help** - draft emails, create presentations, and solve business problems","**Creative projects** - generate stories, poetry, scripts, and marketing content","**Technical support** - debug code, explain algorithms, and provide programming guidance"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"How accurate and reliable are AI chat responses?","answer":"AI chat systems are generally **very capable** but can occasionally produce **incorrect information**. Always **verify important facts** from **reliable sources**. For **critical decisions** or **professional use**, consult **human experts** or **official documentation**."},{"question":"Is my conversation data private and secure?","answer":"Yes! The tool uses your **own API key** from Google AI Studio, ensuring your conversations **never go through our servers**. All **processing happens directly** between your browser and Google's AI service, maintaining **complete privacy and security**."},{"question":"What are the limitations of AI chat?","answer":"AI chat has **knowledge limitations** (cutoff dates), can **hallucinate information**, and may **struggle with very recent events**. It's **excellent for general assistance** but shouldn't replace **professional consultation** for **medical, legal, or financial matters**."}]}};
+    </script>
+<script src="/js/lib/gemini-api.js"></script>
+<script>
+    let gemini = null;
+
+    window.addEventListener('DOMContentLoaded', () => {
+        if (GeminiStorage.exists()) {
+            const apiKey = GeminiStorage.get();
+            gemini = new GeminiAPI(apiKey);
+            showChat();
+        }
+    });
+
+    function saveApiKey() {
+        const apiKey = document.getElementById('apiKeyInput').value.trim();
+        if (!apiKey) {
+            alert('❌ Por favor ingresa una API key');
+            return;
+        }
+
+        gemini = new GeminiAPI(apiKey);
+        
+        const btn = document.getElementById('sendBtn');
+        btn.disabled = true;
+        btn.textContent = '⏳ Validando...';
+        
+        gemini.validateKey().then(valid => {
+            if (valid) {
+                GeminiStorage.save(apiKey);
+                showChat();
+                alert('✅ API Key guardada correctamente');
+            } else {
+                alert('❌ API Key inválida. Verifica que sea correcta.');
+            }
+        }).catch(error => {
+            console.error('Validation error:', error);
+            alert(`❌ Error al validar: ${error.message}\\n\\nVerifica:\\n1. Que la API key sea correcta\\n2. Que tengas habilitada la API de Gemini\\n3. Tu conexión a internet`);
+        }).finally(() => {
+            btn.disabled = false;
+            btn.textContent = '📤 Enviar';
+        });
+    }
+
+    function removeApiKey() {
+        if (confirm('¿Seguro que quieres eliminar la API key?')) {
+            GeminiStorage.remove();
+            location.reload();
+        }
+    }
+
+    function showChat() {
+        document.getElementById('apiKeySetup').classList.add('d-none');
+        document.getElementById('apiKeyManage').classList.remove('d-none');
+        document.getElementById('chatSection').classList.remove('d-none');
+    }
+
+    async function sendMessage() {
+        const input = document.getElementById('userInput');
+        const message = input.value.trim();
+        
+        if (!message) return;
+
+        addMessage(message, 'user');
+        input.value = '';
+
+        document.getElementById('typingIndicator').style.display = 'block';
+        document.getElementById('sendBtn').disabled = true;
+
+        try {
+            const response = await gemini.chat(message);
+            addMessage(response, 'assistant');
+        } catch (error) {
+            addMessage(`❌ Error: ${error.message}`, 'assistant');
+        } finally {
+            document.getElementById('typingIndicator').style.display = 'none';
+            document.getElementById('sendBtn').disabled = false;
+            input.focus();
+        }
+    }
+
+    function addMessage(text, role) {
+        const container = document.getElementById('chatMessages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${role}`;
+        
+        const label = role === 'user' ? 'Tú' : 'Asistente IA';
+        const formattedText = formatMessage(text);
+        
+        messageDiv.innerHTML = `
+            <strong>${label}</strong>
+            <div class="mt-2">${formattedText}</div>
+        `;
+        
+        container.appendChild(messageDiv);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    function formatMessage(text) {
+        text = text.replace(/```(\\w+)?\\n([\\s\\S]*?)```/g, '<pre><code>$2</code></pre>');
+        text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+        text = text.replace(/\\n/g, '<br>');
+        return text;
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            sendMessage();
+        }
+    }
+
+    function clearChat() {
+        if (confirm('¿Limpiar todo el chat?')) {
+            document.getElementById('chatMessages').innerHTML = `
+                <div class="message assistant">
+                    <strong>Asistente IA</strong>
+                    <p class="mb-0 mt-2">¡Hola! Soy tu asistente con IA. ¿En qué puedo ayudarte hoy?</p>
+                </div>
+            `;
+        }
+    }
+
+    function exportChat() {
+        const messages = document.getElementById('chatMessages').innerText;
+        const blob = new Blob([messages], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `chat-ia-${new Date().toISOString().slice(0,10)}.txt`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Format JSON - FastTools</title>
+    <meta name="description" content="Format, validate and minify JSON instantly.">
+    <meta name="keywords" content="json, validator, copy">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Formatear JSON — FastTools">
+    <meta property="og:description" content="Formatea, valida y minifica JSON al instante.">
+    <meta property="og:url" content="https://fasttools.tools/tools/json-formatter.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/json-formatter.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/json-formatter.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/tools/json-formatter.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    <meta property="og:url" content="https://fasttools.tools/tools/data/json-formatter.html">
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>Format JSON</h1>
+            <p class="text-muted">Format, validate and minify JSON instantly.</p>
+        </div>
+
+        <div class="position-relative">
+    <textarea id="jsonInput" rows="12" class="form-control mb-2" placeholder='{"key": "value"}'></textarea>
+    <button id="copyBtn" class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-2"
+        title="Copy">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard"
+            viewBox="0 0 16 16">
+            <path
+                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+            <path
+                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+        </svg>
+    </button>
+</div>
+<div class="mb-3">
+    <button id="prettyBtn" class="btn btn-outline-primary me-2">Format</button>
+    <button id="minifyBtn" class="btn btn-outline-secondary me-2">Minify</button>
+    <button id="validateBtn" class="btn btn-outline-success">{{t.validateButton}}</button>
+</div>
+<div id="jsonMsg" class="mb-2"></div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What is JSON formatting and why is it important?</h2>
+            <p class="mb-4"><strong>JSON (JavaScript Object Notation)</strong> is a lightweight, human-readable data format used for <strong>data exchange</strong> between servers and web applications. <strong>JSON formatting</strong> makes this structured data readable by adding proper indentation, line breaks, and hierarchy. Well-formatted JSON improves <strong>code readability</strong>, simplifies <strong>debugging</strong>, and enhances <strong>collaboration</strong> among developers. JSON is the <strong>standard format</strong> for modern web APIs and data storage. Learn more about <a href="https://en.wikipedia.org/wiki/JSON" target="_blank" rel="noopener">JSON</a> and <a href="https://en.wikipedia.org/wiki/Serialization" target="_blank" rel="noopener">data serialization</a>.</p>
+            <h3 class="h5 mb-3">How to use the JSON Formatter tool?</h3>
+            <ol class="mb-4">
+                <li><strong>Paste</strong> your JSON data into the input area or type it directly</li>
+                <li>Click <strong>'Format'</strong> to beautify and properly indent your JSON code</li>
+                <li>Use <strong>'Minify'</strong> to compress JSON by removing whitespace and line breaks</li>
+                <li><strong>Copy</strong> the formatted or minified result using the copy button</li>
+            </ol>
+            <h3 class="h5 mb-3">Common use cases for JSON formatting</h3>
+            <ul class="mb-4">
+                <li><strong>Debug API responses</strong> from web services and microservices</li>
+                <li>Clean and format <strong>configuration files</strong> for applications</li>
+                <li><strong>Validate JSON syntax</strong> before integration with APIs</li>
+                <li>Prepare <strong>data samples</strong> for documentation and testing</li>
+                <li><strong>Optimize JSON size</strong> for production environments and <a href="https://web.dev/fast/" target="_blank" rel="noopener">performance</a></li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            What's the difference between formatted and minified JSON?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <strong>Formatted JSON</strong> includes proper indentation, line breaks, and spacing for <strong>readability</strong> and easy editing. <strong>Minified JSON</strong> removes all unnecessary whitespace to create a <strong>compact version</strong> that loads faster and uses less bandwidth.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            Can this tool validate JSON syntax?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! The formatter provides <strong>real-time validation</strong> and shows clear error messages for <strong>invalid JSON syntax</strong>. It highlights specific issues like missing quotes, incorrect brackets, or trailing commas to help you fix problems quickly.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            Is this JSON formatter safe?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! All JSON processing happens <strong>100% in your browser</strong>. Your JSON data never leaves your device and is not stored on any server, ensuring complete <strong>privacy and security</strong> of your sensitive data.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"title":"Format JSON","description":"Format, validate and minify JSON instantly.","inputLabel":"Input JSON","outputLabel":"Formatted JSON","formatButton":"Format","minifyButton":"Minify","copyButton":"Copy","clearButton":"Clear","validJson":"✅ Valid JSON","invalidJson":"❌ Invalid JSON","copied":"✅ Copied to clipboard","formatted":"JSON formatted.","minified":"JSON minified.","noText":"No text to copy.","error":"Error copying","seo":{"whatIsTitle":"What is JSON formatting and why is it important?","whatIsContent":"**JSON (JavaScript Object Notation)** is a lightweight, human-readable data format used for **data exchange** between servers and web applications. **JSON formatting** makes this structured data readable by adding proper indentation, line breaks, and hierarchy. Well-formatted JSON improves **code readability**, simplifies **debugging**, and enhances **collaboration** among developers. JSON is the **standard format** for modern web APIs and data storage. Learn more about [JSON](https://en.wikipedia.org/wiki/JSON) and [data serialization](https://en.wikipedia.org/wiki/Serialization).","howToTitle":"How to use the JSON Formatter tool?","howToSteps":["**Paste** your JSON data into the input area or type it directly","Click **'Format'** to beautify and properly indent your JSON code","Use **'Minify'** to compress JSON by removing whitespace and line breaks","**Copy** the formatted or minified result using the copy button"],"useCasesTitle":"Common use cases for JSON formatting","useCases":["**Debug API responses** from web services and microservices","Clean and format **configuration files** for applications","**Validate JSON syntax** before integration with APIs","Prepare **data samples** for documentation and testing","**Optimize JSON size** for production environments and [performance](https://web.dev/fast/)"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"What's the difference between formatted and minified JSON?","answer":"**Formatted JSON** includes proper indentation, line breaks, and spacing for **readability** and easy editing. **Minified JSON** removes all unnecessary whitespace to create a **compact version** that loads faster and uses less bandwidth."},{"question":"Can this tool validate JSON syntax?","answer":"Yes! The formatter provides **real-time validation** and shows clear error messages for **invalid JSON syntax**. It highlights specific issues like missing quotes, incorrect brackets, or trailing commas to help you fix problems quickly."},{"question":"Is this JSON formatter safe?","answer":"Yes! All JSON processing happens **100% in your browser**. Your JSON data never leaves your device and is not stored on any server, ensuring complete **privacy and security** of your sensitive data."}]}};
+    </script>
+<script src="/js/tools/json-formatter.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

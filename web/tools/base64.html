@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Encode/Decode Base64 - FastTools</title>
+    <meta name="description" content="Encode and decode text in Base64.">
+    <meta name="keywords" content="text, base64, encode">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Codificar/Decodificar Base64 — FastTools">
+    <meta property="og:description" content="Codifica y decodifica texto en Base64.">
+    <meta property="og:url" content="https://fasttools.tools/tools/base64.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/base64.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/base64.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/tools/base64.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>Encode/Decode Base64</h1>
+            <p class="text-muted">Encode and decode text in Base64.</p>
+        </div>
+
+        <div class="mb-3">
+    <label for="inputText" class="form-label">Text to encode/decode</label>
+    <textarea id="inputText" rows="3" class="form-control" placeholder="Type or paste text here..."></textarea>
+</div>
+
+<div class="mb-3 d-flex gap-2 flex-wrap">
+    <button id="encodeBtn" class="btn btn-primary">Encode to Base64</button>
+    <button id="decodeBtn" class="btn btn-primary">Decode Base64</button>
+    <button id="copyBtn" class="btn btn-outline-secondary">Copy</button>
+</div>
+
+<div class="mb-3">
+    <label for="outputText" class="form-label">Result</label>
+    <textarea id="outputText" rows="3" class="form-control" readonly
+        placeholder="Encoded or decoded text will appear here..."></textarea>
+</div>
+
+<div class="alert alert-info small">
+    <strong>What is Base64?</strong><br>
+    Base64 is an encoding system that converts binary data into ASCII text using 64 different characters. It is commonly used for:<br>
+    • Sending binary data by email<br>
+    • Encoding inline images in HTML/CSS<br>
+    • Transmitting data that may contain special characters<br>
+    • Storing binary data in text formats
+</div>
+
+<div id="msg" class="text-muted small"></div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What is Base64 encoding?</h2>
+            <p class="mb-4"><strong>Base64</strong> is an encoding system that converts <strong>binary data</strong> into ASCII text using 64 different characters (A-Z, a-z, 0-9, +, /). It's widely used in web development, email systems, and data transmission. Learn more about <a href="https://en.wikipedia.org/wiki/Base64" target="_blank" rel="noopener">Base64 on Wikipedia</a>.</p>
+            <h3 class="h5 mb-3">How to use the Base64 encoder/decoder?</h3>
+            <ol class="mb-4">
+                <li>Paste or type your <strong>text</strong> in the input area</li>
+                <li>Click <strong>'Encode to Base64'</strong> to convert text to Base64 format</li>
+                <li>Use <strong>'Decode Base64'</strong> to convert Base64 back to readable text</li>
+                <li>Copy the result using the <strong>copy button</strong></li>
+            </ol>
+            <h3 class="h5 mb-3">Common use cases for Base64</h3>
+            <ul class="mb-4">
+                <li>Encode <strong>images in CSS/HTML</strong> using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs" target="_blank" rel="noopener">data URIs</a></li>
+                <li>Send <strong>binary data</strong> in JSON or XML formats</li>
+                <li>Transmit <strong>email attachments</strong> (MIME encoding)</li>
+                <li>Store credentials or tokens in <strong>configuration files</strong></li>
+                <li>Obfuscate text (not encryption, just encoding)</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            Is Base64 encryption?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            No, <strong>Base64 is not encryption</strong>. It's an encoding method that can be easily reversed. Never use Base64 to protect sensitive data.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            Why does Base64 increase file size?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Base64 encoding increases data size by approximately <strong>33%</strong> because it represents 3 bytes of binary data using 4 ASCII characters.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            Is this Base64 tool safe?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! All encoding and decoding happens <strong>100% in your browser</strong>. Your data never leaves your device.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","encodeButton":"Encode","decodeButton":"Decode","inputBase64TextLabel":"Text to encode/decode","textPlaceholder":"Type or paste text here...","encodeBase64Button":"Encode to Base64","decodeBase64Button":"Decode Base64","resultLabel":"Result","resultPlaceholder":"Encoded or decoded text will appear here...","whatIsBase64Title":"What is Base64?","base64Description":"Base64 is an encoding system that converts binary data into ASCII text using 64 different characters. It is commonly used for:","base64UseCase1":"• Sending binary data by email","base64UseCase2":"• Encoding inline images in HTML/CSS","base64UseCase3":"• Transmitting data that may contain special characters","base64UseCase4":"• Storing binary data in text formats","enterTextToEncode":"Enter text to encode","textEncodedBase64":"Text encoded in Base64","encodeError":"Error encoding","enterBase64ToDecode":"Enter Base64 text to decode","textDecodedBase64":"Text decoded from Base64","decodeError":"Error decoding - input doesn't appear to be valid Base64","noResultToCopy":"No result to copy","copyError":"Error copying","seo":{"whatIsTitle":"What is Base64 encoding?","whatIsContent":"**Base64** is an encoding system that converts **binary data** into ASCII text using 64 different characters (A-Z, a-z, 0-9, +, /). It's widely used in web development, email systems, and data transmission. Learn more about [Base64 on Wikipedia](https://en.wikipedia.org/wiki/Base64).","howToTitle":"How to use the Base64 encoder/decoder?","howToSteps":["Paste or type your **text** in the input area","Click **'Encode to Base64'** to convert text to Base64 format","Use **'Decode Base64'** to convert Base64 back to readable text","Copy the result using the **copy button**"],"useCasesTitle":"Common use cases for Base64","useCases":["Encode **images in CSS/HTML** using [data URIs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs)","Send **binary data** in JSON or XML formats","Transmit **email attachments** (MIME encoding)","Store credentials or tokens in **configuration files**","Obfuscate text (not encryption, just encoding)"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"Is Base64 encryption?","answer":"No, **Base64 is not encryption**. It's an encoding method that can be easily reversed. Never use Base64 to protect sensitive data."},{"question":"Why does Base64 increase file size?","answer":"Base64 encoding increases data size by approximately **33%** because it represents 3 bytes of binary data using 4 ASCII characters."},{"question":"Is this Base64 tool safe?","answer":"Yes! All encoding and decoding happens **100% in your browser**. Your data never leaves your device."}]}};
+    </script>
+<script src="/js/tools/base64.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

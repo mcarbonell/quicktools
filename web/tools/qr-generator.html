@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QR Generator - FastTools</title>
+    <meta name="description" content="Generate QR codes from text or URL.">
+    <meta name="keywords" content="qr, generator">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Generador de QR — FastTools">
+    <meta property="og:description" content="Genera códigos QR desde texto o URL.">
+    <meta property="og:url" content="https://fasttools.tools/tools/qr-generator.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/qr-generator.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/qr-generator.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/tools/qr-generator.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    <style>
+    #qrPreview {
+        padding: 12px;
+        background: white;
+        display: inline-block;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>QR Generator</h1>
+            <p class="text-muted">Generate QR codes from text or URL.</p>
+        </div>
+
+        <div class="mb-3">
+    <label for="qrText" class="form-label">Text or URL</label>
+    <textarea id="qrText" rows="3" class="form-control" placeholder="https://example.com"></textarea>
+</div>
+
+<div class="row mb-3 g-2">
+    <div class="col-auto">
+        <label for="size" class="form-label small">Size (px)</label>
+        <input id="size" type="number" class="form-control" value="256" min="64" max="2048">
+    </div>
+    <div class="col-auto">
+        <label for="ecLevel" class="form-label small">Error correction</label>
+        <select id="ecLevel" class="form-select">
+            <option value="L">L - Low</option>
+            <option value="M" selected>M - Medium</option>
+            <option value="Q">Q - High</option>
+            <option value="H">H - Very high</option>
+        </select>
+    </div>
+    <div class="col-auto d-flex align-items-end">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="quietZone" checked>
+            <label class="form-check-label small" for="quietZone">Quiet zone</label>
+        </div>
+    </div>
+</div>
+
+<div class="mb-3 d-flex gap-2">
+    <button id="generateBtn" class="btn btn-primary">Generate</button>
+    <button id="downloadBtn" class="btn btn-outline-primary" disabled>Download PNG</button>
+    <button id="copyBtn" class="btn btn-outline-secondary" disabled>Copy image</button>
+    <button id="clearBtn" class="btn btn-outline-danger">Clear</button>
+</div>
+
+<div class="mb-3">
+    <div id="qrPreview" class="border" aria-live="polite">QR will appear here</div>
+</div>
+
+<div id="msg" class="text-muted small"></div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What is QR code technology and how does it work?</h2>
+            <p class="mb-4"><strong>QR (Quick Response) codes</strong> are <strong>two-dimensional matrix barcodes</strong> that can store large amounts of data including URLs, text, and contact information. Developed in Japan in 1994 for <strong>automotive industry tracking</strong>, QR codes use <strong>error correction algorithms</strong> to ensure reliable scanning even if partially damaged. Modern QR codes can encode up to <strong>4,296 characters</strong> and support <strong>international character sets</strong>. They revolutionized <strong>mobile marketing</strong>, <strong>payment systems</strong>, and <strong>digital information sharing</strong> worldwide. Learn more about <a href="https://en.wikipedia.org/wiki/QR_code" target="_blank" rel="noopener">QR code technology</a> and <a href="https://en.wikipedia.org/wiki/Optical_storage" target="_blank" rel="noopener">optical data storage</a>.</p>
+            <h3 class="h5 mb-3">How to use the QR Code Generator tool?</h3>
+            <ol class="mb-4">
+                <li><strong>Enter your text or URL</strong> in the input field (supports URLs, text, contact info)</li>
+                <li><strong>Adjust the size</strong> for your intended use (larger for better scanning distance)</li>
+                <li><strong>Choose error correction level</strong> (H for damaged codes, L for high data capacity)</li>
+                <li><strong>Generate and download</strong> your QR code as PNG or copy to clipboard</li>
+            </ol>
+            <h3 class="h5 mb-3">Common use cases for QR codes</h3>
+            <ul class="mb-4">
+                <li><strong>Business marketing</strong> - connect customers to websites, menus, or contact information</li>
+                <li><strong>Payment processing</strong> - enable quick payments through banking apps and digital wallets</li>
+                <li><strong>Event management</strong> - provide instant access to event details, schedules, or check-in</li>
+                <li><strong>Education</strong> - share learning resources, assignments, or interactive content</li>
+                <li><strong>Product information</strong> - link to specifications, reviews, or safety data sheets</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            What's the difference between QR code error correction levels?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <strong>Level L (Low)</strong> allows 7% damage, <strong>M (Medium)</strong> 15%, <strong>Q (Quartile)</strong> 25%, and <strong>H (High)</strong> 30%. Choose <strong>higher levels</strong> for codes that might get damaged, or <strong>lower levels</strong> to store more data in smaller codes.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            How much data can QR codes hold?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            QR codes can hold <strong>up to 4,296 alphanumeric characters</strong>, <strong>7,089 numeric-only digits</strong>, or <strong>2,953 bytes</strong> of binary data. The actual capacity depends on the <strong>error correction level</strong> and <strong>character encoding</strong> used.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            Is this QR generator safe?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! All QR code generation happens <strong>100% in your browser</strong>. Your data never leaves your device and is not stored on any server, ensuring complete <strong>privacy and security</strong> of your information.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","generateButton":"Generate","qrTextLabel":"Text or URL","qrTextPlaceholder":"https://example.com","sizeLabel":"Size (px)","errorCorrectionLabel":"Error correction","lLevelOption":"L - Low","mLevelOption":"M - Medium","qLevelOption":"Q - High","hLevelOption":"H - Very high","quietZoneLabel":"Quiet zone","downloadPngButton":"Download PNG","copyImageButton":"Copy image","qrPreviewPlaceholder":"QR will appear here","seo":{"whatIsTitle":"What is QR code technology and how does it work?","whatIsContent":"**QR (Quick Response) codes** are **two-dimensional matrix barcodes** that can store large amounts of data including URLs, text, and contact information. Developed in Japan in 1994 for **automotive industry tracking**, QR codes use **error correction algorithms** to ensure reliable scanning even if partially damaged. Modern QR codes can encode up to **4,296 characters** and support **international character sets**. They revolutionized **mobile marketing**, **payment systems**, and **digital information sharing** worldwide. Learn more about [QR code technology](https://en.wikipedia.org/wiki/QR_code) and [optical data storage](https://en.wikipedia.org/wiki/Optical_storage).","howToTitle":"How to use the QR Code Generator tool?","howToSteps":["**Enter your text or URL** in the input field (supports URLs, text, contact info)","**Adjust the size** for your intended use (larger for better scanning distance)","**Choose error correction level** (H for damaged codes, L for high data capacity)","**Generate and download** your QR code as PNG or copy to clipboard"],"useCasesTitle":"Common use cases for QR codes","useCases":["**Business marketing** - connect customers to websites, menus, or contact information","**Payment processing** - enable quick payments through banking apps and digital wallets","**Event management** - provide instant access to event details, schedules, or check-in","**Education** - share learning resources, assignments, or interactive content","**Product information** - link to specifications, reviews, or safety data sheets"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"What's the difference between QR code error correction levels?","answer":"**Level L (Low)** allows 7% damage, **M (Medium)** 15%, **Q (Quartile)** 25%, and **H (High)** 30%. Choose **higher levels** for codes that might get damaged, or **lower levels** to store more data in smaller codes."},{"question":"How much data can QR codes hold?","answer":"QR codes can hold **up to 4,296 alphanumeric characters**, **7,089 numeric-only digits**, or **2,953 bytes** of binary data. The actual capacity depends on the **error correction level** and **character encoding** used."},{"question":"Is this QR generator safe?","answer":"Yes! All QR code generation happens **100% in your browser**. Your data never leaves your device and is not stored on any server, ensuring complete **privacy and security** of your information."}]}};
+    </script>
+<!-- QRCode.js (pequeño y compatible) -->
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="/js/tools/qr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

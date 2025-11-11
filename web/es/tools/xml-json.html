@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>XML ↔ JSON - FastTools</title>
+    <meta name="description" content="Convierte XML a JSON y JSON a XML.">
+    <meta name="keywords" content="xml, json, convert">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="XML ↔ JSON — FastTools">
+    <meta property="og:description" content="Convierte XML a JSON y JSON a XML.">
+    <meta property="og:url" content="https://fasttools.tools/es/tools/xml-json.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/xml-json.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/xml-json.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/tools/xml-json.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>XML ↔ JSON</h1>
+            <p class="text-muted">Convierte XML a JSON y JSON a XML.</p>
+        </div>
+
+        <div class="mb-3">
+    <label for="inputText" class="form-label">Entrada (XML o JSON)</label>
+    <textarea id="inputText" rows="10" class="form-control" placeholder="Pega tu XML o JSON aquí..."></textarea>
+</div>
+
+<div class="mb-3 d-flex gap-2 flex-wrap">
+    <button id="xmlToJsonBtn" class="btn btn-primary">XML → JSON</button>
+    <button id="jsonToXmlBtn" class="btn btn-primary">JSON → XML</button>
+    <button id="prettyJsonBtn" class="btn btn-secondary">Prettify JSON</button>
+    <button id="copyBtn" class="btn btn-outline-secondary">Copiar resultado</button>
+</div>
+
+<div class="mb-3">
+    <label for="outputText" class="form-label">Resultado</label>
+    <textarea id="outputText" rows="10" class="form-control" readonly placeholder="Aquí aparecerá el resultado..."></textarea>
+</div>
+
+<div class="form-check mb-2">
+    <input class="form-check-input" type="checkbox" id="preserveAttributes" checked>
+    <label class="form-check-label" for="preserveAttributes">Preservar atributos como objetos (por defecto)</label>
+</div>
+
+<div id="msg" class="text-muted small"></div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">¿Qué es la conversión de XML y JSON y por qué es útil?</h2>
+            <p class="mb-4"><strong>XML (eXtensible Markup Language)</strong> y <strong>JSON (JavaScript Object Notation)</strong> son ambos formatos de datos estructurados usados para <strong>intercambio y almacenamiento de datos</strong>. XML usa <strong>etiquetas y atributos</strong> con sintaxis verbosa para estructuras similares a documentos, mientras que JSON usa <strong>pares clave-valor</strong> con sintaxis ligera para objetos de datos. La <strong>conversión de XML a JSON</strong> moderniza sistemas legados, mejora la <strong>compatibilidad API</strong>, y permite <strong>manejo flexible de datos</strong> a través de diferentes plataformas y lenguajes de programación. Aprende más sobre <a href="https://es.wikipedia.org/wiki/XML" target="_blank" rel="noopener">XML</a> e <a href="https://es.wikipedia.org/wiki/JSON" target="_blank" rel="noopener">intercambio de datos JSON</a>.</p>
+            <h3 class="h5 mb-3">¿Cómo usar la herramienta Conversor XML ↔ JSON?</h3>
+            <ol class="mb-4">
+                <li><strong>Pega</strong> tus datos XML o JSON en el área de entrada</li>
+                <li><strong>Elige la dirección de conversión</strong>: XML → JSON o JSON → XML</li>
+                <li>Activa <strong>'Preservar atributos'</strong> si quieres que los atributos XML se mantengan como objetos JSON</li>
+                <li><strong>Haz clic en convertir</strong> y copia los datos transformados</li>
+            </ol>
+            <h3 class="h5 mb-3">Casos de uso comunes de conversión XML ↔ JSON</h3>
+            <ul class="mb-4">
+                <li><strong>Modernizar sistemas legados</strong> convirtiendo configuraciones XML a APIs JSON</li>
+                <li><strong>Integrar servicios web SOAP</strong> con aplicaciones modernas basadas en JSON RESTful</li>
+                <li><strong>Migrar datos</strong> de bases de datos XML a almacenes modernos NoSQL o de documentos</li>
+                <li><strong>Transformar archivos de configuración</strong> para herramientas DevOps modernas y pipelines CI/CD</li>
+                <li><strong>Mejorar velocidad de procesamiento</strong> de datos convirtiendo XML verboso a JSON compacto</li>
+            </ul>
+            <h3 class="h5 mb-3">Preguntas frecuentes</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            ¿Cómo se manejan los atributos XML en la conversión JSON?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Los atributos XML se <strong>preservan como objetos</strong> en JSON por defecto, con nombres de atributo como claves prefijadas con el símbolo '@'. El contenido de texto entre etiquetas se convierte en la propiedad '@text', manteniendo la <strong>estructura XML completa</strong> en un formato compatible con JSON.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            ¿Qué características XML son compatibles en la conversión?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            El convertidor soporta <strong>elementos, atributos, namespaces y contenido de texto</strong>. Sin embargo, <strong>comentarios XML, instrucciones de procesamiento y características complejas DTD/XSD</strong> pueden no preservarse ya que no tienen equivalentes directos en JSON.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            ¿Este conversor XML/JSON es seguro?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! Todo el procesamiento de datos ocurre <strong>100% en tu navegador</strong>. Tus datos XML y JSON nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando <strong>privacidad y seguridad</strong> completas de tus datos sensibles.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","convertButton":"Convertir","inputXmlJsonLabel":"Entrada (XML o JSON)","inputPlaceholder":"Pega tu XML o JSON aquí...","xmlToJsonButton":"XML → JSON","jsonToXmlButton":"JSON → XML","prettyJsonButton":"Prettify JSON","copyResultButton":"Copiar resultado","resultLabel":"Resultado","resultPlaceholder":"Aquí aparecerá el resultado...","preserveAttributesLabel":"Preservar atributos como objetos (por defecto)","enterXmlToConvert":"Introduce XML para convertir","xmlParseError":"Error al parsear XML","xmlConvertedToJson":"XML convertido a JSON","enterJsonToConvert":"Introduce JSON para convertir","jsonConvertedToXml":"JSON convertido a XML","jsonParseError":"Error al parsear JSON","enterJsonToFormat":"Introduce JSON para formatear","noResultToCopy":"No hay resultado para copiar","copyError":"Error al copiar","seo":{"whatIsTitle":"¿Qué es la conversión de XML y JSON y por qué es útil?","whatIsContent":"**XML (eXtensible Markup Language)** y **JSON (JavaScript Object Notation)** son ambos formatos de datos estructurados usados para **intercambio y almacenamiento de datos**. XML usa **etiquetas y atributos** con sintaxis verbosa para estructuras similares a documentos, mientras que JSON usa **pares clave-valor** con sintaxis ligera para objetos de datos. La **conversión de XML a JSON** moderniza sistemas legados, mejora la **compatibilidad API**, y permite **manejo flexible de datos** a través de diferentes plataformas y lenguajes de programación. Aprende más sobre [XML](https://es.wikipedia.org/wiki/XML) e [intercambio de datos JSON](https://es.wikipedia.org/wiki/JSON).","howToTitle":"¿Cómo usar la herramienta Conversor XML ↔ JSON?","howToSteps":["**Pega** tus datos XML o JSON en el área de entrada","**Elige la dirección de conversión**: XML → JSON o JSON → XML","Activa **'Preservar atributos'** si quieres que los atributos XML se mantengan como objetos JSON","**Haz clic en convertir** y copia los datos transformados"],"useCasesTitle":"Casos de uso comunes de conversión XML ↔ JSON","useCases":["**Modernizar sistemas legados** convirtiendo configuraciones XML a APIs JSON","**Integrar servicios web SOAP** con aplicaciones modernas basadas en JSON RESTful","**Migrar datos** de bases de datos XML a almacenes modernos NoSQL o de documentos","**Transformar archivos de configuración** para herramientas DevOps modernas y pipelines CI/CD","**Mejorar velocidad de procesamiento** de datos convirtiendo XML verboso a JSON compacto"],"faqTitle":"Preguntas frecuentes","faq":[{"question":"¿Cómo se manejan los atributos XML en la conversión JSON?","answer":"Los atributos XML se **preservan como objetos** en JSON por defecto, con nombres de atributo como claves prefijadas con el símbolo '@'. El contenido de texto entre etiquetas se convierte en la propiedad '@text', manteniendo la **estructura XML completa** en un formato compatible con JSON."},{"question":"¿Qué características XML son compatibles en la conversión?","answer":"El convertidor soporta **elementos, atributos, namespaces y contenido de texto**. Sin embargo, **comentarios XML, instrucciones de procesamiento y características complejas DTD/XSD** pueden no preservarse ya que no tienen equivalentes directos en JSON."},{"question":"¿Este conversor XML/JSON es seguro?","answer":"¡Sí! Todo el procesamiento de datos ocurre **100% en tu navegador**. Tus datos XML y JSON nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tus datos sensibles."}]}};
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/fast-xml-parser@4.3.0/dist/fast-xml-parser.min.js"></script>
+<script src="/js/tools/xml-json.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

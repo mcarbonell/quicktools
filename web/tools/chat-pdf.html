@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chat with PDF - FastTools</title>
+    <meta name="description" content="Chat with your PDF documents using AI.">
+    <meta name="keywords" content="ai, pdf, chat">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Chat con PDF — FastTools">
+    <meta property="og:description" content="Chatea con tus documentos PDF usando IA.">
+    <meta property="og:url" content="https://fasttools.tools/tools/chat-pdf.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/chat-pdf.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/chat-pdf.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/tools/chat-pdf.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    <style>
+    .chat-container { height: 400px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: #f8f9fa; }
+    .message { margin-bottom: 1rem; padding: 0.75rem; border-radius: 8px; max-width: 80%; }
+    .message.user { background: #007bff; color: white; margin-left: auto; }
+    .message.assistant { background: white; border: 1px solid #dee2e6; }
+    .pdf-preview { max-height: 300px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: white; font-size: 0.9rem; }
+</style>
+
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>Chat with PDF</h1>
+            <p class="text-muted">Chat with your PDF documents using AI.</p>
+        </div>
+
+        <div id="apiKeySetup" class="alert alert-warning">
+    <p class="mb-2">⚙️ You need to configure your Google Gemini API key.</p>
+    <a href="chat-ai.html" class="btn btn-sm btn-primary">Configure now</a>
+</div>
+
+<div id="toolSection" class="d-none">
+    <div class="mb-4">
+        <label class="form-label">Upload PDF</label>
+        <input type="file" id="pdfFile" class="form-control" accept=".pdf" onchange="loadPDF()">
+        <small class="text-muted">The PDF is processed locally, not uploaded to any server</small>
+    </div>
+
+    <div id="pdfPreview" class="pdf-preview mb-4 d-none">
+        <strong>Preview of content:</strong>
+        <div id="pdfContent" class="mt-2"></div>
+    </div>
+
+    <div id="chatSection" class="d-none">
+        <div class="chat-container mb-3" id="chatMessages">
+            <div class="message assistant">
+                <strong>AI Assistant</strong>
+                <p class="mb-0 mt-2">PDF loaded. What do you want to know about this document?</p>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="userInput" class="form-control" placeholder="Ask about the PDF..."
+                onkeypress="handleKeyPress(event)">
+            <button class="btn btn-primary" onclick="sendMessage()" id="sendBtn">📤 Send</button>
+        </div>
+    </div>
+</div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What is AI-powered PDF chat and how does it work?</h2>
+            <p class="mb-4"><strong>AI-powered PDF chat</strong> combines <strong>artificial intelligence</strong> with <strong>document processing</strong> to enable <strong>conversational interaction</strong> with PDF documents. This technology uses <strong>PDF text extraction</strong>, <strong>natural language processing</strong>, and <strong>large language models</strong> to understand document content and provide <strong>intelligent responses</strong> to user questions. The system <strong>processes PDF text locally</strong> using <strong>browser-based extraction</strong>, then uses AI to <strong>analyze, summarize, and answer questions</strong> about the document content. This approach transforms <strong>static documents</strong> into <strong>interactive knowledge bases</strong>, making <strong>research, studying, and document analysis</strong> more efficient and accessible. Learn more about <a href="https://en.wikipedia.org/wiki/Document_AI" target="_blank" rel="noopener">document AI</a> and <a href="https://en.wikipedia.org/wiki/PDF" target="_blank" rel="noopener">PDF processing</a>.</p>
+            <h3 class="h5 mb-3">How to use the Chat with PDF tool?</h3>
+            <ol class="mb-4">
+                <li><strong>Upload your PDF file</strong> - it's processed locally in your browser (never uploaded)</li>
+                <li><strong>Wait for text extraction</strong> - the document content is analyzed automatically</li>
+                <li><strong>Start asking questions</strong> about the PDF content in natural language</li>
+                <li><strong>Get AI-powered answers</strong> with relevant quotes and references from your document</li>
+            </ol>
+            <h3 class="h5 mb-3">Common use cases for AI PDF chat</h3>
+            <ul class="mb-4">
+                <li><strong>Research efficiency</strong> - quickly extract information from academic papers and reports</li>
+                <li><strong>Legal document review</strong> - ask specific questions about contracts, agreements, and policies</li>
+                <li><strong>Business analysis</strong> - analyze financial reports, business plans, and market research</li>
+                <li><strong>Educational support</strong> - study textbooks, research papers, and educational materials</li>
+                <li><strong>Technical documentation</strong> - query API docs, manuals, and technical specifications</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            How accurate are AI responses about PDF content?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            AI responses are generally <strong>very accurate</strong> when based on <strong>clear, readable text</strong> in the PDF. However, accuracy may vary with <strong>scanned documents, poor OCR quality, or complex formatting</strong>. The AI can <strong>quote specific sections</strong> to help you verify information.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            Is my PDF data secure and private?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! <strong>PDFs are processed locally</strong> in your browser and <strong>never uploaded</strong> to our servers. Only <strong>extracted text</strong> (not the original file) is sent to <strong>Google Gemini AI</strong> for analysis. Your <strong>documents remain completely private</strong> throughout the process.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            What types of PDFs work best with AI chat?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            AI PDF chat works best with <strong>text-based PDFs</strong> like <strong>research papers, reports, books, and documents with clear formatting</strong>. It may struggle with <strong>image-only PDFs, complex layouts, or documents with poor text recognition</strong>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"apiKeySetupTitle":"⚙️ You need to configure your Google Gemini API key.","configureNowButton":"Configure now","uploadPDFLabel":"Upload PDF","pdfFilePlaceholder":"Choose a PDF file","pdfProcessingInfo":"The PDF is processed locally, not uploaded to any server","pdfPreviewTitle":"Preview of content:","assistantName":"AI Assistant","assistantWelcomeMessage":"PDF loaded. What do you want to know about this document?","questionPlaceholder":"Ask about the PDF...","sendButton":"📤 Send","seo":{"whatIsTitle":"What is AI-powered PDF chat and how does it work?","whatIsContent":"**AI-powered PDF chat** combines **artificial intelligence** with **document processing** to enable **conversational interaction** with PDF documents. This technology uses **PDF text extraction**, **natural language processing**, and **large language models** to understand document content and provide **intelligent responses** to user questions. The system **processes PDF text locally** using **browser-based extraction**, then uses AI to **analyze, summarize, and answer questions** about the document content. This approach transforms **static documents** into **interactive knowledge bases**, making **research, studying, and document analysis** more efficient and accessible. Learn more about [document AI](https://en.wikipedia.org/wiki/Document_AI) and [PDF processing](https://en.wikipedia.org/wiki/PDF).","howToTitle":"How to use the Chat with PDF tool?","howToSteps":["**Upload your PDF file** - it's processed locally in your browser (never uploaded)","**Wait for text extraction** - the document content is analyzed automatically","**Start asking questions** about the PDF content in natural language","**Get AI-powered answers** with relevant quotes and references from your document"],"useCasesTitle":"Common use cases for AI PDF chat","useCases":["**Research efficiency** - quickly extract information from academic papers and reports","**Legal document review** - ask specific questions about contracts, agreements, and policies","**Business analysis** - analyze financial reports, business plans, and market research","**Educational support** - study textbooks, research papers, and educational materials","**Technical documentation** - query API docs, manuals, and technical specifications"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"How accurate are AI responses about PDF content?","answer":"AI responses are generally **very accurate** when based on **clear, readable text** in the PDF. However, accuracy may vary with **scanned documents, poor OCR quality, or complex formatting**. The AI can **quote specific sections** to help you verify information."},{"question":"Is my PDF data secure and private?","answer":"Yes! **PDFs are processed locally** in your browser and **never uploaded** to our servers. Only **extracted text** (not the original file) is sent to **Google Gemini AI** for analysis. Your **documents remain completely private** throughout the process."},{"question":"What types of PDFs work best with AI chat?","answer":"AI PDF chat works best with **text-based PDFs** like **research papers, reports, books, and documents with clear formatting**. It may struggle with **image-only PDFs, complex layouts, or documents with poor text recognition**."}]}};
+    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="/js/lib/gemini-api.js"></script>
+<script>
+    let gemini = null;
+    let pdfText = '';
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    window.addEventListener('DOMContentLoaded', () => {
+        if (GeminiStorage.exists()) {
+            gemini = new GeminiAPI(GeminiStorage.get());
+            document.getElementById('apiKeySetup').classList.add('d-none');
+            document.getElementById('toolSection').classList.remove('d-none');
+        }
+    });
+
+    async function loadPDF() {
+        const file = document.getElementById('pdfFile').files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = async (e) => {
+            const pdf = await pdfjsLib.getDocument(e.target.result).promise;
+            pdfText = '';
+            
+            for (let i = 1; i <= pdf.numPages; i++) {
+                const page = await pdf.getPage(i);
+                const content = await page.getTextContent();
+                const text = content.items.map(item => item.str).join(' ');
+                pdfText += text + '\\n\\n';
+            }
+
+            document.getElementById('pdfContent').textContent = pdfText.substring(0, 500) + '...';
+            document.getElementById('pdfPreview').classList.remove('d-none');
+            document.getElementById('chatSection').classList.remove('d-none');
+        };
+        reader.readAsArrayBuffer(file);
+    }
+
+    async function sendMessage() {
+        const input = document.getElementById('userInput');
+        const message = input.value.trim();
+        
+        if (!message || !pdfText) return;
+
+        addMessage(message, 'user');
+        input.value = '';
+        document.getElementById('sendBtn').disabled = true;
+
+        try {
+            const prompt = `Basándote en el siguiente documento:\\n\\n${pdfText}\\n\\nResponde a esta pregunta: ${message}`;
+            const response = await gemini.chat(prompt);
+            addMessage(response, 'assistant');
+        } catch (error) {
+            addMessage(`❌ Error: ${error.message}`, 'assistant');
+        } finally {
+            document.getElementById('sendBtn').disabled = false;
+        }
+    }
+
+    function addMessage(text, role) {
+        const container = document.getElementById('chatMessages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${role}`;
+        messageDiv.innerHTML = `<strong>${role === 'user' ? 'Tú' : 'Asistente IA'}</strong><div class="mt-2">${text.replace(/\\n/g, '<br>')}</div>`;
+        container.appendChild(messageDiv);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            sendMessage();
+        }
+    }
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

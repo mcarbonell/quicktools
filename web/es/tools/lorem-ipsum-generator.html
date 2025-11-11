@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Generador de Lorem Ipsum - FastTools</title>
+    <meta name="description" content="Genera texto Lorem Ipsum para tus proyectos.">
+    <meta name="keywords" content="text, lorem, generator">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Generador de Lorem Ipsum — FastTools">
+    <meta property="og:description" content="Genera texto Lorem Ipsum para tus proyectos.">
+    <meta property="og:url" content="https://fasttools.tools/es/tools/lorem-ipsum-generator.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/lorem-ipsum-generator.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/lorem-ipsum-generator.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/tools/lorem-ipsum-generator.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>Generador de Lorem Ipsum</h1>
+            <p class="text-muted">Genera texto Lorem Ipsum para tus proyectos.</p>
+        </div>
+
+        <div class="mb-3">
+    <label for="amount-input" class="form-label">Cantidad</label>
+    <input type="number" class="form-control" id="amount-input" value="5" min="1">
+</div>
+
+<div class="mb-3">
+    <label for="unit-select" class="form-label">Unidad</label>
+    <select class="form-select" id="unit-select">
+        <option value="paragraphs">Párrafos</option>
+        <option value="sentences">Oraciones</option>
+        <option value="words">Palabras</option>
+    </select>
+</div>
+
+<button id="generate-btn" class="btn btn-primary">Generar Lorem Ipsum</button>
+
+<div class="position-relative mt-3">
+    <textarea id="lorem-ipsum-output" rows="10" class="form-control" readonly></textarea>
+    <button id="copy-btn" class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-2"
+        title="Copiar al portapapeles">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard"
+            viewBox="0 0 16 16">
+            <path
+                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+            <path
+                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+        </svg>
+    </button>
+</div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">¿Qué es Lorem Ipsum y por qué lo usan los diseñadores?</h2>
+            <p class="mb-4"><strong>Lorem Ipsum</strong> es <strong>texto dummy</strong> extraído de secciones de <strong>De Finibus de Cicerón</strong> (45 a.C.), usado en la <strong>industria de impresión y tipografía</strong> desde los años 1500. Este <strong>texto de marcador de posición estándar</strong> ayuda a los diseñadores enfocarse en <strong>diseño, tipografía y jerarquía visual</strong> sin distráerse con contenido significativo. Los generadores Lorem Ipsum modernos crean <strong>texto que parece realista</strong> que mantiene <strong>distribución adecuada de palabras, estructura de oraciones y saltos de párrafo</strong>. Es esencial para <strong>diseño web</strong>, <strong>diseño gráfico</strong> y <strong>prototipado de diseño</strong>. Aprende más sobre <a href="https://es.wikipedia.org/wiki/Lorem_ipsum" target="_blank" rel="noopener">historia de Lorem Ipsum</a> y <a href="https://es.wikipedia.org/wiki/Dise%C3%B1o_gr%C3%A1fico" target="_blank" rel="noopener">principios de diseño gráfico</a>.</p>
+            <h3 class="h5 mb-3">¿Cómo usar la herramienta Generador de Lorem Ipsum?</h3>
+            <ol class="mb-4">
+                <li><strong>Selecciona la cantidad</strong> de texto que necesitas (párrafos, oraciones o palabras)</li>
+                <li><strong>Elige la unidad</strong> que mejor se adapte a tus requisitos de diseño</li>
+                <li>Haz clic en <strong>'Generar Lorem Ipsum'</strong> para crear texto de marcador de posición</li>
+                <li><strong>Copia</strong> el texto generado usando el botón de copiar</li>
+            </ol>
+            <h3 class="h5 mb-3">Casos de uso comunes de Lorem Ipsum</h3>
+            <ul class="mb-4">
+                <li><strong>Prototipado de diseño web</strong> para visualizar diseño y tipografía antes de añadir contenido real</li>
+                <li><strong>Mockups de diseño de impresión</strong> para folletos, revistas y materiales de marketing</li>
+                <li><strong>Pruebas UI/UX</strong> para evaluar cómo se verá el contenido de texto en diferentes interfaces</li>
+                <li><strong>Creación de plantillas</strong> para documentos, presentaciones y formularios</li>
+                <li><strong>Sistemas de gestión de contenido</strong> probando con longitudes y estructuras de texto realistas</li>
+            </ul>
+            <h3 class="h5 mb-3">Preguntas frecuentes</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            ¿Es Lorem Ipsum solo palabras latinas aleatorias?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡No! Lorem Ipsum viene de la <strong>obra filosófica de Cicerón</strong> sobre ética y filosofía moral. Aunque <strong>sin significado para lectores modernos</strong>, mantiene <strong>gramática latina adecuada, flujo de palabras y propiedades tipográficas</strong> que lo hacen ideal para trabajo de diseño.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            ¿Cuándo debería usar Lorem Ipsum vs contenido real?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Usa Lorem Ipsum para <strong>etapas tempranas de diseño</strong> cuando te enfoques en <strong>diseño y jerarquía visual</strong>. Cambia a <strong>contenido real</strong> durante <strong>revisiones finales de diseño</strong>, <strong>pruebas de usuario</strong> y <strong>presentaciones a clientes</strong> para asegurar que el diseño funciona con contenido real.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            ¿Este generador de Lorem Ipsum es seguro?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! Toda la generación de texto ocurre <strong>100% en tu navegador</strong>. La herramienta no almacena o transmite ningún dato, asegurando <strong>privacidad y seguridad</strong> completas mientras te enfocas en tu trabajo de diseño.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"countLabel":"Cantidad","unitLabel":"Unidad","paragraphsOption":"Párrafos","sentencesOption":"Oraciones","wordsOption":"Palabras","generateLoremIpsumButton":"Generar Lorem Ipsum","copyToClipboard":"Copiar al portapapeles","invalidAmount":"Por favor, introduce una cantidad válida (mínimo 1).","textCopied":"Texto copiado al portapapeles!","seo":{"whatIsTitle":"¿Qué es Lorem Ipsum y por qué lo usan los diseñadores?","whatIsContent":"**Lorem Ipsum** es **texto dummy** extraído de secciones de **De Finibus de Cicerón** (45 a.C.), usado en la **industria de impresión y tipografía** desde los años 1500. Este **texto de marcador de posición estándar** ayuda a los diseñadores enfocarse en **diseño, tipografía y jerarquía visual** sin distráerse con contenido significativo. Los generadores Lorem Ipsum modernos crean **texto que parece realista** que mantiene **distribución adecuada de palabras, estructura de oraciones y saltos de párrafo**. Es esencial para **diseño web**, **diseño gráfico** y **prototipado de diseño**. Aprende más sobre [historia de Lorem Ipsum](https://es.wikipedia.org/wiki/Lorem_ipsum) y [principios de diseño gráfico](https://es.wikipedia.org/wiki/Dise%C3%B1o_gr%C3%A1fico).","howToTitle":"¿Cómo usar la herramienta Generador de Lorem Ipsum?","howToSteps":["**Selecciona la cantidad** de texto que necesitas (párrafos, oraciones o palabras)","**Elige la unidad** que mejor se adapte a tus requisitos de diseño","Haz clic en **'Generar Lorem Ipsum'** para crear texto de marcador de posición","**Copia** el texto generado usando el botón de copiar"],"useCasesTitle":"Casos de uso comunes de Lorem Ipsum","useCases":["**Prototipado de diseño web** para visualizar diseño y tipografía antes de añadir contenido real","**Mockups de diseño de impresión** para folletos, revistas y materiales de marketing","**Pruebas UI/UX** para evaluar cómo se verá el contenido de texto en diferentes interfaces","**Creación de plantillas** para documentos, presentaciones y formularios","**Sistemas de gestión de contenido** probando con longitudes y estructuras de texto realistas"],"faqTitle":"Preguntas frecuentes","faq":[{"question":"¿Es Lorem Ipsum solo palabras latinas aleatorias?","answer":"¡No! Lorem Ipsum viene de la **obra filosófica de Cicerón** sobre ética y filosofía moral. Aunque **sin significado para lectores modernos**, mantiene **gramática latina adecuada, flujo de palabras y propiedades tipográficas** que lo hacen ideal para trabajo de diseño."},{"question":"¿Cuándo debería usar Lorem Ipsum vs contenido real?","answer":"Usa Lorem Ipsum para **etapas tempranas de diseño** cuando te enfoques en **diseño y jerarquía visual**. Cambia a **contenido real** durante **revisiones finales de diseño**, **pruebas de usuario** y **presentaciones a clientes** para asegurar que el diseño funciona con contenido real."},{"question":"¿Este generador de Lorem Ipsum es seguro?","answer":"¡Sí! Toda la generación de texto ocurre **100% en tu navegador**. La herramienta no almacena o transmite ningún dato, asegurando **privacidad y seguridad** completas mientras te enfocas en tu trabajo de diseño."}]}};
+    </script>
+<script src="/js/tools/lorem-ipsum-generator.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

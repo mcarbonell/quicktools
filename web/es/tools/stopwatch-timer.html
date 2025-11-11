@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cronómetro y Temporizador - FastTools</title>
+    <meta name="description" content="Cronómetro y temporizador con alarma.">
+    <meta name="keywords" content="timer, stopwatch, alarm">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cronómetro y Temporizador — FastTools">
+    <meta property="og:description" content="Cronómetro y temporizador con alarma.">
+    <meta property="og:url" content="https://fasttools.tools/es/tools/stopwatch-timer.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/stopwatch-timer.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/stopwatch-timer.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/tools/stopwatch-timer.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    <style>
+    .display-time {
+        font-size: 3rem;
+        font-family: 'monospace';
+    }
+
+    .lap-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .lap-item:last-child {
+        border-bottom: none;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>Cronómetro y Temporizador</h1>
+            <p class="text-muted">Cronómetro y temporizador con alarma.</p>
+        </div>
+
+        <div class="row mt-4">
+    <!-- Cronómetro -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Cronómetro</div>
+            <div class="card-body text-center">
+                <div id="stopwatch-display" class="display-time mb-3">00:00:00.000</div>
+                <div class="d-flex justify-content-center gap-2 mb-3">
+                    <button id="stopwatch-start" class="btn btn-success">Iniciar</button>
+                    <button id="stopwatch-stop" class="btn btn-danger" disabled>Detener</button>
+                    <button id="stopwatch-lap" class="btn btn-info" disabled>Vuelta</button>
+                    <button id="stopwatch-reset" class="btn btn-warning" disabled>Reiniciar</button>
+                </div>
+                <ul id="stopwatch-laps" class="list-group mt-3 text-start"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Temporizador -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Temporizador</div>
+            <div class="card-body text-center">
+                <div id="timer-display" class="display-time mb-3">00:00:00</div>
+                <div class="d-flex justify-content-center gap-2 mb-3">
+                    <input type="number" id="timer-hours" class="form-control w-25 text-center"
+                        placeholder="HH" min="0" value="0">
+                    <input type="number" id="timer-minutes" class="form-control w-25 text-center"
+                        placeholder="MM" min="0" max="59" value="0">
+                    <input type="number" id="timer-seconds" class="form-control w-25 text-center"
+                        placeholder="SS" min="0" max="59" value="0">
+                </div>
+                <div class="d-flex justify-content-center gap-2">
+                    <button id="timer-start" class="btn btn-success">Iniciar</button>
+                    <button id="timer-pause" class="btn btn-primary" disabled>Pausar</button>
+                    <button id="timer-reset" class="btn btn-warning" disabled>Reiniciar</button>
+                </div>
+                <audio id="timer-alarm" src="" preload="auto"></audio>
+            </div>
+        </div>
+    </div>
+</div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">¿Qué son los cronómetros y temporizadores y por qué son útiles?</h2>
+            <p class="mb-4">Los <strong>cronómetros y temporizadores</strong> son <strong>herramientas de medición de tiempo</strong> esenciales para productividad, deportes, cocina y actividades profesionales. Los <strong>cronómetros miden el tiempo transcurrido</strong> desde un punto de inicio, mientras que los <strong>temporizadores cuentan hacia atrás</strong> hasta una duración predeterminada. Las versiones digitales modernas ofrecen <strong>mediciones precisas</strong>, <strong>registro de vueltas</strong> y <strong>notificaciones de audio</strong>. Estas herramientas ayudan a mejorar la <strong>gestión del tiempo</strong>, <strong>seguimiento de productividad</strong> y <strong>adherencia a plazos</strong> en varios contextos. Desde <strong>entrenamiento atlético</strong> hasta <strong>cocina</strong> y <strong>gestión de proyectos</strong>, las herramientas de medición de tiempo mejoran la <strong>eficiencia</strong> y <strong>precisión</strong>. Aprende más sobre <a href="https://es.wikipedia.org/wiki/Cronometr%C3%ADa" target="_blank" rel="noopener">cronometría</a> y <a href="https://es.wikipedia.org/wiki/Gesti%C3%B3n_del_tiempo" target="_blank" rel="noopener">técnicas de gestión del tiempo</a>.</p>
+            <h3 class="h5 mb-3">¿Cómo usar la herramienta Cronómetro y Temporizador?</h3>
+            <ol class="mb-4">
+                <li><strong>Para cronómetro</strong>: Haz clic en <strong>'Iniciar'</strong> para comenzar a medir, <strong>'Pausar'</strong> para pausar, <strong>'Detener'</strong> para terminar</li>
+                <li><strong>Para temporizador</strong>: Establece horas, minutos y segundos, luego haz clic en <strong>'Iniciar'</strong> para comenzar la cuenta atrás</li>
+                <li><strong>Registra vueltas</strong> durante sesiones de cronómetro para rastrear tiempos intermedios</li>
+                <li><strong>Reinicia</strong> ambas herramientas cuando necesites comenzar mediciones frescas</li>
+            </ol>
+            <h3 class="h5 mb-3">Casos de uso comunes de cronómetros y temporizadores</h3>
+            <ul class="mb-4">
+                <li><strong>Entrenamiento atlético</strong> - cronometra entrenamientos, carreras y tiempos de vuelta para mejora del rendimiento</li>
+                <li><strong>Cocina y repostería</strong> - asegura tiempos de cocción precisos para recetas y seguridad alimentaria</li>
+                <li><strong>Productividad laboral</strong> - rastrea períodos de enfoque usando Técnica Pomodoro y bloqueo de tiempo</li>
+                <li><strong>Presentaciones</strong> - maneja tiempo de discurso y duraciones de sesión efectivamente</li>
+                <li><strong>Gestión de proyectos</strong> - estima duraciones de tareas y rastrea progreso de desarrollo</li>
+            </ul>
+            <h3 class="h5 mb-3">Preguntas frecuentes</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            ¿Qué tan precisos son los cronómetros y temporizadores digitales?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Los temporizadores digitales modernos son <strong>altamente precisos</strong> usando <strong>osciladores de cristal</strong> precisos y <strong>sincronización de reloj de computadora</strong>. Los temporizadores basados en navegador típicamente logran <strong>precisión de milisegundos</strong> y mantienen precisión incluso cuando se ejecutan <strong>procesos en segundo plano</strong>.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            ¿Cuál es la diferencia entre un cronómetro y un temporizador?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Un <strong>cronómetro mide el tiempo transcurrido</strong> desde que lo inicias (como cronometrar una carrera), mientras que un <strong>temporizador cuenta hacia atrás</strong> desde una duración establecida (como cocinar por 10 minutos). Los cronómetros <strong>acumulan tiempo</strong>, los temporizadores <strong>decrementan tiempo</strong>.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            ¿Esta herramienta de cronómetro y temporizador es segura?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! Todas las funciones de tiempo corren <strong>100% en tu navegador</strong> usando el reloj interno de tu dispositivo. No se transmite o almacena datos, asegurando <strong>privacidad y confiabilidad</strong> completas de tus mediciones de tiempo y datos de cronometraje personales.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","startButton":"Iniciar","stopButton":"Detener","pauseButton":"Pausar","lapButton":"Vuelta","stopwatchTitle":"Cronómetro","timerTitle":"Temporizador","hoursPlaceholder":"HH","minutesPlaceholder":"MM","secondsPlaceholder":"SS","lapText":"Vuelta {number}","timeFinished":"¡Tiempo terminado!","setTimerDuration":"Por favor, establece una duración para el temporizador.","seo":{"whatIsTitle":"¿Qué son los cronómetros y temporizadores y por qué son útiles?","whatIsContent":"Los **cronómetros y temporizadores** son **herramientas de medición de tiempo** esenciales para productividad, deportes, cocina y actividades profesionales. Los **cronómetros miden el tiempo transcurrido** desde un punto de inicio, mientras que los **temporizadores cuentan hacia atrás** hasta una duración predeterminada. Las versiones digitales modernas ofrecen **mediciones precisas**, **registro de vueltas** y **notificaciones de audio**. Estas herramientas ayudan a mejorar la **gestión del tiempo**, **seguimiento de productividad** y **adherencia a plazos** en varios contextos. Desde **entrenamiento atlético** hasta **cocina** y **gestión de proyectos**, las herramientas de medición de tiempo mejoran la **eficiencia** y **precisión**. Aprende más sobre [cronometría](https://es.wikipedia.org/wiki/Cronometr%C3%ADa) y [técnicas de gestión del tiempo](https://es.wikipedia.org/wiki/Gesti%C3%B3n_del_tiempo).","howToTitle":"¿Cómo usar la herramienta Cronómetro y Temporizador?","howToSteps":["**Para cronómetro**: Haz clic en **'Iniciar'** para comenzar a medir, **'Pausar'** para pausar, **'Detener'** para terminar","**Para temporizador**: Establece horas, minutos y segundos, luego haz clic en **'Iniciar'** para comenzar la cuenta atrás","**Registra vueltas** durante sesiones de cronómetro para rastrear tiempos intermedios","**Reinicia** ambas herramientas cuando necesites comenzar mediciones frescas"],"useCasesTitle":"Casos de uso comunes de cronómetros y temporizadores","useCases":["**Entrenamiento atlético** - cronometra entrenamientos, carreras y tiempos de vuelta para mejora del rendimiento","**Cocina y repostería** - asegura tiempos de cocción precisos para recetas y seguridad alimentaria","**Productividad laboral** - rastrea períodos de enfoque usando Técnica Pomodoro y bloqueo de tiempo","**Presentaciones** - maneja tiempo de discurso y duraciones de sesión efectivamente","**Gestión de proyectos** - estima duraciones de tareas y rastrea progreso de desarrollo"],"faqTitle":"Preguntas frecuentes","faq":[{"question":"¿Qué tan precisos son los cronómetros y temporizadores digitales?","answer":"Los temporizadores digitales modernos son **altamente precisos** usando **osciladores de cristal** precisos y **sincronización de reloj de computadora**. Los temporizadores basados en navegador típicamente logran **precisión de milisegundos** y mantienen precisión incluso cuando se ejecutan **procesos en segundo plano**."},{"question":"¿Cuál es la diferencia entre un cronómetro y un temporizador?","answer":"Un **cronómetro mide el tiempo transcurrido** desde que lo inicias (como cronometrar una carrera), mientras que un **temporizador cuenta hacia atrás** desde una duración establecida (como cocinar por 10 minutos). Los cronómetros **acumulan tiempo**, los temporizadores **decrementan tiempo**."},{"question":"¿Esta herramienta de cronómetro y temporizador es segura?","answer":"¡Sí! Todas las funciones de tiempo corren **100% en tu navegador** usando el reloj interno de tu dispositivo. No se transmite o almacena datos, asegurando **privacidad y confiabilidad** completas de tus mediciones de tiempo y datos de cronometraje personales."}]}};
+    </script>
+<script src="/js/tools/stopwatch-timer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lorem Ipsum Generator - FastTools</title>
+    <meta name="description" content="Generate Lorem Ipsum text for your projects.">
+    <meta name="keywords" content="text, lorem, generator">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Generador de Lorem Ipsum — FastTools">
+    <meta property="og:description" content="Genera texto Lorem Ipsum para tus proyectos.">
+    <meta property="og:url" content="https://fasttools.tools/tools/lorem-ipsum-generator.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/lorem-ipsum-generator.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/lorem-ipsum-generator.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/tools/lorem-ipsum-generator.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>Lorem Ipsum Generator</h1>
+            <p class="text-muted">Generate Lorem Ipsum text for your projects.</p>
+        </div>
+
+        <div class="mb-3">
+    <label for="amount-input" class="form-label">Amount</label>
+    <input type="number" class="form-control" id="amount-input" value="5" min="1">
+</div>
+
+<div class="mb-3">
+    <label for="unit-select" class="form-label">Unit</label>
+    <select class="form-select" id="unit-select">
+        <option value="paragraphs">Paragraphs</option>
+        <option value="sentences">Sentences</option>
+        <option value="words">Words</option>
+    </select>
+</div>
+
+<button id="generate-btn" class="btn btn-primary">Generate Lorem Ipsum</button>
+
+<div class="position-relative mt-3">
+    <textarea id="lorem-ipsum-output" rows="10" class="form-control" readonly></textarea>
+    <button id="copy-btn" class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-2"
+        title="Copy to clipboard">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard"
+            viewBox="0 0 16 16">
+            <path
+                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+            <path
+                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+        </svg>
+    </button>
+</div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What is Lorem Ipsum and why do designers use it?</h2>
+            <p class="mb-4"><strong>Lorem Ipsum</strong> is <strong>dummy text</strong> extracted from sections of <strong>Cicero's De Finibus</strong> (45 BC), used in the <strong>printing and typesetting industry</strong> since the 1500s. This <strong>standard placeholder text</strong> helps designers focus on <strong>layout, typography, and visual hierarchy</strong> without being distracted by meaningful content. Modern Lorem Ipsum generators create <strong>realistic-looking text</strong> that maintains proper <strong>word distribution, sentence structure, and paragraph breaks</strong>. It's essential for <strong>web design</strong>, <strong>graphic design</strong>, and <strong>layout prototyping</strong>. Learn more about <a href="https://en.wikipedia.org/wiki/Lorem_ipsum" target="_blank" rel="noopener">Lorem Ipsum history</a> and <a href="https://en.wikipedia.org/wiki/Graphic_design" target="_blank" rel="noopener">graphic design principles</a>.</p>
+            <h3 class="h5 mb-3">How to use the Lorem Ipsum Generator tool?</h3>
+            <ol class="mb-4">
+                <li><strong>Select the amount</strong> of text you need (paragraphs, sentences, or words)</li>
+                <li><strong>Choose the unit</strong> that best fits your design requirements</li>
+                <li>Click <strong>'Generate Lorem Ipsum'</strong> to create placeholder text</li>
+                <li><strong>Copy</strong> the generated text using the copy button</li>
+            </ol>
+            <h3 class="h5 mb-3">Common use cases for Lorem Ipsum</h3>
+            <ul class="mb-4">
+                <li><strong>Web design prototyping</strong> to visualize layout and typography before adding real content</li>
+                <li><strong>Print design mockups</strong> for brochures, magazines, and marketing materials</li>
+                <li><strong>UI/UX testing</strong> to evaluate how text content will look in different interfaces</li>
+                <li><strong>Template creation</strong> for documents, presentations, and forms</li>
+                <li><strong>Content management systems</strong> testing with realistic text lengths and structures</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            Is Lorem Ipsum just random Latin words?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            No! Lorem Ipsum comes from <strong>Cicero's philosophical work</strong> about ethics and moral philosophy. While <strong>meaningless for modern readers</strong>, it maintains <strong>proper Latin grammar, word flow, and typographic properties</strong> that make it ideal for design work.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            When should I use Lorem Ipsum vs real content?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Use Lorem Ipsum for <strong>early design stages</strong> when focusing on <strong>layout and visual hierarchy</strong>. Switch to <strong>real content</strong> during <strong>final design reviews</strong>, <strong>user testing</strong>, and <strong>client presentations</strong> to ensure the design works with actual content.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            Is this Lorem Ipsum generator safe?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! All text generation happens <strong>100% in your browser</strong>. The tool doesn't store or transmit any data, ensuring complete <strong>privacy and security</strong> while you focus on your design work.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"countLabel":"Amount","unitLabel":"Unit","paragraphsOption":"Paragraphs","sentencesOption":"Sentences","wordsOption":"Words","generateLoremIpsumButton":"Generate Lorem Ipsum","copyToClipboard":"Copy to clipboard","invalidAmount":"Please enter a valid amount (minimum 1).","textCopied":"Text copied to clipboard!","seo":{"whatIsTitle":"What is Lorem Ipsum and why do designers use it?","whatIsContent":"**Lorem Ipsum** is **dummy text** extracted from sections of **Cicero's De Finibus** (45 BC), used in the **printing and typesetting industry** since the 1500s. This **standard placeholder text** helps designers focus on **layout, typography, and visual hierarchy** without being distracted by meaningful content. Modern Lorem Ipsum generators create **realistic-looking text** that maintains proper **word distribution, sentence structure, and paragraph breaks**. It's essential for **web design**, **graphic design**, and **layout prototyping**. Learn more about [Lorem Ipsum history](https://en.wikipedia.org/wiki/Lorem_ipsum) and [graphic design principles](https://en.wikipedia.org/wiki/Graphic_design).","howToTitle":"How to use the Lorem Ipsum Generator tool?","howToSteps":["**Select the amount** of text you need (paragraphs, sentences, or words)","**Choose the unit** that best fits your design requirements","Click **'Generate Lorem Ipsum'** to create placeholder text","**Copy** the generated text using the copy button"],"useCasesTitle":"Common use cases for Lorem Ipsum","useCases":["**Web design prototyping** to visualize layout and typography before adding real content","**Print design mockups** for brochures, magazines, and marketing materials","**UI/UX testing** to evaluate how text content will look in different interfaces","**Template creation** for documents, presentations, and forms","**Content management systems** testing with realistic text lengths and structures"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"Is Lorem Ipsum just random Latin words?","answer":"No! Lorem Ipsum comes from **Cicero's philosophical work** about ethics and moral philosophy. While **meaningless for modern readers**, it maintains **proper Latin grammar, word flow, and typographic properties** that make it ideal for design work."},{"question":"When should I use Lorem Ipsum vs real content?","answer":"Use Lorem Ipsum for **early design stages** when focusing on **layout and visual hierarchy**. Switch to **real content** during **final design reviews**, **user testing**, and **client presentations** to ensure the design works with actual content."},{"question":"Is this Lorem Ipsum generator safe?","answer":"Yes! All text generation happens **100% in your browser**. The tool doesn't store or transmit any data, ensuring complete **privacy and security** while you focus on your design work."}]}};
+    </script>
+<script src="/js/tools/lorem-ipsum-generator.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

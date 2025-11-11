@@ -108,7 +108,7 @@
   "tools": [
     {
       "id": "image-resizer",
-      "slug": "tools/image/image-resizer.html",
+      "slug": "tools/image-resizer.html",
       "title": {
         "es": "Redimensionar imagen",
         "en": "Resize Image"
@@ -123,7 +123,7 @@
     },
     {
       "id": "convert-image",
-      "slug": "tools/image/convert-image.html",
+      "slug": "tools/convert-image.html",
       "title": {
         "es": "Convertir formato de imagen",
         "en": "Convert Image Format"
@@ -138,7 +138,7 @@
     },
     {
       "id": "json-formatter",
-      "slug": "tools/data/json-formatter.html",
+      "slug": "tools/json-formatter.html",
       "title": {
         "es": "Formatear JSON",
         "en": "Format JSON"
@@ -153,7 +153,7 @@
     },
     {
       "id": "csv-json",
-      "slug": "tools/data/csv-json.html",
+      "slug": "tools/csv-json.html",
       "title": {
         "es": "CSV ↔ JSON",
         "en": "CSV ↔ JSON"
@@ -168,7 +168,7 @@
     },
     {
       "id": "pdf-to-text",
-      "slug": "tools/files/pdf-to-text.html",
+      "slug": "tools/pdf-to-text.html",
       "title": {
         "es": "Extraer texto de PDF",
         "en": "Extract Text from PDF"
@@ -183,7 +183,7 @@
     },
     {
       "id": "merge-pdfs",
-      "slug": "tools/files/merge-pdfs.html",
+      "slug": "tools/merge-pdfs.html",
       "title": {
         "es": "Unir PDFs",
         "en": "Merge PDFs"
@@ -198,7 +198,7 @@
     },
     {
       "id": "split-pdf",
-      "slug": "tools/files/split-pdf.html",
+      "slug": "tools/split-pdf.html",
       "title": {
         "es": "Dividir PDF",
         "en": "Split PDF"
@@ -213,7 +213,7 @@
     },
     {
       "id": "compress-pdf",
-      "slug": "tools/files/compress-pdf.html",
+      "slug": "tools/compress-pdf.html",
       "title": {
         "es": "Comprimir PDF",
         "en": "Compress PDF"
@@ -228,7 +228,7 @@
     },
     {
       "id": "pdf-to-image",
-      "slug": "tools/files/pdf-to-image.html",
+      "slug": "tools/pdf-to-image.html",
       "title": {
         "es": "PDF a Imagen",
         "en": "PDF to Image"
@@ -243,7 +243,7 @@
     },
     {
       "id": "image-to-pdf",
-      "slug": "tools/files/image-to-pdf.html",
+      "slug": "tools/image-to-pdf.html",
       "title": {
         "es": "Imagen a PDF",
         "en": "Image to PDF"
@@ -258,7 +258,7 @@
     },
     {
       "id": "color-palette-generator",
-      "slug": "tools/image/color-palette-generator.html",
+      "slug": "tools/color-palette-generator.html",
       "title": {
         "es": "Generador de Paleta de Colores",
         "en": "Color Palette Generator"
@@ -273,7 +273,7 @@
     },
     {
       "id": "exif-viewer-cleaner",
-      "slug": "tools/image/exif-viewer-cleaner.html",
+      "slug": "tools/exif-viewer-cleaner.html",
       "title": {
         "es": "Visor y Limpiador EXIF",
         "en": "EXIF Viewer & Cleaner"
@@ -288,7 +288,7 @@
     },
     {
       "id": "lorem-ipsum-generator",
-      "slug": "tools/text/lorem-ipsum-generator.html",
+      "slug": "tools/lorem-ipsum-generator.html",
       "title": {
         "es": "Generador de Lorem Ipsum",
         "en": "Lorem Ipsum Generator"
@@ -303,7 +303,7 @@
     },
     {
       "id": "image-cropper",
-      "slug": "tools/image/image-cropper.html",
+      "slug": "tools/image-cropper.html",
       "title": {
         "es": "Recortar Imagen",
         "en": "Crop Image"
@@ -318,7 +318,7 @@
     },
     {
       "id": "text-cleaner",
-      "slug": "tools/text/text-cleaner.html",
+      "slug": "tools/text-cleaner.html",
       "title": {
         "es": "Limpiar texto",
         "en": "Clean Text"
@@ -333,7 +333,7 @@
     },
     {
       "id": "url-encoder",
-      "slug": "tools/text/url-encoder.html",
+      "slug": "tools/url-encoder.html",
       "title": {
         "es": "Codificar/Decodificar URL",
         "en": "Encode/Decode URL"
@@ -348,7 +348,7 @@
     },
     {
       "id": "base64",
-      "slug": "tools/text/base64.html",
+      "slug": "tools/base64.html",
       "title": {
         "es": "Codificar/Decodificar Base64",
         "en": "Encode/Decode Base64"
@@ -363,7 +363,7 @@
     },
     {
       "id": "html-encoder",
-      "slug": "tools/text/html-encoder.html",
+      "slug": "tools/html-encoder.html",
       "title": {
         "es": "Codificar/Decodificar HTML",
         "en": "Encode/Decode HTML"
@@ -378,7 +378,7 @@
     },
     {
       "id": "diff",
-      "slug": "tools/text/diff.html",
+      "slug": "tools/diff.html",
       "title": {
         "es": "Comparar Textos",
         "en": "Compare Texts"
@@ -393,7 +393,7 @@
     },
     {
       "id": "yaml-json",
-      "slug": "tools/data/yaml-json.html",
+      "slug": "tools/yaml-json.html",
       "title": {
         "es": "YAML ↔ JSON",
         "en": "YAML ↔ JSON"
@@ -408,7 +408,7 @@
     },
     {
       "id": "xml-json",
-      "slug": "tools/data/xml-json.html",
+      "slug": "tools/xml-json.html",
       "title": {
         "es": "XML ↔ JSON",
         "en": "XML ↔ JSON"
@@ -423,7 +423,7 @@
     },
     {
       "id": "toml-json",
-      "slug": "tools/data/toml-json.html",
+      "slug": "tools/toml-json.html",
       "title": {
         "es": "TOML ↔ JSON",
         "en": "TOML ↔ JSON"
@@ -438,7 +438,7 @@
     },
     {
       "id": "qr-generator",
-      "slug": "tools/utils/qr-generator.html",
+      "slug": "tools/qr-generator.html",
       "title": {
         "es": "Generador de QR",
         "en": "QR Generator"
@@ -453,7 +453,7 @@
     },
     {
       "id": "password-generator",
-      "slug": "tools/utils/password-generator.html",
+      "slug": "tools/password-generator.html",
       "title": {
         "es": "Generador de contraseñas",
         "en": "Password Generator"
@@ -468,7 +468,7 @@
     },
     {
       "id": "hash-calculator",
-      "slug": "tools/utils/hash-calculator.html",
+      "slug": "tools/hash-calculator.html",
       "title": {
         "es": "Calculadora de Hashes",
         "en": "Hash Calculator"
@@ -483,7 +483,7 @@
     },
     {
       "id": "image-compressor",
-      "slug": "tools/image/image-compressor.html",
+      "slug": "tools/image-compressor.html",
       "title": {
         "es": "Comprimir Imagen",
         "en": "Compress Image"
@@ -498,7 +498,7 @@
     },
     {
       "id": "color-picker-converter",
-      "slug": "tools/utils/color-picker-converter.html",
+      "slug": "tools/color-picker-converter.html",
       "title": {
         "es": "Selector y Conversor de Color",
         "en": "Color Picker & Converter"
@@ -513,7 +513,7 @@
     },
     {
       "id": "stopwatch-timer",
-      "slug": "tools/utils/stopwatch-timer.html",
+      "slug": "tools/stopwatch-timer.html",
       "title": {
         "es": "Cronómetro y Temporizador",
         "en": "Stopwatch & Timer"
@@ -528,7 +528,7 @@
     },
     {
       "id": "chat-ai",
-      "slug": "tools/ai/chat-ai.html",
+      "slug": "tools/chat-ai.html",
       "title": {
         "es": "Chat con IA",
         "en": "AI Chat"
@@ -543,7 +543,7 @@
     },
     {
       "id": "summarize-text-ai",
-      "slug": "tools/ai/summarize-text-ai.html",
+      "slug": "tools/summarize-text-ai.html",
       "title": {
         "es": "Resumir Texto con IA",
         "en": "Summarize Text with AI"
@@ -558,7 +558,7 @@
     },
     {
       "id": "improve-text-ai",
-      "slug": "tools/ai/improve-text-ai.html",
+      "slug": "tools/improve-text-ai.html",
       "title": {
         "es": "Mejorar Texto con IA",
         "en": "Improve Text with AI"
@@ -573,7 +573,7 @@
     },
     {
       "id": "chat-pdf",
-      "slug": "tools/ai/chat-pdf.html",
+      "slug": "tools/chat-pdf.html",
       "title": {
         "es": "Chat con PDF",
         "en": "Chat with PDF"
@@ -588,7 +588,7 @@
     },
     {
       "id": "edit-image-ai",
-      "slug": "tools/ai/edit-image-ai.html",
+      "slug": "tools/edit-image-ai.html",
       "title": {
         "es": "Editar Imagen con IA",
         "en": "Edit Image with AI"

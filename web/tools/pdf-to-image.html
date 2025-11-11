@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PDF to Image - FastTools</title>
+    <meta name="description" content="Convert each PDF page to JPG or PNG images.">
+    <meta name="keywords" content="pdf, image, convert">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PDF a Imagen — FastTools">
+    <meta property="og:description" content="Convierte cada página de un PDF a imágenes JPG o PNG.">
+    <meta property="og:url" content="https://fasttools.tools/tools/pdf-to-image.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/pdf-to-image.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/pdf-to-image.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/tools/pdf-to-image.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>PDF to Image</h1>
+            <p class="text-muted">Convert each PDF page to JPG or PNG images.</p>
+        </div>
+
+        <div class="mb-3">
+    <label for="pdf-input" class="form-label">Select a PDF file</label>
+    <div class="drop-zone mb-2" id="dropZone">
+        <input class="form-control d-none" type="file" id="pdf-input" accept=".pdf">
+        <div class="drop-message">
+            Drag your PDF here or click to select
+        </div>
+    </div>
+</div>
+
+<div class="mb-3">
+    <label for="format-select" class="form-label">Image format</label>
+    <select class="form-select" id="format-select">
+        <option value="image/jpeg">JPG</option>
+        <option value="image/png">PNG</option>
+    </select>
+</div>
+
+<button id="convert-btn" class="btn btn-primary">Convert to Image</button>
+
+<div id="output" class="mt-3"></div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What is PDF to image conversion and why is it useful?</h2>
+            <p class="mb-4"><strong>PDF to image conversion</strong> transforms PDF documents into standard <strong>image formats</strong> (JPEG, PNG) while preserving visual content, layout, and formatting. This process uses <strong>rasterization technology</strong> to convert each PDF page into high-quality images that can be viewed, edited, or shared using standard image software. Converting PDFs to images enables <strong>cross-platform compatibility</strong>, <strong>easy sharing</strong>, and <strong>integration</strong> into web pages and presentations. Learn more about <a href="https://en.wikipedia.org/wiki/PDF#Conversion" target="_blank" rel="noopener">PDF conversion</a> and <a href="https://en.wikipedia.org/wiki/Raster_graphics" target="_blank" rel="noopener">raster graphics</a>.</p>
+            <h3 class="h5 mb-3">How to use the PDF to Image Converter tool?</h3>
+            <ol class="mb-4">
+                <li><strong>Upload</strong> your PDF by dragging it to the drop area or clicking to select</li>
+                <li><strong>Choose the output format</strong> (JPG for smaller files, PNG for quality)</li>
+                <li>Click <strong>'Convert to Image'</strong> to start the conversion process</li>
+                <li><strong>Download</strong> the converted images for your intended use</li>
+            </ol>
+            <h3 class="h5 mb-3">Common use cases for PDF to image conversion</h3>
+            <ul class="mb-4">
+                <li>Create <strong>social media posts</strong> or presentations from PDF content</li>
+                <li>Extract <strong>page previews</strong> or thumbnails for document navigation</li>
+                <li><strong>Share specific pages</strong> as images without requiring PDF readers</li>
+                <li>Import PDF content into <strong>image editing software</strong> like Photoshop or GIMP</li>
+                <li><strong>Embed PDF content</strong> in websites or email newsletters</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            Which image format should I choose?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Choose <strong>JPG</strong> for smaller file sizes and web use, or <strong>PNG</strong> for highest quality and images with transparency. JPG is better for photos and complex images, while PNG is ideal for text, logos, and graphics requiring crisp details.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            Does the conversion preserve PDF quality?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! The conversion maintains <strong>high visual fidelity</strong> of the original PDF. Images are rendered at <strong>high resolution</strong> ensuring text remains readable and graphics stay sharp, though file sizes will be larger than the original PDF.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            Is this PDF to image converter safe?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! All PDF processing happens <strong>100% in your browser</strong>. Your PDF files never leave your device and are not stored on any server, ensuring complete <strong>privacy and security</strong> of your sensitive documents.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","convertButton":"Convert","selectPdfFileLabel":"Select a PDF file","dropMessage":"Drag your PDF here or click to select","imageFormatLabel":"Image format","jpgOption":"JPG","pngOption":"PNG","convertToImageButton":"Convert to Image","fileLoaded":"File loaded: {filename}","selectPdfFile":"Please select a PDF file.","processingMayTakeTime":"Processing... this may take a moment.","downloadButtonText":"Download","errorConvertingPdf":"Error converting PDF:","errorConvertingGeneric":"An error occurred while converting the PDF.","seo":{"whatIsTitle":"What is PDF to image conversion and why is it useful?","whatIsContent":"**PDF to image conversion** transforms PDF documents into standard **image formats** (JPEG, PNG) while preserving visual content, layout, and formatting. This process uses **rasterization technology** to convert each PDF page into high-quality images that can be viewed, edited, or shared using standard image software. Converting PDFs to images enables **cross-platform compatibility**, **easy sharing**, and **integration** into web pages and presentations. Learn more about [PDF conversion](https://en.wikipedia.org/wiki/PDF#Conversion) and [raster graphics](https://en.wikipedia.org/wiki/Raster_graphics).","howToTitle":"How to use the PDF to Image Converter tool?","howToSteps":["**Upload** your PDF by dragging it to the drop area or clicking to select","**Choose the output format** (JPG for smaller files, PNG for quality)","Click **'Convert to Image'** to start the conversion process","**Download** the converted images for your intended use"],"useCasesTitle":"Common use cases for PDF to image conversion","useCases":["Create **social media posts** or presentations from PDF content","Extract **page previews** or thumbnails for document navigation","**Share specific pages** as images without requiring PDF readers","Import PDF content into **image editing software** like Photoshop or GIMP","**Embed PDF content** in websites or email newsletters"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"Which image format should I choose?","answer":"Choose **JPG** for smaller file sizes and web use, or **PNG** for highest quality and images with transparency. JPG is better for photos and complex images, while PNG is ideal for text, logos, and graphics requiring crisp details."},{"question":"Does the conversion preserve PDF quality?","answer":"Yes! The conversion maintains **high visual fidelity** of the original PDF. Images are rendered at **high resolution** ensuring text remains readable and graphics stay sharp, though file sizes will be larger than the original PDF."},{"question":"Is this PDF to image converter safe?","answer":"Yes! All PDF processing happens **100% in your browser**. Your PDF files never leave your device and are not stored on any server, ensuring complete **privacy and security** of your sensitive documents."}]}};
+    </script>
+<script src="/js/vendor/pdf.js"></script>
+<script src="/js/tools/pdf-to-image.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

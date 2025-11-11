@@ -1,7 +1,7 @@
 [
   {
     "title": "Redimensionar imagen",
-    "slug": "tools/image/image-resizer.html",
+    "slug": "tools/image-resizer.html",
     "description": "Redimensiona imágenes en el navegador manteniendo la proporción.",
     "category": "image",
     "icon": "📐",
@@ -13,7 +13,7 @@
   },
   {
     "title": "Convertir formato de imagen",
-    "slug": "tools/image/convert-image.html",
+    "slug": "tools/convert-image.html",
     "description": "Convierte JPG, PNG y WebP sin subir archivos.",
     "category": "image",
     "icon": "🔄",
@@ -25,7 +25,7 @@
   },
   {
     "title": "Formatear JSON",
-    "slug": "tools/data/json-formatter.html",
+    "slug": "tools/json-formatter.html",
     "description": "Formatea, valida y minifica JSON al instante.",
     "category": "data",
     "icon": "📋",
@@ -37,7 +37,7 @@
   },
   {
     "title": "CSV ↔ JSON",
-    "slug": "tools/data/csv-json.html",
+    "slug": "tools/csv-json.html",
     "description": "Convierte CSV a JSON y JSON a CSV en el navegador.",
     "category": "data",
     "icon": "📊",
@@ -49,7 +49,7 @@
   },
   {
     "title": "Extraer texto de PDF",
-    "slug": "tools/files/pdf-to-text.html",
+    "slug": "tools/pdf-to-text.html",
     "description": "Extrae texto de archivos PDF en el navegador usando PDF.js.",
     "category": "files",
     "icon": "📄",
@@ -61,7 +61,7 @@
   },
   {
     "title": "Unir PDFs",
-    "slug": "tools/files/merge-pdfs.html",
+    "slug": "tools/merge-pdfs.html",
     "description": "Combina varios archivos PDF en uno solo.",
     "category": "files",
     "icon": "🔗",
@@ -72,7 +72,7 @@
   },
   {
     "title": "Dividir PDF",
-    "slug": "tools/files/split-pdf.html",
+    "slug": "tools/split-pdf.html",
     "description": "Divide un PDF en varias partes o extrae páginas específicas.",
     "category": "files",
     "icon": "✂️",
@@ -84,7 +84,7 @@
   },
   {
     "title": "Comprimir PDF",
-    "slug": "tools/files/compress-pdf.html",
+    "slug": "tools/compress-pdf.html",
     "description": "Reduce el tamaño de un PDF comprimiendo las imágenes.",
     "category": "files",
     "icon": "🗜️",
@@ -96,7 +96,7 @@
   },
   {
     "title": "PDF a Imagen",
-    "slug": "tools/files/pdf-to-image.html",
+    "slug": "tools/pdf-to-image.html",
     "description": "Convierte cada página de un PDF a imágenes JPG o PNG.",
     "category": "files",
     "icon": "🖼️",
@@ -108,7 +108,7 @@
   },
   {
     "title": "Imagen a PDF",
-    "slug": "tools/files/image-to-pdf.html",
+    "slug": "tools/image-to-pdf.html",
     "description": "Convierte una o varias imágenes a un archivo PDF.",
     "category": "converters",
     "icon": "📑",
@@ -120,7 +120,7 @@
   },
   {
     "title": "Generador de Paleta de Colores",
-    "slug": "tools/image/color-palette-generator.html",
+    "slug": "tools/color-palette-generator.html",
     "description": "Extrae la paleta de colores dominante de cualquier imagen.",
     "category": "image",
     "icon": "🎨",
@@ -132,7 +132,7 @@
   },
   {
     "title": "Visor y Limpiador EXIF",
-    "slug": "tools/image/exif-viewer-cleaner.html",
+    "slug": "tools/exif-viewer-cleaner.html",
     "description": "Visualiza los metadatos EXIF y elimina información privada.",
     "category": "image",
     "icon": "🔍",
@@ -144,7 +144,7 @@
   },
   {
     "title": "Generador de Lorem Ipsum",
-    "slug": "tools/text/lorem-ipsum-generator.html",
+    "slug": "tools/lorem-ipsum-generator.html",
     "description": "Genera texto Lorem Ipsum para tus proyectos.",
     "category": "text",
     "icon": "📝",
@@ -156,7 +156,7 @@
   },
   {
     "title": "Recortar Imagen",
-    "slug": "tools/image/image-cropper.html",
+    "slug": "tools/image-cropper.html",
     "description": "Recorta tus imágenes online de forma sencilla y precisa.",
     "category": "image",
     "icon": "✂️",
@@ -168,7 +168,7 @@
   },
   {
     "title": "Limpiar texto",
-    "slug": "tools/text/text-cleaner.html",
+    "slug": "tools/text-cleaner.html",
     "description": "Elimina espacios extra, normaliza saltos de línea y cuenta palabras.",
     "category": "text",
     "icon": "🧹",
@@ -180,7 +180,7 @@
   },
   {
     "title": "Codificar/Decodificar URL",
-    "slug": "tools/text/url-encoder.html",
+    "slug": "tools/url-encoder.html",
     "description": "Codifica y decodifica URLs y parámetros.",
     "category": "text",
     "icon": "🔗",
@@ -192,7 +192,7 @@
   },
   {
     "title": "Codificar/Decodificar Base64",
-    "slug": "tools/text/base64.html",
+    "slug": "tools/base64.html",
     "description": "Codifica y decodifica texto en Base64.",
     "category": "text",
     "icon": "🔐",
@@ -204,7 +204,7 @@
   },
   {
     "title": "Codificar/Decodificar HTML",
-    "slug": "tools/text/html-encoder.html",
+    "slug": "tools/html-encoder.html",
     "description": "Codifica y decodifica entidades HTML.",
     "category": "text",
     "icon": "🏷️",
@@ -216,7 +216,7 @@
   },
   {
     "title": "Comparar Textos",
-    "slug": "tools/text/diff.html",
+    "slug": "tools/diff.html",
     "description": "Compara dos textos y encuentra las diferencias.",
     "category": "text",
     "icon": "🔀",
@@ -228,7 +228,7 @@
   },
   {
     "title": "YAML ↔ JSON",
-    "slug": "tools/data/yaml-json.html",
+    "slug": "tools/yaml-json.html",
     "description": "Convierte YAML a JSON y JSON a YAML.",
     "category": "data",
     "icon": "🔄",
@@ -240,7 +240,7 @@
   },
   {
     "title": "XML ↔ JSON",
-    "slug": "tools/data/xml-json.html",
+    "slug": "tools/xml-json.html",
     "description": "Convierte XML a JSON y JSON a XML.",
     "category": "data",
     "icon": "🔄",
@@ -252,7 +252,7 @@
   },
   {
     "title": "TOML ↔ JSON",
-    "slug": "tools/data/toml-json.html",
+    "slug": "tools/toml-json.html",
     "description": "Convierte TOML a JSON y JSON a TOML.",
     "category": "data",
     "icon": "🔄",
@@ -264,7 +264,7 @@
   },
   {
     "title": "Generador de QR",
-    "slug": "tools/utils/qr-generator.html",
+    "slug": "tools/qr-generator.html",
     "description": "Genera códigos QR desde texto o URL.",
     "category": "utils",
     "icon": "📱",
@@ -275,7 +275,7 @@
   },
   {
     "title": "Generador de contraseñas",
-    "slug": "tools/utils/password-generator.html",
+    "slug": "tools/password-generator.html",
     "description": "Generador seguro de contraseñas personalizables.",
     "category": "utils",
     "icon": "🔑",
@@ -287,7 +287,7 @@
   },
   {
     "title": "Calculadora de Hashes",
-    "slug": "tools/utils/hash-calculator.html",
+    "slug": "tools/hash-calculator.html",
     "description": "Calcula hashes MD5, SHA-1, SHA-256 y SHA-512.",
     "category": "utils",
     "icon": "#️⃣",
@@ -300,7 +300,7 @@
   },
   {
     "title": "Comprimir Imagen",
-    "slug": "tools/image/image-compressor.html",
+    "slug": "tools/image-compressor.html",
     "description": "Reduce el tamaño de tus imágenes sin perder calidad visible.",
     "category": "image",
     "icon": "📦",
@@ -312,7 +312,7 @@
   },
   {
     "title": "Selector y Conversor de Color",
-    "slug": "tools/utils/color-picker-converter.html",
+    "slug": "tools/color-picker-converter.html",
     "description": "Selector de colores y conversor entre HEX, RGB y HSL.",
     "category": "utils",
     "icon": "🎨",
@@ -324,7 +324,7 @@
   },
   {
     "title": "Cronómetro y Temporizador",
-    "slug": "tools/utils/stopwatch-timer.html",
+    "slug": "tools/stopwatch-timer.html",
     "description": "Cronómetro y temporizador con alarma.",
     "category": "utils",
     "icon": "⏱️",
@@ -336,7 +336,7 @@
   },
   {
     "title": "Chat con IA",
-    "slug": "tools/ai/chat-ai.html",
+    "slug": "tools/chat-ai.html",
     "description": "Chatea con inteligencia artificial usando Google Gemini.",
     "category": "ai",
     "icon": "💬",
@@ -348,7 +348,7 @@
   },
   {
     "title": "Resumir Texto con IA",
-    "slug": "tools/ai/summarize-text-ai.html",
+    "slug": "tools/summarize-text-ai.html",
     "description": "Resume textos largos usando inteligencia artificial.",
     "category": "ai",
     "icon": "📄",
@@ -360,7 +360,7 @@
   },
   {
     "title": "Mejorar Texto con IA",
-    "slug": "tools/ai/improve-text-ai.html",
+    "slug": "tools/improve-text-ai.html",
     "description": "Mejora la redacción de tus textos con IA.",
     "category": "ai",
     "icon": "✨",
@@ -372,7 +372,7 @@
   },
   {
     "title": "Chat con PDF",
-    "slug": "tools/ai/chat-pdf.html",
+    "slug": "tools/chat-pdf.html",
     "description": "Chatea con tus documentos PDF usando IA.",
     "category": "ai",
     "icon": "📚",
@@ -384,7 +384,7 @@
   },
   {
     "title": "Editar Imagen con IA",
-    "slug": "tools/ai/edit-image-ai.html",
+    "slug": "tools/edit-image-ai.html",
     "description": "Edita imágenes usando inteligencia artificial.",
     "category": "ai",
     "icon": "🎨",
