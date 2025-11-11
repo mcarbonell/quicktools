@@ -435,7 +435,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             });
             break;
         case 'capture-failure':
-            showErrorNotification(request.error);
+            // Solo mostrar error si no fue cancelado por el usuario
+            if (request.error && !request.error.includes('cancel')) {
+                showErrorNotification(request.error);
+            }
             break;
     }
 });
