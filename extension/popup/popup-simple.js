@@ -2,6 +2,7 @@
 
 import { loadTools } from '../shared/tools-loader.js';
 import { getStorage, trackToolUsage, showToast, showModal, closeModal } from '../shared/utils.js';
+import { t, initI18n } from '../shared/i18n.js';
 
 class FastToolsPopup {
     constructor() {
@@ -14,6 +15,7 @@ class FastToolsPopup {
     async init() {
         console.log('🚀 Initializing FastTools Popup');
         
+        this.lang = await initI18n();
         await this.loadData();
         this.setupEventListeners();
         this.render();
@@ -105,7 +107,7 @@ class FastToolsPopup {
         const total = Object.values(todayUsage).reduce((sum, count) => sum + count, 0);
         
         const usageEl = document.getElementById('usage-today');
-        if (usageEl) usageEl.textContent = `${total} usos hoy`;
+        if (usageEl) usageEl.textContent = t('usage_today', { count: total }, this.lang);
     }
 
     // ====================
@@ -114,7 +116,7 @@ class FastToolsPopup {
 
     captureScreen() {
         chrome.runtime.sendMessage({ action: 'capture-screen' });
-        showToast('Iniciando captura...', 'info');
+        showToast(t('msg_capture_started', {}, this.lang), 'info');
         window.close();
     }
 
@@ -138,7 +140,7 @@ class FastToolsPopup {
         list.innerHTML = '';
         
         if (this.notes.length === 0) {
-            list.innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:1rem;">No hay notas</p>';
+            list.innerHTML = `<p style="text-align:center;color:var(--text-secondary);padding:1rem;">${t('note_no_notes', {}, this.lang)}</p>`;
             return;
         }
         
@@ -146,7 +148,7 @@ class FastToolsPopup {
             const item = document.createElement('div');
             item.className = 'note-item';
             item.innerHTML = `
-                <div class="note-title">${note.title || 'Sin título'}</div>
+                <div class="note-title">${note.title || t('note_untitled', {}, this.lang)}</div>
                 <div class="note-preview">${(note.content || '').substring(0, 50)}...</div>
             `;
             list.appendChild(item);
@@ -158,7 +160,7 @@ class FastToolsPopup {
         const content = document.getElementById('note-content').value.trim();
         
         if (!content) {
-            showToast('La nota no puede estar vacía', 'warning');
+            showToast(t('msg_note_empty', {}, this.lang), 'warning');
             return;
         }
         
@@ -176,7 +178,7 @@ class FastToolsPopup {
         document.getElementById('note-title').value = '';
         document.getElementById('note-content').value = '';
         
-        showToast('Nota guardada', 'success');
+        showToast(t('msg_note_saved', {}, this.lang), 'success');
         this.loadNotes();
     }
 
@@ -193,7 +195,7 @@ class FastToolsPopup {
     async copyColor() {
         const hex = document.getElementById('color-hex').value;
         await navigator.clipboard.writeText(hex);
-        showToast(`Color ${hex} copiado`, 'success');
+        showToast(t('msg_color_copied', { color: hex }, this.lang), 'success');
         
         // Save to recent
         if (!this.recentColors.includes(hex)) {

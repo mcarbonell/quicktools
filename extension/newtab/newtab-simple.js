@@ -3,6 +3,7 @@
 
 import { getTimeAgo, getStorage, setStorage, trackToolUsage, showToast, showModal, closeModal, copyToClipboard } from '../shared/utils.js';
 import { loadTools, getToolById, filterByCategory, getCategories } from '../shared/tools-loader.js';
+import { t, getCategoryName, initI18n } from '../shared/i18n.js';
 
 class FastToolsNewTab {
     constructor() {
@@ -28,6 +29,7 @@ class FastToolsNewTab {
         console.log('🚀 Inicializando FastTools New Tab');
 
         try {
+            this.lang = await initI18n();
             await this.loadData();
             this.setupEventListeners();
             this.render();
@@ -123,6 +125,7 @@ class FastToolsNewTab {
     // ====================
 
     render() {
+        this.translateUI();
         this.updateGreeting();
         this.updateStats();
         this.renderQuickAccess();
@@ -134,14 +137,38 @@ class FastToolsNewTab {
         this.initTimer();
     }
 
+    translateUI() {
+        // Translate all elements with data-i18n attribute
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.dataset.i18n;
+            const translation = t(key, {}, this.lang);
+            
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.placeholder = translation;
+            } else {
+                el.textContent = translation;
+            }
+        });
+        
+        // Translate search placeholder
+        const searchInput = document.getElementById('global-search');
+        if (searchInput) searchInput.placeholder = t('search_placeholder', {}, this.lang);
+        
+        // Translate note inputs
+        const noteTitle = document.getElementById('note-title');
+        const noteContent = document.getElementById('note-content');
+        if (noteTitle) noteTitle.placeholder = t('note_title_placeholder', {}, this.lang);
+        if (noteContent) noteContent.placeholder = t('note_content_placeholder', {}, this.lang);
+    }
+
     updateGreeting() {
         const hour = new Date().getHours();
-        let greeting = '¡Hola!';
-        if (hour < 12) greeting = '¡Buenos días!';
-        else if (hour < 18) greeting = '¡Buenas tardes!';
-        else greeting = '¡Buenas noches!';
+        let greetingKey = 'greeting_default';
+        if (hour < 12) greetingKey = 'greeting_morning';
+        else if (hour < 18) greetingKey = 'greeting_afternoon';
+        else greetingKey = 'greeting_evening';
         
-        document.getElementById('greeting').textContent = `${greeting} 👋`;
+        document.getElementById('greeting').textContent = `${t(greetingKey, {}, this.lang)} 👋`;
     }
 
     updateStats() {
@@ -189,7 +216,7 @@ class FastToolsNewTab {
             item.innerHTML = `
                 <div class="quick-access-icon">${tool.icon}</div>
                 <div class="quick-access-name">${tool.title}</div>
-                <div class="quick-access-usage">${usage} usos</div>
+                <div class="quick-access-usage">${t('usage_count', { count: usage }, this.lang)}</div>
             `;
 
             container.appendChild(item);
@@ -198,22 +225,24 @@ class FastToolsNewTab {
 
     renderCategoryFilters() {
         const container = document.getElementById('category-filters');
-        container.innerHTML = '<button class="filter-btn active" data-category="all">Todo</button>';
+        container.innerHTML = '';
 
-        const categories = getCategories(this.tools);
-        const categoryNames = {
-            'image': '🖼️ Imagen',
-            'data': '📊 Datos',
-            'text': '📝 Texto',
-            'utils': '🔧 Utilidades',
-            'ai': '🤖 IA'
-        };
+        // Add 'All' button
+        const allBtn = document.createElement('button');
+        allBtn.className = 'filter-btn active';
+        allBtn.dataset.category = 'all';
+        allBtn.textContent = t('category_all', {}, this.lang);
+        allBtn.onclick = (e) => this.handleCategoryFilter(e);
+        container.appendChild(allBtn);
+
+        // Get unique categories from tools
+        const categories = [...new Set(this.tools.map(t => t.category).filter(Boolean))];
 
         categories.forEach(cat => {
             const btn = document.createElement('button');
             btn.className = 'filter-btn';
             btn.dataset.category = cat;
-            btn.textContent = categoryNames[cat] || cat;
+            btn.textContent = getCategoryName(cat, this.lang);
             btn.onclick = (e) => this.handleCategoryFilter(e);
             container.appendChild(btn);
         });
@@ -246,7 +275,7 @@ class FastToolsNewTab {
         container.innerHTML = '';
 
         if (this.notes.length === 0) {
-            container.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">No hay notas</p>';
+            container.innerHTML = `<p style="text-align: center; color: var(--text-secondary); padding: 2rem;">${t('note_no_notes', {}, this.lang)}</p>`;
             return;
         }
 
@@ -256,7 +285,7 @@ class FastToolsNewTab {
             item.onclick = () => this.editNote(note);
 
             item.innerHTML = `
-                <div class="note-title">${note.title || 'Sin título'}</div>
+                <div class="note-title">${note.title || t('note_untitled', {}, this.lang)}</div>
                 <div class="note-content">${(note.content || '').substring(0, 100)}...</div>
                 <div class="note-time">${getTimeAgo(note.modified)}</div>
             `;
@@ -357,7 +386,7 @@ class FastToolsNewTab {
         if (tool.local) {
             if (tool.slug === 'local://capture') {
                 chrome.runtime.sendMessage({ action: 'capture-screen' });
-                showToast('Captura iniciada', 'info');
+                showToast(t('msg_capture_started', {}, this.lang), 'info');
             } else if (tool.slug === 'local://notes') {
                 this.createNewNote();
             }
@@ -396,7 +425,7 @@ class FastToolsNewTab {
         const content = document.getElementById('note-content').value.trim();
 
         if (!title && !content) {
-            showToast('La nota debe tener título o contenido', 'warning');
+            showToast(t('msg_note_empty', {}, this.lang), 'warning');
             return;
         }
 
@@ -416,7 +445,7 @@ class FastToolsNewTab {
         }
 
         await setStorage({ notes: { items: this.notes } });
-        showToast(this.currentNote ? 'Nota actualizada' : 'Nota creada', 'success');
+        showToast(t('msg_note_saved', {}, this.lang), 'success');
         closeModal('note-editor-modal');
         this.renderNotes();
     }
@@ -424,10 +453,10 @@ class FastToolsNewTab {
     async deleteNote() {
         if (!this.currentNote) return;
 
-        if (confirm('¿Eliminar esta nota?')) {
+        if (confirm(t('msg_note_deleted', {}, this.lang) + '?')) {
             this.notes = this.notes.filter(n => n.id !== this.currentNote.id);
             await setStorage({ notes: { items: this.notes } });
-            showToast('Nota eliminada', 'success');
+            showToast(t('msg_note_deleted', {}, this.lang), 'success');
             closeModal('note-editor-modal');
             this.renderNotes();
         }
@@ -482,7 +511,7 @@ class FastToolsNewTab {
         if (remaining <= 0) {
             this.stopTimer();
             this.playAlarm();
-            showToast('⏰ ¡Tiempo terminado!', 'info');
+            showToast(t('msg_timer_finished', {}, this.lang), 'info');
             return;
         }
         this.timer.remainingTime = Math.round(remaining / 1000);
@@ -520,7 +549,7 @@ class FastToolsNewTab {
         const theme = document.getElementById('theme-select').value;
         this.settings.theme = theme;
         await setStorage({ settings: this.settings });
-        showToast('Configuración guardada', 'success');
+        showToast(t('msg_settings_saved', {}, this.lang), 'success');
         closeModal('settings-modal');
         this.applyTheme();
     }
@@ -578,7 +607,7 @@ class FastToolsNewTab {
     async saveFavorites() {
         this.settings.quickAccess = this.quickAccess;
         await setStorage({ settings: this.settings });
-        showToast('Favoritos guardados', 'success');
+        showToast(t('msg_favorites_saved', {}, this.lang), 'success');
         closeModal('favorites-modal');
     }
 }
