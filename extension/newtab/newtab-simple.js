@@ -3,7 +3,7 @@
 
 import { getTimeAgo, getStorage, setStorage, trackToolUsage, showToast, showModal, closeModal, copyToClipboard } from '../shared/utils.js';
 import { loadTools, getToolById, filterByCategory, getCategories } from '../shared/tools-loader.js';
-import { t, getCategoryName, initI18n } from '../shared/i18n.js';
+import { t, getCategoryName, initI18n, setLanguage } from '../shared/i18n.js';
 
 class FastToolsNewTab {
     constructor() {
@@ -69,7 +69,10 @@ class FastToolsNewTab {
         searchInput.addEventListener('input', (e) => this.handleSearch(e.target.value));
 
         // Buttons
-        document.getElementById('settings-btn').onclick = () => showModal('settings-modal');
+        document.getElementById('settings-btn').onclick = () => {
+            this.loadSettingsModal();
+            showModal('settings-modal');
+        };
         document.getElementById('edit-favorites').onclick = () => this.showFavoritesModal();
         document.getElementById('new-note-btn').onclick = () => this.createNewNote();
 
@@ -545,13 +548,35 @@ class FastToolsNewTab {
     // SETTINGS
     // ====================
 
+    loadSettingsModal() {
+        const themeSelect = document.getElementById('theme-select');
+        const langSelect = document.getElementById('language-select');
+        
+        if (themeSelect) themeSelect.value = this.settings.theme || 'auto';
+        if (langSelect) langSelect.value = this.settings.language || this.lang;
+    }
+
     async saveSettings() {
         const theme = document.getElementById('theme-select').value;
+        const language = document.getElementById('language-select')?.value || this.lang;
+        
+        const languageChanged = language !== this.lang;
+        
         this.settings.theme = theme;
+        this.settings.language = language;
+        this.lang = language;
+        
         await setStorage({ settings: this.settings });
+        await setLanguage(language);
+        
         showToast(t('msg_settings_saved', {}, this.lang), 'success');
         closeModal('settings-modal');
+        
         this.applyTheme();
+        
+        if (languageChanged) {
+            this.render();
+        }
     }
 
     applyTheme() {

@@ -29,6 +29,12 @@ const translations = {
         
         // Categories
         category_all: 'Todo',
+        category_imagen: '🖼️ Imagen',
+        category_datos: '📊 Datos',
+        category_texto: '📝 Texto',
+        category_utilidades: '🔧 Utilidades',
+        category_ia: '🤖 IA',
+        // English category names (fallback)
         category_image: '🖼️ Imagen',
         category_data: '📊 Datos',
         category_text: '📝 Texto',
@@ -51,10 +57,14 @@ const translations = {
         
         // Settings
         settings_appearance: '🎨 Apariencia',
+        settings_language: '🌐 Idioma',
         settings_theme: 'Tema:',
+        settings_lang: 'Idioma:',
         theme_auto: 'Automático',
         theme_light: 'Claro',
         theme_dark: 'Oscuro',
+        lang_es: 'Español',
+        lang_en: 'English',
         
         // Notes
         note_title_placeholder: 'Título',
@@ -107,6 +117,12 @@ const translations = {
         
         // Categories
         category_all: 'All',
+        category_imagen: '🖼️ Image',
+        category_datos: '📊 Data',
+        category_texto: '📝 Text',
+        category_utilidades: '🔧 Utils',
+        category_ia: '🤖 AI',
+        // English category names (fallback)
         category_image: '🖼️ Image',
         category_data: '📊 Data',
         category_text: '📝 Text',
@@ -129,10 +145,14 @@ const translations = {
         
         // Settings
         settings_appearance: '🎨 Appearance',
+        settings_language: '🌐 Language',
         settings_theme: 'Theme:',
+        settings_lang: 'Language:',
         theme_auto: 'Auto',
         theme_light: 'Light',
         theme_dark: 'Dark',
+        lang_es: 'Español',
+        lang_en: 'English',
         
         // Notes
         note_title_placeholder: 'Title',
@@ -168,10 +188,23 @@ export function getBrowserLanguage() {
 // Get current language from storage or browser
 export async function getCurrentLanguage() {
     try {
-        const data = await chrome.storage.local.get('language');
-        return data.language || getBrowserLanguage();
+        const data = await chrome.storage.local.get('settings');
+        return data.settings?.language || getBrowserLanguage();
     } catch {
         return getBrowserLanguage();
+    }
+}
+
+// Set language
+export async function setLanguage(lang) {
+    try {
+        const data = await chrome.storage.local.get('settings');
+        const settings = data.settings || {};
+        settings.language = lang;
+        await chrome.storage.local.set({ settings });
+        return true;
+    } catch {
+        return false;
     }
 }
 
@@ -190,7 +223,20 @@ export function t(key, params = {}, lang = null) {
 
 // Get category name
 export function getCategoryName(category, lang = 'es') {
-    const key = `category_${category.toLowerCase()}`;
+    // Normalize category name (handle both Spanish and English)
+    const normalized = category.toLowerCase()
+        .replace('imagen', 'imagen')
+        .replace('image', 'imagen')
+        .replace('datos', 'datos')
+        .replace('data', 'datos')
+        .replace('texto', 'texto')
+        .replace('text', 'texto')
+        .replace('utilidades', 'utilidades')
+        .replace('utils', 'utilidades')
+        .replace('ia', 'ia')
+        .replace('ai', 'ia');
+    
+    const key = `category_${normalized}`;
     return t(key, {}, lang);
 }
 
