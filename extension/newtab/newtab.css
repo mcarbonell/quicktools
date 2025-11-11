@@ -843,12 +843,14 @@ body {
 .note-title-input,
 .note-content-input,
 .note-tags-input {
+    width: 100%;
     padding: var(--spacing-md);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
     background: var(--background);
     color: var(--text-primary);
     font-size: var(--font-md);
+    font-family: inherit;
 }
 
 .note-title-input {
@@ -859,7 +861,7 @@ body {
 .note-content-input {
     min-height: 200px;
     resize: vertical;
-    font-family: inherit;
+    line-height: 1.6;
 }
 
 .note-content-input:focus,
@@ -868,6 +870,12 @@ body {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.note-content-input::placeholder,
+.note-title-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
 }
 
 /* Buttons */

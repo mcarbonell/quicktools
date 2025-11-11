@@ -45,10 +45,15 @@ export async function loadTools() {
 
 // Get tool by ID
 export function getToolById(tools, id) {
-    return tools.find(t => 
-        t.slug.replace(/^tools\//, '').replace(/\.html$/, '').replace(/\//g, '-') === id ||
-        t.slug === id
-    );
+    // Handle local tools
+    if (id === 'capture') return tools.find(t => t.slug === 'local://capture');
+    if (id === 'notes') return tools.find(t => t.slug === 'local://notes');
+    
+    // Handle web tools
+    return tools.find(t => {
+        const toolId = t.slug.replace(/^tools\//, '').replace(/\.html$/, '').replace(/\//g, '-');
+        return toolId === id || t.slug === id;
+    });
 }
 
 // Filter tools by category

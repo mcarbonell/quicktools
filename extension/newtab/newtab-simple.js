@@ -158,7 +158,7 @@ class FastToolsNewTab {
             if (count > maxUsage) {
                 maxUsage = count;
                 const tool = getToolById(this.tools, toolId);
-                favoriteTool = tool ? tool.name : '-';
+                favoriteTool = tool ? tool.title : '-';
             }
         }
         document.getElementById('favorite-tool').textContent = favoriteTool;
@@ -183,11 +183,12 @@ class FastToolsNewTab {
             item.className = `quick-access-item fade-in stagger-${Math.min(index + 1, 4)}`;
             item.onclick = () => this.openTool(tool);
 
-            const usage = this.getToolUsage(tool.id);
+            const toolId = tool.slug.replace(/^local:\/\//, '').replace(/^tools\//, '').replace(/\.html$/, '').replace(/\//g, '-');
+            const usage = this.getToolUsage(toolId);
             
             item.innerHTML = `
                 <div class="quick-access-icon">${tool.icon}</div>
-                <div class="quick-access-name">${tool.name}</div>
+                <div class="quick-access-name">${tool.title}</div>
                 <div class="quick-access-usage">${usage} usos</div>
             `;
 
@@ -231,7 +232,7 @@ class FastToolsNewTab {
             item.innerHTML = `
                 <div class="tool-icon">${tool.icon}</div>
                 <div class="tool-info">
-                    <div class="tool-name">${tool.name}</div>
+                    <div class="tool-name">${tool.title}</div>
                     <div class="tool-description">${tool.description}</div>
                 </div>
             `;
@@ -350,13 +351,16 @@ class FastToolsNewTab {
     // ====================
 
     async openTool(tool) {
-        trackToolUsage(tool.id, 'newtab');
+        const toolId = tool.slug.replace(/^local:\/\//, '').replace(/^tools\//, '').replace(/\.html$/, '').replace(/\//g, '-');
+        trackToolUsage(toolId, 'newtab');
 
-        if (tool.id === 'capture') {
-            chrome.runtime.sendMessage({ action: 'capture-screen' });
-            showToast('Captura iniciada', 'info');
-        } else if (tool.id === 'notes') {
-            this.createNewNote();
+        if (tool.local) {
+            if (tool.slug === 'local://capture') {
+                chrome.runtime.sendMessage({ action: 'capture-screen' });
+                showToast('Captura iniciada', 'info');
+            } else if (tool.slug === 'local://notes') {
+                this.createNewNote();
+            }
         } else {
             chrome.tabs.create({ url: tool.url, active: true });
         }
