@@ -180,7 +180,7 @@ async function generateIndex(toolsIndex, lang) {
         items.forEach(item => {
             const cardClass = cat === 'IA' ? 'card h-100 border-primary' : 'card h-100';
             // For non-default languages, use relative path from /es/ directory
-            const toolUrl = lang === siteConfig.defaultLanguage ? item.slug : item.slug;
+            const toolUrl = item.slug.replace('tools/', '');
             toolsGridHtml += `
     <div class="col-md-6 col-lg-4">
         <div class="${cardClass}">
