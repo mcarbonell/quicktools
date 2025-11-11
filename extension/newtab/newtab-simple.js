@@ -327,7 +327,7 @@ class FastToolsNewTab {
 
         const searchResults = this.tools
             .filter(tool => 
-                tool.name.toLowerCase().includes(query.toLowerCase()) ||
+                tool.title.toLowerCase().includes(query.toLowerCase()) ||
                 tool.description.toLowerCase().includes(query.toLowerCase())
             )
             .slice(0, 8);
@@ -346,7 +346,7 @@ class FastToolsNewTab {
                 <div style="display: flex; align-items: center; gap: 12px;">
                     <div style="font-size: 18px;">${tool.icon}</div>
                     <div>
-                        <div style="font-weight: 500;">${tool.name}</div>
+                        <div style="font-weight: 500;">${tool.title}</div>
                         <div style="font-size: 12px; color: var(--text-secondary);">${tool.description}</div>
                     </div>
                 </div>

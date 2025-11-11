@@ -17,6 +17,7 @@ class FastToolsPopup {
         
         this.lang = await initI18n();
         await this.loadData();
+        this.applyTheme();
         this.setupEventListeners();
         this.render();
     }
@@ -27,6 +28,7 @@ class FastToolsPopup {
         this.notes = data.notes?.items || [];
         this.analytics = data.analytics || {};
         this.recentColors = data.recentColors || ['#13a4ec', '#000000', '#ffffff'];
+        this.settings = data.settings || { theme: 'auto' };
         
         // Load tools with current language
         this.tools = await loadTools(this.lang);
@@ -212,6 +214,16 @@ class FastToolsPopup {
             g: parseInt(result[2], 16),
             b: parseInt(result[3], 16)
         } : { r: 0, g: 0, b: 0 };
+    }
+
+    applyTheme() {
+        const theme = this.settings?.theme || 'auto';
+        if (theme === 'auto') {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', theme);
+        }
     }
 }
 

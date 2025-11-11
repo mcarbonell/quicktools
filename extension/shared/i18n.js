@@ -29,6 +29,7 @@ const translations = {
         
         // Categories (by user audience)
         category_all: 'Todo',
+        category_utils: '🔧 Utilidades',
         category_developers: '💻 Desarrolladores',
         category_designers: '🎨 Diseñadores',
         category_writers: '✍️ Escritores',
@@ -113,6 +114,7 @@ const translations = {
         
         // Categories (by user audience)
         category_all: 'All',
+        category_utils: '🔧 Utilities',
         category_developers: '💻 Developers',
         category_designers: '🎨 Designers',
         category_writers: '✍️ Writers',

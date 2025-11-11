@@ -9,6 +9,7 @@
         body {
             width: 380px;
             max-height: 600px;
+            overflow-x: hidden;
         }
 
         /* Header */
@@ -58,17 +59,13 @@
             cursor: pointer;
             transition: all 0.2s;
             font-size: var(--font-xs);
+            color: var(--text);
         }
 
         .quick-btn:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow);
-        }
-
-        .quick-btn.primary {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
+            background: var(--border);
         }
 
         /* Tools */
@@ -86,6 +83,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--space-sm);
+            max-width: 100%;
         }
 
         /* Footer */
@@ -186,7 +184,7 @@
 
     <!-- Quick Actions -->
     <div class="quick-actions">
-        <button class="quick-btn primary" data-action="capture-screen">
+        <button class="quick-btn" data-action="capture-screen">
             📸<br><span>Capturar</span>
         </button>
         <button class="quick-btn" data-action="show-modal" data-modal="notes-modal">
