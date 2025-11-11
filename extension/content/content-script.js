@@ -53,7 +53,12 @@ class QuickToolsContentScript {
                 case 'show-notification':
                     this.showNotification(request.message, request.type);
                     break;
+                case 'extractLinks':
+                    const links = this.extractAllLinks();
+                    sendResponse({ links: links });
+                    break;
             }
+            return true;
         });
     }
 
@@ -393,6 +398,38 @@ class QuickToolsContentScript {
             toast.classList.remove('show');
             setTimeout(() => toast.remove(), 300);
         }, 3000);
+    }
+
+    // ====================
+    // SEO TOOLS - LINK EXTRACTION
+    // ====================
+
+    extractAllLinks() {
+        const links = [];
+        const seen = new Set();
+        
+        // Get all <a> tags
+        const anchors = document.querySelectorAll('a[href]');
+        
+        anchors.forEach(anchor => {
+            const href = anchor.href;
+            
+            // Skip javascript:, mailto:, tel:, etc.
+            if (!href.startsWith('http://') && !href.startsWith('https://')) {
+                return;
+            }
+            
+            // Skip duplicates
+            if (seen.has(href)) {
+                return;
+            }
+            
+            seen.add(href);
+            links.push(href);
+        });
+        
+        console.log(`🔗 Extracted ${links.length} unique links`);
+        return links;
     }
 }
 

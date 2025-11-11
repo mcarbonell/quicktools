@@ -409,6 +409,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         case 'capture-screen':
             captureScreen();
             break;
+        case 'checkLink':
+            checkLink(request.url).then(sendResponse);
+            return true; // Async response
+            break;
         case 'capture-success':
             const notificationId = `capture-${Date.now()}`;
             showNotification(
@@ -472,6 +476,50 @@ chrome.notifications.onButtonClicked.addListener(async (notificationId, buttonIn
     chrome.notifications.clear(notificationId);
     chrome.storage.session.remove(notificationId);
 });
+
+// ====================
+// SEO TOOLS - LINK CHECKING
+// ====================
+
+async function checkLink(url) {
+    try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+        
+        const response = await fetch(url, {
+            method: 'HEAD',
+            signal: controller.signal,
+            redirect: 'follow'
+        });
+        
+        clearTimeout(timeoutId);
+        
+        const status = response.status;
+        let category = 'error';
+        
+        if (status >= 200 && status < 300) {
+            category = 'ok';
+        } else if (status >= 300 && status < 400) {
+            category = 'warning';
+        }
+        
+        return {
+            url: url,
+            status: status,
+            statusText: response.statusText,
+            category: category
+        };
+        
+    } catch (error) {
+        return {
+            url: url,
+            status: 0,
+            statusText: error.name === 'AbortError' ? 'Timeout' : 'Network Error',
+            error: error.message,
+            category: 'error'
+        };
+    }
+}
 
 // ====================
 // SYNC & CLOUD
