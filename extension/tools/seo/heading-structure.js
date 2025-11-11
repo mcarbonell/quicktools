@@ -2,7 +2,11 @@
 // HEADING STRUCTURE CHECKER
 // ====================
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    const context = await getSEOContext();
+    if (!context.hasValidTab) {
+        showURLInput();
+    }
     document.getElementById('analyzeBtn').addEventListener('click', analyzePage);
 });
 
@@ -12,6 +16,10 @@ async function analyzePage() {
     btn.textContent = '⏳ Analizando...';
     
     try {
+        const context = await getSEOContext();
+        if (!context.hasValidTab) {
+            throw new Error('Esta herramienta requiere una pestaña activa. Ábrela desde el popup mientras navegas un sitio.');
+        }
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
         const response = await chrome.tabs.sendMessage(tab.id, { action: 'getHeadings' });
         

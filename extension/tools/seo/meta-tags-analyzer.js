@@ -8,8 +8,14 @@ let metaData = null;
 // INITIALIZATION
 // ====================
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     console.log('🏷️ Meta Tags Analyzer initialized');
+    
+    const context = await getSEOContext();
+    if (!context.hasValidTab) {
+        showURLInput();
+    }
+    
     setupEventListeners();
 });
 
@@ -29,6 +35,11 @@ async function analyzePage() {
     analyzeBtn.textContent = '⏳ Analizando...';
     
     try {
+        const context = await getSEOContext();
+        if (!context.hasValidTab) {
+            throw new Error('Esta herramienta requiere una pestaña activa. Ábrela desde el popup mientras navegas un sitio.');
+        }
+        
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
         
         if (!tab) {

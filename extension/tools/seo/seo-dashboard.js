@@ -2,7 +2,13 @@
 // SEO DASHBOARD
 // ====================
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    // Check context on load
+    const context = await getSEOContext();
+    if (!context.hasValidTab) {
+        showURLInput();
+    }
+    
     document.getElementById('analyzeBtn').addEventListener('click', analyzeComplete);
 });
 
@@ -12,6 +18,26 @@ async function analyzeComplete() {
     btn.textContent = '⏳ Analizando...';
     
     try {
+        const context = await getSEOContext();
+        let targetUrl;
+        
+        if (context.hasValidTab) {
+            targetUrl = context.url;
+        } else {
+            // Get URL from input
+            const urlInput = document.getElementById('manual-url-input');
+            if (!urlInput || !urlInput.value.trim()) {
+                throw new Error('Por favor ingresa una URL válida');
+            }
+            targetUrl = urlInput.value.trim();
+        }
+        
+        // For now, we need tab context for chrome.tabs.sendMessage
+        // This is a limitation - we'll show a message
+        if (!context.hasValidTab) {
+            throw new Error('Esta herramienta requiere una pestaña activa. Ábrela desde el popup de la extensión mientras navegas un sitio.');
+        }
+        
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
         
         // Get all SEO data

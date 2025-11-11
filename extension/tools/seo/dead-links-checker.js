@@ -10,8 +10,14 @@ let isChecking = false;
 // INITIALIZATION
 // ====================
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     console.log('🔗 Dead Links Checker initialized');
+    
+    const context = await getSEOContext();
+    if (!context.hasValidTab) {
+        showURLInput();
+    }
+    
     setupEventListeners();
 });
 
@@ -39,6 +45,12 @@ async function startCheck() {
     document.getElementById('clearBtn').disabled = true;
     
     try {
+        const context = await getSEOContext();
+        
+        if (!context.hasValidTab) {
+            throw new Error('Esta herramienta requiere una pestaña activa. Ábrela desde el popup mientras navegas un sitio.');
+        }
+        
         // Get current tab
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
         

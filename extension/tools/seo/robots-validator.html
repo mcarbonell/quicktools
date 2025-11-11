@@ -20,20 +20,42 @@
     <div class="container">
         <h1>🤖 Robots.txt Validator</h1>
         <p class="subtitle">Obtiene y valida el archivo robots.txt del sitio</p>
+        <div id="url-input-container" style="display: none;"></div>
         <button id="analyzeBtn">▶️ Obtener Robots.txt</button>
         <div id="results">
             <div class="empty-state"><p>👆 Haz clic en "Obtener Robots.txt" para empezar</p></div>
         </div>
     </div>
+    <script src="seo-context.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const context = await getSEOContext();
+            if (!context.hasValidTab) {
+                showURLInput();
+            }
+        });
+        
         document.getElementById('analyzeBtn').addEventListener('click', async () => {
+            const context = await getSEOContext();
+            let targetUrl;
+            
+            if (context.hasValidTab) {
+                const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+                targetUrl = tab.url;
+            } else {
+                const urlInput = document.getElementById('manual-url-input');
+                if (!urlInput || !urlInput.value.trim()) {
+                    document.getElementById('results').innerHTML = '<div class="empty-state"><p>Por favor ingresa una URL válida</p></div>';
+                    return;
+                }
+                targetUrl = urlInput.value.trim();
+            }
             const btn = document.getElementById('analyzeBtn');
             btn.disabled = true;
             btn.textContent = '⏳ Obteniendo...';
             
             try {
-                const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-                const url = new URL(tab.url);
+                const url = new URL(targetUrl);
                 const robotsUrl = `${url.origin}/robots.txt`;
                 
                 const response = await fetch(robotsUrl);

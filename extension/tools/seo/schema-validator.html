@@ -22,13 +22,27 @@
     <div class="container">
         <h1>📊 Schema.org Validator</h1>
         <p class="subtitle">Valida structured data (JSON-LD, Microdata)</p>
+        <div id="url-input-container" style="display: none;"></div>
         <button id="analyzeBtn">▶️ Analizar Schema</button>
         <div id="results">
             <div class="empty-state"><p>👆 Haz clic en "Analizar Schema" para empezar</p></div>
         </div>
     </div>
+    <script src="seo-context.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const context = await getSEOContext();
+            if (!context.hasValidTab) {
+                showURLInput();
+            }
+        });
+        
         document.getElementById('analyzeBtn').addEventListener('click', async () => {
+            const context = await getSEOContext();
+            if (!context.hasValidTab) {
+                document.getElementById('results').innerHTML = '<div class="empty-state"><p>Esta herramienta requiere una pestaña activa. Ábrela desde el popup mientras navegas un sitio.</p></div>';
+                return;
+            }
             const btn = document.getElementById('analyzeBtn');
             btn.disabled = true;
             btn.textContent = '⏳ Analizando...';
