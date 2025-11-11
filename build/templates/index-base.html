@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FastTools — Fast & Secure Online Tools</title>
+    <meta name="description"
+        content="Fast, secure online tools. Everything processed in your browser. No uploads, no registration.">
+    <meta name="keywords"
+        content="online tools, image converter, json formatter, pdf text extractor, browser based, privacy">
+    <meta name="author" content="FastTools">
+    <meta name="google-site-verification" content="WSJXel7QJlceUUBQkZ_0drXA8dNvtKoTgG2qPZStZHs" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fasttools.tools/">
+    <meta property="og:title" content="FastTools — Fast & Secure Online Tools">
+    <meta property="og:description"
+        content="Fast, secure online tools. Everything processed in your browser. No uploads, no registration.">
+    <meta property="og:image" content="https://fasttools.tools/img/og-image.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://fasttools.tools/">
+    <meta property="twitter:title" content="FastTools — Fast & Secure Online Tools">
+    <meta property="twitter:description"
+        content="Fast, secure online tools. Everything processed in your browser. No uploads, no registration.">
+    <meta property="twitter:image" content="https://fasttools.tools/img/og-image.png">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    {{hreflang_tags}}
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">FastTools</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#" id="navHome">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tools" id="navTools">Tools</a></li>
+                    <li class="nav-item">
+                        <div id="languageSelector" class="nav-link p-0"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="py-5 bg-light border-bottom">
+        <div class="container">
+            <h1 class="display-6" id="heroTitle">FastTools</h1>
+            <p class="lead" id="heroSubtitle">Fast, secure online tools. Everything processed in your browser.</p>
+            <div class="alert alert-success mt-3">
+                <strong id="newBadge">🎉 NEW!</strong> <span id="aiAnnouncement">AI-powered tools: Chat, summarize, edit
+                    images and more.</span> <a href="#IA" class="alert-link" id="aiLink">View AI tools →</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-5" id="tools">
+        <div class="row mb-4">
+            <div class="col-12">
+                <!-- Placeholder para AdSense (banner) -->
+                <div class="ads-placeholder text-center p-3 mb-3">[AdSense banner placeholder]</div>
+            </div>
+        </div>
+
+        <!-- Category Links -->
+        <div class="mb-5">
+            <h2 class="h5 mb-3" id="categoriesTitle">Browse by Profile</h2>
+            <div class="d-flex flex-wrap gap-2">
+                {{category_links}}
+            </div>
+        </div>
+
+        <div id="toolsGrid">
+            {{tools_grid}}
+        </div>
+    </main>
+
+    <footer class="bg-light py-4 mt-auto border-top">
+        <div class="container text-center small">
+            © FastTools — <span id="footerTagline">Tools in your browser</span>. <a href="privacy.html"
+                id="footerPrivacy">Privacy</a> • <a href="#" id="footerContact">Contact</a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="js/main.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

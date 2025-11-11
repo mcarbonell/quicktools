@@ -1,0 +1,46 @@
+<div id="apiKeySetup" class="api-key-setup">
+    <h5>{{t.initialSetupTitle}}</h5>
+    <p class="mb-3">{{t.apiKeyInstruction}}</p>
+    <ol class="mb-3">
+        <li>{{t.visitLabel}} <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+        <li>{{t.loginGoogleAccount}}</li>
+        <li>{{t.createApiKey}}</li>
+        <li>{{t.pasteApiKey}}</li>
+    </ol>
+    <div class="input-group mb-2">
+        <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
+        <button class="btn btn-primary" onclick="saveApiKey()">{{t.saveButton}}</button>
+    </div>
+    <small class="text-muted">{{t.localStorageInfo}}</small>
+</div>
+
+<div id="apiKeyManage" class="alert alert-success d-none">
+    <div class="d-flex justify-content-between align-items-center">
+        <span>{{t.apiKeyConfigured}}</span>
+        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">{{t.removeButton}}</button>
+    </div>
+</div>
+
+<div id="chatSection" class="d-none">
+    <div class="chat-container mb-3" id="chatMessages">
+        <div class="message assistant">
+            <strong>{{t.assistantName}}</strong>
+            <p class="mb-0 mt-2">{{t.assistantWelcomeMessage}}</p>
+        </div>
+    </div>
+
+    <div class="typing-indicator mb-3" id="typingIndicator">
+        <span></span><span></span><span></span>
+    </div>
+
+    <div class="input-group">
+        <input type="text" id="userInput" class="form-control" placeholder="{{t.typeYourMessagePlaceholder}}"
+            onkeypress="handleKeyPress(event)">
+        <button class="btn btn-primary" onclick="sendMessage()" id="sendBtn">{{t.sendButton}}</button>
+    </div>
+
+    <div class="mt-3">
+        <button class="btn btn-sm btn-outline-secondary" onclick="clearChat()">{{t.clearChatButton}}</button>
+        <button class="btn btn-sm btn-outline-info" onclick="exportChat()">{{t.exportButton}}</button>
+    </div>
+</div>

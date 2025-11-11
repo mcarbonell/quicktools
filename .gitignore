@@ -17,7 +17,7 @@ Thumbs.db
 
 # Build
 /dist/
-/build/
+/_build/
 
 # Env
 .env

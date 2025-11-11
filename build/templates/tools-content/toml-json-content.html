@@ -1,0 +1,18 @@
+<div class="mb-3">
+    <label for="inputText" class="form-label">{{t.inputTomlJsonLabel}}</label>
+    <textarea id="inputText" rows="10" class="form-control" placeholder="{{t.inputPlaceholder}}"></textarea>
+</div>
+
+<div class="mb-3 d-flex gap-2 flex-wrap">
+    <button id="tomlToJsonBtn" class="btn btn-primary">{{t.tomlToJsonButton}}</button>
+    <button id="jsonToTomlBtn" class="btn btn-primary">{{t.jsonToTomlButton}}</button>
+    <button id="prettyJsonBtn" class="btn btn-secondary">{{t.prettyJsonButton}}</button>
+    <button id="copyBtn" class="btn btn-outline-secondary">{{t.copyResultButton}}</button>
+</div>
+
+<div class="mb-3">
+    <label for="outputText" class="form-label">{{t.resultLabel}}</label>
+    <textarea id="outputText" rows="10" class="form-control" readonly placeholder="{{t.resultPlaceholder}}"></textarea>
+</div>
+
+<div id="msg" class="text-muted small"></div>

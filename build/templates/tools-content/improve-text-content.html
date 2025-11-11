@@ -1,0 +1,44 @@
+<div id="apiKeySetup" class="alert alert-warning">
+    <p class="mb-2">{{t.apiKeySetupTitle}}</p>
+    <a href="chat-ai.html" class="btn btn-sm btn-primary">{{t.configureNowButton}}</a>
+</div>
+
+<div id="toolSection" class="d-none">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">{{t.originalTextLabel}}</label>
+            <textarea id="inputText" class="form-control" rows="12" placeholder="{{t.inputTextPlaceholder}}"></textarea>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">{{t.improvedTextLabel}}</label>
+            <textarea id="outputText" class="form-control" rows="12" readonly
+                placeholder="{{t.outputTextPlaceholder}}"></textarea>
+            <button class="btn btn-sm btn-outline-secondary mt-2" onclick="copyResult()">{{t.copyButton}}</button>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label">{{t.improveTypeLabel}}</label>
+            <select id="improveType" class="form-select">
+                <option value="grammar">{{t.grammarOption}}</option>
+                <option value="style">{{t.styleOption}}</option>
+                <option value="formal">{{t.formalOption}}</option>
+                <option value="casual">{{t.casualOption}}</option>
+                <option value="concise">{{t.conciseOption}}</option>
+                <option value="expand">{{t.expandOption}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">{{t.languageLabel}}</label>
+            <select id="language" class="form-select">
+                <option value="es">{{t.spanishOption}}</option>
+                <option value="en">{{t.englishOption}}</option>
+                <option value="pt">{{t.portugueseOption}}</option>
+                <option value="fr">{{t.frenchOption}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="improveText()" id="improveBtn">{{t.improveTextButton}}</button>
+</div>

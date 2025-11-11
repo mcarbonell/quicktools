@@ -1,0 +1,18 @@
+<div class="mb-3">
+    <label for="pdf-input" class="form-label">{{t.selectPdfFileLabel}}</label>
+    <div class="drop-zone mb-2" id="dropZone">
+        <input class="form-control d-none" type="file" id="pdf-input" accept=".pdf">
+        <div class="drop-message">
+            {{t.dropMessage}}
+        </div>
+    </div>
+</div>
+
+<div class="mb-3">
+    <label for="pages-input" class="form-label">{{t.pagesToExtractLabel}}</label>
+    <input type="text" class="form-control" id="pages-input" placeholder="{{t.pagesPlaceholder}}">
+</div>
+
+<button id="split-btn" class="btn btn-primary">{{t.splitButton}}</button>
+
+<div id="output" class="mt-3"></div>

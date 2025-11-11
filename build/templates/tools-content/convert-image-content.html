@@ -1,0 +1,22 @@
+<p class="text-muted">{{t.imageConvertDescription}}</p>
+
+<div class="row g-3">
+    <div class="col-md-6">
+        <div class="drop-zone mb-2" id="dropZone">
+            <input type="file" id="fileInput" accept="image/*" class="d-none">
+            <div class="drop-message">
+                {{t.dropMessage}}
+            </div>
+        </div>
+        <select id="formatSelect" class="form-select mb-2">
+            <option value="image/png">{{t.pngOption}}</option>
+            <option value="image/jpeg">{{t.jpgOption}}</option>
+            <option value="image/webp">{{t.webpOption}}</option>
+        </select>
+        <button id="convertBtn" class="btn btn-primary">{{t.convertAndDownloadButton}}</button>
+    </div>
+    <div class="col-md-6">
+        <p>{{t.previewLabel}}</p>
+        <div class="border p-2"><canvas id="previewCanvas" style="max-width:100%"></canvas></div>
+    </div>
+</div>

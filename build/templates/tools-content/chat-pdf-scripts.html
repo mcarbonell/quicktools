@@ -1,0 +1,76 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="/js/lib/gemini-api.js"></script>
+<script>
+    let gemini = null;
+    let pdfText = '';
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    window.addEventListener('DOMContentLoaded', () => {
+        if (GeminiStorage.exists()) {
+            gemini = new GeminiAPI(GeminiStorage.get());
+            document.getElementById('apiKeySetup').classList.add('d-none');
+            document.getElementById('toolSection').classList.remove('d-none');
+        }
+    });
+
+    async function loadPDF() {
+        const file = document.getElementById('pdfFile').files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = async (e) => {
+            const pdf = await pdfjsLib.getDocument(e.target.result).promise;
+            pdfText = '';
+            
+            for (let i = 1; i <= pdf.numPages; i++) {
+                const page = await pdf.getPage(i);
+                const content = await page.getTextContent();
+                const text = content.items.map(item => item.str).join(' ');
+                pdfText += text + '\\n\\n';
+            }
+
+            document.getElementById('pdfContent').textContent = pdfText.substring(0, 500) + '...';
+            document.getElementById('pdfPreview').classList.remove('d-none');
+            document.getElementById('chatSection').classList.remove('d-none');
+        };
+        reader.readAsArrayBuffer(file);
+    }
+
+    async function sendMessage() {
+        const input = document.getElementById('userInput');
+        const message = input.value.trim();
+        
+        if (!message || !pdfText) return;
+
+        addMessage(message, 'user');
+        input.value = '';
+        document.getElementById('sendBtn').disabled = true;
+
+        try {
+            const prompt = `Basándote en el siguiente documento:\\n\\n${pdfText}\\n\\nResponde a esta pregunta: ${message}`;
+            const response = await gemini.chat(prompt);
+            addMessage(response, 'assistant');
+        } catch (error) {
+            addMessage(`❌ Error: ${error.message}`, 'assistant');
+        } finally {
+            document.getElementById('sendBtn').disabled = false;
+        }
+    }
+
+    function addMessage(text, role) {
+        const container = document.getElementById('chatMessages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${role}`;
+        messageDiv.innerHTML = `<strong>${role === 'user' ? 'Tú' : 'Asistente IA'}</strong><div class="mt-2">${text.replace(/\\n/g, '<br>')}</div>`;
+        container.appendChild(messageDiv);
+        container.scrollTop = container.scrollHeight;
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            sendMessage();
+        }
+    }
+</script>

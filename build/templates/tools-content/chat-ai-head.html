@@ -1,0 +1,12 @@
+<style>
+    .chat-container { height: 500px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: #f8f9fa; }
+    .message { margin-bottom: 1rem; padding: 0.75rem; border-radius: 8px; max-width: 80%; }
+    .message.user { background: #007bff; color: white; margin-left: auto; }
+    .message.assistant { background: white; border: 1px solid #dee2e6; }
+    .api-key-setup { background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; }
+    .typing-indicator { display: none; padding: 0.75rem; background: white; border: 1px solid #dee2e6; border-radius: 8px; max-width: 80px; }
+    .typing-indicator span { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #6c757d; margin: 0 2px; animation: typing 1.4s infinite; }
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-10px); } }
+</style>

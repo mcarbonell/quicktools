@@ -1,0 +1,32 @@
+<div id="apiKeySetup" class="alert alert-warning">
+    <p class="mb-2">{{t.apiKeySetupTitle}}</p>
+    <a href="chat-ai.html" class="btn btn-sm btn-primary">{{t.configureNowButton}}</a>
+</div>
+
+<div id="toolSection" class="d-none">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">{{t.originalTextLabel}}</label>
+            <textarea id="inputText" class="form-control" rows="12" placeholder="{{t.inputTextPlaceholder}}"></textarea>
+            <small class="text-muted">{{t.charactersLabel}} <span id="charCount">0</span></small>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">{{t.summaryLabel}}</label>
+            <textarea id="outputText" class="form-control" rows="12" readonly
+                placeholder="{{t.outputTextPlaceholder}}"></textarea>
+            <button class="btn btn-sm btn-outline-secondary mt-2" onclick="copyResult()">{{t.copyButton}}</button>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">{{t.summaryTypeLabel}}</label>
+        <select id="summaryType" class="form-select">
+            <option value="short">{{t.shortOption}}</option>
+            <option value="medium" selected>{{t.mediumOption}}</option>
+            <option value="long">{{t.longOption}}</option>
+            <option value="bullets">{{t.bulletsOption}}</option>
+        </select>
+    </div>
+
+    <button class="btn btn-primary" onclick="summarize()" id="summarizeBtn">{{t.summarizeButton}}</button>
+</div>
