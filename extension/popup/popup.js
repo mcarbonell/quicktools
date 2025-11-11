@@ -53,8 +53,8 @@ class QuickToolsPopup {
                 id: tool.slug.replace(/^tools\//, '').replace(/\.html$/, '').replace(/\//g, '-'),
                 name: tool.title,
                 description: tool.description,
-                icon: this.getCategoryIcon(tool.category),
-                url: `https://fasttools.tools/${tool.slug}`
+                icon: tool.icon || this.getCategoryIcon(tool.category),
+                url: `https://fasttools-nine.vercel.app/${tool.slug}`
             }));
             this.renderTools(tools);
         } catch (error) {

@@ -100,7 +100,7 @@ class QuickToolsNewTab {
                 description: 'Formatear y validar JSON',
                 icon: '📋',
                 category: 'developer',
-                url: 'https://fasttools.tools/tools/json-formatter'
+                url: 'https://fasttools-nine.vercel.app/tools/data/json-formatter.html'
             },
             {
                 id: 'base64-encoder',
@@ -108,7 +108,7 @@ class QuickToolsNewTab {
                 description: 'Codificar/Decodificar Base64',
                 icon: '🔐',
                 category: 'text',
-                url: 'https://fasttools.tools/tools/base64-encoder'
+                url: 'https://fasttools-nine.vercel.app/tools/text/base64.html'
             },
             {
                 id: 'url-encoder',
@@ -116,7 +116,7 @@ class QuickToolsNewTab {
                 description: 'Codificar URLs',
                 icon: '🔗',
                 category: 'text',
-                url: 'https://fasttools.tools/tools/url-encoder'
+                url: 'https://fasttools-nine.vercel.app/tools/text/url-encoder.html'
             },
             {
                 id: 'html-encoder',
@@ -124,7 +124,7 @@ class QuickToolsNewTab {
                 description: 'Escapar caracteres HTML',
                 icon: '🌐',
                 category: 'text',
-                url: 'https://fasttools.tools/tools/html-encoder'
+                url: 'https://fasttools-nine.vercel.app/tools/text/html-encoder.html'
             },
             {
                 id: 'hash-calculator',
@@ -132,7 +132,7 @@ class QuickToolsNewTab {
                 description: 'MD5, SHA1, SHA256, SHA512',
                 icon: '🔢',
                 category: 'text',
-                url: 'https://fasttools.tools/tools/hash-calculator'
+                url: 'https://fasttools-nine.vercel.app/tools/utils/hash-calculator.html'
             },
             {
                 id: 'csv-json',
@@ -140,7 +140,7 @@ class QuickToolsNewTab {
                 description: 'Convertir CSV a JSON',
                 icon: '📊',
                 category: 'data',
-                url: 'https://fasttools.tools/tools/csv-json'
+                url: 'https://fasttools-nine.vercel.app/tools/data/csv-json.html'
             },
             {
                 id: 'yaml-json',
@@ -148,7 +148,7 @@ class QuickToolsNewTab {
                 description: 'Convertir YAML a JSON',
                 icon: '📄',
                 category: 'data',
-                url: 'https://fasttools.tools/tools/yaml-json'
+                url: 'https://fasttools-nine.vercel.app/tools/data/yaml-json.html'
             },
             {
                 id: 'xml-json',
@@ -156,7 +156,7 @@ class QuickToolsNewTab {
                 description: 'Convertir XML a JSON',
                 icon: '📋',
                 category: 'data',
-                url: 'https://fasttools.tools/tools/xml-json'
+                url: 'https://fasttools-nine.vercel.app/tools/data/xml-json.html'
             },
             {
                 id: 'color-palette',
@@ -164,7 +164,7 @@ class QuickToolsNewTab {
                 description: 'Generar paletas de colores',
                 icon: '🎨',
                 category: 'image',
-                url: 'https://fasttools.tools/tools/color-palette'
+                url: 'https://fasttools-nine.vercel.app/tools/image/color-palette-generator.html'
             },
             {
                 id: 'color-picker',
@@ -172,7 +172,7 @@ class QuickToolsNewTab {
                 description: 'Selector de colores global',
                 icon: '🎯',
                 category: 'image',
-                url: 'https://fasttools.tools/tools/color-picker'
+                url: 'https://fasttools-nine.vercel.app/tools/utils/color-picker-converter.html'
             },
             {
                 id: 'image-resizer',
@@ -180,7 +180,7 @@ class QuickToolsNewTab {
                 description: 'Redimensionar imágenes',
                 icon: '🖼️',
                 category: 'image',
-                url: 'https://fasttools.tools/tools/image-resizer'
+                url: 'https://fasttools-nine.vercel.app/tools/image/image-resizer.html'
             },
             {
                 id: 'image-compressor',
@@ -188,7 +188,7 @@ class QuickToolsNewTab {
                 description: 'Comprimir imágenes',
                 icon: '📦',
                 category: 'image',
-                url: 'https://fasttools.tools/tools/image-compressor'
+                url: 'https://fasttools-nine.vercel.app/tools/image/image-compressor.html'
             },
             {
                 id: 'lorem-ipsum',
@@ -196,7 +196,7 @@ class QuickToolsNewTab {
                 description: 'Generador de texto placeholder',
                 icon: '📝',
                 category: 'text',
-                url: 'https://fasttools.tools/tools/lorem-ipsum'
+                url: 'https://fasttools-nine.vercel.app/tools/text/lorem-ipsum-generator.html'
             },
             {
                 id: 'password-generator',
@@ -204,7 +204,7 @@ class QuickToolsNewTab {
                 description: 'Generar contraseñas seguras',
                 icon: '🔒',
                 category: 'productivity',
-                url: 'https://fasttools.tools/tools/password-generator'
+                url: 'https://fasttools-nine.vercel.app/tools/utils/password-generator.html'
             },
             {
                 id: 'qr-generator',
@@ -212,7 +212,7 @@ class QuickToolsNewTab {
                 description: 'Generar códigos QR',
                 icon: '🔳',
                 category: 'productivity',
-                url: 'https://fasttools.tools/tools/qr-generator'
+                url: 'https://fasttools-nine.vercel.app/tools/utils/qr-generator.html'
             },
             {
                 id: 'stopwatch-timer',
@@ -220,7 +220,7 @@ class QuickToolsNewTab {
                 description: 'Cronómetro y temporizador',
                 icon: '⏰',
                 category: 'productivity',
-                url: 'https://fasttools.tools/tools/stopwatch-timer'
+                url: 'https://fasttools-nine.vercel.app/tools/utils/stopwatch-timer.html'
             },
             {
                 id: 'text-cleaner',
@@ -228,7 +228,7 @@ class QuickToolsNewTab {
                 description: 'Limpiar y formatear texto',
                 icon: '🧹',
                 category: 'text',
-                url: 'https://fasttools.tools/tools/text-cleaner'
+                url: 'https://fasttools-nine.vercel.app/tools/text/text-cleaner.html'
             },
             {
                 id: 'diff',
@@ -236,7 +236,7 @@ class QuickToolsNewTab {
                 description: 'Comparar textos',
                 icon: '⚡',
                 category: 'developer',
-                url: 'https://fasttools.tools/tools/diff'
+                url: 'https://fasttools-nine.vercel.app/tools/text/diff.html'
             }
         ];
 
