@@ -37,6 +37,17 @@ const translations = {
         category_marketers: '📱 Marketing',
         category_productivity: '⚡ Productividad',
         category_ai_tools: '🤖 IA',
+        category_seo_specialists: '🔍 SEO',
+        
+        // Tool categories
+        category_image: '🖼️ Imagen',
+        category_data: '📊 Datos',
+        category_text: '📝 Texto',
+        category_files: '📁 Archivos',
+        category_converters: '🔄 Conversores',
+        category_generators: '✨ Generadores',
+        category_ai: '🤖 IA',
+        category_seo: '🔍 SEO',
         
         // Timer
         timer_title: '⏰ Temporizador',
@@ -122,6 +133,17 @@ const translations = {
         category_marketers: '📱 Marketers',
         category_productivity: '⚡ Productivity',
         category_ai_tools: '🤖 AI',
+        category_seo_specialists: '🔍 SEO',
+        
+        // Tool categories
+        category_image: '🖼️ Image',
+        category_data: '📊 Data',
+        category_text: '📝 Text',
+        category_files: '📁 Files',
+        category_converters: '🔄 Converters',
+        category_generators: '✨ Generators',
+        category_ai: '🤖 AI',
+        category_seo: '🔍 SEO',
         
         // Timer
         timer_title: '⏰ Timer',

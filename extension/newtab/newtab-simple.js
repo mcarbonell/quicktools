@@ -386,14 +386,16 @@ class FastToolsNewTab {
         const toolId = tool.slug.replace(/^local:\/\//, '').replace(/^tools\//, '').replace(/\.html$/, '').replace(/\//g, '-');
         trackToolUsage(toolId, 'newtab');
 
-        if (tool.local) {
-            if (tool.slug === 'local://capture') {
-                chrome.runtime.sendMessage({ action: 'capture-screen' });
-                showToast(t('msg_capture_started', {}, this.lang), 'info');
-            } else if (tool.slug === 'local://notes') {
-                this.createNewNote();
-            }
+        if (tool.slug === 'local://capture') {
+            chrome.runtime.sendMessage({ action: 'capture-screen' });
+            showToast(t('msg_capture_started', {}, this.lang), 'info');
+        } else if (tool.slug === 'local://notes') {
+            this.createNewNote();
+        } else if (tool.slug.startsWith('tools/')) {
+            // Local extension tools (SEO tools)
+            chrome.tabs.create({ url: tool.url, active: true });
         } else {
+            // External web tools
             chrome.tabs.create({ url: tool.url, active: true });
         }
     }
