@@ -88,7 +88,7 @@ const dataDir = path.join(projectRoot, 'data');
 const i18nDir = path.join(projectRoot, 'i18n');
 const baseTemplatePath = path.join(templatesDir, 'base.html');
 const indexTemplatePath = path.join(templatesDir, 'index-base.html');
-const toolsIndexPath = path.join(dataDir, 'tools-index-unified.json');
+const toolsIndexPath = path.join(__dirname, 'extension', 'data', 'fasttools-data.json');
 
 // Load translations
 async function loadTranslations(lang) {
@@ -122,20 +122,19 @@ async function generateIndex(toolsIndex, lang) {
     const translations = await loadTranslations(lang);
     
     // Load translated tools index
-    const toolsIndexPath = path.join(dataDir, `tools-index-${lang}.json`);
-    const translatedTools = JSON.parse(await fs.readFile(toolsIndexPath, 'utf8'));
+    const translatedToolsPath = path.join(dataDir, `tools-index-${lang}.json`);
+    const translatedTools = JSON.parse(await fs.readFile(translatedToolsPath, 'utf8'));
     const indexTemplate = await fs.readFile(indexTemplatePath, 'utf8');
     
-    // Generate category links
-    const categories = [
-        { id: 'developers', slug: { es: 'desarrolladores', en: 'developers' }, icon: '💻', name: { es: 'Desarrolladores', en: 'Developers' } },
-        { id: 'designers', slug: { es: 'disenadores', en: 'designers' }, icon: '🎨', name: { es: 'Diseñadores', en: 'Designers' } },
-        { id: 'writers', slug: { es: 'escritores', en: 'writers' }, icon: '✍️', name: { es: 'Escritores', en: 'Writers' } },
-        { id: 'data-analysts', slug: { es: 'analistas-datos', en: 'data-analysts' }, icon: '📊', name: { es: 'Analistas de Datos', en: 'Data Analysts' } },
-        { id: 'marketers', slug: { es: 'marketing', en: 'marketers' }, icon: '📱', name: { es: 'Marketing', en: 'Marketers' } },
-        { id: 'productivity', slug: { es: 'productividad', en: 'productivity' }, icon: '⚡', name: { es: 'Productividad', en: 'Productivity' } },
-        { id: 'ai-tools', slug: { es: 'ia', en: 'ai' }, icon: '🤖', name: { es: 'IA', en: 'AI' } }
-    ];
+    // Load audiences from fasttools-data.json
+    const fasttoolsDataPath = path.join(__dirname, 'extension', 'data', 'fasttools-data.json');
+    const fasttoolsData = JSON.parse(await fs.readFile(fasttoolsDataPath, 'utf8'));
+    const categories = fasttoolsData.audiences.map(aud => ({
+        id: aud.id,
+        slug: aud.slug,
+        icon: aud.icon,
+        name: aud.name
+    }));
     
     let categoryLinks = '';
     categories.forEach(cat => {
@@ -303,16 +302,14 @@ async function generateTools(toolsIndex, lang) {
     const audienceMappingPath = path.join(dataDir, 'audience-mapping.json');
     const audienceMapping = JSON.parse(await fs.readFile(audienceMappingPath, 'utf8'));
     
-    // Category info
-    const categories = [
-        { id: 'developers', slug: { es: 'desarrolladores', en: 'developers' }, icon: '💻', name: { es: 'Desarrolladores', en: 'Developers' } },
-        { id: 'designers', slug: { es: 'disenadores', en: 'designers' }, icon: '🎨', name: { es: 'Diseñadores', en: 'Designers' } },
-        { id: 'writers', slug: { es: 'escritores', en: 'writers' }, icon: '✍️', name: { es: 'Escritores', en: 'Writers' } },
-        { id: 'data-analysts', slug: { es: 'analistas-datos', en: 'data-analysts' }, icon: '📊', name: { es: 'Analistas de Datos', en: 'Data Analysts' } },
-        { id: 'marketers', slug: { es: 'marketing', en: 'marketers' }, icon: '📱', name: { es: 'Marketing', en: 'Marketers' } },
-        { id: 'productivity', slug: { es: 'productividad', en: 'productivity' }, icon: '⚡', name: { es: 'Productividad', en: 'Productivity' } },
-        { id: 'ai-tools', slug: { es: 'ia', en: 'ai' }, icon: '🤖', name: { es: 'IA', en: 'AI' } }
-    ];
+    // Load audiences from fasttools-data.json
+    const fasttoolsData = JSON.parse(await fs.readFile(toolsIndexPath, 'utf8'));
+    const categories = fasttoolsData.audiences.map(aud => ({
+        id: aud.id,
+        slug: aud.slug,
+        icon: aud.icon,
+        name: aud.name
+    }));
     
     for (const tool of toolsIndex) {
         const toolSlug = tool.slug;
@@ -464,17 +461,9 @@ async function generateSitemap(toolsIndex) {
         xml += `  </url>\n`;
     });
     
-    // Category pages
-    const categories = [
-        { slug: { es: 'desarrolladores', en: 'developers' } },
-        { slug: { es: 'disenadores', en: 'designers' } },
-        { slug: { es: 'escritores', en: 'writers' } },
-        { slug: { es: 'analistas-datos', en: 'data-analysts' } },
-        { slug: { es: 'marketing', en: 'marketers' } },
-        { slug: { es: 'productividad', en: 'productivity' } },
-        { slug: { es: 'ia', en: 'ai' } },
-        { slug: { es: 'seo', en: 'seo' } }
-    ];
+    // Load audiences from fasttools-data.json
+    const fasttoolsData = JSON.parse(await fs.readFile(toolsIndexPath, 'utf8'));
+    const categories = fasttoolsData.audiences.map(aud => ({ slug: aud.slug }));
     
     categories.forEach(cat => {
         siteConfig.languages.forEach(lang => {
