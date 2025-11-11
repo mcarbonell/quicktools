@@ -7,18 +7,19 @@
 
 > **Herramientas online rápidas, seguras y sin registro. Todo se procesa en tu navegador.**
 
-FastTools es una suite de 28 utilidades web que funcionan completamente del lado del cliente, sin necesidad de subir archivos a servidores. Privacidad total, acceso instantáneo y compatible con dispositivos móviles.
+FastTools es una suite de 33 utilidades web que funcionan completamente del lado del cliente, sin necesidad de subir archivos a servidores. Privacidad total, acceso instantáneo y compatible con dispositivos móviles.
 
 ## ✨ Características Principales
 
 - 🔒 **100% Privado**: Todos los archivos se procesan localmente en tu navegador
 - 🚀 **Acceso Instantáneo**: Sin registro, sin esperas, sin configuración
 - 📱 **Responsive Design**: Funciona perfectamente en móviles y escritorio
-- 🎯 **SEO Optimizado**: Cada herramienta tiene su propia página optimizada
+- 🎯 **SEO Optimizado**: Cada herramienta tiene su propia página optimizada + Schema.org JSON-LD
+- 📂 **Categorías por Perfil**: Navegación optimizada para desarrolladores, diseñadores, escritores, etc.
 - 💰 **Gratis con Publicidad**: Modelo sostenible con anuncios no intrusivos
-- 🌐 **Offline Ready**: Funciona sin conexión a internet una vez cargado
+- 🌐 **Offline Ready**: PWA con Service Worker v3.0.3
 
-## 🛠️ Herramientas Disponibles (28)
+## 🛠️ Herramientas Disponibles (33)
 
 ### 🖼️ Imagen (7 herramientas)
 - **Redimensionar imagen** - Cambia el tamaño manteniendo proporción
@@ -52,12 +53,40 @@ FastTools es una suite de 28 utilidades web que funcionan completamente del lado
 - **Comparar textos** - Encuentra diferencias (diff)
 - **Generador Lorem Ipsum** - Texto placeholder
 
-### 🔧 Utilidades (4 herramientas)
+### 🔧 Utilidades (5 herramientas)
 - **Generador QR** - Crea códigos QR desde texto/URL
 - **Generador contraseñas** - Contraseñas seguras personalizables
 - **Calculadora Hashes** - MD5, SHA-1, SHA-256, SHA-512
 - **Selector de color** - Conversor HEX ↔ RGB ↔ HSL
 - **Cronómetro/Temporizador** - Herramienta de tiempo
+
+### 🤖 IA (5 herramientas)
+- **Chat con IA** - Conversa con Google Gemini
+- **Resumir Texto con IA** - Resume textos largos automáticamente
+- **Mejorar Texto con IA** - Mejora gramática y estilo
+- **Chat con PDF** - Haz preguntas sobre tus PDFs
+- **Editar Imagen con IA** - Edita imágenes con instrucciones de texto
+
+## 📂 Navegación por Categorías
+
+FastTools organiza las herramientas por perfil de usuario:
+
+- **💻 Desarrolladores** (10 herramientas): JSON, CSV, YAML, XML, TOML, Base64, URL encoder, HTML encoder, Hash calculator, Diff
+- **🎨 Diseñadores** (8 herramientas): Redimensionar, convertir, recortar, comprimir imágenes, paletas de colores, EXIF, editar con IA
+- **✍️ Escritores** (6 herramientas): Limpiar texto, comparar, Lorem Ipsum, resumir con IA, mejorar con IA, chat IA
+- **📊 Analistas de Datos** (6 herramientas): JSON, CSV, YAML, XML, TOML, extraer texto de PDF
+- **📱 Marketing** (6 herramientas): QR, redimensionar imágenes, convertir, comprimir, paletas, chat IA
+- **⚡ Productividad** (8 herramientas): Cronómetro, contraseñas, QR, limpiar texto, PDFs (extraer, unir, dividir, comprimir)
+- **🤖 IA** (5 herramientas): Chat, resumir, mejorar texto, chat PDF, editar imágenes
+
+**URLs de categorías:**
+- `/developers.html` - Herramientas para desarrolladores
+- `/designers.html` - Herramientas para diseñadores
+- `/writers.html` - Herramientas para escritores
+- `/data-analysts.html` - Herramientas para analistas
+- `/marketers.html` - Herramientas para marketing
+- `/productivity.html` - Herramientas de productividad
+- `/ai.html` - Herramientas con IA
 
 ## 🚀 Empezar Localmente
 
@@ -102,12 +131,18 @@ fasttools/                          # 📁 Raíz del proyecto
 │   ├── manifest.json               # PWA Manifest
 │   ├── privacy.html                # Política de privacidad
 │   ├── sitemap.xml                 # Sitemap para SEO
-│   ├── tools/                      # Páginas individuales de herramientas
-│   │   ├── image/                  # 🖼️ Herramientas de imagen (7)
-│   │   ├── files/                  # 📁 Herramientas de archivos (6)
-│   │   ├── data/                   # 📊 Herramientas de datos (5)
-│   │   ├── text/                   # 📝 Herramientas de texto (6)
-│   │   └── utils/                  # 🔧 Utilidades varias (4)
+│   ├── tools/                      # 33 herramientas (URLs simplificadas)
+│   │   ├── image-resizer.html      # Ejemplo: /tools/image-resizer.html
+│   │   ├── json-formatter.html     # Ejemplo: /tools/json-formatter.html
+│   │   └── ...                     # (sin subcarpetas por categoría)
+│   ├── developers.html             # Página categoría Desarrolladores
+│   ├── designers.html              # Página categoría Diseñadores
+│   ├── writers.html                # Página categoría Escritores
+│   ├── data-analysts.html          # Página categoría Analistas
+│   ├── marketers.html              # Página categoría Marketing
+│   ├── productivity.html           # Página categoría Productividad
+│   ├── ai.html                     # Página categoría IA
+│   ├── 404.html                    # Página 404 personalizada
 │   ├── js/                         # JavaScript
 │   │   ├── main.js                 # Funcionalidad común
 │   │   ├── service-worker.js       # Service Worker PWA

@@ -114,6 +114,33 @@ class QuickToolsAnalytics {
         });
     }
 
+    trackCategoryView(categoryName) {
+        if (typeof gtag === 'undefined') return;
+        gtag('event', 'category_view', {
+            'category_name': categoryName,
+            'language': this.language,
+            'page_location': window.location.href
+        });
+    }
+
+    trackCategoryClick(categoryName, fromPage = 'homepage') {
+        if (typeof gtag === 'undefined') return;
+        gtag('event', 'category_click', {
+            'category_name': categoryName,
+            'from_page': fromPage,
+            'language': this.language
+        });
+    }
+
+    trackToolClickFromCategory(toolName, categoryName) {
+        if (typeof gtag === 'undefined') return;
+        gtag('event', 'tool_click_from_category', {
+            'tool_name': toolName,
+            'category_name': categoryName,
+            'language': this.language
+        });
+    }
+
     setupExitTracking() {
         window.addEventListener('beforeunload', () => {
             this.trackEngagement();
