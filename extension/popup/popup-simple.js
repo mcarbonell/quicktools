@@ -22,14 +22,14 @@ class FastToolsPopup {
     }
 
     async loadData() {
-        // Load tools
-        this.tools = await loadTools();
-        
-        // Load user data
-        const data = await getStorage(['notes', 'analytics', 'recentColors']);
+        // Load user data first to get language
+        const data = await getStorage(['notes', 'analytics', 'recentColors', 'settings']);
         this.notes = data.notes?.items || [];
         this.analytics = data.analytics || {};
         this.recentColors = data.recentColors || ['#13a4ec', '#000000', '#ffffff'];
+        
+        // Load tools with current language
+        this.tools = await loadTools(this.lang);
     }
 
     setupEventListeners() {

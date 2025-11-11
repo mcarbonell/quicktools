@@ -27,19 +27,16 @@ const translations = {
         btn_delete: '🗑️ Eliminar',
         btn_close: 'Cerrar',
         
-        // Categories
+        // Categories (using English keys from web)
         category_all: 'Todo',
-        category_imagen: '🖼️ Imagen',
-        category_datos: '📊 Datos',
-        category_texto: '📝 Texto',
-        category_utilidades: '🔧 Utilidades',
-        category_ia: '🤖 IA',
-        // English category names (fallback)
         category_image: '🖼️ Imagen',
         category_data: '📊 Datos',
         category_text: '📝 Texto',
         category_utils: '🔧 Utilidades',
         category_ai: '🤖 IA',
+        category_files: '📁 Archivos',
+        category_converters: '🔄 Conversores',
+        category_generators: '✨ Generadores',
         
         // Timer
         timer_title: '⏰ Temporizador',
@@ -115,19 +112,16 @@ const translations = {
         btn_delete: '🗑️ Delete',
         btn_close: 'Close',
         
-        // Categories
+        // Categories (using English keys from web)
         category_all: 'All',
-        category_imagen: '🖼️ Image',
-        category_datos: '📊 Data',
-        category_texto: '📝 Text',
-        category_utilidades: '🔧 Utils',
-        category_ia: '🤖 AI',
-        // English category names (fallback)
         category_image: '🖼️ Image',
         category_data: '📊 Data',
         category_text: '📝 Text',
         category_utils: '🔧 Utils',
         category_ai: '🤖 AI',
+        category_files: '📁 Files',
+        category_converters: '🔄 Converters',
+        category_generators: '✨ Generators',
         
         // Timer
         timer_title: '⏰ Timer',
@@ -223,20 +217,7 @@ export function t(key, params = {}, lang = null) {
 
 // Get category name
 export function getCategoryName(category, lang = 'es') {
-    // Normalize category name (handle both Spanish and English)
-    const normalized = category.toLowerCase()
-        .replace('imagen', 'imagen')
-        .replace('image', 'imagen')
-        .replace('datos', 'datos')
-        .replace('data', 'datos')
-        .replace('texto', 'texto')
-        .replace('text', 'texto')
-        .replace('utilidades', 'utilidades')
-        .replace('utils', 'utilidades')
-        .replace('ia', 'ia')
-        .replace('ai', 'ia');
-    
-    const key = `category_${normalized}`;
+    const key = `category_${category.toLowerCase()}`;
     return t(key, {}, lang);
 }
 

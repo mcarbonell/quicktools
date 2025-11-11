@@ -45,10 +45,7 @@ class FastToolsNewTab {
     // ====================
 
     async loadData() {
-        // Load tools from JSON
-        this.tools = await loadTools();
-
-        // Load user data
+        // Load user data first to get language
         const data = await getStorage(['settings', 'analytics', 'notes', 'colors']);
         
         this.settings = data.settings || { theme: 'auto', quickAccess: [] };
@@ -57,6 +54,9 @@ class FastToolsNewTab {
         this.colors = data.colors || ['#13a4ec', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#84cc16', '#f97316'];
         
         this.quickAccess = this.settings.quickAccess || ['capture', 'notes', 'json-formatter', 'color-picker', 'password-generator', 'qr-generator'];
+        
+        // Load tools with current language
+        this.tools = await loadTools(this.lang);
     }
 
     // ====================
@@ -575,6 +575,8 @@ class FastToolsNewTab {
         this.applyTheme();
         
         if (languageChanged) {
+            // Reload tools with new language
+            this.tools = await loadTools(this.lang);
             this.render();
         }
     }
