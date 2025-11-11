@@ -2,64 +2,77 @@
 
 const BASE_URL = 'https://fasttools-nine.vercel.app';
 
-const LOCAL_TOOLS = {
-    es: [
-        {
-            title: 'Captura de Pantalla',
-            slug: 'local://capture',
-            description: 'Captura y anota pantallas',
-            category: 'Utils',
-            icon: '📸',
-            local: true
-        },
-        {
-            title: 'Notas Rápidas',
-            slug: 'local://notes',
-            description: 'Toma notas rápidas',
-            category: 'Utils',
-            icon: '📝',
-            local: true
-        }
-    ],
-    en: [
-        {
-            title: 'Screen Capture',
-            slug: 'local://capture',
-            description: 'Capture and annotate screens',
-            category: 'Utils',
-            icon: '📸',
-            local: true
-        },
-        {
-            title: 'Quick Notes',
-            slug: 'local://notes',
-            description: 'Take quick notes',
-            category: 'Utils',
-            icon: '📝',
-            local: true
-        }
-    ]
-};
+const LOCAL_TOOLS = [
+    {
+        id: 'capture',
+        slug: 'local://capture',
+        title: { es: 'Captura de Pantalla', en: 'Screen Capture' },
+        description: { es: 'Captura y anota pantallas', en: 'Capture and annotate screens' },
+        categories: ['utils'],
+        icon: '📸',
+        local: true
+    },
+    {
+        id: 'notes',
+        slug: 'local://notes',
+        title: { es: 'Notas Rápidas', en: 'Quick Notes' },
+        description: { es: 'Toma notas rápidas', en: 'Take quick notes' },
+        categories: ['utils'],
+        icon: '📝',
+        local: true
+    }
+];
 
-// Load tools from JSON
+// Load tools from unified JSON
 export async function loadTools(lang = 'es') {
     try {
-        const filename = lang === 'en' ? 'tools-index-en.json' : 'tools-index.json';
-        const response = await fetch(chrome.runtime.getURL(`data/${filename}`));
-        const webTools = await response.json();
+        const response = await fetch(chrome.runtime.getURL('data/tools-index-unified.json'));
+        const data = await response.json();
         
-        // Add full URL to web tools (ES with /es/ prefix, EN without)
-        const toolsWithUrls = webTools.map(tool => ({
+        // Process web tools
+        const webTools = data.tools.map(tool => ({
             ...tool,
+            title: tool.title[lang] || tool.title.es,
+            description: tool.description[lang] || tool.description.es,
+            category: tool.categories[0], // Primary category
             url: lang === 'es' ? `${BASE_URL}/es/${tool.slug}` : `${BASE_URL}/${tool.slug}`,
             local: false
         }));
         
-        // Combine local + web tools
-        return [...(LOCAL_TOOLS[lang] || LOCAL_TOOLS.es), ...toolsWithUrls];
+        // Process local tools
+        const localTools = LOCAL_TOOLS.map(tool => ({
+            ...tool,
+            title: tool.title[lang] || tool.title.es,
+            description: tool.description[lang] || tool.description.es,
+            category: tool.categories[0]
+        }));
+        
+        return [...localTools, ...webTools];
     } catch (error) {
         console.error('Error loading tools:', error);
-        return LOCAL_TOOLS[lang] || LOCAL_TOOLS.es;
+        return LOCAL_TOOLS.map(tool => ({
+            ...tool,
+            title: tool.title[lang] || tool.title.es,
+            description: tool.description[lang] || tool.description.es,
+            category: tool.categories[0]
+        }));
+    }
+}
+
+// Load categories
+export async function loadCategories(lang = 'es') {
+    try {
+        const response = await fetch(chrome.runtime.getURL('data/tools-index-unified.json'));
+        const data = await response.json();
+        
+        return data.categories.map(cat => ({
+            ...cat,
+            name: cat.name[lang] || cat.name.es,
+            description: cat.description[lang] || cat.description.es
+        }));
+    } catch (error) {
+        console.error('Error loading categories:', error);
+        return [];
     }
 }
 
