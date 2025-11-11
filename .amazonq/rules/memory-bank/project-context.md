@@ -9,8 +9,8 @@
 **Name:** FastTools (formerly QuickTools)  
 **Domain:** fasttools.tools  
 **Staging:** fasttools-nine.vercel.app  
-**Purpose:** Privacy-focused online tools suite (33 tools) that process everything client-side  
-**Status:** ✅ PRODUCTION READY (November 2025)
+**Purpose:** Privacy-focused online tools suite (41 tools) that process everything client-side  
+**Status:** ✅ PRODUCTION READY (December 2024)
 
 ## Key Decisions & Preferences
 
@@ -27,7 +27,7 @@
 - **Hosting:** Vercel (Hobby plan - free)
 - **Domain:** cdmon.com (€10.95/year)
 - **Analytics:** Google Analytics 4 (G-9XTNQMQKE2)
-- **PWA:** Service Worker v2.0.0
+- **PWA:** Service Worker v3.0.7
 - **i18n:** Custom JSON-based system (EN/ES)
 
 ### Architecture Principles
@@ -61,29 +61,35 @@
 ```
 quicktools/
 ├── web/                    # Production deployment (main artifact)
-│   ├── index.html          # Homepage (EN)
+│   ├── index.html          # Homepage (EN) - root level
 │   ├── es/                 # Spanish versions
-│   ├── tools/              # 33 tool pages (EN)
+│   ├── *.html              # 41 tool pages (EN) - root level, NO /tools/ prefix
+│   ├── developers.html     # Category pages (8 categories)
 │   ├── css/                # Styles (style.css, style-v2.css)
 │   ├── js/                 # JavaScript modules
 │   ├── i18n/               # Translation files
+│   ├── data/               # tools-index-unified.json (single source of truth)
 │   └── templates/          # HTML templates for generation
+├── extension/              # Browser extension
+│   └── data/               # Synced tools-index-unified.json
 ├── tests/                  # Testing suite
-│   ├── automated-qa.js     # Main QA script (99.25% pass rate)
-│   └── qa-report.json      # Test results
-├── extension/              # Browser extension (future)
 └── .amazonq/rules/         # Amazon Q context files
 ```
 
 ### Important Files
-- **package.json:** npm scripts (test, build, serve)
-- **vercel.json:** Deployment configuration
-- **sitemap.xml:** SEO sitemap (all 33 tools EN+ES)
+- **package.json:** npm scripts (test, build:local, serve) - NO 'build' to avoid Vercel auto-build
+- **vercel.json:** Deployment config (buildCommand: null, installCommand: null)
+- **sitemap.xml:** SEO sitemap (41 tools + 8 categories × 2 languages = 98 URLs)
+- **tools-index-unified.json:** Single source of truth for all tools (web + extension)
 - **robots.txt:** Search engine directives
 - **manifest.json:** PWA manifest
 - **sw.js:** Service Worker v2.0.0
 
-## Tools Inventory (33 Total)
+## Tools Inventory (41 Total)
+
+**URL Structure:** Clean URLs without /tools/ prefix
+- EN: `/lorem-ipsum-generator.html`
+- ES: `/es/lorem-ipsum-generator.html`
 
 ### Image Tools (7)
 1. Image Resizer
@@ -133,16 +139,40 @@ quicktools/
 4. Chat with PDF
 5. Edit Image with AI
 
+### SEO Tools (8) - NEW!
+1. Meta Tags Analyzer
+2. Heading Structure Checker
+3. Robots.txt Validator
+4. Sitemap Validator
+5. Broken Links Checker
+6. Open Graph Preview
+7. Schema.org Validator
+8. SEO Score Calculator
+
+**Note:** SEO tools are promotional pages on web (CORS limitations), full functionality in browser extension.
+
+## User Categories (8 Total)
+
+1. **💻 Developers** (10 tools) - `/developers.html`
+2. **🎨 Designers** (8 tools) - `/designers.html`
+3. **✍️ Writers** (6 tools) - `/writers.html`
+4. **📊 Data Analysts** (6 tools) - `/data-analysts.html`
+5. **📱 Marketers** (8 tools) - `/marketers.html`
+6. **⚡ Productivity** (8 tools) - `/productivity.html`
+7. **🤖 AI Tools** (5 tools) - `/ai.html`
+8. **🔍 SEO Specialists** (8 tools) - `/seo.html` - NEW!
+
 ## Development Workflow
 
 ### Commands
 ```bash
-npm test          # Run automated QA (134 tests)
-npm run build     # Generate site from templates
-npm run serve     # Local server on :8000
-npm run build:old # Legacy build system
-npm run test:old  # Old test suite
+npm test             # Run automated QA
+npm run build:local  # Generate site (renamed from 'build' to avoid Vercel auto-build)
+npm run serve        # Local server on :8000
+npm run clean        # Clean old build files
 ```
+
+**IMPORTANT:** No `npm run build` script to prevent Vercel from running build. Files are pre-generated and committed.
 
 ### Git Workflow
 - **Main branch:** Production-ready code
@@ -158,8 +188,8 @@ npm run test:old  # Old test suite
 ## Known Issues & Quirks
 
 ### Service Worker Cache
-- **Issue:** Old cache can show outdated design
-- **Solution:** Version bumped to v2.0.0, clears old caches automatically
+- **Current Version:** v3.0.7
+- **Auto-versioning:** scripts/bump-version.js increments on each build
 - **User Fix:** Hard refresh (Ctrl+Shift+R) or clear site data
 
 ### DNS Propagation
@@ -167,34 +197,61 @@ npm run test:old  # Old test suite
 - **Workaround:** Use fasttools-nine.vercel.app during propagation
 - **Check:** dnschecker.org for propagation status
 
-### Analytics Test Failure
-- **Issue:** Automated test can't find GA4 ID in analytics.js
-- **Reason:** ID is in cookie-consent.js, not analytics.js
-- **Impact:** None (analytics working correctly)
-- **Fix:** Optional (update test to check cookie-consent.js)
+### Vercel Deployment
+- **Solution:** buildCommand and installCommand set to null in vercel.json
+- **Reason:** Files are pre-generated and committed, no build needed
+- **Result:** Vercel simply serves static files from web/ directory
 
 ## Future Enhancements
 
 ### Short-term (Next 1-3 months)
+- [x] SEO tools category (8 tools) - COMPLETED
+- [x] Category pages by user profile (8 categories) - COMPLETED
+- [x] Schema.org structured data (CollectionPage + BreadcrumbList) - COMPLETED
+- [ ] Implement SEO tools functionality in browser extension
 - [ ] Dark mode toggle
-- [ ] More AI tools (image generation, translation)
 - [ ] Blog section for SEO
-- [ ] User accounts (optional, for saving preferences)
 - [ ] More languages (Portuguese, French, German, Italian, Russian, Japanese)
-- [ ] Contact form for feedback and tool suggestions (Google Forms or Formspree)
-- [ ] Affiliate links (hosting, domains, SaaS tools)
 
 ### Medium-term (3-6 months)
-- [ ] Browser extension (Chrome/Firefox) - IN PROGRESS
-- [ ] Mobile app (PWA install)
+- [ ] Browser extension launch (Chrome Web Store, Firefox Add-ons)
+- [ ] Implement SEO tools in extension (no CORS restrictions)
+- [ ] Dead Links Checker (MVP)
+- [ ] PWA install promotion
 - [ ] API for developers
-- [ ] Premium features (optional)
 
 ### Long-term (6-12 months)
 - [ ] Tool marketplace (user-submitted tools)
 - [ ] Collaboration features
 - [ ] Advanced analytics dashboard
 - [ ] White-label solution
+
+## Recent Changes (December 2024)
+
+### SEO Tools Implementation
+- Added 8 SEO tools as promotional pages on web
+- Tools require extension for full functionality (CORS bypass)
+- Created new "SEO Specialists" user category
+- Updated sitemap with 16 new URLs (8 tools × 2 languages)
+
+### URL Structure Cleanup
+- Removed `/tools/` prefix from all URLs
+- Tools now at root level: `/tool-name.html` (EN) and `/es/tool-name.html` (ES)
+- Updated tools-index-unified.json slugs (no more `tools/` prefix)
+- Synced unified JSON between web/ and extension/
+
+### Build System Improvements
+- Renamed `npm run build` to `npm run build:local`
+- Set buildCommand: null in vercel.json to prevent auto-build
+- Files are pre-generated and committed
+- Auto-versioning with scripts/bump-version.js
+
+### Category System
+- 8 user profile categories with dedicated pages
+- Category badges on each tool page
+- Schema.org CollectionPage for categories
+- Schema.org BreadcrumbList for tools
+- Custom 404 page with tool suggestions
 
 ## Extension-Specific Ideas
 
@@ -267,6 +324,30 @@ npm run test:old  # Old test suite
 - Social media: Reddit (r/webdev, r/tools), HackerNews
 
 ### Monitoring
+- Google Search Console: Weekly checks
+- Analytics: Daily traffic review
+- Performance: Monthly audits
+
+## Contact & Resources
+
+### URLs
+- **Production:** https://fasttools.tools
+- **Staging:** https://fasttools-nine.vercel.app
+- **Analytics:** https://analytics.google.com (G-9XTNQMQKE2)
+
+### Key Files
+- **tools-index-unified.json:** Single source of truth for all tools
+- **audience-mapping.json:** Maps user categories to tool IDs
+- **generate-site.js:** Main site generator
+- **generate-category-pages.js:** Category page generator
+
+---
+
+**Last Updated:** December 2024  
+**Project Status:** ✅ PRODUCTION READY  
+**Total Tools:** 41  
+**Total Categories:** 8  
+**Service Worker:** v3.0.7ing
 - Google Search Console: Weekly checks
 - Analytics: Daily traffic review
 - Performance: Monthly audits
