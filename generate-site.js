@@ -376,6 +376,42 @@ async function generateTools(toolsIndex, lang) {
             categoryBadges += '</small></div>';
         }
         
+        // Generate BreadcrumbList Schema.org
+        const breadcrumbItems = [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "FastTools",
+            "item": `https://${siteConfig.domain}${lang === siteConfig.defaultLanguage ? '' : '/' + lang}`
+        }];
+        
+        if (toolCategories.length > 0) {
+            toolCategories.forEach((catId, index) => {
+                const cat = categories.find(c => c.id === catId);
+                if (cat) {
+                    const catUrl = lang === siteConfig.defaultLanguage ? `https://${siteConfig.domain}/${cat.slug[lang]}.html` : `https://${siteConfig.domain}/${lang}/${cat.slug[lang]}.html`;
+                    breadcrumbItems.push({
+                        "@type": "ListItem",
+                        "position": index + 2,
+                        "name": cat.name[lang],
+                        "item": catUrl
+                    });
+                }
+            });
+        }
+        
+        breadcrumbItems.push({
+            "@type": "ListItem",
+            "position": breadcrumbItems.length + 1,
+            "name": translatedTool.title
+        });
+        
+        const breadcrumbSchema = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": breadcrumbItems
+        };
+        
+        generatedHtml = generatedHtml.replace(/{{schema_org_json}}/g, JSON.stringify(breadcrumbSchema, null, 2));
         generatedHtml = generatedHtml.replace(/{{category_badges}}/g, categoryBadges);
         generatedHtml = generatedHtml.replace(/{{tool_content}}/g, toolContent);
         // Inject translations as global variable for JS
