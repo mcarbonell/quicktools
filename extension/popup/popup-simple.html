@@ -7,9 +7,54 @@
     <link rel="stylesheet" href="../shared/styles.css">
     <style>
         body {
-            width: 380px;
+            width: 500px;
             max-height: 600px;
             overflow-x: hidden;
+        }
+
+        /* Views */
+        #main-view {
+            display: block;
+        }
+
+        #tool-view {
+            display: none;
+            flex-direction: column;
+            height: 600px;
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: var(--space-xs);
+            border-radius: var(--radius-sm);
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover {
+            background: var(--border);
+        }
+
+        .tool-header h3 {
+            margin: 0;
+            font-size: var(--font-md);
+            font-weight: 600;
+        }
+
+        #tool-container {
+            flex: 1;
+            overflow: hidden;
         }
 
         /* Header */
@@ -173,6 +218,8 @@
     </style>
 </head>
 <body>
+    <!-- Main View -->
+    <div id="main-view">
     <!-- Header -->
     <div class="header">
         <div class="logo">
@@ -206,6 +253,18 @@
         <span id="usage-today">0 usos hoy</span>
         <span>🆓 Free</span>
     </div>
+    </div>
+    <!-- End Main View -->
+
+    <!-- Tool View (for SEO tools) -->
+    <div id="tool-view">
+        <div class="tool-header">
+            <button class="back-btn" data-action="back-to-main" title="Volver">←</button>
+            <h3 id="tool-title">Herramienta SEO</h3>
+        </div>
+        <div id="tool-container"></div>
+    </div>
+    <!-- End Tool View -->
 
     <!-- Notes Modal -->
     <div id="notes-modal" class="modal">

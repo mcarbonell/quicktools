@@ -124,12 +124,19 @@ extension/tools/seo/
 
 ### ✅ Working
 - All 7 SEO tools implemented
-- Visible in both popup and newtab
+- **Popup**: SEO tools load inline with iframe (no new tab)
+- **NewTab**: SEO tools hidden (require active tab context)
 - Clickable and open correctly
 - CSP compliant (no inline scripts)
 - Robots.txt works with manual URL
 - Categories translated correctly
 - Tools load from fasttools-data.json
+
+### 🎯 UX Improvements
+- **Popup inline loading**: SEO tools open inside popup (500px width)
+- **Back button**: Easy navigation back to tool list
+- **No new tabs**: Better UX, keeps popup open
+- **Iframe sandbox**: Secure tool loading
 
 ### ⚠️ Limitations
 - Tools requiring chrome.tabs.sendMessage need active tab
@@ -138,8 +145,8 @@ extension/tools/seo/
 - Robots.txt is exception (uses fetch directly)
 
 ### 🎯 Best Usage
-- **From Popup**: Navigate to site → click extension → select SEO tool → works perfectly
-- **From NewTab**: Shows URL input but most tools need active tab context
+- **From Popup**: Navigate to site → click extension → select SEO tool → loads inline → works perfectly
+- **From NewTab**: SEO tools hidden (will show after Option C implementation)
 - **Robots.txt**: Works from anywhere with manual URL
 
 ## Technical Details
@@ -174,9 +181,11 @@ extension/tools/seo/
 
 ## Next Steps
 
-**Option A**: Hide SEO tools in NewTab, only show in Popup (recommended)
-**Option B**: Clear message about requiring active tab
-**Option C**: Rewrite tools to fetch+parse HTML (4-6 hours work)
+**✅ Option A COMPLETED**: SEO tools hidden in NewTab, only show in Popup
+**🎯 Option C (Future)**: Rewrite tools to fetch+parse HTML (4-6 hours work)
+  - Required for professional features like recursive dead-links crawler
+  - Will enable SEO tools in NewTab without active tab requirement
+  - Fetch HTML from URL → Parse in tool → No content script needed
 
 ## Performance
 
@@ -196,4 +205,5 @@ extension/tools/seo/
 
 **Last Updated:** December 2024
 **Status:** Suite SEO completa e integrada en extensión
-**Pending:** Decidir estrategia para contexto NewTab vs Popup
+**UX:** Herramientas SEO cargan inline en popup (500px), ocultas en NewTab
+**Future:** Implementar Option C para funcionalidad completa sin restricciones

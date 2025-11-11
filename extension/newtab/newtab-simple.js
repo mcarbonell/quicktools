@@ -255,7 +255,10 @@ class FastToolsNewTab {
         const container = document.getElementById('tools-grid');
         container.innerHTML = '';
 
-        this.tools.forEach((tool, index) => {
+        // Filter out SEO tools in NewTab (they need active tab context)
+        const filteredTools = this.tools.filter(tool => !tool.slug.startsWith('tools/seo/'));
+
+        filteredTools.forEach((tool, index) => {
             const item = document.createElement('div');
             item.className = `tool-item slide-in stagger-${Math.min(Math.floor(index / 5) + 1, 4)}`;
             item.dataset.category = tool.category;
@@ -325,7 +328,9 @@ class FastToolsNewTab {
             return;
         }
 
+        // Filter out SEO tools from search in NewTab
         const searchResults = this.tools
+            .filter(tool => !tool.slug.startsWith('tools/seo/'))
             .filter(tool => 
                 tool.title.toLowerCase().includes(query.toLowerCase()) ||
                 tool.description.toLowerCase().includes(query.toLowerCase())

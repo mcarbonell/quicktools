@@ -46,7 +46,8 @@ class FastToolsPopup {
                 'show-modal': () => showModal(e.target.dataset.modal),
                 'close-modal': () => closeModal(e.target.dataset.modal),
                 'save-note': () => this.saveNote(),
-                'copy-color': () => this.copyColor()
+                'copy-color': () => this.copyColor(),
+                'back-to-main': () => this.backToMain()
             };
             
             actions[action]?.();
@@ -128,11 +129,54 @@ class FastToolsPopup {
         } else if (tool.slug === 'local://notes') {
             showModal('notes-modal');
             this.loadNotes();
+        } else if (tool.slug.startsWith('tools/seo/')) {
+            // SEO tools - load inline in popup
+            this.loadSEOTool(tool);
         } else if (tool.slug.startsWith('tools/')) {
-            // SEO tools - open in new tab
+            // Other local tools - open in new tab
             chrome.tabs.create({ url: tool.url, active: true });
             window.close();
         }
+    }
+
+    // ====================
+    // SEO TOOLS INLINE
+    // ====================
+
+    async loadSEOTool(tool) {
+        const mainView = document.getElementById('main-view');
+        const toolView = document.getElementById('tool-view');
+        const toolContainer = document.getElementById('tool-container');
+        const toolTitle = document.getElementById('tool-title');
+        
+        // Hide main view, show tool view
+        mainView.style.display = 'none';
+        toolView.style.display = 'flex';
+        
+        // Set title
+        toolTitle.textContent = tool.title;
+        
+        // Load tool content via iframe
+        toolContainer.innerHTML = `
+            <iframe 
+                src="${tool.url}" 
+                style="width: 100%; height: 100%; border: none; background: var(--bg);"
+                sandbox="allow-scripts allow-same-origin"
+            ></iframe>
+        `;
+        
+        trackToolUsage(tool.slug.replace(/^tools\//, '').replace(/\.html$/, '').replace(/\//g, '-'), 'popup');
+    }
+
+    backToMain() {
+        const mainView = document.getElementById('main-view');
+        const toolView = document.getElementById('tool-view');
+        
+        mainView.style.display = 'block';
+        toolView.style.display = 'none';
+        
+        // Clear iframe
+        document.getElementById('tool-container').innerHTML = '';
     }
 
     // ====================
