@@ -26,16 +26,31 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
         const og = response.metaTags.og;
         
         const container = document.getElementById('results');
-        container.innerHTML = `
-            <div class="preview-card">
-                <img class="preview-image" src="${og.image || ''}" alt="Preview" onerror="this.style.display='none'">
-                <div class="preview-content">
-                    <div class="preview-title">${og.title || response.metaTags.title || 'Sin título'}</div>
-                    <div class="preview-desc">${og.description || response.metaTags.description || 'Sin descripción'}</div>
-                    <div class="preview-url">${og.url || tab.url}</div>
-                </div>
-            </div>
+        
+        const previewCard = document.createElement('div');
+        previewCard.className = 'preview-card';
+        
+        // Only add image if og.image exists
+        if (og.image) {
+            const img = document.createElement('img');
+            img.className = 'preview-image';
+            img.src = og.image;
+            img.alt = 'Preview';
+            img.onerror = function() { this.style.display = 'none'; };
+            previewCard.appendChild(img);
+        }
+        
+        const content = document.createElement('div');
+        content.className = 'preview-content';
+        content.innerHTML = `
+            <div class="preview-title">${escapeHtml(og.title || response.metaTags.title || 'Sin título')}</div>
+            <div class="preview-desc">${escapeHtml(og.description || response.metaTags.description || 'Sin descripción')}</div>
+            <div class="preview-url">${escapeHtml(og.url || tab.url)}</div>
         `;
+        
+        previewCard.appendChild(content);
+        container.innerHTML = '';
+        container.appendChild(previewCard);
     } catch (error) {
         document.getElementById('results').innerHTML = `<div class="empty-state"><p>Error: ${error.message}</p></div>`;
     } finally {
@@ -43,3 +58,9 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
         btn.textContent = '▶️ Generar Preview';
     }
 });
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}

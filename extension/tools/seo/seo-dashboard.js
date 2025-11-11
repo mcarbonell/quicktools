@@ -133,7 +133,7 @@ function renderScore(result) {
         <div class="score-label">Puntuación SEO de 100</div>
         <div style="padding: 20px; background: #f8f9fa; border-radius: 8px;">
             ${result.checks.map(check => `
-                <div style="margin-bottom: 8px;">
+                <div style="margin-bottom: 8px; color: #333;">
                     ${check.status === 'ok' ? '✅' : '⚠️'} ${check.name}
                 </div>
             `).join('')}
