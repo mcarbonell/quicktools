@@ -23,10 +23,10 @@ const LOCAL_TOOLS = [
     }
 ];
 
-// Load tools from unified JSON
+// Load tools from fasttools-data.json
 export async function loadTools(lang = 'es') {
     try {
-        const response = await fetch(chrome.runtime.getURL('data/tools-index-unified.json'));
+        const response = await fetch(chrome.runtime.getURL('data/fasttools-data.json'));
         const data = await response.json();
         
         // Process web tools
@@ -35,8 +35,10 @@ export async function loadTools(lang = 'es') {
             title: tool.title[lang] || tool.title.es,
             description: tool.description[lang] || tool.description.es,
             category: tool.categories[0], // Primary category
-            url: lang === 'es' ? `${BASE_URL}/es/${tool.slug}` : `${BASE_URL}/${tool.slug}`,
-            local: false
+            url: tool.slug.startsWith('tools/') 
+                ? chrome.runtime.getURL(tool.slug)
+                : (lang === 'es' ? `${BASE_URL}/es/${tool.slug}` : `${BASE_URL}/${tool.slug}`),
+            local: tool.slug.startsWith('tools/')
         }));
         
         // Process local tools
@@ -62,10 +64,10 @@ export async function loadTools(lang = 'es') {
 // Load categories
 export async function loadCategories(lang = 'es') {
     try {
-        const response = await fetch(chrome.runtime.getURL('data/tools-index-unified.json'));
+        const response = await fetch(chrome.runtime.getURL('data/fasttools-data.json'));
         const data = await response.json();
         
-        return data.categories.map(cat => ({
+        return data.toolCategories.map(cat => ({
             ...cat,
             name: cat.name[lang] || cat.name.es,
             description: cat.description[lang] || cat.description.es
