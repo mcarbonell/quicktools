@@ -17,6 +17,118 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/"/>
   </url>
   <url>
+    <loc>https://fasttools.tools/developers.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/developers.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/desarrolladores.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/desarrolladores.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/developers.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/desarrolladores.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/designers.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/designers.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/disenadores.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/disenadores.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/designers.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/disenadores.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/writers.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/writers.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/escritores.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/escritores.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/writers.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/escritores.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/data-analysts.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/data-analysts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/analistas-datos.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/analistas-datos.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/data-analysts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/analistas-datos.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/marketers.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/marketers.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/marketing.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/marketing.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/marketers.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/marketing.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/productivity.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/productivity.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/productividad.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/productividad.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/productivity.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/productividad.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/ai.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/ai.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/ia.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/ia.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/ai.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/ia.html"/>
+  </url>
+  <url>
     <loc>https://fasttools.tools/tools/image-resizer.html</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>

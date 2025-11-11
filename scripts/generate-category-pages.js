@@ -29,32 +29,32 @@ const categoryNames = {
 
 const categoryDescriptions = {
     developers: { 
-        es: 'Herramientas esenciales para programadores y desarrolladores web', 
-        en: 'Essential tools for programmers and web developers' 
+        es: 'Herramientas esenciales para programadores y desarrolladores web: formatear JSON, convertir datos, codificar URLs y más. 100% gratis y privado.', 
+        en: 'Essential tools for programmers and web developers: format JSON, convert data, encode URLs and more. 100% free and private.' 
     },
     designers: { 
-        es: 'Herramientas para diseñadores gráficos y creativos', 
-        en: 'Tools for graphic designers and creatives' 
+        es: 'Herramientas para diseñadores gráficos: redimensionar imágenes, convertir formatos, extraer paletas de colores. Todo en tu navegador.', 
+        en: 'Tools for graphic designers: resize images, convert formats, extract color palettes. Everything in your browser.' 
     },
     writers: { 
-        es: 'Herramientas para escritores, editores y creadores de contenido', 
-        en: 'Tools for writers, editors and content creators' 
+        es: 'Herramientas para escritores y editores: limpiar texto, comparar versiones, generar Lorem Ipsum, mejorar con IA. Sin registro.', 
+        en: 'Tools for writers and editors: clean text, compare versions, generate Lorem Ipsum, improve with AI. No registration.' 
     },
     'data-analysts': { 
-        es: 'Herramientas para análisis y conversión de datos', 
-        en: 'Tools for data analysis and conversion' 
+        es: 'Herramientas para analistas de datos: convertir CSV, JSON, YAML, XML, TOML. Procesamiento 100% local y seguro.', 
+        en: 'Tools for data analysts: convert CSV, JSON, YAML, XML, TOML. 100% local and secure processing.' 
     },
     marketers: { 
-        es: 'Herramientas para profesionales del marketing digital', 
-        en: 'Tools for digital marketing professionals' 
+        es: 'Herramientas para marketing digital: generar QR, optimizar imágenes, crear contenido con IA. Rápido y sin costos.', 
+        en: 'Tools for digital marketing: generate QR codes, optimize images, create content with AI. Fast and free.' 
     },
     productivity: { 
-        es: 'Herramientas para mejorar tu productividad diaria', 
-        en: 'Tools to improve your daily productivity' 
+        es: 'Herramientas de productividad: cronómetro, generador de contraseñas, gestión de PDFs. Aumenta tu eficiencia diaria.', 
+        en: 'Productivity tools: timer, password generator, PDF management. Boost your daily efficiency.' 
     },
     'ai-tools': { 
-        es: 'Herramientas potenciadas con inteligencia artificial', 
-        en: 'AI-powered tools' 
+        es: 'Herramientas con IA: chat, resumir textos, mejorar redacción, editar imágenes. Potenciadas por Google Gemini.', 
+        en: 'AI-powered tools: chat, summarize texts, improve writing, edit images. Powered by Google Gemini.' 
     }
 };
 
@@ -93,6 +93,7 @@ async function generateCategoryPages() {
             html = html.replace(/{{lang}}/g, lang);
             html = html.replace(/{{category_name}}/g, categoryNames[category.id][lang]);
             html = html.replace(/{{category_description}}/g, categoryDescriptions[category.id][lang]);
+            html = html.replace(/{{meta_description}}/g, categoryDescriptions[category.id][lang]);
             html = html.replace(/{{category_icon}}/g, category.icon);
             html = html.replace(/{{tools_grid}}/g, toolsGrid);
             html = html.replace(/{{view_all_tools}}/g, lang === 'es' ? 'Ver todas las herramientas' : 'View all tools');

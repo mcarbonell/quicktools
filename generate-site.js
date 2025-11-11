@@ -426,6 +426,41 @@ async function generateSitemap(toolsIndex) {
         xml += `  </url>\n`;
     });
     
+    // Category pages
+    const categories = [
+        { slug: { es: 'desarrolladores', en: 'developers' } },
+        { slug: { es: 'disenadores', en: 'designers' } },
+        { slug: { es: 'escritores', en: 'writers' } },
+        { slug: { es: 'analistas-datos', en: 'data-analysts' } },
+        { slug: { es: 'marketing', en: 'marketers' } },
+        { slug: { es: 'productividad', en: 'productivity' } },
+        { slug: { es: 'ia', en: 'ai' } }
+    ];
+    
+    categories.forEach(cat => {
+        siteConfig.languages.forEach(lang => {
+            const url = lang === siteConfig.defaultLanguage 
+                ? `${baseUrl}/${cat.slug[lang]}.html`
+                : `${baseUrl}/${lang}/${cat.slug[lang]}.html`;
+            
+            xml += `  <url>\n`;
+            xml += `    <loc>${url}</loc>\n`;
+            xml += `    <lastmod>${now}</lastmod>\n`;
+            xml += `    <changefreq>weekly</changefreq>\n`;
+            xml += `    <priority>0.9</priority>\n`;
+            
+            // Add xhtml:link for alternate languages
+            siteConfig.languages.forEach(altLang => {
+                const altUrl = altLang === siteConfig.defaultLanguage 
+                    ? `${baseUrl}/${cat.slug[altLang]}.html`
+                    : `${baseUrl}/${altLang}/${cat.slug[altLang]}.html`;
+                xml += `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${altUrl}"/>\n`;
+            });
+            
+            xml += `  </url>\n`;
+        });
+    });
+    
     // Tool pages for each language
     toolsIndex.forEach(tool => {
         siteConfig.languages.forEach(lang => {
