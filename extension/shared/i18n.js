@@ -27,16 +27,15 @@ const translations = {
         btn_delete: '🗑️ Eliminar',
         btn_close: 'Cerrar',
         
-        // Categories (using English keys from web)
+        // Categories (by user audience)
         category_all: 'Todo',
-        category_image: '🖼️ Imagen',
-        category_data: '📊 Datos',
-        category_text: '📝 Texto',
-        category_utils: '🔧 Utilidades',
-        category_ai: '🤖 IA',
-        category_files: '📁 Archivos',
-        category_converters: '🔄 Conversores',
-        category_generators: '✨ Generadores',
+        category_developers: '💻 Desarrolladores',
+        category_designers: '🎨 Diseñadores',
+        category_writers: '✍️ Escritores',
+        category_data_analysts: '📊 Analistas de Datos',
+        category_marketers: '📱 Marketing',
+        category_productivity: '⚡ Productividad',
+        category_ai_tools: '🤖 IA',
         
         // Timer
         timer_title: '⏰ Temporizador',
@@ -112,16 +111,15 @@ const translations = {
         btn_delete: '🗑️ Delete',
         btn_close: 'Close',
         
-        // Categories (using English keys from web)
+        // Categories (by user audience)
         category_all: 'All',
-        category_image: '🖼️ Image',
-        category_data: '📊 Data',
-        category_text: '📝 Text',
-        category_utils: '🔧 Utils',
-        category_ai: '🤖 AI',
-        category_files: '📁 Files',
-        category_converters: '🔄 Converters',
-        category_generators: '✨ Generators',
+        category_developers: '💻 Developers',
+        category_designers: '🎨 Designers',
+        category_writers: '✍️ Writers',
+        category_data_analysts: '📊 Data Analysts',
+        category_marketers: '📱 Marketers',
+        category_productivity: '⚡ Productivity',
+        category_ai_tools: '🤖 AI',
         
         // Timer
         timer_title: '⏰ Timer',
