@@ -3,15 +3,21 @@
 ## Repository Organization
 
 ```
-quicktools/                          # Root directory
-├── build/                          # 🏗️ Build configuration (NOT deployed)
+quicktools/
+├── build/                          # 🏗️ Todo centralizado aquí
 │   ├── data/
-│   │   └── fasttools-data.json        # Single source of truth
-│   └── templates/                  # HTML templates
-├── web/                            # 🌐 Production web application (deployed)
-├── extension/                      # 🧩 Browser extension (Chrome/Firefox)
-├── tests/                          # 🧪 Testing suite
-├── scripts/                        # 🛠️ Build and automation scripts
+│   │   ├── fasttools-data.json    # Single source of truth
+│   │   └── site-config.json       # Configuración del sitio
+│   ├── templates/                  # Templates HTML
+│   └── scripts/                    # Todos los scripts de build
+│       ├── generate-site.js
+│       ├── generate-category-pages.js
+│       ├── build-extension.js
+│       ├── bump-version.js
+│       └── clean-build.js
+├── web/                            # 🌐 Solo archivos públicos
+├── extension/                      # 🧩 Extensión
+├── tests/                          # 🧪 Tests
 ├── local_docs/                     # 📚 Internal documentation
 ├── web_design/                     # 🎨 Design mockups and assets
 ├── .amazonq/rules/memory-bank/     # 🤖 AI context files
@@ -114,7 +120,7 @@ extension/
 │   ├── i18n.js                    # Internationalization
 │   └── styles.css                 # Shared styles
 ├── data/                          # Extension data
-│   └── tools-index-unified.json   # Tool catalog
+│   └── fasttools-data.json        # Tool catalog
 └── icons/                         # Extension icons
     ├── icon-16x16.png
     ├── icon-32x32.png

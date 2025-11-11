@@ -366,10 +366,9 @@ Este proyecto está bajo la licencia ISC - ver el archivo [LICENSE](LICENSE) par
 
 ## 🔗 Enlaces
 
-- **Demo**: https://fasttools.tools
-- **Documentación**: [docs/PROYECTO_QUICKTOOLS.md](docs/PROYECTO_QUICKTOOLS.md)
-- **Issues**: https://github.com/tu-usuario/fasttools/issues
-- **Discussions**: https://github.com/tu-usuario/fasttools/discussions
+- **Web**: https://fasttools.tools
+- **Issues**: https://github.com/mcarbonell/quicktools/issues
+- **Discussions**: https://github.com/mcarbonell/quicktools/discussions
 
 ---
 
