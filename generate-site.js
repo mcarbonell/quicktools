@@ -299,6 +299,21 @@ async function generateTools(toolsIndex, lang) {
     const baseTemplate = await fs.readFile(baseTemplatePath, 'utf8');
     const translations = await loadTranslations(lang);
     
+    // Load audience mapping
+    const audienceMappingPath = path.join(dataDir, 'audience-mapping.json');
+    const audienceMapping = JSON.parse(await fs.readFile(audienceMappingPath, 'utf8'));
+    
+    // Category info
+    const categories = [
+        { id: 'developers', slug: { es: 'desarrolladores', en: 'developers' }, icon: '💻', name: { es: 'Desarrolladores', en: 'Developers' } },
+        { id: 'designers', slug: { es: 'disenadores', en: 'designers' }, icon: '🎨', name: { es: 'Diseñadores', en: 'Designers' } },
+        { id: 'writers', slug: { es: 'escritores', en: 'writers' }, icon: '✍️', name: { es: 'Escritores', en: 'Writers' } },
+        { id: 'data-analysts', slug: { es: 'analistas-datos', en: 'data-analysts' }, icon: '📊', name: { es: 'Analistas de Datos', en: 'Data Analysts' } },
+        { id: 'marketers', slug: { es: 'marketing', en: 'marketers' }, icon: '📱', name: { es: 'Marketing', en: 'Marketers' } },
+        { id: 'productivity', slug: { es: 'productividad', en: 'productivity' }, icon: '⚡', name: { es: 'Productividad', en: 'Productivity' } },
+        { id: 'ai-tools', slug: { es: 'ia', en: 'ai' }, icon: '🤖', name: { es: 'IA', en: 'AI' } }
+    ];
+    
     for (const tool of toolsIndex) {
         const toolSlug = tool.slug;
         const toolFileName = path.basename(toolSlug, '.html');
@@ -338,6 +353,30 @@ async function generateTools(toolsIndex, lang) {
         generatedHtml = generatedHtml.replace(/{{head_extra}}/g, headExtra);
         generatedHtml = generatedHtml.replace(/{{tool_title}}/g, translatedTool.title || '');
         generatedHtml = generatedHtml.replace(/{{tool_description}}/g, translatedTool.description || '');
+        // Generate category badges
+        let categoryBadges = '';
+        const toolCategories = [];
+        for (const [catId, toolIds] of Object.entries(audienceMapping)) {
+            if (toolIds.includes(tool.id)) {
+                toolCategories.push(catId);
+            }
+        }
+        
+        if (toolCategories.length > 0) {
+            const usefulForText = lang === 'es' ? '🎯 Útil para:' : '🎯 Useful for:';
+            categoryBadges = `<div class="alert alert-info mt-3"><small>${usefulForText} `;
+            toolCategories.forEach((catId, index) => {
+                const cat = categories.find(c => c.id === catId);
+                if (cat) {
+                    const catUrl = lang === siteConfig.defaultLanguage ? `/${cat.slug[lang]}.html` : `/${lang}/${cat.slug[lang]}.html`;
+                    categoryBadges += `<a href="${catUrl}" class="badge bg-primary text-decoration-none">${cat.icon} ${cat.name[lang]}</a>`;
+                    if (index < toolCategories.length - 1) categoryBadges += ' ';
+                }
+            });
+            categoryBadges += '</small></div>';
+        }
+        
+        generatedHtml = generatedHtml.replace(/{{category_badges}}/g, categoryBadges);
         generatedHtml = generatedHtml.replace(/{{tool_content}}/g, toolContent);
         // Inject translations as global variable for JS
         const translationsScript = `
