@@ -75,10 +75,16 @@ async function generateCategoryPages() {
         const toolIds = audienceMapping[category.id] || [];
 
         for (const lang of siteConfig.languages) {
-            const toolsIndexLangPath = path.join(projectRoot, 'data', `tools-index-${lang}.json`);
-            const toolsIndex = JSON.parse(await fs.readFile(toolsIndexLangPath, 'utf8'));
-
-            const categoryTools = toolsIndex.filter(tool => toolIds.includes(tool.id));
+            // Get tools from unified index and translate
+            const categoryTools = toolsData.tools
+                .filter(tool => toolIds.includes(tool.id))
+                .map(tool => ({
+                    id: tool.id,
+                    title: tool.title[lang] || tool.title.en,
+                    description: tool.description[lang] || tool.description.en,
+                    icon: tool.icon,
+                    slug: tool.slug.replace('tools/', '')
+                }));
 
             let toolsGrid = '';
             categoryTools.forEach(tool => {
