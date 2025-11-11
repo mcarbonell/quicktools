@@ -1,6 +1,84 @@
 const fs = require('fs').promises;
 const path = require('path');
 
+// ====================
+// MARKDOWN PARSER
+// ====================
+
+// Parse minimal markdown: **bold**, [link](url)
+function parseMinimalMarkdown(text) {
+    if (!text) return '';
+    
+    return text
+        // Links: [text](url)
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+        // Bold: **text**
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        // Italic: *text* (optional, only if not already bold)
+        .replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, '<em>$1</em>');
+}
+
+// Render SEO content section from tool translations
+function renderSeoContent(seo) {
+    if (!seo) return '';
+    
+    let html = '\n        <!-- SEO Content Section -->\n';
+    html += '        <div class="seo-content mt-5 pt-4 border-top">\n';
+    
+    // What is section
+    if (seo.whatIsTitle && seo.whatIsContent) {
+        html += `            <h2 class="h4 mb-3">${seo.whatIsTitle}</h2>\n`;
+        html += `            <p class="mb-4">${parseMinimalMarkdown(seo.whatIsContent)}</p>\n`;
+    }
+    
+    // How to use section
+    if (seo.howToTitle && seo.howToSteps && seo.howToSteps.length > 0) {
+        html += `            <h3 class="h5 mb-3">${seo.howToTitle}</h3>\n`;
+        html += '            <ol class="mb-4">\n';
+        seo.howToSteps.forEach(step => {
+            html += `                <li>${parseMinimalMarkdown(step)}</li>\n`;
+        });
+        html += '            </ol>\n';
+    }
+    
+    // Use cases section
+    if (seo.useCasesTitle && seo.useCases && seo.useCases.length > 0) {
+        html += `            <h3 class="h5 mb-3">${seo.useCasesTitle}</h3>\n`;
+        html += '            <ul class="mb-4">\n';
+        seo.useCases.forEach(useCase => {
+            html += `                <li>${parseMinimalMarkdown(useCase)}</li>\n`;
+        });
+        html += '            </ul>\n';
+    }
+    
+    // FAQ section
+    if (seo.faqTitle && seo.faq && seo.faq.length > 0) {
+        html += `            <h3 class="h5 mb-3">${seo.faqTitle}</h3>\n`;
+        html += '            <div class="accordion" id="faqAccordion">\n';
+        seo.faq.forEach((item, index) => {
+            const collapseId = `faqCollapse${index}`;
+            const headingId = `faqHeading${index}`;
+            html += `                <div class="accordion-item">\n`;
+            html += `                    <h4 class="accordion-header" id="${headingId}">\n`;
+            html += `                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-expanded="false" aria-controls="${collapseId}">\n`;
+            html += `                            ${item.question}\n`;
+            html += `                        </button>\n`;
+            html += `                    </h4>\n`;
+            html += `                    <div id="${collapseId}" class="accordion-collapse collapse" aria-labelledby="${headingId}" data-bs-parent="#faqAccordion">\n`;
+            html += `                        <div class="accordion-body">\n`;
+            html += `                            ${parseMinimalMarkdown(item.answer)}\n`;
+            html += `                        </div>\n`;
+            html += `                    </div>\n`;
+            html += `                </div>\n`;
+        });
+        html += '            </div>\n';
+    }
+    
+    html += '        </div>\n';
+    
+    return html;
+}
+
 // Load site configuration
 const siteConfig = require('./site-config.json');
 const projectRoot = path.join(__dirname, 'web');
@@ -217,6 +295,10 @@ async function generateTools(toolsIndex, lang) {
         headExtra = replaceTranslations(headExtra, toolTranslations);
         toolContent = replaceTranslations(toolContent, toolTranslations);
         toolScript = replaceTranslations(toolScript, toolTranslations);
+        
+        // Generate SEO content if available
+        const seoContent = renderSeoContent(toolTranslations.seo);
+        toolContent += seoContent;
         
         // Get translated tool info from tools-index
         const translatedToolsIndexPath = path.join(dataDir, `tools-index-${lang}.json`);

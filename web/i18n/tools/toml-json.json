@@ -35,7 +35,41 @@
     "enterJsonToFormat": "Enter JSON to format",
     "jsonParseError": "Error parsing JSON",
     "noResultToCopy": "No result to copy",
-    "copyError": "Error copying"
+    "copyError": "Error copying",
+    "seo": {
+      "whatIsTitle": "What is TOML and JSON conversion and why is it useful?",
+      "whatIsContent": "**TOML (Tom's Obvious, Minimal Language)** and **JSON (JavaScript Object Notation)** are both **configuration file formats** and data serialization standards. **TOML uses INI-style sections** with key-value pairs for human-readable configuration, while **JSON uses nested objects** for flexible data representation. Converting between these formats helps **modernize configuration systems**, improve **cross-platform compatibility**, and enables **seamless data migration** between different development environments. Learn more about [TOML](https://en.wikipedia.org/wiki/TOML) and [JSON standardization](https://en.wikipedia.org/wiki/JSON).",
+      "howToTitle": "How to use the TOML ↔ JSON Converter tool?",
+      "howToSteps": [
+        "**Paste** your TOML or JSON data into the input area",
+        "**Choose conversion direction**: TOML → JSON or JSON → TOML",
+        "Click **'Convert'** to transform the configuration format",
+        "**Copy** the converted result or use JSON prettification options"
+      ],
+      "useCasesTitle": "Common use cases for TOML ↔ JSON conversion",
+      "useCases": [
+        "**Migrate Python project configurations** from TOML (pyproject.toml) to JSON APIs",
+        "**Convert Rust/Cargo configurations** to JSON for web-based tools",
+        "**Transform app settings** from TOML config files to JSON database entries",
+        "**Integrate systems** that use different configuration formats",
+        "**Modernize legacy configurations** to work with contemporary tools and APIs"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "How are TOML sections converted to JSON?",
+          "answer": "**TOML sections** (like [section]) become **nested objects** in JSON. Keys within sections become properties of the corresponding JSON objects, maintaining the **hierarchical structure** while preserving all data relationships."
+        },
+        {
+          "question": "What TOML data types are supported?",
+          "answer": "The converter supports TOML's **strings, integers, floats, booleans, dates/times, arrays, and inline tables**. Complex TOML features like **table arrays and dotted keys** are properly converted to their JSON equivalents."
+        },
+        {
+          "question": "Is this TOML/JSON converter safe?",
+          "answer": "Yes! All data processing happens **100% in your browser**. Your TOML and JSON data never leave your device and are not stored on any server, ensuring complete **privacy and security** of your configuration data."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -73,6 +107,40 @@
     "enterJsonToFormat": "Introduce JSON para formatear",
     "jsonParseError": "Error al parsear JSON",
     "noResultToCopy": "No hay resultado para copiar",
-    "copyError": "Error al copiar"
+    "copyError": "Error al copiar",
+    "seo": {
+      "whatIsTitle": "¿Qué es la conversión de TOML y JSON y por qué es útil?",
+      "whatIsContent": "**TOML (Tom's Obvious, Minimal Language)** y **JSON (JavaScript Object Notation)** son ambos **formatos de archivo de configuración** y estándares de serialización de datos. **TOML usa secciones estilo INI** con pares clave-valor para configuración legible por humanos, mientras que **JSON usa objetos anidados** para representación flexible de datos. Convertir entre estos formatos ayuda a **modernizar sistemas de configuración**, mejorar **compatibilidad multiplataforma**, y permite **migración seamless de datos** entre diferentes entornos de desarrollo. Aprende más sobre [TOML](https://es.wikipedia.org/wiki/TOML) y [estandarización JSON](https://es.wikipedia.org/wiki/JSON).",
+      "howToTitle": "¿Cómo usar la herramienta Conversor TOML ↔ JSON?",
+      "howToSteps": [
+        "**Pega** tus datos TOML o JSON en el área de entrada",
+        "**Elige la dirección de conversión**: TOML → JSON o JSON → TOML",
+        "Haz clic en **'Convertir'** para transformar el formato de configuración",
+        "**Copia** el resultado convertido o usa opciones de formateo JSON"
+      ],
+      "useCasesTitle": "Casos de uso comunes de conversión TOML ↔ JSON",
+      "useCases": [
+        "**Migrar configuraciones de proyectos Python** de TOML (pyproject.toml) a APIs JSON",
+        "**Convertir configuraciones Rust/Cargo** a JSON para herramientas web",
+        "**Transformar configuraciones de aplicaciones** de archivos TOML config a entradas JSON en base de datos",
+        "**Integrar sistemas** que usan diferentes formatos de configuración",
+        "**Modernizar configuraciones legacy** para trabajar con herramientas y APIs contemporáneas"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Cómo se convierten las secciones TOML a JSON?",
+          "answer": "Las **secciones TOML** (como [sección]) se convierten en **objetos anidados** en JSON. Las claves dentro de secciones se convierten en propiedades de los objetos JSON correspondientes, manteniendo la **estructura jerárquica** mientras se preservan todas las relaciones de datos."
+        },
+        {
+          "question": "¿Qué tipos de datos TOML son compatibles?",
+          "answer": "El convertidor soporta los tipos de datos de TOML: **cadenas, enteros, decimales, booleanos, fechas/horas, arrays y tablas en línea**. Las características TOML complejas como **arrays de tablas y claves con puntos** se convierten correctamente a sus equivalentes JSON."
+        },
+        {
+          "question": "¿Este conversor TOML/JSON es seguro?",
+          "answer": "¡Sí! Todo el procesamiento de datos ocurre **100% en tu navegador**. Tus datos TOML y JSON nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tus datos de configuración."
+        }
+      ]
+    }
   }
 }

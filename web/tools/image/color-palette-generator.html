@@ -80,11 +80,71 @@
 <div id="output" class="mt-3">
     <div id="palette-display" class="d-flex flex-wrap gap-2"></div>
 </div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What is color palette extraction?</h2>
+            <p class="mb-4"><strong>Color palette extraction</strong> is the process of analyzing an image to identify and extract its <strong>dominant colors</strong>. Using color theory and <strong>image processing algorithms</strong>, this technique helps designers and developers create consistent <strong>color schemes</strong> for branding, web design, and artistic projects. The extracted palette typically includes hex codes, RGB values, and visual representations of the most prominent colors. Learn more about <a href="https://en.wikipedia.org/wiki/Color_theory" target="_blank" rel="noopener">color theory</a> and <a href="https://en.wikipedia.org/wiki/Image_processing" target="_blank" rel="noopener">image processing</a>.</p>
+            <h3 class="h5 mb-3">How to use the Color Palette Generator tool?</h3>
+            <ol class="mb-4">
+                <li><strong>Upload</strong> your image by dragging it to the drop area or clicking to select</li>
+                <li>Adjust the <strong>number of colors</strong> in the palette (2-10 colors)</li>
+                <li>Click <strong>'Extract Palette'</strong> to analyze the image colors</li>
+                <li><strong>Copy</strong> individual color codes or download the complete palette</li>
+            </ol>
+            <h3 class="h5 mb-3">Common use cases for color palette extraction</h3>
+            <ul class="mb-4">
+                <li>Create <strong>brand color schemes</strong> for consistent <a href="https://www.smashingmagazine.com/2010/01/color-theory-for-designers-part-1-the-meaning-of-color/" target="_blank" rel="noopener">visual identity</a></li>
+                <li>Extract <strong>inspiration colors</strong> from nature, photos, or artwork</li>
+                <li>Generate <strong>CSS color variables</strong> for web development projects</li>
+                <li>Analyze <strong>competitor branding</strong> by extracting colors from their logos</li>
+                <li>Create <strong>harmonious color combinations</strong> for design projects</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            How accurate is the color extraction?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            The extraction uses <strong>advanced algorithms</strong> to identify the most dominant colors in your image. Results depend on image quality, resolution, and color complexity. Higher resolution images typically provide more accurate results.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            Can I use the extracted colors for commercial projects?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! Extracted colors are based on <strong>image analysis</strong> and don't contain copyrighted content. You can freely use the color codes for branding, design, and development projects.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            Is this color palette generator safe?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! All image processing happens <strong>100% in your browser</strong>. Your images never leave your device and are not stored on any server, ensuring complete privacy and security.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","generateButton":"Generate Palette","selectImageLabel":"Select an image","dropMessage":"Drag your image here or click to select","colorCountLabel":"Number of colors in palette (2-10)","extractPaletteButton":"Extract Palette","imageLoaded":"Image loaded: {filename}","uploadImageFirst":"Please upload an image first.","errorExtractingPalette":"Error extracting color palette:","errorExtractingPaletteGeneric":"Could not extract color palette. Make sure the image is valid and not corrupted."};
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","generateButton":"Generate Palette","selectImageLabel":"Select an image","dropMessage":"Drag your image here or click to select","colorCountLabel":"Number of colors in palette (2-10)","extractPaletteButton":"Extract Palette","imageLoaded":"Image loaded: {filename}","uploadImageFirst":"Please upload an image first.","errorExtractingPalette":"Error extracting color palette:","errorExtractingPaletteGeneric":"Could not extract color palette. Make sure the image is valid and not corrupted.","seo":{"whatIsTitle":"What is color palette extraction?","whatIsContent":"**Color palette extraction** is the process of analyzing an image to identify and extract its **dominant colors**. Using color theory and **image processing algorithms**, this technique helps designers and developers create consistent **color schemes** for branding, web design, and artistic projects. The extracted palette typically includes hex codes, RGB values, and visual representations of the most prominent colors. Learn more about [color theory](https://en.wikipedia.org/wiki/Color_theory) and [image processing](https://en.wikipedia.org/wiki/Image_processing).","howToTitle":"How to use the Color Palette Generator tool?","howToSteps":["**Upload** your image by dragging it to the drop area or clicking to select","Adjust the **number of colors** in the palette (2-10 colors)","Click **'Extract Palette'** to analyze the image colors","**Copy** individual color codes or download the complete palette"],"useCasesTitle":"Common use cases for color palette extraction","useCases":["Create **brand color schemes** for consistent [visual identity](https://www.smashingmagazine.com/2010/01/color-theory-for-designers-part-1-the-meaning-of-color/)","Extract **inspiration colors** from nature, photos, or artwork","Generate **CSS color variables** for web development projects","Analyze **competitor branding** by extracting colors from their logos","Create **harmonious color combinations** for design projects"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"How accurate is the color extraction?","answer":"The extraction uses **advanced algorithms** to identify the most dominant colors in your image. Results depend on image quality, resolution, and color complexity. Higher resolution images typically provide more accurate results."},{"question":"Can I use the extracted colors for commercial projects?","answer":"Yes! Extracted colors are based on **image analysis** and don't contain copyrighted content. You can freely use the color codes for branding, design, and development projects."},{"question":"Is this color palette generator safe?","answer":"Yes! All image processing happens **100% in your browser**. Your images never leave your device and are not stored on any server, ensuring complete privacy and security."}]}};
     </script>
 <script src="/js/vendor/color-thief.min.js"></script>
 <script src="/js/tools/color-palette-generator.js"></script>

@@ -27,7 +27,41 @@
     "quietZoneLabel": "Quiet zone",
     "downloadPngButton": "Download PNG",
     "copyImageButton": "Copy image",
-    "qrPreviewPlaceholder": "QR will appear here"
+    "qrPreviewPlaceholder": "QR will appear here",
+    "seo": {
+      "whatIsTitle": "What is QR code technology and how does it work?",
+      "whatIsContent": "**QR (Quick Response) codes** are **two-dimensional matrix barcodes** that can store large amounts of data including URLs, text, and contact information. Developed in Japan in 1994 for **automotive industry tracking**, QR codes use **error correction algorithms** to ensure reliable scanning even if partially damaged. Modern QR codes can encode up to **4,296 characters** and support **international character sets**. They revolutionized **mobile marketing**, **payment systems**, and **digital information sharing** worldwide. Learn more about [QR code technology](https://en.wikipedia.org/wiki/QR_code) and [optical data storage](https://en.wikipedia.org/wiki/Optical_storage).",
+      "howToTitle": "How to use the QR Code Generator tool?",
+      "howToSteps": [
+        "**Enter your text or URL** in the input field (supports URLs, text, contact info)",
+        "**Adjust the size** for your intended use (larger for better scanning distance)",
+        "**Choose error correction level** (H for damaged codes, L for high data capacity)",
+        "**Generate and download** your QR code as PNG or copy to clipboard"
+      ],
+      "useCasesTitle": "Common use cases for QR codes",
+      "useCases": [
+        "**Business marketing** - connect customers to websites, menus, or contact information",
+        "**Payment processing** - enable quick payments through banking apps and digital wallets",
+        "**Event management** - provide instant access to event details, schedules, or check-in",
+        "**Education** - share learning resources, assignments, or interactive content",
+        "**Product information** - link to specifications, reviews, or safety data sheets"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What's the difference between QR code error correction levels?",
+          "answer": "**Level L (Low)** allows 7% damage, **M (Medium)** 15%, **Q (Quartile)** 25%, and **H (High)** 30%. Choose **higher levels** for codes that might get damaged, or **lower levels** to store more data in smaller codes."
+        },
+        {
+          "question": "How much data can QR codes hold?",
+          "answer": "QR codes can hold **up to 4,296 alphanumeric characters**, **7,089 numeric-only digits**, or **2,953 bytes** of binary data. The actual capacity depends on the **error correction level** and **character encoding** used."
+        },
+        {
+          "question": "Is this QR generator safe?",
+          "answer": "Yes! All QR code generation happens **100% in your browser**. Your data never leaves your device and is not stored on any server, ensuring complete **privacy and security** of your information."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -57,6 +91,40 @@
     "quietZoneLabel": "Zona silenciosa",
     "downloadPngButton": "Descargar PNG",
     "copyImageButton": "Copiar imagen",
-    "qrPreviewPlaceholder": "Aquí aparecerá el QR"
+    "qrPreviewPlaceholder": "Aquí aparecerá el QR",
+    "seo": {
+      "whatIsTitle": "¿Qué es la tecnología de códigos QR y cómo funciona?",
+      "whatIsContent": "Los **códigos QR (Quick Response)** son **códigos de barras matriciales bidimensionales** que pueden almacenar grandes cantidades de datos incluyendo URLs, texto e información de contacto. Desarrollados en Japón en 1994 para **seguimiento de la industria automotriz**, los códigos QR usan **algoritmos de corrección de errores** para asegurar escaneo confiable incluso si están parcialmente dañados. Los códigos QR modernos pueden codificar hasta **4,296 caracteres** y soportar **conjuntos de caracteres internacionales**. Revolucionaron el **marketing móvil**, **sistemas de pago** e **intercambio de información digital** en todo el mundo. Aprende más sobre [tecnología de códigos QR](https://es.wikipedia.org/wiki/C%C3%B3digo_QR) y [almacenamiento óptico de datos](https://es.wikipedia.org/wiki/Almacenamiento_%C3%B3ptico).",
+      "howToTitle": "¿Cómo usar la herramienta Generador de Códigos QR?",
+      "howToSteps": [
+        "**Introduce tu texto o URL** en el campo de entrada (soporta URLs, texto, información de contacto)",
+        "**Ajusta el tamaño** para tu uso previsto (más grande para mejor distancia de escaneo)",
+        "**Elige el nivel de corrección de errores** (H para códigos dañados, L para alta capacidad de datos)",
+        "**Genera y descarga** tu código QR como PNG o cópialo al portapapeles"
+      ],
+      "useCasesTitle": "Casos de uso comunes de códigos QR",
+      "useCases": [
+        "**Marketing empresarial** - conecta clientes con sitios web, menús o información de contacto",
+        "**Procesamiento de pagos** - habilita pagos rápidos a través de apps bancarias y billeteras digitales",
+        "**Gestión de eventos** - proporciona acceso instantáneo a detalles de eventos, horarios o check-in",
+        "**Educación** - comparte recursos de aprendizaje, tareas o contenido interactivo",
+        "**Información de productos** - enlaza con especificaciones, reseñas o fichas de datos de seguridad"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Cuál es la diferencia entre los niveles de corrección de errores QR?",
+          "answer": "El **nivel L (Baja)** permite 7% de daño, **M (Media)** 15%, **Q (Cuartil)** 25%, y **H (Alta)** 30%. Elige **niveles más altos** para códigos que podrían dañarse, o **niveles más bajos** para almacenar más datos en códigos más pequeños."
+        },
+        {
+          "question": "¿Cuántos datos pueden almacenar los códigos QR?",
+          "answer": "Los códigos QR pueden almacenar **hasta 4,296 caracteres alfanuméricos**, **7,089 dígitos solo numéricos**, o **2,953 bytes** de datos binarios. La capacidad real depende del **nivel de corrección de errores** y **codificación de caracteres** utilizados."
+        },
+        {
+          "question": "¿Este generador de QR es seguro?",
+          "answer": "¡Sí! Toda la generación de códigos QR ocurre **100% en tu navegador**. Tus datos nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tu información."
+        }
+      ]
+    }
   }
 }

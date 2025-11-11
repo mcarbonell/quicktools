@@ -34,7 +34,41 @@
     "errorCompressing": "Error compressing image:",
     "compressImageFirst": "First, compress an image.",
     "imageDownloaded": "Image downloaded.",
-    "notAvailable": "N/A"
+    "notAvailable": "N/A",
+    "seo": {
+      "whatIsTitle": "What is image compression and why is it important?",
+      "whatIsContent": "**Image compression** is the process of reducing file size by removing unnecessary data while maintaining **visual quality** as much as possible. Using advanced **compression algorithms** like JPEG optimization and WebP technology, this process helps websites load faster, reduces **bandwidth usage**, and improves user experience. Effective compression can reduce file sizes by 50-90% without noticeable quality loss. Learn more about [image compression](https://en.wikipedia.org/wiki/Image_compression) and [web performance optimization](https://web.dev/fast/).",
+      "howToTitle": "How to use the Image Compressor tool?",
+      "howToSteps": [
+        "**Upload** your image by dragging it to the drop area or clicking to select",
+        "**Adjust the quality slider** to balance compression and visual quality",
+        "Click **'Compress Image'** to start the compression process",
+        "**Download** the compressed image and compare sizes"
+      ],
+      "useCasesTitle": "Common use cases for image compression",
+      "useCases": [
+        "Optimize **website performance** and [Core Web Vitals](https://web.dev/vitals/) scores",
+        "Reduce **file sizes for email** attachments and cloud storage",
+        "Improve **mobile browsing** experience with faster loading times",
+        "Prepare **images for social media** while maintaining quality",
+        "Lower **hosting costs** by reducing bandwidth and storage needs"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What's the difference between lossy and lossless compression?",
+          "answer": "**Lossy compression** (like JPEG) permanently removes some data for smaller files, while **lossless compression** (like PNG optimization) preserves all data but with limited size reduction. Most photos work well with lossy compression at 80-90% quality."
+        },
+        {
+          "question": "How much can image compression reduce file size?",
+          "answer": "Compression can typically reduce file sizes by **50-90%** depending on the image content and quality settings. Simple images with solid colors compress more than complex photos with lots of detail."
+        },
+        {
+          "question": "Is this image compressor safe?",
+          "answer": "Yes! All compression happens **100% in your browser**. Your images never leave your device and are not stored on any server, ensuring complete privacy and security."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -71,6 +105,40 @@
     "errorCompressing": "Error al comprimir la imagen:",
     "compressImageFirst": "Primero, comprime una imagen.",
     "imageDownloaded": "Imagen descargada.",
-    "notAvailable": "N/A"
+    "notAvailable": "N/A",
+    "seo": {
+      "whatIsTitle": "¿Qué es la compresión de imágenes y por qué es importante?",
+      "whatIsContent": "La **compresión de imágenes** es el proceso de reducir el tamaño del archivo eliminando datos innecesarios mientras se mantiene la **calidad visual** tanto como sea posible. Usando **algoritmos de compresión** avanzados como la optimización JPEG y la tecnología WebP, este proceso ayuda a que los sitios web carguen más rápido, reduce el **uso de ancho de banda**, y mejora la experiencia del usuario. La compresión efectiva puede reducir tamaños de archivo en 50-90% sin pérdida de calidad noticeable. Aprende más sobre [compresión de imágenes](https://es.wikipedia.org/wiki/Compresi%C3%B3n_de_imagen) y [optimización de rendimiento web](https://web.dev/fast/).",
+      "howToTitle": "¿Cómo usar la herramienta Compresor de Imágenes?",
+      "howToSteps": [
+        "**Sube** tu imagen arrastrándola al área de selección o haciendo clic para elegir",
+        "**Ajusta el control deslizante de calidad** para equilibrar compresión y calidad visual",
+        "Haz clic en **'Comprimir Imagen'** para iniciar el proceso de compresión",
+        "**Descarga** la imagen comprimida y compara los tamaños"
+      ],
+      "useCasesTitle": "Casos de uso comunes de compresión de imágenes",
+      "useCases": [
+        "Optimizar **rendimiento del sitio web** y puntajes de [Core Web Vitals](https://web.dev/vitals/)",
+        "Reducir **tamaños de archivo para email** y almacenamiento en la nube",
+        "Mejorar la experiencia de **navegación móvil** con tiempos de carga más rápidos",
+        "Preparar **imágenes para redes sociales** manteniendo la calidad",
+        "Reducir **costos de hosting** al disminuir necesidades de ancho de banda y almacenamiento"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Cuál es la diferencia entre compresión con pérdida y sin pérdida?",
+          "answer": "La **compresión con pérdida** (como JPEG) elimina permanentemente algunos datos para archivos más pequeños, mientras que la **compresión sin pérdida** (como optimización PNG) preserva todos los datos pero con reducción de tamaño limitada. La mayoría de fotos funcionan bien con compresión con pérdida al 80-90% de calidad."
+        },
+        {
+          "question": "¿Cuánto puede reducir la compresión de imágenes el tamaño del archivo?",
+          "answer": "La compresión típicamente puede reducir tamaños de archivo en **50-90%** dependiendo del contenido de la imagen y la configuración de calidad. Las imágenes simples con colores sólidos se comprimen más que las fotos complejas con muchos detalles."
+        },
+        {
+          "question": "¿Este compresor de imágenes es seguro?",
+          "answer": "¡Sí! Toda la compresión ocurre **100% en tu navegador**. Tus imágenes nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando privacidad y seguridad completas."
+        }
+      ]
+    }
   }
 }

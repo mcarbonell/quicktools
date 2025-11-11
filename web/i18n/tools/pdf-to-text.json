@@ -24,7 +24,41 @@
     "selectPdfFirst": "Select a PDF file first.",
     "extractingText": "Extracting text...",
     "pdfExtractError": "Error extracting PDF",
-    "copyError": "Error copying"
+    "copyError": "Error copying",
+    "seo": {
+      "whatIsTitle": "What is PDF text extraction and why is it useful?",
+      "whatIsContent": "**PDF text extraction** is the process of converting PDF documents into **readable text format**, making the content searchable, editable, and accessible. This technique uses **Optical Character Recognition (OCR)** and PDF parsing algorithms to extract text from scanned documents, forms, and digital PDFs. Extracting text enables **data analysis**, content migration, and improved **accessibility** for screen readers. Learn more about [PDF technology](https://en.wikipedia.org/wiki/PDF) and [text extraction methods](https://en.wikipedia.org/wiki/Optical_character_recognition).",
+      "howToTitle": "How to use the PDF to Text Extractor tool?",
+      "howToSteps": [
+        "**Upload** your PDF by dragging it to the drop area or clicking to select",
+        "Click **'Extract Text'** to start the extraction process",
+        "**Review** the extracted text in the output area",
+        "**Copy** the text to clipboard or use it in your preferred application"
+      ],
+      "useCasesTitle": "Common use cases for PDF text extraction",
+      "useCases": [
+        "Convert **scanned documents** into searchable and editable text",
+        "Extract **data from forms** for database input or analysis",
+        "Make **PDF content accessible** for screen readers and [assistive technology](https://www.w3.org/WAI/fundamentals/accessibility-intro/)",
+        "**Migrate content** from old PDFs to modern content management systems",
+        "**Search and analyze** large collections of PDF documents efficiently"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Can this tool extract text from scanned PDFs?",
+          "answer": "Yes! The tool can extract text from both **digital PDFs** (text-based) and **scanned PDFs** (image-based) using advanced OCR technology. However, text quality may vary depending on the **scan quality** and document complexity."
+        },
+        {
+          "question": "What happens to images and formatting in the PDF?",
+          "answer": "The tool focuses on **text extraction only**. Images, complex formatting, tables, and layouts are not preserved. For complete document conversion including images, consider using dedicated [PDF conversion tools](https://smallpdf.com/pdf-to-word)."
+        },
+        {
+          "question": "Is this PDF text extractor safe?",
+          "answer": "Yes! All PDF processing happens **100% in your browser**. Your PDF files never leave your device and are not stored on any server, ensuring complete **privacy and security** of your sensitive documents."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -51,6 +85,40 @@
     "selectPdfFirst": "Selecciona un archivo PDF primero.",
     "extractingText": "Extrayendo texto...",
     "pdfExtractError": "Error extrayendo PDF",
-    "copyError": "Error al copiar"
+    "copyError": "Error al copiar",
+    "seo": {
+      "whatIsTitle": "¿Qué es la extracción de texto de PDF y por qué es útil?",
+      "whatIsContent": "La **extracción de texto de PDF** es el proceso de convertir documentos PDF en **formato de texto legible**, haciendo el contenido buscable, editable y accesible. Esta técnica usa **Reconocimiento Óptico de Caracteres (OCR)** y algoritmos de análisis de PDF para extraer texto de documentos escaneados, formularios y PDFs digitales. Extraer texto permite **análisis de datos**, migración de contenido y mejor **accesibilidad** para lectores de pantalla. Aprende más sobre [tecnología PDF](https://es.wikipedia.org/wiki/PDF) y [métodos de extracción de texto](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres).",
+      "howToTitle": "¿Cómo usar la herramienta Extractor de PDF a Texto?",
+      "howToSteps": [
+        "**Sube** tu PDF arrastrándolo al área de selección o haciendo clic para elegir",
+        "Haz clic en **'Extraer Texto'** para iniciar el proceso de extracción",
+        "**Revisa** el texto extraído en el área de salida",
+        "**Copia** el texto al portapapeles o úsalo en tu aplicación preferida"
+      ],
+      "useCasesTitle": "Casos de uso comunes de extracción de texto de PDF",
+      "useCases": [
+        "Convertir **documentos escaneados** en texto buscable y editable",
+        "Extraer **datos de formularios** para entrada o análisis en bases de datos",
+        "Hacer **contenido PDF accesible** para lectores de pantalla y [tecnología asistiva](https://www.w3.org/WAI/fundamentals/accessibility-intro/)",
+        "**Migrar contenido** de PDFs antiguos a sistemas modernos de gestión de contenido",
+        "**Buscar y analizar** grandes colecciones de documentos PDF eficientemente"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Puede esta herramienta extraer texto de PDFs escaneados?",
+          "answer": "¡Sí! La herramienta puede extraer texto tanto de **PDFs digitales** (basados en texto) como de **PDFs escaneados** (basados en imágenes) usando tecnología OCR avanzada. Sin embargo, la calidad del texto puede variar dependiendo de la **calidad del escaneo** y la complejidad del documento."
+        },
+        {
+          "question": "¿Qué pasa con las imágenes y el formato en el PDF?",
+          "answer": "La herramienta se enfoca en **extracción de texto únicamente**. Las imágenes, formatos complejos, tablas y diseños no se preservan. Para conversión completa de documentos incluyendo imágenes, considera usar [herramientas de conversión PDF](https://smallpdf.com/pdf-to-word) dedicadas."
+        },
+        {
+          "question": "¿Este extractor de texto de PDF es seguro?",
+          "answer": "¡Sí! Todo el procesamiento de PDF ocurre **100% en tu navegador**. Tus archivos PDF nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tus documentos sensibles."
+        }
+      ]
+    }
   }
 }

@@ -28,7 +28,41 @@
     "newSize": "New size: {size} MB",
     "downloadCompressedPdf": "Download compressed PDF",
     "errorCompressingPdf": "Error compressing PDF:",
-    "errorCompressingGeneric": "An error occurred while compressing the PDF. This PDF may not be compressible."
+    "errorCompressingGeneric": "An error occurred while compressing the PDF. This PDF may not be compressible.",
+    "seo": {
+      "whatIsTitle": "What is PDF compression and why is it important?",
+      "whatIsContent": "**PDF compression** is the process of reducing PDF file size by optimizing **images, fonts, and metadata** while maintaining document quality and readability. Using advanced **compression algorithms** like image downsampling and font subsetting, this technique significantly reduces file sizes (often 50-80% smaller) without affecting **text quality or readability**. Compressed PDFs load faster, use less storage, and improve **user experience** when sharing or viewing online. Learn more about [PDF compression techniques](https://en.wikipedia.org/wiki/PDF#Optimization) and [file optimization](https://en.wikipedia.org/wiki/Data_compression).",
+      "howToTitle": "How to use the PDF Compressor tool?",
+      "howToSteps": [
+        "**Upload** your PDF by dragging it to the drop area or clicking to select",
+        "**Adjust the image quality** slider (0.1 = high compression, 1.0 = high quality)",
+        "Click **'Compress PDF'** to start the optimization process",
+        "**Download** the compressed PDF and compare file sizes"
+      ],
+      "useCasesTitle": "Common use cases for PDF compression",
+      "useCases": [
+        "Reduce **email attachment sizes** for easier sharing and faster transmission",
+        "Optimize **web documents** for faster [page loading](https://web.dev/fast/)",
+        "Save **storage space** on servers, cloud storage, and local devices",
+        "Improve **mobile viewing** experience with faster downloads",
+        "Prepare **presentations and reports** for efficient distribution"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "How much can PDF compression reduce file size?",
+          "answer": "PDF compression typically reduces file sizes by **50-80%** depending on the document content, image quality settings, and original file optimization. Documents with many high-resolution images benefit most from compression."
+        },
+        {
+          "question": "Does compression affect PDF quality?",
+          "answer": "Compression affects **image quality only**, not text or vector graphics. Text remains **crisp and readable** at all compression levels. Images may show slight quality reduction at higher compression levels, but they remain suitable for viewing and printing."
+        },
+        {
+          "question": "Is this PDF compressor safe?",
+          "answer": "Yes! All PDF processing happens **100% in your browser**. Your PDF files never leave your device and are not stored on any server, ensuring complete **privacy and security** of your sensitive documents."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -59,6 +93,40 @@
     "newSize": "Tamaño nuevo: {size} MB",
     "downloadCompressedPdf": "Descargar PDF comprimido",
     "errorCompressingPdf": "Error al comprimir el PDF:",
-    "errorCompressingGeneric": "Ocurrió un error al comprimir el PDF. Es posible que este PDF no se pueda comprimir."
+    "errorCompressingGeneric": "Ocurrió un error al comprimir el PDF. Es posible que este PDF no se pueda comprimir.",
+    "seo": {
+      "whatIsTitle": "¿Qué es la compresión de PDF y por qué es importante?",
+      "whatIsContent": "La **compresión de PDF** es el proceso de reducir el tamaño de archivo PDF optimizando **imágenes, fuentes y metadatos** mientras se mantiene la calidad del documento y legibilidad. Usando **algoritmos de compresión** avanzados como submuestreo de imágenes y subconjuntos de fuentes, esta técnica reduce significativamente los tamaños de archivo (frecuentemente 50-80% más pequeños) sin afectar la **calidad del texto o legibilidad**. Los PDFs comprimidos cargan más rápido, usan menos almacenamiento y mejoran la **experiencia del usuario** al compartir o ver en línea. Aprende más sobre [técnicas de compresión PDF](https://es.wikipedia.org/wiki/PDF#Optimizaci%C3%B3n) y [optimización de archivos](https://es.wikipedia.org/wiki/Compresi%C3%B3n_de_datos).",
+      "howToTitle": "¿Cómo usar la herramienta Compresor de PDF?",
+      "howToSteps": [
+        "**Sube** tu PDF arrastrándolo al área de selección o haciendo clic para elegir",
+        "**Ajusta el control deslizante de calidad de imagen** (0.1 = alta compresión, 1.0 = alta calidad)",
+        "Haz clic en **'Comprimir PDF'** para iniciar el proceso de optimización",
+        "**Descarga** el PDF comprimido y compara los tamaños de archivo"
+      ],
+      "useCasesTitle": "Casos de uso comunes de compresión de PDF",
+      "useCases": [
+        "Reducir **tamaños de archivos adjuntos de email** para compartir más fácil y transmisión más rápida",
+        "Optimizar **documentos web** para carga más rápida de [páginas](https://web.dev/fast/)",
+        "Ahorrar **espacio de almacenamiento** en servidores, almacenamiento en la nube y dispositivos locales",
+        "Mejorar la experiencia de **visualización móvil** con descargas más rápidas",
+        "Preparar **presentaciones y reportes** para distribución eficiente"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Cuánto puede reducir la compresión de PDF el tamaño del archivo?",
+          "answer": "La compresión de PDF típicamente reduce tamaños de archivo en **50-80%** dependiendo del contenido del documento, configuración de calidad de imagen y optimización del archivo original. Los documentos con muchas imágenes de alta resolución se benefician más de la compresión."
+        },
+        {
+          "question": "¿Afecta la compresión a la calidad del PDF?",
+          "answer": "La compresión afecta **solo la calidad de imagen**, no el texto o gráficos vectoriales. El texto permanece **nítido y legible** en todos los niveles de compresión. Las imágenes pueden mostrar una ligera reducción de calidad en niveles de compresión más altos, pero permanecen adecuadas para visualización e impresión."
+        },
+        {
+          "question": "¿Este compresor de PDF es seguro?",
+          "answer": "¡Sí! Todo el procesamiento de PDF ocurre **100% en tu navegador**. Tus archivos PDF nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tus documentos sensibles."
+        }
+      ]
+    }
   }
 }

@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "QuickTools - Productivity Suite",
+    "name": "FastTools - Productivity Suite",
     "version": "1.0.0",
-    "description": "Suite completa de herramientas de productividad - 30+ tools para desarrolladores y profesionales",
+    "description": "Suite completa de herramientas de productividad - 33 herramientas para desarrolladores y profesionales",
     "permissions": [
         "activeTab",
         "storage",
@@ -85,7 +85,8 @@
                 "tools/*",
                 "libs/*",
                 "newtab/*",
-                "popup/*"
+                "popup/*",
+                "data/*"
             ],
             "matches": [
                 "<all_urls>"

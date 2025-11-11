@@ -74,11 +74,71 @@
 <button id="split-btn" class="btn btn-primary">Split PDF</button>
 
 <div id="output" class="mt-3"></div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What is PDF splitting and why is it useful?</h2>
+            <p class="mb-4"><strong>PDF splitting</strong> is the process of extracting specific pages or page ranges from a large PDF document to create <strong>smaller, focused PDF files</strong>. This technique uses precise <strong>page extraction algorithms</strong> to maintain document quality, formatting, and content integrity. Splitting PDFs helps with <strong>document organization</strong>, sharing specific sections, and creating <strong>targeted documents</strong> for different purposes. Learn more about <a href="https://en.wikipedia.org/wiki/PDF#Content_extraction" target="_blank" rel="noopener">PDF page extraction</a> and <a href="https://en.wikipedia.org/wiki/Document_management_system" target="_blank" rel="noopener">document management strategies</a>.</p>
+            <h3 class="h5 mb-3">How to use the PDF Splitter tool?</h3>
+            <ol class="mb-4">
+                <li><strong>Upload</strong> your PDF by dragging it to the drop area or clicking to select</li>
+                <li><strong>Enter the page numbers</strong> you want to extract (e.g., 1, 3-5, 8)</li>
+                <li>Click <strong>'Split PDF'</strong> to start the extraction process</li>
+                <li><strong>Download</strong> the new PDF with the selected pages</li>
+            </ol>
+            <h3 class="h5 mb-3">Common use cases for PDF splitting</h3>
+            <ul class="mb-4">
+                <li>Extract <strong>specific chapters</strong> or sections from large books or reports</li>
+                <li>Share <strong>individual pages</strong> or forms without the entire document</li>
+                <li>Create <strong>presentation slides</strong> from multi-page PDF documents</li>
+                <li>Separate <strong>invoice pages</strong> or receipts for different clients</li>
+                <li><strong>Archive specific documents</strong> like certificates or legal pages</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            What page number formats are supported?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            You can specify pages using <strong>individual numbers</strong> (1, 5, 10), <strong>ranges</strong> (3-7, 10-15), or <strong>combinations</strong> (1, 3-5, 8, 10-12). Page numbering starts from <strong>1</strong> and corresponds to the actual page numbers in your PDF.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            Does splitting affect PDF quality?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            No! <strong>Page extraction maintains full quality</strong> of the selected pages. The split PDF contains <strong>exact copies</strong> of the original pages with the same resolution, formatting, images, and text quality as the source document.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            Is this PDF splitter safe?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! All PDF processing happens <strong>100% in your browser</strong>. Your PDF files never leave your device and are not stored on any server, ensuring complete <strong>privacy and security</strong> of your sensitive documents.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","splitButton":"Split PDF","selectPdfFileLabel":"Select a PDF file","dropMessage":"Drag your PDF here or click to select","pagesToExtractLabel":"Pages to extract (e.g.: 1, 3-5, 8)","pagesPlaceholder":"1, 3-5, 8","fileLoaded":"File loaded: {filename}","selectPdfFile":"Please select a PDF file.","specifyPages":"Please specify the pages to extract.","processingText":"Processing...","invalidPages":"The specified pages are not valid.","downloadSplitPdf":"Download split PDF","errorSplittingPdf":"Error splitting PDF:","errorSplittingGeneric":"An error occurred while splitting the PDF. Please try again."};
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","splitButton":"Split PDF","selectPdfFileLabel":"Select a PDF file","dropMessage":"Drag your PDF here or click to select","pagesToExtractLabel":"Pages to extract (e.g.: 1, 3-5, 8)","pagesPlaceholder":"1, 3-5, 8","fileLoaded":"File loaded: {filename}","selectPdfFile":"Please select a PDF file.","specifyPages":"Please specify the pages to extract.","processingText":"Processing...","invalidPages":"The specified pages are not valid.","downloadSplitPdf":"Download split PDF","errorSplittingPdf":"Error splitting PDF:","errorSplittingGeneric":"An error occurred while splitting the PDF. Please try again.","seo":{"whatIsTitle":"What is PDF splitting and why is it useful?","whatIsContent":"**PDF splitting** is the process of extracting specific pages or page ranges from a large PDF document to create **smaller, focused PDF files**. This technique uses precise **page extraction algorithms** to maintain document quality, formatting, and content integrity. Splitting PDFs helps with **document organization**, sharing specific sections, and creating **targeted documents** for different purposes. Learn more about [PDF page extraction](https://en.wikipedia.org/wiki/PDF#Content_extraction) and [document management strategies](https://en.wikipedia.org/wiki/Document_management_system).","howToTitle":"How to use the PDF Splitter tool?","howToSteps":["**Upload** your PDF by dragging it to the drop area or clicking to select","**Enter the page numbers** you want to extract (e.g., 1, 3-5, 8)","Click **'Split PDF'** to start the extraction process","**Download** the new PDF with the selected pages"],"useCasesTitle":"Common use cases for PDF splitting","useCases":["Extract **specific chapters** or sections from large books or reports","Share **individual pages** or forms without the entire document","Create **presentation slides** from multi-page PDF documents","Separate **invoice pages** or receipts for different clients","**Archive specific documents** like certificates or legal pages"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"What page number formats are supported?","answer":"You can specify pages using **individual numbers** (1, 5, 10), **ranges** (3-7, 10-15), or **combinations** (1, 3-5, 8, 10-12). Page numbering starts from **1** and corresponds to the actual page numbers in your PDF."},{"question":"Does splitting affect PDF quality?","answer":"No! **Page extraction maintains full quality** of the selected pages. The split PDF contains **exact copies** of the original pages with the same resolution, formatting, images, and text quality as the source document."},{"question":"Is this PDF splitter safe?","answer":"Yes! All PDF processing happens **100% in your browser**. Your PDF files never leave your device and are not stored on any server, ensuring complete **privacy and security** of your sensitive documents."}]}};
     </script>
 <script src="/js/vendor/pdf-lib.js"></script>
 <script src="/js/tools/split-pdf.js"></script>

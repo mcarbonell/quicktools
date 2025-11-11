@@ -88,11 +88,71 @@
 
     <button class="btn btn-primary" onclick="summarize()" id="summarizeBtn">✨ Resumir</button>
 </div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">¿Qué es la resumificación de texto con IA y por qué es útil?</h2>
+            <p class="mb-4">La <strong>resumificación de texto con IA</strong> es una técnica avanzada de <strong>procesamiento de lenguaje natural</strong> que usa <strong>inteligencia artificial</strong> para crear automáticamente <strong>resúmenes concisos</strong> de textos más largos. Esta tecnología identifica <strong>información clave</strong>, <strong>ideas principales</strong> y <strong>detalles importantes</strong> mientras elimina <strong>redundancia</strong> y <strong>contenido menos relevante</strong>. La resumificación con IA ayuda a los usuarios <strong>entender rápidamente</strong> documentos extensos, papers de investigación, artículos e informes extrayendo la <strong>información más esencial</strong> en un <strong>formato digerible</strong>. Esto ahorra <strong>tiempo, mejora la comprensión</strong> y permite <strong>procesamiento eficiente de información</strong> en contextos profesionales y académicos. Aprende más sobre <a href="https://es.wikipedia.org/wiki/Resumificaci%C3%B3n_autom%C3%A1tica" target="_blank" rel="noopener">resumificación automática</a> y <a href="https://es.wikipedia.org/wiki/Procesamiento_de_lenguaje_natural" target="_blank" rel="noopener">procesamiento de lenguaje natural</a>.</p>
+            <h3 class="h5 mb-3">¿Cómo usar la herramienta Resumificador de Texto con IA?</h3>
+            <ol class="mb-4">
+                <li><strong>Pega o escribe tu texto</strong> en el área de entrada (soporta documentos, artículos, informes)</li>
+                <li><strong>Elige tipo de resumen</strong>: Corto (3-5 líneas), Medio (1 párrafo), Largo (varios párrafos), o Puntos clave</li>
+                <li>Haz clic en <strong>'Resumir'</strong> para generar resumen impulsado por IA</li>
+                <li><strong>Copia el resultado</strong> usando el botón de copiar para tu uso</li>
+            </ol>
+            <h3 class="h5 mb-3">Casos de uso comunes de resumificación de texto con IA</h3>
+            <ul class="mb-4">
+                <li><strong>Eficiencia en investigación</strong> - entender rápidamente papers de investigación largos y artículos académicos</li>
+                <li><strong>Consumo de noticias</strong> - obtener información clave de artículos de noticias y reportes extensos</li>
+                <li><strong>Reuniones de negocio</strong> - resumir minutas de reuniones y elementos de acción</li>
+                <li><strong>Revisión de documentos legales</strong> - extraer puntos clave de contratos y textos legales</li>
+                <li><strong>Creación de contenido</strong> - analizar contenido de competidores e informes de industria</li>
+            </ul>
+            <h3 class="h5 mb-3">Preguntas frecuentes</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            ¿Qué tan precisas son las resúmenes generados por IA?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Los resúmenes de IA son generalmente <strong>muy buenos</strong> capturando <strong>ideas principales y puntos clave</strong>. Sin embargo, pueden <strong>perder contexto matizado</strong> o <strong>detalles sutiles</strong> que los lectores humanos podrían considerar importantes. Siempre <strong>revisa los resúmenes</strong> para <strong>información crítica</strong> y úsalos como un <strong>punto de partida</strong> en lugar de reemplazos completos para leer el texto completo.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            ¿Qué tipos de texto funcionan mejor para resumificación?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            La resumificación con IA funciona mejor con <strong>texto bien estructurado</strong> como <strong>artículos de noticias, resúmenes de investigación, reportes de negocio, y documentos formales</strong>. Lucha con <strong>escritura creativa, poesía, jerga altamente técnica</strong>, y <strong>textos con relaciones lógicas complejas</strong>.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            ¿Esta herramienta de resumificación es segura y privada?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! Tu texto se procesa <strong>100% de forma segura</strong> a través de tu propia <strong>API key de Google Gemini</strong>. Nada se almacena en nuestros servidores, asegurando <strong>privacidad completa</strong> de tus documentos y contenido. Todo el procesamiento ocurre <strong>directamente entre tu navegador y el servicio de IA de Google</strong>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     
     <script>
-        window.toolTranslations = {"apiKeySetupTitle":"⚙️ Necesitas configurar tu API key de Google Gemini.","configureNowButton":"Configurar ahora","originalTextLabel":"Texto original","inputTextPlaceholder":"Pega aquí el texto que quieres resumir...","charactersLabel":"Caracteres:","summaryLabel":"Resumen","outputTextPlaceholder":"El resumen aparecerá aquí...","copyButton":"📋 Copiar","summaryTypeLabel":"Tipo de resumen","shortOption":"Corto (3-5 líneas)","mediumOption":"Medio (1 párrafo)","longOption":"Largo (varios párrafos)","bulletsOption":"Puntos clave","summarizeButton":"✨ Resumir"};
+        window.toolTranslations = {"apiKeySetupTitle":"⚙️ Necesitas configurar tu API key de Google Gemini.","configureNowButton":"Configurar ahora","originalTextLabel":"Texto original","inputTextPlaceholder":"Pega aquí el texto que quieres resumir...","charactersLabel":"Caracteres:","summaryLabel":"Resumen","outputTextPlaceholder":"El resumen aparecerá aquí...","copyButton":"📋 Copiar","summaryTypeLabel":"Tipo de resumen","shortOption":"Corto (3-5 líneas)","mediumOption":"Medio (1 párrafo)","longOption":"Largo (varios párrafos)","bulletsOption":"Puntos clave","summarizeButton":"✨ Resumir","seo":{"whatIsTitle":"¿Qué es la resumificación de texto con IA y por qué es útil?","whatIsContent":"La **resumificación de texto con IA** es una técnica avanzada de **procesamiento de lenguaje natural** que usa **inteligencia artificial** para crear automáticamente **resúmenes concisos** de textos más largos. Esta tecnología identifica **información clave**, **ideas principales** y **detalles importantes** mientras elimina **redundancia** y **contenido menos relevante**. La resumificación con IA ayuda a los usuarios **entender rápidamente** documentos extensos, papers de investigación, artículos e informes extrayendo la **información más esencial** en un **formato digerible**. Esto ahorra **tiempo, mejora la comprensión** y permite **procesamiento eficiente de información** en contextos profesionales y académicos. Aprende más sobre [resumificación automática](https://es.wikipedia.org/wiki/Resumificaci%C3%B3n_autom%C3%A1tica) y [procesamiento de lenguaje natural](https://es.wikipedia.org/wiki/Procesamiento_de_lenguaje_natural).","howToTitle":"¿Cómo usar la herramienta Resumificador de Texto con IA?","howToSteps":["**Pega o escribe tu texto** en el área de entrada (soporta documentos, artículos, informes)","**Elige tipo de resumen**: Corto (3-5 líneas), Medio (1 párrafo), Largo (varios párrafos), o Puntos clave","Haz clic en **'Resumir'** para generar resumen impulsado por IA","**Copia el resultado** usando el botón de copiar para tu uso"],"useCasesTitle":"Casos de uso comunes de resumificación de texto con IA","useCases":["**Eficiencia en investigación** - entender rápidamente papers de investigación largos y artículos académicos","**Consumo de noticias** - obtener información clave de artículos de noticias y reportes extensos","**Reuniones de negocio** - resumir minutas de reuniones y elementos de acción","**Revisión de documentos legales** - extraer puntos clave de contratos y textos legales","**Creación de contenido** - analizar contenido de competidores e informes de industria"],"faqTitle":"Preguntas frecuentes","faq":[{"question":"¿Qué tan precisas son las resúmenes generados por IA?","answer":"Los resúmenes de IA son generalmente **muy buenos** capturando **ideas principales y puntos clave**. Sin embargo, pueden **perder contexto matizado** o **detalles sutiles** que los lectores humanos podrían considerar importantes. Siempre **revisa los resúmenes** para **información crítica** y úsalos como un **punto de partida** en lugar de reemplazos completos para leer el texto completo."},{"question":"¿Qué tipos de texto funcionan mejor para resumificación?","answer":"La resumificación con IA funciona mejor con **texto bien estructurado** como **artículos de noticias, resúmenes de investigación, reportes de negocio, y documentos formales**. Lucha con **escritura creativa, poesía, jerga altamente técnica**, y **textos con relaciones lógicas complejas**."},{"question":"¿Esta herramienta de resumificación es segura y privada?","answer":"¡Sí! Tu texto se procesa **100% de forma segura** a través de tu propia **API key de Google Gemini**. Nada se almacena en nuestros servidores, asegurando **privacidad completa** de tus documentos y contenido. Todo el procesamiento ocurre **directamente entre tu navegador y el servicio de IA de Google**."}]}};
     </script>
 <script src="/js/lib/gemini-api.js"></script>
 <script>

@@ -4,13 +4,81 @@
     "chooseYourColorTitle": "Choose your color",
     "hexLabel": "HEX",
     "rgbLabel": "RGB",
-    "hslLabel": "HSL"
+    "hslLabel": "HSL",
+    "seo": {
+      "whatIsTitle": "What are color formats and how do they work?",
+      "whatIsContent": "**Color formats** are different ways to represent **digital colors** using numbers and codes. **HEX** uses hexadecimal notation (like #FF5733) combining red, green, and blue values. **RGB** represents colors as **Red, Green, Blue** values (0-255 each). **HSL** defines colors by **Hue** (color type), **Saturation** (intensity), and **Lightness** (brightness). Each format serves specific purposes in **web design**, **graphic design**, and **digital art**. Understanding color formats is essential for **consistent color management** across different platforms and applications. Learn more about [color models](https://en.wikipedia.org/wiki/Color_model) and [digital color representation](https://en.wikipedia.org/wiki/Color_space).",
+      "howToTitle": "How to use the Color Picker & Converter tool?",
+      "howToSteps": [
+        "**Click on the color picker** to select any color you want",
+        "**View the color values** in multiple formats (HEX, RGB, HSL) simultaneously",
+        "**Copy any format** by clicking on the color code you need",
+        "**Use the converted values** in your design projects or web development"
+      ],
+      "useCasesTitle": "Common use cases for color conversion",
+      "useCases": [
+        "**Web development** - convert colors for CSS, HTML, and design systems",
+        "**Graphic design** - match colors across different software and print requirements",
+        "**Brand consistency** - ensure uniform color representation across all media",
+        "**Color accessibility** - check color contrast and readability for web standards",
+        "**Photo editing** - adjust colors using different color models for better results"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What's the difference between RGB and HSL color models?",
+          "answer": "**RGB** represents colors as **additive light** (red, green, blue) perfect for **screens and digital displays**. **HSL** describes colors by **human perception** (hue, saturation, lightness) making it easier to **adjust colors intuitively** for designers and artists."
+        },
+        {
+          "question": "Which color format should I use for web design?",
+          "answer": "Use **HEX** for **CSS and HTML** as it's compact and widely supported. **RGB** is great for **dynamic color generation** in JavaScript. **HSL** is excellent for **color adjustments** and creating **color palettes** with consistent lightness and saturation."
+        },
+        {
+          "question": "Is this color picker safe?",
+          "answer": "Yes! All color conversion happens **100% in your browser**. No color data is transmitted to servers, ensuring complete **privacy and security** of your color selections and design work."
+        }
+      ]
+    }
   },
   "es": {
     "selectColorLabel": "Seleccionar Color",
     "chooseYourColorTitle": "Elige tu color",
     "hexLabel": "HEX",
     "rgbLabel": "RGB",
-    "hslLabel": "HSL"
+    "hslLabel": "HSL",
+    "seo": {
+      "whatIsTitle": "¿Qué son los formatos de color y cómo funcionan?",
+      "whatIsContent": "Los **formatos de color** son diferentes formas de representar **colores digitales** usando números y códigos. **HEX** usa notación hexadecimal (como #FF5733) combinando valores de rojo, verde y azul. **RGB** representa colores como valores de **Rojo, Verde, Azul** (0-255 cada uno). **HSL** define colores por **Matiz** (tipo de color), **Saturación** (intensidad) y **Luminosidad** (brillo). Cada formato sirve propósitos específicos en **diseño web**, **diseño gráfico** y **arte digital**. Entender los formatos de color es esencial para **gestión de color consistente** a través de diferentes plataformas y aplicaciones. Aprende más sobre [modelos de color](https://es.wikipedia.org/wiki/Modelo_de_color) y [representación digital de color](https://es.wikipedia.org/wiki/Espacio_de_color).",
+      "howToTitle": "¿Cómo usar la herramienta Selector y Conversor de Colores?",
+      "howToSteps": [
+        "**Haz clic en el selector de color** para seleccionar cualquier color que quieras",
+        "**Ve los valores de color** en múltiples formatos (HEX, RGB, HSL) simultáneamente",
+        "**Copia cualquier formato** haciendo clic en el código de color que necesites",
+        "**Usa los valores convertidos** en tus proyectos de diseño o desarrollo web"
+      ],
+      "useCasesTitle": "Casos de uso comunes de conversión de colores",
+      "useCases": [
+        "**Desarrollo web** - convierte colores para CSS, HTML y sistemas de diseño",
+        "**Diseño gráfico** - empareja colores a través de diferentes software y requisitos de impresión",
+        "**Consistencia de marca** - asegura representación de color uniforme en todos los medios",
+        "**Accesibilidad de color** - verifica contraste de color y legibilidad para estándares web",
+        "**Edición de fotos** - ajusta colores usando diferentes modelos de color para mejores resultados"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Cuál es la diferencia entre los modelos de color RGB y HSL?",
+          "answer": "**RGB** representa colores como **luz aditiva** (rojo, verde, azul) perfecto para **pantallas y displays digitales**. **HSL** describe colores por **percepción humana** (matiz, saturación, luminosidad) haciendo más fácil **ajustar colores intuitivamente** para diseñadores y artistas."
+        },
+        {
+          "question": "¿Qué formato de color debería usar para diseño web?",
+          "answer": "Usa **HEX** para **CSS y HTML** ya que es compacto y ampliamente soportado. **RGB** es genial para **generación dinámica de colores** en JavaScript. **HSL** es excelente para **ajustes de color** y crear **paletas de color** con luminosidad y saturación consistentes."
+        },
+        {
+          "question": "¿Este selector de colores es seguro?",
+          "answer": "¡Sí! Toda la conversión de color ocurre **100% en tu navegador**. No se transmite datos de color a servidores, asegurando **privacidad y seguridad** completas de tus selecciones de color y trabajo de diseño."
+        }
+      ]
+    }
   }
 }

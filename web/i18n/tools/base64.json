@@ -36,7 +36,41 @@
     "textDecodedBase64": "Text decoded from Base64",
     "decodeError": "Error decoding - input doesn't appear to be valid Base64",
     "noResultToCopy": "No result to copy",
-    "copyError": "Error copying"
+    "copyError": "Error copying",
+    "seo": {
+      "whatIsTitle": "What is Base64 encoding?",
+      "whatIsContent": "**Base64** is an encoding system that converts **binary data** into ASCII text using 64 different characters (A-Z, a-z, 0-9, +, /). It's widely used in web development, email systems, and data transmission. Learn more about [Base64 on Wikipedia](https://en.wikipedia.org/wiki/Base64).",
+      "howToTitle": "How to use the Base64 encoder/decoder?",
+      "howToSteps": [
+        "Paste or type your **text** in the input area",
+        "Click **'Encode to Base64'** to convert text to Base64 format",
+        "Use **'Decode Base64'** to convert Base64 back to readable text",
+        "Copy the result using the **copy button**"
+      ],
+      "useCasesTitle": "Common use cases for Base64",
+      "useCases": [
+        "Encode **images in CSS/HTML** using [data URIs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs)",
+        "Send **binary data** in JSON or XML formats",
+        "Transmit **email attachments** (MIME encoding)",
+        "Store credentials or tokens in **configuration files**",
+        "Obfuscate text (not encryption, just encoding)"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Is Base64 encryption?",
+          "answer": "No, **Base64 is not encryption**. It's an encoding method that can be easily reversed. Never use Base64 to protect sensitive data."
+        },
+        {
+          "question": "Why does Base64 increase file size?",
+          "answer": "Base64 encoding increases data size by approximately **33%** because it represents 3 bytes of binary data using 4 ASCII characters."
+        },
+        {
+          "question": "Is this Base64 tool safe?",
+          "answer": "Yes! All encoding and decoding happens **100% in your browser**. Your data never leaves your device."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -75,6 +109,40 @@
     "textDecodedBase64": "Texto decodificado de Base64",
     "decodeError": "Error al decodificar - la entrada no parece ser Base64 válido",
     "noResultToCopy": "No hay resultado para copiar",
-    "copyError": "Error al copiar"
+    "copyError": "Error al copiar",
+    "seo": {
+      "whatIsTitle": "¿Qué es la codificación Base64?",
+      "whatIsContent": "**Base64** es un sistema de codificación que convierte **datos binarios** en texto ASCII utilizando 64 caracteres diferentes (A-Z, a-z, 0-9, +, /). Es ampliamente usado en desarrollo web, sistemas de email y transmisión de datos. Aprende más sobre [Base64 en Wikipedia](https://es.wikipedia.org/wiki/Base64).",
+      "howToTitle": "¿Cómo usar el codificador/decodificador Base64?",
+      "howToSteps": [
+        "Pega o escribe tu **texto** en el área de entrada",
+        "Haz clic en **'Codificar en Base64'** para convertir texto a formato Base64",
+        "Usa **'Decodificar Base64'** para convertir Base64 de vuelta a texto legible",
+        "Copia el resultado usando el **botón de copiar**"
+      ],
+      "useCasesTitle": "Casos de uso comunes de Base64",
+      "useCases": [
+        "Codificar **imágenes en CSS/HTML** usando [data URIs](https://developer.mozilla.org/es/docs/Web/HTTP/Basics_of_HTTP/Data_URIs)",
+        "Enviar **datos binarios** en formatos JSON o XML",
+        "Transmitir **archivos adjuntos de email** (codificación MIME)",
+        "Almacenar credenciales o tokens en **archivos de configuración**",
+        "Ofuscar texto (no es encriptación, solo codificación)"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Base64 es encriptación?",
+          "answer": "No, **Base64 no es encriptación**. Es un método de codificación que puede revertirse fácilmente. Nunca uses Base64 para proteger datos sensibles."
+        },
+        {
+          "question": "¿Por qué Base64 aumenta el tamaño del archivo?",
+          "answer": "La codificación Base64 aumenta el tamaño de los datos aproximadamente un **33%** porque representa 3 bytes de datos binarios usando 4 caracteres ASCII."
+        },
+        {
+          "question": "¿Esta herramienta Base64 es segura?",
+          "answer": "¡Sí! Toda la codificación y decodificación ocurre **100% en tu navegador**. Tus datos nunca salen de tu dispositivo."
+        }
+      ]
+    }
   }
 }

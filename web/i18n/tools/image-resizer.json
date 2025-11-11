@@ -26,7 +26,41 @@
     "selectValidImage": "Please select a valid image file.",
     "imageLoaded": "Image loaded: {filename}",
     "uploadImageFirst": "Upload an image first.",
-    "invalidWidth": "Invalid width"
+    "invalidWidth": "Invalid width",
+    "seo": {
+      "whatIsTitle": "What is image resizing?",
+      "whatIsContent": "**Image resizing** is the process of changing the dimensions of a **digital image** while maintaining quality. It's essential for web optimization, social media posts, and storage management. Resizing helps reduce file size and improve **loading speeds** without losing important visual information. Learn more about [image processing techniques](https://en.wikipedia.org/wiki/Digital_image_processing).",
+      "howToTitle": "How to use the Image Resizer tool?",
+      "howToSteps": [
+        "**Upload** your image by dragging it to the drop area or clicking to select",
+        "Enter the desired **width** in pixels (e.g., 800)",
+        "Enable **'Maintain aspect ratio'** to preserve image proportions",
+        "Click **'Resize and download'** to get your resized image"
+      ],
+      "useCasesTitle": "Common use cases for image resizing",
+      "useCases": [
+        "Optimize **website images** for faster [page loading](https://web.dev/fast/)",
+        "Prepare **social media posts** with correct dimensions",
+        "Reduce file size for **email attachments**",
+        "Create **thumbnail images** for galleries or previews",
+        "Resize screenshots for **documentation** or presentations"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Does image resizing affect quality?",
+          "answer": "When resizing down (making smaller), quality usually remains good. When upsizing (making larger), quality may decrease and appear **pixelated**. Always resize from the original high-resolution image."
+        },
+        {
+          "question": "What's the best image format for web?",
+          "answer": "**WebP** offers the best compression with quality, followed by **JPEG** for photos and **PNG** for images with transparency. Use our [image converter](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types) tool to change formats."
+        },
+        {
+          "question": "Is this image resizer safe?",
+          "answer": "Yes! All image processing happens **100% in your browser**. Your images never leave your device and are not stored on any server."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -55,6 +89,40 @@
     "selectValidImage": "Por favor selecciona un archivo de imagen válido.",
     "imageLoaded": "Imagen cargada: {filename}",
     "uploadImageFirst": "Sube primero una imagen.",
-    "invalidWidth": "Ancho inválido"
+    "invalidWidth": "Ancho inválido",
+    "seo": {
+      "whatIsTitle": "¿Qué es el redimensionado de imágenes?",
+      "whatIsContent": "El **redimensionado de imágenes** es el proceso de cambiar las dimensiones de una **imagen digital** manteniendo la calidad. Es esencial para optimización web, publicaciones en redes sociales y gestión de almacenamiento. Redimensionar ayuda a reducir el tamaño del archivo y mejorar las **velocidades de carga** sin perder información visual importante. Aprende más sobre [técnicas de procesamiento de imágenes](https://es.wikipedia.org/wiki/Procesamiento_digital_de_imágenes).",
+      "howToTitle": "¿Cómo usar la herramienta Redimensionador de Imágenes?",
+      "howToSteps": [
+        "**Sube** tu imagen arrastrándola al área de selección o haciendo clic para elegir",
+        "Introduce el **ancho** deseado en píxeles (p. ej., 800)",
+        "Activa **'Mantener proporción'** para preservar las proporciones de la imagen",
+        "Haz clic en **'Redimensionar y descargar'** para obtener tu imagen redimensionada"
+      ],
+      "useCasesTitle": "Casos de uso comunes del redimensionado de imágenes",
+      "useCases": [
+        "Optimizar **imágenes de sitios web** para una carga más rápida",
+        "Preparar **publicaciones en redes sociales** con las dimensiones correctas",
+        "Reducir el tamaño de archivo para **archivos adjuntos de email**",
+        "Crear **imágenes en miniatura** para galerías o vistas previas",
+        "Redimensionar capturas de pantalla para **documentación** o presentaciones"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿El redimensionado afecta la calidad de la imagen?",
+          "answer": "Al reducir el tamaño (hacer más pequeña), la calidad generalmente se mantiene buena. Al aumentar el tamaño (hacer más grande), la calidad puede disminuir y aparecer **pixelada**. Siempre redimensiona desde la imagen original de alta resolución."
+        },
+        {
+          "question": "¿Cuál es el mejor formato de imagen para web?",
+          "answer": "**WebP** ofrece la mejor compresión con calidad, seguido de **JPEG** para fotos y **PNG** para imágenes con transparencia. Usa nuestra herramienta [conversor de imágenes](https://developer.mozilla.org/es/docs/Web/Media/Formats/Image_types) para cambiar formatos."
+        },
+        {
+          "question": "¿Este redimensionador de imágenes es seguro?",
+          "answer": "¡Sí! Todo el procesamiento de imágenes ocurre **100% en tu navegador**. Tus imágenes nunca salen de tu dispositivo y no se almacenan en ningún servidor."
+        }
+      ]
+    }
   }
 }

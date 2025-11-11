@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickTools Extension</title>
+    <title>FastTools Extension</title>
     <link rel="stylesheet" href="popup.css">
 </head>
 
@@ -13,8 +13,8 @@
         <!-- Header -->
         <header class="header">
             <div class="logo">
-                <img src="../icons/icon-32x32.png" alt="QuickTools" class="logo-icon">
-                <h1 class="logo-text">QuickTools</h1>
+                <img src="../icons/icon-32x32.png" alt="FastTools" class="logo-icon">
+                <h1 class="logo-text">FastTools</h1>
             </div>
             <div class="header-actions">
                 <button class="icon-btn" title="Configuración" data-action="show-modal" data-modal="settings-modal">⚙️</button>
@@ -73,7 +73,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3>⚙️ Configuración</h3>
-                <button class.close-btn" data-action="close-modal" data-modal="settings-modal">×</button>
+                <button class="close-btn" data-action="close-modal" data-modal="settings-modal">×</button>
             </div>
             <div class="modal-body">
                 <div class="setting-group">
@@ -108,6 +108,64 @@
             <div class="modal-footer">
                 <button class="btn primary" data-action="save-settings">Guardar</button>
                 <button class="btn" data-action="close-modal" data-modal="settings-modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes Modal -->
+    <div id="notes-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📝 Notas Rápidas</h3>
+                <button class="close-btn" data-action="close-modal" data-modal="notes-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="note-form">
+                    <input type="text" id="note-title" placeholder="Título" class="form-input">
+                    <textarea id="note-content" placeholder="Escribe tu nota aquí..." rows="6" class="form-textarea"></textarea>
+                </div>
+                <div class="notes-list" id="notes-list">
+                    <!-- Notes will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn primary" data-action="save-note">Guardar</button>
+                <button class="btn" data-action="close-modal" data-modal="notes-modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Color Picker Modal -->
+    <div id="color-picker-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🎨 Color Picker</h3>
+                <button class="close-btn" data-action="close-modal" data-modal="color-picker-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="color-picker-container">
+                    <input type="color" id="color-input" value="#13a4ec" class="color-input">
+                    <div class="color-info">
+                        <div class="color-value">
+                            <label>HEX:</label>
+                            <input type="text" id="color-hex" value="#13a4ec" readonly class="color-text">
+                        </div>
+                        <div class="color-value">
+                            <label>RGB:</label>
+                            <input type="text" id="color-rgb" value="rgb(19, 164, 236)" readonly class="color-text">
+                        </div>
+                    </div>
+                    <button class="btn primary" data-action="copy-color">Copiar HEX</button>
+                </div>
+                <div class="recent-colors-section">
+                    <h4>Colores recientes:</h4>
+                    <div class="recent-colors" id="recent-colors-popup">
+                        <!-- Recent colors will be shown here -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-action="close-modal" data-modal="color-picker-modal">Cerrar</button>
             </div>
         </div>
     </div>

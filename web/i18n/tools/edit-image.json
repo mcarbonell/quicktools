@@ -12,7 +12,41 @@
         "example1": "Change the background to a beach at sunset",
         "example2": "Add a wizard hat",
         "example3": "Convert to watercolor style",
-        "example4": "Adjust colors to warm tones"
+        "example4": "Adjust colors to warm tones",
+        "seo": {
+            "whatIsTitle": "What is AI-powered image editing and how does it work?",
+            "whatIsContent": "**AI-powered image editing** uses **artificial intelligence** and **computer vision** to understand and modify images based on **natural language descriptions**. This technology combines **machine learning models** trained on **millions of images** with **text-to-image generation** capabilities to perform **intelligent photo manipulation**. AI image editing can **change backgrounds**, **add or remove objects**, **apply artistic styles**, **adjust colors and lighting**, and **enhance image quality** using **deep learning algorithms**. This revolutionary approach to **photo editing** makes **professional-quality modifications** accessible to **everyone** through **simple text commands**. Learn more about [generative AI](https://en.wikipedia.org/wiki/Generative_artificial_intelligence) and [computer vision](https://en.wikipedia.org/wiki/Computer_vision).",
+            "howToTitle": "How to use the AI Image Editor tool?",
+            "howToSteps": [
+                "**Upload your image** - it stays in your browser, never uploaded to servers",
+                "**Describe the changes** you want using natural language (e.g., 'change background to beach at sunset')",
+                "Click **'Edit'** to process your image with AI",
+                "**Review and download** your enhanced image"
+            ],
+            "useCasesTitle": "Common use cases for AI image editing",
+            "useCases": [
+                "**Background replacement** - change environments, add scenic locations, or remove distractions",
+                "**Object manipulation** - add/remove elements, change clothing, or modify scene composition",
+                "**Artistic transformation** - apply painting styles, filters, or creative effects",
+                "**Photo enhancement** - adjust lighting, colors, and visual appeal automatically",
+                "**Professional content** - create marketing images, social media posts, and brand visuals"
+            ],
+            "faqTitle": "Frequently Asked Questions",
+            "faq": [
+                {
+                    "question": "How realistic are AI image edits?",
+                    "answer": "AI edits can be **very realistic** for **background changes, style transfers, and color adjustments**. However, **complex object additions** or **dramatic scene changes** may show **subtle artifacts** or **unnatural elements**. Results improve with **clear descriptions** and **high-quality source images**."
+                },
+                {
+                    "question": "Can AI edit any type of image?",
+                    "answer": "AI editing works best with **clear, well-lit photographs** with **distinct subjects**. It may struggle with **low-resolution images, complex scenes, or artistic photos** with **strong creative styling**. **Portraits, landscapes, and product photos** typically yield the **best results**."
+                },
+                {
+                    "question": "Is my image data private during AI editing?",
+                    "answer": "Yes! **Images are processed locally** in your browser using your **Google Gemini API key**. Original images are **never uploaded** to our servers - only **processed results** may be sent to Google's AI for analysis. This ensures **complete privacy** of your **personal photos and content**."
+                }
+            ]
+        }
     },
     "es": {
         "apiKeySetupTitle": "⚙️ Necesitas configurar tu API key de Google Gemini.",
@@ -27,6 +61,40 @@
         "example1": "Cambia el fondo a una playa al atardecer",
         "example2": "Añade un sombrero de mago",
         "example3": "Convierte en estilo acuarela",
-        "example4": "Ajusta los colores a tonos cálidos"
+        "example4": "Ajusta los colores a tonos cálidos",
+        "seo": {
+            "whatIsTitle": "¿Qué es la edición de imágenes impulsada por IA y cómo funciona?",
+            "whatIsContent": "La **edición de imágenes impulsada por IA** usa **inteligencia artificial** y **visión por computadora** para entender y modificar imágenes basándose en **descripciones de lenguaje natural**. Esta tecnología combina **modelos de aprendizaje automático** entrenados en **millones de imágenes** con capacidades de **generación de texto a imagen** para realizar **manipulación fotográfica inteligente**. La edición de imágenes con IA puede **cambiar fondos**, **añadir o eliminar objetos**, **aplicar estilos artísticos**, **ajustar colores e iluminación**, y **mejorar calidad de imagen** usando **algoritmos de aprendizaje profundo**. Este enfoque revolucionario de **edición fotográfica** hace que **modificaciones de calidad profesional** sean accesibles para **todos** a través de **comandos de texto simples**. Aprende más sobre [IA generativa](https://es.wikipedia.org/wiki/Inteligencia_artificial_generativa) y [visión por computadora](https://es.wikipedia.org/wiki/Visi%C3%B3n_por_computador).",
+            "howToTitle": "¿Cómo usar la herramienta Editor de Imágenes con IA?",
+            "howToSteps": [
+                "**Sube tu imagen** - se mantiene en tu navegador, nunca se sube a servidores",
+                "**Describe los cambios** que quieres usando lenguaje natural (p. ej., 'cambiar fondo a playa al atardecer')",
+                "Haz clic en **'Editar'** para procesar tu imagen con IA",
+                "**Revisa y descarga** tu imagen mejorada"
+            ],
+            "useCasesTitle": "Casos de uso comunes de edición de imágenes con IA",
+            "useCases": [
+                "**Reemplazo de fondo** - cambia entornos, añade ubicaciones escénicas o elimina distracciones",
+                "**Manipulación de objetos** - añade/elimina elementos, cambia ropa o modifica composición de escena",
+                "**Transformación artística** - aplica estilos de pintura, filtros o efectos creativos",
+                "**Mejora de fotos** - ajusta iluminación, colores y atractivo visual automáticamente",
+                "**Contenido profesional** - crea imágenes de marketing, posts de redes sociales y visuales de marca"
+            ],
+            "faqTitle": "Preguntas frecuentes",
+            "faq": [
+                {
+                    "question": "¿Qué tan realistas son las ediciones de IA?",
+                    "answer": "Las ediciones de IA pueden ser **muy realistas** para **cambios de fondo, transferencias de estilo y ajustes de color**. Sin embargo, **addiciones complejas de objetos** o **cambios dramáticos de escena** pueden mostrar **artifacts sutiles** o **elementos no naturales**. Los resultados mejoran con **descripciones claras** e **imágenes fuente de alta calidad**."
+                },
+                {
+                    "question": "¿Puede IA editar cualquier tipo de imagen?",
+                    "answer": "La edición con IA funciona mejor con **fotografías claras y bien iluminadas** con **sujetos distintos**. Puede luchar con **imágenes de baja resolución, escenas complejas, o fotos artísticas** con **estilos creativos fuertes**. **Retratos, paisajes y fotos de productos** típicamente rinden los **mejores resultados**."
+                },
+                {
+                    "question": "¿Mis datos de imagen son privados durante la edición con IA?",
+                    "answer": "¡Sí! **Las imágenes se procesan localmente** en tu navegador usando tu **API key de Google Gemini**. Las imágenes originales **nunca se suben** a nuestros servidores - solo **resultados procesados** pueden enviarse al AI de Google para análisis. Esto asegura **privacidad completa** de tus **fotos personales y contenido**."
+                }
+            ]
+        }
     }
 }

@@ -23,7 +23,41 @@
     "processingText": "Processing...",
     "errorMergingPdfs": "Error merging PDFs:",
     "errorMergingGeneric": "An error occurred while merging the PDFs. Please try again.",
-    "downloadMergedPdf": "Download merged PDF"
+    "downloadMergedPdf": "Download merged PDF",
+    "seo": {
+      "whatIsTitle": "What is PDF merging and why is it useful?",
+      "whatIsContent": "**PDF merging** is the process of combining multiple PDF documents into a **single PDF file**, maintaining the original formatting, content, and quality of each document. This technique uses advanced **PDF manipulation algorithms** to merge files while preserving bookmarks, metadata, and document structure. Merging PDFs helps organize documents, reduce file management complexity, and create **comprehensive reports** from multiple sources. Learn more about [PDF manipulation](https://en.wikipedia.org/wiki/PDF#Manipulation) and [document management](https://en.wikipedia.org/wiki/Document_management_system).",
+      "howToTitle": "How to use the PDF Merger tool?",
+      "howToSteps": [
+        "**Select** at least two PDF files by dragging them to the drop area or clicking to browse",
+        "**Review** the selected files list to ensure correct order",
+        "Click **'Merge PDFs'** to start the combining process",
+        "**Download** the merged PDF file when processing is complete"
+      ],
+      "useCasesTitle": "Common use cases for PDF merging",
+      "useCases": [
+        "Combine **multiple invoices** or receipts into a single document for accounting",
+        "Merge **chapter documents** into complete books or reports",
+        "Create **comprehensive portfolios** from individual project files",
+        "Organize **legal documents** like contracts, amendments, and exhibits",
+        "**Consolidate reports** from different departments or time periods"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Is the order of PDFs preserved when merging?",
+          "answer": "Yes! The merged PDF maintains the **original order** of files as they were selected. If you need a different order, simply **re-select the files** in your preferred sequence before merging."
+        },
+        {
+          "question": "Are bookmarks and metadata preserved in the merged PDF?",
+          "answer": "Basic document information is preserved, but individual **bookmarks and metadata** from source PDFs may not be maintained in the merged document. The final PDF contains **all content pages** in the correct order."
+        },
+        {
+          "question": "Is this PDF merger safe?",
+          "answer": "Yes! All PDF processing happens **100% in your browser**. Your PDF files never leave your device and are not stored on any server, ensuring complete **privacy and security** of your sensitive documents."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -49,6 +83,40 @@
     "processingText": "Procesando...",
     "errorMergingPdfs": "Error al unir los PDFs:",
     "errorMergingGeneric": "Ocurrió un error al unir los PDFs. Por favor, inténtalo de nuevo.",
-    "downloadMergedPdf": "Descargar PDF unido"
+    "downloadMergedPdf": "Descargar PDF unido",
+    "seo": {
+      "whatIsTitle": "¿Qué es la unión de PDFs y por qué es útil?",
+      "whatIsContent": "La **unión de PDFs** es el proceso de combinar múltiples documentos PDF en un **solo archivo PDF**, manteniendo el formato, contenido y calidad original de cada documento. Esta técnica usa **algoritmos avanzados de manipulación de PDF** para unir archivos mientras preserva marcadores, metadatos y estructura del documento. Unir PDFs ayuda a organizar documentos, reducir la complejidad de gestión de archivos y crear **reportes comprensivos** de múltiples fuentes. Aprende más sobre [manipulación de PDF](https://es.wikipedia.org/wiki/PDF#Manipulaci%C3%B3n) y [gestión de documentos](https://es.wikipedia.org/wiki/Sistema_de_gesti%C3%B3n_de_documentos).",
+      "howToTitle": "¿Cómo usar la herramienta Union de PDFs?",
+      "howToSteps": [
+        "**Selecciona** al menos dos archivos PDF arrastrándolos al área de selección o haciendo clic para buscar",
+        "**Revisa** la lista de archivos seleccionados para asegurar el orden correcto",
+        "Haz clic en **'Unir PDFs'** para iniciar el proceso de combinación",
+        "**Descarga** el archivo PDF unido cuando el procesamiento esté completo"
+      ],
+      "useCasesTitle": "Casos de uso comunes de unión de PDFs",
+      "useCases": [
+        "Combinar **múltiples facturas** o recibos en un solo documento para contabilidad",
+        "Unir **documentos de capítulos** en libros o reportes completos",
+        "Crear **portafolios comprensivos** desde archivos de proyecto individuales",
+        "Organizar **documentos legales** como contratos, enmiendas y anexos",
+        "**Consolidar reportes** de diferentes departamentos o períodos de tiempo"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Se preserva el orden de los PDFs al unirlos?",
+          "answer": "¡Sí! El PDF unido mantiene el **orden original** de los archivos tal como fueron seleccionados. Si necesitas un orden diferente, simplemente **re-selecciona los archivos** en tu secuencia preferida antes de unir."
+        },
+        {
+          "question": "¿Se preservan los marcadores y metadatos en el PDF unido?",
+          "answer": "La información básica del documento se preserva, pero los **marcadores individuales y metadatos** de los PDFs de origen pueden no mantenerse en el documento unido. El PDF final contiene **todas las páginas de contenido** en el orden correcto."
+        },
+        {
+          "question": "¿Esta herramienta de unión de PDFs es segura?",
+          "answer": "¡Sí! Todo el procesamiento de PDF ocurre **100% en tu navegador**. Tus archivos PDF nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tus documentos sensibles."
+        }
+      ]
+    }
   }
 }

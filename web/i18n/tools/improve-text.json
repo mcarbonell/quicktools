@@ -19,7 +19,41 @@
         "englishOption": "English",
         "portugueseOption": "Portuguese",
         "frenchOption": "French",
-        "improveTextButton": "✨ Improve text"
+        "improveTextButton": "✨ Improve text",
+        "seo": {
+            "whatIsTitle": "What is AI-powered text improvement and how does it work?",
+            "whatIsContent": "**AI-powered text improvement** uses **artificial intelligence** and **natural language processing** to enhance written content by **correcting grammar**, **improving style**, **adjusting tone**, and **optimizing clarity**. This technology analyzes **language patterns**, **writing conventions**, and **contextual meaning** to provide **intelligent suggestions** that make text more **effective, professional, and engaging**. AI text improvement tools can help with **grammar correction**, **style enhancement**, **tone adjustment** (formal/casual), **conciseness optimization**, and **content expansion**. These capabilities are essential for **professional writing**, **academic work**, **business communication**, and **creative content development**. Learn more about [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing) and [automated writing assistance](https://en.wikipedia.org/wiki/Automated_writing_assistance).",
+            "howToTitle": "How to use the AI Text Improver tool?",
+            "howToSteps": [
+                "**Enter your text** in the input area (supports various content types)",
+                "**Choose improvement type**: Grammar, Style, Formal, Casual, Concise, or Expand",
+                "**Select target language** for multilingual improvement (Spanish, English, Portuguese, French)",
+                "Click **'Improve text'** and **copy the enhanced result**"
+            ],
+            "useCasesTitle": "Common use cases for AI text improvement",
+            "useCases": [
+                "**Professional writing** - enhance business emails, reports, and presentations",
+                "**Academic work** - improve research papers, essays, and scholarly articles",
+                "**Content marketing** - optimize blog posts, articles, and marketing copy",
+                "**Multilingual communication** - improve text in Spanish, English, Portuguese, or French",
+                "**Creative writing** - refine stories, scripts, and narrative content"
+            ],
+            "faqTitle": "Frequently Asked Questions",
+            "faq": [
+                {
+                    "question": "How accurate are AI text improvements?",
+                    "answer": "AI text improvement is generally **very accurate** for **grammar, spelling, and style suggestions**. However, it may occasionally make **contextual errors** or suggest changes that **alter your intended meaning**. Always **review suggestions** and maintain your **unique voice and style**."
+                },
+                {
+                    "question": "Can AI help with multiple languages?",
+                    "answer": "Yes! AI text improvement supports **multiple languages** including Spanish, English, Portuguese, and French. Each language has its own **grammatical rules, style conventions, and cultural nuances** that the AI takes into account for **culturally appropriate improvements**."
+                },
+                {
+                    "question": "Is my text private when using AI improvement?",
+                    "answer": "Yes! Your text is processed **completely privately** through your own **Google Gemini API key**. Nothing is stored on our servers or shared with third parties. All **text processing happens securely** between your browser and Google's AI service, ensuring **complete confidentiality**."
+                }
+            ]
+        }
     },
     "es": {
         "apiKeySetupTitle": "⚙️ Necesitas configurar tu API key de Google Gemini.",
@@ -41,6 +75,40 @@
         "englishOption": "Inglés",
         "portugueseOption": "Portugués",
         "frenchOption": "Francés",
-        "improveTextButton": "✨ Mejorar texto"
+        "improveTextButton": "✨ Mejorar texto",
+        "seo": {
+            "whatIsTitle": "¿Qué es la mejora de texto impulsada por IA y cómo funciona?",
+            "whatIsContent": "La **mejora de texto impulsada por IA** usa **inteligencia artificial** y **procesamiento de lenguaje natural** para mejorar contenido escrito **corrigiendo gramática**, **mejorando estilo**, **ajustando tono**, y **optimizando claridad**. Esta tecnología analiza **patrones de lenguaje**, **convenciones de escritura**, y **significado contextual** para proporcionar **sugerencias inteligentes** que hacen el texto más **efectivo, profesional y atractivo**. Las herramientas de mejora de texto con IA pueden ayudar con **corrección de gramática**, **mejora de estilo**, **ajuste de tono** (formal/casual), **optimización de concisión**, y **expansión de contenido**. Estas capacidades son esenciales para **escritura profesional**, **trabajo académico**, **comunicación empresarial**, y **desarrollo de contenido creativo**. Aprende más sobre [procesamiento de lenguaje natural](https://es.wikipedia.org/wiki/Procesamiento_de_lenguaje_natural) y [asistencia de escritura automatizada](https://es.wikipedia.org/wiki/Asistencia_de_escritura_automatizada).",
+            "howToTitle": "¿Cómo usar la herramienta Mejorador de Texto con IA?",
+            "howToSteps": [
+                "**Introduce tu texto** en el área de entrada (soporta varios tipos de contenido)",
+                "**Elige tipo de mejora**: Gramática, Estilo, Formal, Casual, Conciso, o Expandir",
+                "**Selecciona idioma objetivo** para mejora multilingüe (Español, Inglés, Portugués, Francés)",
+                "Haz clic en **'Mejorar texto'** y **copia el resultado mejorado**"
+            ],
+            "useCasesTitle": "Casos de uso comunes de mejora de texto con IA",
+            "useCases": [
+                "**Escritura profesional** - mejora emails de negocio, reportes y presentaciones",
+                "**Trabajo académico** - mejora papers de investigación, ensayos y artículos académicos",
+                "**Marketing de contenido** - optimiza posts de blog, artículos y copy de marketing",
+                "**Comunicación multilingüe** - mejora texto en Español, Inglés, Portugués, o Francés",
+                "**Escritura creativa** - refina historias, guiones y contenido narrativo"
+            ],
+            "faqTitle": "Preguntas frecuentes",
+            "faq": [
+                {
+                    "question": "¿Qué tan precisas son las mejoras de texto con IA?",
+                    "answer": "La mejora de texto con IA es generalmente **muy precisa** para **sugerencias de gramática, ortografía y estilo**. Sin embargo, ocasionalmente puede hacer **errores contextuales** o sugerir cambios que **alteran tu significado pretendido**. Siempre **revisa las sugerencias** y mantén tu **voz y estilo únicos**."
+                },
+                {
+                    "question": "¿Puede IA ayudar con múltiples idiomas?",
+                    "answer": "¡Sí! La mejora de texto con IA soporta **múltiples idiomas** incluyendo Español, Inglés, Portugués y Francés. Cada idioma tiene sus propias **reglas gramaticales, convenciones de estilo y matices culturales** que la IA toma en cuenta para **mejoras culturalmente apropiadas**."
+                },
+                {
+                    "question": "¿Mi texto es privado al usar mejora con IA?",
+                    "answer": "¡Sí! Tu texto se procesa **completamente en privado** a través de tu propia **API key de Google Gemini**. Nada se almacena en nuestros servidores o se comparte con terceros. Todo el **procesamiento de texto ocurre de forma segura** entre tu navegador y el servicio de IA de Google, asegurando **confidencialidad completa**."
+                }
+            ]
+        }
     }
 }

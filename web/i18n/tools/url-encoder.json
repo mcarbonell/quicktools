@@ -37,7 +37,41 @@
     "encodeError": "Error encoding",
     "decodeError": "Error decoding - input appears invalid",
     "noResultToCopy": "No result to copy",
-    "copyError": "Error copying"
+    "copyError": "Error copying",
+    "seo": {
+      "whatIsTitle": "What is URL encoding and why is it essential?",
+      "whatIsContent": "**URL encoding** is the process of converting special characters in web addresses to **safe, standardized format** using **percent-encoding** (% followed by hexadecimal values). This ensures **browser compatibility**, prevents **security vulnerabilities**, and enables **proper data transmission** in web applications. URL encoding handles characters like spaces, accented letters, and symbols that could break links or **cause parsing errors**. It's fundamental for **web development**, **API integration**, and **secure data handling**. Learn more about [URL encoding standards](https://en.wikipedia.org/wiki/Percent-encoding) and [web security](https://en.wikipedia.org/wiki/Web_application_security).",
+      "howToTitle": "How to use the URL Encoder/Decoder tool?",
+      "howToSteps": [
+        "**Type or paste** your text into the input area",
+        "**Choose encoding type**: URL encoding or component encoding",
+        "Click **'Encode'** to convert special characters to safe format",
+        "**Copy** the encoded result or use **'Decode'** to reverse the process"
+      ],
+      "useCasesTitle": "Common use cases for URL encoding",
+      "useCases": [
+        "**Create safe links** with special characters like spaces or accented letters",
+        "**Pass parameters** safely in web forms and API requests",
+        "**Debug web applications** by encoding/decoding URLs to troubleshoot issues",
+        "**Ensure SEO-friendly URLs** with proper character encoding",
+        "**Secure data transmission** in web development and API calls"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What's the difference between URL and component encoding?",
+          "answer": "**URL encoding (encodeURI)** preserves characters like **:** and **/** for complete URLs, while **component encoding (encodeURIComponent)** escapes **all special characters** including these, making it safe for URL parameters and query strings."
+        },
+        {
+          "question": "Which characters need URL encoding?",
+          "answer": "Characters that need encoding include **spaces, accented letters (á, é, í), symbols (#, $, &, +), and non-ASCII characters**. Modern browsers handle many characters automatically, but explicit encoding ensures **maximum compatibility**."
+        },
+        {
+          "question": "Is this URL encoder safe?",
+          "answer": "Yes! All encoding and decoding happens **100% in your browser**. Your URLs and text never leave your device and are not stored on any server, ensuring complete **privacy and security** of your web addresses."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -77,6 +111,40 @@
     "encodeError": "Error al codificar",
     "decodeError": "Error al decodificar - la entrada parece inválida",
     "noResultToCopy": "No hay resultado para copiar",
-    "copyError": "Error al copiar"
+    "copyError": "Error al copiar",
+    "seo": {
+      "whatIsTitle": "¿Qué es la codificación de URL y por qué es esencial?",
+      "whatIsContent": "La **codificación de URL** es el proceso de convertir caracteres especiales en direcciones web a **formato seguro y estandarizado** usando **codificación por porcentaje** (% seguido de valores hexadecimales). Esto asegura **compatibilidad del navegador**, previene **vulnerabilidades de seguridad**, y permite **transmisión adecuada de datos** en aplicaciones web. La codificación de URL maneja caracteres como espacios, letras con acentos y símbolos que podrían romper enlaces o **causar errores de análisis**. Es fundamental para **desarrollo web**, **integración API** y **manejo seguro de datos**. Aprende más sobre [estándares de codificación URL](https://es.wikipedia.org/wiki/Codificaci%C3%B3n_por_porcentaje) y [seguridad web](https://es.wikipedia.org/wiki/Seguridad_de_aplicaciones_web).",
+      "howToTitle": "¿Cómo usar la herramienta Codificador/Decodificador de URL?",
+      "howToSteps": [
+        "**Escribe o pega** tu texto en el área de entrada",
+        "**Elige el tipo de codificación**: codificación de URL o codificación de componente",
+        "Haz clic en **'Codificar'** para convertir caracteres especiales a formato seguro",
+        "**Copia** el resultado codificado o usa **'Decodificar'** para revertir el proceso"
+      ],
+      "useCasesTitle": "Casos de uso comunes de codificación de URL",
+      "useCases": [
+        "**Crear enlaces seguros** con caracteres especiales como espacios o letras acentuadas",
+        "**Pasar parámetros** de forma segura en formularios web y solicitudes API",
+        "**Depurar aplicaciones web** codificando/decodificando URLs para solucionar problemas",
+        "**Asegurar URLs SEO-friendly** con codificación adecuada de caracteres",
+        "**Asegurar transmisión de datos** en desarrollo web y llamadas API"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Cuál es la diferencia entre codificación de URL y componente?",
+          "answer": "La **codificación de URL (encodeURI)** preserva caracteres como **:** y **/** para URLs completas, mientras que la **codificación de componente (encodeURIComponent)** escapa **todos los caracteres especiales** incluyendo estos, haciéndola segura para parámetros de URL y cadenas de consulta."
+        },
+        {
+          "question": "¿Qué caracteres necesitan codificación de URL?",
+          "answer": "Los caracteres que necesitan codificación incluyen **espacios, letras acentuadas (á, é, í), símbolos (#, $, &, +), y caracteres no ASCII**. Los navegadores modernos manejan muchos caracteres automáticamente, pero la codificación explícita asegura **máxima compatibilidad**."
+        },
+        {
+          "question": "¿Este codificador de URL es seguro?",
+          "answer": "¡Sí! Toda la codificación y decodificación ocurre **100% en tu navegador**. Tus URLs y texto nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tus direcciones web."
+        }
+      ]
+    }
   }
 }

@@ -23,7 +23,41 @@
     "imageLoaded": "Image loaded: {filename}",
     "uploadImageFirst": "Please upload an image first.",
     "errorExtractingPalette": "Error extracting color palette:",
-    "errorExtractingPaletteGeneric": "Could not extract color palette. Make sure the image is valid and not corrupted."
+    "errorExtractingPaletteGeneric": "Could not extract color palette. Make sure the image is valid and not corrupted.",
+    "seo": {
+      "whatIsTitle": "What is color palette extraction?",
+      "whatIsContent": "**Color palette extraction** is the process of analyzing an image to identify and extract its **dominant colors**. Using color theory and **image processing algorithms**, this technique helps designers and developers create consistent **color schemes** for branding, web design, and artistic projects. The extracted palette typically includes hex codes, RGB values, and visual representations of the most prominent colors. Learn more about [color theory](https://en.wikipedia.org/wiki/Color_theory) and [image processing](https://en.wikipedia.org/wiki/Image_processing).",
+      "howToTitle": "How to use the Color Palette Generator tool?",
+      "howToSteps": [
+        "**Upload** your image by dragging it to the drop area or clicking to select",
+        "Adjust the **number of colors** in the palette (2-10 colors)",
+        "Click **'Extract Palette'** to analyze the image colors",
+        "**Copy** individual color codes or download the complete palette"
+      ],
+      "useCasesTitle": "Common use cases for color palette extraction",
+      "useCases": [
+        "Create **brand color schemes** for consistent [visual identity](https://www.smashingmagazine.com/2010/01/color-theory-for-designers-part-1-the-meaning-of-color/)",
+        "Extract **inspiration colors** from nature, photos, or artwork",
+        "Generate **CSS color variables** for web development projects",
+        "Analyze **competitor branding** by extracting colors from their logos",
+        "Create **harmonious color combinations** for design projects"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "How accurate is the color extraction?",
+          "answer": "The extraction uses **advanced algorithms** to identify the most dominant colors in your image. Results depend on image quality, resolution, and color complexity. Higher resolution images typically provide more accurate results."
+        },
+        {
+          "question": "Can I use the extracted colors for commercial projects?",
+          "answer": "Yes! Extracted colors are based on **image analysis** and don't contain copyrighted content. You can freely use the color codes for branding, design, and development projects."
+        },
+        {
+          "question": "Is this color palette generator safe?",
+          "answer": "Yes! All image processing happens **100% in your browser**. Your images never leave your device and are not stored on any server, ensuring complete privacy and security."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -49,6 +83,40 @@
     "imageLoaded": "Imagen cargada: {filename}",
     "uploadImageFirst": "Por favor, sube una imagen primero.",
     "errorExtractingPalette": "Error al extraer la paleta de colores:",
-    "errorExtractingPaletteGeneric": "No se pudo extraer la paleta de colores. Asegúrate de que la imagen es válida y no está corrupta."
+    "errorExtractingPaletteGeneric": "No se pudo extraer la paleta de colores. Asegúrate de que la imagen es válida y no está corrupta.",
+    "seo": {
+      "whatIsTitle": "¿Qué es la extracción de paletas de colores?",
+      "whatIsContent": "La **extracción de paletas de colores** es el proceso de analizar una imagen para identificar y extraer sus **colores dominantes**. Usando teoría del color y **algoritmos de procesamiento de imágenes**, esta técnica ayuda a diseñadores y desarrolladores a crear **esquemas de colores** consistentes para branding, diseño web y proyectos artísticos. La paleta extraída típicamente incluye códigos hex, valores RGB y representaciones visuales de los colores más prominentes. Aprende más sobre [teoría del color](https://es.wikipedia.org/wiki/Teor%C3%ADa_del_color) y [procesamiento de imágenes](https://es.wikipedia.org/wiki/Procesamiento_de_im%C3%A1genes).",
+      "howToTitle": "¿Cómo usar la herramienta Generador de Paletas de Colores?",
+      "howToSteps": [
+        "**Sube** tu imagen arrastrándola al área de selección o haciendo clic para elegir",
+        "Ajusta el **número de colores** en la paleta (2-10 colores)",
+        "Haz clic en **'Extraer Paleta'** para analizar los colores de la imagen",
+        "**Copia** códigos de colores individuales o descarga la paleta completa"
+      ],
+      "useCasesTitle": "Casos de uso comunes de extracción de paletas de colores",
+      "useCases": [
+        "Crear **esquemas de colores de marca** para [identidad visual](https://www.smashingmagazine.com/2010/01/color-theory-for-designers-part-1-the-meaning-of-color/) consistente",
+        "Extraer **colores de inspiración** de la naturaleza, fotos o arte",
+        "Generar **variables de color CSS** para proyectos de desarrollo web",
+        "Analizar **branding de competidores** extrayendo colores de sus logos",
+        "Crear **combinaciones de colores armoniosas** para proyectos de diseño"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Qué tan precisa es la extracción de colores?",
+          "answer": "La extracción usa **algoritmos avanzados** para identificar los colores más dominantes en tu imagen. Los resultados dependen de la calidad de la imagen, resolución y complejidad del color. Las imágenes de mayor resolución típicamente proporcionan resultados más precisos."
+        },
+        {
+          "question": "¿Puedo usar los colores extraídos para proyectos comerciales?",
+          "answer": "¡Sí! Los colores extraídos se basan en **análisis de imágenes** y no contienen contenido con derechos de autor. Puedes usar libremente los códigos de color para proyectos de branding, diseño y desarrollo."
+        },
+        {
+          "question": "¿Este generador de paletas de colores es seguro?",
+          "answer": "¡Sí! Todo el procesamiento de imágenes ocurre **100% en tu navegador**. Tus imágenes nunca salen de tu dispositivo y no se almacenan en ningún servidor, garantizando privacidad y seguridad completas."
+        }
+      ]
+    }
   }
 }

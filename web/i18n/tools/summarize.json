@@ -13,7 +13,41 @@
         "mediumOption": "Medium (1 paragraph)",
         "longOption": "Long (several paragraphs)",
         "bulletsOption": "Key points",
-        "summarizeButton": "✨ Summarize"
+        "summarizeButton": "✨ Summarize",
+        "seo": {
+            "whatIsTitle": "What is AI text summarization and why is it useful?",
+            "whatIsContent": "**AI text summarization** is an advanced **natural language processing** technique that uses **artificial intelligence** to automatically create **concise summaries** of longer texts. This technology identifies **key information**, **main ideas**, and **important details** while eliminating **redundancy** and **less relevant content**. AI summarization helps users **quickly understand** lengthy documents, research papers, articles, and reports by extracting the **most essential information** in a **digestible format**. This saves **time, improves comprehension**, and enables **efficient information processing** in professional and academic contexts. Learn more about [automatic summarization](https://en.wikipedia.org/wiki/Automatic_summarization) and [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing).",
+            "howToTitle": "How to use the AI Text Summarizer tool?",
+            "howToSteps": [
+                "**Paste or type your text** in the input area (supports documents, articles, reports)",
+                "**Choose summary type**: Short (3-5 lines), Medium (1 paragraph), Long (several paragraphs), or Key points",
+                "Click **'Summarize'** to generate AI-powered summary",
+                "**Copy the result** using the copy button for your use"
+            ],
+            "useCasesTitle": "Common use cases for AI text summarization",
+            "useCases": [
+                "**Research efficiency** - quickly understand long research papers and academic articles",
+                "**News consumption** - get key information from lengthy news articles and reports",
+                "**Business meetings** - summarize meeting minutes and action items",
+                "**Legal document review** - extract key points from contracts and legal texts",
+                "**Content creation** - analyze competitors' content and industry reports"
+            ],
+            "faqTitle": "Frequently Asked Questions",
+            "faq": [
+                {
+                    "question": "How accurate are AI-generated summaries?",
+                    "answer": "AI summaries are generally **very good** at capturing **main ideas and key points**. However, they may **miss nuanced context** or **subtle details** that human readers might consider important. Always **review summaries** for **critical information** and use them as a **starting point** rather than complete replacements for reading the full text."
+                },
+                {
+                    "question": "What types of text work best for summarization?",
+                    "answer": "AI summarization works best with **well-structured text** like **news articles, research abstracts, business reports, and formal documents**. It struggles with **creative writing, poetry, highly technical jargon**, and **texts with complex logical relationships**."
+                },
+                {
+                    "question": "Is this summarization tool safe and private?",
+                    "answer": "Yes! Your text is processed **100% securely** through your own **Google Gemini API key**. Nothing is stored on our servers, ensuring **complete privacy** of your documents and content. All processing happens **directly between your browser and Google's AI service**."
+                }
+            ]
+        }
     },
     "es": {
         "apiKeySetupTitle": "⚙️ Necesitas configurar tu API key de Google Gemini.",
@@ -29,6 +63,40 @@
         "mediumOption": "Medio (1 párrafo)",
         "longOption": "Largo (varios párrafos)",
         "bulletsOption": "Puntos clave",
-        "summarizeButton": "✨ Resumir"
+        "summarizeButton": "✨ Resumir",
+        "seo": {
+            "whatIsTitle": "¿Qué es la resumificación de texto con IA y por qué es útil?",
+            "whatIsContent": "La **resumificación de texto con IA** es una técnica avanzada de **procesamiento de lenguaje natural** que usa **inteligencia artificial** para crear automáticamente **resúmenes concisos** de textos más largos. Esta tecnología identifica **información clave**, **ideas principales** y **detalles importantes** mientras elimina **redundancia** y **contenido menos relevante**. La resumificación con IA ayuda a los usuarios **entender rápidamente** documentos extensos, papers de investigación, artículos e informes extrayendo la **información más esencial** en un **formato digerible**. Esto ahorra **tiempo, mejora la comprensión** y permite **procesamiento eficiente de información** en contextos profesionales y académicos. Aprende más sobre [resumificación automática](https://es.wikipedia.org/wiki/Resumificaci%C3%B3n_autom%C3%A1tica) y [procesamiento de lenguaje natural](https://es.wikipedia.org/wiki/Procesamiento_de_lenguaje_natural).",
+            "howToTitle": "¿Cómo usar la herramienta Resumificador de Texto con IA?",
+            "howToSteps": [
+                "**Pega o escribe tu texto** en el área de entrada (soporta documentos, artículos, informes)",
+                "**Elige tipo de resumen**: Corto (3-5 líneas), Medio (1 párrafo), Largo (varios párrafos), o Puntos clave",
+                "Haz clic en **'Resumir'** para generar resumen impulsado por IA",
+                "**Copia el resultado** usando el botón de copiar para tu uso"
+            ],
+            "useCasesTitle": "Casos de uso comunes de resumificación de texto con IA",
+            "useCases": [
+                "**Eficiencia en investigación** - entender rápidamente papers de investigación largos y artículos académicos",
+                "**Consumo de noticias** - obtener información clave de artículos de noticias y reportes extensos",
+                "**Reuniones de negocio** - resumir minutas de reuniones y elementos de acción",
+                "**Revisión de documentos legales** - extraer puntos clave de contratos y textos legales",
+                "**Creación de contenido** - analizar contenido de competidores e informes de industria"
+            ],
+            "faqTitle": "Preguntas frecuentes",
+            "faq": [
+                {
+                    "question": "¿Qué tan precisas son las resúmenes generados por IA?",
+                    "answer": "Los resúmenes de IA son generalmente **muy buenos** capturando **ideas principales y puntos clave**. Sin embargo, pueden **perder contexto matizado** o **detalles sutiles** que los lectores humanos podrían considerar importantes. Siempre **revisa los resúmenes** para **información crítica** y úsalos como un **punto de partida** en lugar de reemplazos completos para leer el texto completo."
+                },
+                {
+                    "question": "¿Qué tipos de texto funcionan mejor para resumificación?",
+                    "answer": "La resumificación con IA funciona mejor con **texto bien estructurado** como **artículos de noticias, resúmenes de investigación, reportes de negocio, y documentos formales**. Lucha con **escritura creativa, poesía, jerga altamente técnica**, y **textos con relaciones lógicas complejas**."
+                },
+                {
+                    "question": "¿Esta herramienta de resumificación es segura y privada?",
+                    "answer": "¡Sí! Tu texto se procesa **100% de forma segura** a través de tu propia **API key de Google Gemini**. Nada se almacena en nuestros servidores, asegurando **privacidad completa** de tus documentos y contenido. Todo el procesamiento ocurre **directamente entre tu navegador y el servicio de IA de Google**."
+                }
+            ]
+        }
     }
 }

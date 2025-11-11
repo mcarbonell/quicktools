@@ -26,7 +26,41 @@
     "secondsPlaceholder": "SS",
     "lapText": "Lap {number}",
     "timeFinished": "Time's up!",
-    "setTimerDuration": "Please set a duration for the timer."
+    "setTimerDuration": "Please set a duration for the timer.",
+    "seo": {
+      "whatIsTitle": "What are stopwatches and timers and why are they useful?",
+      "whatIsContent": "**Stopwatches and timers** are **time measurement tools** essential for productivity, sports, cooking, and professional activities. **Stopwatches measure elapsed time** from a starting point, while **timers count down** to a predetermined duration. Modern digital versions offer **precise measurements**, **lap recording**, and **audio notifications**. These tools help improve **time management**, **productivity tracking**, and **deadline adherence** across various contexts. From **athletic training** to **cooking** and **project management**, time measurement tools enhance **efficiency** and **accuracy**. Learn more about [chronometry](https://en.wikipedia.org/wiki/Chronometry) and [time management techniques](https://en.wikipedia.org/wiki/Time_management).",
+      "howToTitle": "How to use the Stopwatch & Timer tool?",
+      "howToSteps": [
+        "**For stopwatch**: Click **'Start'** to begin timing, **'Pause'** to pause, **'Stop'** to finish",
+        "**For timer**: Set hours, minutes, and seconds, then click **'Start'** to begin countdown",
+        "**Record laps** during stopwatch sessions to track intermediate times",
+        "**Reset** both tools when needed to start fresh measurements"
+      ],
+      "useCasesTitle": "Common use cases for stopwatches and timers",
+      "useCases": [
+        "**Athletic training** - time workouts, races, and track lap times for performance improvement",
+        "**Cooking and baking** - ensure precise cooking times for recipes and food safety",
+        "**Work productivity** - track focus periods using Pomodoro Technique and time blocking",
+        "**Presentations** - manage speaking time and session durations effectively",
+        "**Project management** - estimate task durations and track development progress"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "How accurate are digital stopwatches and timers?",
+          "answer": "Modern digital timers are **highly accurate** using precise **crystal oscillators** and **computer clock synchronization**. Browser-based timers typically achieve **millisecond precision** and maintain accuracy even when **background processes** are running."
+        },
+        {
+          "question": "What's the difference between a stopwatch and a timer?",
+          "answer": "A **stopwatch measures elapsed time** from when you start it (like timing a race), while a **timer counts down** from a set duration (like cooking for 10 minutes). Stopwatches **accumulate time**, timers **decrement time**."
+        },
+        {
+          "question": "Is this stopwatch and timer tool safe?",
+          "answer": "Yes! All timing functions run **100% in your browser** using your device's internal clock. No data is transmitted or stored, ensuring complete **privacy and reliability** of your time measurements and personal timing data."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -55,6 +89,40 @@
     "secondsPlaceholder": "SS",
     "lapText": "Vuelta {number}",
     "timeFinished": "¡Tiempo terminado!",
-    "setTimerDuration": "Por favor, establece una duración para el temporizador."
+    "setTimerDuration": "Por favor, establece una duración para el temporizador.",
+    "seo": {
+      "whatIsTitle": "¿Qué son los cronómetros y temporizadores y por qué son útiles?",
+      "whatIsContent": "Los **cronómetros y temporizadores** son **herramientas de medición de tiempo** esenciales para productividad, deportes, cocina y actividades profesionales. Los **cronómetros miden el tiempo transcurrido** desde un punto de inicio, mientras que los **temporizadores cuentan hacia atrás** hasta una duración predeterminada. Las versiones digitales modernas ofrecen **mediciones precisas**, **registro de vueltas** y **notificaciones de audio**. Estas herramientas ayudan a mejorar la **gestión del tiempo**, **seguimiento de productividad** y **adherencia a plazos** en varios contextos. Desde **entrenamiento atlético** hasta **cocina** y **gestión de proyectos**, las herramientas de medición de tiempo mejoran la **eficiencia** y **precisión**. Aprende más sobre [cronometría](https://es.wikipedia.org/wiki/Cronometr%C3%ADa) y [técnicas de gestión del tiempo](https://es.wikipedia.org/wiki/Gesti%C3%B3n_del_tiempo).",
+      "howToTitle": "¿Cómo usar la herramienta Cronómetro y Temporizador?",
+      "howToSteps": [
+        "**Para cronómetro**: Haz clic en **'Iniciar'** para comenzar a medir, **'Pausar'** para pausar, **'Detener'** para terminar",
+        "**Para temporizador**: Establece horas, minutos y segundos, luego haz clic en **'Iniciar'** para comenzar la cuenta atrás",
+        "**Registra vueltas** durante sesiones de cronómetro para rastrear tiempos intermedios",
+        "**Reinicia** ambas herramientas cuando necesites comenzar mediciones frescas"
+      ],
+      "useCasesTitle": "Casos de uso comunes de cronómetros y temporizadores",
+      "useCases": [
+        "**Entrenamiento atlético** - cronometra entrenamientos, carreras y tiempos de vuelta para mejora del rendimiento",
+        "**Cocina y repostería** - asegura tiempos de cocción precisos para recetas y seguridad alimentaria",
+        "**Productividad laboral** - rastrea períodos de enfoque usando Técnica Pomodoro y bloqueo de tiempo",
+        "**Presentaciones** - maneja tiempo de discurso y duraciones de sesión efectivamente",
+        "**Gestión de proyectos** - estima duraciones de tareas y rastrea progreso de desarrollo"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Qué tan precisos son los cronómetros y temporizadores digitales?",
+          "answer": "Los temporizadores digitales modernos son **altamente precisos** usando **osciladores de cristal** precisos y **sincronización de reloj de computadora**. Los temporizadores basados en navegador típicamente logran **precisión de milisegundos** y mantienen precisión incluso cuando se ejecutan **procesos en segundo plano**."
+        },
+        {
+          "question": "¿Cuál es la diferencia entre un cronómetro y un temporizador?",
+          "answer": "Un **cronómetro mide el tiempo transcurrido** desde que lo inicias (como cronometrar una carrera), mientras que un **temporizador cuenta hacia atrás** desde una duración establecida (como cocinar por 10 minutos). Los cronómetros **acumulan tiempo**, los temporizadores **decrementan tiempo**."
+        },
+        {
+          "question": "¿Esta herramienta de cronómetro y temporizador es segura?",
+          "answer": "¡Sí! Todas las funciones de tiempo corren **100% en tu navegador** usando el reloj interno de tu dispositivo. No se transmite o almacena datos, asegurando **privacidad y confiabilidad** completas de tus mediciones de tiempo y datos de cronometraje personales."
+        }
+      ]
+    }
   }
 }

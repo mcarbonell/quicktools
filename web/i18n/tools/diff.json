@@ -35,7 +35,41 @@
     "textsComparedSuccessfully": "Texts compared successfully",
     "compareError": "Error comparing texts",
     "noResultToCopy": "No result to copy",
-    "copyError": "Error copying"
+    "copyError": "Error copying",
+    "seo": {
+      "whatIsTitle": "What is text comparison and why is it essential?",
+      "whatIsContent": "**Text comparison** (also called **diff** or **text differencing**) is the process of analyzing two versions of text to identify **differences, additions, and deletions**. This essential tool for **version control**, **content editing**, and **quality assurance** uses advanced algorithms to highlight changes visually, making it easier to review **document revisions**, track **code changes**, and ensure **content accuracy**. Modern diff tools use **color-coded highlighting** to show exactly what changed between versions. Learn more about [text comparison algorithms](https://en.wikipedia.org/wiki/Diff) and [version control systems](https://en.wikipedia.org/wiki/Version_control).",
+      "howToTitle": "How to use the Text Diff tool?",
+      "howToSteps": [
+        "**Paste** the original text in the first text area",
+        "**Paste** the modified text in the second text area",
+        "**Click 'Compare texts'** to analyze differences",
+        "**Review the color-coded results** showing added (green), removed (red), and modified (yellow) text"
+      ],
+      "useCasesTitle": "Common use cases for text comparison",
+      "useCases": [
+        "**Review code changes** in software development and [version control](https://git-scm.com/)",
+        "**Compare document versions** for editing and proofreading",
+        "**Track content modifications** in content management systems",
+        "**Verify translation accuracy** by comparing source and translated text",
+        "**Debug configuration files** and identify unintended changes"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What do the different colors in the diff results mean?",
+          "answer": "**Green** indicates **added text** that's in the modified version but not in the original. **Red** shows **removed text** that was in the original but is gone. **Yellow** highlights **modified text** where content was changed, keeping the structure but updating the content."
+        },
+        {
+          "question": "Can I ignore case and whitespace differences?",
+          "answer": "Yes! The tool includes **'Ignore case'** and **'Ignore whitespace'** options. These help focus on **meaningful content differences** rather than formatting or capitalization changes, which is especially useful for code review and content editing."
+        },
+        {
+          "question": "Is this text diff tool safe?",
+          "answer": "Yes! All text comparison happens **100% in your browser**. Your text never leaves your device and is not stored on any server, ensuring complete **privacy and security** of your documents and content."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -73,6 +107,40 @@
     "textsComparedSuccessfully": "Textos comparados exitosamente",
     "compareError": "Error al comparar los textos",
     "noResultToCopy": "No hay resultado para copiar",
-    "copyError": "Error al copiar"
+    "copyError": "Error al copiar",
+    "seo": {
+      "whatIsTitle": "¿Qué es la comparación de texto y por qué es esencial?",
+      "whatIsContent": "La **comparación de texto** (también llamada **diff** o **diferenciación de texto**) es el proceso de analizar dos versiones de texto para identificar **diferencias, adiciones y eliminaciones**. Esta herramienta esencial para **control de versiones**, **edición de contenido** y **aseguramiento de calidad** usa algoritmos avanzados para resaltar cambios visualmente, facilitando la revisión de **revisiones de documentos**, seguimiento de **cambios de código** y asegurar **precisión de contenido**. Las herramientas diff modernas usan **resaltado codificado por colores** para mostrar exactamente qué cambió entre versiones. Aprende más sobre [algoritmos de comparación de texto](https://es.wikipedia.org/wiki/Diff) y [sistemas de control de versiones](https://es.wikipedia.org/wiki/Control_de_versiones).",
+      "howToTitle": "¿Cómo usar la herramienta Comparador de Texto?",
+      "howToSteps": [
+        "**Pega** el texto original en el primer área de texto",
+        "**Pega** el texto modificado en el segundo área de texto",
+        "**Haz clic en 'Comparar textos'** para analizar las diferencias",
+        "**Revisa los resultados codificados por colores** mostrando texto añadido (verde), eliminado (rojo) y modificado (amarillo)"
+      ],
+      "useCasesTitle": "Casos de uso comunes de comparación de texto",
+      "useCases": [
+        "**Revisar cambios de código** en desarrollo de software y [control de versiones](https://git-scm.com/)",
+        "**Comparar versiones de documentos** para edición y corrección",
+        "**Rastrear modificaciones de contenido** en sistemas de gestión de contenido",
+        "**Verificar precisión de traducción** comparando texto original y traducido",
+        "**Depurar archivos de configuración** e identificar cambios no intencionados"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Qué significan los diferentes colores en los resultados del diff?",
+          "answer": "**Verde** indica **texto añadido** que está en la versión modificada pero no en la original. **Rojo** muestra **texto eliminado** que estaba en la original pero se ha eliminado. **Amarillo** resalta **texto modificado** donde el contenido cambió, manteniendo la estructura pero actualizando el contenido."
+        },
+        {
+          "question": "¿Puedo ignorar las diferencias de mayúsculas y espacios?",
+          "answer": "¡Sí! La herramienta incluye opciones para **'Ignorar mayúsculas'** y **'Ignorar espacios'**. Estas ayudan a enfocar en **diferencias de contenido significativas** en lugar de cambios de formato o mayúsculas, lo cual es especialmente útil para revisión de código y edición de contenido."
+        },
+        {
+          "question": "¿Esta herramienta de diff de texto es segura?",
+          "answer": "¡Sí! Toda la comparación de texto ocurre **100% en tu navegador**. Tu texto nunca sale de tu dispositivo y no se almacena en ningún servidor, asegurando **privacidad y seguridad** completas de tus documentos y contenido."
+        }
+      ]
+    }
   }
 }

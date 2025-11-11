@@ -45,15 +45,36 @@ class QuickToolsPopup {
     }
 
     async loadTools() {
-        const tools = [
-            { id: 'json-formatter', name: 'JSON Formatter', description: 'Formatear y validar JSON', icon: '📋', url: 'https://fasttools.tools/tools/json-formatter' },
-            { id: 'base64-encoder', name: 'Base64 Encoder', description: 'Codificar/Decodificar Base64', icon: '🔐', url: 'https://fasttools.tools/tools/base64-encoder' },
-            { id: 'url-encoder', name: 'URL Encoder', description: 'Codificar URLs', icon: '🔗', url: 'https://fasttools.tools/tools/url-encoder' },
-            { id: 'hash-calculator', name: 'Hash Calculator', description: 'MD5, SHA1, SHA256', icon: '🔢', url: 'https://fasttools.tools/tools/hash-calculator' },
-            { id: 'color-palette', name: 'Color Palette', description: 'Generar paletas de colores', icon: '🎨', url: 'https://fasttools.tools/tools/color-palette' },
-            { id: 'image-resizer', name: 'Image Resizer', description: 'Redimensionar imágenes', icon: '🖼️', url: 'https://fasttools.tools/tools/image-resizer' }
-        ];
-        this.renderTools(tools);
+        try {
+            const response = await fetch(chrome.runtime.getURL('data/tools-index.json'));
+            const allTools = await response.json();
+            // Mostrar solo las primeras 6 herramientas más populares
+            const tools = allTools.slice(0, 6).map(tool => ({
+                id: tool.slug.replace(/^tools\//, '').replace(/\.html$/, '').replace(/\//g, '-'),
+                name: tool.title,
+                description: tool.description,
+                icon: this.getCategoryIcon(tool.category),
+                url: `https://fasttools.tools/${tool.slug}`
+            }));
+            this.renderTools(tools);
+        } catch (error) {
+            console.error('❌ Error cargando herramientas:', error);
+            // Fallback a herramientas por defecto
+            this.renderTools([]);
+        }
+    }
+
+    getCategoryIcon(category) {
+        const icons = {
+            'Imagen': '🖼️',
+            'Datos': '📋',
+            'Archivos': '📁',
+            'Texto': '📝',
+            'Utilidades': '🔧',
+            'Conversores': '🔄',
+            'IA': '🤖'
+        };
+        return icons[category] || '🛠️';
     }
 
     async loadAnalytics() {
@@ -162,6 +183,8 @@ class QuickToolsPopup {
                 'show-modal': () => this.showModal(target.dataset.modal),
                 'close-modal': () => this.closeModal(target.dataset.modal),
                 'save-settings': () => this.saveSettings(),
+                'save-note': () => this.saveNote(),
+                'copy-color': () => this.copyColor(),
             };
 
             if (actions[action]) {
@@ -188,7 +211,15 @@ class QuickToolsPopup {
 
     showModal(modalId) {
         const modal = document.getElementById(modalId);
-        if(modal) modal.classList.add('show');
+        if(modal) {
+            modal.classList.add('show');
+            // Cargar contenido específico del modal
+            if (modalId === 'notes-modal') {
+                this.loadNotesModal();
+            } else if (modalId === 'color-picker-modal') {
+                this.loadColorPickerModal();
+            }
+        }
     }
 
     closeModal(modalId) {
@@ -253,6 +284,134 @@ class QuickToolsPopup {
         toast.textContent = message;
         document.body.appendChild(toast);
         setTimeout(() => toast.remove(), 3000);
+    }
+
+    // ====================
+    // NOTES MODAL
+    // ====================
+
+    async loadNotesModal() {
+        const notesList = document.getElementById('notes-list');
+        if (!notesList) return;
+        
+        notesList.innerHTML = '';
+        if (this.notes.length === 0) {
+            notesList.innerHTML = '<p class="empty-state">No hay notas aún</p>';
+            return;
+        }
+        
+        this.notes.forEach(note => {
+            const noteEl = document.createElement('div');
+            noteEl.className = 'note-item';
+            noteEl.innerHTML = `
+                <div class="note-title">${note.title || 'Sin título'}</div>
+                <div class="note-preview">${(note.content || '').substring(0, 50)}...</div>
+            `;
+            notesList.appendChild(noteEl);
+        });
+    }
+
+    async saveNote() {
+        const title = document.getElementById('note-title').value.trim();
+        const content = document.getElementById('note-content').value.trim();
+        
+        if (!content) {
+            this.showToast('La nota no puede estar vacía', 'warning');
+            return;
+        }
+        
+        const note = {
+            id: Date.now(),
+            title: title || 'Sin título',
+            content: content,
+            created: Date.now(),
+            modified: Date.now()
+        };
+        
+        this.notes.unshift(note);
+        await chrome.storage.local.set({ notes: { items: this.notes } });
+        
+        // Limpiar formulario
+        document.getElementById('note-title').value = '';
+        document.getElementById('note-content').value = '';
+        
+        this.showToast('Nota guardada', 'success');
+        this.loadNotesModal();
+    }
+
+    // ====================
+    // COLOR PICKER MODAL
+    // ====================
+
+    loadColorPickerModal() {
+        const colorInput = document.getElementById('color-input');
+        const colorHex = document.getElementById('color-hex');
+        const colorRgb = document.getElementById('color-rgb');
+        
+        if (!colorInput) return;
+        
+        // Update color values on change
+        colorInput.addEventListener('input', (e) => {
+            const hex = e.target.value;
+            const rgb = this.hexToRgb(hex);
+            colorHex.value = hex;
+            colorRgb.value = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+            this.currentColor = hex;
+        });
+        
+        // Load recent colors
+        this.loadRecentColors();
+    }
+
+    async loadRecentColors() {
+        const data = await chrome.storage.local.get('recentColors');
+        const colors = data.recentColors || ['#13a4ec', '#000000', '#ffffff'];
+        
+        const container = document.getElementById('recent-colors-popup');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        colors.slice(0, 6).forEach(color => {
+            const colorBox = document.createElement('div');
+            colorBox.className = 'color-box';
+            colorBox.style.backgroundColor = color;
+            colorBox.title = color;
+            colorBox.onclick = () => {
+                document.getElementById('color-input').value = color;
+                document.getElementById('color-hex').value = color;
+                const rgb = this.hexToRgb(color);
+                document.getElementById('color-rgb').value = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+                this.currentColor = color;
+            };
+            container.appendChild(colorBox);
+        });
+    }
+
+    async copyColor() {
+        const hex = document.getElementById('color-hex').value;
+        try {
+            await navigator.clipboard.writeText(hex);
+            this.showToast('Color copiado: ' + hex, 'success');
+            
+            // Save to recent colors
+            const data = await chrome.storage.local.get('recentColors');
+            const colors = data.recentColors || [];
+            if (!colors.includes(hex)) {
+                colors.unshift(hex);
+                await chrome.storage.local.set({ recentColors: colors.slice(0, 10) });
+            }
+        } catch (error) {
+            this.showToast('Error copiando color', 'error');
+        }
+    }
+
+    hexToRgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : { r: 0, g: 0, b: 0 };
     }
 }
 

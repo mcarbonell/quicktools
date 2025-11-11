@@ -14,7 +14,41 @@
     "formatted": "JSON formatted.",
     "minified": "JSON minified.",
     "noText": "No text to copy.",
-    "error": "Error copying"
+    "error": "Error copying",
+    "seo": {
+      "whatIsTitle": "What is JSON formatting and why is it important?",
+      "whatIsContent": "**JSON (JavaScript Object Notation)** is a lightweight, human-readable data format used for **data exchange** between servers and web applications. **JSON formatting** makes this structured data readable by adding proper indentation, line breaks, and hierarchy. Well-formatted JSON improves **code readability**, simplifies **debugging**, and enhances **collaboration** among developers. JSON is the **standard format** for modern web APIs and data storage. Learn more about [JSON](https://en.wikipedia.org/wiki/JSON) and [data serialization](https://en.wikipedia.org/wiki/Serialization).",
+      "howToTitle": "How to use the JSON Formatter tool?",
+      "howToSteps": [
+        "**Paste** your JSON data into the input area or type it directly",
+        "Click **'Format'** to beautify and properly indent your JSON code",
+        "Use **'Minify'** to compress JSON by removing whitespace and line breaks",
+        "**Copy** the formatted or minified result using the copy button"
+      ],
+      "useCasesTitle": "Common use cases for JSON formatting",
+      "useCases": [
+        "**Debug API responses** from web services and microservices",
+        "Clean and format **configuration files** for applications",
+        "**Validate JSON syntax** before integration with APIs",
+        "Prepare **data samples** for documentation and testing",
+        "**Optimize JSON size** for production environments and [performance](https://web.dev/fast/)"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What's the difference between formatted and minified JSON?",
+          "answer": "**Formatted JSON** includes proper indentation, line breaks, and spacing for **readability** and easy editing. **Minified JSON** removes all unnecessary whitespace to create a **compact version** that loads faster and uses less bandwidth."
+        },
+        {
+          "question": "Can this tool validate JSON syntax?",
+          "answer": "Yes! The formatter provides **real-time validation** and shows clear error messages for **invalid JSON syntax**. It highlights specific issues like missing quotes, incorrect brackets, or trailing commas to help you fix problems quickly."
+        },
+        {
+          "question": "Is this JSON formatter safe?",
+          "answer": "Yes! All JSON processing happens **100% in your browser**. Your JSON data never leaves your device and is not stored on any server, ensuring complete **privacy and security** of your sensitive data."
+        }
+      ]
+    }
   },
   "es": {
     "title": "Formatear JSON",
@@ -31,6 +65,40 @@
     "formatted": "JSON formateado.",
     "minified": "JSON minificado.",
     "noText": "No hay texto para copiar.",
-    "error": "Error al copiar"
+    "error": "Error al copiar",
+    "seo": {
+      "whatIsTitle": "¿Qué es el formateo de JSON y por qué es importante?",
+      "whatIsContent": "**JSON (JavaScript Object Notation)** es un formato de datos ligero y legible para humanos usado para **intercambio de datos** entre servidores y aplicaciones web. El **formateo de JSON** hace que estos datos estructurados sean legibles añadiendo indentación adecuada, saltos de línea y jerarquía. JSON bien formateado mejora la **legibilidad del código**, simplifica el **depurado** y mejora la **colaboración** entre desarrolladores. JSON es el **formato estándar** para APIs web modernas y almacenamiento de datos. Aprende más sobre [JSON](https://es.wikipedia.org/wiki/JSON) y [serialización de datos](https://es.wikipedia.org/wiki/Serializaci%C3%B3n).",
+      "howToTitle": "¿Cómo usar la herramienta Formateador de JSON?",
+      "howToSteps": [
+        "**Pega** tus datos JSON en el área de entrada o escríbelos directamente",
+        "Haz clic en **'Formatear'** para embellecer e indentar apropiadamente tu código JSON",
+        "Usa **'Minificar'** para comprimir JSON eliminando espacios en blanco y saltos de línea",
+        "**Copia** el resultado formateado o minificado usando el botón de copiar"
+      ],
+      "useCasesTitle": "Casos de uso comunes del formateo de JSON",
+      "useCases": [
+        "**Depurar respuestas de API** de servicios web y microservicios",
+        "Limpiar y formatear **archivos de configuración** para aplicaciones",
+        "**Validar sintaxis JSON** antes de integración con APIs",
+        "Preparar **muestras de datos** para documentación y pruebas",
+        "**Optimizar tamaño JSON** para entornos de producción y [rendimiento](https://web.dev/fast/)"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Cuál es la diferencia entre JSON formateado y minificado?",
+          "answer": "El **JSON formateado** incluye indentación adecuada, saltos de línea y espaciado para **legibilidad** y fácil edición. El **JSON minificado** elimina todos los espacios en blanco innecesarios para crear una **versión compacta** que carga más rápido y usa menos ancho de banda."
+        },
+        {
+          "question": "¿Puede esta herramienta validar sintaxis JSON?",
+          "answer": "¡Sí! El formateador proporciona **validación en tiempo real** y muestra mensajes de error claros para **sintaxis JSON inválida**. Resalta problemas específicos como comillas faltantes, corchetes incorrectos o comas finales para ayudarte a solucionar problemas rápidamente."
+        },
+        {
+          "question": "¿Este formateador de JSON es seguro?",
+          "answer": "¡Sí! Todo el procesamiento de JSON ocurre **100% en tu navegador**. Tus datos JSON nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tus datos sensibles."
+        }
+      ]
+    }
   }
 }

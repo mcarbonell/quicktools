@@ -74,11 +74,71 @@
 </div>
 
 <div id="msg" class="text-muted small"></div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">¿Qué es la conversión de TOML y JSON y por qué es útil?</h2>
+            <p class="mb-4"><strong>TOML (Tom's Obvious, Minimal Language)</strong> y <strong>JSON (JavaScript Object Notation)</strong> son ambos <strong>formatos de archivo de configuración</strong> y estándares de serialización de datos. <strong>TOML usa secciones estilo INI</strong> con pares clave-valor para configuración legible por humanos, mientras que <strong>JSON usa objetos anidados</strong> para representación flexible de datos. Convertir entre estos formatos ayuda a <strong>modernizar sistemas de configuración</strong>, mejorar <strong>compatibilidad multiplataforma</strong>, y permite <strong>migración seamless de datos</strong> entre diferentes entornos de desarrollo. Aprende más sobre <a href="https://es.wikipedia.org/wiki/TOML" target="_blank" rel="noopener">TOML</a> y <a href="https://es.wikipedia.org/wiki/JSON" target="_blank" rel="noopener">estandarización JSON</a>.</p>
+            <h3 class="h5 mb-3">¿Cómo usar la herramienta Conversor TOML ↔ JSON?</h3>
+            <ol class="mb-4">
+                <li><strong>Pega</strong> tus datos TOML o JSON en el área de entrada</li>
+                <li><strong>Elige la dirección de conversión</strong>: TOML → JSON o JSON → TOML</li>
+                <li>Haz clic en <strong>'Convertir'</strong> para transformar el formato de configuración</li>
+                <li><strong>Copia</strong> el resultado convertido o usa opciones de formateo JSON</li>
+            </ol>
+            <h3 class="h5 mb-3">Casos de uso comunes de conversión TOML ↔ JSON</h3>
+            <ul class="mb-4">
+                <li><strong>Migrar configuraciones de proyectos Python</strong> de TOML (pyproject.toml) a APIs JSON</li>
+                <li><strong>Convertir configuraciones Rust/Cargo</strong> a JSON para herramientas web</li>
+                <li><strong>Transformar configuraciones de aplicaciones</strong> de archivos TOML config a entradas JSON en base de datos</li>
+                <li><strong>Integrar sistemas</strong> que usan diferentes formatos de configuración</li>
+                <li><strong>Modernizar configuraciones legacy</strong> para trabajar con herramientas y APIs contemporáneas</li>
+            </ul>
+            <h3 class="h5 mb-3">Preguntas frecuentes</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            ¿Cómo se convierten las secciones TOML a JSON?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Las <strong>secciones TOML</strong> (como [sección]) se convierten en <strong>objetos anidados</strong> en JSON. Las claves dentro de secciones se convierten en propiedades de los objetos JSON correspondientes, manteniendo la <strong>estructura jerárquica</strong> mientras se preservan todas las relaciones de datos.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            ¿Qué tipos de datos TOML son compatibles?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            El convertidor soporta los tipos de datos de TOML: <strong>cadenas, enteros, decimales, booleanos, fechas/horas, arrays y tablas en línea</strong>. Las características TOML complejas como <strong>arrays de tablas y claves con puntos</strong> se convierten correctamente a sus equivalentes JSON.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            ¿Este conversor TOML/JSON es seguro?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! Todo el procesamiento de datos ocurre <strong>100% en tu navegador</strong>. Tus datos TOML y JSON nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando <strong>privacidad y seguridad</strong> completas de tus datos de configuración.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","convertButton":"Convertir","inputTomlJsonLabel":"Entrada (TOML o JSON)","inputPlaceholder":"Pega tu TOML o JSON aquí...","tomlToJsonButton":"TOML → JSON","jsonToTomlButton":"JSON → TOML","prettyJsonButton":"Prettify JSON","copyResultButton":"Copiar resultado","resultLabel":"Resultado","resultPlaceholder":"Aquí aparecerá el resultado...","enterTomlToConvert":"Introduce TOML para convertir","tomlLibraryNotFound":"Librería TOML no encontrada. Comprueba la carga del CDN o añade manualmente una librería TOML.","tomlStringifyNotFound":"Librería TOML con stringify no encontrada. Comprueba la carga del CDN o añade manualmente una librería TOML.","tomlConvertedToJson":"TOML convertido a JSON","tomlParseError":"Error al parsear TOML","enterJsonToConvert":"Introduce JSON para convertir","jsonConvertedToToml":"JSON convertido a TOML","jsonConvertError":"Error al convertir JSON a TOML","enterJsonToFormat":"Introduce JSON para formatear","jsonParseError":"Error al parsear JSON","noResultToCopy":"No hay resultado para copiar","copyError":"Error al copiar"};
+        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","convertButton":"Convertir","inputTomlJsonLabel":"Entrada (TOML o JSON)","inputPlaceholder":"Pega tu TOML o JSON aquí...","tomlToJsonButton":"TOML → JSON","jsonToTomlButton":"JSON → TOML","prettyJsonButton":"Prettify JSON","copyResultButton":"Copiar resultado","resultLabel":"Resultado","resultPlaceholder":"Aquí aparecerá el resultado...","enterTomlToConvert":"Introduce TOML para convertir","tomlLibraryNotFound":"Librería TOML no encontrada. Comprueba la carga del CDN o añade manualmente una librería TOML.","tomlStringifyNotFound":"Librería TOML con stringify no encontrada. Comprueba la carga del CDN o añade manualmente una librería TOML.","tomlConvertedToJson":"TOML convertido a JSON","tomlParseError":"Error al parsear TOML","enterJsonToConvert":"Introduce JSON para convertir","jsonConvertedToToml":"JSON convertido a TOML","jsonConvertError":"Error al convertir JSON a TOML","enterJsonToFormat":"Introduce JSON para formatear","jsonParseError":"Error al parsear JSON","noResultToCopy":"No hay resultado para copiar","copyError":"Error al copiar","seo":{"whatIsTitle":"¿Qué es la conversión de TOML y JSON y por qué es útil?","whatIsContent":"**TOML (Tom's Obvious, Minimal Language)** y **JSON (JavaScript Object Notation)** son ambos **formatos de archivo de configuración** y estándares de serialización de datos. **TOML usa secciones estilo INI** con pares clave-valor para configuración legible por humanos, mientras que **JSON usa objetos anidados** para representación flexible de datos. Convertir entre estos formatos ayuda a **modernizar sistemas de configuración**, mejorar **compatibilidad multiplataforma**, y permite **migración seamless de datos** entre diferentes entornos de desarrollo. Aprende más sobre [TOML](https://es.wikipedia.org/wiki/TOML) y [estandarización JSON](https://es.wikipedia.org/wiki/JSON).","howToTitle":"¿Cómo usar la herramienta Conversor TOML ↔ JSON?","howToSteps":["**Pega** tus datos TOML o JSON en el área de entrada","**Elige la dirección de conversión**: TOML → JSON o JSON → TOML","Haz clic en **'Convertir'** para transformar el formato de configuración","**Copia** el resultado convertido o usa opciones de formateo JSON"],"useCasesTitle":"Casos de uso comunes de conversión TOML ↔ JSON","useCases":["**Migrar configuraciones de proyectos Python** de TOML (pyproject.toml) a APIs JSON","**Convertir configuraciones Rust/Cargo** a JSON para herramientas web","**Transformar configuraciones de aplicaciones** de archivos TOML config a entradas JSON en base de datos","**Integrar sistemas** que usan diferentes formatos de configuración","**Modernizar configuraciones legacy** para trabajar con herramientas y APIs contemporáneas"],"faqTitle":"Preguntas frecuentes","faq":[{"question":"¿Cómo se convierten las secciones TOML a JSON?","answer":"Las **secciones TOML** (como [sección]) se convierten en **objetos anidados** en JSON. Las claves dentro de secciones se convierten en propiedades de los objetos JSON correspondientes, manteniendo la **estructura jerárquica** mientras se preservan todas las relaciones de datos."},{"question":"¿Qué tipos de datos TOML son compatibles?","answer":"El convertidor soporta los tipos de datos de TOML: **cadenas, enteros, decimales, booleanos, fechas/horas, arrays y tablas en línea**. Las características TOML complejas como **arrays de tablas y claves con puntos** se convierten correctamente a sus equivalentes JSON."},{"question":"¿Este conversor TOML/JSON es seguro?","answer":"¡Sí! Todo el procesamiento de datos ocurre **100% en tu navegador**. Tus datos TOML y JSON nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tus datos de configuración."}]}};
     </script>
 <!-- Intentamos usar un CDN común para TOML; si falla, el script mostrará un mensaje claro -->
 <!-- Carga local de la librería TOML (vendor) para modo offline -->

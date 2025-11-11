@@ -27,7 +27,41 @@
     "invalidPages": "The specified pages are not valid.",
     "downloadSplitPdf": "Download split PDF",
     "errorSplittingPdf": "Error splitting PDF:",
-    "errorSplittingGeneric": "An error occurred while splitting the PDF. Please try again."
+    "errorSplittingGeneric": "An error occurred while splitting the PDF. Please try again.",
+    "seo": {
+      "whatIsTitle": "What is PDF splitting and why is it useful?",
+      "whatIsContent": "**PDF splitting** is the process of extracting specific pages or page ranges from a large PDF document to create **smaller, focused PDF files**. This technique uses precise **page extraction algorithms** to maintain document quality, formatting, and content integrity. Splitting PDFs helps with **document organization**, sharing specific sections, and creating **targeted documents** for different purposes. Learn more about [PDF page extraction](https://en.wikipedia.org/wiki/PDF#Content_extraction) and [document management strategies](https://en.wikipedia.org/wiki/Document_management_system).",
+      "howToTitle": "How to use the PDF Splitter tool?",
+      "howToSteps": [
+        "**Upload** your PDF by dragging it to the drop area or clicking to select",
+        "**Enter the page numbers** you want to extract (e.g., 1, 3-5, 8)",
+        "Click **'Split PDF'** to start the extraction process",
+        "**Download** the new PDF with the selected pages"
+      ],
+      "useCasesTitle": "Common use cases for PDF splitting",
+      "useCases": [
+        "Extract **specific chapters** or sections from large books or reports",
+        "Share **individual pages** or forms without the entire document",
+        "Create **presentation slides** from multi-page PDF documents",
+        "Separate **invoice pages** or receipts for different clients",
+        "**Archive specific documents** like certificates or legal pages"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What page number formats are supported?",
+          "answer": "You can specify pages using **individual numbers** (1, 5, 10), **ranges** (3-7, 10-15), or **combinations** (1, 3-5, 8, 10-12). Page numbering starts from **1** and corresponds to the actual page numbers in your PDF."
+        },
+        {
+          "question": "Does splitting affect PDF quality?",
+          "answer": "No! **Page extraction maintains full quality** of the selected pages. The split PDF contains **exact copies** of the original pages with the same resolution, formatting, images, and text quality as the source document."
+        },
+        {
+          "question": "Is this PDF splitter safe?",
+          "answer": "Yes! All PDF processing happens **100% in your browser**. Your PDF files never leave your device and are not stored on any server, ensuring complete **privacy and security** of your sensitive documents."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -57,6 +91,40 @@
     "invalidPages": "Las páginas especificadas no son válidas.",
     "downloadSplitPdf": "Descargar PDF dividido",
     "errorSplittingPdf": "Error al dividir el PDF:",
-    "errorSplittingGeneric": "Ocurrió un error al dividir el PDF. Por favor, inténtalo de nuevo."
+    "errorSplittingGeneric": "Ocurrió un error al dividir el PDF. Por favor, inténtalo de nuevo.",
+    "seo": {
+      "whatIsTitle": "¿Qué es la división de PDFs y por qué es útil?",
+      "whatIsContent": "La **división de PDFs** es el proceso de extraer páginas específicas o rangos de páginas de un documento PDF grande para crear **archivos PDF más pequeños y enfocados**. Esta técnica usa **algoritmos precisos de extracción de páginas** para mantener la calidad del documento, formato e integridad del contenido. Dividir PDFs ayuda con la **organización de documentos**, compartir secciones específicas, y crear **documentos dirigidos** para diferentes propósitos. Aprende más sobre [extracción de páginas PDF](https://es.wikipedia.org/wiki/PDF#Extracci%C3%B3n_de_contenido) y [estrategias de gestión de documentos](https://es.wikipedia.org/wiki/Sistema_de_gesti%C3%B3n_de_documentos).",
+      "howToTitle": "¿Cómo usar la herramienta Divisor de PDFs?",
+      "howToSteps": [
+        "**Sube** tu PDF arrastrándolo al área de selección o haciendo clic para elegir",
+        "**Introduce los números de página** que quieres extraer (p. ej., 1, 3-5, 8)",
+        "Haz clic en **'Dividir PDF'** para iniciar el proceso de extracción",
+        "**Descarga** el nuevo PDF con las páginas seleccionadas"
+      ],
+      "useCasesTitle": "Casos de uso comunes de división de PDFs",
+      "useCases": [
+        "Extraer **capítulos específicos** o secciones de libros o reportes grandes",
+        "Compartir **páginas individuales** o formularios sin todo el documento",
+        "Crear **diapositivas de presentación** desde documentos PDF de múltiples páginas",
+        "Separar **páginas de factura** o recibos para diferentes clientes",
+        "**Archivar documentos específicos** como certificados o páginas legales"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Qué formatos de números de página son compatibles?",
+          "answer": "Puedes especificar páginas usando **números individuales** (1, 5, 10), **rangos** (3-7, 10-15), o **combinaciones** (1, 3-5, 8, 10-12). La numeración de páginas comienza desde **1** y corresponde a los números de página reales en tu PDF."
+        },
+        {
+          "question": "¿Afecta la división a la calidad del PDF?",
+          "answer": "¡No! **La extracción de páginas mantiene la calidad completa** de las páginas seleccionadas. El PDF dividido contiene **copias exactas** de las páginas originales con la misma resolución, formato, imágenes y calidad de texto que el documento fuente."
+        },
+        {
+          "question": "¿Este divisor de PDFs es seguro?",
+          "answer": "¡Sí! Todo el procesamiento de PDF ocurre **100% en tu navegador**. Tus archivos PDF nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tus documentos sensibles."
+        }
+      ]
+    }
   }
 }

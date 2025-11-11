@@ -9,18 +9,86 @@
         "assistantName": "AI Assistant",
         "assistantWelcomeMessage": "PDF loaded. What do you want to know about this document?",
         "questionPlaceholder": "Ask about the PDF...",
-        "sendButton": "📤 Send"
-    },
-    "es": {
-        "apiKeySetupTitle": "⚙️ Necesitas configurar tu API key de Google Gemini.",
-        "configureNowButton": "Configurar ahora",
-        "uploadPDFLabel": "Subir PDF",
-        "pdfFilePlaceholder": "Selecciona un archivo PDF",
-        "pdfProcessingInfo": "El PDF se procesa localmente, no se sube a ningún servidor",
-        "pdfPreviewTitle": "Vista previa del contenido:",
-        "assistantName": "Asistente IA",
-        "assistantWelcomeMessage": "PDF cargado. ¿Qué quieres saber sobre este documento?",
-        "questionPlaceholder": "Pregunta sobre el PDF...",
-        "sendButton": "📤 Enviar"
+        "sendButton": "📤 Send",
+        "seo": {
+            "whatIsTitle": "What is AI-powered PDF chat and how does it work?",
+            "whatIsContent": "**AI-powered PDF chat** combines **artificial intelligence** with **document processing** to enable **conversational interaction** with PDF documents. This technology uses **PDF text extraction**, **natural language processing**, and **large language models** to understand document content and provide **intelligent responses** to user questions. The system **processes PDF text locally** using **browser-based extraction**, then uses AI to **analyze, summarize, and answer questions** about the document content. This approach transforms **static documents** into **interactive knowledge bases**, making **research, studying, and document analysis** more efficient and accessible. Learn more about [document AI](https://en.wikipedia.org/wiki/Document_AI) and [PDF processing](https://en.wikipedia.org/wiki/PDF).",
+            "howToTitle": "How to use the Chat with PDF tool?",
+            "howToSteps": [
+                "**Upload your PDF file** - it's processed locally in your browser (never uploaded)",
+                "**Wait for text extraction** - the document content is analyzed automatically",
+                "**Start asking questions** about the PDF content in natural language",
+                "**Get AI-powered answers** with relevant quotes and references from your document"
+            ],
+            "useCasesTitle": "Common use cases for AI PDF chat",
+            "useCases": [
+                "**Research efficiency** - quickly extract information from academic papers and reports",
+                "**Legal document review** - ask specific questions about contracts, agreements, and policies",
+                "**Business analysis** - analyze financial reports, business plans, and market research",
+                "**Educational support** - study textbooks, research papers, and educational materials",
+                "**Technical documentation** - query API docs, manuals, and technical specifications"
+            ],
+            "faqTitle": "Frequently Asked Questions",
+            "faq": [
+                {
+                    "question": "How accurate are AI responses about PDF content?",
+                    "answer": "AI responses are generally **very accurate** when based on **clear, readable text** in the PDF. However, accuracy may vary with **scanned documents, poor OCR quality, or complex formatting**. The AI can **quote specific sections** to help you verify information."
+                },
+                {
+                    "question": "Is my PDF data secure and private?",
+                    "answer": "Yes! **PDFs are processed locally** in your browser and **never uploaded** to our servers. Only **extracted text** (not the original file) is sent to **Google Gemini AI** for analysis. Your **documents remain completely private** throughout the process."
+                },
+                {
+                    "question": "What types of PDFs work best with AI chat?",
+                    "answer": "AI PDF chat works best with **text-based PDFs** like **research papers, reports, books, and documents with clear formatting**. It may struggle with **image-only PDFs, complex layouts, or documents with poor text recognition**."
+                }
+            ]
+        }
+  },
+  "es": {
+    "apiKeySetupTitle": "⚙️ Necesitas configurar tu API key de Google Gemini.",
+    "configureNowButton": "Configurar ahora",
+    "uploadPDFLabel": "Subir PDF",
+    "pdfFilePlaceholder": "Selecciona un archivo PDF",
+    "pdfProcessingInfo": "El PDF se procesa localmente, no se sube a ningún servidor",
+    "pdfPreviewTitle": "Vista previa del contenido:",
+    "assistantName": "Asistente IA",
+    "assistantWelcomeMessage": "PDF cargado. ¿Qué quieres saber sobre este documento?",
+    "questionPlaceholder": "Pregunta sobre el PDF...",
+    "sendButton": "📤 Enviar",
+    "seo": {
+      "whatIsTitle": "¿Qué es el chat con PDF impulsado por IA y cómo funciona?",
+      "whatIsContent": "El **chat con PDF impulsado por IA** combina **inteligencia artificial** con **procesamiento de documentos** para habilitar **interacción conversacional** con documentos PDF. Esta tecnología usa **extracción de texto PDF**, **procesamiento de lenguaje natural** y **modelos de lenguaje grandes** para entender el contenido del documento y proporcionar **respuestas inteligentes** a preguntas de usuario. El sistema **procesa texto PDF localmente** usando **extracción basada en navegador**, luego usa IA para **analizar, resumir y responder preguntas** sobre el contenido del documento. Este enfoque transforma **documentos estáticos** en **bases de conocimiento interactivas**, haciendo la **investigación, estudio y análisis de documentos** más eficiente y accesible. Aprende más sobre [IA de documentos](https://es.wikipedia.org/wiki/IA_de_documentos) y [procesamiento PDF](https://es.wikipedia.org/wiki/PDF).",
+      "howToTitle": "¿Cómo usar la herramienta Chat con PDF?",
+      "howToSteps": [
+        "**Sube tu archivo PDF** - se procesa localmente en tu navegador (nunca se sube)",
+        "**Espera la extracción de texto** - el contenido del documento se analiza automáticamente",
+        "**Comienza a hacer preguntas** sobre el contenido PDF en lenguaje natural",
+        "**Obtén respuestas impulsadas por IA** con citas relevantes y referencias de tu documento"
+      ],
+      "useCasesTitle": "Casos de uso comunes del chat con PDF con IA",
+      "useCases": [
+        "**Eficiencia en investigación** - extraer rápidamente información de papers académicos y reportes",
+        "**Revisión de documentos legales** - hacer preguntas específicas sobre contratos, acuerdos y políticas",
+        "**Análisis de negocio** - analizar reportes financieros, planes de negocio e investigación de mercado",
+        "**Apoyo educativo** - estudiar libros de texto, papers de investigación y materiales educativos",
+        "**Documentación técnica** - consultar docs de API, manuales y especificaciones técnicas"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Qué tan precisas son las respuestas de IA sobre contenido PDF?",
+          "answer": "Las respuestas de IA son generalmente **muy precisas** cuando se basan en **texto claro y legible** en el PDF. Sin embargo, la precisión puede variar con **documentos escaneados, pobre calidad de OCR, o formateo complejo**. La IA puede **citar secciones específicas** para ayudarte a verificar información."
+        },
+        {
+          "question": "¿Mis datos PDF son seguros y privados?",
+          "answer": "¡Sí! **Los PDFs se procesan localmente** en tu navegador y **nunca se suben** a nuestros servidores. Solo el **texto extraído** (no el archivo original) se envía a **Google Gemini AI** para análisis. Tus **documentos permanecen completamente privados** durante todo el proceso."
+        },
+        {
+          "question": "¿Qué tipos de PDFs funcionan mejor con chat de IA?",
+          "answer": "El chat con PDF con IA funciona mejor con **PDFs basados en texto** como **papers de investigación, reportes, libros y documentos con formateo claro**. Puede luchar con **PDFs solo de imagen, diseños complejos, o documentos con pobre reconocimiento de texto**."
+        }
+      ]
     }
+  }
 }

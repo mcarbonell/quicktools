@@ -16,7 +16,41 @@
     "jsonParseError": "Error parsing JSON",
     "enterJsonToFormat": "Enter JSON to format",
     "noResultToCopy": "No result to copy",
-    "copyError": "Error copying"
+    "copyError": "Error copying",
+    "seo": {
+      "whatIsTitle": "What is YAML and JSON conversion and why is it useful?",
+      "whatIsContent": "**YAML (YAML Ain't Markup Language)** and **JSON (JavaScript Object Notation)** are both **human-readable data serialization formats** used for configuration files, data exchange, and API communication. **YAML uses indentation and simplicity** for human-friendliness, while **JSON uses braces and strict syntax** for programmatic parsing. Converting between these formats enables **cross-platform compatibility** and **flexible data handling** across different programming environments. Learn more about [YAML](https://en.wikipedia.org/wiki/YAML) and [JSON serialization](https://en.wikipedia.org/wiki/JSON).",
+      "howToTitle": "How to use the YAML ↔ JSON Converter tool?",
+      "howToSteps": [
+        "**Paste** your YAML or JSON data into the input area",
+        "**Choose conversion direction**: YAML → JSON or JSON → YAML",
+        "Click **'Convert'** to transform the data format",
+        "**Copy** the converted result or use additional formatting options"
+      ],
+      "useCasesTitle": "Common use cases for YAML ↔ JSON conversion",
+      "useCases": [
+        "**Convert configuration files** between Docker Compose (YAML) and API specs (JSON)",
+        "**Transform data** for different [DevOps tools](https://en.wikipedia.org/wiki/DevOps) and CI/CD pipelines",
+        "**Migrate legacy configurations** from YAML-based to JSON-based systems",
+        "**Validate data structure** across different serialization formats",
+        "**Integrate systems** that use different data representation standards"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What's the main difference between YAML and JSON?",
+          "answer": "**YAML** uses **indentation and minimal syntax** for human readability and supports comments, while **JSON** uses **braces and quotes** for strict, machine-parsable structure. YAML is often preferred for **configuration files**, while JSON is standard for **API communication**."
+        },
+        {
+          "question": "Can I convert complex YAML features to JSON?",
+          "answer": "The converter handles most YAML features including **nested objects, arrays, and strings**. However, **YAML comments and advanced features** like anchors may not be preserved in JSON format, as JSON doesn't support these concepts."
+        },
+        {
+          "question": "Is this YAML/JSON converter safe?",
+          "answer": "Yes! All data processing happens **100% in your browser**. Your YAML and JSON data never leave your device and are not stored on any server, ensuring complete **privacy and security** of your sensitive configuration data."
+        }
+      ]
+    }
   },
   "es": {
     "inputLabel": "Entrada (YAML o JSON)",
@@ -35,6 +69,40 @@
     "jsonParseError": "Error al parsear JSON",
     "enterJsonToFormat": "Introduce JSON para formatear",
     "noResultToCopy": "No hay resultado para copiar",
-    "copyError": "Error al copiar"
+    "copyError": "Error al copiar",
+    "seo": {
+      "whatIsTitle": "¿Qué es la conversión de YAML y JSON y por qué es útil?",
+      "whatIsContent": "**YAML (YAML Ain't Markup Language)** y **JSON (JavaScript Object Notation)** son ambos **formatos de serialización de datos legibles por humanos** usados para archivos de configuración, intercambio de datos y comunicación API. **YAML usa indentación y simplicidad** para amigabilidad humana, mientras que **JSON usa llaves y sintaxis estricta** para análisis programático. Convertir entre estos formatos permite **compatibilidad multiplataforma** y **manejo flexible de datos** a través de diferentes entornos de programación. Aprende más sobre [YAML](https://es.wikipedia.org/wiki/YAML) y [serialización JSON](https://es.wikipedia.org/wiki/JSON).",
+      "howToTitle": "¿Cómo usar la herramienta Conversor YAML ↔ JSON?",
+      "howToSteps": [
+        "**Pega** tus datos YAML o JSON en el área de entrada",
+        "**Elige la dirección de conversión**: YAML → JSON o JSON → YAML",
+        "Haz clic en **'Convertir'** para transformar el formato de datos",
+        "**Copia** el resultado convertido o usa opciones adicionales de formateo"
+      ],
+      "useCasesTitle": "Casos de uso comunes de conversión YAML ↔ JSON",
+      "useCases": [
+        "**Convertir archivos de configuración** entre Docker Compose (YAML) y especificaciones API (JSON)",
+        "**Transformar datos** para diferentes [herramientas DevOps](https://es.wikipedia.org/wiki/DevOps) y pipelines CI/CD",
+        "**Migrar configuraciones legacy** de sistemas basados en YAML a sistemas basados en JSON",
+        "**Validar estructura de datos** a través de diferentes formatos de serialización",
+        "**Integrar sistemas** que usan diferentes estándares de representación de datos"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Cuál es la principal diferencia entre YAML y JSON?",
+          "answer": "**YAML** usa **indentación y sintaxis mínima** para legibilidad humana y soporta comentarios, mientras que **JSON** usa **llaves y comillas** para estructura estricta y análisis por máquina. YAML a menudo se prefiere para **archivos de configuración**, mientras que JSON es estándar para **comunicación API**."
+        },
+        {
+          "question": "¿Puedo convertir características complejas de YAML a JSON?",
+          "answer": "El convertidor maneja la mayoría de características YAML incluyendo **objetos anidados, arrays y cadenas**. Sin embargo, **comentarios YAML y características avanzadas** como anclajes pueden no preservarse en formato JSON, ya que JSON no soporta estos conceptos."
+        },
+        {
+          "question": "¿Este conversor YAML/JSON es seguro?",
+          "answer": "¡Sí! Todo el procesamiento de datos ocurre **100% en tu navegador**. Tus datos YAML y JSON nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tus datos de configuración sensibles."
+        }
+      ]
+    }
   }
 }

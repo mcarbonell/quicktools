@@ -28,7 +28,41 @@
     "errorReadingExif": "Error reading EXIF metadata:",
     "errorReadingExifGeneric": "Error reading EXIF metadata.",
     "errorCleaningExif": "Error cleaning EXIF metadata:",
-    "errorCleaningExifGeneric": "An error occurred while cleaning EXIF metadata."
+    "errorCleaningExifGeneric": "An error occurred while cleaning EXIF metadata.",
+    "seo": {
+      "whatIsTitle": "What are EXIF metadata and why remove them?",
+      "whatIsContent": "**EXIF (Exchangeable Image File Format)** metadata is hidden information stored within digital images that includes camera settings, date/time stamps, GPS coordinates, and sometimes **personal information**. While useful for photographers, EXIF data can pose **privacy risks** when sharing images online, as it may reveal your location or camera details. Removing EXIF helps protect your **digital privacy** and security. Learn more about [EXIF metadata](https://en.wikipedia.org/wiki/Exif) and [digital privacy](https://www.eff.org/issues/online-privacy).",
+      "howToTitle": "How to use the EXIF Viewer & Cleaner tool?",
+      "howToSteps": [
+        "**Upload** your image by dragging it to the drop area or clicking to select",
+        "Click **'View EXIF'** to see all metadata embedded in your image",
+        "Review the **sensitive information** that might be visible (GPS, camera, date)",
+        "Click **'Remove EXIF'** to create a clean version without metadata"
+      ],
+      "useCasesTitle": "Common use cases for EXIF removal",
+      "useCases": [
+        "Protect **location privacy** when sharing photos on [social media](https://www.eff.org/issues/online-privacy/social-networking-privacy)",
+        "Remove **camera information** before uploading to public websites",
+        "Clean **date/time stamps** for anonymous or professional presentations",
+        "Prepare **press images** without revealing photographer's location",
+        "Ensure **GDPR compliance** when sharing images in professional contexts"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What information is stored in EXIF data?",
+          "answer": "EXIF data typically includes **camera details** (make, model, settings), **date and time** of capture, **GPS coordinates** (location), **software used**, and sometimes **copyright information**. This data is automatically added by most digital cameras and smartphones."
+        },
+        {
+          "question": "Is it safe to remove EXIF metadata?",
+          "answer": "Yes! Removing EXIF is **completely safe** and doesn't affect image quality. It only removes the hidden metadata while preserving the **visual content** of your image. This is a standard practice for privacy protection."
+        },
+        {
+          "question": "Is this EXIF viewer and cleaner safe?",
+          "answer": "Yes! All EXIF processing happens **100% in your browser**. Your images never leave your device and are not stored on any server, ensuring complete **privacy and security** of your personal information."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -59,6 +93,40 @@
     "errorReadingExif": "Error al leer metadatos EXIF:",
     "errorReadingExifGeneric": "Error al leer metadatos EXIF.",
     "errorCleaningExif": "Error al limpiar metadatos EXIF:",
-    "errorCleaningExifGeneric": "Ocurrió un error al limpiar los metadatos EXIF."
+    "errorCleaningExifGeneric": "Ocurrió un error al limpiar los metadatos EXIF.",
+    "seo": {
+      "whatIsTitle": "¿Qué son los metadatos EXIF y por qué eliminarlos?",
+      "whatIsContent": "Los metadatos **EXIF (Exchangeable Image File Format)** son información oculta almacenada en imágenes digitales que incluye configuraciones de cámara, sellos de fecha/hora, coordenadas GPS y a veces **información personal**. Aunque útiles para fotógrafos, los datos EXIF pueden presentar **riesgos de privacidad** al compartir imágenes en línea, ya que pueden revelar tu ubicación o detalles de la cámara. Eliminar EXIF ayuda a proteger tu **privacidad digital** y seguridad. Aprende más sobre [metadatos EXIF](https://es.wikipedia.org/wiki/Exif) y [privacidad digital](https://www.eff.org/es/issues/online-privacy).",
+      "howToTitle": "¿Cómo usar la herramienta Visor y Limpiador de EXIF?",
+      "howToSteps": [
+        "**Sube** tu imagen arrastrándola al área de selección o haciendo clic para seleccionar",
+        "Haz clic en **'Ver EXIF'** para ver todos los metadatos embebidos en tu imagen",
+        "Revisa la **información sensible** que podría estar visible (GPS, cámara, fecha)",
+        "Haz clic en **'Eliminar EXIF'** para crear una versión limpia sin metadatos"
+      ],
+      "useCasesTitle": "Casos de uso comunes para eliminación de EXIF",
+      "useCases": [
+        "Proteger **privacidad de ubicación** al compartir fotos en [redes sociales](https://www.eff.org/es/issues/online-privacy/social-networking-privacy)",
+        "Eliminar **información de cámara** antes de subir a sitios web públicos",
+        "Limpiar **sellos de fecha/hora** para presentaciones anónimas o profesionales",
+        "Preparar **imágenes de prensa** sin revelar la ubicación del fotógrafo",
+        "Asegurar **cumplimiento de GDPR** al compartir imágenes en contextos profesionales"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Qué información se almacena en los datos EXIF?",
+          "answer": "Los datos EXIF típicamente incluyen **detalles de cámara** (marca, modelo, configuraciones), **fecha y hora** de captura, **coordenadas GPS** (ubicación), **software utilizado**, y a veces **información de copyright**. Estos datos son añadidos automáticamente por la mayoría de cámaras digitales y smartphones."
+        },
+        {
+          "question": "¿Es seguro eliminar los metadatos EXIF?",
+          "answer": "¡Sí! Eliminar EXIF es **completamente seguro** y no afecta la calidad de la imagen. Solo elimina los metadatos ocultos mientras preserva el **contenido visual** de tu imagen. Esta es una práctica estándar para protección de privacidad."
+        },
+        {
+          "question": "¿Este visor y limpiador de EXIF es seguro?",
+          "answer": "¡Sí! Todo el procesamiento EXIF ocurre **100% en tu navegador**. Tus imágenes nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tu información personal."
+        }
+      ]
+    }
   }
 }

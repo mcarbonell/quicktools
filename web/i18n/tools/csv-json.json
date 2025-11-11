@@ -52,7 +52,41 @@
     "csvLibraryUnavailable": "CSV library not available.",
     "pastedContent": "Content pasted",
     "autoDetectionActive": "Auto-detection active",
-    "delimiterTabFormat": "{delimiter} (tab)"
+    "delimiterTabFormat": "{delimiter} (tab)",
+    "seo": {
+      "whatIsTitle": "What is CSV to JSON conversion and why is it useful?",
+      "whatIsContent": "**CSV (Comma-Separated Values)** and **JSON (JavaScript Object Notation)** are both **data interchange formats** used for storing and exchanging structured information. **CSV to JSON conversion** transforms spreadsheet-like data into **JavaScript objects**, making it easier to work with in web applications, APIs, and modern programming languages. This conversion enables **data interoperability** between different systems and improves **data processing** efficiency. Learn more about [CSV format](https://en.wikipedia.org/wiki/Comma-separated_values) and [JSON data interchange](https://en.wikipedia.org/wiki/JSON).",
+      "howToTitle": "How to use the CSV ↔ JSON Converter tool?",
+      "howToSteps": [
+        "**Paste** your CSV or JSON data, or **upload** a CSV file",
+        "**Select conversion direction**: CSV → JSON or JSON → CSV",
+        "**Choose delimiter** (auto-detect, comma, semicolon, tab, or custom)",
+        "**Click convert** and copy or download the transformed data"
+      ],
+      "useCasesTitle": "Common use cases for CSV ↔ JSON conversion",
+      "useCases": [
+        "**Import spreadsheet data** into web applications and databases",
+        "**Export API data** from JSON to CSV for Excel analysis",
+        "**Data migration** between different database systems and platforms",
+        "**Create REST API responses** from CSV-based data sources",
+        "**Generate configuration files** from spreadsheet data"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What delimiters are supported for CSV files?",
+          "answer": "The tool supports **comma (,), semicolon (;), tab (\\t), and pipe (|)** delimiters. It can also **auto-detect** the delimiter used in your CSV file, or you can specify a **custom delimiter** for special cases."
+        },
+        {
+          "question": "How does the auto-detection work?",
+          "answer": "The tool analyzes your CSV data to **identify the most consistent delimiter** by counting occurrences in the first few rows. It uses statistical analysis to determine the delimiter that creates the most **uniform column structure**."
+        },
+        {
+          "question": "Is this CSV/JSON converter safe?",
+          "answer": "Yes! All data processing happens **100% in your browser**. Your CSV and JSON data never leave your device and are not stored on any server, ensuring complete **privacy and security** of your sensitive data."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -107,6 +141,40 @@
     "csvLibraryUnavailable": "CSV library no disponible.",
     "pastedContent": "Contenido pegado",
     "autoDetectionActive": "Auto-detección activada",
-    "delimiterTabFormat": "{delimiter} (tab)"
+    "delimiterTabFormat": "{delimiter} (tab)",
+    "seo": {
+      "whatIsTitle": "¿Qué es la conversión de CSV a JSON y por qué es útil?",
+      "whatIsContent": "**CSV (Valores Separados por Coma)** y **JSON (JavaScript Object Notation)** son ambos **formatos de intercambio de datos** usados para almacenar e intercambiar información estructurada. La **conversión de CSV a JSON** transforma datos tipo hoja de cálculo en **objetos JavaScript**, facilitando el trabajo con ellos en aplicaciones web, APIs y lenguajes de programación modernos. Esta conversión permite **interoperabilidad de datos** entre diferentes sistemas y mejora la **eficiencia de procesamiento** de datos. Aprende más sobre [formato CSV](https://es.wikipedia.org/wiki/Valores_separados_por_comas) e [intercambio de datos JSON](https://es.wikipedia.org/wiki/JSON).",
+      "howToTitle": "¿Cómo usar la herramienta Conversor CSV ↔ JSON?",
+      "howToSteps": [
+        "**Pega** tus datos CSV o JSON, o **sube** un archivo CSV",
+        "**Selecciona la dirección de conversión**: CSV → JSON o JSON → CSV",
+        "**Elige el delimitador** (detectar automáticamente, coma, punto y coma, tab, o personalizado)",
+        "**Haz clic en convertir** y copia o descarga los datos transformados"
+      ],
+      "useCasesTitle": "Casos de uso comunes de conversión CSV ↔ JSON",
+      "useCases": [
+        "**Importar datos de hojas de cálculo** en aplicaciones web y bases de datos",
+        "**Exportar datos de API** de JSON a CSV para análisis en Excel",
+        "**Migración de datos** entre diferentes sistemas de bases de datos y plataformas",
+        "**Crear respuestas de API REST** desde fuentes de datos basadas en CSV",
+        "**Generar archivos de configuración** desde datos de hojas de cálculo"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Qué delimitadores son compatibles con archivos CSV?",
+          "answer": "La herramienta soporta delimitadores de **coma (,), punto y coma (;), tab (\\t) y pipe (|)**. También puede **detectar automáticamente** el delimitador usado en tu archivo CSV, o puedes especificar un **delimitador personalizado** para casos especiales."
+        },
+        {
+          "question": "¿Cómo funciona la auto-detección?",
+          "answer": "La herramienta analiza tus datos CSV para **identificar el delimitador más consistente** contando ocurrencias en las primeras filas. Usa análisis estadístico para determinar el delimitador que crea la **estructura de columnas más uniforme**."
+        },
+        {
+          "question": "¿Este conversor CSV/JSON es seguro?",
+          "answer": "¡Sí! Todo el procesamiento de datos ocurre **100% en tu navegador**. Tus datos CSV y JSON nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tus datos sensibles."
+        }
+      ]
+    }
   }
 }

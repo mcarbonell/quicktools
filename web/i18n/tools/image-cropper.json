@@ -21,7 +21,41 @@
     "imageToCropAlt": "Image to crop",
     "cropAndDownloadButton": "Crop and Download",
     "imageLoaded": "Image loaded: {filename}",
-    "downloadCroppedImage": "Download Cropped Image"
+    "downloadCroppedImage": "Download Cropped Image",
+    "seo": {
+      "whatIsTitle": "What is image cropping and why is it important?",
+      "whatIsContent": "**Image cropping** is the process of removing unwanted parts of a digital image by selecting a specific area or **aspect ratio** to keep. This fundamental photo editing technique helps improve composition, focus attention on **important subjects**, and optimize images for different platforms and purposes. Proper cropping can transform an average photo into a compelling visual story. Learn more about [image composition](https://en.wikipedia.org/wiki/Composition_(visual_arts)) and [photography techniques](https://en.wikipedia.org/wiki/Photography).",
+      "howToTitle": "How to use the Image Cropper tool?",
+      "howToSteps": [
+        "**Upload** your image by dragging it to the drop area or clicking to select",
+        "**Drag** the crop handles or borders to select the area you want to keep",
+        "**Adjust** the selection to achieve the desired composition and aspect ratio",
+        "Click **'Crop and Download'** to save your cropped image"
+      ],
+      "useCasesTitle": "Common use cases for image cropping",
+      "useCases": [
+        "Create **social media posts** with optimized dimensions for Instagram, Facebook, or Twitter",
+        "Remove **unwanted background elements** or distractions from photos",
+        "Improve **photo composition** by focusing on the main subject",
+        "Create **profile pictures** and avatars with proper aspect ratios",
+        "Prepare **print-ready images** with exact dimensions and aspect ratios"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What aspect ratios should I use for different platforms?",
+          "answer": "Common aspect ratios include **1:1** (square) for Instagram posts, **16:9** for YouTube thumbnails, **4:3** for Facebook posts, and **9:16** for Instagram Stories. Each platform has specific **optimal dimensions** for better engagement."
+        },
+        {
+          "question": "Does cropping affect image quality?",
+          "answer": "Cropping itself doesn't degrade quality, but it reduces the **image resolution** since you're working with fewer pixels. Always start with a **high-resolution image** for the best results, especially for print or large displays."
+        },
+        {
+          "question": "Is this image cropper safe?",
+          "answer": "Yes! All image processing happens **100% in your browser**. Your images never leave your device and are not stored on any server, ensuring complete privacy and security."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -45,6 +79,40 @@
     "imageToCropAlt": "Imagen a recortar",
     "cropAndDownloadButton": "Recortar y Descargar",
     "imageLoaded": "Imagen cargada: {filename}",
-    "downloadCroppedImage": "Descargar Imagen Recortada"
+    "downloadCroppedImage": "Descargar Imagen Recortada",
+    "seo": {
+      "whatIsTitle": "¿Qué es el recorte de imágenes y por qué es importante?",
+      "whatIsContent": "El **recorte de imágenes** es el proceso de eliminar partes no deseadas de una imagen digital seleccionando un área específica o **relación de aspecto** para mantener. Esta técnica fundamental de edición de fotos ayuda a mejorar la composición, enfocar la atención en **sujetos importantes**, y optimizar imágenes para diferentes plataformas y propósitos. El recorte adecuado puede transformar una foto promedio en una historia visual convincente. Aprende más sobre [composición de imágenes](https://es.wikipedia.org/wiki/Composici%C3%B3n_(artes_visuales)) y [técnicas de fotografía](https://es.wikipedia.org/wiki/Fotograf%C3%ADa).",
+      "howToTitle": "¿Cómo usar la herramienta Recortador de Imágenes?",
+      "howToSteps": [
+        "**Sube** tu imagen arrastrándola al área de selección o haciendo clic para elegir",
+        "**Arrastra** las manijas de recorte o bordes para seleccionar el área que quieres mantener",
+        "**Ajusta** la selección para lograr la composición y relación de aspecto deseada",
+        "Haz clic en **'Recortar y Descargar'** para guardar tu imagen recortada"
+      ],
+      "useCasesTitle": "Casos de uso comunes del recorte de imágenes",
+      "useCases": [
+        "Crear **publicaciones en redes sociales** con dimensiones optimizadas para Instagram, Facebook, o Twitter",
+        "Eliminar **elementos de fondo no deseados** o distracciones de las fotos",
+        "Mejorar la **composición de fotos** enfocándose en el sujeto principal",
+        "Crear **fotos de perfil** y avatares con relaciones de aspecto apropiadas",
+        "Preparar **imágenes listas para impresión** con dimensiones y relaciones de aspecto exactas"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Qué relaciones de aspecto debo usar para diferentes plataformas?",
+          "answer": "Las relaciones de aspecto comunes incluyen **1:1** (cuadrado) para publicaciones de Instagram, **16:9** para miniaturas de YouTube, **4:3** para publicaciones de Facebook, y **9:16** para Historias de Instagram. Cada plataforma tiene **dimensiones óptimas** específicas para mejor engagement."
+        },
+        {
+          "question": "¿El recorte afecta la calidad de la imagen?",
+          "answer": "El recorte en sí mismo no degrada la calidad, pero reduce la **resolución de la imagen** ya que trabajas con menos píxeles. Siempre comienza con una **imagen de alta resolución** para los mejores resultados, especialmente para impresión o pantallas grandes."
+        },
+        {
+          "question": "¿Este recortador de imágenes es seguro?",
+          "answer": "¡Sí! Todo el procesamiento de imágenes ocurre **100% en tu navegador**. Tus imágenes nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando privacidad y seguridad completas."
+        }
+      ]
+    }
   }
 }

@@ -79,11 +79,71 @@
     <a id="download-cleaned-image" class="btn btn-success"
         download="cleaned_image.png">Download Clean Image</a>
 </div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What are EXIF metadata and why remove them?</h2>
+            <p class="mb-4"><strong>EXIF (Exchangeable Image File Format)</strong> metadata is hidden information stored within digital images that includes camera settings, date/time stamps, GPS coordinates, and sometimes <strong>personal information</strong>. While useful for photographers, EXIF data can pose <strong>privacy risks</strong> when sharing images online, as it may reveal your location or camera details. Removing EXIF helps protect your <strong>digital privacy</strong> and security. Learn more about <a href="https://en.wikipedia.org/wiki/Exif" target="_blank" rel="noopener">EXIF metadata</a> and <a href="https://www.eff.org/issues/online-privacy" target="_blank" rel="noopener">digital privacy</a>.</p>
+            <h3 class="h5 mb-3">How to use the EXIF Viewer & Cleaner tool?</h3>
+            <ol class="mb-4">
+                <li><strong>Upload</strong> your image by dragging it to the drop area or clicking to select</li>
+                <li>Click <strong>'View EXIF'</strong> to see all metadata embedded in your image</li>
+                <li>Review the <strong>sensitive information</strong> that might be visible (GPS, camera, date)</li>
+                <li>Click <strong>'Remove EXIF'</strong> to create a clean version without metadata</li>
+            </ol>
+            <h3 class="h5 mb-3">Common use cases for EXIF removal</h3>
+            <ul class="mb-4">
+                <li>Protect <strong>location privacy</strong> when sharing photos on <a href="https://www.eff.org/issues/online-privacy/social-networking-privacy" target="_blank" rel="noopener">social media</a></li>
+                <li>Remove <strong>camera information</strong> before uploading to public websites</li>
+                <li>Clean <strong>date/time stamps</strong> for anonymous or professional presentations</li>
+                <li>Prepare <strong>press images</strong> without revealing photographer's location</li>
+                <li>Ensure <strong>GDPR compliance</strong> when sharing images in professional contexts</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            What information is stored in EXIF data?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            EXIF data typically includes <strong>camera details</strong> (make, model, settings), <strong>date and time</strong> of capture, <strong>GPS coordinates</strong> (location), <strong>software used</strong>, and sometimes <strong>copyright information</strong>. This data is automatically added by most digital cameras and smartphones.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            Is it safe to remove EXIF metadata?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! Removing EXIF is <strong>completely safe</strong> and doesn't affect image quality. It only removes the hidden metadata while preserving the <strong>visual content</strong> of your image. This is a standard practice for privacy protection.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            Is this EXIF viewer and cleaner safe?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! All EXIF processing happens <strong>100% in your browser</strong>. Your images never leave your device and are not stored on any server, ensuring complete <strong>privacy and security</strong> of your personal information.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","viewButton":"View EXIF","cleanButton":"Remove EXIF","selectImageLabel":"Select an image","dropMessage":"Drag your image here or click to select","cleanExifButton":"Remove EXIF Metadata","exifMetadataTitle":"EXIF Metadata:","cleanedImageTitle":"Clean Image (no EXIF):","downloadCleanImageButton":"Download Clean Image","imageLoaded":"Image loaded: {filename}","noExifFound":"No EXIF metadata found.","errorReadingExif":"Error reading EXIF metadata:","errorReadingExifGeneric":"Error reading EXIF metadata.","errorCleaningExif":"Error cleaning EXIF metadata:","errorCleaningExifGeneric":"An error occurred while cleaning EXIF metadata."};
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","viewButton":"View EXIF","cleanButton":"Remove EXIF","selectImageLabel":"Select an image","dropMessage":"Drag your image here or click to select","cleanExifButton":"Remove EXIF Metadata","exifMetadataTitle":"EXIF Metadata:","cleanedImageTitle":"Clean Image (no EXIF):","downloadCleanImageButton":"Download Clean Image","imageLoaded":"Image loaded: {filename}","noExifFound":"No EXIF metadata found.","errorReadingExif":"Error reading EXIF metadata:","errorReadingExifGeneric":"Error reading EXIF metadata.","errorCleaningExif":"Error cleaning EXIF metadata:","errorCleaningExifGeneric":"An error occurred while cleaning EXIF metadata.","seo":{"whatIsTitle":"What are EXIF metadata and why remove them?","whatIsContent":"**EXIF (Exchangeable Image File Format)** metadata is hidden information stored within digital images that includes camera settings, date/time stamps, GPS coordinates, and sometimes **personal information**. While useful for photographers, EXIF data can pose **privacy risks** when sharing images online, as it may reveal your location or camera details. Removing EXIF helps protect your **digital privacy** and security. Learn more about [EXIF metadata](https://en.wikipedia.org/wiki/Exif) and [digital privacy](https://www.eff.org/issues/online-privacy).","howToTitle":"How to use the EXIF Viewer & Cleaner tool?","howToSteps":["**Upload** your image by dragging it to the drop area or clicking to select","Click **'View EXIF'** to see all metadata embedded in your image","Review the **sensitive information** that might be visible (GPS, camera, date)","Click **'Remove EXIF'** to create a clean version without metadata"],"useCasesTitle":"Common use cases for EXIF removal","useCases":["Protect **location privacy** when sharing photos on [social media](https://www.eff.org/issues/online-privacy/social-networking-privacy)","Remove **camera information** before uploading to public websites","Clean **date/time stamps** for anonymous or professional presentations","Prepare **press images** without revealing photographer's location","Ensure **GDPR compliance** when sharing images in professional contexts"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"What information is stored in EXIF data?","answer":"EXIF data typically includes **camera details** (make, model, settings), **date and time** of capture, **GPS coordinates** (location), **software used**, and sometimes **copyright information**. This data is automatically added by most digital cameras and smartphones."},{"question":"Is it safe to remove EXIF metadata?","answer":"Yes! Removing EXIF is **completely safe** and doesn't affect image quality. It only removes the hidden metadata while preserving the **visual content** of your image. This is a standard practice for privacy protection."},{"question":"Is this EXIF viewer and cleaner safe?","answer":"Yes! All EXIF processing happens **100% in your browser**. Your images never leave your device and are not stored on any server, ensuring complete **privacy and security** of your personal information."}]}};
     </script>
 <script src="/js/vendor/exifr.min.js"></script>
 <script src="/js/tools/exif-viewer-cleaner.js"></script>

@@ -36,7 +36,41 @@
     "clipboardFailed": "navigator.clipboard.writeText failed:",
     "hashCopiedFallback": "Hash copied to clipboard (fallback)",
     "copyError": "Error copying",
-    "execCopyFailed": "Copy failed:"
+    "execCopyFailed": "Copy failed:",
+    "seo": {
+      "whatIsTitle": "What are cryptographic hashes and why are they essential?",
+      "whatIsContent": "**Cryptographic hash functions** are mathematical algorithms that convert **input data of any size** into **fixed-length outputs** called hash values or digests. These **one-way functions** are crucial for **data integrity verification**, **password storage**, **digital signatures**, and **blockchain technology**. Popular algorithms include **MD5** (128-bit, legacy), **SHA-1** (160-bit, deprecated), **SHA-256** (256-bit, modern standard), and **SHA-512** (512-bit, maximum security). Hash values are **unique fingerprints** that change dramatically with any input modification. Learn more about [cryptographic hash functions](https://en.wikipedia.org/wiki/Cryptographic_hash_function) and [hash algorithms](https://en.wikipedia.org/wiki/Secure_Hash_Algorithm).",
+      "howToTitle": "How to use the Hash Calculator tool?",
+      "howToSteps": [
+        "**Enter your text** in the input field that you want to hash",
+        "**Select the hash algorithm**: MD5 (legacy), SHA-1 (deprecated), SHA-256 (recommended), or SHA-512 (maximum security)",
+        "Click **'Calculate Hash'** to generate the cryptographic hash value",
+        "**Copy the result** using the copy button for your records"
+      ],
+      "useCasesTitle": "Common use cases for hash calculations",
+      "useCases": [
+        "**Verify file integrity** by comparing hash values before and after downloads",
+        "**Store password hashes** instead of plain text passwords in databases",
+        "**Create digital signatures** for documents and software authentication",
+        "**Generate unique identifiers** for content deduplication and version control",
+        "**Validate API responses** by comparing expected and actual hash values"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Which hash algorithm should I use for security?",
+          "answer": "For **maximum security**, use **SHA-256 or SHA-512**. **Avoid MD5 and SHA-1** for security purposes as they have known vulnerabilities. **SHA-256** is widely supported and recommended for most applications, while **SHA-512** provides extra security for high-risk data."
+        },
+        {
+          "question": "Can hash values be reversed to get the original data?",
+          "answer": "No! Hash functions are **mathematically one-way**. It's computationally **practically impossible** to reverse a hash value to get the original input. This **irreversibility** is what makes hashes essential for **password storage** and **data integrity verification**."
+        },
+        {
+          "question": "Is this hash calculator safe?",
+          "answer": "Yes! All hash calculations happen **100% in your browser** using secure cryptographic APIs. Your text never leaves your device and is not stored on any server, ensuring complete **privacy and security** of your sensitive data."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -75,6 +109,40 @@
     "clipboardFailed": "navigator.clipboard.writeText falló:",
     "hashCopiedFallback": "Hash copiado al portapapeles (fallback)",
     "copyError": "Error al copiar",
-    "execCopyFailed": "Copy failed:"
+    "execCopyFailed": "Copy failed:",
+    "seo": {
+      "whatIsTitle": "¿Qué son los hashes criptográficos y por qué son esenciales?",
+      "whatIsContent": "Las **funciones hash criptográficas** son algoritmos matemáticos que convierten **datos de entrada de cualquier tamaño** en **salidas de longitud fija** llamadas valores hash o digests. Estas **funciones de una vía** son cruciales para **verificación de integridad de datos**, **almacenamiento de contraseñas**, **firmas digitales** y **tecnología blockchain**. Los algoritmos populares incluyen **MD5** (128-bit, legado), **SHA-1** (160-bit, deprecado), **SHA-256** (256-bit, estándar moderno), y **SHA-512** (512-bit, seguridad máxima). Los valores hash son **huellas dactilares únicas** que cambian dramáticamente con cualquier modificación de entrada. Aprende más sobre [funciones hash criptográficas](https://es.wikipedia.org/wiki/Funci%C3%B3n_hash_criptogr%C3%A1fica) y [algoritmos hash](https://es.wikipedia.org/wiki/Secure_Hash_Algorithm).",
+      "howToTitle": "¿Cómo usar la herramienta Calculadora de Hash?",
+      "howToSteps": [
+        "**Introduce tu texto** en el campo de entrada que quieres hashear",
+        "**Selecciona el algoritmo hash**: MD5 (legado), SHA-1 (deprecado), SHA-256 (recomendado), o SHA-512 (seguridad máxima)",
+        "Haz clic en **'Calcular Hash'** para generar el valor hash criptográfico",
+        "**Copia el resultado** usando el botón de copiar para tus registros"
+      ],
+      "useCasesTitle": "Casos de uso comunes de cálculos hash",
+      "useCases": [
+        "**Verificar integridad de archivos** comparando valores hash antes y después de descargas",
+        "**Almacenar hashes de contraseñas** en lugar de contraseñas de texto plano en bases de datos",
+        "**Crear firmas digitales** para documentos y autenticación de software",
+        "**Generar identificadores únicos** para deduplicación de contenido y control de versiones",
+        "**Validar respuestas API** comparando valores hash esperados y actuales"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Qué algoritmo hash debería usar para seguridad?",
+          "answer": "Para **seguridad máxima**, usa **SHA-256 o SHA-512**. **Evita MD5 y SHA-1** para propósitos de seguridad ya que tienen vulnerabilidades conocidas. **SHA-256** es ampliamente soportado y recomendado para la mayoría de aplicaciones, mientras que **SHA-512** proporciona seguridad extra para datos de alto riesgo."
+        },
+        {
+          "question": "¿Pueden los valores hash revertirse para obtener los datos originales?",
+          "answer": "¡No! Las funciones hash son **matemáticamente de una vía**. Es **computacionalmente imposible** revertir un valor hash para obtener la entrada original. Esta **irreversibilidad** es lo que hace a los hashes esenciales para **almacenamiento de contraseñas** y **verificación de integridad de datos**."
+        },
+        {
+          "question": "¿Esta calculadora de hash es segura?",
+          "answer": "¡Sí! Todos los cálculos hash ocurren **100% en tu navegador** usando APIs criptográficas seguras. Tu texto nunca sale de tu dispositivo y no se almacena en ningún servidor, asegurando **privacidad y seguridad** completas de tus datos sensibles."
+        }
+      ]
+    }
   }
 }

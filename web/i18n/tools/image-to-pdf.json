@@ -30,7 +30,41 @@
     "processingMayTakeTime": "Processing... this may take a moment.",
     "downloadPdf": "Download PDF",
     "errorConvertingImageToPdf": "Error converting image to PDF:",
-    "errorConvertingImageGeneric": "An error occurred while converting the image to PDF. Make sure the files are valid images."
+    "errorConvertingImageGeneric": "An error occurred while converting the image to PDF. Make sure the files are valid images.",
+    "seo": {
+      "whatIsTitle": "What is image to PDF conversion and why is it useful?",
+      "whatIsContent": "**Image to PDF conversion** transforms individual or multiple images into a **single PDF document** with customizable page size and orientation options. This process maintains **image quality** while creating a universally accessible document format. Supporting various image formats (JPEG, PNG) and page configurations (A4, Letter, Portrait, Landscape), this tool helps create **professional presentations**, **photo albums**, and **document archives** from visual content. Learn more about [PDF creation](https://en.wikipedia.org/wiki/PDF#Creation) and [document formatting](https://en.wikipedia.org/wiki/Page_layout).",
+      "howToTitle": "How to use the Image to PDF Converter tool?",
+      "howToSteps": [
+        "**Select** one or more images (JPG, PNG) by dragging them to the drop area or clicking to browse",
+        "**Choose page size** (A4 or Letter) and **orientation** (Portrait or Landscape)",
+        "Click **'Convert to PDF'** to start the conversion process",
+        "**Download** the generated PDF containing your images"
+      ],
+      "useCasesTitle": "Common use cases for image to PDF conversion",
+      "useCases": [
+        "Create **digital photo albums** or portfolios from individual image files",
+        "Generate **presentation slides** for meetings and conferences",
+        "Compile **document archives** from scanned papers and photos",
+        "Create **product catalogs** with multiple images in a single document",
+        "**Share visual content** in a professional, universally readable format"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What image formats are supported?",
+          "answer": "The tool supports **JPEG (JPG)** and **PNG** image formats. Both formats maintain excellent quality when converted to PDF. Choose JPG for smaller file sizes or PNG for images with transparency or sharp text/graphics."
+        },
+        {
+          "question": "How are multiple images arranged in the PDF?",
+          "answer": "Images are arranged in the **order they were selected**, with one image per page. Each image is automatically **scaled to fit** the chosen page size while maintaining its aspect ratio, ensuring no content is lost or cropped."
+        },
+        {
+          "question": "Is this image to PDF converter safe?",
+          "answer": "Yes! All image processing happens **100% in your browser**. Your images never leave your device and are not stored on any server, ensuring complete **privacy and security** of your visual content."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -63,6 +97,40 @@
     "processingMayTakeTime": "Procesando... esto puede tardar un momento.",
     "downloadPdf": "Descargar PDF",
     "errorConvertingImageToPdf": "Error al convertir imagen a PDF:",
-    "errorConvertingImageGeneric": "Ocurrió un error al convertir la imagen a PDF. Asegúrate de que los archivos son imágenes válidas."
+    "errorConvertingImageGeneric": "Ocurrió un error al convertir la imagen a PDF. Asegúrate de que los archivos son imágenes válidas.",
+    "seo": {
+      "whatIsTitle": "¿Qué es la conversión de imagen a PDF y por qué es útil?",
+      "whatIsContent": "La **conversión de imagen a PDF** transforma imágenes individuales o múltiples en un **solo documento PDF** con opciones personalizables de tamaño de página y orientación. Este proceso mantiene la **calidad de imagen** mientras crea un formato de documento universalmente accesible. Soportando varios formatos de imagen (JPEG, PNG) y configuraciones de página (A4, Carta, Vertical, Horizontal), esta herramienta ayuda a crear **presentaciones profesionales**, **álbumes de fotos** y **archivos de documentos** desde contenido visual. Aprende más sobre [creación de PDF](https://es.wikipedia.org/wiki/PDF#Creaci%C3%B3n) y [formato de documentos](https://es.wikipedia.org/wiki/Dise%C3%B1o_de_p%C3%A1gina).",
+      "howToTitle": "¿Cómo usar la herramienta Conversor de Imagen a PDF?",
+      "howToSteps": [
+        "**Selecciona** una o más imágenes (JPG, PNG) arrastrándolas al área de selección o haciendo clic para buscar",
+        "**Elige el tamaño de página** (A4 o Carta) y **orientación** (Vertical u Horizontal)",
+        "Haz clic en **'Convertir a PDF'** para iniciar el proceso de conversión",
+        "**Descarga** el PDF generado que contiene tus imágenes"
+      ],
+      "useCasesTitle": "Casos de uso comunes de conversión de imagen a PDF",
+      "useCases": [
+        "Crear **álbumes de fotos digitales** o portafolios desde archivos de imagen individuales",
+        "Generar **diapositivas de presentación** para reuniones y conferencias",
+        "Compilar **archivos de documentos** desde papeles y fotos escaneadas",
+        "Crear **catálogos de productos** con múltiples imágenes en un solo documento",
+        "**Compartir contenido visual** en un formato profesional y universalmente legible"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Qué formatos de imagen son compatibles?",
+          "answer": "La herramienta soporta formatos de imagen **JPEG (JPG)** y **PNG**. Ambos formatos mantienen excelente calidad al convertirse a PDF. Elige JPG para tamaños de archivo más pequeños o PNG para imágenes con transparencia o texto/gráficos nítidos."
+        },
+        {
+          "question": "¿Cómo se organizan múltiples imágenes en el PDF?",
+          "answer": "Las imágenes se organizan en el **orden en que fueron seleccionadas**, con una imagen por página. Cada imagen se **escala automáticamente para ajustarse** al tamaño de página elegido mientras mantiene su relación de aspecto, asegurando que no se pierda o recorte contenido."
+        },
+        {
+          "question": "¿Este conversor de imagen a PDF es seguro?",
+          "answer": "¡Sí! Todo el procesamiento de imagen ocurre **100% en tu navegador**. Tus imágenes nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tu contenido visual."
+        }
+      ]
+    }
   }
 }

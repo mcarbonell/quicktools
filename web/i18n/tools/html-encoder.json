@@ -48,7 +48,41 @@
     "htmlTextDecoded": "Text decoded from HTML",
     "decodeError": "Error decoding - input appears invalid",
     "noResultToCopy": "No result to copy",
-    "copyError": "Error copying"
+    "copyError": "Error copying",
+    "seo": {
+      "whatIsTitle": "What is HTML encoding and why is it crucial for web security?",
+      "whatIsContent": "**HTML encoding** converts special characters into **HTML entities** (like & for &) to ensure safe display in web browsers and prevent **security vulnerabilities**. This essential web development technique protects against **XSS (Cross-Site Scripting) attacks**, ensures proper **character rendering**, and enables safe display of **user-generated content**. HTML entities allow browsers to distinguish between **text content and HTML tags**, making them fundamental for **web security** and **data sanitization**. Learn more about [HTML entities](https://en.wikipedia.org/wiki/HTML_entity) and [web application security](https://en.wikipedia.org/wiki/Web_application_security).",
+      "howToTitle": "How to use the HTML Encoder/Decoder tool?",
+      "howToSteps": [
+        "**Type or paste** your text into the input area",
+        "**Choose encoding mode**: HTML encoding or complete encoding",
+        "Click **'Encode HTML'** to convert special characters to safe entities",
+        "**Copy** the encoded result or use **'Decode'** to convert entities back to characters"
+      ],
+      "useCasesTitle": "Common use cases for HTML encoding",
+      "useCases": [
+        "**Prevent XSS attacks** by encoding user input before displaying in web pages",
+        "**Safely display code snippets** and technical content in web documentation",
+        "**Display mathematical symbols** and special characters in web content",
+        "**Sanitize user comments** and form inputs for web applications",
+        "**Create safe HTML email content** with proper character encoding"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "What's the difference between HTML and complete encoding?",
+          "answer": "**HTML encoding** only converts **essential characters** like <, >, &, \", and ' for safety. **Complete encoding** converts **all non-ASCII characters** to entities, making it suitable for **maximum compatibility** and international content."
+        },
+        {
+          "question": "Do I need HTML encoding for modern web development?",
+          "answer": "Yes! HTML encoding is **essential for security** and proper content display. Modern frameworks handle some encoding automatically, but **manual encoding** is still crucial for **user input**, **third-party content**, and **debugging purposes**."
+        },
+        {
+          "question": "Is this HTML encoder safe?",
+          "answer": "Yes! All encoding and decoding happens **100% in your browser**. Your text never leaves your device and is not stored on any server, ensuring complete **privacy and security** of your content."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -99,6 +133,40 @@
     "htmlTextDecoded": "Texto decodificado de HTML",
     "decodeError": "Error al decodificar - la entrada parece inválida",
     "noResultToCopy": "No hay resultado para copiar",
-    "copyError": "Error al copiar"
+    "copyError": "Error al copiar",
+    "seo": {
+      "whatIsTitle": "¿Qué es la codificación HTML y por qué es crucial para la seguridad web?",
+      "whatIsContent": "La **codificación HTML** convierte caracteres especiales en **entidades HTML** (como & para &) para asegurar visualización segura en navegadores web y prevenir **vulnerabilidades de seguridad**. Esta técnica esencial de desarrollo web protege contra **ataques XSS (Cross-Site Scripting)**, asegura **renderizado adecuado de caracteres**, y permite visualización segura de **contenido generado por usuarios**. Las entidades HTML permiten a los navegadores distinguir entre **contenido de texto y etiquetas HTML**, haciéndolas fundamentales para **seguridad web** y **sanitización de datos**. Aprende más sobre [entidades HTML](https://es.wikipedia.org/wiki/Entidad_HTML) y [seguridad de aplicaciones web](https://es.wikipedia.org/wiki/Seguridad_de_aplicaciones_web).",
+      "howToTitle": "¿Cómo usar la herramienta Codificador/Decodificador de HTML?",
+      "howToSteps": [
+        "**Escribe o pega** tu texto en el área de entrada",
+        "**Elige el modo de codificación**: codificación HTML o codificación completa",
+        "Haz clic en **'Codificar HTML'** para convertir caracteres especiales a entidades seguras",
+        "**Copia** el resultado codificado o usa **'Decodificar'** para convertir entidades de vuelta a caracteres"
+      ],
+      "useCasesTitle": "Casos de uso comunes de codificación HTML",
+      "useCases": [
+        "**Prevenir ataques XSS** codificando entrada de usuario antes de mostrar en páginas web",
+        "**Mostrar fragmentos de código** y contenido técnico de forma segura en documentación web",
+        "**Visualizar símbolos matemáticos** y caracteres especiales en contenido web",
+        "**Sanitizar comentarios de usuario** y entradas de formularios para aplicaciones web",
+        "**Crear contenido HTML de email** seguro con codificación adecuada de caracteres"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Cuál es la diferencia entre codificación HTML y completa?",
+          "answer": "La **codificación HTML** solo convierte **caracteres esenciales** como <, >, &, \", y ' para seguridad. La **codificación completa** convierte **todos los caracteres no ASCII** a entidades, haciéndola adecuada para **máxima compatibilidad** y contenido internacional."
+        },
+        {
+          "question": "¿Necesito codificación HTML para desarrollo web moderno?",
+          "answer": "¡Sí! La codificación HTML es **esencial para seguridad** y visualización adecuada de contenido. Los frameworks modernos manejan algo de codificación automáticamente, pero la **codificación manual** sigue siendo crucial para **entrada de usuario**, **contenido de terceros** y **propósitos de depuración**."
+        },
+        {
+          "question": "¿Este codificador HTML es seguro?",
+          "answer": "¡Sí! Toda la codificación y decodificación ocurre **100% en tu navegador**. Tu texto nunca sale de tu dispositivo y no se almacena en ningún servidor, asegurando **privacidad y seguridad** completas de tu contenido."
+        }
+      ]
+    }
   }
 }

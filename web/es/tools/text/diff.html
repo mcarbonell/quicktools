@@ -139,11 +139,71 @@
 </div>
 
 <div id="msg" class="text-muted small"></div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">¿Qué es la comparación de texto y por qué es esencial?</h2>
+            <p class="mb-4">La <strong>comparación de texto</strong> (también llamada <strong>diff</strong> o <strong>diferenciación de texto</strong>) es el proceso de analizar dos versiones de texto para identificar <strong>diferencias, adiciones y eliminaciones</strong>. Esta herramienta esencial para <strong>control de versiones</strong>, <strong>edición de contenido</strong> y <strong>aseguramiento de calidad</strong> usa algoritmos avanzados para resaltar cambios visualmente, facilitando la revisión de <strong>revisiones de documentos</strong>, seguimiento de <strong>cambios de código</strong> y asegurar <strong>precisión de contenido</strong>. Las herramientas diff modernas usan <strong>resaltado codificado por colores</strong> para mostrar exactamente qué cambió entre versiones. Aprende más sobre <a href="https://es.wikipedia.org/wiki/Diff" target="_blank" rel="noopener">algoritmos de comparación de texto</a> y <a href="https://es.wikipedia.org/wiki/Control_de_versiones" target="_blank" rel="noopener">sistemas de control de versiones</a>.</p>
+            <h3 class="h5 mb-3">¿Cómo usar la herramienta Comparador de Texto?</h3>
+            <ol class="mb-4">
+                <li><strong>Pega</strong> el texto original en el primer área de texto</li>
+                <li><strong>Pega</strong> el texto modificado en el segundo área de texto</li>
+                <li><strong>Haz clic en 'Comparar textos'</strong> para analizar las diferencias</li>
+                <li><strong>Revisa los resultados codificados por colores</strong> mostrando texto añadido (verde), eliminado (rojo) y modificado (amarillo)</li>
+            </ol>
+            <h3 class="h5 mb-3">Casos de uso comunes de comparación de texto</h3>
+            <ul class="mb-4">
+                <li><strong>Revisar cambios de código</strong> en desarrollo de software y <a href="https://git-scm.com/" target="_blank" rel="noopener">control de versiones</a></li>
+                <li><strong>Comparar versiones de documentos</strong> para edición y corrección</li>
+                <li><strong>Rastrear modificaciones de contenido</strong> en sistemas de gestión de contenido</li>
+                <li><strong>Verificar precisión de traducción</strong> comparando texto original y traducido</li>
+                <li><strong>Depurar archivos de configuración</strong> e identificar cambios no intencionados</li>
+            </ul>
+            <h3 class="h5 mb-3">Preguntas frecuentes</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            ¿Qué significan los diferentes colores en los resultados del diff?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <strong>Verde</strong> indica <strong>texto añadido</strong> que está en la versión modificada pero no en la original. <strong>Rojo</strong> muestra <strong>texto eliminado</strong> que estaba en la original pero se ha eliminado. <strong>Amarillo</strong> resalta <strong>texto modificado</strong> donde el contenido cambió, manteniendo la estructura pero actualizando el contenido.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            ¿Puedo ignorar las diferencias de mayúsculas y espacios?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! La herramienta incluye opciones para <strong>'Ignorar mayúsculas'</strong> y <strong>'Ignorar espacios'</strong>. Estas ayudan a enfocar en <strong>diferencias de contenido significativas</strong> en lugar de cambios de formato o mayúsculas, lo cual es especialmente útil para revisión de código y edición de contenido.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            ¿Esta herramienta de diff de texto es segura?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! Toda la comparación de texto ocurre <strong>100% en tu navegador</strong>. Tu texto nunca sale de tu dispositivo y no se almacena en ningún servidor, asegurando <strong>privacidad y seguridad</strong> completas de tus documentos y contenido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     
     <script>
-        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","compareButton":"Comparar","originalTextLabel":"Texto original","modifiedTextLabel":"Texto modificado","compareTextsButton":"Comparar textos","copyResultButton":"Copiar resultado","ignoreCaseLabel":"Ignorar mayúsculas/minúsculas","ignoreWhitespaceLabel":"Ignorar espacios en blanco","differencesFoundTitle":"Diferencias encontradas","resultsWillAppearHerePlaceholder":"Los resultados aparecerán aquí...","legendTitle":"Leyenda:","greenLabel":"Verde","redLabel":"Rojo","yellowLabel":"Amarillo","addedText":"Texto añadido","removedText":"Texto eliminado","modifiedText":"Texto modificado","pleaseEnterTextToCompare":"Por favor, introduce algún texto para comparar","textsComparedSuccessfully":"Textos comparados exitosamente","compareError":"Error al comparar los textos","noResultToCopy":"No hay resultado para copiar","copyError":"Error al copiar"};
+        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","compareButton":"Comparar","originalTextLabel":"Texto original","modifiedTextLabel":"Texto modificado","compareTextsButton":"Comparar textos","copyResultButton":"Copiar resultado","ignoreCaseLabel":"Ignorar mayúsculas/minúsculas","ignoreWhitespaceLabel":"Ignorar espacios en blanco","differencesFoundTitle":"Diferencias encontradas","resultsWillAppearHerePlaceholder":"Los resultados aparecerán aquí...","legendTitle":"Leyenda:","greenLabel":"Verde","redLabel":"Rojo","yellowLabel":"Amarillo","addedText":"Texto añadido","removedText":"Texto eliminado","modifiedText":"Texto modificado","pleaseEnterTextToCompare":"Por favor, introduce algún texto para comparar","textsComparedSuccessfully":"Textos comparados exitosamente","compareError":"Error al comparar los textos","noResultToCopy":"No hay resultado para copiar","copyError":"Error al copiar","seo":{"whatIsTitle":"¿Qué es la comparación de texto y por qué es esencial?","whatIsContent":"La **comparación de texto** (también llamada **diff** o **diferenciación de texto**) es el proceso de analizar dos versiones de texto para identificar **diferencias, adiciones y eliminaciones**. Esta herramienta esencial para **control de versiones**, **edición de contenido** y **aseguramiento de calidad** usa algoritmos avanzados para resaltar cambios visualmente, facilitando la revisión de **revisiones de documentos**, seguimiento de **cambios de código** y asegurar **precisión de contenido**. Las herramientas diff modernas usan **resaltado codificado por colores** para mostrar exactamente qué cambió entre versiones. Aprende más sobre [algoritmos de comparación de texto](https://es.wikipedia.org/wiki/Diff) y [sistemas de control de versiones](https://es.wikipedia.org/wiki/Control_de_versiones).","howToTitle":"¿Cómo usar la herramienta Comparador de Texto?","howToSteps":["**Pega** el texto original en el primer área de texto","**Pega** el texto modificado en el segundo área de texto","**Haz clic en 'Comparar textos'** para analizar las diferencias","**Revisa los resultados codificados por colores** mostrando texto añadido (verde), eliminado (rojo) y modificado (amarillo)"],"useCasesTitle":"Casos de uso comunes de comparación de texto","useCases":["**Revisar cambios de código** en desarrollo de software y [control de versiones](https://git-scm.com/)","**Comparar versiones de documentos** para edición y corrección","**Rastrear modificaciones de contenido** en sistemas de gestión de contenido","**Verificar precisión de traducción** comparando texto original y traducido","**Depurar archivos de configuración** e identificar cambios no intencionados"],"faqTitle":"Preguntas frecuentes","faq":[{"question":"¿Qué significan los diferentes colores en los resultados del diff?","answer":"**Verde** indica **texto añadido** que está en la versión modificada pero no en la original. **Rojo** muestra **texto eliminado** que estaba en la original pero se ha eliminado. **Amarillo** resalta **texto modificado** donde el contenido cambió, manteniendo la estructura pero actualizando el contenido."},{"question":"¿Puedo ignorar las diferencias de mayúsculas y espacios?","answer":"¡Sí! La herramienta incluye opciones para **'Ignorar mayúsculas'** y **'Ignorar espacios'**. Estas ayudan a enfocar en **diferencias de contenido significativas** en lugar de cambios de formato o mayúsculas, lo cual es especialmente útil para revisión de código y edición de contenido."},{"question":"¿Esta herramienta de diff de texto es segura?","answer":"¡Sí! Toda la comparación de texto ocurre **100% en tu navegador**. Tu texto nunca sale de tu dispositivo y no se almacena en ningún servidor, asegurando **privacidad y seguridad** completas de tus documentos y contenido."}]}};
     </script>
 <script src="/js/vendor/diff_match_patch.js"></script>
 <script src="/js/tools/diff.js"></script>

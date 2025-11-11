@@ -1,4 +1,4 @@
-// Background Service Worker - QuickTools Extension
+// Background Service Worker - FastTools Extension
 // Maneja eventos en segundo plano, analytics, sync
 
 // ====================
@@ -9,7 +9,7 @@ let creating; // A promise to prevent race conditions
 
 // Cuando se instala la extensión
 chrome.runtime.onInstalled.addListener((details) => {
-    console.log('🚀 QuickTools Extension instalado:', details.reason);
+    console.log('🚀 FastTools Extension instalado:', details.reason);
 
     if (details.reason === 'install') {
         // Primera instalación
@@ -61,24 +61,24 @@ async function initializeExtension() {
         }
     });
 
-    console.log('✅ QuickTools inicializado correctamente');
+    console.log('✅ FastTools inicializado correctamente');
 }
 
 function generateUserId() {
-    return 'qt_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+    return 'ft_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
 }
 
 function showWelcomeNotification() {
     chrome.notifications.create({
         type: 'basic',
         iconUrl: chrome.runtime.getURL('icons/icon-128x128.png'),
-        title: '¡Bienvenido a QuickTools!',
+        title: '¡Bienvenido a FastTools!',
         message: 'Tu suite de productividad está lista. Usa Ctrl+Shift+Q para abrir.'
     });
 }
 
 function handleUpdate(previousVersion) {
-    console.log(`🔄 QuickTools actualizado de ${previousVersion} a 1.0.0`);
+    console.log(`🔄 FastTools actualizado de ${previousVersion} a 1.0.0`);
 
     // Migrar datos si es necesario
     chrome.storage.local.get(null, (data) => {
@@ -98,45 +98,45 @@ function createContextMenus() {
     chrome.contextMenus.removeAll(() => {
         // Menu principal
         chrome.contextMenus.create({
-            id: 'quicktools-main',
-            title: '🛠️ QuickTools',
+            id: 'fasttools-main',
+            title: '🛠️ FastTools',
             contexts: ['page', 'selection', 'image', 'link']
         });
 
         // Submenu para texto
         chrome.contextMenus.create({
-            id: 'quicktools-text',
+            id: 'fasttools-text',
             title: '📝 Herramientas de Texto',
-            parentId: 'quicktools-main',
+            parentId: 'fasttools-main',
             contexts: ['selection']
         });
 
         chrome.contextMenus.create({
             id: 'text-encode-url',
             title: '🔗 Codificar URL',
-            parentId: 'quicktools-text',
+            parentId: 'fasttools-text',
             contexts: ['selection']
         });
 
         chrome.contextMenus.create({
             id: 'text-base64',
             title: '🔐 Base64 Encode',
-            parentId: 'quicktools-text',
+            parentId: 'fasttools-text',
             contexts: ['selection']
         });
 
         // Submenu para imagen
         chrome.contextMenus.create({
-            id: 'quicktools-image',
+            id: 'fasttools-image',
             title: '🖼️ Herramientas de Imagen',
-            parentId: 'quicktools-main',
+            parentId: 'fasttools-main',
             contexts: ['image']
         });
 
         chrome.contextMenus.create({
             id: 'image-color-picker',
             title: '🎨 Extraer Colores',
-            parentId: 'quicktools-image',
+            parentId: 'fasttools-image',
             contexts: ['image']
         });
 
@@ -144,14 +144,14 @@ function createContextMenus() {
         chrome.contextMenus.create({
             id: 'capture-screen',
             title: '📸 Capturar Pantalla',
-            parentId: 'quicktools-main',
+            parentId: 'fasttools-main',
             contexts: ['page']
         });
 
         chrome.contextMenus.create({
             id: 'quick-notes',
             title: '📝 Nueva Nota Rápida',
-            parentId: 'quicktools-main',
+            parentId: 'fasttools-main',
             contexts: ['page']
         });
     });
@@ -370,7 +370,7 @@ function showNotification(message, type = 'info', buttons = [], notificationId =
     chrome.notifications.create(notificationId, {
         type: 'basic',
         iconUrl: chrome.runtime.getURL(icons[type]),
-        title: 'QuickTools',
+        title: 'FastTools',
         message: message,
         buttons: buttons,
         requireInteraction: requireInteraction
@@ -460,7 +460,7 @@ chrome.notifications.onButtonClicked.addListener(async (notificationId, buttonIn
     if (dataUrl && buttonIndex === 0) { // "Descargar"
         chrome.downloads.download({
             url: dataUrl,
-            filename: `QuickTools-Capture-${Date.now()}.png`,
+            filename: `FastTools-Capture-${Date.now()}.png`,
             saveAs: true
         });
     }
@@ -496,4 +496,4 @@ self.addEventListener('unhandledrejection', (event) => {
     console.error('💥 Unhandled promise rejection:', event.reason);
 });
 
-console.log('🚀 QuickTools Service Worker cargado');
+console.log('🚀 FastTools Service Worker cargado');

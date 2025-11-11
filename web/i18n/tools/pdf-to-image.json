@@ -27,7 +27,41 @@
     "processingMayTakeTime": "Processing... this may take a moment.",
     "downloadButtonText": "Download",
     "errorConvertingPdf": "Error converting PDF:",
-    "errorConvertingGeneric": "An error occurred while converting the PDF."
+    "errorConvertingGeneric": "An error occurred while converting the PDF.",
+    "seo": {
+      "whatIsTitle": "What is PDF to image conversion and why is it useful?",
+      "whatIsContent": "**PDF to image conversion** transforms PDF documents into standard **image formats** (JPEG, PNG) while preserving visual content, layout, and formatting. This process uses **rasterization technology** to convert each PDF page into high-quality images that can be viewed, edited, or shared using standard image software. Converting PDFs to images enables **cross-platform compatibility**, **easy sharing**, and **integration** into web pages and presentations. Learn more about [PDF conversion](https://en.wikipedia.org/wiki/PDF#Conversion) and [raster graphics](https://en.wikipedia.org/wiki/Raster_graphics).",
+      "howToTitle": "How to use the PDF to Image Converter tool?",
+      "howToSteps": [
+        "**Upload** your PDF by dragging it to the drop area or clicking to select",
+        "**Choose the output format** (JPG for smaller files, PNG for quality)",
+        "Click **'Convert to Image'** to start the conversion process",
+        "**Download** the converted images for your intended use"
+      ],
+      "useCasesTitle": "Common use cases for PDF to image conversion",
+      "useCases": [
+        "Create **social media posts** or presentations from PDF content",
+        "Extract **page previews** or thumbnails for document navigation",
+        "**Share specific pages** as images without requiring PDF readers",
+        "Import PDF content into **image editing software** like Photoshop or GIMP",
+        "**Embed PDF content** in websites or email newsletters"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Which image format should I choose?",
+          "answer": "Choose **JPG** for smaller file sizes and web use, or **PNG** for highest quality and images with transparency. JPG is better for photos and complex images, while PNG is ideal for text, logos, and graphics requiring crisp details."
+        },
+        {
+          "question": "Does the conversion preserve PDF quality?",
+          "answer": "Yes! The conversion maintains **high visual fidelity** of the original PDF. Images are rendered at **high resolution** ensuring text remains readable and graphics stay sharp, though file sizes will be larger than the original PDF."
+        },
+        {
+          "question": "Is this PDF to image converter safe?",
+          "answer": "Yes! All PDF processing happens **100% in your browser**. Your PDF files never leave your device and are not stored on any server, ensuring complete **privacy and security** of your sensitive documents."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -57,6 +91,40 @@
     "processingMayTakeTime": "Procesando... esto puede tardar un momento.",
     "downloadButtonText": "Descargar",
     "errorConvertingPdf": "Error al convertir el PDF:",
-    "errorConvertingGeneric": "Ocurrió un error al convertir el PDF."
+    "errorConvertingGeneric": "Ocurrió un error al convertir el PDF.",
+    "seo": {
+      "whatIsTitle": "¿Qué es la conversión de PDF a imagen y por qué es útil?",
+      "whatIsContent": "La **conversión de PDF a imagen** transforma documentos PDF en **formatos de imagen** estándar (JPEG, PNG) mientras preserva el contenido visual, diseño y formato. Este proceso usa tecnología de **rasterización** para convertir cada página PDF en imágenes de alta calidad que pueden verse, editarse o compartirse usando software estándar de imágenes. Convertir PDFs a imágenes permite **compatibilidad multiplataforma**, **compartir fácil** e **integración** en páginas web y presentaciones. Aprende más sobre [conversión PDF](https://es.wikipedia.org/wiki/PDF#Conversi%C3%B3n) y [gráficos raster](https://es.wikipedia.org/wiki/Gr%C3%A1ficos_raster).",
+      "howToTitle": "¿Cómo usar la herramienta Conversor de PDF a Imagen?",
+      "howToSteps": [
+        "**Sube** tu PDF arrastrándolo al área de selección o haciendo clic para elegir",
+        "**Elige el formato de salida** (JPG para archivos más pequeños, PNG para calidad)",
+        "Haz clic en **'Convertir a Imagen'** para iniciar el proceso de conversión",
+        "**Descarga** las imágenes convertidas para tu uso previsto"
+      ],
+      "useCasesTitle": "Casos de uso comunes de conversión de PDF a imagen",
+      "useCases": [
+        "Crear **publicaciones en redes sociales** o presentaciones desde contenido PDF",
+        "Extraer **vistas previas de página** o miniaturas para navegación de documentos",
+        "**Compartir páginas específicas** como imágenes sin requerir lectores PDF",
+        "Importar contenido PDF en **software de edición de imágenes** como Photoshop o GIMP",
+        "**Incrustar contenido PDF** en sitios web o boletines informativos"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Qué formato de imagen debo elegir?",
+          "answer": "Elige **JPG** para tamaños de archivo más pequeños y uso web, o **PNG** para máxima calidad e imágenes con transparencia. JPG es mejor para fotos e imágenes complejas, mientras que PNG es ideal para texto, logos y gráficos que requieren detalles nítidos."
+        },
+        {
+          "question": "¿La conversión preserva la calidad del PDF?",
+          "answer": "¡Sí! La conversión mantiene **alta fidelidad visual** del PDF original. Las imágenes se renderizan en **alta resolución** asegurando que el texto permanezca legible y los gráficos mantengan nitidez, aunque los tamaños de archivo serán más grandes que el PDF original."
+        },
+        {
+          "question": "¿Este conversor de PDF a imagen es seguro?",
+          "answer": "¡Sí! Todo el procesamiento de PDF ocurre **100% en tu navegador**. Tus archivos PDF nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tus documentos sensibles."
+        }
+      ]
+    }
   }
 }

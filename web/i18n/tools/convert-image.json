@@ -26,7 +26,41 @@
     "previewLabel": "Preview:",
     "selectValidImage": "Please select a valid image file.",
     "imageLoaded": "Image loaded: {filename}",
-    "uploadImageFirst": "Upload an image first."
+    "uploadImageFirst": "Upload an image first.",
+    "seo": {
+      "whatIsTitle": "What is image format conversion?",
+      "whatIsContent": "**Image format conversion** is the process of changing a digital image from one file format to another (JPEG, PNG, WebP). Each format has specific **compression algorithms** and characteristics: JPEG is ideal for photos, PNG for graphics with transparency, and WebP for **modern web optimization**. Converting formats helps optimize file size and compatibility. Learn more about [image file formats](https://en.wikipedia.org/wiki/Image_file_formats).",
+      "howToTitle": "How to use the Image Converter tool?",
+      "howToSteps": [
+        "**Upload** your image by dragging it to the drop area or clicking to select",
+        "Choose the desired **output format** (PNG, JPG, or WebP)",
+        "Optionally adjust **quality settings** for JPG format",
+        "Click **'Convert and download'** to get your converted image"
+      ],
+      "useCasesTitle": "Common use cases for image conversion",
+      "useCases": [
+        "Convert **JPEG to PNG** for images requiring transparency",
+        "Transform **PNG to WebP** for better [web compression](https://developers.google.com/speed/webp)",
+        "Reduce **file size** for faster website loading times",
+        "Prepare **images for different platforms** (social media, printing)",
+        "Ensure **browser compatibility** for modern web standards"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Which image format is best for web?",
+          "answer": "**WebP** offers the best compression with quality preservation, followed by **JPEG** for photographs and **PNG** for graphics with transparency. WebP is supported by all modern browsers."
+        },
+        {
+          "question": "Does image conversion affect quality?",
+          "answer": "Conversion can affect quality depending on the target format and compression settings. **JPEG uses lossy compression**, while **PNG uses lossless compression**. WebP offers both lossy and lossless options."
+        },
+        {
+          "question": "Is this image converter safe?",
+          "answer": "Yes! All image processing happens **100% in your browser**. Your images never leave your device and are not stored on any server, ensuring complete privacy."
+        }
+      ]
+    }
   },
   "es": {
     "copyButton": "Copiar",
@@ -55,6 +89,40 @@
     "previewLabel": "Vista previa:",
     "selectValidImage": "Por favor selecciona un archivo de imagen válido.",
     "imageLoaded": "Imagen cargada: {filename}",
-    "uploadImageFirst": "Sube primero una imagen."
+    "uploadImageFirst": "Sube primero una imagen.",
+    "seo": {
+      "whatIsTitle": "¿Qué es la conversión de formatos de imagen?",
+      "whatIsContent": "La **conversión de formatos de imagen** es el proceso de cambiar una imagen digital de un formato de archivo a otro (JPEG, PNG, WebP). Cada formato tiene **algoritmos de compresión** y características específicas: JPEG es ideal para fotos, PNG para gráficos con transparencia, y WebP para **optimización web moderna**. Convertir formatos ayuda a optimizar el tamaño del archivo y la compatibilidad. Aprende más sobre [formatos de archivos de imagen](https://es.wikipedia.org/wiki/Archivo_de_imagen).",
+      "howToTitle": "¿Cómo usar la herramienta Conversor de Imágenes?",
+      "howToSteps": [
+        "**Sube** tu imagen arrastrándola al área de selección o haciendo clic para elegir",
+        "Elige el **formato de salida** deseado (PNG, JPG, o WebP)",
+        "Opcionalmente ajusta la **configuración de calidad** para formato JPG",
+        "Haz clic en **'Convertir y descargar'** para obtener tu imagen convertida"
+      ],
+      "useCasesTitle": "Casos de uso comunes de conversión de imágenes",
+      "useCases": [
+        "Convertir **JPEG a PNG** para imágenes que requieren transparencia",
+        "Transformar **PNG a WebP** para mejor [compresión web](https://developers.google.com/speed/webp)",
+        "Reducir el **tamaño del archivo** para tiempos de carga más rápidos del sitio web",
+        "Preparar **imágenes para diferentes plataformas** (redes sociales, impresión)",
+        "Asegurar **compatibilidad del navegador** para estándares web modernos"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Qué formato de imagen es mejor para web?",
+          "answer": "**WebP** ofrece la mejor compresión con preservación de calidad, seguido de **JPEG** para fotografías y **PNG** para gráficos con transparencia. WebP es compatible con todos los navegadores modernos."
+        },
+        {
+          "question": "¿La conversión de imagen afecta la calidad?",
+          "answer": "La conversión puede afectar la calidad dependiendo del formato objetivo y la configuración de compresión. **JPEG usa compresión con pérdida**, mientras que **PNG usa compresión sin pérdida**. WebP ofrece opciones tanto con pérdida como sin pérdida."
+        },
+        {
+          "question": "¿Este conversor de imágenes es seguro?",
+          "answer": "¡Sí! Todo el procesamiento de imágenes ocurre **100% en tu navegador**. Tus imágenes nunca salen de tu dispositivo y no se almacenan en ningún servidor, garantizando completa privacidad."
+        }
+      ]
+    }
   }
 }

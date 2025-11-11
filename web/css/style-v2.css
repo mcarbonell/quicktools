@@ -1203,3 +1203,119 @@ a:not(.btn) {
     transform: translateY(-10px);
   }
 }
+
+/* ====================
+   SEO CONTENT SECTION
+   ==================== */
+
+.seo-content {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl);
+  margin-top: var(--spacing-2xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.seo-content h2 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--border-light);
+}
+
+.seo-content h3 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.seo-content p {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.seo-content ol,
+.seo-content ul {
+  margin-bottom: var(--spacing-lg);
+  padding-left: var(--spacing-xl);
+}
+
+.seo-content li {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.seo-content a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-color: rgba(19, 164, 236, 0.3);
+  text-underline-offset: 2px;
+  transition: all var(--transition-fast);
+}
+
+.seo-content a:hover {
+  color: var(--primary-dark);
+  text-decoration-color: var(--primary-dark);
+}
+
+.seo-content strong {
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
+}
+
+.seo-content .accordion {
+  margin-top: var(--spacing-md);
+}
+
+.seo-content .accordion-item {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-sm);
+  overflow: hidden;
+}
+
+.seo-content .accordion-button {
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--text-primary);
+  background: var(--bg-light);
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.seo-content .accordion-button:not(.collapsed) {
+  background: var(--primary);
+  color: white;
+}
+
+.seo-content .accordion-button:focus {
+  box-shadow: 0 0 0 3px rgba(19, 164, 236, 0.1);
+}
+
+.seo-content .accordion-body {
+  padding: var(--spacing-lg);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .seo-content {
+    padding: var(--spacing-lg);
+  }
+  
+  .seo-content h2 {
+    font-size: var(--text-xl);
+  }
+  
+  .seo-content h3 {
+    font-size: var(--text-lg);
+  }
+}
