@@ -6,7 +6,7 @@ const path = require('path');
 async function bumpVersion() {
     console.log('🔄 Bumping Service Worker version...');
 
-    const swPath = path.join(__dirname, '../web/sw.js');
+    const swPath = path.join(__dirname, '..', '..', 'web', 'sw.js');
     let swContent = await fs.readFile(swPath, 'utf8');
 
     // Extract current version from CACHE_NAME

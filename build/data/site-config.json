@@ -7,7 +7,7 @@
     "en": "Fast, secure online tools. Everything processed in your browser.",
     "es": "Herramientas online rápidas y seguras. Todo se procesa en tu navegador."
   },
-  "author": "QuickTools Team",
+  "author": "FastTools Team",
   "version": "1.0.0",
   "buildDate": "",
   "analytics": {
@@ -16,7 +16,7 @@
   },
   "social": {
     "twitter": "@fasttools",
-    "github": "https://github.com/mcarbonell/fasttools"
+    "github": "https://github.com/mcarbonell/quicktools"
   },
   "contact": {
     "email": "contact@fasttools.tools",

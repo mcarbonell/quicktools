@@ -2,11 +2,11 @@
   "name": "quicktools",
   "version": "1.0.0",
   "description": "Fast, secure online tools. Everything processed in your browser.",
-  "main": "generate-site.js",
+  "main": "build/scripts/generate-site.js",
   "scripts": {
-    "clean": "node scripts/clean-build.js",
-    "build:web": "node scripts/bump-version.js && npm run clean && node generate-site.js && node scripts/generate-category-pages.js",
-    "build:extension": "node scripts/build-extension.js",
+    "clean": "node build/scripts/clean-build.js",
+    "build:web": "node build/scripts/bump-version.js && npm run clean && node build/scripts/generate-site.js && node build/scripts/generate-category-pages.js",
+    "build:extension": "node build/scripts/build-extension.js",
     "build:local": "npm run build:web && npm run build:extension",
     "test": "node tests/automated-qa.js",
     "serve": "npx http-server web -p 8000"

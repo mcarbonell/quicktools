@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const webDir = path.join(__dirname, '..', 'web');
+const webDir = path.join(__dirname, '..', '..', 'web');
 
 // Directories to clean
 const dirsToClean = [

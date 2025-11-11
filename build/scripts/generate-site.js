@@ -80,9 +80,9 @@ function renderSeoContent(seo) {
 }
 
 // Load site configuration
-const siteConfig = require('./site-config.json');
-const projectRoot = path.join(__dirname, 'web');
-const buildDir = path.join(__dirname, 'build');
+const siteConfig = require('../data/site-config.json');
+const projectRoot = path.join(__dirname, '..', '..', 'web');
+const buildDir = path.join(__dirname, '..');
 const templatesDir = path.join(buildDir, 'templates');
 const toolsContentDir = path.join(templatesDir, 'tools-content');
 const dataDir = path.join(projectRoot, 'data');

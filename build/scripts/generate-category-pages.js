@@ -1,9 +1,9 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-const siteConfig = require('../site-config.json');
-const projectRoot = path.join(__dirname, '..', 'web');
-const buildDir = path.join(__dirname, '..', 'build');
+const siteConfig = require('../data/site-config.json');
+const projectRoot = path.join(__dirname, '..', '..', 'web');
+const buildDir = path.join(__dirname, '..');
 const templatePath = path.join(buildDir, 'templates', 'category-base.html');
 const fasttoolsDataPath = path.join(buildDir, 'data', 'fasttools-data.json');
 
