@@ -10,6 +10,7 @@ node_modules/
 local_docs/
 web_design/
 tools_backup/
+.amazonq/
 
 # Tests
 tests/
