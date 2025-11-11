@@ -5,14 +5,11 @@
   "main": "generate-site.js",
   "scripts": {
     "clean": "node scripts/clean-build.js",
-    "build:local": "node scripts/bump-version.js && npm run clean && node generate-site.js && node scripts/generate-category-pages.js",
-    "build:old": "node generate-tools.js",
-    "build:tools": "node scripts/generate-tools-json.js",
-    "build:categories": "node scripts/generate-category-pages.js",
+    "build:web": "node scripts/bump-version.js && npm run clean && node generate-site.js && node scripts/generate-category-pages.js",
+    "build:extension": "node scripts/build-extension.js",
+    "build:local": "npm run build:web && npm run build:extension",
     "test": "node tests/automated-qa.js",
-    "test:old": "node tests/run-all-tests.js",
-    "serve": "npx http-server web -p 8000",
-    "version:bump": "node scripts/bump-version.js"
+    "serve": "npx http-server web -p 8000"
   },
   "keywords": [
     "tools",

@@ -3,8 +3,9 @@ const path = require('path');
 
 const siteConfig = require('../site-config.json');
 const projectRoot = path.join(__dirname, '..', 'web');
-const templatePath = path.join(projectRoot, 'templates', 'category-base.html');
-const fasttoolsDataPath = path.join(__dirname, '..', 'extension', 'data', 'fasttools-data.json');
+const buildDir = path.join(__dirname, '..', 'build');
+const templatePath = path.join(buildDir, 'templates', 'category-base.html');
+const fasttoolsDataPath = path.join(buildDir, 'data', 'fasttools-data.json');
 
 async function generateCategoryPages() {
     console.log('🎯 Generando páginas de categorías...\n');

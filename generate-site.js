@@ -82,13 +82,14 @@ function renderSeoContent(seo) {
 // Load site configuration
 const siteConfig = require('./site-config.json');
 const projectRoot = path.join(__dirname, 'web');
-const templatesDir = path.join(projectRoot, 'templates');
+const buildDir = path.join(__dirname, 'build');
+const templatesDir = path.join(buildDir, 'templates');
 const toolsContentDir = path.join(templatesDir, 'tools-content');
 const dataDir = path.join(projectRoot, 'data');
 const i18nDir = path.join(projectRoot, 'i18n');
 const baseTemplatePath = path.join(templatesDir, 'base.html');
 const indexTemplatePath = path.join(templatesDir, 'index-base.html');
-const toolsIndexPath = path.join(__dirname, 'extension', 'data', 'fasttools-data.json');
+const toolsIndexPath = path.join(buildDir, 'data', 'fasttools-data.json');
 
 // Load translations
 async function loadTranslations(lang) {
@@ -127,8 +128,7 @@ async function generateIndex(toolsIndex, lang) {
     const indexTemplate = await fs.readFile(indexTemplatePath, 'utf8');
     
     // Load audiences from fasttools-data.json
-    const fasttoolsDataPath = path.join(__dirname, 'extension', 'data', 'fasttools-data.json');
-    const fasttoolsData = JSON.parse(await fs.readFile(fasttoolsDataPath, 'utf8'));
+    const fasttoolsData = JSON.parse(await fs.readFile(toolsIndexPath, 'utf8'));
     const categories = fasttoolsData.audiences.map(aud => ({
         id: aud.id,
         slug: aud.slug,
