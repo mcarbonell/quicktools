@@ -5,7 +5,8 @@
   "main": "generate-site.js",
   "scripts": {
     "prebuild": "node scripts/bump-version.js",
-    "build": "node generate-site.js && node scripts/generate-category-pages.js",
+    "clean": "node scripts/clean-build.js",
+    "build": "npm run clean && node generate-site.js && node scripts/generate-category-pages.js",
     "build:old": "node generate-tools.js",
     "build:tools": "node scripts/generate-tools-json.js",
     "build:categories": "node scripts/generate-category-pages.js",
