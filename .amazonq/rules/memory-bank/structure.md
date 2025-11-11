@@ -4,6 +4,10 @@
 
 ```
 quicktools/                          # Root directory
+├── build/                          # 🏗️ Build configuration (NOT deployed)
+│   ├── data/
+│   │   └── fasttools-data.json        # Single source of truth
+│   └── templates/                  # HTML templates
 ├── web/                            # 🌐 Production web application (deployed)
 ├── extension/                      # 🧩 Browser extension (Chrome/Firefox)
 ├── tests/                          # 🧪 Testing suite
@@ -31,14 +35,14 @@ web/
 ├── sw.js                          # Service Worker (root level)
 ├── sitemap.xml                    # SEO sitemap
 ├── robots.txt                     # Search engine directives
-├── tools/                         # 33 tool pages (flat structure)
+├── *.html                         # 41 tool pages (flat structure, NO /tools/ prefix)
 │   ├── image-resizer.html
 │   ├── json-formatter.html
-│   └── [31 more tools].html
+│   └── [39 more tools].html
 ├── es/                            # Spanish versions
 │   ├── index.html
 │   ├── [category].html
-│   └── tools/                     # Spanish tool pages
+│   └── *.html                     # Spanish tool pages
 ├── js/                            # JavaScript modules
 │   ├── main.js                    # Common functionality
 │   ├── service-worker.js          # PWA service worker
@@ -60,27 +64,18 @@ web/
 │   ├── i18n.js                    # Translation engine
 │   ├── language-selector.js       # Language switcher
 │   └── tools/                     # Tool-specific translations
-├── data/                          # Data files
-│   ├── tools-index-unified.json   # Complete tool catalog
-│   ├── tools-index-en.json        # English tool index
-│   ├── tools-index-es.json        # Spanish tool index
-│   └── audience-mapping.json      # Category mappings
-├── templates/                     # HTML templates for generation
-│   ├── base.html                  # Base tool template
-│   ├── category-base.html         # Category page template
-│   ├── index-base.html            # Homepage template
-│   └── tools-content/             # Tool-specific content
 ├── icons/                         # PWA icons (SVG)
 └── ads/                           # Ad configuration
     └── adsense.html               # AdSense snippet
 ```
 
 **Key Characteristics:**
-- Flat URL structure for tools (`/tools/tool-name.html`)
+- Flat URL structure for tools (`/tool-name.html`, NO /tools/ prefix)
 - Bilingual support (EN/ES) with `/es/` prefix for Spanish
 - Category pages for user profiles (developers, designers, writers, etc.)
 - PWA-ready with Service Worker and manifest
 - SEO-optimized with sitemap and meta tags
+- NO data/ or templates/ directories (moved to build/)
 
 ### 2. Browser Extension (`extension/`)
 
@@ -166,7 +161,28 @@ tests/
 - Service Worker tests (complete)
 - Overall pass rate: 99.25%
 
-### 4. Build Scripts (`scripts/`)
+### 4. Build Directory (`build/`)
+
+**Purpose:** Central configuration hub (NOT deployed)
+
+**Structure:**
+```
+build/
+├── data/
+│   └── fasttools-data.json        # Single source of truth
+└── templates/
+    ├── base.html                  # Base tool template
+    ├── category-base.html         # Category page template
+    ├── index-base.html            # Homepage template
+    └── tools-content/             # 115 tool content files
+```
+
+**fasttools-data.json structure:**
+- `toolCategories`: 9 categories (image, data, text, utils, ai, files, converters, generators, seo)
+- `audiences`: 8 user profiles with tool mappings
+- `tools`: 41 tools with bilingual data
+
+### 5. Build Scripts (`scripts/`)
 
 **Purpose:** Automation and build tools
 
@@ -176,22 +192,16 @@ scripts/
 ├── bump-version.js                # Version management
 ├── clean-build.js                 # Clean build artifacts
 ├── generate-category-pages.js     # Generate category pages
-├── generate-tool-translations.js  # Generate translations
-├── generate-tools-json.js         # Generate tool index
-├── update-html-templates.js       # Update HTML templates
-├── update-js-translations.js      # Update JS translations
-└── fix-relative-paths.js          # Fix path references
+├── build-extension.js             # Sync data to extension
+└── [other scripts]
 ```
 
 **Build Process:**
-1. Bump version number
-2. Clean previous build
-3. Generate site from templates
-4. Generate category pages
-5. Update translations
-6. Validate output
+1. `npm run build:web`: Bump version → clean → generate-site → generate-categories
+2. `npm run build:extension`: Copy fasttools-data.json to extension/data/
+3. `npm run build:local`: Run both build:web and build:extension
 
-### 5. Documentation (`local_docs/`)
+### 6. Documentation (`local_docs/`)
 
 **Purpose:** Internal project documentation
 

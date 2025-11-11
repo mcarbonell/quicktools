@@ -60,30 +60,41 @@
 ### Key Directories
 ```
 quicktools/
-├── web/                    # Production deployment (main artifact)
+├── build/                  # 🏗️ Build configuration (NOT deployed)
+│   ├── data/
+│   │   └── fasttools-data.json    # Single source of truth
+│   └── templates/          # HTML templates for generation
+│       ├── base.html
+│       ├── category-base.html
+│       ├── index-base.html
+│       └── tools-content/  # 115 tool content files
+├── web/                    # 🌐 Production deployment (main artifact)
 │   ├── index.html          # Homepage (EN) - root level
 │   ├── es/                 # Spanish versions
 │   ├── *.html              # 41 tool pages (EN) - root level, NO /tools/ prefix
 │   ├── developers.html     # Category pages (8 categories)
 │   ├── css/                # Styles (style.css, style-v2.css)
 │   ├── js/                 # JavaScript modules
-│   ├── i18n/               # Translation files
-│   ├── data/               # tools-index-unified.json (single source of truth)
-│   └── templates/          # HTML templates for generation
-├── extension/              # Browser extension
-│   └── data/               # Synced tools-index-unified.json
-├── tests/                  # Testing suite
-└── .amazonq/rules/         # Amazon Q context files
+│   └── i18n/               # Translation files
+├── extension/              # 🧩 Browser extension
+│   └── data/
+│       └── fasttools-data.json    # Synced from build/data/
+├── scripts/                # 🛠️ Build scripts
+│   ├── build-extension.js  # Copy data to extension
+│   ├── generate-category-pages.js
+│   └── bump-version.js
+├── tests/                  # 🧪 Testing suite
+└── .amazonq/rules/         # 🤖 Amazon Q context files
 ```
 
 ### Important Files
-- **package.json:** npm scripts (test, build:local, serve) - NO 'build' to avoid Vercel auto-build
+- **build/data/fasttools-data.json:** Single source of truth (toolCategories, audiences, tools)
+- **package.json:** npm scripts (build:web, build:extension, build:local, test, serve)
 - **vercel.json:** Deployment config (buildCommand: null, installCommand: null)
 - **sitemap.xml:** SEO sitemap (41 tools + 8 categories × 2 languages = 98 URLs)
-- **tools-index-unified.json:** Single source of truth for all tools (web + extension)
 - **robots.txt:** Search engine directives
 - **manifest.json:** PWA manifest
-- **sw.js:** Service Worker v2.0.0
+- **sw.js:** Service Worker v3.0.11
 
 ## Tools Inventory (41 Total)
 
@@ -166,10 +177,11 @@ quicktools/
 
 ### Commands
 ```bash
-npm test             # Run automated QA
-npm run build:local  # Generate site (renamed from 'build' to avoid Vercel auto-build)
-npm run serve        # Local server on :8000
-npm run clean        # Clean old build files
+npm run build:web        # Generate web only (bump + clean + generate-site + categories)
+npm run build:extension  # Copy fasttools-data.json to extension/data/
+npm run build:local      # Build both web + extension
+npm test                 # Run automated QA
+npm run serve            # Local server on :8000
 ```
 
 **IMPORTANT:** No `npm run build` script to prevent Vercel from running build. Files are pre-generated and committed.
@@ -188,8 +200,8 @@ npm run clean        # Clean old build files
 ## Known Issues & Quirks
 
 ### Service Worker Cache
-- **Current Version:** v3.0.7
-- **Auto-versioning:** scripts/bump-version.js increments on each build
+- **Current Version:** v3.0.11
+- **Auto-versioning:** scripts/bump-version.js increments on each web build
 - **User Fix:** Hard refresh (Ctrl+Shift+R) or clear site data
 
 ### DNS Propagation
@@ -227,6 +239,15 @@ npm run clean        # Clean old build files
 - [ ] White-label solution
 
 ## Recent Changes (December 2024)
+
+### Build System Reorganization (Latest)
+- Created `build/` directory as central configuration hub
+- Moved `fasttools-data.json` from `extension/data/` to `build/data/`
+- Moved templates from `web/templates/` to `build/templates/`
+- Eliminated `web/data/` directory completely
+- Created separate build scripts: `build:web`, `build:extension`, `build:local`
+- All scripts now read from single source: `build/data/fasttools-data.json`
+- Extension data synced via `scripts/build-extension.js`
 
 ### SEO Tools Implementation
 - Added 8 SEO tools as promotional pages on web
@@ -336,10 +357,10 @@ npm run clean        # Clean old build files
 - **Analytics:** https://analytics.google.com (G-9XTNQMQKE2)
 
 ### Key Files
-- **tools-index-unified.json:** Single source of truth for all tools
-- **audience-mapping.json:** Maps user categories to tool IDs
-- **generate-site.js:** Main site generator
-- **generate-category-pages.js:** Category page generator
+- **build/data/fasttools-data.json:** Single source of truth (toolCategories, audiences, tools)
+- **generate-site.js:** Main site generator (reads from build/data/)
+- **scripts/generate-category-pages.js:** Category page generator
+- **scripts/build-extension.js:** Syncs data to extension
 
 ---
 
@@ -347,7 +368,8 @@ npm run clean        # Clean old build files
 **Project Status:** ✅ PRODUCTION READY  
 **Total Tools:** 41  
 **Total Categories:** 8  
-**Service Worker:** v3.0.7ing
+**Service Worker:** v3.0.11  
+**Build System:** build/ directory with fasttools-data.json as single source
 - Google Search Console: Weekly checks
 - Analytics: Daily traffic review
 - Performance: Monthly audits
