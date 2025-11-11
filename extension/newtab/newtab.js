@@ -100,7 +100,7 @@ class QuickToolsNewTab {
                 description: 'Formatear y validar JSON',
                 icon: '📋',
                 category: 'developer',
-                url: 'https://quicktools.dev/tools/json-formatter'
+                url: 'https://fasttools.tools/tools/json-formatter'
             },
             {
                 id: 'base64-encoder',
@@ -108,7 +108,7 @@ class QuickToolsNewTab {
                 description: 'Codificar/Decodificar Base64',
                 icon: '🔐',
                 category: 'text',
-                url: 'https://quicktools.dev/tools/base64-encoder'
+                url: 'https://fasttools.tools/tools/base64-encoder'
             },
             {
                 id: 'url-encoder',
@@ -116,7 +116,7 @@ class QuickToolsNewTab {
                 description: 'Codificar URLs',
                 icon: '🔗',
                 category: 'text',
-                url: 'https://quicktools.dev/tools/url-encoder'
+                url: 'https://fasttools.tools/tools/url-encoder'
             },
             {
                 id: 'html-encoder',
@@ -124,7 +124,7 @@ class QuickToolsNewTab {
                 description: 'Escapar caracteres HTML',
                 icon: '🌐',
                 category: 'text',
-                url: 'https://quicktools.dev/tools/html-encoder'
+                url: 'https://fasttools.tools/tools/html-encoder'
             },
             {
                 id: 'hash-calculator',
@@ -132,7 +132,7 @@ class QuickToolsNewTab {
                 description: 'MD5, SHA1, SHA256, SHA512',
                 icon: '🔢',
                 category: 'text',
-                url: 'https://quicktools.dev/tools/hash-calculator'
+                url: 'https://fasttools.tools/tools/hash-calculator'
             },
             {
                 id: 'csv-json',
@@ -140,7 +140,7 @@ class QuickToolsNewTab {
                 description: 'Convertir CSV a JSON',
                 icon: '📊',
                 category: 'data',
-                url: 'https://quicktools.dev/tools/csv-json'
+                url: 'https://fasttools.tools/tools/csv-json'
             },
             {
                 id: 'yaml-json',
@@ -148,7 +148,7 @@ class QuickToolsNewTab {
                 description: 'Convertir YAML a JSON',
                 icon: '📄',
                 category: 'data',
-                url: 'https://quicktools.dev/tools/yaml-json'
+                url: 'https://fasttools.tools/tools/yaml-json'
             },
             {
                 id: 'xml-json',
@@ -156,7 +156,7 @@ class QuickToolsNewTab {
                 description: 'Convertir XML a JSON',
                 icon: '📋',
                 category: 'data',
-                url: 'https://quicktools.dev/tools/xml-json'
+                url: 'https://fasttools.tools/tools/xml-json'
             },
             {
                 id: 'color-palette',
@@ -164,7 +164,7 @@ class QuickToolsNewTab {
                 description: 'Generar paletas de colores',
                 icon: '🎨',
                 category: 'image',
-                url: 'https://quicktools.dev/tools/color-palette'
+                url: 'https://fasttools.tools/tools/color-palette'
             },
             {
                 id: 'color-picker',
@@ -172,7 +172,7 @@ class QuickToolsNewTab {
                 description: 'Selector de colores global',
                 icon: '🎯',
                 category: 'image',
-                url: 'https://quicktools.dev/tools/color-picker'
+                url: 'https://fasttools.tools/tools/color-picker'
             },
             {
                 id: 'image-resizer',
@@ -180,7 +180,7 @@ class QuickToolsNewTab {
                 description: 'Redimensionar imágenes',
                 icon: '🖼️',
                 category: 'image',
-                url: 'https://quicktools.dev/tools/image-resizer'
+                url: 'https://fasttools.tools/tools/image-resizer'
             },
             {
                 id: 'image-compressor',
@@ -188,7 +188,7 @@ class QuickToolsNewTab {
                 description: 'Comprimir imágenes',
                 icon: '📦',
                 category: 'image',
-                url: 'https://quicktools.dev/tools/image-compressor'
+                url: 'https://fasttools.tools/tools/image-compressor'
             },
             {
                 id: 'lorem-ipsum',
@@ -196,7 +196,7 @@ class QuickToolsNewTab {
                 description: 'Generador de texto placeholder',
                 icon: '📝',
                 category: 'text',
-                url: 'https://quicktools.dev/tools/lorem-ipsum'
+                url: 'https://fasttools.tools/tools/lorem-ipsum'
             },
             {
                 id: 'password-generator',
@@ -204,7 +204,7 @@ class QuickToolsNewTab {
                 description: 'Generar contraseñas seguras',
                 icon: '🔒',
                 category: 'productivity',
-                url: 'https://quicktools.dev/tools/password-generator'
+                url: 'https://fasttools.tools/tools/password-generator'
             },
             {
                 id: 'qr-generator',
@@ -212,7 +212,7 @@ class QuickToolsNewTab {
                 description: 'Generar códigos QR',
                 icon: '🔳',
                 category: 'productivity',
-                url: 'https://quicktools.dev/tools/qr-generator'
+                url: 'https://fasttools.tools/tools/qr-generator'
             },
             {
                 id: 'stopwatch-timer',
@@ -220,7 +220,7 @@ class QuickToolsNewTab {
                 description: 'Cronómetro y temporizador',
                 icon: '⏰',
                 category: 'productivity',
-                url: 'https://quicktools.dev/tools/stopwatch-timer'
+                url: 'https://fasttools.tools/tools/stopwatch-timer'
             },
             {
                 id: 'text-cleaner',
@@ -228,7 +228,7 @@ class QuickToolsNewTab {
                 description: 'Limpiar y formatear texto',
                 icon: '🧹',
                 category: 'text',
-                url: 'https://quicktools.dev/tools/text-cleaner'
+                url: 'https://fasttools.tools/tools/text-cleaner'
             },
             {
                 id: 'diff',
@@ -236,7 +236,7 @@ class QuickToolsNewTab {
                 description: 'Comparar textos',
                 icon: '⚡',
                 category: 'developer',
-                url: 'https://quicktools.dev/tools/diff'
+                url: 'https://fasttools.tools/tools/diff'
             }
         ];
 

@@ -239,7 +239,7 @@
 
 ## 📝 Notas
 
-**Fecha de lanzamiento**: Enero 2025
+**Fecha de lanzamiento**: Noviembre 2025
 **Versión**: 2.0.0
 **Dominio**: fasttools.tools
 **Backup**: fasttools-nine.vercel.app
@@ -261,4 +261,4 @@
 
 ---
 
-**Última actualización**: Enero 2025
+**Última actualización**: Noviembre 2025

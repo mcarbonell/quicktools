@@ -206,6 +206,6 @@ Después del deploy:
 
 ---
 
-**Creado:** Enero 2025  
-**Última actualización:** Enero 2025  
+**Creado:** Noviembre 2025  
+**Última actualización:** Noviembre 2025  
 **Estado:** ✅ Listo para deploy

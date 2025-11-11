@@ -69,5 +69,5 @@
 
 ---
 
-**Fecha**: Enero 2025  
+**Fecha**: Noviembre 2025  
 **Estado**: Listo para deploy

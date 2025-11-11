@@ -284,4 +284,4 @@ window.addEventListener('localeChanged', () => {
 ---
 
 **Versión:** 1.0.0  
-**Última actualización:** Enero 2025
+**Última actualización:** Noviembre 2025

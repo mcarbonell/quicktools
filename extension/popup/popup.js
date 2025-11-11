@@ -46,12 +46,12 @@ class QuickToolsPopup {
 
     async loadTools() {
         const tools = [
-            { id: 'json-formatter', name: 'JSON Formatter', description: 'Formatear y validar JSON', icon: '📋', url: 'https://quicktools.dev/tools/json-formatter' },
-            { id: 'base64-encoder', name: 'Base64 Encoder', description: 'Codificar/Decodificar Base64', icon: '🔐', url: 'https://quicktools.dev/tools/base64-encoder' },
-            { id: 'url-encoder', name: 'URL Encoder', description: 'Codificar URLs', icon: '🔗', url: 'https://quicktools.dev/tools/url-encoder' },
-            { id: 'hash-calculator', name: 'Hash Calculator', description: 'MD5, SHA1, SHA256', icon: '🔢', url: 'https://quicktools.dev/tools/hash-calculator' },
-            { id: 'color-palette', name: 'Color Palette', description: 'Generar paletas de colores', icon: '🎨', url: 'https://quicktools.dev/tools/color-palette' },
-            { id: 'image-resizer', name: 'Image Resizer', description: 'Redimensionar imágenes', icon: '🖼️', url: 'https://quicktools.dev/tools/image-resizer' }
+            { id: 'json-formatter', name: 'JSON Formatter', description: 'Formatear y validar JSON', icon: '📋', url: 'https://fasttools.tools/tools/json-formatter' },
+            { id: 'base64-encoder', name: 'Base64 Encoder', description: 'Codificar/Decodificar Base64', icon: '🔐', url: 'https://fasttools.tools/tools/base64-encoder' },
+            { id: 'url-encoder', name: 'URL Encoder', description: 'Codificar URLs', icon: '🔗', url: 'https://fasttools.tools/tools/url-encoder' },
+            { id: 'hash-calculator', name: 'Hash Calculator', description: 'MD5, SHA1, SHA256', icon: '🔢', url: 'https://fasttools.tools/tools/hash-calculator' },
+            { id: 'color-palette', name: 'Color Palette', description: 'Generar paletas de colores', icon: '🎨', url: 'https://fasttools.tools/tools/color-palette' },
+            { id: 'image-resizer', name: 'Image Resizer', description: 'Redimensionar imágenes', icon: '🖼️', url: 'https://fasttools.tools/tools/image-resizer' }
         ];
         this.renderTools(tools);
     }

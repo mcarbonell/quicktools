@@ -373,7 +373,7 @@ class QuickToolsContentScript {
     }
 
     openToolInNewTab(tool) {
-        const url = `https://quicktools.dev/tools/${tool}`;
+        const url = `https://fasttools.tools/tools/${tool}`;
         window.open(url, '_blank');
     }
 

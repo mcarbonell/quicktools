@@ -216,7 +216,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 ## 📞 Soporte
 
 - **Issues**: [GitHub Issues](https://github.com/mrcm-/quicktools/issues)
-- **Email**: support@quicktools.dev
+- **Email**: support@fasttools.tools
 - **Documentación**: [Wiki](https://github.com/mrcm-/quicktools/wiki)
 
 ---

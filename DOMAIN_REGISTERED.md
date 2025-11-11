@@ -3,8 +3,8 @@
 ## ✅ Información del Dominio
 
 **Dominio:** `fasttools.tools`  
-**Registrador:** Namecheap  
-**Fecha de registro:** Enero 2025  
+**Registrador:** Cdmon.com  
+**Fecha de registro:** Noviembre 2025  
 **Periodo:** 1 año  
 **Precio:** €10.95 (con descuento promo .TOOLS 2025)  
 **Total pagado:** €13.92 (IVA incluido)
@@ -69,6 +69,6 @@ Una vez configurado el dominio:
 
 ---
 
-**Registrado:** Enero 2025  
+**Registrado:** Noviembre 2025  
 **Renovación:** Enero 2026  
 **Estado:** ✅ Activo
