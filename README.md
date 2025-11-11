@@ -198,7 +198,7 @@ fasttools/                          # 📁 Raíz del proyecto
 
 FastTools también incluye una **extensión de navegador** con 30+ herramientas para productividad:
 
-### � Funcionalidades
+### Funcionalidades
 - **Popup rápido** con herramientas más usadas
 - **Nueva pestaña personalizada** con acceso completo
 - **Context Menus** para texto seleccionado
@@ -218,7 +218,7 @@ FastTools también incluye una **extensión de navegador** con 30+ herramientas 
 - **Keyboard shortcuts** configurables
 - **Local storage** para preferencias
 
-## �🛠️ Tecnologías Utilizadas
+## 🛠️ Tecnologías Utilizadas
 
 | Componente | Tecnología | Versión |
 |------------|------------|---------|
