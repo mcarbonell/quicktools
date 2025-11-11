@@ -4,9 +4,8 @@
   "description": "Fast, secure online tools. Everything processed in your browser.",
   "main": "generate-site.js",
   "scripts": {
-    "prebuild": "node scripts/bump-version.js",
     "clean": "node scripts/clean-build.js",
-    "build": "npm run clean && node generate-site.js && node scripts/generate-category-pages.js",
+    "build": "node scripts/bump-version.js && npm run clean && node generate-site.js && node scripts/generate-category-pages.js",
     "build:old": "node generate-tools.js",
     "build:tools": "node scripts/generate-tools-json.js",
     "build:categories": "node scripts/generate-category-pages.js",
