@@ -70,8 +70,8 @@ class FastToolsPopup {
         
         container.innerHTML = '';
         
-        // Show first 6 tools
-        this.tools.slice(0, 6).forEach(tool => {
+        // Show all tools
+        this.tools.forEach(tool => {
             const card = this.createToolCard(tool);
             container.appendChild(card);
         });
@@ -128,6 +128,10 @@ class FastToolsPopup {
         } else if (tool.slug === 'local://notes') {
             showModal('notes-modal');
             this.loadNotes();
+        } else if (tool.slug.startsWith('tools/')) {
+            // SEO tools - open in new tab
+            chrome.tabs.create({ url: tool.url, active: true });
+            window.close();
         }
     }
 
