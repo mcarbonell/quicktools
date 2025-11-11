@@ -122,13 +122,30 @@ async function generateIndex(toolsIndex, lang) {
     
     const translations = await loadTranslations(lang);
     
-    // Load translated tools index
-    const translatedToolsPath = path.join(dataDir, `tools-index-${lang}.json`);
-    const translatedTools = JSON.parse(await fs.readFile(translatedToolsPath, 'utf8'));
+    // Load fasttools-data.json
+    const fasttoolsData = JSON.parse(await fs.readFile(toolsIndexPath, 'utf8'));
     const indexTemplate = await fs.readFile(indexTemplatePath, 'utf8');
     
-    // Load audiences from fasttools-data.json
-    const fasttoolsData = JSON.parse(await fs.readFile(toolsIndexPath, 'utf8'));
+    // Translate tools for current language
+    const translatedTools = fasttoolsData.tools.map(tool => ({
+        title: tool.title[lang] || tool.title.en,
+        description: tool.description[lang] || tool.description.en,
+        slug: tool.slug,
+        category: tool.categories[0], // Use first category for grouping
+        icon: tool.icon
+    }));
+    
+    // Get category names from toolCategories
+    const categoryNames = {};
+    fasttoolsData.toolCategories.forEach(cat => {
+        categoryNames[cat.id] = cat.name[lang] || cat.name.en;
+    });
+    
+    // Map translated tools to use category names
+    translatedTools.forEach(tool => {
+        tool.category = categoryNames[tool.category] || tool.category;
+    });
+    
     const categories = fasttoolsData.audiences.map(aud => ({
         id: aud.id,
         slug: aud.slug,
