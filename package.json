@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node generate-site.js",
     "build:old": "node generate-tools.js",
+    "build:tools": "node scripts/generate-tools-json.js",
     "test": "node tests/automated-qa.js",
     "test:old": "node tests/run-all-tests.js",
     "serve": "npx http-server web -p 8000"
