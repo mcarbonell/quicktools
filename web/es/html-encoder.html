@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Codificar/Decodificar HTML - FastTools</title>
+    <meta name="description" content="Codifica y decodifica entidades HTML.">
+    <meta name="keywords" content="text, html, encode">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Codificar/Decodificar HTML — FastTools">
+    <meta property="og:description" content="Codifica y decodifica entidades HTML.">
+    <meta property="og:url" content="https://fasttools.tools/es/html-encoder.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/html-encoder.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/html-encoder.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/html-encoder.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "FastTools",
+      "item": "https://fasttools.tools/es"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Desarrolladores",
+      "item": "https://fasttools.tools/es/desarrolladores.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Codificar/Decodificar HTML"
+    }
+  ]
+}
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>Codificar/Decodificar HTML</h1>
+            <p class="text-muted">Codifica y decodifica entidades HTML.</p>
+            <div class="alert alert-info mt-3"><small>🎯 Útil para: <a href="/es/desarrolladores.html" class="badge bg-primary text-decoration-none">💻 Desarrolladores</a></small></div>
+        </div>
+
+        <div class="mb-3">
+    <label for="inputText" class="form-label">Texto a codificar/decodificar</label>
+    <textarea id="inputText" rows="3" class="form-control" placeholder="Escribe o pega el texto aquí..."></textarea>
+</div>
+
+<div class="mb-3 d-flex gap-2 flex-wrap">
+    <button id="encodeBtn" class="btn btn-primary">Codificar HTML</button>
+    <button id="encodeAllBtn" class="btn btn-primary">Codificar todo</button>
+    <button id="decodeBtn" class="btn btn-primary">Decodificar HTML</button>
+    <button id="copyBtn" class="btn btn-outline-secondary">Copiar</button>
+</div>
+
+<div class="mb-3">
+    <label for="outputText" class="form-label">Resultado</label>
+    <textarea id="outputText" rows="3" class="form-control" readonly placeholder="Aquí aparecerá el texto codificado o decodificado..."></textarea>
+</div>
+
+<div class="alert alert-info small">
+    <strong>Modos de codificación:</strong><br>
+    • <strong>Codificar HTML: Convierte solo los caracteres especiales necesarios</strong><br>
+    • <strong>Codificar todo: Convierte todos los caracteres no ASCII a entidades HTML</strong><br>
+    • <strong>Decodificar HTML: Convierte todas las entidades HTML a sus caracteres correspondientes</strong>
+</div>
+
+<div class="mt-4">
+    <h5>Referencias comunes</h5>
+    <div class="table-responsive">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Carácter</th>
+                    <th>Entidad</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&lt;</td>
+                    <td>&lt;</td>
+                    <td>Menor que</td>
+                </tr>
+                <tr>
+                    <td>&gt;</td>
+                    <td>&gt;</td>
+                    <td>Mayor que</td>
+                </tr>
+                <tr>
+                    <td>&</td>
+                    <td>&amp;</td>
+                    <td>Ampersand</td>
+                </tr>
+                <tr>
+                    <td>"</td>
+                    <td>&quot;</td>
+                    <td>Comilla doble</td>
+                </tr>
+                <tr>
+                    <td>'</td>
+                    <td>&#39;</td>
+                    <td>Comilla simple</td>
+                </tr>
+                <tr>
+                    <td>©</td>
+                    <td>&copy;</td>
+                    <td>Copyright</td>
+                </tr>
+                <tr>
+                    <td>®</td>
+                    <td>&reg;</td>
+                    <td>Marca registrada</td>
+                </tr>
+                <tr>
+                    <td>€</td>
+                    <td>&euro;</td>
+                    <td>Euro</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="msg" class="text-muted small"></div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">¿Qué es la codificación HTML y por qué es crucial para la seguridad web?</h2>
+            <p class="mb-4">La <strong>codificación HTML</strong> convierte caracteres especiales en <strong>entidades HTML</strong> (como & para &) para asegurar visualización segura en navegadores web y prevenir <strong>vulnerabilidades de seguridad</strong>. Esta técnica esencial de desarrollo web protege contra <strong>ataques XSS (Cross-Site Scripting)</strong>, asegura <strong>renderizado adecuado de caracteres</strong>, y permite visualización segura de <strong>contenido generado por usuarios</strong>. Las entidades HTML permiten a los navegadores distinguir entre <strong>contenido de texto y etiquetas HTML</strong>, haciéndolas fundamentales para <strong>seguridad web</strong> y <strong>sanitización de datos</strong>. Aprende más sobre <a href="https://es.wikipedia.org/wiki/Entidad_HTML" target="_blank" rel="noopener">entidades HTML</a> y <a href="https://es.wikipedia.org/wiki/Seguridad_de_aplicaciones_web" target="_blank" rel="noopener">seguridad de aplicaciones web</a>.</p>
+            <h3 class="h5 mb-3">¿Cómo usar la herramienta Codificador/Decodificador de HTML?</h3>
+            <ol class="mb-4">
+                <li><strong>Escribe o pega</strong> tu texto en el área de entrada</li>
+                <li><strong>Elige el modo de codificación</strong>: codificación HTML o codificación completa</li>
+                <li>Haz clic en <strong>'Codificar HTML'</strong> para convertir caracteres especiales a entidades seguras</li>
+                <li><strong>Copia</strong> el resultado codificado o usa <strong>'Decodificar'</strong> para convertir entidades de vuelta a caracteres</li>
+            </ol>
+            <h3 class="h5 mb-3">Casos de uso comunes de codificación HTML</h3>
+            <ul class="mb-4">
+                <li><strong>Prevenir ataques XSS</strong> codificando entrada de usuario antes de mostrar en páginas web</li>
+                <li><strong>Mostrar fragmentos de código</strong> y contenido técnico de forma segura en documentación web</li>
+                <li><strong>Visualizar símbolos matemáticos</strong> y caracteres especiales en contenido web</li>
+                <li><strong>Sanitizar comentarios de usuario</strong> y entradas de formularios para aplicaciones web</li>
+                <li><strong>Crear contenido HTML de email</strong> seguro con codificación adecuada de caracteres</li>
+            </ul>
+            <h3 class="h5 mb-3">Preguntas frecuentes</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            ¿Cuál es la diferencia entre codificación HTML y completa?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            La <strong>codificación HTML</strong> solo convierte <strong>caracteres esenciales</strong> como <, >, &, ", y ' para seguridad. La <strong>codificación completa</strong> convierte <strong>todos los caracteres no ASCII</strong> a entidades, haciéndola adecuada para <strong>máxima compatibilidad</strong> y contenido internacional.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            ¿Necesito codificación HTML para desarrollo web moderno?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! La codificación HTML es <strong>esencial para seguridad</strong> y visualización adecuada de contenido. Los frameworks modernos manejan algo de codificación automáticamente, pero la <strong>codificación manual</strong> sigue siendo crucial para <strong>entrada de usuario</strong>, <strong>contenido de terceros</strong> y <strong>propósitos de depuración</strong>.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            ¿Este codificador HTML es seguro?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! Toda la codificación y decodificación ocurre <strong>100% en tu navegador</strong>. Tu texto nunca sale de tu dispositivo y no se almacena en ningún servidor, asegurando <strong>privacidad y seguridad</strong> completas de tu contenido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","encodeButton":"Codificar","decodeButton":"Decodificar","inputHtmlTextLabel":"Texto a codificar/decodificar","textPlaceholder":"Escribe o pega el texto aquí...","encodeHtmlButton":"Codificar HTML","encodeAllButton":"Codificar todo","decodeHtmlButton":"Decodificar HTML","resultLabel":"Resultado","resultPlaceholder":"Aquí aparecerá el texto codificado o decodificado...","encodingModesTitle":"Modos de codificación:","encodeHtmlMode":"Codificar HTML: Convierte solo los caracteres especiales necesarios","encodeAllMode":"Codificar todo: Convierte todos los caracteres no ASCII a entidades HTML","decodeHtmlMode":"Decodificar HTML: Convierte todas las entidades HTML a sus caracteres correspondientes","commonReferencesTitle":"Referencias comunes","characterHeader":"Carácter","entityHeader":"Entidad","descriptionHeader":"Descripción","lessThanLabel":"Menor que","greaterThanLabel":"Mayor que","ampersandLabel":"Ampersand","doubleQuoteLabel":"Comilla doble","singleQuoteLabel":"Comilla simple","copyrightLabel":"Copyright","registeredLabel":"Marca registrada","euroLabel":"Euro","pleaseEnterTextToEncode":"Introduce texto para codificar","htmlTextEncoded":"Texto codificado en HTML","htmlAllTextEncoded":"Texto codificado completamente en HTML","encodeError":"Error al codificar","pleaseEnterHtmlToDecode":"Introduce texto HTML para decodificar","htmlTextDecoded":"Texto decodificado de HTML","decodeError":"Error al decodificar - la entrada parece inválida","noResultToCopy":"No hay resultado para copiar","copyError":"Error al copiar","seo":{"whatIsTitle":"¿Qué es la codificación HTML y por qué es crucial para la seguridad web?","whatIsContent":"La **codificación HTML** convierte caracteres especiales en **entidades HTML** (como & para &) para asegurar visualización segura en navegadores web y prevenir **vulnerabilidades de seguridad**. Esta técnica esencial de desarrollo web protege contra **ataques XSS (Cross-Site Scripting)**, asegura **renderizado adecuado de caracteres**, y permite visualización segura de **contenido generado por usuarios**. Las entidades HTML permiten a los navegadores distinguir entre **contenido de texto y etiquetas HTML**, haciéndolas fundamentales para **seguridad web** y **sanitización de datos**. Aprende más sobre [entidades HTML](https://es.wikipedia.org/wiki/Entidad_HTML) y [seguridad de aplicaciones web](https://es.wikipedia.org/wiki/Seguridad_de_aplicaciones_web).","howToTitle":"¿Cómo usar la herramienta Codificador/Decodificador de HTML?","howToSteps":["**Escribe o pega** tu texto en el área de entrada","**Elige el modo de codificación**: codificación HTML o codificación completa","Haz clic en **'Codificar HTML'** para convertir caracteres especiales a entidades seguras","**Copia** el resultado codificado o usa **'Decodificar'** para convertir entidades de vuelta a caracteres"],"useCasesTitle":"Casos de uso comunes de codificación HTML","useCases":["**Prevenir ataques XSS** codificando entrada de usuario antes de mostrar en páginas web","**Mostrar fragmentos de código** y contenido técnico de forma segura en documentación web","**Visualizar símbolos matemáticos** y caracteres especiales en contenido web","**Sanitizar comentarios de usuario** y entradas de formularios para aplicaciones web","**Crear contenido HTML de email** seguro con codificación adecuada de caracteres"],"faqTitle":"Preguntas frecuentes","faq":[{"question":"¿Cuál es la diferencia entre codificación HTML y completa?","answer":"La **codificación HTML** solo convierte **caracteres esenciales** como <, >, &, \", y ' para seguridad. La **codificación completa** convierte **todos los caracteres no ASCII** a entidades, haciéndola adecuada para **máxima compatibilidad** y contenido internacional."},{"question":"¿Necesito codificación HTML para desarrollo web moderno?","answer":"¡Sí! La codificación HTML es **esencial para seguridad** y visualización adecuada de contenido. Los frameworks modernos manejan algo de codificación automáticamente, pero la **codificación manual** sigue siendo crucial para **entrada de usuario**, **contenido de terceros** y **propósitos de depuración**."},{"question":"¿Este codificador HTML es seguro?","answer":"¡Sí! Toda la codificación y decodificación ocurre **100% en tu navegador**. Tu texto nunca sale de tu dispositivo y no se almacena en ningún servidor, asegurando **privacidad y seguridad** completas de tu contenido."}]}};
+    </script>
+<script src="/js/tools/html-encoder.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

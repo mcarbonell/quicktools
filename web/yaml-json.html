@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YAML ↔ JSON - FastTools</title>
+    <meta name="description" content="Convert YAML to JSON and JSON to YAML.">
+    <meta name="keywords" content="yaml, json, convert">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="YAML ↔ JSON — FastTools">
+    <meta property="og:description" content="Convert YAML to JSON and JSON to YAML.">
+    <meta property="og:url" content="https://fasttools.tools/yaml-json.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/yaml-json.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/yaml-json.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/yaml-json.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "FastTools",
+      "item": "https://fasttools.tools"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Developers",
+      "item": "https://fasttools.tools/developers.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Data Analysts",
+      "item": "https://fasttools.tools/data-analysts.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "YAML ↔ JSON"
+    }
+  ]
+}
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>YAML ↔ JSON</h1>
+            <p class="text-muted">Convert YAML to JSON and JSON to YAML.</p>
+            <div class="alert alert-info mt-3"><small>🎯 Useful for: <a href="/developers.html" class="badge bg-primary text-decoration-none">💻 Developers</a> <a href="/data-analysts.html" class="badge bg-primary text-decoration-none">📊 Data Analysts</a></small></div>
+        </div>
+
+        <div class="mb-3">
+    <label for="inputText" class="form-label">Input (YAML or JSON)</label>
+    <textarea id="inputText" rows="10" class="form-control" placeholder="Paste your YAML or JSON here..."></textarea>
+</div>
+
+<div class="mb-3 d-flex gap-2">
+    <button id="yamlToJsonBtn" class="btn btn-primary">YAML → JSON</button>
+    <button id="jsonToYamlBtn" class="btn btn-primary">JSON → YAML</button>
+    <button id="prettyJsonBtn" class="btn btn-secondary">Prettify JSON</button>
+    <button id="copyBtn" class="btn btn-outline-secondary">Copy Result</button>
+</div>
+
+<div class="mb-3">
+    <label for="outputText" class="form-label">Result</label>
+    <textarea id="outputText" rows="10" class="form-control" readonly
+        placeholder="The result will appear here..."></textarea>
+</div>
+
+<div id="msg" class="text-muted small"></div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What is YAML and JSON conversion and why is it useful?</h2>
+            <p class="mb-4"><strong>YAML (YAML Ain't Markup Language)</strong> and <strong>JSON (JavaScript Object Notation)</strong> are both <strong>human-readable data serialization formats</strong> used for configuration files, data exchange, and API communication. <strong>YAML uses indentation and simplicity</strong> for human-friendliness, while <strong>JSON uses braces and strict syntax</strong> for programmatic parsing. Converting between these formats enables <strong>cross-platform compatibility</strong> and <strong>flexible data handling</strong> across different programming environments. Learn more about <a href="https://en.wikipedia.org/wiki/YAML" target="_blank" rel="noopener">YAML</a> and <a href="https://en.wikipedia.org/wiki/JSON" target="_blank" rel="noopener">JSON serialization</a>.</p>
+            <h3 class="h5 mb-3">How to use the YAML ↔ JSON Converter tool?</h3>
+            <ol class="mb-4">
+                <li><strong>Paste</strong> your YAML or JSON data into the input area</li>
+                <li><strong>Choose conversion direction</strong>: YAML → JSON or JSON → YAML</li>
+                <li>Click <strong>'Convert'</strong> to transform the data format</li>
+                <li><strong>Copy</strong> the converted result or use additional formatting options</li>
+            </ol>
+            <h3 class="h5 mb-3">Common use cases for YAML ↔ JSON conversion</h3>
+            <ul class="mb-4">
+                <li><strong>Convert configuration files</strong> between Docker Compose (YAML) and API specs (JSON)</li>
+                <li><strong>Transform data</strong> for different <a href="https://en.wikipedia.org/wiki/DevOps" target="_blank" rel="noopener">DevOps tools</a> and CI/CD pipelines</li>
+                <li><strong>Migrate legacy configurations</strong> from YAML-based to JSON-based systems</li>
+                <li><strong>Validate data structure</strong> across different serialization formats</li>
+                <li><strong>Integrate systems</strong> that use different data representation standards</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            What's the main difference between YAML and JSON?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <strong>YAML</strong> uses <strong>indentation and minimal syntax</strong> for human readability and supports comments, while <strong>JSON</strong> uses <strong>braces and quotes</strong> for strict, machine-parsable structure. YAML is often preferred for <strong>configuration files</strong>, while JSON is standard for <strong>API communication</strong>.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            Can I convert complex YAML features to JSON?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            The converter handles most YAML features including <strong>nested objects, arrays, and strings</strong>. However, <strong>YAML comments and advanced features</strong> like anchors may not be preserved in JSON format, as JSON doesn't support these concepts.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            Is this YAML/JSON converter safe?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! All data processing happens <strong>100% in your browser</strong>. Your YAML and JSON data never leave your device and are not stored on any server, ensuring complete <strong>privacy and security</strong> of your sensitive configuration data.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"inputLabel":"Input (YAML or JSON)","inputPlaceholder":"Paste your YAML or JSON here...","yamlToJsonButton":"YAML → JSON","jsonToYamlButton":"JSON → YAML","prettifyJsonButton":"Prettify JSON","copyResultButton":"Copy Result","outputLabel":"Result","outputPlaceholder":"The result will appear here...","enterYamlToConvert":"Enter YAML to convert","yamlConvertedToJson":"YAML converted to JSON","yamlParseError":"Error parsing YAML","enterJsonToConvert":"Enter JSON to convert","jsonConvertedToYaml":"JSON converted to YAML","jsonParseError":"Error parsing JSON","enterJsonToFormat":"Enter JSON to format","noResultToCopy":"No result to copy","copyError":"Error copying","seo":{"whatIsTitle":"What is YAML and JSON conversion and why is it useful?","whatIsContent":"**YAML (YAML Ain't Markup Language)** and **JSON (JavaScript Object Notation)** are both **human-readable data serialization formats** used for configuration files, data exchange, and API communication. **YAML uses indentation and simplicity** for human-friendliness, while **JSON uses braces and strict syntax** for programmatic parsing. Converting between these formats enables **cross-platform compatibility** and **flexible data handling** across different programming environments. Learn more about [YAML](https://en.wikipedia.org/wiki/YAML) and [JSON serialization](https://en.wikipedia.org/wiki/JSON).","howToTitle":"How to use the YAML ↔ JSON Converter tool?","howToSteps":["**Paste** your YAML or JSON data into the input area","**Choose conversion direction**: YAML → JSON or JSON → YAML","Click **'Convert'** to transform the data format","**Copy** the converted result or use additional formatting options"],"useCasesTitle":"Common use cases for YAML ↔ JSON conversion","useCases":["**Convert configuration files** between Docker Compose (YAML) and API specs (JSON)","**Transform data** for different [DevOps tools](https://en.wikipedia.org/wiki/DevOps) and CI/CD pipelines","**Migrate legacy configurations** from YAML-based to JSON-based systems","**Validate data structure** across different serialization formats","**Integrate systems** that use different data representation standards"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"What's the main difference between YAML and JSON?","answer":"**YAML** uses **indentation and minimal syntax** for human readability and supports comments, while **JSON** uses **braces and quotes** for strict, machine-parsable structure. YAML is often preferred for **configuration files**, while JSON is standard for **API communication**."},{"question":"Can I convert complex YAML features to JSON?","answer":"The converter handles most YAML features including **nested objects, arrays, and strings**. However, **YAML comments and advanced features** like anchors may not be preserved in JSON format, as JSON doesn't support these concepts."},{"question":"Is this YAML/JSON converter safe?","answer":"Yes! All data processing happens **100% in your browser**. Your YAML and JSON data never leave your device and are not stored on any server, ensuring complete **privacy and security** of your sensitive configuration data."}]}};
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+<script src="/js/tools/yaml-json.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

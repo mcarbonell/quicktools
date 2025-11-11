@@ -1,0 +1,14 @@
+{
+  "es": {
+    "title": "Validador de Schema.org",
+    "description": "Valida datos estructurados JSON-LD de Schema.org en tu página.",
+    "how_it_works": "Pega el HTML o JSON-LD para validar datos estructurados y detectar errores.",
+    "features": ["Valida JSON-LD", "Detecta errores de sintaxis", "Verifica tipos Schema.org", "Valida propiedades requeridas", "Muestra estructura de datos", "Recomendaciones de mejora"]
+  },
+  "en": {
+    "title": "Schema.org Validator",
+    "description": "Validate Schema.org JSON-LD structured data in your page.",
+    "how_it_works": "Paste HTML or JSON-LD to validate structured data and detect errors.",
+    "features": ["Validate JSON-LD", "Detect syntax errors", "Check Schema.org types", "Validate required properties", "Show data structure", "Improvement recommendations"]
+  }
+}

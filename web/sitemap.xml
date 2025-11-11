@@ -129,6 +129,22 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/ia.html"/>
   </url>
   <url>
+    <loc>https://fasttools.tools/seo.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/seo.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/seo.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/seo.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/seo.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/seo.html"/>
+  </url>
+  <url>
     <loc>https://fasttools.tools/tools/image-resizer.html</loc>
     <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -655,5 +671,133 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/edit-image-ai.html"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/edit-image-ai.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/tools/meta-tags-analyzer.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/meta-tags-analyzer.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/meta-tags-analyzer.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/tools/meta-tags-analyzer.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/meta-tags-analyzer.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/meta-tags-analyzer.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/tools/heading-structure-checker.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/heading-structure-checker.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/heading-structure-checker.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/tools/heading-structure-checker.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/heading-structure-checker.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/heading-structure-checker.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/tools/robots-txt-validator.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/robots-txt-validator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/robots-txt-validator.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/tools/robots-txt-validator.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/robots-txt-validator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/robots-txt-validator.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/tools/sitemap-validator.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/sitemap-validator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/sitemap-validator.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/tools/sitemap-validator.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/sitemap-validator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/sitemap-validator.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/tools/broken-links-checker.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/broken-links-checker.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/broken-links-checker.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/tools/broken-links-checker.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/broken-links-checker.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/broken-links-checker.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/tools/open-graph-preview.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/open-graph-preview.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/open-graph-preview.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/tools/open-graph-preview.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/open-graph-preview.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/open-graph-preview.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/tools/schema-validator.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/schema-validator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/schema-validator.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/tools/schema-validator.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/schema-validator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/schema-validator.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/tools/seo-score-calculator.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/seo-score-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/seo-score-calculator.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/tools/seo-score-calculator.html</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/tools/seo-score-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/tools/seo-score-calculator.html"/>
   </url>
 </urlset>

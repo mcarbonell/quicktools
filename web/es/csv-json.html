@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSV ↔ JSON - FastTools</title>
+    <meta name="description" content="Convierte CSV a JSON y JSON a CSV en el navegador.">
+    <meta name="keywords" content="csv, json, convert">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CSV ↔ JSON — FastTools">
+    <meta property="og:description" content="Convierte CSV a JSON y JSON a CSV en el navegador.">
+    <meta property="og:url" content="https://fasttools.tools/es/csv-json.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/csv-json.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/csv-json.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/csv-json.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "FastTools",
+      "item": "https://fasttools.tools/es"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Desarrolladores",
+      "item": "https://fasttools.tools/es/desarrolladores.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Analistas de Datos",
+      "item": "https://fasttools.tools/es/analistas-datos.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "CSV ↔ JSON"
+    }
+  ]
+}
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    <meta property="og:url" content="https://fasttools.tools/tools/data/csv-json.html">
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>CSV ↔ JSON</h1>
+            <p class="text-muted">Convierte CSV a JSON y JSON a CSV en el navegador.</p>
+            <div class="alert alert-info mt-3"><small>🎯 Útil para: <a href="/es/desarrolladores.html" class="badge bg-primary text-decoration-none">💻 Desarrolladores</a> <a href="/es/analistas-datos.html" class="badge bg-primary text-decoration-none">📊 Analistas de Datos</a></small></div>
+        </div>
+
+        <div id="dropZone" class="drop-zone mb-3">
+    <input type="file" id="fileInput" accept="text/csv,application/vnd.ms-excel" class="d-none">
+    <div class="drop-message">Arrastra un CSV aquí o haz clic para seleccionar</div>
+</div>
+
+<div class="mb-3">
+    <label for="inputArea" class="form-label">Entrada</label>
+    <textarea id="inputArea" rows="10" class="form-control" placeholder="Pega CSV o JSON aquí..."></textarea>
+</div>
+
+<div class="mb-3 d-flex gap-2 flex-wrap">
+    <button id="csvToJsonBtn" class="btn btn-primary">CSV → JSON</button>
+    <button id="jsonToCsvBtn" class="btn btn-primary">JSON → CSV</button>
+    <button id="validateJsonBtn" class="btn btn-outline-secondary">Validar JSON</button>
+    <button id="copyBtn" class="btn btn-outline-secondary">Copiar</button>
+    <button id="downloadBtn" class="btn btn-success">Descargar</button>
+</div>
+
+<div class="mb-3 d-flex align-items-center gap-2">
+    <label for="delimiterSelect" class="form-label mb-0">Delimitador:</label>
+    <select id="delimiterSelect" class="form-select w-auto">
+        <option value=",">Coma (,)</option>
+        <option value=";">Punto y coma (;)</option>
+        <option value="\t">Tab (\t)</option>
+        <option value="|">Pipe (|)</option>
+        <option value="auto" selected>Detectar automáticamente</option>
+        <option value="custom">Personalizado</option>
+    </select>
+    <input id="customDelimiter" class="form-control w-auto d-none" placeholder="Escribe el delimitador"
+        style="max-width:120px">
+</div>
+
+<div class="mb-3 position-relative">
+    <label for="resultArea" class="form-label">Resultado</label>
+    <textarea id="resultArea" rows="10" class="form-control" placeholder="Aquí aparecerá el resultado..."></textarea>
+</div>
+
+<div id="msg" class="text-muted small"></div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">¿Qué es la conversión de CSV a JSON y por qué es útil?</h2>
+            <p class="mb-4"><strong>CSV (Valores Separados por Coma)</strong> y <strong>JSON (JavaScript Object Notation)</strong> son ambos <strong>formatos de intercambio de datos</strong> usados para almacenar e intercambiar información estructurada. La <strong>conversión de CSV a JSON</strong> transforma datos tipo hoja de cálculo en <strong>objetos JavaScript</strong>, facilitando el trabajo con ellos en aplicaciones web, APIs y lenguajes de programación modernos. Esta conversión permite <strong>interoperabilidad de datos</strong> entre diferentes sistemas y mejora la <strong>eficiencia de procesamiento</strong> de datos. Aprende más sobre <a href="https://es.wikipedia.org/wiki/Valores_separados_por_comas" target="_blank" rel="noopener">formato CSV</a> e <a href="https://es.wikipedia.org/wiki/JSON" target="_blank" rel="noopener">intercambio de datos JSON</a>.</p>
+            <h3 class="h5 mb-3">¿Cómo usar la herramienta Conversor CSV ↔ JSON?</h3>
+            <ol class="mb-4">
+                <li><strong>Pega</strong> tus datos CSV o JSON, o <strong>sube</strong> un archivo CSV</li>
+                <li><strong>Selecciona la dirección de conversión</strong>: CSV → JSON o JSON → CSV</li>
+                <li><strong>Elige el delimitador</strong> (detectar automáticamente, coma, punto y coma, tab, o personalizado)</li>
+                <li><strong>Haz clic en convertir</strong> y copia o descarga los datos transformados</li>
+            </ol>
+            <h3 class="h5 mb-3">Casos de uso comunes de conversión CSV ↔ JSON</h3>
+            <ul class="mb-4">
+                <li><strong>Importar datos de hojas de cálculo</strong> en aplicaciones web y bases de datos</li>
+                <li><strong>Exportar datos de API</strong> de JSON a CSV para análisis en Excel</li>
+                <li><strong>Migración de datos</strong> entre diferentes sistemas de bases de datos y plataformas</li>
+                <li><strong>Crear respuestas de API REST</strong> desde fuentes de datos basadas en CSV</li>
+                <li><strong>Generar archivos de configuración</strong> desde datos de hojas de cálculo</li>
+            </ul>
+            <h3 class="h5 mb-3">Preguntas frecuentes</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            ¿Qué delimitadores son compatibles con archivos CSV?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            La herramienta soporta delimitadores de <strong>coma (,), punto y coma (;), tab (\t) y pipe (|)</strong>. También puede <strong>detectar automáticamente</strong> el delimitador usado en tu archivo CSV, o puedes especificar un <strong>delimitador personalizado</strong> para casos especiales.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            ¿Cómo funciona la auto-detección?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            La herramienta analiza tus datos CSV para <strong>identificar el delimitador más consistente</strong> contando ocurrencias en las primeras filas. Usa análisis estadístico para determinar el delimitador que crea la <strong>estructura de columnas más uniforme</strong>.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            ¿Este conversor CSV/JSON es seguro?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! Todo el procesamiento de datos ocurre <strong>100% en tu navegador</strong>. Tus datos CSV y JSON nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando <strong>privacidad y seguridad</strong> completas de tus datos sensibles.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","convertButton":"Convertir","dropMessage":"Arrastra un CSV aquí o haz clic para seleccionar","csvJsonPlaceholder":"Pega CSV o JSON aquí...","csvToJsonButton":"CSV → JSON","jsonToCsvButton":"JSON → CSV","validateJsonButton":"Validar JSON","delimiterLabel":"Delimitador:","commaOption":"Coma (,)","semicolonOption":"Punto y coma (;)","tabOption":"Tab (\\t)","pipeOption":"Pipe (|)","autoDetectOption":"Detectar automáticamente","customOption":"Personalizado","customDelimiterPlaceholder":"Escribe el delimitador","resultLabel":"Resultado","resultPlaceholder":"Aquí aparecerá el resultado...","selectCsvFile":"Por favor, selecciona un archivo CSV.","fileLoaded":"Archivo cargado: {filename}","detectedDelimiter":"Delimitador detectado: {delimiter}","noDelimiterUsingComma":"No se detectó delimitador, usando coma.","jsonMustBeArray":"JSON debe ser un array.","noRows":"Sin filas.","csvLibraryNotAvailable":"CSV library no disponible en el navegador.","convertedRows":"Convertido: {count} filas","csvParseError":"Error al parsear CSV","enterCsvOrFile":"Introduce CSV o carga un archivo.","enterJsonOrFile":"Introduce JSON o carga un archivo.","convertedToCsv":"Convertido a CSV ({lines} líneas)","jsonConvertError":"Error al convertir JSON","invalidJson":"JSON inválido: {error}","noResultToCopy":"No hay resultado para copiar.","copyError":"Error al copiar","noResultToDownload":"No hay resultado para descargar.","downloadStarted":"Descarga iniciada.","csvLibraryUnavailable":"CSV library no disponible.","pastedContent":"Contenido pegado","autoDetectionActive":"Auto-detección activada","delimiterTabFormat":"{delimiter} (tab)","seo":{"whatIsTitle":"¿Qué es la conversión de CSV a JSON y por qué es útil?","whatIsContent":"**CSV (Valores Separados por Coma)** y **JSON (JavaScript Object Notation)** son ambos **formatos de intercambio de datos** usados para almacenar e intercambiar información estructurada. La **conversión de CSV a JSON** transforma datos tipo hoja de cálculo en **objetos JavaScript**, facilitando el trabajo con ellos en aplicaciones web, APIs y lenguajes de programación modernos. Esta conversión permite **interoperabilidad de datos** entre diferentes sistemas y mejora la **eficiencia de procesamiento** de datos. Aprende más sobre [formato CSV](https://es.wikipedia.org/wiki/Valores_separados_por_comas) e [intercambio de datos JSON](https://es.wikipedia.org/wiki/JSON).","howToTitle":"¿Cómo usar la herramienta Conversor CSV ↔ JSON?","howToSteps":["**Pega** tus datos CSV o JSON, o **sube** un archivo CSV","**Selecciona la dirección de conversión**: CSV → JSON o JSON → CSV","**Elige el delimitador** (detectar automáticamente, coma, punto y coma, tab, o personalizado)","**Haz clic en convertir** y copia o descarga los datos transformados"],"useCasesTitle":"Casos de uso comunes de conversión CSV ↔ JSON","useCases":["**Importar datos de hojas de cálculo** en aplicaciones web y bases de datos","**Exportar datos de API** de JSON a CSV para análisis en Excel","**Migración de datos** entre diferentes sistemas de bases de datos y plataformas","**Crear respuestas de API REST** desde fuentes de datos basadas en CSV","**Generar archivos de configuración** desde datos de hojas de cálculo"],"faqTitle":"Preguntas frecuentes","faq":[{"question":"¿Qué delimitadores son compatibles con archivos CSV?","answer":"La herramienta soporta delimitadores de **coma (,), punto y coma (;), tab (\\t) y pipe (|)**. También puede **detectar automáticamente** el delimitador usado en tu archivo CSV, o puedes especificar un **delimitador personalizado** para casos especiales."},{"question":"¿Cómo funciona la auto-detección?","answer":"La herramienta analiza tus datos CSV para **identificar el delimitador más consistente** contando ocurrencias en las primeras filas. Usa análisis estadístico para determinar el delimitador que crea la **estructura de columnas más uniforme**."},{"question":"¿Este conversor CSV/JSON es seguro?","answer":"¡Sí! Todo el procesamiento de datos ocurre **100% en tu navegador**. Tus datos CSV y JSON nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tus datos sensibles."}]}};
+    </script>
+<script src="/js/lib/csv-parser.js"></script>
+<script src="/js/tools/csv-json.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

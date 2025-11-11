@@ -14,7 +14,8 @@ const categories = [
     { id: 'data-analysts', slug: { es: 'analistas-datos', en: 'data-analysts' }, icon: '📊' },
     { id: 'marketers', slug: { es: 'marketing', en: 'marketers' }, icon: '📱' },
     { id: 'productivity', slug: { es: 'productividad', en: 'productivity' }, icon: '⚡' },
-    { id: 'ai-tools', slug: { es: 'ia', en: 'ai' }, icon: '🤖' }
+    { id: 'ai-tools', slug: { es: 'ia', en: 'ai' }, icon: '🤖' },
+    { id: 'seo-specialists', slug: { es: 'seo', en: 'seo' }, icon: '🔍' }
 ];
 
 const categoryNames = {
@@ -24,7 +25,8 @@ const categoryNames = {
     'data-analysts': { es: 'Analistas de Datos', en: 'Data Analysts' },
     marketers: { es: 'Marketing', en: 'Marketers' },
     productivity: { es: 'Productividad', en: 'Productivity' },
-    'ai-tools': { es: 'IA', en: 'AI' }
+    'ai-tools': { es: 'IA', en: 'AI' },
+    'seo-specialists': { es: 'Especialistas SEO', en: 'SEO Specialists' }
 };
 
 const categoryDescriptions = {
@@ -55,6 +57,10 @@ const categoryDescriptions = {
     'ai-tools': { 
         es: 'Herramientas con IA: chat, resumir textos, mejorar redacción, editar imágenes. Potenciadas por Google Gemini.', 
         en: 'AI-powered tools: chat, summarize texts, improve writing, edit images. Powered by Google Gemini.' 
+    },
+    'seo-specialists': { 
+        es: 'Herramientas SEO profesionales: analizar meta tags, validar robots.txt, detectar enlaces rotos, optimizar para buscadores. Todo gratis.', 
+        en: 'Professional SEO tools: analyze meta tags, validate robots.txt, detect broken links, optimize for search engines. All free.' 
     }
 };
 

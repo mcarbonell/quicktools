@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Visor y Limpiador EXIF - FastTools</title>
+    <meta name="description" content="Visualiza los metadatos EXIF y elimina información privada.">
+    <meta name="keywords" content="image, exif, privacy">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Visor y Limpiador EXIF — FastTools">
+    <meta property="og:description" content="Visualiza los metadatos EXIF y elimina información privada.">
+    <meta property="og:url" content="https://fasttools.tools/es/exif-viewer-cleaner.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/exif-viewer-cleaner.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/exif-viewer-cleaner.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/exif-viewer-cleaner.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "FastTools",
+      "item": "https://fasttools.tools/es"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Diseñadores",
+      "item": "https://fasttools.tools/es/disenadores.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Visor y Limpiador EXIF"
+    }
+  ]
+}
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>Visor y Limpiador EXIF</h1>
+            <p class="text-muted">Visualiza los metadatos EXIF y elimina información privada.</p>
+            <div class="alert alert-info mt-3"><small>🎯 Útil para: <a href="/es/disenadores.html" class="badge bg-primary text-decoration-none">🎨 Diseñadores</a></small></div>
+        </div>
+
+        <div class="mb-3">
+    <label for="image-input" class="form-label">Selecciona una imagen</label>
+    <div class="drop-zone mb-2" id="dropZone">
+        <input class="form-control d-none" type="file" id="image-input" accept="image/jpeg, image/png, image/webp">
+        <div class="drop-message">
+            Arrastra tu imagen aquí o haz clic para seleccionar
+        </div>
+    </div>
+</div>
+
+<button id="clean-exif-btn" class="btn btn-warning mb-3" style="display: none;">Eliminar Metadatos EXIF</button>
+
+<div id="exif-output" class="mt-3">
+    <h5>Metadatos EXIF:</h5>
+    <pre id="exif-data" class="bg-light p-3 rounded"></pre>
+</div>
+
+<div id="cleaned-image-output" class="mt-3" style="display: none;">
+    <h5>Imagen Limpia (sin EXIF):</h5>
+    <img id="cleaned-image-preview" class="img-fluid mb-2" style="max-height: 300px;">
+    <a id="download-cleaned-image" class="btn btn-success"
+        download="cleaned_image.png">Descargar Imagen Limpia</a>
+</div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">¿Qué son los metadatos EXIF y por qué eliminarlos?</h2>
+            <p class="mb-4">Los metadatos <strong>EXIF (Exchangeable Image File Format)</strong> son información oculta almacenada en imágenes digitales que incluye configuraciones de cámara, sellos de fecha/hora, coordenadas GPS y a veces <strong>información personal</strong>. Aunque útiles para fotógrafos, los datos EXIF pueden presentar <strong>riesgos de privacidad</strong> al compartir imágenes en línea, ya que pueden revelar tu ubicación o detalles de la cámara. Eliminar EXIF ayuda a proteger tu <strong>privacidad digital</strong> y seguridad. Aprende más sobre <a href="https://es.wikipedia.org/wiki/Exif" target="_blank" rel="noopener">metadatos EXIF</a> y <a href="https://www.eff.org/es/issues/online-privacy" target="_blank" rel="noopener">privacidad digital</a>.</p>
+            <h3 class="h5 mb-3">¿Cómo usar la herramienta Visor y Limpiador de EXIF?</h3>
+            <ol class="mb-4">
+                <li><strong>Sube</strong> tu imagen arrastrándola al área de selección o haciendo clic para seleccionar</li>
+                <li>Haz clic en <strong>'Ver EXIF'</strong> para ver todos los metadatos embebidos en tu imagen</li>
+                <li>Revisa la <strong>información sensible</strong> que podría estar visible (GPS, cámara, fecha)</li>
+                <li>Haz clic en <strong>'Eliminar EXIF'</strong> para crear una versión limpia sin metadatos</li>
+            </ol>
+            <h3 class="h5 mb-3">Casos de uso comunes para eliminación de EXIF</h3>
+            <ul class="mb-4">
+                <li>Proteger <strong>privacidad de ubicación</strong> al compartir fotos en <a href="https://www.eff.org/es/issues/online-privacy/social-networking-privacy" target="_blank" rel="noopener">redes sociales</a></li>
+                <li>Eliminar <strong>información de cámara</strong> antes de subir a sitios web públicos</li>
+                <li>Limpiar <strong>sellos de fecha/hora</strong> para presentaciones anónimas o profesionales</li>
+                <li>Preparar <strong>imágenes de prensa</strong> sin revelar la ubicación del fotógrafo</li>
+                <li>Asegurar <strong>cumplimiento de GDPR</strong> al compartir imágenes en contextos profesionales</li>
+            </ul>
+            <h3 class="h5 mb-3">Preguntas frecuentes</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            ¿Qué información se almacena en los datos EXIF?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Los datos EXIF típicamente incluyen <strong>detalles de cámara</strong> (marca, modelo, configuraciones), <strong>fecha y hora</strong> de captura, <strong>coordenadas GPS</strong> (ubicación), <strong>software utilizado</strong>, y a veces <strong>información de copyright</strong>. Estos datos son añadidos automáticamente por la mayoría de cámaras digitales y smartphones.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            ¿Es seguro eliminar los metadatos EXIF?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! Eliminar EXIF es <strong>completamente seguro</strong> y no afecta la calidad de la imagen. Solo elimina los metadatos ocultos mientras preserva el <strong>contenido visual</strong> de tu imagen. Esta es una práctica estándar para protección de privacidad.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            ¿Este visor y limpiador de EXIF es seguro?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! Todo el procesamiento EXIF ocurre <strong>100% en tu navegador</strong>. Tus imágenes nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando <strong>privacidad y seguridad</strong> completas de tu información personal.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","viewButton":"Ver EXIF","cleanButton":"Eliminar EXIF","selectImageLabel":"Selecciona una imagen","dropMessage":"Arrastra tu imagen aquí o haz clic para seleccionar","cleanExifButton":"Eliminar Metadatos EXIF","exifMetadataTitle":"Metadatos EXIF:","cleanedImageTitle":"Imagen Limpia (sin EXIF):","downloadCleanImageButton":"Descargar Imagen Limpia","imageLoaded":"Imagen cargada: {filename}","noExifFound":"No se encontraron metadatos EXIF.","errorReadingExif":"Error al leer metadatos EXIF:","errorReadingExifGeneric":"Error al leer metadatos EXIF.","errorCleaningExif":"Error al limpiar metadatos EXIF:","errorCleaningExifGeneric":"Ocurrió un error al limpiar los metadatos EXIF.","seo":{"whatIsTitle":"¿Qué son los metadatos EXIF y por qué eliminarlos?","whatIsContent":"Los metadatos **EXIF (Exchangeable Image File Format)** son información oculta almacenada en imágenes digitales que incluye configuraciones de cámara, sellos de fecha/hora, coordenadas GPS y a veces **información personal**. Aunque útiles para fotógrafos, los datos EXIF pueden presentar **riesgos de privacidad** al compartir imágenes en línea, ya que pueden revelar tu ubicación o detalles de la cámara. Eliminar EXIF ayuda a proteger tu **privacidad digital** y seguridad. Aprende más sobre [metadatos EXIF](https://es.wikipedia.org/wiki/Exif) y [privacidad digital](https://www.eff.org/es/issues/online-privacy).","howToTitle":"¿Cómo usar la herramienta Visor y Limpiador de EXIF?","howToSteps":["**Sube** tu imagen arrastrándola al área de selección o haciendo clic para seleccionar","Haz clic en **'Ver EXIF'** para ver todos los metadatos embebidos en tu imagen","Revisa la **información sensible** que podría estar visible (GPS, cámara, fecha)","Haz clic en **'Eliminar EXIF'** para crear una versión limpia sin metadatos"],"useCasesTitle":"Casos de uso comunes para eliminación de EXIF","useCases":["Proteger **privacidad de ubicación** al compartir fotos en [redes sociales](https://www.eff.org/es/issues/online-privacy/social-networking-privacy)","Eliminar **información de cámara** antes de subir a sitios web públicos","Limpiar **sellos de fecha/hora** para presentaciones anónimas o profesionales","Preparar **imágenes de prensa** sin revelar la ubicación del fotógrafo","Asegurar **cumplimiento de GDPR** al compartir imágenes en contextos profesionales"],"faqTitle":"Preguntas frecuentes","faq":[{"question":"¿Qué información se almacena en los datos EXIF?","answer":"Los datos EXIF típicamente incluyen **detalles de cámara** (marca, modelo, configuraciones), **fecha y hora** de captura, **coordenadas GPS** (ubicación), **software utilizado**, y a veces **información de copyright**. Estos datos son añadidos automáticamente por la mayoría de cámaras digitales y smartphones."},{"question":"¿Es seguro eliminar los metadatos EXIF?","answer":"¡Sí! Eliminar EXIF es **completamente seguro** y no afecta la calidad de la imagen. Solo elimina los metadatos ocultos mientras preserva el **contenido visual** de tu imagen. Esta es una práctica estándar para protección de privacidad."},{"question":"¿Este visor y limpiador de EXIF es seguro?","answer":"¡Sí! Todo el procesamiento EXIF ocurre **100% en tu navegador**. Tus imágenes nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tu información personal."}]}};
+    </script>
+<script src="/js/vendor/exifr.min.js"></script>
+<script src="/js/tools/exif-viewer-cleaner.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

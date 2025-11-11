@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Imagen a PDF - FastTools</title>
+    <meta name="description" content="Convierte una o varias imágenes a un archivo PDF.">
+    <meta name="keywords" content="image, pdf, convert">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Imagen a PDF — FastTools">
+    <meta property="og:description" content="Convierte una o varias imágenes a un archivo PDF.">
+    <meta property="og:url" content="https://fasttools.tools/es/image-to-pdf.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/image-to-pdf.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/image-to-pdf.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/image-to-pdf.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "FastTools",
+      "item": "https://fasttools.tools/es"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Imagen a PDF"
+    }
+  ]
+}
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>Imagen a PDF</h1>
+            <p class="text-muted">Convierte una o varias imágenes a un archivo PDF.</p>
+            
+        </div>
+
+        <div class="mb-3">
+    <label for="image-input" class="form-label">Selecciona imágenes (JPG, PNG)</label>
+    <div class="drop-zone mb-2" id="dropZone">
+        <input class="form-control d-none" type="file" id="image-input" accept="image/jpeg, image/png" multiple>
+        <div class="drop-message">
+            Arrastra tus imágenes aquí o haz clic para seleccionar
+        </div>
+    </div>
+</div>
+
+<div class="mb-3">
+    <label for="page-size-select" class="form-label">Tamaño de página</label>
+    <select class="form-select" id="page-size-select">
+        <option value="A4">A4 (210 x 297 mm)</option>
+        <option value="Letter">Carta (216 x 279 mm)</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="orientation-select" class="form-label">Orientación</label>
+    <select class="form-select" id="orientation-select">
+        <option value="portrait">Vertical</option>
+        <option value="landscape">Horizontal</option>
+    </select>
+</div>
+
+<button id="convert-btn" class="btn btn-primary">Convertir a PDF</button>
+
+<div id="output" class="mt-3"></div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">¿Qué es la conversión de imagen a PDF y por qué es útil?</h2>
+            <p class="mb-4">La <strong>conversión de imagen a PDF</strong> transforma imágenes individuales o múltiples en un <strong>solo documento PDF</strong> con opciones personalizables de tamaño de página y orientación. Este proceso mantiene la <strong>calidad de imagen</strong> mientras crea un formato de documento universalmente accesible. Soportando varios formatos de imagen (JPEG, PNG) y configuraciones de página (A4, Carta, Vertical, Horizontal), esta herramienta ayuda a crear <strong>presentaciones profesionales</strong>, <strong>álbumes de fotos</strong> y <strong>archivos de documentos</strong> desde contenido visual. Aprende más sobre <a href="https://es.wikipedia.org/wiki/PDF#Creaci%C3%B3n" target="_blank" rel="noopener">creación de PDF</a> y <a href="https://es.wikipedia.org/wiki/Dise%C3%B1o_de_p%C3%A1gina" target="_blank" rel="noopener">formato de documentos</a>.</p>
+            <h3 class="h5 mb-3">¿Cómo usar la herramienta Conversor de Imagen a PDF?</h3>
+            <ol class="mb-4">
+                <li><strong>Selecciona</strong> una o más imágenes (JPG, PNG) arrastrándolas al área de selección o haciendo clic para buscar</li>
+                <li><strong>Elige el tamaño de página</strong> (A4 o Carta) y <strong>orientación</strong> (Vertical u Horizontal)</li>
+                <li>Haz clic en <strong>'Convertir a PDF'</strong> para iniciar el proceso de conversión</li>
+                <li><strong>Descarga</strong> el PDF generado que contiene tus imágenes</li>
+            </ol>
+            <h3 class="h5 mb-3">Casos de uso comunes de conversión de imagen a PDF</h3>
+            <ul class="mb-4">
+                <li>Crear <strong>álbumes de fotos digitales</strong> o portafolios desde archivos de imagen individuales</li>
+                <li>Generar <strong>diapositivas de presentación</strong> para reuniones y conferencias</li>
+                <li>Compilar <strong>archivos de documentos</strong> desde papeles y fotos escaneadas</li>
+                <li>Crear <strong>catálogos de productos</strong> con múltiples imágenes en un solo documento</li>
+                <li><strong>Compartir contenido visual</strong> en un formato profesional y universalmente legible</li>
+            </ul>
+            <h3 class="h5 mb-3">Preguntas frecuentes</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            ¿Qué formatos de imagen son compatibles?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            La herramienta soporta formatos de imagen <strong>JPEG (JPG)</strong> y <strong>PNG</strong>. Ambos formatos mantienen excelente calidad al convertirse a PDF. Elige JPG para tamaños de archivo más pequeños o PNG para imágenes con transparencia o texto/gráficos nítidos.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            ¿Cómo se organizan múltiples imágenes en el PDF?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Las imágenes se organizan en el <strong>orden en que fueron seleccionadas</strong>, con una imagen por página. Cada imagen se <strong>escala automáticamente para ajustarse</strong> al tamaño de página elegido mientras mantiene su relación de aspecto, asegurando que no se pierda o recorte contenido.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            ¿Este conversor de imagen a PDF es seguro?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! Todo el procesamiento de imagen ocurre <strong>100% en tu navegador</strong>. Tus imágenes nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando <strong>privacidad y seguridad</strong> completas de tu contenido visual.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","convertButton":"Convertir","selectImagesLabel":"Selecciona imágenes (JPG, PNG)","dropMessage":"Arrastra tus imágenes aquí o haz clic para seleccionar","pageSizeLabel":"Tamaño de página","a4Option":"A4 (210 x 297 mm)","letterOption":"Carta (216 x 279 mm)","orientationLabel":"Orientación","portraitOption":"Vertical","landscapeOption":"Horizontal","convertToPdfButton":"Convertir a PDF","filesSelected":"{count} archivo(s) seleccionado(s)","selectAtLeastOneImage":"Por favor, selecciona al menos una imagen.","processingMayTakeTime":"Procesando... esto puede tardar un momento.","downloadPdf":"Descargar PDF","errorConvertingImageToPdf":"Error al convertir imagen a PDF:","errorConvertingImageGeneric":"Ocurrió un error al convertir la imagen a PDF. Asegúrate de que los archivos son imágenes válidas.","seo":{"whatIsTitle":"¿Qué es la conversión de imagen a PDF y por qué es útil?","whatIsContent":"La **conversión de imagen a PDF** transforma imágenes individuales o múltiples en un **solo documento PDF** con opciones personalizables de tamaño de página y orientación. Este proceso mantiene la **calidad de imagen** mientras crea un formato de documento universalmente accesible. Soportando varios formatos de imagen (JPEG, PNG) y configuraciones de página (A4, Carta, Vertical, Horizontal), esta herramienta ayuda a crear **presentaciones profesionales**, **álbumes de fotos** y **archivos de documentos** desde contenido visual. Aprende más sobre [creación de PDF](https://es.wikipedia.org/wiki/PDF#Creaci%C3%B3n) y [formato de documentos](https://es.wikipedia.org/wiki/Dise%C3%B1o_de_p%C3%A1gina).","howToTitle":"¿Cómo usar la herramienta Conversor de Imagen a PDF?","howToSteps":["**Selecciona** una o más imágenes (JPG, PNG) arrastrándolas al área de selección o haciendo clic para buscar","**Elige el tamaño de página** (A4 o Carta) y **orientación** (Vertical u Horizontal)","Haz clic en **'Convertir a PDF'** para iniciar el proceso de conversión","**Descarga** el PDF generado que contiene tus imágenes"],"useCasesTitle":"Casos de uso comunes de conversión de imagen a PDF","useCases":["Crear **álbumes de fotos digitales** o portafolios desde archivos de imagen individuales","Generar **diapositivas de presentación** para reuniones y conferencias","Compilar **archivos de documentos** desde papeles y fotos escaneadas","Crear **catálogos de productos** con múltiples imágenes en un solo documento","**Compartir contenido visual** en un formato profesional y universalmente legible"],"faqTitle":"Preguntas frecuentes","faq":[{"question":"¿Qué formatos de imagen son compatibles?","answer":"La herramienta soporta formatos de imagen **JPEG (JPG)** y **PNG**. Ambos formatos mantienen excelente calidad al convertirse a PDF. Elige JPG para tamaños de archivo más pequeños o PNG para imágenes con transparencia o texto/gráficos nítidos."},{"question":"¿Cómo se organizan múltiples imágenes en el PDF?","answer":"Las imágenes se organizan en el **orden en que fueron seleccionadas**, con una imagen por página. Cada imagen se **escala automáticamente para ajustarse** al tamaño de página elegido mientras mantiene su relación de aspecto, asegurando que no se pierda o recorte contenido."},{"question":"¿Este conversor de imagen a PDF es seguro?","answer":"¡Sí! Todo el procesamiento de imagen ocurre **100% en tu navegador**. Tus imágenes nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tu contenido visual."}]}};
+    </script>
+<script src="/js/vendor/pdf-lib.js"></script>
+<script src="/js/tools/image-to-pdf.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

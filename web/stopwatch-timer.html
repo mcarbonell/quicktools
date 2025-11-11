@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stopwatch & Timer - FastTools</title>
+    <meta name="description" content="Stopwatch and timer with alarm.">
+    <meta name="keywords" content="timer, stopwatch, alarm">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Stopwatch & Timer — FastTools">
+    <meta property="og:description" content="Stopwatch and timer with alarm.">
+    <meta property="og:url" content="https://fasttools.tools/stopwatch-timer.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/stopwatch-timer.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/stopwatch-timer.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/stopwatch-timer.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "FastTools",
+      "item": "https://fasttools.tools"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Productivity",
+      "item": "https://fasttools.tools/productivity.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Stopwatch & Timer"
+    }
+  ]
+}
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    <style>
+    .display-time {
+        font-size: 3rem;
+        font-family: 'monospace';
+    }
+
+    .lap-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .lap-item:last-child {
+        border-bottom: none;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>Stopwatch & Timer</h1>
+            <p class="text-muted">Stopwatch and timer with alarm.</p>
+            <div class="alert alert-info mt-3"><small>🎯 Useful for: <a href="/productivity.html" class="badge bg-primary text-decoration-none">⚡ Productivity</a></small></div>
+        </div>
+
+        <div class="row mt-4">
+    <!-- Cronómetro -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Stopwatch</div>
+            <div class="card-body text-center">
+                <div id="stopwatch-display" class="display-time mb-3">00:00:00.000</div>
+                <div class="d-flex justify-content-center gap-2 mb-3">
+                    <button id="stopwatch-start" class="btn btn-success">Start</button>
+                    <button id="stopwatch-stop" class="btn btn-danger" disabled>Stop</button>
+                    <button id="stopwatch-lap" class="btn btn-info" disabled>Lap</button>
+                    <button id="stopwatch-reset" class="btn btn-warning" disabled>Reset</button>
+                </div>
+                <ul id="stopwatch-laps" class="list-group mt-3 text-start"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Temporizador -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Timer</div>
+            <div class="card-body text-center">
+                <div id="timer-display" class="display-time mb-3">00:00:00</div>
+                <div class="d-flex justify-content-center gap-2 mb-3">
+                    <input type="number" id="timer-hours" class="form-control w-25 text-center"
+                        placeholder="HH" min="0" value="0">
+                    <input type="number" id="timer-minutes" class="form-control w-25 text-center"
+                        placeholder="MM" min="0" max="59" value="0">
+                    <input type="number" id="timer-seconds" class="form-control w-25 text-center"
+                        placeholder="SS" min="0" max="59" value="0">
+                </div>
+                <div class="d-flex justify-content-center gap-2">
+                    <button id="timer-start" class="btn btn-success">Start</button>
+                    <button id="timer-pause" class="btn btn-primary" disabled>Pause</button>
+                    <button id="timer-reset" class="btn btn-warning" disabled>Reset</button>
+                </div>
+                <audio id="timer-alarm" src="" preload="auto"></audio>
+            </div>
+        </div>
+    </div>
+</div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What are stopwatches and timers and why are they useful?</h2>
+            <p class="mb-4"><strong>Stopwatches and timers</strong> are <strong>time measurement tools</strong> essential for productivity, sports, cooking, and professional activities. <strong>Stopwatches measure elapsed time</strong> from a starting point, while <strong>timers count down</strong> to a predetermined duration. Modern digital versions offer <strong>precise measurements</strong>, <strong>lap recording</strong>, and <strong>audio notifications</strong>. These tools help improve <strong>time management</strong>, <strong>productivity tracking</strong>, and <strong>deadline adherence</strong> across various contexts. From <strong>athletic training</strong> to <strong>cooking</strong> and <strong>project management</strong>, time measurement tools enhance <strong>efficiency</strong> and <strong>accuracy</strong>. Learn more about <a href="https://en.wikipedia.org/wiki/Chronometry" target="_blank" rel="noopener">chronometry</a> and <a href="https://en.wikipedia.org/wiki/Time_management" target="_blank" rel="noopener">time management techniques</a>.</p>
+            <h3 class="h5 mb-3">How to use the Stopwatch & Timer tool?</h3>
+            <ol class="mb-4">
+                <li><strong>For stopwatch</strong>: Click <strong>'Start'</strong> to begin timing, <strong>'Pause'</strong> to pause, <strong>'Stop'</strong> to finish</li>
+                <li><strong>For timer</strong>: Set hours, minutes, and seconds, then click <strong>'Start'</strong> to begin countdown</li>
+                <li><strong>Record laps</strong> during stopwatch sessions to track intermediate times</li>
+                <li><strong>Reset</strong> both tools when needed to start fresh measurements</li>
+            </ol>
+            <h3 class="h5 mb-3">Common use cases for stopwatches and timers</h3>
+            <ul class="mb-4">
+                <li><strong>Athletic training</strong> - time workouts, races, and track lap times for performance improvement</li>
+                <li><strong>Cooking and baking</strong> - ensure precise cooking times for recipes and food safety</li>
+                <li><strong>Work productivity</strong> - track focus periods using Pomodoro Technique and time blocking</li>
+                <li><strong>Presentations</strong> - manage speaking time and session durations effectively</li>
+                <li><strong>Project management</strong> - estimate task durations and track development progress</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            How accurate are digital stopwatches and timers?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Modern digital timers are <strong>highly accurate</strong> using precise <strong>crystal oscillators</strong> and <strong>computer clock synchronization</strong>. Browser-based timers typically achieve <strong>millisecond precision</strong> and maintain accuracy even when <strong>background processes</strong> are running.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            What's the difference between a stopwatch and a timer?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            A <strong>stopwatch measures elapsed time</strong> from when you start it (like timing a race), while a <strong>timer counts down</strong> from a set duration (like cooking for 10 minutes). Stopwatches <strong>accumulate time</strong>, timers <strong>decrement time</strong>.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            Is this stopwatch and timer tool safe?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! All timing functions run <strong>100% in your browser</strong> using your device's internal clock. No data is transmitted or stored, ensuring complete <strong>privacy and reliability</strong> of your time measurements and personal timing data.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"copyButton":"Copy","clearButton":"Clear","downloadButton":"Download","uploadButton":"Upload","processButton":"Process","validateButton":"Validate","resetButton":"Reset","copied":"✅ Copied to clipboard","processing":"⏳ Processing...","success":"✅ Success!","error":"❌ Error","inputLabel":"Input","outputLabel":"Output","textLabel":"Text","fileLabel":"File","startButton":"Start","stopButton":"Stop","pauseButton":"Pause","lapButton":"Lap","stopwatchTitle":"Stopwatch","timerTitle":"Timer","hoursPlaceholder":"HH","minutesPlaceholder":"MM","secondsPlaceholder":"SS","lapText":"Lap {number}","timeFinished":"Time's up!","setTimerDuration":"Please set a duration for the timer.","seo":{"whatIsTitle":"What are stopwatches and timers and why are they useful?","whatIsContent":"**Stopwatches and timers** are **time measurement tools** essential for productivity, sports, cooking, and professional activities. **Stopwatches measure elapsed time** from a starting point, while **timers count down** to a predetermined duration. Modern digital versions offer **precise measurements**, **lap recording**, and **audio notifications**. These tools help improve **time management**, **productivity tracking**, and **deadline adherence** across various contexts. From **athletic training** to **cooking** and **project management**, time measurement tools enhance **efficiency** and **accuracy**. Learn more about [chronometry](https://en.wikipedia.org/wiki/Chronometry) and [time management techniques](https://en.wikipedia.org/wiki/Time_management).","howToTitle":"How to use the Stopwatch & Timer tool?","howToSteps":["**For stopwatch**: Click **'Start'** to begin timing, **'Pause'** to pause, **'Stop'** to finish","**For timer**: Set hours, minutes, and seconds, then click **'Start'** to begin countdown","**Record laps** during stopwatch sessions to track intermediate times","**Reset** both tools when needed to start fresh measurements"],"useCasesTitle":"Common use cases for stopwatches and timers","useCases":["**Athletic training** - time workouts, races, and track lap times for performance improvement","**Cooking and baking** - ensure precise cooking times for recipes and food safety","**Work productivity** - track focus periods using Pomodoro Technique and time blocking","**Presentations** - manage speaking time and session durations effectively","**Project management** - estimate task durations and track development progress"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"How accurate are digital stopwatches and timers?","answer":"Modern digital timers are **highly accurate** using precise **crystal oscillators** and **computer clock synchronization**. Browser-based timers typically achieve **millisecond precision** and maintain accuracy even when **background processes** are running."},{"question":"What's the difference between a stopwatch and a timer?","answer":"A **stopwatch measures elapsed time** from when you start it (like timing a race), while a **timer counts down** from a set duration (like cooking for 10 minutes). Stopwatches **accumulate time**, timers **decrement time**."},{"question":"Is this stopwatch and timer tool safe?","answer":"Yes! All timing functions run **100% in your browser** using your device's internal clock. No data is transmitted or stored, ensuring complete **privacy and reliability** of your time measurements and personal timing data."}]}};
+    </script>
+<script src="/js/tools/stopwatch-timer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

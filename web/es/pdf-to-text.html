@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Extraer texto de PDF - FastTools</title>
+    <meta name="description" content="Extrae texto de archivos PDF en el navegador usando PDF.js.">
+    <meta name="keywords" content="pdf, ocr-lite, extract">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Extraer texto de PDF — FastTools">
+    <meta property="og:description" content="Extrae texto de archivos PDF en el navegador usando PDF.js.">
+    <meta property="og:url" content="https://fasttools.tools/es/pdf-to-text.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/pdf-to-text.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/pdf-to-text.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/pdf-to-text.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "FastTools",
+      "item": "https://fasttools.tools/es"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Analistas de Datos",
+      "item": "https://fasttools.tools/es/analistas-datos.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Productividad",
+      "item": "https://fasttools.tools/es/productividad.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Extraer texto de PDF"
+    }
+  ]
+}
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    <meta property="og:url" content="https://fasttools.tools/tools/files/pdf-to-text.html">
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>Extraer texto de PDF</h1>
+            <p class="text-muted">Extrae texto de archivos PDF en el navegador usando PDF.js.</p>
+            <div class="alert alert-info mt-3"><small>🎯 Útil para: <a href="/es/analistas-datos.html" class="badge bg-primary text-decoration-none">📊 Analistas de Datos</a> <a href="/es/productividad.html" class="badge bg-primary text-decoration-none">⚡ Productividad</a></small></div>
+        </div>
+
+        <div class="drop-zone mb-3" id="dropZone">
+    <input type="file" id="pdfInput" accept="application/pdf" class="d-none">
+    <div class="drop-message">
+        Arrastra un PDF aquí o haz clic para seleccionar
+    </div>
+</div>
+<div class="mb-3">
+    <button id="extractBtn" class="btn btn-primary">Extraer Texto</button>
+</div>
+<div class="position-relative">
+    <textarea id="pdfText" rows="16" class="form-control" placeholder="Aquí aparecerá el texto extraído..."></textarea>
+    <button id="copyBtn" class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-2"
+        title="Copiar al portapapeles">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard"
+            viewBox="0 0 16 16">
+            <path
+                d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+            <path
+                d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+        </svg>
+    </button>
+</div>
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">¿Qué es la extracción de texto de PDF y por qué es útil?</h2>
+            <p class="mb-4">La <strong>extracción de texto de PDF</strong> es el proceso de convertir documentos PDF en <strong>formato de texto legible</strong>, haciendo el contenido buscable, editable y accesible. Esta técnica usa <strong>Reconocimiento Óptico de Caracteres (OCR)</strong> y algoritmos de análisis de PDF para extraer texto de documentos escaneados, formularios y PDFs digitales. Extraer texto permite <strong>análisis de datos</strong>, migración de contenido y mejor <strong>accesibilidad</strong> para lectores de pantalla. Aprende más sobre <a href="https://es.wikipedia.org/wiki/PDF" target="_blank" rel="noopener">tecnología PDF</a> y <a href="https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres" target="_blank" rel="noopener">métodos de extracción de texto</a>.</p>
+            <h3 class="h5 mb-3">¿Cómo usar la herramienta Extractor de PDF a Texto?</h3>
+            <ol class="mb-4">
+                <li><strong>Sube</strong> tu PDF arrastrándolo al área de selección o haciendo clic para elegir</li>
+                <li>Haz clic en <strong>'Extraer Texto'</strong> para iniciar el proceso de extracción</li>
+                <li><strong>Revisa</strong> el texto extraído en el área de salida</li>
+                <li><strong>Copia</strong> el texto al portapapeles o úsalo en tu aplicación preferida</li>
+            </ol>
+            <h3 class="h5 mb-3">Casos de uso comunes de extracción de texto de PDF</h3>
+            <ul class="mb-4">
+                <li>Convertir <strong>documentos escaneados</strong> en texto buscable y editable</li>
+                <li>Extraer <strong>datos de formularios</strong> para entrada o análisis en bases de datos</li>
+                <li>Hacer <strong>contenido PDF accesible</strong> para lectores de pantalla y <a href="https://www.w3.org/WAI/fundamentals/accessibility-intro/" target="_blank" rel="noopener">tecnología asistiva</a></li>
+                <li><strong>Migrar contenido</strong> de PDFs antiguos a sistemas modernos de gestión de contenido</li>
+                <li><strong>Buscar y analizar</strong> grandes colecciones de documentos PDF eficientemente</li>
+            </ul>
+            <h3 class="h5 mb-3">Preguntas frecuentes</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            ¿Puede esta herramienta extraer texto de PDFs escaneados?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! La herramienta puede extraer texto tanto de <strong>PDFs digitales</strong> (basados en texto) como de <strong>PDFs escaneados</strong> (basados en imágenes) usando tecnología OCR avanzada. Sin embargo, la calidad del texto puede variar dependiendo de la <strong>calidad del escaneo</strong> y la complejidad del documento.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            ¿Qué pasa con las imágenes y el formato en el PDF?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            La herramienta se enfoca en <strong>extracción de texto únicamente</strong>. Las imágenes, formatos complejos, tablas y diseños no se preservan. Para conversión completa de documentos incluyendo imágenes, considera usar <a href="https://smallpdf.com/pdf-to-word" target="_blank" rel="noopener">herramientas de conversión PDF</a> dedicadas.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            ¿Este extractor de texto de PDF es seguro?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            ¡Sí! Todo el procesamiento de PDF ocurre <strong>100% en tu navegador</strong>. Tus archivos PDF nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando <strong>privacidad y seguridad</strong> completas de tus documentos sensibles.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"copyButton":"Copiar","clearButton":"Limpiar","downloadButton":"Descargar","uploadButton":"Subir","processButton":"Procesar","validateButton":"Validar","resetButton":"Reiniciar","copied":"✅ Copiado al portapapeles","processing":"⏳ Procesando...","success":"✅ ¡Éxito!","error":"❌ Error","inputLabel":"Entrada","outputLabel":"Salida","textLabel":"Texto","fileLabel":"Archivo","extractButton":"Extraer Texto","dropMessage":"Arrastra un PDF aquí o haz clic para seleccionar","outputPlaceholder":"Aquí aparecerá el texto extraído...","copyTooltip":"Copiar al portapapeles","pdfLoaded":"PDF cargado: {filename}","selectValidPdf":"Por favor, selecciona un archivo PDF válido.","selectPdfFirst":"Selecciona un archivo PDF primero.","extractingText":"Extrayendo texto...","pdfExtractError":"Error extrayendo PDF","copyError":"Error al copiar","seo":{"whatIsTitle":"¿Qué es la extracción de texto de PDF y por qué es útil?","whatIsContent":"La **extracción de texto de PDF** es el proceso de convertir documentos PDF en **formato de texto legible**, haciendo el contenido buscable, editable y accesible. Esta técnica usa **Reconocimiento Óptico de Caracteres (OCR)** y algoritmos de análisis de PDF para extraer texto de documentos escaneados, formularios y PDFs digitales. Extraer texto permite **análisis de datos**, migración de contenido y mejor **accesibilidad** para lectores de pantalla. Aprende más sobre [tecnología PDF](https://es.wikipedia.org/wiki/PDF) y [métodos de extracción de texto](https://es.wikipedia.org/wiki/Reconocimiento_%C3%B3ptico_de_caracteres).","howToTitle":"¿Cómo usar la herramienta Extractor de PDF a Texto?","howToSteps":["**Sube** tu PDF arrastrándolo al área de selección o haciendo clic para elegir","Haz clic en **'Extraer Texto'** para iniciar el proceso de extracción","**Revisa** el texto extraído en el área de salida","**Copia** el texto al portapapeles o úsalo en tu aplicación preferida"],"useCasesTitle":"Casos de uso comunes de extracción de texto de PDF","useCases":["Convertir **documentos escaneados** en texto buscable y editable","Extraer **datos de formularios** para entrada o análisis en bases de datos","Hacer **contenido PDF accesible** para lectores de pantalla y [tecnología asistiva](https://www.w3.org/WAI/fundamentals/accessibility-intro/)","**Migrar contenido** de PDFs antiguos a sistemas modernos de gestión de contenido","**Buscar y analizar** grandes colecciones de documentos PDF eficientemente"],"faqTitle":"Preguntas frecuentes","faq":[{"question":"¿Puede esta herramienta extraer texto de PDFs escaneados?","answer":"¡Sí! La herramienta puede extraer texto tanto de **PDFs digitales** (basados en texto) como de **PDFs escaneados** (basados en imágenes) usando tecnología OCR avanzada. Sin embargo, la calidad del texto puede variar dependiendo de la **calidad del escaneo** y la complejidad del documento."},{"question":"¿Qué pasa con las imágenes y el formato en el PDF?","answer":"La herramienta se enfoca en **extracción de texto únicamente**. Las imágenes, formatos complejos, tablas y diseños no se preservan. Para conversión completa de documentos incluyendo imágenes, considera usar [herramientas de conversión PDF](https://smallpdf.com/pdf-to-word) dedicadas."},{"question":"¿Este extractor de texto de PDF es seguro?","answer":"¡Sí! Todo el procesamiento de PDF ocurre **100% en tu navegador**. Tus archivos PDF nunca salen de tu dispositivo y no se almacenan en ningún servidor, asegurando **privacidad y seguridad** completas de tus documentos sensibles."}]}};
+    </script>
+<!-- PDF.js (usar CDN) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.min.js"></script>
+<script src="/js/tools/pdf-to-text.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

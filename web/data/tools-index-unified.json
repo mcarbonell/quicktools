@@ -103,6 +103,19 @@
         "es": "Generadores de contenido",
         "en": "Content generators"
       }
+    },
+    {
+      "id": "seo",
+      "slug": "seo",
+      "name": {
+        "es": "SEO",
+        "en": "SEO"
+      },
+      "icon": "🔍",
+      "description": {
+        "es": "Herramientas de optimización SEO",
+        "en": "SEO optimization tools"
+      }
     }
   ],
   "tools": [
@@ -600,6 +613,126 @@
       "categories": ["ai", "image"],
       "icon": "🎨",
       "tags": ["ai", "image", "edit"]
+    },
+    {
+      "id": "meta-tags-analyzer",
+      "slug": "tools/meta-tags-analyzer.html",
+      "title": {
+        "es": "Analizador de Meta Tags",
+        "en": "Meta Tags Analyzer"
+      },
+      "description": {
+        "es": "Analiza y valida meta tags, Open Graph y Twitter Cards.",
+        "en": "Analyze and validate meta tags, Open Graph and Twitter Cards."
+      },
+      "categories": ["seo"],
+      "icon": "🏷️",
+      "tags": ["seo", "meta", "og"]
+    },
+    {
+      "id": "heading-structure-checker",
+      "slug": "tools/heading-structure-checker.html",
+      "title": {
+        "es": "Verificador de Estructura de Encabezados",
+        "en": "Heading Structure Checker"
+      },
+      "description": {
+        "es": "Valida la jerarquía de encabezados H1-H6 de tu página.",
+        "en": "Validate H1-H6 heading hierarchy of your page."
+      },
+      "categories": ["seo"],
+      "icon": "📑",
+      "tags": ["seo", "headings", "h1"]
+    },
+    {
+      "id": "robots-txt-validator",
+      "slug": "tools/robots-txt-validator.html",
+      "title": {
+        "es": "Validador de Robots.txt",
+        "en": "Robots.txt Validator"
+      },
+      "description": {
+        "es": "Valida la sintaxis de tu archivo robots.txt.",
+        "en": "Validate your robots.txt file syntax."
+      },
+      "categories": ["seo"],
+      "icon": "🤖",
+      "tags": ["seo", "robots", "crawler"]
+    },
+    {
+      "id": "sitemap-validator",
+      "slug": "tools/sitemap-validator.html",
+      "title": {
+        "es": "Validador de Sitemap XML",
+        "en": "XML Sitemap Validator"
+      },
+      "description": {
+        "es": "Valida la estructura de tu sitemap XML.",
+        "en": "Validate your XML sitemap structure."
+      },
+      "categories": ["seo"],
+      "icon": "🗺️",
+      "tags": ["seo", "sitemap", "xml"]
+    },
+    {
+      "id": "broken-links-checker",
+      "slug": "tools/broken-links-checker.html",
+      "title": {
+        "es": "Detector de Enlaces Rotos",
+        "en": "Broken Links Checker"
+      },
+      "description": {
+        "es": "Detecta enlaces rotos en tu HTML o página web.",
+        "en": "Detect broken links in your HTML or web page."
+      },
+      "categories": ["seo"],
+      "icon": "🔗",
+      "tags": ["seo", "links", "checker"]
+    },
+    {
+      "id": "open-graph-preview",
+      "slug": "tools/open-graph-preview.html",
+      "title": {
+        "es": "Vista Previa Open Graph",
+        "en": "Open Graph Preview"
+      },
+      "description": {
+        "es": "Previsualiza cómo se verá tu página al compartir en redes sociales.",
+        "en": "Preview how your page will look when shared on social media."
+      },
+      "categories": ["seo"],
+      "icon": "👁️",
+      "tags": ["seo", "og", "social"]
+    },
+    {
+      "id": "schema-validator",
+      "slug": "tools/schema-validator.html",
+      "title": {
+        "es": "Validador de Schema.org",
+        "en": "Schema.org Validator"
+      },
+      "description": {
+        "es": "Valida datos estructurados JSON-LD de Schema.org.",
+        "en": "Validate Schema.org JSON-LD structured data."
+      },
+      "categories": ["seo"],
+      "icon": "📊",
+      "tags": ["seo", "schema", "jsonld"]
+    },
+    {
+      "id": "seo-score-calculator",
+      "slug": "tools/seo-score-calculator.html",
+      "title": {
+        "es": "Calculadora de Puntuación SEO",
+        "en": "SEO Score Calculator"
+      },
+      "description": {
+        "es": "Calcula la puntuación SEO general de tu página HTML.",
+        "en": "Calculate overall SEO score of your HTML page."
+      },
+      "categories": ["seo"],
+      "icon": "📈",
+      "tags": ["seo", "score", "audit"]
     }
   ]
 }

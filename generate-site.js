@@ -88,7 +88,7 @@ const dataDir = path.join(projectRoot, 'data');
 const i18nDir = path.join(projectRoot, 'i18n');
 const baseTemplatePath = path.join(templatesDir, 'base.html');
 const indexTemplatePath = path.join(templatesDir, 'index-base.html');
-const toolsIndexPath = path.join(dataDir, 'tools-index-es.json'); // Using Spanish as base for iteration
+const toolsIndexPath = path.join(dataDir, 'tools-index-unified.json');
 
 // Load translations
 async function loadTranslations(lang) {
@@ -315,8 +315,8 @@ async function generateTools(toolsIndex, lang) {
     ];
     
     for (const tool of toolsIndex) {
-        const toolSlug = tool.slug;
-        const toolFileName = path.basename(toolSlug, '.html');
+        const toolSlug = tool.slug.replace('tools/', '');
+        const toolFileName = tool.id;
         
         const headPath = path.join(toolsContentDir, `${toolFileName}-head.html`);
         const contentPath = path.join(toolsContentDir, `${toolFileName}-content.html`);
@@ -338,17 +338,19 @@ async function generateTools(toolsIndex, lang) {
         const seoContent = renderSeoContent(toolTranslations.seo);
         toolContent += seoContent;
         
-        // Get translated tool info from tools-index
-        const translatedToolsIndexPath = path.join(dataDir, `tools-index-${lang}.json`);
-        const translatedToolsIndex = JSON.parse(await fs.readFile(translatedToolsIndexPath, 'utf8'));
-        const translatedTool = translatedToolsIndex.find(t => t.slug === tool.slug) || tool;
+        // Get translated tool info from unified index
+        const translatedTool = {
+            title: tool.title[lang] || tool.title.en,
+            description: tool.description[lang] || tool.description.en,
+            slug: toolSlug
+        };
         
         let generatedHtml = baseTemplate;
         generatedHtml = generatedHtml.replace(/{{title}}/g, translatedTool.title || '');
         generatedHtml = generatedHtml.replace(/{{description}}/g, translatedTool.description || '');
         generatedHtml = generatedHtml.replace(/{{keywords}}/g, tool.tags ? `<meta name="keywords" content="${tool.tags.join(', ')}">` : '');
-        generatedHtml = generatedHtml.replace(/{{og_title}}/g, tool.title || '');
-        generatedHtml = generatedHtml.replace(/{{og_description}}/g, tool.description || '');
+        generatedHtml = generatedHtml.replace(/{{og_title}}/g, translatedTool.title || '');
+        generatedHtml = generatedHtml.replace(/{{og_description}}/g, translatedTool.description || '');
         generatedHtml = generatedHtml.replace(/{{og_url}}/g, `https://${siteConfig.domain}/${lang === siteConfig.defaultLanguage ? '' : lang + '/'}${toolSlug}`);
         generatedHtml = generatedHtml.replace(/{{head_extra}}/g, headExtra);
         generatedHtml = generatedHtml.replace(/{{tool_title}}/g, translatedTool.title || '');
@@ -470,7 +472,8 @@ async function generateSitemap(toolsIndex) {
         { slug: { es: 'analistas-datos', en: 'data-analysts' } },
         { slug: { es: 'marketing', en: 'marketers' } },
         { slug: { es: 'productividad', en: 'productivity' } },
-        { slug: { es: 'ia', en: 'ai' } }
+        { slug: { es: 'ia', en: 'ai' } },
+        { slug: { es: 'seo', en: 'seo' } }
     ];
     
     categories.forEach(cat => {
@@ -536,7 +539,8 @@ async function main() {
         console.log(`Idiomas: ${siteConfig.languages.join(', ')}`);
         console.log(`Idioma por defecto: ${siteConfig.defaultLanguage}\n`);
         
-        const toolsIndex = JSON.parse(await fs.readFile(toolsIndexPath, 'utf8'));
+        const toolsData = JSON.parse(await fs.readFile(toolsIndexPath, 'utf8'));
+        const toolsIndex = toolsData.tools;
         console.log(`Total de herramientas: ${toolsIndex.length}\n`);
         
         // Generate for each language
