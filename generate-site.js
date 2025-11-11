@@ -126,6 +126,22 @@ async function generateIndex(toolsIndex, lang) {
     const translatedTools = JSON.parse(await fs.readFile(toolsIndexPath, 'utf8'));
     const indexTemplate = await fs.readFile(indexTemplatePath, 'utf8');
     
+    // Generate category links
+    const categories = [
+        { id: 'developers', slug: { es: 'desarrolladores', en: 'developers' }, icon: '💻', name: { es: 'Desarrolladores', en: 'Developers' } },
+        { id: 'designers', slug: { es: 'disenadores', en: 'designers' }, icon: '🎨', name: { es: 'Diseñadores', en: 'Designers' } },
+        { id: 'writers', slug: { es: 'escritores', en: 'writers' }, icon: '✍️', name: { es: 'Escritores', en: 'Writers' } },
+        { id: 'data-analysts', slug: { es: 'analistas-datos', en: 'data-analysts' }, icon: '📊', name: { es: 'Analistas de Datos', en: 'Data Analysts' } },
+        { id: 'marketers', slug: { es: 'marketing', en: 'marketers' }, icon: '📱', name: { es: 'Marketing', en: 'Marketers' } },
+        { id: 'productivity', slug: { es: 'productividad', en: 'productivity' }, icon: '⚡', name: { es: 'Productividad', en: 'Productivity' } },
+        { id: 'ai-tools', slug: { es: 'ia', en: 'ai' }, icon: '🤖', name: { es: 'IA', en: 'AI' } }
+    ];
+    
+    let categoryLinks = '';
+    categories.forEach(cat => {
+        categoryLinks += `<a href="${cat.slug[lang]}.html" class="btn btn-outline-primary btn-sm">${cat.icon} ${cat.name[lang]}</a>\n                `;
+    });
+    
     // Group tools by category (use translated tools)
     const byCat = translatedTools.reduce((acc, t) => {
         (acc[t.category] = acc[t.category] || []).push(t);
@@ -181,6 +197,7 @@ async function generateIndex(toolsIndex, lang) {
     }
     
     let finalIndexHtml = indexTemplate;
+    finalIndexHtml = finalIndexHtml.replace('{{category_links}}', categoryLinks);
     finalIndexHtml = finalIndexHtml.replace('{{tools_grid}}', toolsGridHtml);
     finalIndexHtml = finalIndexHtml.replace(/lang="en"/g, `lang="${lang}"`);
     finalIndexHtml = finalIndexHtml.replace('{{hreflang_tags}}', generateHreflangTags('', true));
@@ -220,6 +237,12 @@ async function generateIndex(toolsIndex, lang) {
     finalIndexHtml = finalIndexHtml.replace(
         /<a href="#IA" class="alert-link" id="aiLink">.*?<\/a>/,
         `<a href="#IA" class="alert-link" id="aiLink">${translations.hero?.viewAiTools || 'View AI tools →'}</a>`
+    );
+    
+    // Replace categories title
+    finalIndexHtml = finalIndexHtml.replace(
+        /<h2 class="h5 mb-3" id="categoriesTitle">.*?<\/h2>/,
+        `<h2 class="h5 mb-3" id="categoriesTitle">${translations.categories?.title || 'Browse by Profile'}</h2>`
     );
     
     // Replace nav
