@@ -215,7 +215,9 @@ export function t(key, params = {}, lang = null) {
 
 // Get category name
 export function getCategoryName(category, lang = 'es') {
-    const key = `category_${category.toLowerCase()}`;
+    // Normalize category slug (replace hyphens with underscores for i18n keys)
+    const normalized = category.toLowerCase().replace(/-/g, '_');
+    const key = `category_${normalized}`;
     return t(key, {}, lang);
 }
 

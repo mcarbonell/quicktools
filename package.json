@@ -4,12 +4,14 @@
   "description": "Fast, secure online tools. Everything processed in your browser.",
   "main": "generate-site.js",
   "scripts": {
+    "prebuild": "node scripts/bump-version.js",
     "build": "node generate-site.js",
     "build:old": "node generate-tools.js",
     "build:tools": "node scripts/generate-tools-json.js",
     "test": "node tests/automated-qa.js",
     "test:old": "node tests/run-all-tests.js",
-    "serve": "npx http-server web -p 8000"
+    "serve": "npx http-server web -p 8000",
+    "version:bump": "node scripts/bump-version.js"
   },
   "keywords": [
     "tools",
