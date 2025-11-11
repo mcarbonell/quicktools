@@ -138,7 +138,8 @@ async function generateIndex(toolsIndex, lang) {
     
     let categoryLinks = '';
     categories.forEach(cat => {
-        categoryLinks += `<a href="${cat.slug[lang]}.html" class="btn btn-outline-primary btn-sm">${cat.icon} ${cat.name[lang]}</a>\n                `;
+        const catSlug = typeof cat.slug === 'string' ? cat.slug : cat.slug[lang];
+        categoryLinks += `<a href="${catSlug}.html" class="btn btn-outline-primary btn-sm">${cat.icon} ${cat.name[lang]}</a>\n                `;
     });
     
     // Group tools by category (use translated tools)
@@ -298,17 +299,14 @@ async function generateTools(toolsIndex, lang) {
     const baseTemplate = await fs.readFile(baseTemplatePath, 'utf8');
     const translations = await loadTranslations(lang);
     
-    // Load audience mapping
-    const audienceMappingPath = path.join(dataDir, 'audience-mapping.json');
-    const audienceMapping = JSON.parse(await fs.readFile(audienceMappingPath, 'utf8'));
-    
     // Load audiences from fasttools-data.json
     const fasttoolsData = JSON.parse(await fs.readFile(toolsIndexPath, 'utf8'));
     const categories = fasttoolsData.audiences.map(aud => ({
         id: aud.id,
         slug: aud.slug,
         icon: aud.icon,
-        name: aud.name
+        name: aud.name,
+        tools: aud.tools
     }));
     
     for (const tool of toolsIndex) {
@@ -355,9 +353,9 @@ async function generateTools(toolsIndex, lang) {
         // Generate category badges
         let categoryBadges = '';
         const toolCategories = [];
-        for (const [catId, toolIds] of Object.entries(audienceMapping)) {
-            if (toolIds.includes(tool.id)) {
-                toolCategories.push(catId);
+        for (const cat of categories) {
+            if (cat.tools.includes(tool.id)) {
+                toolCategories.push(cat.id);
             }
         }
         
@@ -367,7 +365,8 @@ async function generateTools(toolsIndex, lang) {
             toolCategories.forEach((catId, index) => {
                 const cat = categories.find(c => c.id === catId);
                 if (cat) {
-                    const catUrl = lang === siteConfig.defaultLanguage ? `/${cat.slug[lang]}.html` : `/${lang}/${cat.slug[lang]}.html`;
+                    const catSlug = typeof cat.slug === 'string' ? cat.slug : cat.slug[lang];
+                    const catUrl = lang === siteConfig.defaultLanguage ? `/${catSlug}.html` : `/${lang}/${catSlug}.html`;
                     categoryBadges += `<a href="${catUrl}" class="badge bg-primary text-decoration-none">${cat.icon} ${cat.name[lang]}</a>`;
                     if (index < toolCategories.length - 1) categoryBadges += ' ';
                 }
@@ -387,7 +386,8 @@ async function generateTools(toolsIndex, lang) {
             toolCategories.forEach((catId, index) => {
                 const cat = categories.find(c => c.id === catId);
                 if (cat) {
-                    const catUrl = lang === siteConfig.defaultLanguage ? `https://${siteConfig.domain}/${cat.slug[lang]}.html` : `https://${siteConfig.domain}/${lang}/${cat.slug[lang]}.html`;
+                    const catSlug = typeof cat.slug === 'string' ? cat.slug : cat.slug[lang];
+                    const catUrl = lang === siteConfig.defaultLanguage ? `https://${siteConfig.domain}/${catSlug}.html` : `https://${siteConfig.domain}/${lang}/${catSlug}.html`;
                     breadcrumbItems.push({
                         "@type": "ListItem",
                         "position": index + 2,
@@ -467,9 +467,10 @@ async function generateSitemap(toolsIndex) {
     
     categories.forEach(cat => {
         siteConfig.languages.forEach(lang => {
+            const catSlug = typeof cat.slug === 'string' ? cat.slug : cat.slug[lang];
             const url = lang === siteConfig.defaultLanguage 
-                ? `${baseUrl}/${cat.slug[lang]}.html`
-                : `${baseUrl}/${lang}/${cat.slug[lang]}.html`;
+                ? `${baseUrl}/${catSlug}.html`
+                : `${baseUrl}/${lang}/${catSlug}.html`;
             
             xml += `  <url>\n`;
             xml += `    <loc>${url}</loc>\n`;
@@ -479,9 +480,10 @@ async function generateSitemap(toolsIndex) {
             
             // Add xhtml:link for alternate languages
             siteConfig.languages.forEach(altLang => {
+                const altCatSlug = typeof cat.slug === 'string' ? cat.slug : cat.slug[altLang];
                 const altUrl = altLang === siteConfig.defaultLanguage 
-                    ? `${baseUrl}/${cat.slug[altLang]}.html`
-                    : `${baseUrl}/${altLang}/${cat.slug[altLang]}.html`;
+                    ? `${baseUrl}/${altCatSlug}.html`
+                    : `${baseUrl}/${altLang}/${altCatSlug}.html`;
                 xml += `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${altUrl}"/>\n`;
             });
             
