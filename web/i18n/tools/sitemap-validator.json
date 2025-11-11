@@ -1,0 +1,30 @@
+{
+  "es": {
+    "why_extension_title": "¿Por qué necesitas la extensión?",
+    "why_extension_text": "Las herramientas SEO necesitan analizar páginas web externas, lo cual está bloqueado por CORS en navegadores web. Nuestra extensión tiene permisos especiales para acceder a cualquier página sin restricciones.",
+    "features_title": "Ventajas de la extensión:",
+    "feature_1": "Sin restricciones CORS - Analiza cualquier página web",
+    "feature_2": "Acceso instantáneo desde cualquier pestaña",
+    "feature_3": "Funciona offline con páginas ya cargadas",
+    "feature_4": "Todas las herramientas SEO en un solo lugar",
+    "install_chrome": "Instalar en Chrome",
+    "install_firefox": "Instalar en Firefox",
+    "coming_soon": "Próximamente disponible en Chrome Web Store y Firefox Add-ons",
+    "all_seo_tools": "Todas las herramientas SEO:",
+    "view_all": "Ver todas las herramientas SEO"
+  },
+  "en": {
+    "why_extension_title": "Why do you need the extension?",
+    "why_extension_text": "SEO tools need to analyze external web pages, which is blocked by CORS in web browsers. Our extension has special permissions to access any page without restrictions.",
+    "features_title": "Extension advantages:",
+    "feature_1": "No CORS restrictions - Analyze any web page",
+    "feature_2": "Instant access from any tab",
+    "feature_3": "Works offline with already loaded pages",
+    "feature_4": "All SEO tools in one place",
+    "install_chrome": "Install on Chrome",
+    "install_firefox": "Install on Firefox",
+    "coming_soon": "Coming soon to Chrome Web Store and Firefox Add-ons",
+    "all_seo_tools": "All SEO tools:",
+    "view_all": "View all SEO tools"
+  }
+}
