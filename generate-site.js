@@ -180,7 +180,7 @@ async function generateIndex(toolsIndex, lang) {
         items.forEach(item => {
             const cardClass = cat === 'IA' ? 'card h-100 border-primary' : 'card h-100';
             // For non-default languages, use relative path from /es/ directory
-            const toolUrl = item.slug.replace('tools/', '');
+            const toolUrl = item.slug;
             toolsGridHtml += `
     <div class="col-md-6 col-lg-4">
         <div class="${cardClass}">
@@ -315,7 +315,7 @@ async function generateTools(toolsIndex, lang) {
     ];
     
     for (const tool of toolsIndex) {
-        const toolSlug = tool.slug.replace('tools/', '');
+        const toolSlug = tool.slug;
         const toolFileName = tool.id;
         
         const headPath = path.join(toolsContentDir, `${toolFileName}-head.html`);

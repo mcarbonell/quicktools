@@ -103,12 +103,25 @@
         "es": "Generadores de contenido",
         "en": "Content generators"
       }
+    },
+    {
+      "id": "seo",
+      "slug": "seo",
+      "name": {
+        "es": "SEO",
+        "en": "SEO"
+      },
+      "icon": "🔍",
+      "description": {
+        "es": "Herramientas de optimización SEO",
+        "en": "SEO optimization tools"
+      }
     }
   ],
   "tools": [
     {
       "id": "image-resizer",
-      "slug": "tools/image-resizer.html",
+      "slug": "image-resizer.html",
       "title": {
         "es": "Redimensionar imagen",
         "en": "Resize Image"
@@ -123,7 +136,7 @@
     },
     {
       "id": "convert-image",
-      "slug": "tools/convert-image.html",
+      "slug": "convert-image.html",
       "title": {
         "es": "Convertir formato de imagen",
         "en": "Convert Image Format"
@@ -138,7 +151,7 @@
     },
     {
       "id": "json-formatter",
-      "slug": "tools/json-formatter.html",
+      "slug": "json-formatter.html",
       "title": {
         "es": "Formatear JSON",
         "en": "Format JSON"
@@ -153,7 +166,7 @@
     },
     {
       "id": "csv-json",
-      "slug": "tools/csv-json.html",
+      "slug": "csv-json.html",
       "title": {
         "es": "CSV ↔ JSON",
         "en": "CSV ↔ JSON"
@@ -168,7 +181,7 @@
     },
     {
       "id": "pdf-to-text",
-      "slug": "tools/pdf-to-text.html",
+      "slug": "pdf-to-text.html",
       "title": {
         "es": "Extraer texto de PDF",
         "en": "Extract Text from PDF"
@@ -183,7 +196,7 @@
     },
     {
       "id": "merge-pdfs",
-      "slug": "tools/merge-pdfs.html",
+      "slug": "merge-pdfs.html",
       "title": {
         "es": "Unir PDFs",
         "en": "Merge PDFs"
@@ -198,7 +211,7 @@
     },
     {
       "id": "split-pdf",
-      "slug": "tools/split-pdf.html",
+      "slug": "split-pdf.html",
       "title": {
         "es": "Dividir PDF",
         "en": "Split PDF"
@@ -213,7 +226,7 @@
     },
     {
       "id": "compress-pdf",
-      "slug": "tools/compress-pdf.html",
+      "slug": "compress-pdf.html",
       "title": {
         "es": "Comprimir PDF",
         "en": "Compress PDF"
@@ -228,7 +241,7 @@
     },
     {
       "id": "pdf-to-image",
-      "slug": "tools/pdf-to-image.html",
+      "slug": "pdf-to-image.html",
       "title": {
         "es": "PDF a Imagen",
         "en": "PDF to Image"
@@ -243,7 +256,7 @@
     },
     {
       "id": "image-to-pdf",
-      "slug": "tools/image-to-pdf.html",
+      "slug": "image-to-pdf.html",
       "title": {
         "es": "Imagen a PDF",
         "en": "Image to PDF"
@@ -258,7 +271,7 @@
     },
     {
       "id": "color-palette-generator",
-      "slug": "tools/color-palette-generator.html",
+      "slug": "color-palette-generator.html",
       "title": {
         "es": "Generador de Paleta de Colores",
         "en": "Color Palette Generator"
@@ -273,7 +286,7 @@
     },
     {
       "id": "exif-viewer-cleaner",
-      "slug": "tools/exif-viewer-cleaner.html",
+      "slug": "exif-viewer-cleaner.html",
       "title": {
         "es": "Visor y Limpiador EXIF",
         "en": "EXIF Viewer & Cleaner"
@@ -288,7 +301,7 @@
     },
     {
       "id": "lorem-ipsum-generator",
-      "slug": "tools/lorem-ipsum-generator.html",
+      "slug": "lorem-ipsum-generator.html",
       "title": {
         "es": "Generador de Lorem Ipsum",
         "en": "Lorem Ipsum Generator"
@@ -303,7 +316,7 @@
     },
     {
       "id": "image-cropper",
-      "slug": "tools/image-cropper.html",
+      "slug": "image-cropper.html",
       "title": {
         "es": "Recortar Imagen",
         "en": "Crop Image"
@@ -318,7 +331,7 @@
     },
     {
       "id": "text-cleaner",
-      "slug": "tools/text-cleaner.html",
+      "slug": "text-cleaner.html",
       "title": {
         "es": "Limpiar texto",
         "en": "Clean Text"
@@ -333,7 +346,7 @@
     },
     {
       "id": "url-encoder",
-      "slug": "tools/url-encoder.html",
+      "slug": "url-encoder.html",
       "title": {
         "es": "Codificar/Decodificar URL",
         "en": "Encode/Decode URL"
@@ -348,7 +361,7 @@
     },
     {
       "id": "base64",
-      "slug": "tools/base64.html",
+      "slug": "base64.html",
       "title": {
         "es": "Codificar/Decodificar Base64",
         "en": "Encode/Decode Base64"
@@ -363,7 +376,7 @@
     },
     {
       "id": "html-encoder",
-      "slug": "tools/html-encoder.html",
+      "slug": "html-encoder.html",
       "title": {
         "es": "Codificar/Decodificar HTML",
         "en": "Encode/Decode HTML"
@@ -378,7 +391,7 @@
     },
     {
       "id": "diff",
-      "slug": "tools/diff.html",
+      "slug": "diff.html",
       "title": {
         "es": "Comparar Textos",
         "en": "Compare Texts"
@@ -393,7 +406,7 @@
     },
     {
       "id": "yaml-json",
-      "slug": "tools/yaml-json.html",
+      "slug": "yaml-json.html",
       "title": {
         "es": "YAML ↔ JSON",
         "en": "YAML ↔ JSON"
@@ -408,7 +421,7 @@
     },
     {
       "id": "xml-json",
-      "slug": "tools/xml-json.html",
+      "slug": "xml-json.html",
       "title": {
         "es": "XML ↔ JSON",
         "en": "XML ↔ JSON"
@@ -423,7 +436,7 @@
     },
     {
       "id": "toml-json",
-      "slug": "tools/toml-json.html",
+      "slug": "toml-json.html",
       "title": {
         "es": "TOML ↔ JSON",
         "en": "TOML ↔ JSON"
@@ -438,7 +451,7 @@
     },
     {
       "id": "qr-generator",
-      "slug": "tools/qr-generator.html",
+      "slug": "qr-generator.html",
       "title": {
         "es": "Generador de QR",
         "en": "QR Generator"
@@ -453,7 +466,7 @@
     },
     {
       "id": "password-generator",
-      "slug": "tools/password-generator.html",
+      "slug": "password-generator.html",
       "title": {
         "es": "Generador de contraseñas",
         "en": "Password Generator"
@@ -468,7 +481,7 @@
     },
     {
       "id": "hash-calculator",
-      "slug": "tools/hash-calculator.html",
+      "slug": "hash-calculator.html",
       "title": {
         "es": "Calculadora de Hashes",
         "en": "Hash Calculator"
@@ -483,7 +496,7 @@
     },
     {
       "id": "image-compressor",
-      "slug": "tools/image-compressor.html",
+      "slug": "image-compressor.html",
       "title": {
         "es": "Comprimir Imagen",
         "en": "Compress Image"
@@ -498,7 +511,7 @@
     },
     {
       "id": "color-picker-converter",
-      "slug": "tools/color-picker-converter.html",
+      "slug": "color-picker-converter.html",
       "title": {
         "es": "Selector y Conversor de Color",
         "en": "Color Picker & Converter"
@@ -513,7 +526,7 @@
     },
     {
       "id": "stopwatch-timer",
-      "slug": "tools/stopwatch-timer.html",
+      "slug": "stopwatch-timer.html",
       "title": {
         "es": "Cronómetro y Temporizador",
         "en": "Stopwatch & Timer"
@@ -528,7 +541,7 @@
     },
     {
       "id": "chat-ai",
-      "slug": "tools/chat-ai.html",
+      "slug": "chat-ai.html",
       "title": {
         "es": "Chat con IA",
         "en": "AI Chat"
@@ -543,7 +556,7 @@
     },
     {
       "id": "summarize-text-ai",
-      "slug": "tools/summarize-text-ai.html",
+      "slug": "summarize-text-ai.html",
       "title": {
         "es": "Resumir Texto con IA",
         "en": "Summarize Text with AI"
@@ -558,7 +571,7 @@
     },
     {
       "id": "improve-text-ai",
-      "slug": "tools/improve-text-ai.html",
+      "slug": "improve-text-ai.html",
       "title": {
         "es": "Mejorar Texto con IA",
         "en": "Improve Text with AI"
@@ -573,7 +586,7 @@
     },
     {
       "id": "chat-pdf",
-      "slug": "tools/chat-pdf.html",
+      "slug": "chat-pdf.html",
       "title": {
         "es": "Chat con PDF",
         "en": "Chat with PDF"
@@ -588,7 +601,7 @@
     },
     {
       "id": "edit-image-ai",
-      "slug": "tools/edit-image-ai.html",
+      "slug": "edit-image-ai.html",
       "title": {
         "es": "Editar Imagen con IA",
         "en": "Edit Image with AI"
@@ -600,6 +613,126 @@
       "categories": ["ai", "image"],
       "icon": "🎨",
       "tags": ["ai", "image", "edit"]
+    },
+    {
+      "id": "meta-tags-analyzer",
+      "slug": "meta-tags-analyzer.html",
+      "title": {
+        "es": "Analizador de Meta Tags",
+        "en": "Meta Tags Analyzer"
+      },
+      "description": {
+        "es": "Analiza y valida meta tags, Open Graph y Twitter Cards.",
+        "en": "Analyze and validate meta tags, Open Graph and Twitter Cards."
+      },
+      "categories": ["seo"],
+      "icon": "🏷️",
+      "tags": ["seo", "meta", "og"]
+    },
+    {
+      "id": "heading-structure-checker",
+      "slug": "heading-structure-checker.html",
+      "title": {
+        "es": "Verificador de Estructura de Encabezados",
+        "en": "Heading Structure Checker"
+      },
+      "description": {
+        "es": "Valida la jerarquía de encabezados H1-H6 de tu página.",
+        "en": "Validate H1-H6 heading hierarchy of your page."
+      },
+      "categories": ["seo"],
+      "icon": "📑",
+      "tags": ["seo", "headings", "h1"]
+    },
+    {
+      "id": "robots-txt-validator",
+      "slug": "robots-txt-validator.html",
+      "title": {
+        "es": "Validador de Robots.txt",
+        "en": "Robots.txt Validator"
+      },
+      "description": {
+        "es": "Valida la sintaxis de tu archivo robots.txt.",
+        "en": "Validate your robots.txt file syntax."
+      },
+      "categories": ["seo"],
+      "icon": "🤖",
+      "tags": ["seo", "robots", "crawler"]
+    },
+    {
+      "id": "sitemap-validator",
+      "slug": "sitemap-validator.html",
+      "title": {
+        "es": "Validador de Sitemap XML",
+        "en": "XML Sitemap Validator"
+      },
+      "description": {
+        "es": "Valida la estructura de tu sitemap XML.",
+        "en": "Validate your XML sitemap structure."
+      },
+      "categories": ["seo"],
+      "icon": "🗺️",
+      "tags": ["seo", "sitemap", "xml"]
+    },
+    {
+      "id": "broken-links-checker",
+      "slug": "broken-links-checker.html",
+      "title": {
+        "es": "Detector de Enlaces Rotos",
+        "en": "Broken Links Checker"
+      },
+      "description": {
+        "es": "Detecta enlaces rotos en tu HTML o página web.",
+        "en": "Detect broken links in your HTML or web page."
+      },
+      "categories": ["seo"],
+      "icon": "🔗",
+      "tags": ["seo", "links", "checker"]
+    },
+    {
+      "id": "open-graph-preview",
+      "slug": "open-graph-preview.html",
+      "title": {
+        "es": "Vista Previa Open Graph",
+        "en": "Open Graph Preview"
+      },
+      "description": {
+        "es": "Previsualiza cómo se verá tu página al compartir en redes sociales.",
+        "en": "Preview how your page will look when shared on social media."
+      },
+      "categories": ["seo"],
+      "icon": "👁️",
+      "tags": ["seo", "og", "social"]
+    },
+    {
+      "id": "schema-validator",
+      "slug": "schema-validator.html",
+      "title": {
+        "es": "Validador de Schema.org",
+        "en": "Schema.org Validator"
+      },
+      "description": {
+        "es": "Valida datos estructurados JSON-LD de Schema.org.",
+        "en": "Validate Schema.org JSON-LD structured data."
+      },
+      "categories": ["seo"],
+      "icon": "📊",
+      "tags": ["seo", "schema", "jsonld"]
+    },
+    {
+      "id": "seo-score-calculator",
+      "slug": "seo-score-calculator.html",
+      "title": {
+        "es": "Calculadora de Puntuación SEO",
+        "en": "SEO Score Calculator"
+      },
+      "description": {
+        "es": "Calcula la puntuación SEO general de tu página HTML.",
+        "en": "Calculate overall SEO score of your HTML page."
+      },
+      "categories": ["seo"],
+      "icon": "📈",
+      "tags": ["seo", "score", "audit"]
     }
   ]
 }

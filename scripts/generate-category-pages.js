@@ -83,7 +83,7 @@ async function generateCategoryPages() {
                     title: tool.title[lang] || tool.title.en,
                     description: tool.description[lang] || tool.description.en,
                     icon: tool.icon,
-                    slug: tool.slug.replace('tools/', '')
+                    slug: tool.slug
                 }));
 
             let toolsGrid = '';
