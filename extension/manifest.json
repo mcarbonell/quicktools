@@ -86,7 +86,8 @@
                 "libs/*",
                 "newtab/*",
                 "popup/*",
-                "data/*"
+                "data/*",
+                "shared/*"
             ],
             "matches": [
                 "<all_urls>"

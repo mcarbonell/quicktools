@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastTools</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <style>
+        body {
+            width: 380px;
+            max-height: 600px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-lg);
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .logo-text {
+            font-size: var(--font-lg);
+            font-weight: 600;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: flex;
+            gap: var(--space-sm);
+            padding: var(--space-lg);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .quick-btn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-md);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: var(--font-xs);
+        }
+
+        .quick-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .quick-btn.primary {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Tools */
+        .tools-section {
+            padding: var(--space-lg);
+        }
+
+        .section-title {
+            font-size: var(--font-md);
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+
+        #tools-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-sm);
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-lg);
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            font-size: var(--font-xs);
+            color: var(--text-secondary);
+        }
+
+        /* Notes List */
+        .notes-list {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: var(--space-md);
+        }
+
+        .note-item {
+            padding: var(--space-md);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-sm);
+            cursor: pointer;
+        }
+
+        .note-item:hover {
+            background: var(--border);
+        }
+
+        .note-title {
+            font-weight: 500;
+            margin-bottom: var(--space-xs);
+        }
+
+        .note-preview {
+            font-size: var(--font-xs);
+            color: var(--text-secondary);
+        }
+
+        /* Color Picker */
+        .color-picker-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            align-items: center;
+        }
+
+        .color-input {
+            width: 100px;
+            height: 100px;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+        }
+
+        .color-info {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .color-value {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .color-value label {
+            font-weight: 500;
+            width: 50px;
+        }
+
+        .color-text {
+            flex: 1;
+            padding: var(--space-sm);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: var(--surface);
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <img src="../icons/icon-32x32.png" alt="FastTools" class="logo-icon">
+            <span class="logo-text">FastTools</span>
+        </div>
+        <button class="icon-btn" data-action="show-modal" data-modal="settings-modal">⚙️</button>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+        <button class="quick-btn primary" data-action="capture-screen">
+            📸<br><span>Capturar</span>
+        </button>
+        <button class="quick-btn" data-action="show-modal" data-modal="notes-modal">
+            📝<br><span>Notas</span>
+        </button>
+        <button class="quick-btn" data-action="show-modal" data-modal="color-picker-modal">
+            🎨<br><span>Color</span>
+        </button>
+    </div>
+
+    <!-- Tools -->
+    <div class="tools-section">
+        <h2 class="section-title">Herramientas</h2>
+        <div id="tools-grid"></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <span id="usage-today">0 usos hoy</span>
+        <span>🆓 Free</span>
+    </div>
+
+    <!-- Notes Modal -->
+    <div id="notes-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📝 Notas Rápidas</h3>
+                <button class="close-btn" data-action="close-modal" data-modal="notes-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="note-title" placeholder="Título" class="form-input" style="margin-bottom: var(--space-md);">
+                <textarea id="note-content" placeholder="Escribe tu nota..." class="form-textarea"></textarea>
+                <div class="notes-list" id="notes-list"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-action="save-note">Guardar</button>
+                <button class="btn" data-action="close-modal" data-modal="notes-modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Color Picker Modal -->
+    <div id="color-picker-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🎨 Color Picker</h3>
+                <button class="close-btn" data-action="close-modal" data-modal="color-picker-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="color-picker-container">
+                    <input type="color" id="color-input" value="#13a4ec" class="color-input">
+                    <div class="color-info">
+                        <div class="color-value">
+                            <label>HEX:</label>
+                            <input type="text" id="color-hex" value="#13a4ec" readonly class="color-text">
+                        </div>
+                        <div class="color-value">
+                            <label>RGB:</label>
+                            <input type="text" id="color-rgb" value="rgb(19, 164, 236)" readonly class="color-text">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" data-action="copy-color">Copiar HEX</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-action="close-modal" data-modal="color-picker-modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚙️ Configuración</h3>
+                <button class="close-btn" data-action="close-modal" data-modal="settings-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <p style="text-align:center;color:var(--text-secondary);">Configuración próximamente...</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-action="close-modal" data-modal="settings-modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="popup-simple.js"></script>
+</body>
+</html>
