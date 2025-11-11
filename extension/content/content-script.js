@@ -57,6 +57,19 @@ class QuickToolsContentScript {
                     const links = this.extractAllLinks();
                     sendResponse({ links: links });
                     break;
+                case 'getMetaTags':
+                    const metaTags = this.extractMetaTags();
+                    sendResponse({ metaTags: metaTags });
+                    break;
+                case 'getHeadings':
+                    const headings = this.extractHeadings();
+                    const issues = this.validateHeadingStructure(headings);
+                    sendResponse({ headings: headings, issues: issues });
+                    break;
+                case 'getSchema':
+                    const schemas = this.extractSchemaOrg();
+                    sendResponse({ schemas: schemas });
+                    break;
             }
             return true;
         });
@@ -430,6 +443,111 @@ class QuickToolsContentScript {
         
         console.log(`🔗 Extracted ${links.length} unique links`);
         return links;
+    }
+
+    extractMetaTags() {
+        const metaTags = {};
+        
+        // Basic meta tags
+        metaTags.title = document.title || '';
+        metaTags.description = document.querySelector('meta[name="description"]')?.content || '';
+        metaTags.keywords = document.querySelector('meta[name="keywords"]')?.content || '';
+        metaTags.author = document.querySelector('meta[name="author"]')?.content || '';
+        metaTags.robots = document.querySelector('meta[name="robots"]')?.content || '';
+        metaTags.canonical = document.querySelector('link[rel="canonical"]')?.href || '';
+        
+        // Open Graph
+        metaTags.og = {};
+        document.querySelectorAll('meta[property^="og:"]').forEach(meta => {
+            const property = meta.getAttribute('property').replace('og:', '');
+            metaTags.og[property] = meta.content;
+        });
+        
+        // Twitter Card
+        metaTags.twitter = {};
+        document.querySelectorAll('meta[name^="twitter:"]').forEach(meta => {
+            const name = meta.getAttribute('name').replace('twitter:', '');
+            metaTags.twitter[name] = meta.content;
+        });
+        
+        console.log('🏷️ Extracted meta tags');
+        return metaTags;
+    }
+
+    extractHeadings() {
+        const headings = [];
+        const tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+        
+        tags.forEach(tag => {
+            document.querySelectorAll(tag).forEach(heading => {
+                headings.push({
+                    level: parseInt(tag.substring(1)),
+                    text: heading.textContent.trim(),
+                    tag: tag
+                });
+            });
+        });
+        
+        console.log(`📋 Extracted ${headings.length} headings`);
+        return headings;
+    }
+
+    validateHeadingStructure(headings) {
+        const issues = [];
+        
+        // Check for H1
+        const h1Count = headings.filter(h => h.level === 1).length;
+        if (h1Count === 0) {
+            issues.push({ type: 'error', message: 'No se encontró ningún H1' });
+        } else if (h1Count > 1) {
+            issues.push({ type: 'warning', message: `Se encontraron ${h1Count} H1 (recomendado: 1)` });
+        }
+        
+        // Check hierarchy
+        let prevLevel = 0;
+        headings.forEach((heading, index) => {
+            if (heading.level > prevLevel + 1 && prevLevel !== 0) {
+                issues.push({
+                    type: 'warning',
+                    message: `Salto de jerarquía: ${headings[index-1].tag} → ${heading.tag}`
+                });
+            }
+            prevLevel = heading.level;
+        });
+        
+        return issues;
+    }
+
+    extractSchemaOrg() {
+        const schemas = [];
+        
+        // JSON-LD
+        document.querySelectorAll('script[type="application/ld+json"]').forEach(script => {
+            try {
+                const data = JSON.parse(script.textContent);
+                schemas.push({
+                    type: 'JSON-LD',
+                    data: data
+                });
+            } catch (e) {
+                schemas.push({
+                    type: 'JSON-LD',
+                    error: 'Invalid JSON'
+                });
+            }
+        });
+        
+        // Microdata
+        document.querySelectorAll('[itemscope]').forEach(item => {
+            const type = item.getAttribute('itemtype');
+            schemas.push({
+                type: 'Microdata',
+                itemType: type
+            });
+        });
+        
+        console.log(`📊 Extracted ${schemas.length} schemas`);
+        return schemas;
     }
 }
 
