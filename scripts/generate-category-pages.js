@@ -89,6 +89,31 @@ async function generateCategoryPages() {
             </div>`;
             });
 
+            // Generate Schema.org structured data
+            const schemaOrg = {
+                "@context": "https://schema.org",
+                "@type": "CollectionPage",
+                "name": `${categoryNames[category.id][lang]} - FastTools`,
+                "description": categoryDescriptions[category.id][lang],
+                "url": `https://fasttools.tools/${lang === siteConfig.defaultLanguage ? '' : lang + '/'}${category.slug[lang]}.html`,
+                "inLanguage": lang,
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "name": "FastTools",
+                    "url": "https://fasttools.tools"
+                },
+                "about": {
+                    "@type": "SoftwareApplication",
+                    "name": "FastTools",
+                    "applicationCategory": "WebApplication",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    }
+                }
+            };
+
             let html = template;
             html = html.replace(/{{lang}}/g, lang);
             html = html.replace(/{{category_name}}/g, categoryNames[category.id][lang]);
@@ -100,6 +125,7 @@ async function generateCategoryPages() {
             html = html.replace(/{{css_path}}/g, lang === siteConfig.defaultLanguage ? '' : '../');
             html = html.replace(/{{home_path}}/g, lang === siteConfig.defaultLanguage ? '/' : '/' + lang + '/');
             html = html.replace(/{{hreflang_tags}}/g, '');
+            html = html.replace(/{{schema_org}}/g, JSON.stringify(schemaOrg, null, 2));
 
             const outputDir = lang === siteConfig.defaultLanguage ? projectRoot : path.join(projectRoot, lang);
             const fileName = `${category.slug[lang]}.html`;
