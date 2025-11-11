@@ -35,7 +35,7 @@
         }
     ],
     "action": {
-        "default_popup": "popup/popup.html",
+        "default_popup": "popup/popup-simple.html",
         "default_title": "QuickTools - Abrir Herramientas",
         "default_icon": {
             "16": "icons/icon-16x16.png",
@@ -48,7 +48,7 @@
         "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com;"
     },
     "chrome_url_overrides": {
-        "newtab": "newtab/newtab.html"
+        "newtab": "newtab/newtab-simple.html"
     },
     "commands": {
         "quick-tools": {

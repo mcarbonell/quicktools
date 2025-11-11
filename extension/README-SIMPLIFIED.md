@@ -14,11 +14,11 @@ Reducir la complejidad de la extensión eliminando código duplicado y features 
 - **Funciones duplicadas**: getTimeAgo, showToast, trackUsage repetidas
 
 ### Después (Simplificado)
-- **popup-simple.js**: ~200 líneas (-60%)
-- **newtab-simple.js**: ~400 líneas (pendiente, -67%)
-- **shared/styles.css**: ~300 líneas (compartido)
-- **Herramientas desde JSON**: Una sola fuente de verdad
-- **Módulos compartidos**: Funciones reutilizables
+- **popup-simple.js**: ~200 líneas (-60%) ✅
+- **newtab-simple.js**: ~450 líneas (-62%) ✅
+- **shared/styles.css**: ~300 líneas (compartido) ✅
+- **Herramientas desde JSON**: Una sola fuente de verdad ✅
+- **Módulos compartidos**: Funciones reutilizables ✅
 
 ## 🗂️ Nueva Estructura
 
@@ -34,10 +34,11 @@ extension/
 │   ├── popup.html              # Original (mantener por ahora)
 │   └── popup.js                # Original (mantener por ahora)
 ├── newtab/
-│   ├── newtab-simple.html      # TODO
-│   ├── newtab-simple.js        # TODO
-│   ├── newtab.html             # Original
-│   └── newtab.js               # Original
+│   ├── newtab-simple.html      # ✨ NUEVO - HTML minimalista
+│   ├── newtab-simple.js        # ✨ NUEVO - JS simplificado
+│   ├── newtab.html             # Original (mantener por ahora)
+│   ├── newtab.js               # Original (mantener por ahora)
+│   └── newtab.css              # Estilos compartidos
 └── data/
     └── tools-index.json        # Fuente única de herramientas
 ```
@@ -75,13 +76,25 @@ extension/
 - ✅ Modales para Notas y Color Picker
 - ❌ Eliminado: Analytics complejos, weather, timer
 
+### 3. Newtab Simplificado
+
+**Características:**
+- ✅ Stats dashboard (usos hoy, favorita, tiempo ahorrado)
+- ✅ Quick access editable (hasta 8 herramientas)
+- ✅ Grid completo de herramientas con filtros por categoría
+- ✅ Notas rápidas (crear, editar, eliminar)
+- ✅ Timer integrado en sidebar
+- ✅ Colores recientes
+- ✅ Búsqueda global
+- ❌ Eliminado: Weather widget, analytics detallados, actividad reciente
+
 **Código:**
 - 200 líneas vs 500 originales (-60%)
 - Usa ES6 modules (import/export)
 - Sin duplicación de código
 - Más mantenible
 
-### 3. Herramientas desde JSON
+### 4. Herramientas desde JSON
 
 **Antes:**
 ```javascript
@@ -107,18 +120,13 @@ const tools = await loadTools();
 
 ## 🚀 Cómo Usar
 
-### Probar Popup Simplificado
+### Probar Versión Simplificada (Actual)
 
-1. Actualizar manifest.json:
-```json
-"action": {
-    "default_popup": "popup/popup-simple.html"
-}
-```
+**Ya está activa** en manifest.json:
+- Popup: `popup/popup-simple.html` ✅
+- Newtab: `newtab/newtab-simple.html` ✅
 
-2. Recargar extensión en chrome://extensions/
-
-3. Click en icono de extensión
+Solo recarga la extensión en chrome://extensions/
 
 ### Volver al Original
 
@@ -126,6 +134,9 @@ const tools = await loadTools();
 ```json
 "action": {
     "default_popup": "popup/popup.html"
+},
+"chrome_url_overrides": {
+    "newtab": "newtab/newtab.html"
 }
 ```
 
@@ -134,10 +145,10 @@ const tools = await loadTools();
 ## 📝 TODO - Próximos Pasos
 
 ### Newtab Simplificado
-- [ ] Crear newtab-simple.html
-- [ ] Crear newtab-simple.js (~400 líneas)
-- [ ] Eliminar: Weather widget, timer complejo, analytics detallados
-- [ ] Mantener: Stats básicos, quick access, grid de herramientas, notas
+- [x] Crear newtab-simple.html ✅
+- [x] Crear newtab-simple.js (~450 líneas) ✅
+- [x] Eliminar: Weather widget, analytics detallados, actividad reciente ✅
+- [x] Mantener: Stats básicos, quick access, grid de herramientas, notas, timer ✅
 
 ### Optimizaciones
 - [ ] Lazy loading de modales
@@ -199,10 +210,10 @@ const tools = await loadTools();
 
 ## 🔄 Migración Gradual
 
-**Fase 1** (Actual):
+**Fase 1** (Completada):
 - ✅ Crear shared/
 - ✅ Popup simplificado
-- ⏳ Newtab simplificado
+- ✅ Newtab simplificado
 
 **Fase 2**:
 - Probar ambas versiones en paralelo

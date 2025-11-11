@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastTools - Nueva Pestaña</title>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="newtab.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <img src="../icons/icon-32x32.png" alt="FastTools" class="logo-icon">
+                    <h1 class="logo-text">FastTools</h1>
+                </div>
+                <div class="greeting" id="greeting">¡Hola! 👋</div>
+            </div>
+            <div class="header-right">
+                <div class="search-container">
+                    <input type="text" id="global-search" placeholder="🔍 Buscar herramientas..." class="search-input">
+                    <div id="search-results" class="search-results"></div>
+                </div>
+                <div class="header-actions">
+                    <button id="settings-btn" class="icon-btn" title="Configuración">⚙️</button>
+                    <div class="user-tier" id="user-tier">🆓 Free</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Quick Stats -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="today-usage">0</div>
+                            <div class="stat-label">Usos Hoy</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="favorite-tool">-</div>
+                            <div class="stat-label">Favorita</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="time-saved">0m</div>
+                            <div class="stat-label">Tiempo Ahorrado</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Access -->
+            <section class="quick-access-section">
+                <div class="section-header">
+                    <h2 class="section-title">⚡ Acceso Rápido</h2>
+                    <button class="edit-btn" id="edit-favorites">✏️ Editar</button>
+                </div>
+                <div class="quick-access-grid" id="quick-access-grid"></div>
+            </section>
+
+            <!-- Tools Categories -->
+            <section class="tools-section">
+                <div class="section-header">
+                    <h2 class="section-title">🛠️ Todas las Herramientas</h2>
+                    <div class="category-filters" id="category-filters"></div>
+                </div>
+                <div class="tools-grid" id="tools-grid"></div>
+            </section>
+
+            <!-- Notes Widget -->
+            <section class="notes-section">
+                <div class="section-header">
+                    <h2 class="section-title">📝 Notas Rápidas</h2>
+                    <button class="new-note-btn" id="new-note-btn">+ Nueva</button>
+                </div>
+                <div class="notes-widget" id="notes-widget"></div>
+            </section>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Quick Timer -->
+            <div class="widget">
+                <h3 class="widget-title">⏰ Temporizador</h3>
+                <div class="quick-timer">
+                    <div id="timer-display" class="timer-display">00:00</div>
+                    <div class="timer-controls">
+                        <button class="btn" data-action="add-time" data-time="60">+1m</button>
+                        <button class="btn" data-action="add-time" data-time="600">+10m</button>
+                        <button class="btn" data-action="add-time" data-time="1800">+30m</button>
+                    </div>
+                    <div class="timer-actions">
+                        <button id="start-timer-btn" class="btn primary" data-action="start-timer">Iniciar</button>
+                        <button id="stop-timer-btn" class="btn" data-action="stop-timer" style="display: none;">Parar</button>
+                        <button id="reset-timer-btn" class="btn" data-action="reset-timer">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color Palette -->
+            <div class="widget">
+                <h3 class="widget-title">🎨 Colores Recientes</h3>
+                <div class="color-palette" id="recent-colors"></div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚙️ Configuración</h3>
+                <button class="close-btn" data-action="close-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-section">
+                    <h4>🎨 Apariencia</h4>
+                    <div class="setting-item">
+                        <label for="theme-select">Tema:</label>
+                        <select id="theme-select">
+                            <option value="auto">Automático</option>
+                            <option value="light">Claro</option>
+                            <option value="dark">Oscuro</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn primary" data-action="save-settings">Guardar</button>
+                <button class="btn" data-action="close-modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Note Editor Modal -->
+    <div id="note-editor-modal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>📝 Editor de Notas</h3>
+                <button class="close-btn" data-action="close-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="note-title" placeholder="Título" class="note-title-input">
+                <textarea id="note-content" placeholder="Escribe tu nota..." class="note-content-input"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-action="delete-note" id="delete-note-btn" style="display: none;">🗑️ Eliminar</button>
+                <button class="btn" data-action="close-modal">Cancelar</button>
+                <button class="btn primary" data-action="save-note">💾 Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Favorites Modal -->
+    <div id="favorites-modal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>⭐ Editar Acceso Rápido</h3>
+                <button class="close-btn" data-action="close-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Selecciona hasta 8 herramientas para acceso rápido:</p>
+                <div class="favorites-grid" id="favorites-grid"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn primary" data-action="save-favorites">Guardar</button>
+                <button class="btn" data-action="close-modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="newtab-simple.js"></script>
+</body>
+</html>
