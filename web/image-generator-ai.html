@@ -95,7 +95,7 @@
     </ol>
     <div class="input-group">
         <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
-        <button class="btn btn-primary" onclick="saveApiKey()">💾 Save</button>
+        <button class="btn btn-primary" id="saveKeyBtn">💾 Save</button>
     </div>
     <small class="text-muted">🔒 Stored locally in your browser | 💰 ~$0.0125 per image</small>
 </div>
@@ -103,7 +103,7 @@
 <div id="apiKeyManage" class="alert alert-success d-none">
     <div class="d-flex justify-content-between align-items-center">
         <span>✅ API Key configured</span>
-        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Remove</button>
+        <button class="btn btn-sm btn-outline-danger" id="removeKeyBtn">🗑️ Remove</button>
     </div>
 </div>
 
@@ -120,7 +120,7 @@
         <small class="text-muted">Be specific and detailed for better results</small>
     </div>
 
-    <button class="btn btn-primary" onclick="generateImage()" id="generateBtn">
+    <button class="btn btn-primary" id="generateBtn">
         ✨ Generate Image
     </button>
 
@@ -140,24 +140,19 @@
         <h5>Generated Image:</h5>
         <img id="generatedImg" class="img-fluid border rounded mb-3" style="max-width: 100%;">
         <div>
-            <button class="btn btn-primary" onclick="downloadImage()">💾 Download Image</button>
-            <button class="btn btn-outline-secondary" onclick="resetTool()">🔄 Generate Another</button>
+            <button class="btn btn-primary" id="downloadBtn">💾 Download Image</button>
+            <button class="btn btn-outline-secondary" id="resetBtn">🔄 Generate Another</button>
         </div>
     </div>
 </div>
 
 <script src="/js/lib/gemini-api.js"></script>
+<script src="/js/tools/image-generator-ai.js"></script>
 <script>
     const t = window.toolTranslations || {};
-    let geminiAPI;
     let examples = null;
 
     window.addEventListener('DOMContentLoaded', async () => {
-        const apiKey = GeminiStorage.get();
-        if (apiKey) {
-            geminiAPI = new GeminiAPI(apiKey);
-            showTool();
-        }
         await loadExamples();
     });
 
@@ -204,97 +199,6 @@
     function usePrompt(prompt) {
         document.getElementById('promptText').value = prompt;
         document.getElementById('promptText').focus();
-    }
-
-    async function saveApiKey() {
-        const apiKey = document.getElementById('apiKeyInput').value.trim();
-        if (!apiKey) return alert(t.pleaseEnterApiKey || '❌ Please enter an API key');
-
-        const btn = event.target;
-        btn.disabled = true;
-        btn.textContent = '⏳ Validating...';
-
-        try {
-            geminiAPI = new GeminiAPI(apiKey);
-            const valid = await geminiAPI.validateKey();
-            if (valid) {
-                GeminiStorage.save(apiKey);
-                showTool();
-                alert(t.apiKeySaved || '✅ API Key saved successfully');
-            } else {
-                alert(t.invalidApiKey || '❌ Invalid API Key');
-            }
-        } catch (error) {
-            alert(`${t.generationError || '❌ Error'}: ${error.message}`);
-        } finally {
-            btn.disabled = false;
-            btn.textContent = t.saveButton || '💾 Save';
-        }
-    }
-
-    function removeApiKey() {
-        if (confirm(t.removeApiKeyConfirm || 'Remove API key?')) {
-            GeminiStorage.remove();
-            location.reload();
-        }
-    }
-
-    function showTool() {
-        document.getElementById('apiKeySetup').classList.add('d-none');
-        document.getElementById('apiKeyManage').classList.remove('d-none');
-        document.getElementById('toolSection').classList.remove('d-none');
-    }
-
-    async function generateImage() {
-        const prompt = document.getElementById('promptText').value.trim();
-        const btn = document.getElementById('generateBtn');
-
-        if (!prompt) return alert(t.pleaseEnterDescription || '❌ Please enter a description');
-
-        btn.disabled = true;
-        btn.textContent = '⏳ Generating... (may take 10-30 seconds)';
-
-        try {
-            const result = await geminiAPI.editImage(prompt, null, null);
-            
-            if (result.image) {
-                const imgElement = document.getElementById('generatedImg');
-                imgElement.src = `data:image/png;base64,${result.image}`;
-                document.getElementById('resultSection').classList.remove('d-none');
-            }
-            
-            if (result.text) {
-                document.getElementById('textResponse').innerHTML = result.text;
-                document.getElementById('textResponse').classList.remove('d-none');
-            }
-            
-            if (!result.image && !result.text) {
-                alert(t.noImageGenerated || '❌ No image generated. Please try again with a different prompt.');
-            }
-        } catch (error) {
-            if (error.message.includes('quota')) {
-                alert(t.quotaExceeded || '❌ Quota exceeded. Nano Banana requires a paid API key. Please check your billing at https://aistudio.google.com/');
-            } else {
-                alert(`${t.generationError || '❌ Error'}: ${error.message}`);
-            }
-        } finally {
-            btn.disabled = false;
-            btn.textContent = t.generateButton || '✨ Generate Image';
-        }
-    }
-
-    function downloadImage() {
-        const img = document.getElementById('generatedImg');
-        const a = document.createElement('a');
-        a.href = img.src;
-        a.download = `generated-image-${new Date().toISOString().slice(0,10)}.png`;
-        a.click();
-    }
-
-    function resetTool() {
-        document.getElementById('promptText').value = '';
-        document.getElementById('resultSection').classList.add('d-none');
-        document.getElementById('textResponse').classList.add('d-none');
     }
 </script>
 

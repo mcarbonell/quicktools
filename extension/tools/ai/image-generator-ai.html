@@ -8,10 +8,14 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 1rem; background: #f8f9fa; }
         .container { max-width: 800px; margin: 0 auto; }
-        h1 { font-size: 1.5rem; margin-bottom: 1rem; }
-        .api-key-setup { background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
-        .api-key-setup h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-        .api-key-setup ol { margin: 0.5rem 0; padding-left: 1.5rem; font-size: 0.875rem; }
+        h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .text-muted { color: #6c757d; font-size: 0.875rem; margin-bottom: 1rem; display: block; }
+        .alert { padding: 0.75rem; border-radius: 4px; margin-bottom: 1rem; }
+        .alert-warning { background: #fff3cd; border: 1px solid #ffc107; }
+        .alert-success { background: #d4edda; border: 1px solid #c3e6cb; }
+        .alert-info { background: #d1ecf1; border: 1px solid #bee5eb; }
+        .alert h5 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .alert ol { margin: 0.5rem 0; padding-left: 1.5rem; font-size: 0.875rem; }
         .input-group { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
         .input-group input, .input-group textarea { flex: 1; padding: 0.5rem; border: 1px solid #dee2e6; border-radius: 4px; font-family: inherit; }
         textarea { min-height: 100px; resize: vertical; width: 100%; }
@@ -21,28 +25,25 @@
         .btn-secondary { background: #6c757d; color: white; }
         .btn:disabled { opacity: 0.5; cursor: not-allowed; }
         .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.8rem; }
-        .alert { padding: 0.75rem; border-radius: 4px; margin-bottom: 1rem; }
-        .alert-success { background: #d4edda; border: 1px solid #c3e6cb; }
-        .alert-info { background: #d1ecf1; border: 1px solid #bee5eb; }
         .d-none { display: none !important; }
         .d-flex { display: flex; }
-        .justify-between { justify-content: space-between; }
-        .align-center { align-items: center; }
+        .justify-content-between { justify-content: space-between; }
+        .align-items-center { align-items: center; }
         .mb-3 { margin-bottom: 1rem; }
-        .text-muted { color: #6c757d; font-size: 0.875rem; }
+        .mt-4 { margin-top: 1.5rem; }
         label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
-        .result-container { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; margin-top: 1rem; }
-        .result-container img { max-width: 100%; height: auto; border-radius: 4px; display: block; margin-bottom: 1rem; }
-        .actions { display: flex; gap: 0.5rem; margin-top: 1rem; }
+        small { color: #6c757d; font-size: 0.875rem; }
+        img { max-width: 100%; height: auto; border-radius: 4px; display: block; margin-bottom: 1rem; border: 1px solid #dee2e6; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🎨 AI Image Generator</h1>
-        
-        <div id="apiKeySetup" class="api-key-setup">
-            <h3>⚙️ Configuración Inicial</h3>
-            <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Necesitas una API key <strong>de pago</strong> de Google AI Studio (Nano Banana requiere tier de pago):</p>
+        <span class="text-muted">Generate images from text using Gemini 2.5 Flash Image (Nano Banana).</span>
+
+        <div id="apiKeySetup" class="alert alert-warning">
+            <h5>⚙️ Configuración Inicial</h5>
+            <p>Necesitas una API key <strong>de pago</strong> de Google AI Studio (Nano Banana requiere tier de pago):</p>
             <ol>
                 <li>Visita <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
                 <li>Crea una API key con <strong>facturación de pago habilitada</strong></li>
@@ -52,11 +53,11 @@
                 <input type="password" id="apiKeyInput" placeholder="AIzaSy...">
                 <button class="btn btn-primary" id="saveKeyBtn">💾 Guardar</button>
             </div>
-            <small style="color: #6c757d;">🔒 Se guarda en tu navegador | 💰 ~$0.0125 por imagen</small>
+            <small>🔒 Se guarda en tu navegador | 💰 ~$0.0125 por imagen</small>
         </div>
 
         <div id="apiKeyManage" class="alert alert-success d-none">
-            <div class="d-flex justify-between align-center">
+            <div class="d-flex justify-content-between align-items-center">
                 <span>✅ API Key configurada</span>
                 <button class="btn btn-danger btn-sm" id="removeKeyBtn">🗑️ Eliminar</button>
             </div>
@@ -71,16 +72,16 @@
             <div class="mb-3">
                 <label>Describe la imagen que quieres generar:</label>
                 <textarea id="promptText" placeholder="Ejemplo: Una ciudad futurista al atardecer con autos voladores y luces de neón, estilo cyberpunk, muy detallado"></textarea>
-                <small class="text-muted">Sé específico y detallado para mejores resultados</small>
+                <small>Sé específico y detallado para mejores resultados</small>
             </div>
 
             <button class="btn btn-primary" id="generateBtn">✨ Generar Imagen</button>
 
-            <div id="resultSection" class="result-container d-none">
+            <div id="resultSection" class="mt-4 d-none">
                 <div id="textResponse" class="alert alert-success d-none"></div>
                 <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Imagen Generada:</h3>
                 <img id="generatedImg" alt="Generated image">
-                <div class="actions">
+                <div style="display: flex; gap: 0.5rem;">
                     <button class="btn btn-primary" id="downloadBtn">💾 Descargar Imagen</button>
                     <button class="btn btn-secondary" id="resetBtn">🔄 Generar Otra</button>
                 </div>
