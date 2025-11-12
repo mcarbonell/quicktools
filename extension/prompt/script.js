@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { marked } from "https://cdn.jsdelivr.net/npm/marked@13.0.3/lib/marked.esm.js";
-import DOMPurify from "https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.es.mjs";
+// Removed external imports - using simple text rendering for extension
+// marked and DOMPurify cause CSP issues in extensions
 
 const NUMBER_FORMAT_LANGUAGE = "en-US";
 const SYSTEM_PROMPT = "You are a helpful and friendly assistant.";
@@ -72,7 +72,8 @@ const SYSTEM_PROMPT = "You are a helpful and friendly assistant.";
         const newChunk = chunk.startsWith(previousChunk)
             ? chunk.slice(previousChunk.length) : chunk;
         result += newChunk;
-        p.innerHTML = DOMPurify.sanitize(marked.parse(result));
+        // Simple text rendering (no markdown parsing in extension)
+        p.textContent = result;
         rawResponse.innerText = result;
         previousChunk = chunk;
       }

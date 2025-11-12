@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome AI APIs Test - FastTools</title>
+    <link rel="stylesheet" href="css/style-v2.css">
+    <style>
+        .container { max-width: 1200px; margin: 2rem auto; padding: 1rem; }
+        .api-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 2rem; }
+        .api-card { border: 2px solid #ddd; border-radius: 12px; padding: 1.5rem; background: white; }
+        .api-card.available { border-color: #10b981; background: #f0fdf4; }
+        .api-card.unavailable { border-color: #ef4444; background: #fef2f2; }
+        .api-card.testing { border-color: #f59e0b; background: #fffbeb; }
+        .api-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .api-title { font-size: 1.25rem; font-weight: 700; }
+        .status-badge { padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+        .status-badge.available { background: #10b981; color: white; }
+        .status-badge.unavailable { background: #ef4444; color: white; }
+        .status-badge.testing { background: #f59e0b; color: white; }
+        .api-info { font-size: 0.875rem; color: #666; margin-bottom: 1rem; }
+        .test-area { margin-top: 1rem; }
+        .test-input { width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 0.5rem; }
+        .test-button { width: 100%; padding: 0.75rem; background: #13a4ec; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
+        .test-button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .test-result { margin-top: 0.5rem; padding: 0.75rem; background: #f9f9f9; border-radius: 6px; font-size: 0.875rem; max-height: 200px; overflow-y: auto; }
+        .chrome-version { background: #e0f2fe; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; }
+        .legend { display: flex; gap: 1rem; margin-bottom: 1rem; font-size: 0.875rem; }
+        .legend-item { display: flex; align-items: center; gap: 0.5rem; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Chrome AI APIs Test Suite</h1>
+        <p>Test all available Chrome Built-in AI APIs powered by Gemini Nano</p>
+        
+        <div class="chrome-version">
+            <strong>Your Chrome Version:</strong> <span id="chrome-version">Detecting...</span><br>
+            <strong>User Agent:</strong> <span id="user-agent" style="font-size: 0.75rem;"></span>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #10b981;"></div>
+                <span>Available & Working</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #f59e0b;"></div>
+                <span>Testing...</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #ef4444;"></div>
+                <span>Not Available</span>
+            </div>
+        </div>
+
+        <div class="api-grid" id="api-grid"></div>
+    </div>
+
+    <script>
+        // Detect Chrome version
+        const userAgent = navigator.userAgent;
+        const chromeMatch = userAgent.match(/Chrome\/(\d+)/);
+        const chromeVersion = chromeMatch ? chromeMatch[1] : 'Unknown';
+        document.getElementById('chrome-version').textContent = chromeVersion;
+        document.getElementById('user-agent').textContent = userAgent;
+
+        const apis = [
+            {
+                id: 'prompt',
+                name: 'Prompt API',
+                description: 'General-purpose text generation and chat',
+                chrome: '138+',
+                status: 'origin-trial',
+                check: () => 'LanguageModel' in self,
+                test: async () => {
+                    const session = await LanguageModel.create();
+                    const result = await session.prompt('Say hello in 5 words');
+                    session.destroy();
+                    return result;
+                }
+            },
+            {
+                id: 'summarizer',
+                name: 'Summarizer API',
+                description: 'Summarize long texts automatically',
+                chrome: '138+',
+                status: 'available',
+                check: () => 'Summarizer' in self,
+                test: async () => {
+                    const text = 'Chrome now includes built-in AI capabilities powered by Gemini Nano. These APIs allow developers to add AI features to their web applications without requiring API keys or sending data to external servers. The AI runs entirely on-device, ensuring privacy and enabling offline functionality.';
+                    const summarizer = await Summarizer.create();
+                    const result = await summarizer.summarize(text);
+                    summarizer.destroy();
+                    return result;
+                }
+            },
+            {
+                id: 'writer',
+                name: 'Writer API',
+                description: 'Generate creative writing and content',
+                chrome: '138+',
+                status: 'origin-trial',
+                check: () => 'Writer' in self,
+                test: async () => {
+                    const writer = await Writer.create();
+                    const result = await writer.write('A short poem about coding');
+                    writer.destroy();
+                    return result;
+                }
+            },
+            {
+                id: 'rewriter',
+                name: 'Rewriter API',
+                description: 'Rewrite text in different styles',
+                chrome: '138+',
+                status: 'origin-trial',
+                check: () => 'Rewriter' in self,
+                test: async () => {
+                    const rewriter = await Rewriter.create();
+                    const result = await rewriter.rewrite('This is a test', { tone: 'formal' });
+                    rewriter.destroy();
+                    return result;
+                }
+            },
+            {
+                id: 'translator',
+                name: 'Translator API',
+                description: 'Translate text between languages',
+                chrome: '138+',
+                status: 'available',
+                check: () => 'Translator' in self,
+                test: async () => {
+                    const translator = await Translator.create({ sourceLanguage: 'en', targetLanguage: 'es' });
+                    const result = await translator.translate('Hello, how are you?');
+                    translator.destroy();
+                    return result;
+                }
+            },
+            {
+                id: 'detector',
+                name: 'Language Detector API',
+                description: 'Detect the language of text',
+                chrome: '138+',
+                status: 'available',
+                check: () => 'LanguageDetector' in self,
+                test: async () => {
+                    const detector = await LanguageDetector.create();
+                    const results = await detector.detect('Bonjour, comment allez-vous?');
+                    detector.destroy();
+                    return JSON.stringify(results, null, 2);
+                }
+            },
+            {
+                id: 'proofreader',
+                name: 'Proofreader API',
+                description: 'Check grammar and spelling',
+                chrome: '138+',
+                status: 'origin-trial',
+                check: () => 'Proofreader' in self,
+                test: async () => {
+                    const proofreader = await Proofreader.create();
+                    const result = await proofreader.proofread('This is a tets with erors');
+                    proofreader.destroy();
+                    return JSON.stringify(result, null, 2);
+                }
+            }
+        ];
+
+        function createAPICard(api) {
+            const card = document.createElement('div');
+            card.className = 'api-card';
+            card.id = `api-${api.id}`;
+            
+            const isAvailable = api.check();
+            card.classList.add(isAvailable ? 'available' : 'unavailable');
+            
+            card.innerHTML = `
+                <div class="api-header">
+                    <div class="api-title">${api.name}</div>
+                    <div class="status-badge ${isAvailable ? 'available' : 'unavailable'}">
+                        ${isAvailable ? '✓ Available' : '✗ Not Available'}
+                    </div>
+                </div>
+                <div class="api-info">
+                    ${api.description}<br>
+                    <strong>Chrome:</strong> ${api.chrome} | <strong>Status:</strong> ${api.status}
+                </div>
+                ${isAvailable ? `
+                    <div class="test-area">
+                        <button class="test-button" onclick="testAPI('${api.id}')">
+                            🧪 Test ${api.name}
+                        </button>
+                        <div class="test-result" id="result-${api.id}" style="display: none;"></div>
+                    </div>
+                ` : `
+                    <div style="padding: 0.75rem; background: #fee; border-radius: 6px; font-size: 0.875rem;">
+                        Not available in your Chrome version. Try Chrome ${api.chrome} or enable flags.
+                    </div>
+                `}
+            `;
+            
+            return card;
+        }
+
+        async function testAPI(apiId) {
+            const api = apis.find(a => a.id === apiId);
+            const card = document.getElementById(`api-${apiId}`);
+            const button = card.querySelector('.test-button');
+            const resultDiv = document.getElementById(`result-${apiId}`);
+            
+            card.classList.remove('available', 'unavailable');
+            card.classList.add('testing');
+            button.disabled = true;
+            button.textContent = '⏳ Testing...';
+            resultDiv.style.display = 'block';
+            resultDiv.textContent = 'Running test...';
+            
+            try {
+                const result = await api.test();
+                resultDiv.innerHTML = `<strong>✅ Success!</strong><br><br>${result}`;
+                card.classList.remove('testing');
+                card.classList.add('available');
+            } catch (error) {
+                resultDiv.innerHTML = `<strong>❌ Error:</strong><br><br>${error.message}`;
+                card.classList.remove('testing');
+                card.classList.add('unavailable');
+            } finally {
+                button.disabled = false;
+                button.textContent = `🧪 Test ${api.name}`;
+            }
+        }
+
+        // Render all API cards
+        const grid = document.getElementById('api-grid');
+        apis.forEach(api => {
+            grid.appendChild(createAPICard(api));
+        });
+
+        // Make testAPI global
+        window.testAPI = testAPI;
+    </script>
+</body>
+</html>

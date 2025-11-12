@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nano Chat - FastTools</title>
+    <link rel="stylesheet" href="css/style-v2.css">
+    <style>
+        .chat-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f9f9f9;
+        }
+        .message {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+        }
+        .message.user {
+            background: #13a4ec;
+            color: white;
+            margin-left: 20%;
+        }
+        .message.assistant {
+            background: white;
+            border: 1px solid #ddd;
+            margin-right: 20%;
+        }
+        .input-area {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .input-area textarea {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            resize: vertical;
+            min-height: 60px;
+        }
+        .input-area button {
+            padding: 0.75rem 1.5rem;
+            background: #13a4ec;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .input-area button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .stats {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: #666;
+        }
+        .error-banner {
+            background: #fee;
+            border: 1px solid #fcc;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            color: #c00;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h1>✨ Nano Chat</h1>
+        <p>Chat powered by Chrome's built-in Gemini Nano (no API key needed!)</p>
+        
+        <div id="error-banner" class="error-banner" style="display: none;"></div>
+        
+        <div class="stats" id="stats" style="display: none;">
+            <span>Tokens: <strong id="tokens-used">0</strong> / <strong id="tokens-max">0</strong></span>
+            <span>Temperature: <strong id="temperature">0</strong></span>
+            <span>Top-K: <strong id="topk">0</strong></span>
+        </div>
+        
+        <div class="chat-messages" id="messages"></div>
+        
+        <div class="input-area">
+            <textarea id="prompt-input" placeholder="Type your message..."></textarea>
+            <button id="send-btn">Send</button>
+        </div>
+        
+        <button id="reset-btn" style="margin-top: 1rem;">Reset Chat</button>
+    </div>
+
+    <script src="js/lib/prompt-api.js"></script>
+    <script>
+        const promptAPI = new PromptAPI();
+        const messagesDiv = document.getElementById('messages');
+        const promptInput = document.getElementById('prompt-input');
+        const sendBtn = document.getElementById('send-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const errorBanner = document.getElementById('error-banner');
+        const statsDiv = document.getElementById('stats');
+
+        async function init() {
+            const check = await promptAPI.checkAvailability();
+            
+            if (!check.available) {
+                errorBanner.style.display = 'block';
+                errorBanner.innerHTML = `
+                    <strong>Prompt API not available</strong><br>
+                    ${check.message}<br>
+                    <a href="https://goo.gle/chrome-ai-dev-preview-join" target="_blank">Join Early Preview Program</a>
+                `;
+                sendBtn.disabled = true;
+                return;
+            }
+
+            await promptAPI.createSession({
+                systemPrompt: 'You are a helpful and friendly assistant.'
+            });
+            
+            updateStats();
+            statsDiv.style.display = 'flex';
+        }
+
+        function addMessage(text, role) {
+            const msg = document.createElement('div');
+            msg.className = `message ${role}`;
+            msg.textContent = text;
+            messagesDiv.appendChild(msg);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const text = promptInput.value.trim();
+            if (!text) return;
+
+            addMessage(text, 'user');
+            promptInput.value = '';
+            sendBtn.disabled = true;
+
+            const assistantMsg = document.createElement('div');
+            assistantMsg.className = 'message assistant';
+            assistantMsg.textContent = 'Thinking...';
+            messagesDiv.appendChild(assistantMsg);
+
+            try {
+                let response = '';
+                for await (const chunk of promptAPI.promptStreaming(text)) {
+                    response += chunk;
+                    assistantMsg.textContent = response;
+                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                }
+                updateStats();
+            } catch (error) {
+                assistantMsg.textContent = `Error: ${error.message}`;
+                assistantMsg.style.background = '#fee';
+            } finally {
+                sendBtn.disabled = false;
+                promptInput.focus();
+            }
+        }
+
+        function updateStats() {
+            const stats = promptAPI.getStats();
+            if (!stats) return;
+
+            document.getElementById('tokens-used').textContent = stats.tokensUsed;
+            document.getElementById('tokens-max').textContent = stats.maxTokens;
+            document.getElementById('temperature').textContent = stats.temperature;
+            document.getElementById('topk').textContent = stats.topK;
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        
+        promptInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        resetBtn.addEventListener('click', () => {
+            promptAPI.destroy();
+            messagesDiv.innerHTML = '';
+            init();
+        });
+
+        init();
+    </script>
+</body>
+</html>
