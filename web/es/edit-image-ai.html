@@ -144,6 +144,98 @@
     </div>
 </div>
 
+<script src="/js/lib/gemini-api.js"></script>
+<script src="/js/lib/edit-image-ui.js"></script>
+<script>
+    let editImageUI;
+
+    window.addEventListener('DOMContentLoaded', async () => {
+        editImageUI = new EditImageUI({
+            storage: GeminiStorage,
+            translations: window.toolTranslations
+        });
+        await editImageUI.init();
+    });
+
+    async function saveApiKey() {
+        const apiKey = document.getElementById('apiKeyInput').value.trim();
+        if (!apiKey) return alert('❌ Please enter an API key');
+
+        const btn = event.target;
+        btn.disabled = true;
+        btn.textContent = '⏳ Validating...';
+
+        try {
+            const success = await editImageUI.saveApiKey(apiKey);
+            if (success) alert('✅ API Key saved successfully');
+            else alert('❌ Invalid API Key');
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '💾 Save';
+        }
+    }
+
+    function removeApiKey() {
+        if (confirm('Remove API key?')) editImageUI.removeApiKey();
+    }
+
+    async function handleImageUpload() {
+        const file = document.getElementById('imageInput').files[0];
+        if (!file) return;
+
+        try {
+            const dataUrl = await editImageUI.loadImage(file);
+            document.getElementById('previewImg').src = dataUrl;
+            document.getElementById('imagePreview').classList.remove('d-none');
+            document.getElementById('editBtn').disabled = false;
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        }
+    }
+
+    async function editImage() {
+        const instruction = document.getElementById('instructionText').value;
+        const btn = document.getElementById('editBtn');
+
+        if (!instruction.trim()) return alert('❌ Please enter editing instructions');
+
+        btn.disabled = true;
+        btn.textContent = '⏳ Analyzing...';
+
+        try {
+            const suggestions = await editImageUI.editImage(instruction);
+            const formatted = editImageUI.formatText(suggestions);
+            document.getElementById('suggestionsOutput').innerHTML = formatted;
+            document.getElementById('resultSection').classList.remove('d-none');
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '✨ Analyze & Suggest Edits';
+        }
+    }
+
+    function copyResult() {
+        const text = document.getElementById('suggestionsOutput').innerText;
+        navigator.clipboard.writeText(text).then(() => alert('✅ Copied to clipboard'));
+    }
+
+    function downloadResult() {
+        const text = document.getElementById('suggestionsOutput').innerText;
+        const blob = new Blob([text], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `image-edit-suggestions-${new Date().toISOString().slice(0,10)}.txt`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    document.getElementById('imageInput').addEventListener('change', handleImageUpload);
+</script>
+
     </div>
 
     

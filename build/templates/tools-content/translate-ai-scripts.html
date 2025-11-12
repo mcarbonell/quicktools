@@ -1,0 +1,103 @@
+<script src="/js/lib/gemini-api.js"></script>
+<script src="/js/lib/translate-ui.js"></script>
+<script>
+    let translateUI;
+
+    window.addEventListener('DOMContentLoaded', async () => {
+        translateUI = new TranslateUI({
+            storage: GeminiStorage,
+            translations: window.toolTranslations,
+            userLanguage: navigator.language.split('-')[0] || 'en'
+        });
+        await translateUI.init();
+        document.getElementById('targetLangSelect').value = translateUI.userLanguage;
+    });
+
+    async function saveApiKey() {
+        const apiKey = document.getElementById('apiKeyInput').value.trim();
+        if (!apiKey) return alert('❌ Please enter an API key');
+
+        const btn = event.target;
+        btn.disabled = true;
+        btn.textContent = '⏳ Validating...';
+
+        try {
+            const success = await translateUI.saveApiKey(apiKey);
+            if (success) alert('✅ API Key saved successfully');
+            else alert('❌ Invalid API Key');
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '💾 Save';
+        }
+    }
+
+    function removeApiKey() {
+        if (confirm('Remove API key?')) translateUI.removeApiKey();
+    }
+
+    async function detectLanguage() {
+        const text = document.getElementById('inputText').value;
+        if (!text.trim()) return alert('❌ Please enter text first');
+
+        const span = document.getElementById('detectedLang');
+        span.textContent = '⏳ Detecting...';
+
+        try {
+            const lang = await translateUI.detectLanguage(text);
+            const langNames = { en: 'English', es: 'Spanish', fr: 'French', de: 'German', it: 'Italian', pt: 'Portuguese', ja: 'Japanese', zh: 'Chinese', ru: 'Russian', ar: 'Arabic' };
+            span.textContent = `Detected: ${langNames[lang] || lang}`;
+        } catch (error) {
+            span.textContent = '❌ Detection failed';
+        }
+    }
+
+    async function translateText() {
+        const text = document.getElementById('inputText').value;
+        const targetLang = document.getElementById('targetLangSelect').value;
+        const btn = document.getElementById('translateBtn');
+
+        if (!text.trim()) return alert('❌ Please enter text to translate');
+
+        btn.disabled = true;
+        btn.textContent = '⏳ Translating...';
+
+        try {
+            const translation = await translateUI.translate(text, targetLang);
+            const formatted = translateUI.formatText(translation);
+            document.getElementById('translationOutput').innerHTML = formatted;
+            document.getElementById('resultActions').classList.remove('d-none');
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '🌐 Translate';
+        }
+    }
+
+    function copyResult() {
+        const text = document.getElementById('translationOutput').innerText;
+        navigator.clipboard.writeText(text).then(() => alert('✅ Copied to clipboard'));
+    }
+
+    function downloadResult() {
+        const text = document.getElementById('translationOutput').innerText;
+        const blob = new Blob([text], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `translation-${new Date().toISOString().slice(0,10)}.txt`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    function swapLanguages() {
+        const input = document.getElementById('inputText');
+        const output = document.getElementById('translationOutput');
+        const temp = input.value;
+        input.value = output.innerText;
+        output.innerHTML = '';
+        document.getElementById('resultActions').classList.add('d-none');
+    }
+</script>

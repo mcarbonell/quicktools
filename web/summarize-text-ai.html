@@ -137,6 +137,83 @@
     </div>
 </div>
 
+<script src="/js/lib/gemini-api.js"></script>
+<script src="/js/lib/summarize-ui.js"></script>
+<script>
+    let summarizeUI;
+
+    window.addEventListener('DOMContentLoaded', async () => {
+        summarizeUI = new SummarizeUI({
+            storage: GeminiStorage,
+            translations: window.toolTranslations
+        });
+        await summarizeUI.init();
+    });
+
+    async function saveApiKey() {
+        const apiKey = document.getElementById('apiKeyInput').value.trim();
+        if (!apiKey) return alert('❌ Please enter an API key');
+
+        const btn = event.target;
+        btn.disabled = true;
+        btn.textContent = '⏳ Validating...';
+
+        try {
+            const success = await summarizeUI.saveApiKey(apiKey);
+            if (success) alert('✅ API Key saved successfully');
+            else alert('❌ Invalid API Key');
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '💾 Save';
+        }
+    }
+
+    function removeApiKey() {
+        if (confirm('Remove API key?')) summarizeUI.removeApiKey();
+    }
+
+    async function summarizeText() {
+        const text = document.getElementById('inputText').value;
+        const length = document.getElementById('lengthSelect').value;
+        const btn = document.getElementById('summarizeBtn');
+
+        if (!text.trim()) return alert('❌ Please enter text to summarize');
+
+        btn.disabled = true;
+        btn.textContent = '⏳ Summarizing...';
+
+        try {
+            const summary = await summarizeUI.summarize(text, length);
+            const formatted = summarizeUI.formatText(summary);
+            document.getElementById('summaryOutput').innerHTML = formatted;
+            document.getElementById('resultSection').classList.remove('d-none');
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '✨ Summarize';
+        }
+    }
+
+    function copyResult() {
+        const text = document.getElementById('summaryOutput').innerText;
+        navigator.clipboard.writeText(text).then(() => alert('✅ Copied to clipboard'));
+    }
+
+    function downloadResult() {
+        const text = document.getElementById('summaryOutput').innerText;
+        const blob = new Blob([text], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `summary-${new Date().toISOString().slice(0,10)}.txt`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+</script>
+
     </div>
 
     

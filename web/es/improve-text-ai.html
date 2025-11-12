@@ -138,12 +138,165 @@
     </div>
 </div>
 
+<script src="/js/lib/gemini-api.js"></script>
+<script src="/js/lib/improve-text-ui.js"></script>
+<script>
+    let improveTextUI;
+
+    window.addEventListener('DOMContentLoaded', async () => {
+        improveTextUI = new ImproveTextUI({
+            storage: GeminiStorage,
+            translations: window.toolTranslations
+        });
+        await improveTextUI.init();
+    });
+
+    async function saveApiKey() {
+        const apiKey = document.getElementById('apiKeyInput').value.trim();
+        if (!apiKey) return alert('❌ Please enter an API key');
+
+        const btn = event.target;
+        btn.disabled = true;
+        btn.textContent = '⏳ Validating...';
+
+        try {
+            const success = await improveTextUI.saveApiKey(apiKey);
+            if (success) alert('✅ API Key saved successfully');
+            else alert('❌ Invalid API Key');
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '💾 Save';
+        }
+    }
+
+    function removeApiKey() {
+        if (confirm('Remove API key?')) improveTextUI.removeApiKey();
+    }
+
+    async function improveText() {
+        const text = document.getElementById('inputText').value;
+        const mode = document.getElementById('modeSelect').value;
+        const btn = document.getElementById('improveBtn');
+
+        if (!text.trim()) return alert('❌ Please enter text to improve');
+
+        btn.disabled = true;
+        btn.textContent = '⏳ Improving...';
+
+        try {
+            const improved = await improveTextUI.improve(text, mode);
+            const formatted = improveTextUI.formatText(improved);
+            document.getElementById('improvedOutput').innerHTML = formatted;
+            document.getElementById('resultSection').classList.remove('d-none');
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '✨ Improve Text';
+        }
+    }
+
+    function copyResult() {
+        const text = document.getElementById('improvedOutput').innerText;
+        navigator.clipboard.writeText(text).then(() => alert('✅ Copied to clipboard'));
+    }
+
+    function downloadResult() {
+        const text = document.getElementById('improvedOutput').innerText;
+        const blob = new Blob([text], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `improved-text-${new Date().toISOString().slice(0,10)}.txt`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+</script>
+
     </div>
 
     
     <script>
         window.toolTranslations = {"title":"Mejorar Texto con IA","description":"Mejora la redacción de tus textos con IA","inputLabel":"Texto a mejorar:","inputPlaceholder":"Pega tu texto aquí...","modeLabel":"Modo de mejora:","modeGrammar":"Corregir Gramática y Ortografía","modeClarity":"Mejorar Claridad","modeProfessional":"Hacer Profesional","modeCasual":"Hacer Casual","modeConcise":"Hacer Conciso","improveButton":"✨ Mejorar Texto","resultTitle":"Texto mejorado:","copyButton":"📋 Copiar","downloadButton":"💾 Descargar"};
     </script>
+<script src="/js/lib/gemini-api.js"></script>
+<script src="/js/lib/improve-text-ui.js"></script>
+<script>
+    let improveTextUI;
+
+    window.addEventListener('DOMContentLoaded', async () => {
+        improveTextUI = new ImproveTextUI({
+            storage: GeminiStorage,
+            translations: window.toolTranslations
+        });
+        await improveTextUI.init();
+    });
+
+    async function saveApiKey() {
+        const apiKey = document.getElementById('apiKeyInput').value.trim();
+        if (!apiKey) return alert('❌ Please enter an API key');
+
+        const btn = event.target;
+        btn.disabled = true;
+        btn.textContent = '⏳ Validating...';
+
+        try {
+            const success = await improveTextUI.saveApiKey(apiKey);
+            if (success) alert('✅ API Key saved successfully');
+            else alert('❌ Invalid API Key');
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '💾 Save';
+        }
+    }
+
+    function removeApiKey() {
+        if (confirm('Remove API key?')) improveTextUI.removeApiKey();
+    }
+
+    async function improveText() {
+        const text = document.getElementById('inputText').value;
+        const mode = document.getElementById('modeSelect').value;
+        const btn = document.getElementById('improveBtn');
+
+        if (!text.trim()) return alert('❌ Please enter text to improve');
+
+        btn.disabled = true;
+        btn.textContent = '⏳ Improving...';
+
+        try {
+            const improved = await improveTextUI.improve(text, mode);
+            const formatted = improveTextUI.formatText(improved);
+            document.getElementById('improvedOutput').innerHTML = formatted;
+            document.getElementById('resultSection').classList.remove('d-none');
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '✨ Improve Text';
+        }
+    }
+
+    function copyResult() {
+        const text = document.getElementById('improvedOutput').innerText;
+        navigator.clipboard.writeText(text).then(() => alert('✅ Copied to clipboard'));
+    }
+
+    function downloadResult() {
+        const text = document.getElementById('improvedOutput').innerText;
+        const blob = new Blob([text], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `improved-text-${new Date().toISOString().slice(0,10)}.txt`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/toast.js"></script>
