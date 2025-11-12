@@ -37,6 +37,17 @@
         ✨ Generate Image
     </button>
 
+    <div class="mt-4">
+        <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#examplesCollapse">
+            💡 Show Examples & Tips
+        </button>
+        <div class="collapse mt-3" id="examplesCollapse">
+            <div class="card card-body">
+                <div id="examplesContent"></div>
+            </div>
+        </div>
+    </div>
+
     <div id="resultSection" class="mt-4 d-none">
         <div id="textResponse" class="alert alert-success mb-3 d-none"></div>
         <h5>Generated Image:</h5>
@@ -51,6 +62,7 @@
 <script src="/js/lib/gemini-api.js"></script>
 <script>
     let geminiAPI;
+    let examples = null;
 
     window.addEventListener('DOMContentLoaded', async () => {
         const apiKey = GeminiStorage.get();
@@ -58,7 +70,53 @@
             geminiAPI = new GeminiAPI(apiKey);
             showTool();
         }
+        await loadExamples();
     });
+
+    async function loadExamples() {
+        try {
+            const lang = localStorage.getItem('language') || 'en';
+            const response = await fetch(`/i18n/tools/image-generator-ai-examples.json`);
+            const data = await response.json();
+            examples = data[lang];
+            renderExamples();
+        } catch (error) {
+            console.error('Error loading examples:', error);
+        }
+    }
+
+    function renderExamples() {
+        if (!examples) return;
+        
+        let html = `<h5>${examples.title}</h5>`;
+        
+        examples.examples.forEach(category => {
+            html += `
+                <div class="mb-3">
+                    <h6>${category.icon} ${category.category}</h6>
+                    <ul class="small">
+                        ${category.prompts.map(p => `<li><code class="text-muted" style="cursor:pointer" onclick="usePrompt('${p.replace(/'/g, "\\'")}')">"${p}"</code></li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        });
+        
+        html += `
+            <div class="alert alert-info mb-0">
+                <strong>💡 ${examples.tips.title}:</strong>
+                <ul class="mb-0 mt-2 small">
+                    ${examples.tips.items.map(tip => `<li>${tip}</li>`).join('')}
+                </ul>
+            </div>
+        `;
+        
+        document.getElementById('examplesContent').innerHTML = html;
+    }
+
+    function usePrompt(prompt) {
+        document.getElementById('promptText').value = prompt;
+        document.getElementById('promptText').focus();
+    }
 
     async function saveApiKey() {
         const apiKey = document.getElementById('apiKeyInput').value.trim();

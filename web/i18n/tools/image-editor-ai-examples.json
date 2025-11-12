@@ -1,0 +1,154 @@
+{
+  "en": {
+    "title": "What can you edit?",
+    "capabilities": [
+      {
+        "title": "Add & Remove Elements",
+        "icon": "➕",
+        "description": "Add or remove objects while matching the original style, lighting, and perspective",
+        "examples": [
+          "Add a small knitted wizard hat on my cat's head, make it look comfortable",
+          "Remove the person in the background and fill with matching scenery",
+          "Add sunglasses to the person in the photo, matching the lighting"
+        ]
+      },
+      {
+        "title": "Semantic Masking",
+        "icon": "🎯",
+        "description": "Edit specific parts of an image without modifying the rest",
+        "examples": [
+          "Change only the blue sofa to a vintage brown leather chesterfield, keep everything else",
+          "Replace the red car with a white Tesla Model 3, maintain the same angle and lighting",
+          "Change the wall color from white to sage green, keep furniture unchanged"
+        ]
+      },
+      {
+        "title": "Style Transfer",
+        "icon": "🎨",
+        "description": "Transform your image into different artistic styles",
+        "examples": [
+          "Transform this photo into Van Gogh's 'Starry Night' style with swirling brushstrokes",
+          "Convert this portrait to anime style with vibrant colors and bold outlines",
+          "Apply watercolor painting effect while preserving the composition"
+        ]
+      },
+      {
+        "title": "Background Changes",
+        "icon": "🌄",
+        "description": "Replace or modify backgrounds seamlessly",
+        "examples": [
+          "Change the background to a sunset beach with warm color grading",
+          "Replace the indoor background with a professional studio setup",
+          "Add a blurred bokeh effect to the background, keep subject sharp"
+        ]
+      },
+      {
+        "title": "Color Grading",
+        "icon": "🌈",
+        "description": "Adjust colors, mood, and atmosphere",
+        "examples": [
+          "Apply cinematic color grading with teal and orange tones",
+          "Make the image warmer with golden hour lighting",
+          "Convert to black and white with high contrast"
+        ]
+      },
+      {
+        "title": "Quality Enhancement",
+        "icon": "✨",
+        "description": "Improve image quality and details",
+        "examples": [
+          "Enhance the image quality and add more details",
+          "Improve lighting and make colors more vibrant",
+          "Sharpen the image and reduce noise"
+        ]
+      }
+    ],
+    "tips": {
+      "title": "Tips for better edits",
+      "items": [
+        "Be specific about what to change and what to keep",
+        "Describe the desired style, lighting, and mood",
+        "Mention if you want to preserve certain elements",
+        "Use 'only' or 'just' to limit changes to specific areas",
+        "Describe the final result you want to achieve"
+      ]
+    },
+    "note": "The AI automatically upscales images to higher resolution (up to 1024x1024 or larger depending on aspect ratio)"
+  },
+  "es": {
+    "title": "¿Qué puedes editar?",
+    "capabilities": [
+      {
+        "title": "Agregar y Quitar Elementos",
+        "icon": "➕",
+        "description": "Agrega o elimina objetos manteniendo el estilo, iluminación y perspectiva original",
+        "examples": [
+          "Añade un pequeño sombrero de mago tejido en la cabeza de mi gato, que se vea cómodo",
+          "Elimina la persona del fondo y rellena con paisaje similar",
+          "Añade gafas de sol a la persona en la foto, respetando la iluminación"
+        ]
+      },
+      {
+        "title": "Enmascaramiento Semántico",
+        "icon": "🎯",
+        "description": "Edita partes específicas de una imagen sin modificar el resto",
+        "examples": [
+          "Cambia solo el sofá azul por uno vintage de cuero marrón, mantén todo lo demás",
+          "Reemplaza el coche rojo por un Tesla Model 3 blanco, mantén el mismo ángulo e iluminación",
+          "Cambia el color de la pared de blanco a verde salvia, mantén los muebles sin cambios"
+        ]
+      },
+      {
+        "title": "Transferencia de Estilo",
+        "icon": "🎨",
+        "description": "Transforma tu imagen en diferentes estilos artísticos",
+        "examples": [
+          "Transforma esta foto al estilo 'Noche Estrellada' de Van Gogh con pinceladas arremolinadas",
+          "Convierte este retrato a estilo anime con colores vibrantes y contornos marcados",
+          "Aplica efecto de pintura en acuarela preservando la composición"
+        ]
+      },
+      {
+        "title": "Cambios de Fondo",
+        "icon": "🌄",
+        "description": "Reemplaza o modifica fondos de forma natural",
+        "examples": [
+          "Cambia el fondo a una playa al atardecer con tonos cálidos",
+          "Reemplaza el fondo interior por un estudio profesional",
+          "Añade efecto bokeh desenfocado al fondo, mantén el sujeto nítido"
+        ]
+      },
+      {
+        "title": "Corrección de Color",
+        "icon": "🌈",
+        "description": "Ajusta colores, ambiente y atmósfera",
+        "examples": [
+          "Aplica corrección de color cinematográfica con tonos azul verdoso y naranja",
+          "Haz la imagen más cálida con iluminación de hora dorada",
+          "Convierte a blanco y negro con alto contraste"
+        ]
+      },
+      {
+        "title": "Mejora de Calidad",
+        "icon": "✨",
+        "description": "Mejora la calidad y detalles de la imagen",
+        "examples": [
+          "Mejora la calidad de la imagen y añade más detalles",
+          "Mejora la iluminación y haz los colores más vibrantes",
+          "Aumenta la nitidez de la imagen y reduce el ruido"
+        ]
+      }
+    ],
+    "tips": {
+      "title": "Consejos para mejores ediciones",
+      "items": [
+        "Sé específico sobre qué cambiar y qué mantener",
+        "Describe el estilo, iluminación y ambiente deseado",
+        "Menciona si quieres preservar ciertos elementos",
+        "Usa 'solo' o 'únicamente' para limitar cambios a áreas específicas",
+        "Describe el resultado final que quieres lograr"
+      ]
+    },
+    "note": "La IA automáticamente aumenta la resolución de las imágenes (hasta 1024x1024 o más dependiendo de la relación de aspecto)"
+  }
+}

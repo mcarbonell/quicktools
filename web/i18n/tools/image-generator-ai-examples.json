@@ -1,0 +1,122 @@
+{
+  "en": {
+    "title": "What can you create?",
+    "examples": [
+      {
+        "category": "Logos & Branding",
+        "icon": "🎨",
+        "prompts": [
+          "Create a minimalist logo for a tech startup called 'CloudSync' with blue and white colors",
+          "Design a vintage coffee shop logo with warm brown tones and hand-drawn style",
+          "Generate a modern fitness brand logo with bold typography and energetic colors"
+        ]
+      },
+      {
+        "category": "Marketing & Social Media",
+        "icon": "📱",
+        "prompts": [
+          "Create an Instagram post background with abstract geometric shapes in pastel colors",
+          "Design a professional LinkedIn banner with corporate blue theme and modern elements",
+          "Generate a YouTube thumbnail with bold text 'TOP 10' and vibrant colors"
+        ]
+      },
+      {
+        "category": "Product Visualization",
+        "icon": "📦",
+        "prompts": [
+          "Create a product mockup of a smartphone on a clean white background with soft shadows",
+          "Design a cosmetic bottle on a marble surface with elegant lighting",
+          "Generate a book cover mockup with realistic shadows and reflections"
+        ]
+      },
+      {
+        "category": "Artistic Styles",
+        "icon": "🖼️",
+        "prompts": [
+          "Create a cyberpunk cityscape at night with neon lights and flying cars",
+          "Generate a watercolor painting of a peaceful mountain landscape at sunset",
+          "Design an anime-style character portrait with vibrant colors and detailed features"
+        ]
+      },
+      {
+        "category": "Illustrations",
+        "icon": "✏️",
+        "prompts": [
+          "Create a cute cartoon mascot for a children's app, friendly and colorful",
+          "Generate a technical diagram showing cloud computing architecture with icons",
+          "Design an infographic about healthy eating with icons and illustrations"
+        ]
+      }
+    ],
+    "tips": {
+      "title": "Tips for better results",
+      "items": [
+        "Be specific about style, colors, and mood",
+        "Mention lighting conditions (soft, dramatic, natural)",
+        "Specify composition (centered, rule of thirds, close-up)",
+        "Include quality keywords (high detail, professional, 4K)",
+        "Describe the atmosphere or emotion you want"
+      ]
+    }
+  },
+  "es": {
+    "title": "¿Qué puedes crear?",
+    "examples": [
+      {
+        "category": "Logos y Marca",
+        "icon": "🎨",
+        "prompts": [
+          "Crea un logo minimalista para una startup tecnológica llamada 'CloudSync' con colores azul y blanco",
+          "Diseña un logo vintage para una cafetería con tonos marrones cálidos y estilo dibujado a mano",
+          "Genera un logo moderno para una marca de fitness con tipografía audaz y colores energéticos"
+        ]
+      },
+      {
+        "category": "Marketing y Redes Sociales",
+        "icon": "📱",
+        "prompts": [
+          "Crea un fondo para post de Instagram con formas geométricas abstractas en colores pastel",
+          "Diseña un banner profesional para LinkedIn con tema azul corporativo y elementos modernos",
+          "Genera una miniatura de YouTube con texto en negrita 'TOP 10' y colores vibrantes"
+        ]
+      },
+      {
+        "category": "Visualización de Productos",
+        "icon": "📦",
+        "prompts": [
+          "Crea un mockup de producto de un smartphone sobre fondo blanco limpio con sombras suaves",
+          "Diseña un frasco de cosmético sobre superficie de mármol con iluminación elegante",
+          "Genera un mockup de portada de libro con sombras y reflejos realistas"
+        ]
+      },
+      {
+        "category": "Estilos Artísticos",
+        "icon": "🖼️",
+        "prompts": [
+          "Crea un paisaje urbano cyberpunk de noche con luces de neón y coches voladores",
+          "Genera una pintura en acuarela de un paisaje montañoso pacífico al atardecer",
+          "Diseña un retrato de personaje estilo anime con colores vibrantes y detalles elaborados"
+        ]
+      },
+      {
+        "category": "Ilustraciones",
+        "icon": "✏️",
+        "prompts": [
+          "Crea una mascota de dibujos animados linda para una app infantil, amigable y colorida",
+          "Genera un diagrama técnico mostrando arquitectura de computación en la nube con iconos",
+          "Diseña una infografía sobre alimentación saludable con iconos e ilustraciones"
+        ]
+      }
+    ],
+    "tips": {
+      "title": "Consejos para mejores resultados",
+      "items": [
+        "Sé específico sobre estilo, colores y ambiente",
+        "Menciona condiciones de iluminación (suave, dramática, natural)",
+        "Especifica la composición (centrado, regla de tercios, primer plano)",
+        "Incluye palabras clave de calidad (alto detalle, profesional, 4K)",
+        "Describe la atmósfera o emoción que deseas"
+      ]
+    }
+  }
+}

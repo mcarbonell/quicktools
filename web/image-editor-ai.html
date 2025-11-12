@@ -134,6 +134,17 @@
         ✨ Edit Image with AI
     </button>
 
+    <div class="mt-4">
+        <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#examplesCollapse">
+            💡 Show Capabilities & Tips
+        </button>
+        <div class="collapse mt-3" id="examplesCollapse">
+            <div class="card card-body">
+                <div id="examplesContent"></div>
+            </div>
+        </div>
+    </div>
+
     <div id="resultSection" class="mt-4 d-none">
         <div id="textResponse" class="alert alert-success mb-3 d-none"></div>
         <h5>Edited Image:</h5>
@@ -149,6 +160,7 @@
 <script>
     let geminiAPI;
     let currentImage = null;
+    let examples = null;
 
     window.addEventListener('DOMContentLoaded', async () => {
         const apiKey = GeminiStorage.get();
@@ -156,7 +168,57 @@
             geminiAPI = new GeminiAPI(apiKey);
             showTool();
         }
+        await loadExamples();
     });
+
+    async function loadExamples() {
+        try {
+            const lang = localStorage.getItem('language') || 'en';
+            const response = await fetch(`/i18n/tools/image-editor-ai-examples.json`);
+            const data = await response.json();
+            examples = data[lang];
+            renderExamples();
+        } catch (error) {
+            console.error('Error loading examples:', error);
+        }
+    }
+
+    function renderExamples() {
+        if (!examples) return;
+        
+        let html = `<h5>${examples.title}</h5>`;
+        
+        examples.capabilities.forEach(cap => {
+            html += `
+                <div class="mb-3">
+                    <h6>${cap.icon} ${cap.title}</h6>
+                    <p class="small text-muted">${cap.description}</p>
+                    <ul class="small">
+                        ${cap.examples.map(ex => `<li><code class="text-muted" style="cursor:pointer" onclick="useInstruction('${ex.replace(/'/g, "\\'")}')">"${ex}"</code></li>`).join('')}
+                    </ul>
+                </div>
+            `;
+        });
+        
+        html += `
+            <div class="alert alert-warning mb-2">
+                <strong>✨ ${examples.note}</strong>
+            </div>
+            <div class="alert alert-info mb-0">
+                <strong>💡 ${examples.tips.title}:</strong>
+                <ul class="mb-0 mt-2 small">
+                    ${examples.tips.items.map(tip => `<li>${tip}</li>`).join('')}
+                </ul>
+            </div>
+        `;
+        
+        document.getElementById('examplesContent').innerHTML = html;
+    }
+
+    function useInstruction(instruction) {
+        document.getElementById('instructionText').value = instruction;
+        document.getElementById('instructionText').focus();
+    }
 
     async function saveApiKey() {
         const apiKey = document.getElementById('apiKeyInput').value.trim();
