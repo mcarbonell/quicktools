@@ -7,7 +7,7 @@
 
 > **Herramientas online rápidas, seguras y sin registro. Todo se procesa en tu navegador.**
 
-FastTools es una suite de 33 utilidades web que funcionan completamente del lado del cliente, sin necesidad de subir archivos a servidores. Privacidad total, acceso instantáneo y compatible con dispositivos móviles.
+FastTools es una suite de 43 herramientas online que funcionan completamente del lado del cliente, sin necesidad de subir archivos a servidores. Privacidad total, acceso instantáneo y compatible con dispositivos móviles.
 
 ## ✨ Características Principales
 
@@ -17,9 +17,11 @@ FastTools es una suite de 33 utilidades web que funcionan completamente del lado
 - 🎯 **SEO Optimizado**: Cada herramienta tiene su propia página optimizada + Schema.org JSON-LD
 - 📂 **Categorías por Perfil**: Navegación optimizada para desarrolladores, diseñadores, escritores, etc.
 - 💰 **Gratis con Publicidad**: Modelo sostenible con anuncios no intrusivos
-- 🌐 **Offline Ready**: PWA con Service Worker v3.0.3
+- 🌐 **Offline Ready**: PWA con Service Worker v3.0.35
+- 🌍 **Bilingüe**: Soporte completo EN/ES con i18n
+- 🤖 **IA Integrada**: 6 herramientas con Google Gemini y Nano Banana
 
-## 🛠️ Herramientas Disponibles (33)
+## 🛠️ Herramientas Disponibles
 
 ### 🖼️ Imagen (7 herramientas)
 - **Redimensionar imagen** - Cambia el tamaño manteniendo proporción
@@ -30,13 +32,15 @@ FastTools es una suite de 33 utilidades web que funcionan completamente del lado
 - **Visor EXIF** - Visualiza y limpia metadatos
 - **Imagen a PDF** - Convierte imágenes a PDF
 
-### 📁 Archivos (6 herramientas)
+### 📁 Archivos (4 herramientas)
 - **Extraer texto de PDF** - OCR ligero con PDF.js
 - **Unir PDFs** - Combina múltiples PDFs
 - **Dividir PDF** - Extrae páginas específicas
 - **Comprimir PDF** - Reduce tamaño de PDF
+
+### 🔄 Conversores (2 herramientas)
 - **PDF a Imagen** - Convierte páginas a JPG/PNG
-- **Texto a PDF** - Genera PDF desde texto
+- **Imagen a PDF** - Convierte imágenes a PDF
 
 ### 📊 Datos (5 herramientas)
 - **Formatear JSON** - Validar, formatear y minificar
@@ -60,24 +64,36 @@ FastTools es una suite de 33 utilidades web que funcionan completamente del lado
 - **Selector de color** - Conversor HEX ↔ RGB ↔ HSL
 - **Cronómetro/Temporizador** - Herramienta de tiempo
 
-### 🤖 IA (5 herramientas)
-- **Chat con IA** - Conversa con Google Gemini
+### 🤖 IA (6 herramientas)
+- **Chat con IA** - Conversa con Google Gemini 2.0 Flash
 - **Resumir Texto con IA** - Resume textos largos automáticamente
 - **Mejorar Texto con IA** - Mejora gramática y estilo
 - **Chat con PDF** - Haz preguntas sobre tus PDFs
-- **Editar Imagen con IA** - Edita imágenes con instrucciones de texto
+- **Generador de Imágenes IA** - Genera imágenes con Gemini 2.5 Flash Image (Nano Banana)
+- **Editor de Imágenes IA** - Edita imágenes con instrucciones de texto (Nano Banana)
+
+### 🔍 SEO (8 herramientas)
+- **Analizador de Meta Tags** - Extrae y valida meta tags
+- **Verificador de Estructura de Encabezados** - Valida jerarquía H1-H6
+- **Validador de Robots.txt** - Valida archivos robots.txt
+- **Validador de Sitemap** - Verifica estructura de sitemap
+- **Detector de Enlaces Rotos** - Encuentra enlaces rotos (extensión)
+- **Vista Previa Open Graph** - Preview de tarjetas sociales
+- **Validador Schema.org** - Verifica datos estructurados
+- **Calculadora de Puntuación SEO** - Calcula puntuación SEO de página
 
 ## 📂 Navegación por Categorías
 
 FastTools organiza las herramientas por perfil de usuario:
 
 - **💻 Desarrolladores** (10 herramientas): JSON, CSV, YAML, XML, TOML, Base64, URL encoder, HTML encoder, Hash calculator, Diff
-- **🎨 Diseñadores** (8 herramientas): Redimensionar, convertir, recortar, comprimir imágenes, paletas de colores, EXIF, editar con IA
+- **🎨 Diseñadores** (8 herramientas): Redimensionar, convertir, recortar, comprimir imágenes, paletas de colores, EXIF, editor IA, generador IA
 - **✍️ Escritores** (6 herramientas): Limpiar texto, comparar, Lorem Ipsum, resumir con IA, mejorar con IA, chat IA
 - **📊 Analistas de Datos** (6 herramientas): JSON, CSV, YAML, XML, TOML, extraer texto de PDF
-- **📱 Marketing** (6 herramientas): QR, redimensionar imágenes, convertir, comprimir, paletas, chat IA
+- **📱 Marketers** (8 herramientas): QR, herramientas de imagen, paletas, chat IA, herramientas SEO
 - **⚡ Productividad** (8 herramientas): Cronómetro, contraseñas, QR, limpiar texto, PDFs (extraer, unir, dividir, comprimir)
-- **🤖 IA** (5 herramientas): Chat, resumir, mejorar texto, chat PDF, editar imágenes
+- **🤖 IA** (6 herramientas): Chat, resumir, mejorar texto, chat PDF, generador de imágenes, editor de imágenes
+- **🔍 SEO** (8 herramientas): Meta tags, encabezados, robots.txt, sitemap, enlaces rotos, Open Graph, Schema.org, puntuación SEO
 
 **URLs de categorías:**
 - `/developers.html` - Herramientas para desarrolladores
@@ -87,14 +103,15 @@ FastTools organiza las herramientas por perfil de usuario:
 - `/marketers.html` - Herramientas para marketing
 - `/productivity.html` - Herramientas de productividad
 - `/ai.html` - Herramientas con IA
+- `/seo.html` - Herramientas SEO
 
 ## 🚀 Empezar Localmente
 
 ### 🌐 Acceder a la Web (Para usuarios finales)
 ```bash
 # Clona el repositorio
-git clone https://github.com/tu-usuario/fasttools.git
-cd fasttools
+git clone https://github.com/mcarbonell/quicktools.git
+cd quicktools
 
 # Abre la web en tu navegador
 start web/index.html  # Windows
@@ -125,67 +142,82 @@ npx http-server -p 8000
 ## 🏗️ Arquitectura del Proyecto
 
 ```
-fasttools/                          # 📁 Raíz del proyecto
-├── web/                            # 🌐 Aplicación web (se despliega en producción)
-│   ├── index.html                  # Página principal con catálogo
-│   ├── manifest.json               # PWA Manifest
-│   ├── privacy.html                # Política de privacidad
-│   ├── sitemap.xml                 # Sitemap para SEO
-│   ├── tools/                      # 33 herramientas (URLs simplificadas)
-│   │   ├── image-resizer.html      # Ejemplo: /tools/image-resizer.html
-│   │   ├── json-formatter.html     # Ejemplo: /tools/json-formatter.html
-│   │   └── ...                     # (sin subcarpetas por categoría)
-│   ├── developers.html             # Página categoría Desarrolladores
-│   ├── designers.html              # Página categoría Diseñadores
-│   ├── writers.html                # Página categoría Escritores
-│   ├── data-analysts.html          # Página categoría Analistas
-│   ├── marketers.html              # Página categoría Marketing
-│   ├── productivity.html           # Página categoría Productividad
-│   ├── ai.html                     # Página categoría IA
-│   ├── 404.html                    # Página 404 personalizada
-│   ├── js/                         # JavaScript
-│   │   ├── main.js                 # Funcionalidad común
-│   │   ├── service-worker.js       # Service Worker PWA
-│   │   ├── tools/                  # JS específico por herramienta
-│   │   ├── lib/                    # Librerías auxiliares
-│   │   └── vendor/                 # Dependencias externas
-│   ├── css/                        # Estilos
-│   │   ├── style.css               # Estilos personalizados
-│   │   └── *.css                   # Otros estilos
-│   ├── data/                       # Datos
-│   │   └── tools-index.json        # Catálogo de herramientas
-│   ├── icons/                      # Iconos PWA
-│   ├── templates/                  # Templates HTML
-│   ├── ads/                        # Configuración de anuncios
-│   └── generate-tools.js           # Script de generación (build)
-├── extension/                      # 🧩 Extensión de navegador
+quicktools/                         # 📁 Raíz del proyecto
+├── build/                          # 🏗️ Build configuration (NOT deployed)
+│   ├── data/
+│   │   └── fasttools-data.json     # Single source of truth
+│   ├── templates/                  # HTML templates
+│   │   ├── base.html
+│   │   ├── category-base.html
+│   │   ├── index-base.html
+│   │   └── tools-content/          # 115+ tool content files
+│   ├── scripts/                    # Build scripts
+│   │   ├── generate-site.js
+│   │   ├── generate-category-pages.js
+│   │   ├── build-extension.js
+│   │   ├── bump-version.js
+│   │   └── clean-build.js
+│   └── shared/                     # Shared JS files
+│       ├── gemini-api.js           # Gemini API client
+│       ├── chat-ai.js              # Chat functionality
+│       ├── image-generator-ai.js   # Image generator
+│       └── image-editor-ai.js      # Image editor
+├── web/                            # 🌐 Production web app (deployed)
+│   ├── index.html                  # Homepage (EN)
+│   ├── es/                         # Spanish versions
+│   │   ├── index.html
+│   │   └── *.html                  # 43 tool pages (ES)
+│   ├── *.html                      # 43 tool pages (EN) - root level
+│   ├── developers.html             # Category pages (8 total)
+│   ├── 404.html                    # Custom 404 page
+│   ├── privacy.html                # Privacy policy
+│   ├── manifest.json               # PWA manifest
+│   ├── sitemap.xml                 # SEO sitemap
+│   ├── robots.txt                  # Search engine directives
+│   ├── sw.js                       # Service Worker (root)
+│   ├── css/
+│   │   ├── style-v2.css            # Main styles
+│   │   └── *.css
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── service-worker.js
+│   │   ├── lib/                    # Shared libraries
+│   │   │   └── gemini-api.js       # Synced from build/shared/
+│   │   ├── tools/                  # Tool-specific JS
+│   │   │   ├── chat-ai.js          # Synced from build/shared/
+│   │   │   ├── image-generator-ai.js
+│   │   │   └── image-editor-ai.js
+│   │   └── vendor/                 # Third-party libraries
+│   ├── i18n/                       # Translations (EN/ES)
+│   │   ├── en.json
+│   │   ├── es.json
+│   │   └── tools/                  # Tool-specific translations
+│   └── icons/                      # PWA icons
+├── extension/                      # 🧩 Browser extension
 │   ├── manifest.json               # Extension Manifest V3
-│   ├── background/                 # Service Worker de extensión
-│   ├── content/                    # Content Scripts
-│   ├── popup/                      # Ventana emergente
-│   ├── options/                    # Página de opciones
-│   ├── newtab/                     # Nueva pestaña personalizada
-│   └── icons/                      # Iconos de extensión
-├── tests/                          # 🧪 Tests y validación
-│   ├── *.test.js                   # Tests Node.js
-│   ├── run-all-tests.js            # Runner de tests
-│   ├── pwa-validation.js           # Validación PWA
-│   └── web-tests.html              # Tests en navegador
-├── local_docs/                     # 📚 Documentación interna
-│   ├── PROYECTO_QUICKTOOLS.md      # Documentación del proyecto
-│   ├── ROADMAP_QUICKTOOLS.md       # Roadmap
-│   ├── ANALISIS_TECNICO.md         # Análisis técnico
-│   └── *.md                        # Otros documentos
-├── tools_backup/                   # 💾 Backup de herramientas
-├── web_design/                     # 🎨 Mockups y diseños
-├── scripts/                        # 🛠️ Scripts de desarrollo
-│   ├── create-icons.js             # Generación de iconos
-│   ├── create-pwa-icons.js         # Iconos PWA
-│   ├── extract-content.js          # Extracción de contenido
-│   └── generate-tools.js           # Generación automática
-├── package.json                    # Configuración Node.js
-├── index.html                      # Redirect a web/
-└── sw.js                          # Service Worker PWA (raíz)
+│   ├── background/
+│   ├── content/
+│   ├── popup/
+│   ├── options/
+│   ├── newtab/
+│   ├── shared/                     # Shared code
+│   │   └── gemini-api.js           # Synced from build/shared/
+│   ├── tools/
+│   │   └── ai/                     # AI tools
+│   │       ├── chat-ai.js          # Synced from build/shared/
+│   │       ├── image-generator-ai.js
+│   │       └── image-editor-ai.js
+│   ├── data/
+│   │   └── fasttools-data.json     # Synced from build/data/
+│   └── icons/
+├── scripts/                        # 🛠️ Build automation
+│   ├── sync-shared-files.js        # Sync build/shared/ to web/ and extension/
+│   └── build-extension-tools.js
+├── tests/                          # 🧪 Testing suite
+│   ├── automated-qa.js             # Main QA suite (99.25% pass rate)
+│   └── *.test.js
+├── .amazonq/rules/memory-bank/     # 🤖 AI context files
+└── package.json                    # npm scripts
 ```
 
 ### 📦 Estructura de Despliegue
@@ -194,29 +226,70 @@ fasttools/                          # 📁 Raíz del proyecto
 
 **Para desarrollo local:** Se puede acceder a todo el proyecto desde la raíz, permitiendo testing, desarrollo de la extensión y acceso a documentación.
 
+## 🏗️ Sistema de Build
+
+FastTools utiliza un sistema de build unificado con código compartido entre web y extensión:
+
+### 📦 Comandos de Build
+```bash
+# Build completo (web + extensión + sync)
+npm run build:local
+
+# Build solo web
+npm run build:web
+
+# Build solo extensión
+npm run build:extension
+
+# Sincronizar archivos compartidos
+npm run sync:shared
+
+# Limpiar archivos generados
+npm run clean
+```
+
+### 🔄 Arquitectura de Código Compartido
+
+**Fuente única de verdad:** `build/shared/` contiene archivos JS compartidos entre web y extensión:
+
+- `gemini-api.js` - Cliente API con detección automática de entorno
+- `chat-ai.js` - Funcionalidad de chat
+- `image-generator-ai.js` - Generador de imágenes IA
+- `image-editor-ai.js` - Editor de imágenes IA
+
+**Distribución automática:**
+- `build/shared/` → `web/js/lib/` + `web/js/tools/`
+- `build/shared/` → `extension/shared/` + `extension/tools/ai/`
+
+**Ventajas:**
+- ✅ Sin duplicación de código
+- ✅ Mantenimiento centralizado
+- ✅ Detección automática de entorno (web vs extensión)
+- ✅ CSP compliant (sin JS inline)
+
 ## 🧩 Extensión de Navegador
 
-FastTools también incluye una **extensión de navegador** con 30+ herramientas para productividad:
+FastTools incluye una **extensión de navegador** con funcionalidad completa:
 
 ### Funcionalidades
-- **Popup rápido** con herramientas más usadas
-- **Nueva pestaña personalizada** con acceso completo
+- **Herramientas IA** con API key compartida
+- **Herramientas SEO** sin limitaciones CORS
+- **Nueva pestaña personalizada**
 - **Context Menus** para texto seleccionado
-- **Background processing** con Service Workers
-- **Sincronización** con la versión web
+- **Código compartido** con versión web
 
 ### 📦 Instalación
 ```bash
 # Desarrollo: Carga manual desde carpeta extension/
-# Producción: Subir a Chrome Web Store / Firefox Add-ons
+# Chrome: chrome://extensions/ → Load unpacked
+# Firefox: about:debugging → Load Temporary Add-on
 ```
 
 ### 🎯 Características Técnicas
 - **Manifest V3** compatible
-- **Offline ready** con caching inteligente
-- **Cross-origin requests** permitidos
-- **Keyboard shortcuts** configurables
-- **Local storage** para preferencias
+- **Código compartido** con web (build/shared/)
+- **Sin limitaciones CORS** para herramientas SEO
+- **Storage unificado** (chrome.storage para extensión, localStorage para web)
 
 ## 🛠️ Tecnologías Utilizadas
 
@@ -228,6 +301,7 @@ FastTools también incluye una **extensión de navegador** con 30+ herramientas 
 | **Data Formats** | js-yaml, fast-xml-parser, @iarna/toml | - |
 | **Image Processing** | Canvas API | - |
 | **Build System** | Node.js scripts | - |
+| **AI Integration** | Google Gemini 2.0 Flash, 2.5 Flash Image | - |
 | **Extension** | Chrome Extension API | Manifest V3 |
 | **PWA** | Service Workers, Web App Manifest | - |
 
@@ -249,11 +323,12 @@ FastTools también incluye una **extensión de navegador** con 30+ herramientas 
 # Folder: /web (como root del sitio)
 ```
 
-### Netlify/Vercel (recomendado para web/)
+### Vercel (actual)
 ```bash
 # Conecta tu repositorio
-# Build command: (vacío para sitio estático)
+# Build command: null (archivos pre-generados)
 # Publish directory: web
+# Domain: fasttools.tools
 ```
 
 ### Extensión de Navegador (Chrome/Firefox)
@@ -298,11 +373,20 @@ open tests/web-tests.html     # macOS
 
 ## 📈 Roadmap
 
-- [ ] **v1.1** - Mejorar UX (toast notifications, progress indicators)
-- [ ] **v1.2** - Añadir tests unitarios y e2e
-- [ ] **v1.3** - Internacionalización (inglés, portugués)
-- [ ] **v2.0** - Progressive Web App (PWA)
-- [ ] **v2.1** - Sistema de feedback y votación de herramientas
+### Completado ✅
+- [x] **v1.0** - 43 herramientas online
+- [x] **v2.0** - Progressive Web App (PWA)
+- [x] **v2.1** - Internacionalización (EN/ES)
+- [x] **v2.2** - Sistema de categorías por perfil
+- [x] **v2.3** - Herramientas IA con Gemini
+- [x] **v2.4** - Herramientas SEO
+- [x] **v3.0** - Build system unificado
+
+### Próximos pasos 🚀
+- [ ] **v3.1** - Publicar extensión en Chrome Web Store
+- [ ] **v3.2** - Dark mode toggle
+- [ ] **v3.3** - Blog para SEO
+- [ ] **v3.4** - Más idiomas (PT, FR, DE, IT, RU, JA)
 
 ## 🤝 Contribuir
 
@@ -322,7 +406,7 @@ Las contribuciones son bienvenidas. Por favor:
 FastTools incluye una **suite completa de testing y validación PWA** para garantizar la calidad y funcionalidad:
 
 ### 📊 Estado de Testing
-- ✅ **27/27 tests pasando (100%)**
+- ✅ **99.25% tests pasando (134 tests)**
 - ✅ **Validación PWA completa**
 - ✅ **Tests Node.js y navegador**
 - ✅ **Documentación automática**

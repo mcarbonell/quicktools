@@ -3,466 +3,474 @@
 ## Programming Languages
 
 ### JavaScript (ES6+)
-- **Version:** ECMAScript 2015+
-- **Usage:** All client-side logic, build scripts, tests
-- **Features Used:**
-  - Arrow functions
-  - Async/await
-  - Promises
-  - Template literals
-  - Destructuring
-  - Modules (import/export)
-  - Classes
-  - Spread operator
-  - Optional chaining
-  - Nullish coalescing
+**Version:** ES2015+ (ES6, ES7, ES8 features)  
+**Usage:** 100% of application logic  
+**Style:** Vanilla JavaScript, no frameworks
+
+**Key Features Used:**
+- Arrow functions
+- Async/await
+- Promises
+- Template literals
+- Destructuring
+- Spread operator
+- Classes
+- Modules (import/export)
+- const/let (no var)
 
 ### HTML5
-- **Version:** HTML5
-- **Usage:** All page structure and markup
-- **Features Used:**
-  - Semantic elements (header, nav, main, footer, article, section)
-  - Canvas API for image processing
-  - File API for file handling
-  - LocalStorage/SessionStorage
-  - Web Workers
-  - Service Workers
+**Version:** HTML5  
+**Usage:** Semantic markup, modern APIs
+
+**Key Features Used:**
+- Semantic elements (header, nav, main, footer, article, section)
+- Canvas API (image processing)
+- File API (client-side file handling)
+- LocalStorage API
+- Service Worker API
+- Web App Manifest
 
 ### CSS3
-- **Version:** CSS3
-- **Usage:** All styling and animations
-- **Features Used:**
-  - CSS Grid
-  - Flexbox
-  - CSS Variables (custom properties)
-  - Animations and transitions
-  - Media queries
-  - Transform and filter effects
+**Version:** CSS3  
+**Usage:** Styling, animations, responsive design
 
-## Frontend Framework & Libraries
+**Key Features Used:**
+- CSS Variables (custom properties)
+- Flexbox
+- Grid
+- Media queries
+- Animations and transitions
+- Transform
+- Filter effects
+
+## Frontend Framework
 
 ### Bootstrap 5.3.2
-- **Purpose:** UI framework for responsive design
-- **Usage:** Grid system, components, utilities
-- **Customization:** Custom CSS on top of Bootstrap
-- **Components Used:**
-  - Grid system
-  - Cards
-  - Buttons
-  - Forms
-  - Modals
-  - Alerts
-  - Navbar
-  - Utilities
+**Usage:** Base UI framework (minimal, custom CSS on top)  
+**CDN:** Used via CDN (no npm install)
+
+**Components Used:**
+- Grid system
+- Utilities (spacing, colors, typography)
+- Forms
+- Buttons
+- Cards
+- Modals
+- Alerts
+
+**Customization:**
+- Custom CSS in style-v2.css overrides Bootstrap
+- Custom color scheme (#13a4ec primary)
+- Custom animations and transitions
+
+## Libraries & Dependencies
 
 ### PDF Processing
-- **PDF.js** - Mozilla's PDF rendering library
-  - Purpose: Extract text from PDFs
-  - Usage: PDF to text tool
-  
-- **pdf-lib** - PDF manipulation library
-  - Purpose: Create, merge, split PDFs
-  - Usage: PDF utilities (merge, split, compress)
+- **PDF.js** - Mozilla's PDF renderer (text extraction, viewing)
+- **pdf-lib** - PDF manipulation (merge, split, compress)
 
-### Data Format Libraries
-- **js-yaml** - YAML parser and serializer
-  - Purpose: YAML ↔ JSON conversion
-  - Usage: YAML-JSON tool
-
-- **fast-xml-parser** - Fast XML parser
-  - Purpose: XML ↔ JSON conversion
-  - Usage: XML-JSON tool
-
-- **@iarna/toml** - TOML parser
-  - Purpose: TOML ↔ JSON conversion
-  - Usage: TOML-JSON tool
+### Data Format Parsing
+- **js-yaml** - YAML parser/serializer
+- **fast-xml-parser** - XML parser/serializer
+- **@iarna/toml** - TOML parser/serializer
 
 ### Image Processing
-- **Canvas API** (Native)
-  - Purpose: Image manipulation
-  - Usage: Resize, crop, compress, convert images
+- **Canvas API** - Native browser API (resize, crop, convert, compress)
+- **Cropper.js** - Image cropping UI
 
-- **Cropper.js** (Optional)
-  - Purpose: Advanced image cropping
-  - Usage: Image cropper tool
+### Utilities
+- **qrcode.js** - QR code generation
+- **crypto-js** - Hash calculation (MD5, SHA-1, SHA-256, SHA-512)
 
-### Other Libraries
-- **Material Symbols** - Google's icon font
-  - Purpose: UI icons
-  - Usage: Throughout the application
+### AI Integration
+- **Google Gemini API** - AI chat, summarization, translation, image generation
+- **Nano Banana API** - AI image generation and editing
+
+### Development
+- **http-server** - Local development server (npm package)
 
 ## Build System
 
-### Node.js
-- **Version:** 14+ (any modern version)
-- **Purpose:** Build scripts and development tools
-- **Package Manager:** npm
+### Node.js Scripts
+**Version:** Node.js 14+  
+**Package Manager:** npm
 
-### Build Scripts
-Located in `scripts/` directory:
-
-1. **bump-version.js**
-   - Increments version number in manifest files
-   - Updates Service Worker version
-
-2. **clean-build.js**
-   - Removes old build artifacts
-   - Prepares for fresh build
-
-3. **generate-category-pages.js**
-   - Generates category pages from templates
-   - Creates EN and ES versions
-
-4. **generate-tool-translations.js**
-   - Generates translation files for tools
-   - Syncs EN/ES content
-
-5. **generate-tools-json.js**
-   - Creates unified tool index
-   - Generates EN/ES specific indexes
-
-6. **update-html-templates.js**
-   - Updates HTML templates with latest content
-   - Applies changes across all tools
-
-7. **update-js-translations.js**
-   - Updates JavaScript translation files
-   - Syncs with JSON translation sources
-
-8. **fix-relative-paths.js**
-   - Fixes relative path references
-   - Ensures correct asset loading
-
-### Main Build Script
-Located at root: `generate-site.js`
-- Orchestrates the build process
-- Generates all pages from templates
-- Applies translations
-- Validates output
-
-## Development Commands
-
-### Installation
-```bash
-# Clone repository
-git clone [repository-url]
-cd quicktools
-
-# Install dependencies
-npm install
-```
-
-### Development
-```bash
-# Start local development server
-npm run serve
-# Opens http://localhost:8000
-
-# Alternative: Python server
-cd web
-python -m http.server 8000
-```
-
-### Building
-```bash
-# Full build (recommended)
-npm run build
-# Runs: bump version → clean → generate site → generate categories
-
-# Build only tools index
-npm run build:tools
-
-# Build only category pages
-npm run build:categories
-
-# Legacy build system
-npm run build:old
-```
-
-### Testing
-```bash
-# Run automated QA suite (134 tests)
-npm test
-
-# Run legacy test suite
-npm run test:old
-
-# Run specific tests
-node tests/csv-parser.test.js
-node tests/pwa-validation.js
-```
-
-### Version Management
-```bash
-# Bump version number
-npm run version:bump
-```
-
-### Cleaning
-```bash
-# Clean build artifacts
-npm run clean
-```
-
-## PWA Technologies
-
-### Service Worker
-- **File:** `web/sw.js` and `web/js/service-worker.js`
-- **Version:** v3.0.3
-- **Strategy:** Cache-first for assets, network-first for pages
-- **Features:**
-  - Offline functionality
-  - Asset caching
-  - Background sync (planned)
-  - Push notifications (planned)
-
-### Web App Manifest
-- **File:** `web/manifest.json`
-- **Features:**
-  - App name and description
-  - Icons (SVG, multiple sizes)
-  - Theme colors
-  - Display mode (standalone)
-  - Shortcuts to popular tools
-  - Screenshots for app stores
-
-### PWA Capabilities
-- ✅ Installable on desktop and mobile
-- ✅ Offline functionality
-- ✅ App shortcuts
-- ✅ Splash screen
-- ✅ Theme color
-- ⏳ Background sync (planned)
-- ⏳ Push notifications (planned)
-
-## Browser Extension Technologies
-
-### Chrome Extension API (Manifest V3)
-- **File:** `extension/manifest.json`
-- **APIs Used:**
-  - Storage API (chrome.storage)
-  - Tabs API (chrome.tabs)
-  - Context Menus API (chrome.contextMenus)
-  - Runtime API (chrome.runtime)
-  - Alarms API (chrome.alarms)
-  - Permissions API
-
-### Extension Components
-- **Background Service Worker:** Long-running background tasks
-- **Content Scripts:** Inject into web pages
-- **Popup:** Quick access interface
-- **Options Page:** Settings and preferences
-- **New Tab Override:** Custom new tab page
-- **Offscreen Documents:** Heavy processing
-
-## Analytics & Tracking
-
-### Google Analytics 4
-- **Property ID:** G-9XTNQMQKE2
-- **Implementation:** `web/js/analytics.js`
-- **Features:**
-  - Page views
-  - Event tracking
-  - User engagement
-  - Privacy-focused (no PII)
-
-### Cookie Consent
-- **Implementation:** `web/js/cookie-consent.js`
-- **Compliance:** GDPR compliant
-- **Features:**
-  - Cookie banner
-  - User consent management
-  - Analytics opt-in/opt-out
-
-## Internationalization (i18n)
-
-### Translation System
-- **Engine:** Custom JSON-based system
-- **Files:** `web/i18n/en.json`, `web/i18n/es.json`
-- **Languages:** English (EN), Spanish (ES)
-- **Implementation:** `web/i18n/i18n.js`
-
-### Language Detection
-- **Priority:**
-  1. User preference (localStorage)
-  2. URL path (`/es/` prefix)
-  3. Browser language
-  4. Default to English
-
-### Translation Structure
+**Build Scripts:**
 ```json
 {
-  "common": {
-    "key": "value"
-  },
-  "tools": {
-    "tool-name": {
-      "title": "Tool Title",
-      "description": "Tool description"
-    }
-  }
+  "clean": "node build/scripts/clean-build.js",
+  "build:web": "node build/scripts/bump-version.js && npm run clean && node build/scripts/generate-site.js && node build/scripts/generate-category-pages.js",
+  "build:extension": "node build/scripts/build-extension.js",
+  "sync:shared": "node scripts/sync-shared-files.js",
+  "build:local": "npm run build:web && npm run build:extension && npm run sync:shared",
+  "test": "node tests/automated-qa.js",
+  "serve": "npx http-server web -p 8000"
 }
 ```
+
+**Build Process:**
+1. **bump-version.js** - Increment Service Worker version
+2. **clean-build.js** - Remove old generated files
+3. **generate-site.js** - Generate tool pages from templates
+4. **generate-category-pages.js** - Generate category pages
+5. **build-extension.js** - Sync data to extension
+6. **sync-shared-files.js** - Distribute shared JS files
+
+### Template Engine
+**Custom:** Simple string replacement in Node.js  
+**No Framework:** No Handlebars, Pug, or EJS - just string manipulation
+
+**Template Variables:**
+- `{{TOOL_NAME}}` - Tool name
+- `{{TOOL_DESCRIPTION}}` - Tool description
+- `{{TOOL_CONTENT}}` - Tool-specific HTML
+- `{{LANG}}` - Language code (en/es)
+- `{{VERSION}}` - Service Worker version
 
 ## Hosting & Deployment
 
 ### Vercel
-- **Plan:** Hobby (free)
-- **Features:**
-  - Automatic deployments
-  - HTTPS by default
-  - CDN distribution
-  - Zero configuration
-  - Preview deployments
+**Plan:** Hobby (free)  
+**Configuration:** vercel.json
+
+```json
+{
+  "buildCommand": null,
+  "installCommand": null,
+  "outputDirectory": "web"
+}
+```
+
+**Key Points:**
+- No build on deploy (files pre-generated)
+- Static file serving only
+- Automatic HTTPS
+- Global CDN
+- Custom domain support
 
 ### Domain
-- **Provider:** cdmon.com
-- **Cost:** €10.95/year
-- **DNS:** Configured for Vercel
+**Registrar:** cdmon.com  
+**Cost:** €10.95/year  
+**DNS:** Configured to point to Vercel
 
-### Deployment Configuration
-- **File:** `vercel.json`
-- **Settings:**
-  - Build command: None (static site)
-  - Output directory: `web/`
-  - Redirects and rewrites configured
-  - Headers for security and caching
+## Progressive Web App (PWA)
+
+### Service Worker
+**Version:** v3.0.35 (auto-incremented)  
+**Location:** web/sw.js (root) + web/js/service-worker.js (logic)
+
+**Features:**
+- Cache-first strategy for static assets
+- Network-first for dynamic content
+- Offline fallback
+- Version-based cache invalidation
+
+**Cache Strategy:**
+```javascript
+// Static assets: cache-first
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => response || fetch(event.request))
+  );
+});
+```
+
+### Web App Manifest
+**Location:** web/manifest.json
+
+**Configuration:**
+```json
+{
+  "name": "FastTools",
+  "short_name": "FastTools",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#13a4ec",
+  "icons": [...]
+}
+```
+
+## Browser Extension
+
+### Manifest V3
+**Location:** extension/manifest.json  
+**Target:** Chrome, Edge, Firefox
+
+**Key Permissions:**
+- `storage` - Save user settings
+- `activeTab` - Access current tab
+- `contextMenus` - Right-click menus
+- `offscreen` - Offscreen documents
+
+**Architecture:**
+- **Background Service Worker** - Persistent background logic
+- **Content Scripts** - Inject into web pages
+- **Popup** - Extension popup UI
+- **Options** - Settings page
+- **New Tab** - Custom new tab page
+
+## Analytics
+
+### Google Analytics 4
+**Property ID:** G-9XTNQMQKE2  
+**Implementation:** web/js/analytics.js
+
+**Events Tracked:**
+- Page views
+- Tool usage
+- File conversions
+- Error events
+- Performance metrics
+
+**Privacy:**
+- Cookie consent banner
+- Anonymized IP
+- No PII collection
+
+## Internationalization (i18n)
+
+### Custom JSON System
+**Languages:** English (en), Spanish (es)  
+**Location:** web/i18n/
+
+**Structure:**
+```
+web/i18n/
+├── en.json          # English translations
+├── es.json          # Spanish translations
+├── i18n.js          # Translation engine
+└── tools/           # Tool-specific translations
+```
+
+**Usage:**
+```javascript
+// Load translations
+const translations = await fetch('/i18n/en.json').then(r => r.json());
+
+// Apply translations
+document.querySelectorAll('[data-i18n]').forEach(el => {
+  const key = el.getAttribute('data-i18n');
+  el.textContent = translations[key];
+});
+```
+
+## Testing
+
+### Automated Testing
+**Framework:** Custom Node.js test runner  
+**Location:** tests/
+
+**Test Suites:**
+- **automated-qa.js** - Main QA suite (134 tests, 99.25% pass rate)
+- **csv-parser.test.js** - CSV parsing tests
+- **validate-conversions.js** - Format conversion tests
+- **validate-format-edgecases.js** - Edge case tests
+- **pwa-validation.js** - PWA validation
+- **service-worker.test.js** - Service Worker tests
+
+**Run Tests:**
+```bash
+npm test
+# or
+node tests/automated-qa.js
+```
+
+### Browser Testing
+**Location:** tests/web-tests.html  
+**Usage:** Open in browser for interactive testing
 
 ## Development Tools
 
+### Local Development Server
+```bash
+# Serve web/ directory
+npm run serve
+# or
+npx http-server web -p 8000
+
+# Access at http://localhost:8000
+```
+
 ### Code Editor
-- **Recommended:** VS Code
-- **Extensions:**
-  - ESLint
-  - Prettier
-  - Live Server
-  - HTML CSS Support
+**Recommended:** VS Code with extensions:
+- ESLint
+- Prettier
+- Live Server
+- HTML CSS Support
 
-### Browser DevTools
-- **Chrome DevTools:** Primary development tool
-- **Firefox DevTools:** Cross-browser testing
-- **Lighthouse:** Performance and PWA audits
-
-### Testing Tools
-- **Node.js:** Test runner
-- **Custom test suite:** `tests/automated-qa.js`
-- **Browser tests:** `tests/web-tests.html`
-
-## Version Control
-
-### Git
-- **Repository:** GitHub (private)
-- **Branch Strategy:** Main branch for production
-- **Commit Convention:** Conventional commits
-  - `feat:` New features
-  - `fix:` Bug fixes
-  - `docs:` Documentation
-  - `style:` Code style changes
-  - `refactor:` Code refactoring
-  - `test:` Test updates
-  - `chore:` Maintenance tasks
+### Version Control
+**System:** Git  
+**Repository:** GitHub  
+**Branching:** Main branch (production-ready)
 
 ## Performance Optimization
 
 ### Techniques Used
-- **Minification:** CSS and JS minified for production
-- **Lazy Loading:** Images and scripts loaded on demand
-- **Code Splitting:** Separate JS files per tool
-- **Caching:** Service Worker caching strategy
-- **CDN:** Vercel's global CDN
-- **Compression:** Gzip/Brotli compression
+- **Minification** - Vendor libraries minified
+- **Lazy Loading** - Load tools on demand
+- **Code Splitting** - Tool-specific JS files
+- **Image Optimization** - SVG icons, optimized PNGs
+- **Caching** - Service Worker caching strategy
+- **CDN** - Vercel global CDN
 
-### Performance Targets
-- **Lighthouse Score:** 90+ (all categories)
-- **First Contentful Paint:** < 1.5s
-- **Time to Interactive:** < 3.5s
-- **Cumulative Layout Shift:** < 0.1
+### Lighthouse Targets
+- **Performance:** 90+
+- **Accessibility:** 90+
+- **Best Practices:** 90+
+- **SEO:** 90+
 
 ## Security
 
-### Security Measures
-- **HTTPS Only:** Enforced by Vercel
-- **Content Security Policy:** Configured in headers
-- **No Server Processing:** Client-side only = no server vulnerabilities
-- **No Data Storage:** No user data stored on servers
-- **Dependency Scanning:** Regular npm audit
+### Content Security Policy (CSP)
+**Implementation:** Meta tags in HTML
 
-### Privacy Features
-- **No Tracking:** Minimal analytics, no PII
-- **No Cookies:** Only for consent management
-- **No File Uploads:** All processing local
-- **No Registration:** No user accounts
+**Directives:**
+- `default-src 'self'`
+- `script-src 'self' 'unsafe-inline'` (required for inline scripts)
+- `style-src 'self' 'unsafe-inline'` (required for inline styles)
 
-## Browser Compatibility
-
-### Supported Browsers
-- **Chrome:** 80+ ✅
-- **Firefox:** 75+ ✅
-- **Safari:** 13+ ✅
-- **Edge:** 80+ ✅
-- **Mobile Browsers:** Modern versions ✅
-
-### Polyfills
-- **Not Required:** Modern browser features only
-- **Graceful Degradation:** Fallbacks for older browsers
-
-## External Services
-
-### Google Services
-- **Google Analytics 4:** Web analytics
-- **Google Fonts:** Inter font family
-- **Material Symbols:** Icon font
-- **Google Gemini API:** AI tools (optional, user-provided key)
-
-### CDN Resources
-- **Bootstrap:** Via CDN
-- **PDF.js:** Via CDN or local
-- **Other libraries:** Bundled locally
-
-## Development Environment
-
-### System Requirements
-- **OS:** Windows, macOS, or Linux
-- **Node.js:** 14+ (any modern version)
-- **Browser:** Chrome, Firefox, or Edge (latest)
-- **RAM:** 4GB minimum
-- **Disk Space:** 500MB for project
-
-### Recommended Setup
-- **Editor:** VS Code with extensions
-- **Terminal:** Integrated terminal or external
-- **Browser:** Chrome with DevTools
-- **Git:** For version control
-
-## Package.json Scripts Summary
-
+### Security Headers (Vercel)
 ```json
 {
-  "clean": "Clean build artifacts",
-  "build": "Full build process",
-  "build:old": "Legacy build system",
-  "build:tools": "Generate tools index",
-  "build:categories": "Generate category pages",
-  "test": "Run automated QA",
-  "test:old": "Run legacy tests",
-  "serve": "Start local server",
-  "version:bump": "Increment version"
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "DENY",
+  "X-XSS-Protection": "1; mode=block"
 }
 ```
 
-## Dependencies
+### Privacy
+- **No Server Uploads** - All processing client-side
+- **No Tracking** - Minimal analytics, anonymized
+- **No Cookies** - Except for consent banner
+- **No Third-Party Scripts** - Except Google Analytics (opt-in)
 
-### Production Dependencies
-- None (all libraries loaded via CDN or bundled)
+## API Integrations
 
-### Development Dependencies
-- **http-server:** ^14.1.1 (local development server)
+### Google Gemini API
+**Purpose:** AI chat, summarization, translation  
+**Authentication:** API key stored in localStorage  
+**Endpoint:** https://generativelanguage.googleapis.com/v1beta/models/gemini-pro
 
-### External Libraries (CDN/Bundled)
-- Bootstrap 5.3.2
-- PDF.js
-- pdf-lib
-- js-yaml
-- fast-xml-parser
-- @iarna/toml
-- Cropper.js (optional)
+### Nano Banana API
+**Purpose:** AI image generation and editing  
+**Authentication:** API key stored in localStorage  
+**Endpoint:** https://api.nanobanana.com/v1/
+
+## Development Commands
+
+### Build Commands
+```bash
+# Full build (web + extension + sync)
+npm run build:local
+
+# Build web only
+npm run build:web
+
+# Build extension only
+npm run build:extension
+
+# Sync shared files only
+npm run sync:shared
+
+# Clean generated files
+npm run clean
+```
+
+### Testing Commands
+```bash
+# Run all tests
+npm test
+
+# Run specific test
+node tests/csv-parser.test.js
+
+# Run PWA validation
+node tests/pwa-validation.js
+```
+
+### Development Commands
+```bash
+# Start local server
+npm run serve
+
+# Install dependencies
+npm install
+
+# Update dependencies
+npm update
+```
+
+### Git Commands
+```bash
+# Commit with conventional commits
+git commit -m "feat: add new tool"
+git commit -m "fix: resolve bug"
+git commit -m "docs: update README"
+
+# Push to deploy
+git push origin main
+```
+
+## Environment Variables
+
+**None required for web deployment** - All configuration in code
+
+**Extension:**
+- API keys stored in chrome.storage.local
+- User preferences in chrome.storage.sync
+
+## Browser Compatibility
+
+### Minimum Versions
+- **Chrome:** 80+
+- **Firefox:** 75+
+- **Safari:** 13+
+- **Edge:** 80+
+- **Mobile browsers:** Modern versions
+
+### Polyfills
+**None required** - Target modern browsers only
+
+### Feature Detection
+```javascript
+// Check for required APIs
+if ('serviceWorker' in navigator) {
+  // Register Service Worker
+}
+
+if (window.File && window.FileReader && window.FileList && window.Blob) {
+  // File API supported
+}
+```
+
+## Code Quality
+
+### Linting
+**None configured** - Manual code review
+
+### Formatting
+**Style:**
+- 4 spaces for JavaScript
+- 2 spaces for JSON
+- Single quotes for JS
+- Double quotes for HTML
+
+### Naming Conventions
+- **Variables/Functions:** camelCase
+- **Classes:** PascalCase
+- **Files:** kebab-case
+- **CSS:** kebab-case
+
+## Documentation
+
+### Code Comments
+- Section dividers: `// ====================`
+- Emoji prefixes: 🚀 init, ✅ success, ❌ error
+- JSDoc for complex functions
+
+### Project Documentation
+- **README.md** - Project overview
+- **local_docs/** - Detailed documentation
+- **.amazonq/rules/memory-bank/** - AI context files
