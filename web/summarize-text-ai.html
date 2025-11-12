@@ -107,7 +107,7 @@
     <small class="text-muted">🔒 Stored locally in your browser</small>
 </div>
 
-<div id="toolSection" class="d-none">
+<div id="toolSection">
     <div class="mb-3">
         <label class="form-label">Text to summarize:</label>
         <textarea id="inputText" class="form-control" rows="10" placeholder="Paste your text here..."></textarea>
@@ -150,16 +150,13 @@
     function updateServiceStatus() {
         const statusEl = document.getElementById('statusText');
         const configureBtn = document.getElementById('configureBtn');
-        const toolSection = document.getElementById('toolSection');
         
         if (ai.hasChromeAI) {
             statusEl.textContent = '🏠 Using Chrome Local AI (Free, Private)';
             statusEl.parentElement.parentElement.className = 'alert alert-success';
-            toolSection.classList.remove('d-none');
         } else if (ai.hasGeminiAPI) {
             statusEl.textContent = '☁️ Using Gemini Cloud API';
             statusEl.parentElement.parentElement.className = 'alert alert-info';
-            toolSection.classList.remove('d-none');
         } else {
             statusEl.textContent = '⚠️ No AI service available';
             statusEl.parentElement.parentElement.className = 'alert alert-warning';

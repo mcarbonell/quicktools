@@ -1,6 +1,13 @@
-<div id="apiKeySetup" class="alert alert-warning">
-    <h5>⚙️ Initial Setup</h5>
-    <p>You need a free API key from Google AI Studio:</p>
+<div id="serviceStatus" class="alert alert-info">
+    <div class="d-flex justify-content-between align-items-center">
+        <span id="statusText">🔍 Detecting AI services...</span>
+        <button class="btn btn-sm btn-outline-primary d-none" id="configureBtn" onclick="showApiKeySetup()">⚙️ Configure</button>
+    </div>
+</div>
+
+<div id="apiKeySetup" class="alert alert-warning d-none">
+    <h5>⚙️ Optional: Gemini Cloud API</h5>
+    <p>Add a Gemini API key for cloud fallback:</p>
     <ol>
         <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
         <li>Create an API key (free, 60 req/min)</li>
@@ -13,14 +20,7 @@
     <small class="text-muted">🔒 Stored locally in your browser</small>
 </div>
 
-<div id="apiKeyManage" class="alert alert-success d-none">
-    <div class="d-flex justify-content-between align-items-center">
-        <span>✅ API Key configured</span>
-        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Remove</button>
-    </div>
-</div>
-
-<div id="toolSection" class="d-none">
+<div id="toolSection">
     <div class="mb-3">
         <label class="form-label">Text to summarize:</label>
         <textarea id="inputText" class="form-control" rows="10" placeholder="Paste your text here..."></textarea>
@@ -50,18 +50,36 @@
     </div>
 </div>
 
-<script src="/js/lib/gemini-api.js"></script>
-<script src="/js/lib/summarize-ui.js"></script>
+<script src="/js/lib/hybrid-ai.js"></script>
 <script>
-    let summarizeUI;
+    let ai;
 
     window.addEventListener('DOMContentLoaded', async () => {
-        summarizeUI = new SummarizeUI({
-            storage: GeminiStorage,
-            translations: window.toolTranslations
-        });
-        await summarizeUI.init();
+        ai = new HybridAI();
+        await ai.init();
+        updateServiceStatus();
     });
+
+    function updateServiceStatus() {
+        const statusEl = document.getElementById('statusText');
+        const configureBtn = document.getElementById('configureBtn');
+        
+        if (ai.hasChromeAI) {
+            statusEl.textContent = '🏠 Using Chrome Local AI (Free, Private)';
+            statusEl.parentElement.parentElement.className = 'alert alert-success';
+        } else if (ai.hasGeminiAPI) {
+            statusEl.textContent = '☁️ Using Gemini Cloud API';
+            statusEl.parentElement.parentElement.className = 'alert alert-info';
+        } else {
+            statusEl.textContent = '⚠️ No AI service available';
+            statusEl.parentElement.parentElement.className = 'alert alert-warning';
+            configureBtn.classList.remove('d-none');
+        }
+    }
+
+    function showApiKeySetup() {
+        document.getElementById('apiKeySetup').classList.remove('d-none');
+    }
 
     async function saveApiKey() {
         const apiKey = document.getElementById('apiKeyInput').value.trim();
@@ -72,9 +90,11 @@
         btn.textContent = '⏳ Validating...';
 
         try {
-            const success = await summarizeUI.saveApiKey(apiKey);
-            if (success) alert('✅ API Key saved successfully');
-            else alert('❌ Invalid API Key');
+            localStorage.setItem('gemini_api_key', apiKey);
+            await ai.init();
+            updateServiceStatus();
+            document.getElementById('apiKeySetup').classList.add('d-none');
+            alert('✅ API Key saved successfully');
         } catch (error) {
             alert(`❌ Error: ${error.message}`);
         } finally {
@@ -83,25 +103,27 @@
         }
     }
 
-    function removeApiKey() {
-        if (confirm('Remove API key?')) summarizeUI.removeApiKey();
-    }
-
     async function summarizeText() {
         const text = document.getElementById('inputText').value;
         const length = document.getElementById('lengthSelect').value;
         const btn = document.getElementById('summarizeBtn');
+        const outputEl = document.getElementById('summaryOutput');
 
         if (!text.trim()) return alert('❌ Please enter text to summarize');
 
         btn.disabled = true;
         btn.textContent = '⏳ Summarizing...';
+        outputEl.textContent = '';
+        document.getElementById('resultSection').classList.remove('d-none');
 
         try {
-            const summary = await summarizeUI.summarize(text, length);
-            const formatted = summarizeUI.formatText(summary);
-            document.getElementById('summaryOutput').innerHTML = formatted;
-            document.getElementById('resultSection').classList.remove('d-none');
+            const options = {
+                length: length === 'short' ? 'short' : length === 'long' ? 'long' : 'medium'
+            };
+            
+            await ai.summarize(text, options, (chunk) => {
+                outputEl.textContent += chunk;
+            });
         } catch (error) {
             alert(`❌ Error: ${error.message}`);
         } finally {
