@@ -1,4 +1,11 @@
-<div id="apiKeySetup" class="api-key-setup">
+<div id="serviceStatus" class="alert alert-info">
+    <div class="d-flex justify-content-between align-items-center">
+        <span id="statusText">🔍 Detecting AI services...</span>
+        <button class="btn btn-sm btn-outline-primary d-none" id="configureBtn" onclick="showApiKeySetup()">⚙️ Configure</button>
+    </div>
+</div>
+
+<div id="apiKeySetup" class="api-key-setup d-none">
     <h5>{{t.initialSetupTitle}}</h5>
     <p class="mb-3">{{t.apiKeyInstruction}}</p>
     <ol class="mb-3">
@@ -14,12 +21,7 @@
     <small class="text-muted">{{t.localStorageInfo}}</small>
 </div>
 
-<div id="apiKeyManage" class="alert alert-success d-none">
-    <div class="d-flex justify-content-between align-items-center">
-        <span>{{t.apiKeyConfigured}}</span>
-        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">{{t.removeButton}}</button>
-    </div>
-</div>
+
 
 <div id="chatSection" class="d-none">
     <div class="chat-container mb-3" id="chatMessages">

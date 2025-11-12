@@ -103,7 +103,14 @@
             <div class="alert alert-info mt-3"><small>🎯 Useful for: <a href="/writers.html" class="badge bg-primary text-decoration-none">✍️ Writers</a> <a href="/marketers.html" class="badge bg-primary text-decoration-none">📱 Marketers</a> <a href="/ai.html" class="badge bg-primary text-decoration-none">🤖 AI Tools</a></small></div>
         </div>
 
-        <div id="apiKeySetup" class="api-key-setup">
+        <div id="serviceStatus" class="alert alert-info">
+    <div class="d-flex justify-content-between align-items-center">
+        <span id="statusText">🔍 Detecting AI services...</span>
+        <button class="btn btn-sm btn-outline-primary d-none" id="configureBtn" onclick="showApiKeySetup()">⚙️ Configure</button>
+    </div>
+</div>
+
+<div id="apiKeySetup" class="api-key-setup d-none">
     <h5>⚙️ Initial Setup</h5>
     <p class="mb-3">To use this tool, you need a free API key from Google AI Studio:</p>
     <ol class="mb-3">
@@ -119,12 +126,7 @@
     <small class="text-muted">🔒 Saved in your browser's localStorage, never on our servers.</small>
 </div>
 
-<div id="apiKeyManage" class="alert alert-success d-none">
-    <div class="d-flex justify-content-between align-items-center">
-        <span>✅ API Key configured</span>
-        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Remove</button>
-    </div>
-</div>
+
 
 <div id="chatSection" class="d-none">
     <div class="chat-container mb-3" id="chatMessages">
