@@ -145,7 +145,7 @@
         "es": "Herramientas para diseño gráfico y edición de imágenes",
         "en": "Tools for graphic design and image editing"
       },
-      "tools": ["image-resizer", "convert-image", "image-cropper", "image-compressor", "color-palette-generator", "color-picker-converter", "exif-viewer-cleaner", "edit-image-ai"]
+      "tools": ["image-resizer", "convert-image", "image-cropper", "image-compressor", "color-palette-generator", "color-picker-converter", "exif-viewer-cleaner", "vision-chat-ai"]
     },
     {
       "id": "writers",
@@ -215,7 +215,7 @@
         "es": "Herramientas potenciadas con inteligencia artificial",
         "en": "AI-powered tools"
       },
-      "tools": ["chat-ai", "chat-pdf", "summarize-text-ai", "improve-text-ai", "translate-ai", "edit-image-ai"]
+      "tools": ["chat-ai", "chat-pdf", "summarize-text-ai", "improve-text-ai", "translate-ai", "vision-chat-ai"]
     },
     {
       "id": "seo-specialists",
@@ -722,20 +722,20 @@
       "availableIn": ["web", "extension"]
     },
     {
-      "id": "edit-image-ai",
-      "slug": "edit-image-ai.html",
-      "extensionSlug": "tools/ai/edit-image.html",
+      "id": "vision-chat-ai",
+      "slug": "vision-chat-ai.html",
+      "extensionSlug": "tools/ai/vision-chat.html",
       "title": {
-        "es": "Editar Imagen con IA",
-        "en": "Edit Image with AI"
+        "es": "Chat con Imagen",
+        "en": "AI Vision Chat"
       },
       "description": {
-        "es": "Edita imágenes usando inteligencia artificial.",
-        "en": "Edit images using artificial intelligence."
+        "es": "Chatea con IA sobre tus imágenes. Haz preguntas y obtén análisis detallados.",
+        "en": "Chat with AI about your images. Ask questions and get detailed analysis."
       },
       "categories": ["ai", "image"],
-      "icon": "🎨",
-      "tags": ["ai", "image", "edit"],
+      "icon": "👁️",
+      "tags": ["ai", "image", "vision", "chat"],
       "availableIn": ["web", "extension"]
     },
     {

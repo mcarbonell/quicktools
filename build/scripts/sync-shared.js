@@ -11,7 +11,7 @@ const SHARED_LIBS = [
     'chat-ui.js',
     'summarize-ui.js',
     'improve-text-ui.js',
-    'edit-image-ui.js',
+    'vision-chat-ui.js',
     'translate-ui.js'
 ];
 

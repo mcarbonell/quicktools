@@ -1,8 +1,8 @@
 // ====================
-// EDIT IMAGE UI - Shared Library
+// VISION CHAT UI - Shared Library
 // ====================
 
-class EditImageUI {
+class VisionChatUI {
     constructor(config) {
         this.storage = config.storage;
         this.geminiAPI = null;
@@ -63,7 +63,7 @@ class EditImageUI {
         });
     }
 
-    async editImage(instruction) {
+    async analyzeImage(instruction) {
         if (!this.currentImage) {
             throw new Error('Please load an image first');
         }

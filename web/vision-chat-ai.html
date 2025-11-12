@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Vision Chat - FastTools</title>
+    <meta name="description" content="Chat with AI about your images. Ask questions and get detailed analysis.">
+    <meta name="keywords" content="ai, image, vision, chat">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI Vision Chat — FastTools">
+    <meta property="og:description" content="Chat with AI about your images. Ask questions and get detailed analysis.">
+    <meta property="og:url" content="https://fasttools.tools/vision-chat-ai.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/vision-chat-ai.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/vision-chat-ai.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/vision-chat-ai.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "FastTools",
+      "item": "https://fasttools.tools"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Designers",
+      "item": "https://fasttools.tools/designers.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI Tools",
+      "item": "https://fasttools.tools/ai.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "AI Vision Chat"
+    }
+  ]
+}
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>AI Vision Chat</h1>
+            <p class="text-muted">Chat with AI about your images. Ask questions and get detailed analysis.</p>
+            <div class="alert alert-info mt-3"><small>🎯 Useful for: <a href="/designers.html" class="badge bg-primary text-decoration-none">🎨 Designers</a> <a href="/ai.html" class="badge bg-primary text-decoration-none">🤖 AI Tools</a></small></div>
+        </div>
+
+        <div id="apiKeySetup" class="alert alert-warning">
+    <h5>⚙️ Initial Setup</h5>
+    <p>You need a free API key from Google AI Studio:</p>
+    <ol>
+        <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+        <li>Create an API key (free, 60 req/min)</li>
+        <li>Paste it below 👇</li>
+    </ol>
+    <div class="input-group">
+        <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
+        <button class="btn btn-primary" onclick="saveApiKey()">💾 Save</button>
+    </div>
+    <small class="text-muted">🔒 Stored locally in your browser</small>
+</div>
+
+<div id="apiKeyManage" class="alert alert-success d-none">
+    <div class="d-flex justify-content-between align-items-center">
+        <span>✅ API Key configured</span>
+        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Remove</button>
+    </div>
+</div>
+
+<div id="toolSection" class="d-none">
+    <div class="alert alert-info">
+        <strong>💡 AI Image Analysis:</strong> Upload an image and ask the AI for editing suggestions. 
+        The AI will analyze your image and provide detailed recommendations (e.g., "improve lighting", "suggest color corrections", "composition tips").
+        <br><small class="text-muted">Note: This tool provides suggestions only. Actual image editing requires paid API access.</small>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Upload image:</label>
+        <input type="file" id="imageInput" class="form-control" accept="image/*" onchange="handleImageUpload()">
+    </div>
+
+    <div id="imagePreview" class="mb-3 d-none">
+        <label class="form-label">Preview:</label>
+        <img id="previewImg" class="img-fluid border rounded" style="max-height: 300px;">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Editing instructions:</label>
+        <textarea id="instructionText" class="form-control" rows="3" 
+            placeholder="Example: make the background darker, add more contrast, suggest color corrections..."></textarea>
+        <small class="text-muted">Describe what you want to change or improve in the image</small>
+    </div>
+
+    <button class="btn btn-primary" onclick="editImage()" id="editBtn" disabled>
+        ✨ Analyze & Suggest Edits
+    </button>
+
+    <div id="resultSection" class="mt-4 d-none">
+        <div id="generatedImageSection" class="mb-3 d-none">
+            <h5>✨ Generated Image:</h5>
+            <img id="generatedImg" class="img-fluid border rounded" style="max-width: 100%;">
+            <div class="mt-2">
+                <button class="btn btn-sm btn-primary" onclick="downloadGeneratedImage()">💾 Download Image</button>
+            </div>
+        </div>
+        <div id="textResponseSection" class="d-none">
+            <h5>AI Response:</h5>
+            <div id="suggestionsOutput" class="p-3 bg-light border rounded"></div>
+            <div class="mt-3">
+                <button class="btn btn-sm btn-outline-secondary" onclick="copyResult()">📋 Copy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/lib/gemini-api.js"></script>
+<script src="/js/lib/vision-chat-ui.js"></script>
+<script>
+    let visionChatUI;
+
+    window.addEventListener('DOMContentLoaded', async () => {
+        visionChatUI = new VisionChatUI({
+            storage: GeminiStorage,
+            translations: window.toolTranslations
+        });
+        await visionChatUI.init();
+    });
+
+    async function saveApiKey() {
+        const apiKey = document.getElementById('apiKeyInput').value.trim();
+        if (!apiKey) return alert('❌ Please enter an API key');
+
+        const btn = event.target;
+        btn.disabled = true;
+        btn.textContent = '⏳ Validating...';
+
+        try {
+            const success = await visionChatUI.saveApiKey(apiKey);
+            if (success) alert('✅ API Key saved successfully');
+            else alert('❌ Invalid API Key');
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '💾 Save';
+        }
+    }
+
+    function removeApiKey() {
+        if (confirm('Remove API key?')) visionChatUI.removeApiKey();
+    }
+
+    async function handleImageUpload() {
+        const file = document.getElementById('imageInput').files[0];
+        if (!file) return;
+
+        try {
+            const dataUrl = await visionChatUI.loadImage(file);
+            document.getElementById('previewImg').src = dataUrl;
+            document.getElementById('imagePreview').classList.remove('d-none');
+            document.getElementById('editBtn').disabled = false;
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        }
+    }
+
+    async function editImage() {
+        const instruction = document.getElementById('instructionText').value;
+        const btn = document.getElementById('editBtn');
+
+        if (!instruction.trim()) return alert('❌ Please enter editing instructions');
+
+        btn.disabled = true;
+        btn.textContent = '⏳ Processing...';
+
+        try {
+            const result = await visionChatUI.analyzeImage(instruction);
+            
+            // Show generated image if available
+            if (result.image) {
+                const imgElement = document.getElementById('generatedImg');
+                imgElement.src = `data:image/png;base64,${result.image}`;
+                document.getElementById('generatedImageSection').classList.remove('d-none');
+            }
+            
+            // Show text response if available
+            if (result.text) {
+                const formatted = visionChatUI.formatText(result.text);
+                document.getElementById('suggestionsOutput').innerHTML = formatted;
+                document.getElementById('textResponseSection').classList.remove('d-none');
+            }
+            
+            document.getElementById('resultSection').classList.remove('d-none');
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '✨ Analyze & Suggest Edits';
+        }
+    }
+
+    function copyResult() {
+        const text = document.getElementById('suggestionsOutput').innerText;
+        navigator.clipboard.writeText(text).then(() => alert('✅ Copied to clipboard'));
+    }
+
+    function downloadGeneratedImage() {
+        const img = document.getElementById('generatedImg');
+        const a = document.createElement('a');
+        a.href = img.src;
+        a.download = `edited-image-${new Date().toISOString().slice(0,10)}.png`;
+        a.click();
+    }
+
+    document.getElementById('imageInput').addEventListener('change', handleImageUpload);
+</script>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"title":"Edit Image with AI","description":"Edit images using artificial intelligence","noteTitle":"💡 Note:","noteText":"This tool uses Gemini Vision to analyze your image and provide editing suggestions. For actual image editing, it will describe the changes - you'll need to apply them manually or use image editing software.","uploadLabel":"Upload image:","previewLabel":"Preview:","instructionLabel":"Editing instructions:","instructionPlaceholder":"Example: make the background darker, add more contrast, suggest color corrections...","instructionHint":"Describe what you want to change or improve in the image","analyzeButton":"✨ Analyze & Suggest Edits","resultTitle":"AI Suggestions:","copyButton":"📋 Copy","downloadButton":"💾 Download"};
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

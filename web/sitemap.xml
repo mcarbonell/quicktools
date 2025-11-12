@@ -657,20 +657,20 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/chat-pdf.html"/>
   </url>
   <url>
-    <loc>https://fasttools.tools/edit-image-ai.html</loc>
+    <loc>https://fasttools.tools/vision-chat-ai.html</loc>
     <lastmod>2025-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/edit-image-ai.html"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/edit-image-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/vision-chat-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/vision-chat-ai.html"/>
   </url>
   <url>
-    <loc>https://fasttools.tools/es/edit-image-ai.html</loc>
+    <loc>https://fasttools.tools/es/vision-chat-ai.html</loc>
     <lastmod>2025-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/edit-image-ai.html"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/edit-image-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/vision-chat-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/vision-chat-ai.html"/>
   </url>
   <url>
     <loc>https://fasttools.tools/translate-ai.html</loc>

@@ -1,11 +1,11 @@
-let editImageUI;
+let visionChatUI;
 
 document.addEventListener('DOMContentLoaded', async () => {
-    editImageUI = new EditImageUI({
+    visionChatUI = new VisionChatUI({
         storage: ChromeGeminiStorage,
         translations: {}
     });
-    await editImageUI.init();
+    await visionChatUI.init();
 
     document.getElementById('saveKeyBtn').onclick = saveApiKey;
     document.getElementById('removeKeyBtn').onclick = removeApiKey;
@@ -24,7 +24,7 @@ async function saveApiKey() {
     btn.textContent = '⏳ Validating...';
 
     try {
-        const success = await editImageUI.saveApiKey(apiKey);
+        const success = await visionChatUI.saveApiKey(apiKey);
         if (success) alert('✅ Saved');
         else alert('❌ Invalid key');
     } catch (error) {
@@ -36,7 +36,7 @@ async function saveApiKey() {
 }
 
 function removeApiKey() {
-    if (confirm('Remove API key?')) editImageUI.removeApiKey();
+    if (confirm('Remove API key?')) visionChatUI.removeApiKey();
 }
 
 async function handleImageUpload(e) {
@@ -44,7 +44,7 @@ async function handleImageUpload(e) {
     if (!file) return;
 
     try {
-        const dataUrl = await editImageUI.loadImage(file);
+        const dataUrl = await visionChatUI.loadImage(file);
         document.getElementById('previewImg').src = dataUrl;
         document.getElementById('imagePreview').classList.remove('d-none');
         document.getElementById('editBtn').disabled = false;
@@ -63,7 +63,7 @@ async function editImage() {
     btn.textContent = '⏳ Processing...';
 
     try {
-        const result = await editImageUI.editImage(instruction);
+        const result = await visionChatUI.analyzeImage(instruction);
         
         // Show generated image if available
         if (result.image) {
@@ -74,7 +74,7 @@ async function editImage() {
         
         // Show text response if available
         if (result.text) {
-            const formatted = editImageUI.formatText(result.text);
+            const formatted = visionChatUI.formatText(result.text);
             document.getElementById('suggestionsOutput').innerHTML = formatted;
             document.getElementById('textResponseSection').classList.remove('d-none');
         }
