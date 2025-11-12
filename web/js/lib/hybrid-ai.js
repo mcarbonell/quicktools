@@ -14,7 +14,13 @@ class HybridAI {
         
         // Load Gemini API if available
         if (typeof GeminiAPI !== 'undefined') {
-            this.geminiAPI = new GeminiAPI();
+            const storage = typeof chrome !== 'undefined' && chrome.storage 
+                ? await chrome.storage.local.get('gemini_api_key')
+                : { gemini_api_key: localStorage.getItem('gemini_api_key') };
+            
+            if (storage.gemini_api_key) {
+                this.geminiAPI = new GeminiAPI(storage.gemini_api_key);
+            }
         }
         
         return this.availability;
@@ -48,7 +54,7 @@ class HybridAI {
         }
 
         // Fallback to Gemini Cloud
-        if (this.geminiAPI?.hasApiKey()) {
+        if (this.geminiAPI) {
             const prompt = `Summarize the following text concisely:\n\n${text}`;
             return await this.geminiAPI.generateText(prompt);
         }
@@ -71,7 +77,7 @@ class HybridAI {
         }
 
         // Fallback to Gemini Cloud
-        if (this.geminiAPI?.hasApiKey()) {
+        if (this.geminiAPI) {
             const prompt = `Summarize the following text concisely:\n\n${text}`;
             for await (const chunk of this.geminiAPI.generateTextStream(prompt)) {
                 yield chunk;
@@ -98,7 +104,7 @@ class HybridAI {
         }
 
         // Fallback to Gemini Cloud
-        if (this.geminiAPI?.hasApiKey()) {
+        if (this.geminiAPI) {
             const prompt = `Improve the following text (grammar, clarity, style):\n\n${text}`;
             return await this.geminiAPI.generateText(prompt);
         }
@@ -121,7 +127,7 @@ class HybridAI {
         }
 
         // Fallback to Gemini Cloud
-        if (this.geminiAPI?.hasApiKey()) {
+        if (this.geminiAPI) {
             const prompt = `Improve the following text (grammar, clarity, style):\n\n${text}`;
             for await (const chunk of this.geminiAPI.generateTextStream(prompt)) {
                 yield chunk;
@@ -148,7 +154,7 @@ class HybridAI {
         }
 
         // Fallback to Gemini Cloud
-        if (this.geminiAPI?.hasApiKey()) {
+        if (this.geminiAPI) {
             const prompt = `Translate from ${sourceLang} to ${targetLang}:\n\n${text}`;
             return await this.geminiAPI.generateText(prompt);
         }
@@ -172,7 +178,7 @@ class HybridAI {
         }
 
         // Fallback to Gemini Cloud
-        if (this.geminiAPI?.hasApiKey()) {
+        if (this.geminiAPI) {
             const prompt = `Detect the language of this text and respond with only the ISO 639-1 code (e.g., 'en', 'es', 'fr'):\n\n${text}`;
             const result = await this.geminiAPI.generateText(prompt);
             return { language: result.trim().toLowerCase(), confidence: 0.8 };
@@ -197,7 +203,7 @@ class HybridAI {
         }
 
         // Fallback to Gemini Cloud
-        if (this.geminiAPI?.hasApiKey()) {
+        if (this.geminiAPI) {
             return await this.geminiAPI.generateText(message);
         }
 
@@ -219,7 +225,7 @@ class HybridAI {
         }
 
         // Fallback to Gemini Cloud
-        if (this.geminiAPI?.hasApiKey()) {
+        if (this.geminiAPI) {
             for await (const chunk of this.geminiAPI.generateTextStream(message)) {
                 yield chunk;
             }
@@ -245,7 +251,7 @@ class HybridAI {
         }
 
         // Fallback to Gemini Cloud
-        if (this.geminiAPI?.hasApiKey()) {
+        if (this.geminiAPI) {
             const prompt = `Check this text for grammar and spelling errors. Return corrections in JSON format:\n\n${text}`;
             const result = await this.geminiAPI.generateText(prompt);
             return { correctedInput: result, corrections: [] };
@@ -269,7 +275,7 @@ class HybridAI {
         if (this.availability?.rewriter) services.push('Chrome Rewriter API (Local)');
         if (this.availability?.proofreader) services.push('Chrome Proofreader API (Local)');
         
-        if (this.geminiAPI?.hasApiKey()) services.push('Gemini Cloud API (API Key)');
+        if (this.geminiAPI) services.push('Gemini Cloud API (API Key)');
         
         return services;
     }
