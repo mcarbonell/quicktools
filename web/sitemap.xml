@@ -689,6 +689,38 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/translate-ai.html"/>
   </url>
   <url>
+    <loc>https://fasttools.tools/image-generator-ai.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/image-generator-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/image-generator-ai.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/image-generator-ai.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/image-generator-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/image-generator-ai.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/image-editor-ai.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/image-editor-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/image-editor-ai.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/image-editor-ai.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/image-editor-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/image-editor-ai.html"/>
+  </url>
+  <url>
     <loc>https://fasttools.tools/tools/seo/meta-tags-analyzer.html</loc>
     <lastmod>2025-11-12</lastmod>
     <changefreq>monthly</changefreq>

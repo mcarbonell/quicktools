@@ -1,0 +1,12 @@
+{
+  "en": {
+    "title": "AI Image Generator - Generate Images from Text",
+    "description": "Generate high-quality images from text descriptions using Gemini 2.5 Flash Image (Nano Banana). Requires paid API key.",
+    "keywords": "ai image generator, text to image, nano banana, gemini image, generate images, ai art"
+  },
+  "es": {
+    "title": "Generador de Imágenes con IA - Genera Imágenes desde Texto",
+    "description": "Genera imágenes de alta calidad desde descripciones de texto usando Gemini 2.5 Flash Image (Nano Banana). Requiere API key de pago.",
+    "keywords": "generador de imágenes ia, texto a imagen, nano banana, gemini imagen, generar imágenes, arte ia"
+  }
+}

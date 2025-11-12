@@ -145,7 +145,7 @@
         "es": "Herramientas para diseño gráfico y edición de imágenes",
         "en": "Tools for graphic design and image editing"
       },
-      "tools": ["image-resizer", "convert-image", "image-cropper", "image-compressor", "color-palette-generator", "color-picker-converter", "exif-viewer-cleaner", "vision-chat-ai"]
+      "tools": ["image-resizer", "convert-image", "image-cropper", "image-compressor", "color-palette-generator", "color-picker-converter", "exif-viewer-cleaner", "vision-chat-ai", "image-generator-ai", "image-editor-ai"]
     },
     {
       "id": "writers",
@@ -215,7 +215,7 @@
         "es": "Herramientas potenciadas con inteligencia artificial",
         "en": "AI-powered tools"
       },
-      "tools": ["chat-ai", "chat-pdf", "summarize-text-ai", "improve-text-ai", "translate-ai", "vision-chat-ai"]
+      "tools": ["chat-ai", "chat-pdf", "summarize-text-ai", "improve-text-ai", "translate-ai", "vision-chat-ai", "image-generator-ai", "image-editor-ai"]
     },
     {
       "id": "seo-specialists",
@@ -754,6 +754,38 @@
       "icon": "🌐",
       "tags": ["ai", "translate", "languages"],
       "availableIn": ["web", "extension"]
+    },
+    {
+      "id": "image-generator-ai",
+      "slug": "image-generator-ai.html",
+      "title": {
+        "es": "Generador de Imágenes con IA",
+        "en": "AI Image Generator"
+      },
+      "description": {
+        "es": "Genera imágenes desde texto usando Gemini 2.5 Flash Image (Nano Banana). Requiere API key de pago.",
+        "en": "Generate images from text using Gemini 2.5 Flash Image (Nano Banana). Requires paid API key."
+      },
+      "categories": ["ai", "image", "generators"],
+      "icon": "🎨",
+      "tags": ["ai", "image", "generator", "nano-banana"],
+      "availableIn": ["web"]
+    },
+    {
+      "id": "image-editor-ai",
+      "slug": "image-editor-ai.html",
+      "title": {
+        "es": "Editor de Imágenes con IA",
+        "en": "AI Image Editor"
+      },
+      "description": {
+        "es": "Edita imágenes con instrucciones de texto usando Gemini 2.5 Flash Image (Nano Banana). Requiere API key de pago.",
+        "en": "Edit images with text instructions using Gemini 2.5 Flash Image (Nano Banana). Requires paid API key."
+      },
+      "categories": ["ai", "image"],
+      "icon": "✏️",
+      "tags": ["ai", "image", "editor", "nano-banana"],
+      "availableIn": ["web"]
     },
     {
       "id": "meta-tags-analyzer",

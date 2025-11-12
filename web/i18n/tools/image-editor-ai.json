@@ -1,0 +1,12 @@
+{
+  "en": {
+    "title": "AI Image Editor - Edit Images with Text Instructions",
+    "description": "Edit images using AI with text instructions. Change backgrounds, add objects, adjust colors using Gemini 2.5 Flash Image (Nano Banana). Requires paid API key.",
+    "keywords": "ai image editor, edit images with ai, nano banana, gemini image editor, ai photo editor, image editing"
+  },
+  "es": {
+    "title": "Editor de Imágenes con IA - Edita Imágenes con Instrucciones de Texto",
+    "description": "Edita imágenes usando IA con instrucciones de texto. Cambia fondos, añade objetos, ajusta colores usando Gemini 2.5 Flash Image (Nano Banana). Requiere API key de pago.",
+    "keywords": "editor de imágenes ia, editar imágenes con ia, nano banana, editor gemini, editor de fotos ia, edición de imágenes"
+  }
+}

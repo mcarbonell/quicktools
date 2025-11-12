@@ -1,0 +1,153 @@
+<div id="apiKeySetup" class="alert alert-warning">
+    <h5>⚙️ Initial Setup</h5>
+    <p>You need a <strong>paid</strong> API key from Google AI Studio (Nano Banana requires paid tier):</p>
+    <ol>
+        <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+        <li>Create an API key with <strong>paid billing enabled</strong></li>
+        <li>Paste it below 👇</li>
+    </ol>
+    <div class="input-group">
+        <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
+        <button class="btn btn-primary" onclick="saveApiKey()">💾 Save</button>
+    </div>
+    <small class="text-muted">🔒 Stored locally in your browser | 💰 ~$0.0125 per image</small>
+</div>
+
+<div id="apiKeyManage" class="alert alert-success d-none">
+    <div class="d-flex justify-content-between align-items-center">
+        <span>✅ API Key configured</span>
+        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Remove</button>
+    </div>
+</div>
+
+<div id="toolSection" class="d-none">
+    <div class="alert alert-info">
+        <strong>🎨 Nano Banana:</strong> Generate images from text descriptions using Gemini 2.5 Flash Image.
+        <br><small>Cost: ~$0.0125 per image | Includes invisible SynthID watermark</small>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Describe the image you want to generate:</label>
+        <textarea id="promptText" class="form-control" rows="4" 
+            placeholder="Example: A futuristic city at sunset with flying cars and neon lights, cyberpunk style, highly detailed"></textarea>
+        <small class="text-muted">Be specific and detailed for better results</small>
+    </div>
+
+    <button class="btn btn-primary" onclick="generateImage()" id="generateBtn">
+        ✨ Generate Image
+    </button>
+
+    <div id="resultSection" class="mt-4 d-none">
+        <h5>Generated Image:</h5>
+        <img id="generatedImg" class="img-fluid border rounded mb-3" style="max-width: 100%;">
+        <div id="textResponse" class="p-3 bg-light border rounded mb-3 d-none"></div>
+        <div>
+            <button class="btn btn-primary" onclick="downloadImage()">💾 Download Image</button>
+            <button class="btn btn-outline-secondary" onclick="resetTool()">🔄 Generate Another</button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/lib/gemini-api.js"></script>
+<script>
+    let geminiAPI;
+
+    window.addEventListener('DOMContentLoaded', async () => {
+        const apiKey = GeminiStorage.get();
+        if (apiKey) {
+            geminiAPI = new GeminiAPI(apiKey);
+            showTool();
+        }
+    });
+
+    async function saveApiKey() {
+        const apiKey = document.getElementById('apiKeyInput').value.trim();
+        if (!apiKey) return alert('❌ Please enter an API key');
+
+        const btn = event.target;
+        btn.disabled = true;
+        btn.textContent = '⏳ Validating...';
+
+        try {
+            geminiAPI = new GeminiAPI(apiKey);
+            const valid = await geminiAPI.validateKey();
+            if (valid) {
+                GeminiStorage.save(apiKey);
+                showTool();
+                alert('✅ API Key saved successfully');
+            } else {
+                alert('❌ Invalid API Key');
+            }
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '💾 Save';
+        }
+    }
+
+    function removeApiKey() {
+        if (confirm('Remove API key?')) {
+            GeminiStorage.remove();
+            location.reload();
+        }
+    }
+
+    function showTool() {
+        document.getElementById('apiKeySetup').classList.add('d-none');
+        document.getElementById('apiKeyManage').classList.remove('d-none');
+        document.getElementById('toolSection').classList.remove('d-none');
+    }
+
+    async function generateImage() {
+        const prompt = document.getElementById('promptText').value.trim();
+        const btn = document.getElementById('generateBtn');
+
+        if (!prompt) return alert('❌ Please enter a description');
+
+        btn.disabled = true;
+        btn.textContent = '⏳ Generating... (may take 10-30 seconds)';
+
+        try {
+            const result = await geminiAPI.editImage(prompt, null, null);
+            
+            if (result.image) {
+                const imgElement = document.getElementById('generatedImg');
+                imgElement.src = `data:image/png;base64,${result.image}`;
+                document.getElementById('resultSection').classList.remove('d-none');
+            }
+            
+            if (result.text) {
+                document.getElementById('textResponse').innerHTML = result.text;
+                document.getElementById('textResponse').classList.remove('d-none');
+            }
+            
+            if (!result.image && !result.text) {
+                alert('❌ No image generated. Please try again with a different prompt.');
+            }
+        } catch (error) {
+            if (error.message.includes('quota')) {
+                alert('❌ Quota exceeded. Nano Banana requires a paid API key. Please check your billing at https://aistudio.google.com/');
+            } else {
+                alert(`❌ Error: ${error.message}`);
+            }
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '✨ Generate Image';
+        }
+    }
+
+    function downloadImage() {
+        const img = document.getElementById('generatedImg');
+        const a = document.createElement('a');
+        a.href = img.src;
+        a.download = `generated-image-${new Date().toISOString().slice(0,10)}.png`;
+        a.click();
+    }
+
+    function resetTool() {
+        document.getElementById('promptText').value = '';
+        document.getElementById('resultSection').classList.add('d-none');
+        document.getElementById('textResponse').classList.add('d-none');
+    }
+</script>
