@@ -1,55 +1,55 @@
 <div id="apiKeySetup" class="alert alert-warning">
-    <h5>⚙️ Initial Setup</h5>
-    <p>You need a <strong>paid</strong> API key from Google AI Studio (Nano Banana requires paid tier):</p>
+    <h5>{{t.setupTitle}}</h5>
+    <p>{{t.setupDescription}}</p>
     <ol>
-        <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
-        <li>Create an API key with <strong>paid billing enabled</strong></li>
-        <li>Paste it below 👇</li>
+        <li>{{t.setupStep1}}</li>
+        <li>{{t.setupStep2}}</li>
+        <li>{{t.setupStep3}}</li>
     </ol>
     <div class="input-group">
-        <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
-        <button class="btn btn-primary" onclick="saveApiKey()">💾 Save</button>
+        <input type="password" id="apiKeyInput" class="form-control" placeholder="{{t.apiKeyPlaceholder}}">
+        <button class="btn btn-primary" onclick="saveApiKey()">{{t.saveButton}}</button>
     </div>
-    <small class="text-muted">🔒 Stored locally in your browser | 💰 ~$0.0125 per edit</small>
+    <small class="text-muted">{{t.setupNote}}</small>
 </div>
 
 <div id="apiKeyManage" class="alert alert-success d-none">
     <div class="d-flex justify-content-between align-items-center">
-        <span>✅ API Key configured</span>
-        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Remove</button>
+        <span>{{t.apiKeyConfigured}}</span>
+        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">{{t.removeButton}}</button>
     </div>
 </div>
 
 <div id="toolSection" class="d-none">
     <div class="alert alert-info">
-        <strong>🎨 Nano Banana:</strong> Edit images with AI using text instructions. Change backgrounds, add objects, adjust colors, and more!
-        <br><small>Cost: ~$0.0125 per edit | Includes invisible SynthID watermark</small>
+        <strong>{{t.toolTitle}}</strong> {{t.toolDescription}}
+        <br><small>{{t.toolNote}}</small>
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Upload image to edit:</label>
+        <label class="form-label">{{t.uploadLabel}}</label>
         <input type="file" id="imageInput" class="form-control" accept="image/*" onchange="handleImageUpload()">
     </div>
 
     <div id="imagePreview" class="mb-3 d-none">
-        <label class="form-label">Original image:</label>
+        <label class="form-label">{{t.originalImageLabel}}</label>
         <img id="previewImg" class="img-fluid border rounded" style="max-height: 300px;">
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Editing instructions:</label>
+        <label class="form-label">{{t.instructionLabel}}</label>
         <textarea id="instructionText" class="form-control" rows="3" 
-            placeholder="Example: Change the background to a sunset beach, add warm color grading"></textarea>
-        <small class="text-muted">Describe what you want to change or add to the image</small>
+            placeholder="{{t.instructionPlaceholder}}"></textarea>
+        <small class="text-muted">{{t.instructionHint}}</small>
     </div>
 
     <button class="btn btn-primary" onclick="editImage()" id="editBtn" disabled>
-        ✨ Edit Image with AI
+        {{t.editButton}}
     </button>
 
     <div class="mt-4">
         <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#examplesCollapse">
-            💡 Show Capabilities & Tips
+            {{t.showCapabilitiesButton}}
         </button>
         <div class="collapse mt-3" id="examplesCollapse">
             <div class="card card-body">
@@ -60,11 +60,11 @@
 
     <div id="resultSection" class="mt-4 d-none">
         <div id="textResponse" class="alert alert-success mb-3 d-none"></div>
-        <h5>Edited Image:</h5>
+        <h5>{{t.resultTitle}}</h5>
         <img id="editedImg" class="img-fluid border rounded mb-3" style="max-width: 100%;">
         <div>
-            <button class="btn btn-primary" onclick="downloadImage()">💾 Download Edited Image</button>
-            <button class="btn btn-outline-secondary" onclick="resetTool()">🔄 Edit Another</button>
+            <button class="btn btn-primary" onclick="downloadImage()">{{t.downloadButton}}</button>
+            <button class="btn btn-outline-secondary" onclick="resetTool()">{{t.editAnotherButton}}</button>
         </div>
     </div>
 </div>
