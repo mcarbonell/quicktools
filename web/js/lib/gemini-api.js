@@ -136,7 +136,10 @@ class GeminiAPI {
     }
 
     const data = await response.json();
+    console.log('🔍 Gemini API Response:', data);
+    
     const resultParts = data.candidates[0].content.parts;
+    console.log('🔍 Result Parts:', resultParts);
     
     let text = '';
     let image = null;
@@ -145,6 +148,8 @@ class GeminiAPI {
       if (part.text) text += part.text;
       if (part.inline_data?.data) image = part.inline_data.data;
     }
+    
+    console.log('🔍 Parsed Result:', { text, image: image ? 'base64 data present' : 'no image' });
     
     return { text, image };
   }
