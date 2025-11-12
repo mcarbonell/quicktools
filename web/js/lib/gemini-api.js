@@ -94,26 +94,29 @@ class GeminiAPI {
 
   /**
    * Edita una imagen con instrucciones de texto (Nano Banana)
-   * @param {string} prompt - Instrucciones de edición
-   * @param {string} imageBase64 - Imagen en base64
-   * @param {string} mimeType - Tipo MIME de la imagen
+   * @param {string} prompt - Instrucciones de edición o generación
+   * @param {string} imageBase64 - Imagen en base64 (null para text-to-image)
+   * @param {string} mimeType - Tipo MIME de la imagen (null para text-to-image)
    * @returns {Promise<Object>} - {text: string, image: string|null}
    */
   async editImage(prompt, imageBase64, mimeType) {
     const url = `${this.baseUrl}/models/gemini-2.5-flash-image:generateContent`;
     
+    // Build parts array
+    const parts = [{ text: prompt }];
+    
+    // Only add image if provided (for editing)
+    if (imageBase64 && mimeType) {
+      parts.push({
+        inline_data: {
+          mime_type: mimeType,
+          data: imageBase64
+        }
+      });
+    }
+    
     const body = {
-      contents: [{
-        parts: [
-          { text: prompt },
-          {
-            inline_data: {
-              mime_type: mimeType,
-              data: imageBase64
-            }
-          }
-        ]
-      }]
+      contents: [{ parts }]
     };
 
     const response = await fetch(url, {
