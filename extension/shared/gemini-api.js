@@ -94,26 +94,36 @@ class GeminiAPI {
 
   /**
    * Edita una imagen con instrucciones de texto (Nano Banana)
-   * @param {string} prompt - Instrucciones de edición
-   * @param {string} imageBase64 - Imagen en base64
-   * @param {string} mimeType - Tipo MIME de la imagen
+   * @param {string} prompt - Instrucciones de edición o generación
+   * @param {string} imageBase64 - Imagen en base64 (null para text-to-image)
+   * @param {string} mimeType - Tipo MIME de la imagen (null para text-to-image)
    * @returns {Promise<Object>} - {text: string, image: string|null}
    */
   async editImage(prompt, imageBase64, mimeType) {
     const url = `${this.baseUrl}/models/gemini-2.5-flash-image:generateContent`;
     
+    // Build parts array
+    const parts = [{ text: prompt }];
+    
+    // Only add image if provided (for editing)
+    if (imageBase64 && mimeType) {
+      parts.push({
+        inline_data: {
+          mime_type: mimeType,
+          data: imageBase64
+        }
+      });
+    }
+    
     const body = {
-      contents: [{
-        parts: [
-          { text: prompt },
-          {
-            inline_data: {
-              mime_type: mimeType,
-              data: imageBase64
-            }
-          }
-        ]
-      }]
+      contents: [{ parts }],
+      generationConfig: {
+        temperature: 0.4,
+        topK: 32,
+        topP: 1,
+        maxOutputTokens: 4096,
+        responseMimeType: "text/plain"
+      }
     };
 
     const response = await fetch(url, {
@@ -133,13 +143,19 @@ class GeminiAPI {
     }
 
     const data = await response.json();
-    const parts = data.candidates[0].content.parts;
+    
+    if (!data.candidates || !data.candidates[0]) {
+      throw new Error('No candidates in response');
+    }
+    
+    const resultParts = data.candidates[0].content.parts;
     
     let text = '';
     let image = null;
     
-    for (const part of parts) {
+    for (const part of resultParts) {
       if (part.text) text += part.text;
+      if (part.inlineData?.data) image = part.inlineData.data;
       if (part.inline_data?.data) image = part.inline_data.data;
     }
     

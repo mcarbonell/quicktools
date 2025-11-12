@@ -758,6 +758,7 @@
     {
       "id": "image-generator-ai",
       "slug": "image-generator-ai.html",
+      "extensionSlug": "tools/ai/image-generator-ai.html",
       "title": {
         "es": "Generador de Imágenes con IA",
         "en": "AI Image Generator"
@@ -769,11 +770,12 @@
       "categories": ["ai", "image", "generators"],
       "icon": "🎨",
       "tags": ["ai", "image", "generator", "nano-banana"],
-      "availableIn": ["web"]
+      "availableIn": ["web", "extension"]
     },
     {
       "id": "image-editor-ai",
       "slug": "image-editor-ai.html",
+      "extensionSlug": "tools/ai/image-editor-ai.html",
       "title": {
         "es": "Editor de Imágenes con IA",
         "en": "AI Image Editor"
@@ -785,7 +787,7 @@
       "categories": ["ai", "image"],
       "icon": "✏️",
       "tags": ["ai", "image", "editor", "nano-banana"],
-      "availableIn": ["web"]
+      "availableIn": ["web", "extension"]
     },
     {
       "id": "meta-tags-analyzer",
