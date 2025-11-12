@@ -80,24 +80,26 @@ class ChromeAI {
             throw new Error('Summarizer API not available');
         }
 
-        this.apis.summarizer = await Summarizer.create(options);
+        const lang = document.documentElement.lang || 'en';
+        const defaults = {
+            type: 'tldr',
+            format: 'plain-text',
+            length: 'medium',
+            outputLanguage: lang
+        };
+
+        this.apis.summarizer = await Summarizer.create({ ...defaults, ...options });
         return this.apis.summarizer;
     }
 
     async summarize(text, options = {}) {
-        const lang = document.documentElement.lang || 'en';
-        const summarizerOptions = { sharedContext: '', length: 'medium', ...options };
-        
-        if (!this.apis.summarizer) await this.createSummarizer(summarizerOptions);
-        return await this.apis.summarizer.summarize(text, { context: lang === 'es' ? 'Responde en español' : '' });
+        if (!this.apis.summarizer) await this.createSummarizer(options);
+        return await this.apis.summarizer.summarize(text);
     }
 
     async *summarizeStreaming(text, options = {}) {
-        const lang = document.documentElement.lang || 'en';
-        const summarizerOptions = { sharedContext: '', length: 'medium', ...options };
-        
-        if (!this.apis.summarizer) await this.createSummarizer(summarizerOptions);
-        const stream = await this.apis.summarizer.summarizeStreaming(text, { context: lang === 'es' ? 'Responde en español' : '' });
+        if (!this.apis.summarizer) await this.createSummarizer(options);
+        const stream = await this.apis.summarizer.summarizeStreaming(text);
         
         for await (const chunk of stream) {
             yield chunk;

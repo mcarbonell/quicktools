@@ -119,10 +119,8 @@
         document.getElementById('resultSection').classList.remove('d-none');
 
         try {
-            const lang = document.documentElement.lang || 'en';
             const options = {
-                length: length === 'short' ? 'short' : length === 'long' ? 'long' : 'medium',
-                sharedContext: lang === 'es' ? 'Responde en español' : 'Respond in English'
+                length: length === 'short' ? 'short' : length === 'long' ? 'long' : 'medium'
             };
             
             await ai.summarize(text, options, (chunk) => {
