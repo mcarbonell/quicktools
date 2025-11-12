@@ -22,7 +22,17 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
     
     try {
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-        const response = await chrome.tabs.sendMessage(tab.id, { action: 'getMetaTags' });
+        
+        let response;
+        try {
+            response = await chrome.tabs.sendMessage(tab.id, { action: 'getMetaTags' });
+        } catch (error) {
+            if (error.message.includes('Receiving end does not exist')) {
+                throw new Error('Por favor, recarga la página (F5) y vuelve a intentarlo. El content script no está disponible.');
+            }
+            throw error;
+        }
+        
         const og = response.metaTags.og;
         
         const container = document.getElementById('results');

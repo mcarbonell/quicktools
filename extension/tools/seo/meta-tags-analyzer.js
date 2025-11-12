@@ -46,7 +46,15 @@ async function analyzePage() {
             throw new Error('No se pudo obtener la pestaña actual');
         }
         
-        const response = await chrome.tabs.sendMessage(tab.id, { action: 'getMetaTags' });
+        let response;
+        try {
+            response = await chrome.tabs.sendMessage(tab.id, { action: 'getMetaTags' });
+        } catch (error) {
+            if (error.message.includes('Receiving end does not exist')) {
+                throw new Error('Por favor, recarga la página (F5) y vuelve a intentarlo. El content script no está disponible.');
+            }
+            throw error;
+        }
         
         if (!response || !response.metaTags) {
             throw new Error('No se pudieron extraer las meta tags');

@@ -21,7 +21,16 @@ async function analyzePage() {
             throw new Error('Esta herramienta requiere una pestaña activa. Ábrela desde el popup mientras navegas un sitio.');
         }
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-        const response = await chrome.tabs.sendMessage(tab.id, { action: 'getHeadings' });
+        
+        let response;
+        try {
+            response = await chrome.tabs.sendMessage(tab.id, { action: 'getHeadings' });
+        } catch (error) {
+            if (error.message.includes('Receiving end does not exist')) {
+                throw new Error('Por favor, recarga la página (F5) y vuelve a intentarlo. El content script no está disponible.');
+            }
+            throw error;
+        }
         
         if (!response || !response.headings) {
             throw new Error('No se pudieron extraer los encabezados');

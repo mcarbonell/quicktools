@@ -59,7 +59,15 @@ async function startCheck() {
         }
         
         // Extract links from page
-        const response = await chrome.tabs.sendMessage(tab.id, { action: 'extractLinks' });
+        let response;
+        try {
+            response = await chrome.tabs.sendMessage(tab.id, { action: 'extractLinks' });
+        } catch (error) {
+            if (error.message.includes('Receiving end does not exist')) {
+                throw new Error('Por favor, recarga la página (F5) y vuelve a intentarlo. El content script no está disponible.');
+            }
+            throw error;
+        }
         
         if (!response || !response.links) {
             throw new Error('No se pudieron extraer los enlaces');

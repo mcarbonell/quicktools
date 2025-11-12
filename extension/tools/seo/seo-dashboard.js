@@ -41,9 +41,17 @@ async function analyzeComplete() {
         const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
         
         // Get all SEO data
-        const metaTags = await chrome.tabs.sendMessage(tab.id, { action: 'getMetaTags' });
-        const headings = await chrome.tabs.sendMessage(tab.id, { action: 'getHeadings' });
-        const links = await chrome.tabs.sendMessage(tab.id, { action: 'extractLinks' });
+        let metaTags, headings, links;
+        try {
+            metaTags = await chrome.tabs.sendMessage(tab.id, { action: 'getMetaTags' });
+            headings = await chrome.tabs.sendMessage(tab.id, { action: 'getHeadings' });
+            links = await chrome.tabs.sendMessage(tab.id, { action: 'extractLinks' });
+        } catch (error) {
+            if (error.message.includes('Receiving end does not exist')) {
+                throw new Error('Por favor, recarga la página (F5) y vuelve a intentarlo. El content script no está disponible.');
+            }
+            throw error;
+        }
         
         const score = calculateSEOScore({
             title: metaTags.metaTags.title,
