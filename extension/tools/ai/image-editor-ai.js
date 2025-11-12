@@ -1,50 +1,61 @@
+// AI Image Editor - Extension Script
 let geminiAPI;
 let currentImage = null;
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const apiKey = GeminiStorage.get();
-    if (apiKey) {
-        geminiAPI = new GeminiAPI(apiKey);
+async function init() {
+    console.log('🚀 Inicializando AI Image Editor');
+    
+    const hasKey = await ChromeGeminiStorage.exists();
+    console.log('🔑 ¿Tiene API key?', hasKey);
+    
+    if (hasKey) {
+        const key = await ChromeGeminiStorage.get();
+        console.log('🔑 API key encontrada:', key ? key.substring(0, 10) + '...' : 'vacía');
+        geminiAPI = new GeminiAPI(key);
         showTool();
     }
 
+    setupEventListeners();
+}
+
+function setupEventListeners() {
     document.getElementById('saveKeyBtn').addEventListener('click', saveApiKey);
     document.getElementById('removeKeyBtn').addEventListener('click', removeApiKey);
     document.getElementById('imageInput').addEventListener('change', handleImageUpload);
     document.getElementById('editBtn').addEventListener('click', editImage);
     document.getElementById('downloadBtn').addEventListener('click', downloadImage);
     document.getElementById('resetBtn').addEventListener('click', resetTool);
-});
+}
 
 async function saveApiKey() {
     const apiKey = document.getElementById('apiKeyInput').value.trim();
-    if (!apiKey) return alert('❌ Please enter an API key');
+    if (!apiKey) {
+        alert('❌ Por favor ingresa una API key');
+        return;
+    }
 
     const btn = document.getElementById('saveKeyBtn');
     btn.disabled = true;
-    btn.textContent = '⏳ Validating...';
+    btn.textContent = '⏳ Validando...';
 
     try {
         geminiAPI = new GeminiAPI(apiKey);
         const valid = await geminiAPI.validateKey();
-        if (valid) {
-            GeminiStorage.save(apiKey);
-            showTool();
-            alert('✅ API Key saved successfully');
-        } else {
-            alert('❌ Invalid API Key');
-        }
+        if (!valid) throw new Error('API key inválida');
+        await ChromeGeminiStorage.save(apiKey);
+        showTool();
+        alert('✅ API Key guardada correctamente');
     } catch (error) {
-        alert(`❌ Error: ${error.message}`);
+        alert(`❌ Error: ${error.message}\n\nVerifica:\n1. Que la API key sea correcta\n2. Que tengas facturación de pago habilitada\n3. Tu conexión a internet`);
     } finally {
         btn.disabled = false;
-        btn.textContent = '💾 Save';
+        btn.textContent = '💾 Guardar';
     }
 }
 
-function removeApiKey() {
-    if (confirm('Remove API key?')) {
-        GeminiStorage.remove();
+async function removeApiKey() {
+    if (confirm('¿Seguro que quieres eliminar la API key?')) {
+        await ChromeGeminiStorage.remove();
         location.reload();
     }
 }
@@ -60,7 +71,8 @@ async function handleImageUpload() {
     if (!file) return;
 
     if (!file.type.startsWith('image/')) {
-        return alert('❌ Please select an image file');
+        alert('❌ Por favor selecciona un archivo de imagen');
+        return;
     }
 
     const reader = new FileReader();
@@ -82,13 +94,18 @@ async function handleImageUpload() {
 
 async function editImage() {
     const instruction = document.getElementById('instructionText').value.trim();
+    if (!currentImage) {
+        alert('❌ Por favor sube una imagen primero');
+        return;
+    }
+    if (!instruction) {
+        alert('❌ Por favor ingresa instrucciones de edición');
+        return;
+    }
+
     const btn = document.getElementById('editBtn');
-
-    if (!currentImage) return alert('❌ Please upload an image first');
-    if (!instruction) return alert('❌ Please enter editing instructions');
-
     btn.disabled = true;
-    btn.textContent = '⏳ Editing... (may take 10-30 seconds)';
+    btn.textContent = '⏳ Editando... (puede tardar 10-30 segundos)';
 
     try {
         const result = await geminiAPI.editImage(instruction, currentImage.base64, currentImage.mimeType);
@@ -105,17 +122,17 @@ async function editImage() {
         }
         
         if (!result.image && !result.text) {
-            alert('❌ No edited image generated. Please try again with different instructions.');
+            alert('❌ No se generó imagen editada. Intenta con otras instrucciones.');
         }
     } catch (error) {
         if (error.message.includes('quota')) {
-            alert('❌ Quota exceeded. Nano Banana requires a paid API key. Please check your billing at https://aistudio.google.com/');
+            alert('❌ Cuota excedida. Nano Banana requiere API key de pago. Verifica tu facturación en https://aistudio.google.com/');
         } else {
             alert(`❌ Error: ${error.message}`);
         }
     } finally {
         btn.disabled = false;
-        btn.textContent = '✨ Edit Image with AI';
+        btn.textContent = '✨ Editar Imagen con IA';
     }
 }
 
@@ -136,3 +153,5 @@ function resetTool() {
     document.getElementById('editBtn').disabled = true;
     currentImage = null;
 }
+
+init();

@@ -1,48 +1,59 @@
+// AI Image Generator - Extension Script
 let geminiAPI;
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const apiKey = GeminiStorage.get();
-    if (apiKey) {
-        geminiAPI = new GeminiAPI(apiKey);
+async function init() {
+    console.log('🚀 Inicializando AI Image Generator');
+    
+    const hasKey = await ChromeGeminiStorage.exists();
+    console.log('🔑 ¿Tiene API key?', hasKey);
+    
+    if (hasKey) {
+        const key = await ChromeGeminiStorage.get();
+        console.log('🔑 API key encontrada:', key ? key.substring(0, 10) + '...' : 'vacía');
+        geminiAPI = new GeminiAPI(key);
         showTool();
     }
 
+    setupEventListeners();
+}
+
+function setupEventListeners() {
     document.getElementById('saveKeyBtn').addEventListener('click', saveApiKey);
     document.getElementById('removeKeyBtn').addEventListener('click', removeApiKey);
     document.getElementById('generateBtn').addEventListener('click', generateImage);
     document.getElementById('downloadBtn').addEventListener('click', downloadImage);
     document.getElementById('resetBtn').addEventListener('click', resetTool);
-});
+}
 
 async function saveApiKey() {
     const apiKey = document.getElementById('apiKeyInput').value.trim();
-    if (!apiKey) return alert('❌ Please enter an API key');
+    if (!apiKey) {
+        alert('❌ Por favor ingresa una API key');
+        return;
+    }
 
     const btn = document.getElementById('saveKeyBtn');
     btn.disabled = true;
-    btn.textContent = '⏳ Validating...';
+    btn.textContent = '⏳ Validando...';
 
     try {
         geminiAPI = new GeminiAPI(apiKey);
         const valid = await geminiAPI.validateKey();
-        if (valid) {
-            GeminiStorage.save(apiKey);
-            showTool();
-            alert('✅ API Key saved successfully');
-        } else {
-            alert('❌ Invalid API Key');
-        }
+        if (!valid) throw new Error('API key inválida');
+        await ChromeGeminiStorage.save(apiKey);
+        showTool();
+        alert('✅ API Key guardada correctamente');
     } catch (error) {
-        alert(`❌ Error: ${error.message}`);
+        alert(`❌ Error: ${error.message}\n\nVerifica:\n1. Que la API key sea correcta\n2. Que tengas facturación de pago habilitada\n3. Tu conexión a internet`);
     } finally {
         btn.disabled = false;
-        btn.textContent = '💾 Save';
+        btn.textContent = '💾 Guardar';
     }
 }
 
-function removeApiKey() {
-    if (confirm('Remove API key?')) {
-        GeminiStorage.remove();
+async function removeApiKey() {
+    if (confirm('¿Seguro que quieres eliminar la API key?')) {
+        await ChromeGeminiStorage.remove();
         location.reload();
     }
 }
@@ -55,12 +66,14 @@ function showTool() {
 
 async function generateImage() {
     const prompt = document.getElementById('promptText').value.trim();
+    if (!prompt) {
+        alert('❌ Por favor ingresa una descripción');
+        return;
+    }
+
     const btn = document.getElementById('generateBtn');
-
-    if (!prompt) return alert('❌ Please enter a description');
-
     btn.disabled = true;
-    btn.textContent = '⏳ Generating... (may take 10-30 seconds)';
+    btn.textContent = '⏳ Generando... (puede tardar 10-30 segundos)';
 
     try {
         const result = await geminiAPI.editImage(prompt, null, null);
@@ -77,17 +90,17 @@ async function generateImage() {
         }
         
         if (!result.image && !result.text) {
-            alert('❌ No image generated. Please try again with a different prompt.');
+            alert('❌ No se generó imagen. Intenta con otra descripción.');
         }
     } catch (error) {
         if (error.message.includes('quota')) {
-            alert('❌ Quota exceeded. Nano Banana requires a paid API key. Please check your billing at https://aistudio.google.com/');
+            alert('❌ Cuota excedida. Nano Banana requiere API key de pago. Verifica tu facturación en https://aistudio.google.com/');
         } else {
             alert(`❌ Error: ${error.message}`);
         }
     } finally {
         btn.disabled = false;
-        btn.textContent = '✨ Generate Image';
+        btn.textContent = '✨ Generar Imagen';
     }
 }
 
@@ -104,3 +117,5 @@ function resetTool() {
     document.getElementById('resultSection').classList.add('d-none');
     document.getElementById('textResponse').classList.add('d-none');
 }
+
+init();

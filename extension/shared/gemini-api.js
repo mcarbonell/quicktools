@@ -196,3 +196,26 @@ const GeminiStorage = {
     return !!this.get();
   }
 };
+
+// Gestión de API Key en chrome.storage (para extensión)
+const ChromeGeminiStorage = {
+  KEY: 'gemini_api_key',
+  
+  async save(apiKey) {
+    await chrome.storage.local.set({ [this.KEY]: apiKey });
+  },
+  
+  async get() {
+    const data = await chrome.storage.local.get(this.KEY);
+    return data[this.KEY] || '';
+  },
+  
+  async remove() {
+    await chrome.storage.local.remove(this.KEY);
+  },
+  
+  async exists() {
+    const key = await this.get();
+    return !!key;
+  }
+};
