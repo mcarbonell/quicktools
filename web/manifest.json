@@ -70,7 +70,7 @@
             "name": "Redimensionar Imagen",
             "short_name": "Resize",
             "description": "Redimensiona imágenes manteniendo la proporción",
-            "url": "/tools/image/image-resizer.html",
+            "url": "/image-resizer.html",
             "icons": [
                 {
                     "src": "icons/icon-192x192.png",
@@ -82,7 +82,7 @@
             "name": "Convertir CSV a JSON",
             "short_name": "CSV-JSON",
             "description": "Convierte CSV a JSON y viceversa",
-            "url": "/tools/data/csv-json.html",
+            "url": "/csv-json.html",
             "icons": [
                 {
                     "src": "icons/icon-192x192.png",
@@ -94,7 +94,7 @@
             "name": "PDF a Texto",
             "short_name": "PDF",
             "description": "Extrae texto de archivos PDF",
-            "url": "/tools/files/pdf-to-text.html",
+            "url": "/pdf-to-text.html",
             "icons": [
                 {
                     "src": "icons/icon-192x192.png",

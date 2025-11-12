@@ -273,6 +273,6 @@ Si encuentras bugs durante testing:
 
 ---
 
-**Última actualización:** Diciembre 2024  
+**Última actualización:** Noviembre 2025  
 **Versión:** Opción A (Inline Popup)  
 **Estado:** Ready for testing

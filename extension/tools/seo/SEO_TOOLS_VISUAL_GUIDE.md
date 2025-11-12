@@ -469,6 +469,6 @@ Click → Transforma popup (100ms)
 
 ---
 
-**Creado:** Diciembre 2024  
+**Creado:** Noviembre 2025  
 **Versión:** Opción A (Inline Popup)  
 **Estado:** ✅ Implementado y documentado

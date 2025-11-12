@@ -2,7 +2,7 @@
 
 ## ✅ Estado: COMPLETADO + UX OPTIMIZADA
 
-**Fecha:** Diciembre 2024  
+**Fecha:** Noviembre 2025  
 **Tiempo de desarrollo:** ~12-13 horas  
 **Herramientas implementadas:** 8/8 (100%)  
 **UX Strategy:** Opción A implementada (Inline Popup)  
@@ -312,7 +312,7 @@ Ya configurados en `manifest.json`:
 
 ## 📝 Changelog
 
-### v1.0.0 (Diciembre 2024)
+### v1.0.0 (Noviembre 2025)
 
 **Added:**
 - 🔗 Dead Links Checker (MVP)
