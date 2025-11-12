@@ -158,6 +158,7 @@
 
 <script src="/js/lib/gemini-api.js"></script>
 <script>
+    const t = window.toolTranslations || {};
     let geminiAPI;
     let currentImage = null;
     let examples = null;
@@ -222,7 +223,7 @@
 
     async function saveApiKey() {
         const apiKey = document.getElementById('apiKeyInput').value.trim();
-        if (!apiKey) return alert('❌ Please enter an API key');
+        if (!apiKey) return alert(t.pleaseEnterApiKey || '❌ Please enter an API key');
 
         const btn = event.target;
         btn.disabled = true;
@@ -234,20 +235,20 @@
             if (valid) {
                 GeminiStorage.save(apiKey);
                 showTool();
-                alert('✅ API Key saved successfully');
+                alert(t.apiKeySaved || '✅ API Key saved successfully');
             } else {
-                alert('❌ Invalid API Key');
+                alert(t.invalidApiKey || '❌ Invalid API Key');
             }
         } catch (error) {
-            alert(`❌ Error: ${error.message}`);
+            alert(`${t.editError || '❌ Error'}: ${error.message}`);
         } finally {
             btn.disabled = false;
-            btn.textContent = '💾 Save';
+            btn.textContent = t.saveButton || '💾 Save';
         }
     }
 
     function removeApiKey() {
-        if (confirm('Remove API key?')) {
+        if (confirm(t.removeApiKeyConfirm || 'Remove API key?')) {
             GeminiStorage.remove();
             location.reload();
         }
@@ -264,7 +265,7 @@
         if (!file) return;
 
         if (!file.type.startsWith('image/')) {
-            return alert('❌ Please select an image file');
+            return alert(t.pleaseSelectImage || '❌ Please select an image file');
         }
 
         const reader = new FileReader();
@@ -288,8 +289,8 @@
         const instruction = document.getElementById('instructionText').value.trim();
         const btn = document.getElementById('editBtn');
 
-        if (!currentImage) return alert('❌ Please upload an image first');
-        if (!instruction) return alert('❌ Please enter editing instructions');
+        if (!currentImage) return alert(t.pleaseUploadImage || '❌ Please upload an image first');
+        if (!instruction) return alert(t.pleaseEnterInstructions || '❌ Please enter editing instructions');
 
         btn.disabled = true;
         btn.textContent = '⏳ Editing... (may take 10-30 seconds)';
@@ -309,17 +310,17 @@
             }
             
             if (!result.image && !result.text) {
-                alert('❌ No edited image generated. Please try again with different instructions.');
+                alert(t.noImageEdited || '❌ No edited image generated. Please try again with different instructions.');
             }
         } catch (error) {
             if (error.message.includes('quota')) {
-                alert('❌ Quota exceeded. Nano Banana requires a paid API key. Please check your billing at https://aistudio.google.com/');
+                alert(t.quotaExceeded || '❌ Quota exceeded. Nano Banana requires a paid API key. Please check your billing at https://aistudio.google.com/');
             } else {
-                alert(`❌ Error: ${error.message}`);
+                alert(`${t.editError || '❌ Error'}: ${error.message}`);
             }
         } finally {
             btn.disabled = false;
-            btn.textContent = '✨ Edit Image with AI';
+            btn.textContent = t.editButton || '✨ Edit Image with AI';
         }
     }
 
@@ -346,7 +347,7 @@
 
     
     <script>
-        window.toolTranslations = {"title":"AI Image Editor - Edit Images with Text Instructions","description":"Edit images using AI with text instructions. Change backgrounds, add objects, adjust colors using Gemini 2.5 Flash Image (Nano Banana). Requires paid API key.","keywords":"ai image editor, edit images with ai, nano banana, gemini image editor, ai photo editor, image editing"};
+        window.toolTranslations = {"apiKeyPlaceholder":"AIzaSy...","saveButton":"💾 Save","removeButton":"🗑️ Remove","validating":"⏳ Validating...","apiKeyConfigured":"✅ API Key configured","instructionPlaceholder":"Example: Change the background to a sunset beach, add warm color grading","editButton":"✨ Edit Image with AI","editing":"⏳ Editing... (may take 10-30 seconds)","downloadButton":"💾 Download Edited Image","editAnotherButton":"🔄 Edit Another","showCapabilitiesButton":"💡 Show Capabilities & Tips","hideCapabilitiesButton":"💡 Hide Capabilities & Tips","pleaseEnterApiKey":"❌ Please enter an API key","apiKeySaved":"✅ API Key saved successfully","invalidApiKey":"❌ Invalid API Key","pleaseSelectImage":"❌ Please select an image file","pleaseUploadImage":"❌ Please upload an image first","pleaseEnterInstructions":"❌ Please enter editing instructions","noImageEdited":"❌ No edited image generated. Please try again with different instructions.","quotaExceeded":"❌ Quota exceeded. Nano Banana requires a paid API key. Please check your billing at https://aistudio.google.com/","editError":"❌ Error","removeApiKeyConfirm":"Remove API key?"};
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

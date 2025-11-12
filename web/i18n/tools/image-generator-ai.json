@@ -1,12 +1,46 @@
 {
   "en": {
-    "title": "AI Image Generator - Generate Images from Text",
-    "description": "Generate high-quality images from text descriptions using Gemini 2.5 Flash Image (Nano Banana). Requires paid API key.",
-    "keywords": "ai image generator, text to image, nano banana, gemini image, generate images, ai art"
+    "apiKeyPlaceholder": "AIzaSy...",
+    "saveButton": "💾 Save",
+    "removeButton": "🗑️ Remove",
+    "validating": "⏳ Validating...",
+    "apiKeyConfigured": "✅ API Key configured",
+    "promptPlaceholder": "Example: A futuristic city at sunset with flying cars and neon lights, cyberpunk style, highly detailed",
+    "generateButton": "✨ Generate Image",
+    "generating": "⏳ Generating... (may take 10-30 seconds)",
+    "downloadButton": "💾 Download Image",
+    "generateAnotherButton": "🔄 Generate Another",
+    "showExamplesButton": "💡 Show Examples & Tips",
+    "hideExamplesButton": "💡 Hide Examples & Tips",
+    "pleaseEnterApiKey": "❌ Please enter an API key",
+    "apiKeySaved": "✅ API Key saved successfully",
+    "invalidApiKey": "❌ Invalid API Key",
+    "pleaseEnterDescription": "❌ Please enter a description",
+    "noImageGenerated": "❌ No image generated. Please try again with a different prompt.",
+    "quotaExceeded": "❌ Quota exceeded. Nano Banana requires a paid API key. Please check your billing at https://aistudio.google.com/",
+    "generationError": "❌ Error",
+    "removeApiKeyConfirm": "Remove API key?"
   },
   "es": {
-    "title": "Generador de Imágenes con IA - Genera Imágenes desde Texto",
-    "description": "Genera imágenes de alta calidad desde descripciones de texto usando Gemini 2.5 Flash Image (Nano Banana). Requiere API key de pago.",
-    "keywords": "generador de imágenes ia, texto a imagen, nano banana, gemini imagen, generar imágenes, arte ia"
+    "apiKeyPlaceholder": "AIzaSy...",
+    "saveButton": "💾 Guardar",
+    "removeButton": "🗑️ Eliminar",
+    "validating": "⏳ Validando...",
+    "apiKeyConfigured": "✅ API Key configurada",
+    "promptPlaceholder": "Ejemplo: Una ciudad futurista al atardecer con coches voladores y luces de neón, estilo cyberpunk, muy detallado",
+    "generateButton": "✨ Generar Imagen",
+    "generating": "⏳ Generando... (puede tardar 10-30 segundos)",
+    "downloadButton": "💾 Descargar Imagen",
+    "generateAnotherButton": "🔄 Generar Otra",
+    "showExamplesButton": "💡 Mostrar Ejemplos y Consejos",
+    "hideExamplesButton": "💡 Ocultar Ejemplos y Consejos",
+    "pleaseEnterApiKey": "❌ Por favor, introduce una API key",
+    "apiKeySaved": "✅ API Key guardada exitosamente",
+    "invalidApiKey": "❌ API Key inválida",
+    "pleaseEnterDescription": "❌ Por favor, introduce una descripción",
+    "noImageGenerated": "❌ No se generó imagen. Intenta de nuevo con un prompt diferente.",
+    "quotaExceeded": "❌ Cuota excedida. Nano Banana requiere una API key de pago. Verifica tu facturación en https://aistudio.google.com/",
+    "generationError": "❌ Error",
+    "removeApiKeyConfirm": "¿Eliminar API key?"
   }
 }

@@ -148,6 +148,7 @@
 
 <script src="/js/lib/gemini-api.js"></script>
 <script>
+    const t = window.toolTranslations || {};
     let geminiAPI;
     let examples = null;
 
@@ -207,7 +208,7 @@
 
     async function saveApiKey() {
         const apiKey = document.getElementById('apiKeyInput').value.trim();
-        if (!apiKey) return alert('❌ Please enter an API key');
+        if (!apiKey) return alert(t.pleaseEnterApiKey || '❌ Please enter an API key');
 
         const btn = event.target;
         btn.disabled = true;
@@ -219,20 +220,20 @@
             if (valid) {
                 GeminiStorage.save(apiKey);
                 showTool();
-                alert('✅ API Key saved successfully');
+                alert(t.apiKeySaved || '✅ API Key saved successfully');
             } else {
-                alert('❌ Invalid API Key');
+                alert(t.invalidApiKey || '❌ Invalid API Key');
             }
         } catch (error) {
-            alert(`❌ Error: ${error.message}`);
+            alert(`${t.generationError || '❌ Error'}: ${error.message}`);
         } finally {
             btn.disabled = false;
-            btn.textContent = '💾 Save';
+            btn.textContent = t.saveButton || '💾 Save';
         }
     }
 
     function removeApiKey() {
-        if (confirm('Remove API key?')) {
+        if (confirm(t.removeApiKeyConfirm || 'Remove API key?')) {
             GeminiStorage.remove();
             location.reload();
         }
@@ -248,7 +249,7 @@
         const prompt = document.getElementById('promptText').value.trim();
         const btn = document.getElementById('generateBtn');
 
-        if (!prompt) return alert('❌ Please enter a description');
+        if (!prompt) return alert(t.pleaseEnterDescription || '❌ Please enter a description');
 
         btn.disabled = true;
         btn.textContent = '⏳ Generating... (may take 10-30 seconds)';
@@ -268,17 +269,17 @@
             }
             
             if (!result.image && !result.text) {
-                alert('❌ No image generated. Please try again with a different prompt.');
+                alert(t.noImageGenerated || '❌ No image generated. Please try again with a different prompt.');
             }
         } catch (error) {
             if (error.message.includes('quota')) {
-                alert('❌ Quota exceeded. Nano Banana requires a paid API key. Please check your billing at https://aistudio.google.com/');
+                alert(t.quotaExceeded || '❌ Quota exceeded. Nano Banana requires a paid API key. Please check your billing at https://aistudio.google.com/');
             } else {
-                alert(`❌ Error: ${error.message}`);
+                alert(`${t.generationError || '❌ Error'}: ${error.message}`);
             }
         } finally {
             btn.disabled = false;
-            btn.textContent = '✨ Generate Image';
+            btn.textContent = t.generateButton || '✨ Generate Image';
         }
     }
 
@@ -301,7 +302,7 @@
 
     
     <script>
-        window.toolTranslations = {"title":"Generador de Imágenes con IA - Genera Imágenes desde Texto","description":"Genera imágenes de alta calidad desde descripciones de texto usando Gemini 2.5 Flash Image (Nano Banana). Requiere API key de pago.","keywords":"generador de imágenes ia, texto a imagen, nano banana, gemini imagen, generar imágenes, arte ia"};
+        window.toolTranslations = {"apiKeyPlaceholder":"AIzaSy...","saveButton":"💾 Guardar","removeButton":"🗑️ Eliminar","validating":"⏳ Validando...","apiKeyConfigured":"✅ API Key configurada","promptPlaceholder":"Ejemplo: Una ciudad futurista al atardecer con coches voladores y luces de neón, estilo cyberpunk, muy detallado","generateButton":"✨ Generar Imagen","generating":"⏳ Generando... (puede tardar 10-30 segundos)","downloadButton":"💾 Descargar Imagen","generateAnotherButton":"🔄 Generar Otra","showExamplesButton":"💡 Mostrar Ejemplos y Consejos","hideExamplesButton":"💡 Ocultar Ejemplos y Consejos","pleaseEnterApiKey":"❌ Por favor, introduce una API key","apiKeySaved":"✅ API Key guardada exitosamente","invalidApiKey":"❌ API Key inválida","pleaseEnterDescription":"❌ Por favor, introduce una descripción","noImageGenerated":"❌ No se generó imagen. Intenta de nuevo con un prompt diferente.","quotaExceeded":"❌ Cuota excedida. Nano Banana requiere una API key de pago. Verifica tu facturación en https://aistudio.google.com/","generationError":"❌ Error","removeApiKeyConfirm":"¿Eliminar API key?"};
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
