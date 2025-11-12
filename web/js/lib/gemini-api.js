@@ -116,7 +116,14 @@ class GeminiAPI {
     }
     
     const body = {
-      contents: [{ parts }]
+      contents: [{ parts }],
+      generationConfig: {
+        temperature: 0.4,
+        topK: 32,
+        topP: 1,
+        maxOutputTokens: 4096,
+        responseMimeType: "text/plain"
+      }
     };
 
     const response = await fetch(url, {
@@ -136,20 +143,26 @@ class GeminiAPI {
     }
 
     const data = await response.json();
-    console.log('🔍 Gemini API Response:', data);
+    console.log('🔍 Gemini API Full Response:', JSON.stringify(data, null, 2));
+    
+    if (!data.candidates || !data.candidates[0]) {
+      throw new Error('No candidates in response');
+    }
     
     const resultParts = data.candidates[0].content.parts;
-    console.log('🔍 Result Parts:', resultParts);
+    console.log('🔍 Result Parts:', JSON.stringify(resultParts, null, 2));
     
     let text = '';
     let image = null;
     
     for (const part of resultParts) {
+      console.log('🔍 Processing part:', part);
       if (part.text) text += part.text;
+      if (part.inlineData?.data) image = part.inlineData.data;
       if (part.inline_data?.data) image = part.inline_data.data;
     }
     
-    console.log('🔍 Parsed Result:', { text, image: image ? 'base64 data present' : 'no image' });
+    console.log('🔍 Parsed Result:', { text, image: image ? `base64 data (${image.length} chars)` : 'no image' });
     
     return { text, image };
   }
