@@ -85,9 +85,16 @@
             <div class="alert alert-info mt-3"><small>🎯 Útil para: <a href="/es/writers.html" class="badge bg-primary text-decoration-none">✍️ Escritores</a> <a href="/es/ai.html" class="badge bg-primary text-decoration-none">🤖 IA</a></small></div>
         </div>
 
-        <div id="apiKeySetup" class="alert alert-warning">
-    <h5>⚙️ Initial Setup</h5>
-    <p>You need a free API key from Google AI Studio:</p>
+        <div id="serviceStatus" class="alert alert-info">
+    <div class="d-flex justify-content-between align-items-center">
+        <span id="statusText">🔍 Detecting AI services...</span>
+        <button class="btn btn-sm btn-outline-primary d-none" id="configureBtn" onclick="showApiKeySetup()">⚙️ Configure</button>
+    </div>
+</div>
+
+<div id="apiKeySetup" class="alert alert-warning d-none">
+    <h5>⚙️ Optional: Gemini Cloud API</h5>
+    <p>Add a Gemini API key for cloud fallback:</p>
     <ol>
         <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
         <li>Create an API key (free, 60 req/min)</li>
@@ -100,56 +107,69 @@
     <small class="text-muted">🔒 Stored locally in your browser</small>
 </div>
 
-<div id="apiKeyManage" class="alert alert-success d-none">
-    <div class="d-flex justify-content-between align-items-center">
-        <span>✅ API Key configured</span>
-        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Remove</button>
-    </div>
-</div>
-
-<div id="toolSection" class="d-none">
+<div id="toolSection">
     <div class="mb-3">
-        <label class="form-label">Text to improve:</label>
-        <textarea id="inputText" class="form-control" rows="8" placeholder="Paste your text here..."></textarea>
+        <label class="form-label">Texto a mejorar:</label>
+        <textarea id="inputText" class="form-control" rows="8" placeholder="Pega tu texto aquí..."></textarea>
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Improvement mode:</label>
+        <label class="form-label">Modo de mejora:</label>
         <select id="modeSelect" class="form-select">
-            <option value="grammar" selected>Fix Grammar & Spelling</option>
-            <option value="clarity">Improve Clarity</option>
-            <option value="professional">Make Professional</option>
-            <option value="casual">Make Casual</option>
-            <option value="concise">Make Concise</option>
+            <option value="grammar" selected>Corregir Gramática y Ortografía</option>
+            <option value="clarity">Mejorar Claridad</option>
+            <option value="professional">Hacer Profesional</option>
+            <option value="casual">Hacer Casual</option>
+            <option value="concise">Hacer Conciso</option>
         </select>
     </div>
 
     <button class="btn btn-primary" onclick="improveText()" id="improveBtn">
-        ✨ Improve Text
+        ✨ Mejorar Texto
     </button>
 
     <div id="resultSection" class="mt-4 d-none">
-        <h5>Improved text:</h5>
+        <h5>Texto mejorado:</h5>
         <div id="improvedOutput" class="p-3 bg-light border rounded"></div>
         <div class="mt-3">
-            <button class="btn btn-sm btn-outline-secondary" onclick="copyResult()">📋 Copy</button>
-            <button class="btn btn-sm btn-outline-info" onclick="downloadResult()">💾 Download</button>
+            <button class="btn btn-sm btn-outline-secondary" onclick="copyResult()">📋 Copiar</button>
+            <button class="btn btn-sm btn-outline-info" onclick="downloadResult()">💾 Descargar</button>
         </div>
     </div>
 </div>
 
+<script src="/js/lib/chrome-ai-apis.js"></script>
 <script src="/js/lib/gemini-api.js"></script>
-<script src="/js/lib/improve-text-ui.js"></script>
+<script src="/js/lib/hybrid-ai.js"></script>
 <script>
-    let improveTextUI;
+    let ai;
 
     window.addEventListener('DOMContentLoaded', async () => {
-        improveTextUI = new ImproveTextUI({
-            storage: GeminiStorage,
-            translations: window.toolTranslations
-        });
-        await improveTextUI.init();
+        ai = new HybridAI();
+        await ai.init();
+        updateServiceStatus();
     });
+
+    function updateServiceStatus() {
+        const statusEl = document.getElementById('statusText');
+        const configureBtn = document.getElementById('configureBtn');
+        
+        if (ai.hasChromeAI) {
+            statusEl.textContent = '🏠 Using Chrome Local AI (Free, Private)';
+            statusEl.parentElement.parentElement.className = 'alert alert-success';
+        } else if (ai.hasGeminiAPI) {
+            statusEl.textContent = '☁️ Using Gemini Cloud API';
+            statusEl.parentElement.parentElement.className = 'alert alert-info';
+        } else {
+            statusEl.textContent = '⚠️ No AI service available';
+            statusEl.parentElement.parentElement.className = 'alert alert-warning';
+            configureBtn.classList.remove('d-none');
+        }
+    }
+
+    function showApiKeySetup() {
+        document.getElementById('apiKeySetup').classList.remove('d-none');
+    }
 
     async function saveApiKey() {
         const apiKey = document.getElementById('apiKeyInput').value.trim();
@@ -160,9 +180,11 @@
         btn.textContent = '⏳ Validating...';
 
         try {
-            const success = await improveTextUI.saveApiKey(apiKey);
-            if (success) alert('✅ API Key saved successfully');
-            else alert('❌ Invalid API Key');
+            localStorage.setItem('gemini_api_key', apiKey);
+            await ai.init();
+            updateServiceStatus();
+            document.getElementById('apiKeySetup').classList.add('d-none');
+            alert('✅ API Key saved successfully');
         } catch (error) {
             alert(`❌ Error: ${error.message}`);
         } finally {
@@ -171,25 +193,25 @@
         }
     }
 
-    function removeApiKey() {
-        if (confirm('Remove API key?')) improveTextUI.removeApiKey();
-    }
-
     async function improveText() {
         const text = document.getElementById('inputText').value;
         const mode = document.getElementById('modeSelect').value;
         const btn = document.getElementById('improveBtn');
+        const outputEl = document.getElementById('improvedOutput');
 
         if (!text.trim()) return alert('❌ Please enter text to improve');
 
         btn.disabled = true;
         btn.textContent = '⏳ Improving...';
+        outputEl.textContent = '';
+        document.getElementById('resultSection').classList.remove('d-none');
 
         try {
-            const improved = await improveTextUI.improve(text, mode);
-            const formatted = improveTextUI.formatText(improved);
-            document.getElementById('improvedOutput').innerHTML = formatted;
-            document.getElementById('resultSection').classList.remove('d-none');
+            const options = { tone: mode === 'professional' ? 'formal' : mode === 'casual' ? 'casual' : 'neutral' };
+            
+            await ai.improveText(text, options, (chunk) => {
+                outputEl.textContent += chunk;
+            });
         } catch (error) {
             alert(`❌ Error: ${error.message}`);
         } finally {

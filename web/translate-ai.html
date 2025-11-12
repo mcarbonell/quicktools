@@ -79,9 +79,16 @@
             <div class="alert alert-info mt-3"><small>🎯 Useful for: <a href="/ai.html" class="badge bg-primary text-decoration-none">🤖 AI Tools</a></small></div>
         </div>
 
-        <div id="apiKeySetup" class="alert alert-warning">
-    <h5>⚙️ Initial Setup</h5>
-    <p>You need a free API key from Google AI Studio:</p>
+        <div id="serviceStatus" class="alert alert-info">
+    <div class="d-flex justify-content-between align-items-center">
+        <span id="statusText">🔍 Detecting AI services...</span>
+        <button class="btn btn-sm btn-outline-primary d-none" id="configureBtn" onclick="showApiKeySetup()">⚙️ Configure</button>
+    </div>
+</div>
+
+<div id="apiKeySetup" class="alert alert-warning d-none">
+    <h5>⚙️ Optional: Gemini Cloud API</h5>
+    <p>Add a Gemini API key for cloud fallback:</p>
     <ol>
         <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
         <li>Create an API key (free, 60 req/min)</li>
@@ -94,14 +101,7 @@
     <small class="text-muted">🔒 Stored locally in your browser</small>
 </div>
 
-<div id="apiKeyManage" class="alert alert-success d-none">
-    <div class="d-flex justify-content-between align-items-center">
-        <span>✅ API Key configured</span>
-        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Remove</button>
-    </div>
-</div>
-
-<div id="toolSection" class="d-none">
+<div id="toolSection">
     <div class="row">
         <div class="col-md-6 mb-3">
             <label class="form-label">Source text:</label>
@@ -154,20 +154,42 @@
     <script>
         window.toolTranslations = {"title":"AI Translator","description":"Translate text between languages using AI","apiKeySetup":"Initial Setup","sourceText":"Source text:","translation":"Translation:","translateTo":"Translate to:","detectLanguage":"🔍 Detect language","translateButton":"🌐 Translate","copyButton":"📋 Copy","downloadButton":"💾 Download","swapButton":"🔄 Swap"};
     </script>
+<script src="/js/lib/chrome-ai-apis.js"></script>
 <script src="/js/lib/gemini-api.js"></script>
-<script src="/js/lib/translate-ui.js"></script>
+<script src="/js/lib/hybrid-ai.js"></script>
 <script>
-    let translateUI;
+    let ai;
+    let sourceLang = 'en';
 
     window.addEventListener('DOMContentLoaded', async () => {
-        translateUI = new TranslateUI({
-            storage: GeminiStorage,
-            translations: window.toolTranslations,
-            userLanguage: navigator.language.split('-')[0] || 'en'
-        });
-        await translateUI.init();
-        document.getElementById('targetLangSelect').value = translateUI.userLanguage;
+        ai = new HybridAI();
+        await ai.init();
+        updateServiceStatus();
+        
+        const userLang = navigator.language.split('-')[0] || 'en';
+        document.getElementById('targetLangSelect').value = userLang;
     });
+
+    function updateServiceStatus() {
+        const statusEl = document.getElementById('statusText');
+        const configureBtn = document.getElementById('configureBtn');
+        
+        if (ai.hasChromeAI) {
+            statusEl.textContent = '🏠 Using Chrome Local AI (Free, Private)';
+            statusEl.parentElement.parentElement.className = 'alert alert-success';
+        } else if (ai.hasGeminiAPI) {
+            statusEl.textContent = '☁️ Using Gemini Cloud API';
+            statusEl.parentElement.parentElement.className = 'alert alert-info';
+        } else {
+            statusEl.textContent = '⚠️ No AI service available';
+            statusEl.parentElement.parentElement.className = 'alert alert-warning';
+            configureBtn.classList.remove('d-none');
+        }
+    }
+
+    function showApiKeySetup() {
+        document.getElementById('apiKeySetup').classList.remove('d-none');
+    }
 
     async function saveApiKey() {
         const apiKey = document.getElementById('apiKeyInput').value.trim();
@@ -178,19 +200,17 @@
         btn.textContent = '⏳ Validating...';
 
         try {
-            const success = await translateUI.saveApiKey(apiKey);
-            if (success) alert('✅ API Key saved successfully');
-            else alert('❌ Invalid API Key');
+            localStorage.setItem('gemini_api_key', apiKey);
+            await ai.init();
+            updateServiceStatus();
+            document.getElementById('apiKeySetup').classList.add('d-none');
+            alert('✅ API Key saved successfully');
         } catch (error) {
             alert(`❌ Error: ${error.message}`);
         } finally {
             btn.disabled = false;
             btn.textContent = '💾 Save';
         }
-    }
-
-    function removeApiKey() {
-        if (confirm('Remove API key?')) translateUI.removeApiKey();
     }
 
     async function detectLanguage() {
@@ -201,9 +221,10 @@
         span.textContent = '⏳ Detecting...';
 
         try {
-            const lang = await translateUI.detectLanguage(text);
+            const result = await ai.detectLanguage(text);
+            sourceLang = result.language;
             const langNames = { en: 'English', es: 'Spanish', fr: 'French', de: 'German', it: 'Italian', pt: 'Portuguese', ja: 'Japanese', zh: 'Chinese', ru: 'Russian', ar: 'Arabic' };
-            span.textContent = `Detected: ${langNames[lang] || lang}`;
+            span.textContent = `Detected: ${langNames[sourceLang] || sourceLang}`;
         } catch (error) {
             span.textContent = '❌ Detection failed';
         }
@@ -213,16 +234,17 @@
         const text = document.getElementById('inputText').value;
         const targetLang = document.getElementById('targetLangSelect').value;
         const btn = document.getElementById('translateBtn');
+        const outputEl = document.getElementById('translationOutput');
 
         if (!text.trim()) return alert('❌ Please enter text to translate');
 
         btn.disabled = true;
         btn.textContent = '⏳ Translating...';
+        outputEl.textContent = '';
 
         try {
-            const translation = await translateUI.translate(text, targetLang);
-            const formatted = translateUI.formatText(translation);
-            document.getElementById('translationOutput').innerHTML = formatted;
+            const translation = await ai.translate(text, sourceLang, targetLang);
+            outputEl.textContent = translation;
             document.getElementById('resultActions').classList.remove('d-none');
         } catch (error) {
             alert(`❌ Error: ${error.message}`);

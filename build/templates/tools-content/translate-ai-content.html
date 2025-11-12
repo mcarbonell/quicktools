@@ -1,6 +1,13 @@
-<div id="apiKeySetup" class="alert alert-warning">
-    <h5>⚙️ Initial Setup</h5>
-    <p>You need a free API key from Google AI Studio:</p>
+<div id="serviceStatus" class="alert alert-info">
+    <div class="d-flex justify-content-between align-items-center">
+        <span id="statusText">🔍 Detecting AI services...</span>
+        <button class="btn btn-sm btn-outline-primary d-none" id="configureBtn" onclick="showApiKeySetup()">⚙️ Configure</button>
+    </div>
+</div>
+
+<div id="apiKeySetup" class="alert alert-warning d-none">
+    <h5>⚙️ Optional: Gemini Cloud API</h5>
+    <p>Add a Gemini API key for cloud fallback:</p>
     <ol>
         <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
         <li>Create an API key (free, 60 req/min)</li>
@@ -13,29 +20,22 @@
     <small class="text-muted">🔒 Stored locally in your browser</small>
 </div>
 
-<div id="apiKeyManage" class="alert alert-success d-none">
-    <div class="d-flex justify-content-between align-items-center">
-        <span>✅ API Key configured</span>
-        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Remove</button>
-    </div>
-</div>
-
-<div id="toolSection" class="d-none">
+<div id="toolSection">
     <div class="row">
         <div class="col-md-6 mb-3">
-            <label class="form-label">Source text:</label>
+            <label class="form-label">{{t.sourceText}}</label>
             <textarea id="inputText" class="form-control" rows="10" placeholder="Enter text to translate..."></textarea>
-            <button class="btn btn-sm btn-outline-info mt-2" onclick="detectLanguage()">🔍 Detect language</button>
+            <button class="btn btn-sm btn-outline-info mt-2" onclick="detectLanguage()">{{t.detectLanguage}}</button>
             <span id="detectedLang" class="ms-2 text-muted"></span>
         </div>
         <div class="col-md-6 mb-3">
-            <label class="form-label">Translation:</label>
+            <label class="form-label">{{t.translation}}</label>
             <div id="translationOutput" class="form-control" style="min-height: 250px; background: #f8f9fa;"></div>
         </div>
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Translate to:</label>
+        <label class="form-label">{{t.translateTo}}</label>
         <select id="targetLangSelect" class="form-select">
             <option value="en">English</option>
             <option value="es">Español</option>
@@ -57,12 +57,12 @@
     </div>
 
     <button class="btn btn-primary" onclick="translateText()" id="translateBtn">
-        🌐 Translate
+        {{t.translateButton}}
     </button>
 
     <div id="resultActions" class="mt-3 d-none">
-        <button class="btn btn-sm btn-outline-secondary" onclick="copyResult()">📋 Copy</button>
-        <button class="btn btn-sm btn-outline-info" onclick="downloadResult()">💾 Download</button>
-        <button class="btn btn-sm btn-outline-warning" onclick="swapLanguages()">🔄 Swap</button>
+        <button class="btn btn-sm btn-outline-secondary" onclick="copyResult()">{{t.copyButton}}</button>
+        <button class="btn btn-sm btn-outline-info" onclick="downloadResult()">{{t.downloadButton}}</button>
+        <button class="btn btn-sm btn-outline-warning" onclick="swapLanguages()">{{t.swapButton}}</button>
     </div>
 </div>

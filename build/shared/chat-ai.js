@@ -1,60 +1,64 @@
 // AI Chat - Shared script for web and extension
-let gemini = null;
+let ai = null;
 const isExtension = typeof chrome !== 'undefined' && chrome.storage;
-const Storage = isExtension ? ChromeGeminiStorage : GeminiStorage;
 
 window.addEventListener('DOMContentLoaded', async () => {
-    const hasKey = isExtension ? await Storage.exists() : Storage.exists();
-    if (hasKey) {
-        const apiKey = isExtension ? await Storage.get() : Storage.get();
-        gemini = new GeminiAPI(apiKey);
+    ai = new HybridAI();
+    await ai.init();
+    updateServiceStatus();
+    
+    if (ai.hasChromeAI || ai.hasGeminiAPI) {
         showChat();
     }
 });
 
-async function saveApiKey() {
-    const apiKey = document.getElementById('apiKeyInput').value.trim();
-    if (!apiKey) {
-        alert('❌ Por favor ingresa una API key');
-        return;
-    }
-
-    gemini = new GeminiAPI(apiKey);
+function updateServiceStatus() {
+    const statusEl = document.getElementById('statusText');
+    const configureBtn = document.getElementById('configureBtn');
     
-    const btn = document.getElementById('sendBtn');
-    btn.disabled = true;
-    btn.textContent = '⏳ Validando...';
+    if (!statusEl) return;
     
-    try {
-        const valid = await gemini.validateKey();
-        if (valid) {
-            if (isExtension) {
-                await Storage.save(apiKey);
-            } else {
-                Storage.save(apiKey);
-            }
-            showChat();
-            alert('✅ API Key guardada correctamente');
-        } else {
-            alert('❌ API Key inválida. Verifica que sea correcta.');
-        }
-    } catch (error) {
-        console.error('Validation error:', error);
-        alert(`❌ Error al validar: ${error.message}\n\nVerifica:\n1. Que la API key sea correcta\n2. Que tengas habilitada la API de Gemini\n3. Tu conexión a internet`);
-    } finally {
-        btn.disabled = false;
-        btn.textContent = '📤 Enviar';
+    if (ai.hasChromeAI) {
+        statusEl.textContent = '🏠 Using Chrome Local AI (Free, Private)';
+        statusEl.parentElement.parentElement.className = 'alert alert-success';
+    } else if (ai.hasGeminiAPI) {
+        statusEl.textContent = '☁️ Using Gemini Cloud API';
+        statusEl.parentElement.parentElement.className = 'alert alert-info';
+    } else {
+        statusEl.textContent = '⚠️ No AI service available';
+        statusEl.parentElement.parentElement.className = 'alert alert-warning';
+        if (configureBtn) configureBtn.classList.remove('d-none');
     }
 }
 
-async function removeApiKey() {
-    if (confirm('¿Seguro que quieres eliminar la API key?')) {
+function showApiKeySetup() {
+    document.getElementById('apiKeySetup').classList.remove('d-none');
+}
+
+async function saveApiKey() {
+    const apiKey = document.getElementById('apiKeyInput').value.trim();
+    if (!apiKey) return alert('❌ Please enter an API key');
+
+    const btn = event.target;
+    btn.disabled = true;
+    btn.textContent = '⏳ Validating...';
+
+    try {
         if (isExtension) {
-            await Storage.remove();
+            await chrome.storage.local.set({ gemini_api_key: apiKey });
         } else {
-            Storage.remove();
+            localStorage.setItem('gemini_api_key', apiKey);
         }
-        location.reload();
+        await ai.init();
+        updateServiceStatus();
+        showChat();
+        document.getElementById('apiKeySetup').classList.add('d-none');
+        alert('✅ API Key saved successfully');
+    } catch (error) {
+        alert(`❌ Error: ${error.message}`);
+    } finally {
+        btn.disabled = false;
+        btn.textContent = '💾 Save';
     }
 }
 
@@ -73,17 +77,25 @@ async function sendMessage() {
     addMessage(message, 'user');
     input.value = '';
 
-    document.getElementById('typingIndicator').style.display = 'block';
-    document.getElementById('sendBtn').disabled = true;
+    const typingIndicator = document.getElementById('typingIndicator');
+    const sendBtn = document.getElementById('sendBtn');
+    
+    typingIndicator.style.display = 'block';
+    sendBtn.disabled = true;
+
+    const assistantMsg = addMessage('', 'assistant');
+    const contentDiv = assistantMsg.querySelector('.message-content');
 
     try {
-        const response = await gemini.chat(message);
-        addMessage(response, 'assistant');
+        await ai.chat(message, {}, (chunk) => {
+            contentDiv.textContent += chunk;
+            document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
+        });
     } catch (error) {
-        addMessage(`❌ Error: ${error.message}`, 'assistant');
+        contentDiv.textContent = `❌ Error: ${error.message}`;
     } finally {
-        document.getElementById('typingIndicator').style.display = 'none';
-        document.getElementById('sendBtn').disabled = false;
+        typingIndicator.style.display = 'none';
+        sendBtn.disabled = false;
         input.focus();
     }
 }
@@ -93,16 +105,17 @@ function addMessage(text, role) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${role}`;
     
-    const label = role === 'user' ? 'Tú' : 'Asistente IA';
+    const label = role === 'user' ? 'You' : 'AI Assistant';
     const formattedText = formatMessage(text);
     
     messageDiv.innerHTML = `
         <strong>${label}</strong>
-        <div class="mt-2">${formattedText}</div>
+        <div class="mt-2 message-content">${formattedText}</div>
     `;
     
     container.appendChild(messageDiv);
     container.scrollTop = container.scrollHeight;
+    return messageDiv;
 }
 
 function formatMessage(text) {

@@ -106,12 +106,19 @@ class HybridAI {
     // IMPROVE TEXT
     // ====================
 
-    async improveText(text, options = {}) {
+    async improveText(text, options = {}, onChunk = null) {
         // Try Chrome Rewriter API first
         if (this.availability?.rewriter) {
             try {
                 if (!this.chromeAI) this.chromeAI = new ChromeAI();
-                return await this.chromeAI.rewrite(text, { tone: 'formal', ...options });
+                if (onChunk) {
+                    for await (const chunk of this.chromeAI.rewriteStreaming(text, { tone: 'formal', ...options })) {
+                        onChunk(chunk);
+                    }
+                    return;
+                } else {
+                    return await this.chromeAI.rewrite(text, { tone: 'formal', ...options });
+                }
             } catch (error) {
                 console.warn('Chrome Rewriter failed, falling back to Gemini:', error);
             }
@@ -120,7 +127,14 @@ class HybridAI {
         // Fallback to Gemini Cloud
         if (this.geminiAPI) {
             const prompt = `Improve the following text (grammar, clarity, style):\n\n${text}`;
-            return await this.geminiAPI.generateText(prompt);
+            if (onChunk) {
+                for await (const chunk of this.geminiAPI.generateTextStream(prompt)) {
+                    onChunk(chunk);
+                }
+                return;
+            } else {
+                return await this.geminiAPI.generateText(prompt);
+            }
         }
 
         throw new Error('No AI service available');
@@ -205,12 +219,19 @@ class HybridAI {
     // CHAT
     // ====================
 
-    async chat(message, options = {}) {
+    async chat(message, options = {}, onChunk = null) {
         // Try Chrome Prompt API first
         if (this.availability?.prompt) {
             try {
                 if (!this.chromeAI) this.chromeAI = new ChromeAI();
-                return await this.chromeAI.prompt(message);
+                if (onChunk) {
+                    for await (const chunk of this.chromeAI.promptStreaming(message)) {
+                        onChunk(chunk);
+                    }
+                    return;
+                } else {
+                    return await this.chromeAI.prompt(message);
+                }
             } catch (error) {
                 console.warn('Chrome Prompt failed, falling back to Gemini:', error);
             }
@@ -218,7 +239,14 @@ class HybridAI {
 
         // Fallback to Gemini Cloud
         if (this.geminiAPI) {
-            return await this.geminiAPI.generateText(message);
+            if (onChunk) {
+                for await (const chunk of this.geminiAPI.generateTextStream(message)) {
+                    onChunk(chunk);
+                }
+                return;
+            } else {
+                return await this.geminiAPI.generateText(message);
+            }
         }
 
         throw new Error('No AI service available');
