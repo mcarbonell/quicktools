@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Image with AI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 16px; background: #f5f5f5; }
+        .alert { padding: 12px; border-radius: 8px; margin-bottom: 12px; font-size: 13px; }
+        .alert-warning { background: #fff3cd; border: 1px solid #ffc107; }
+        .alert-success { background: #d1e7dd; border: 1px solid #0f5132; }
+        .alert-info { background: #cfe2ff; border: 1px solid #0d6efd; }
+        .d-none { display: none !important; }
+        .form-label { display: block; margin-bottom: 4px; font-weight: 500; font-size: 14px; }
+        .form-control { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+        textarea.form-control { resize: vertical; font-family: inherit; }
+        .btn { padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+        .btn-sm { padding: 4px 8px; font-size: 12px; }
+        .btn-outline-danger { background: white; color: #dc3545; border: 1px solid #dc3545; }
+        .btn-outline-secondary { background: white; color: #6c757d; border: 1px solid #6c757d; }
+        .btn-outline-info { background: white; color: #0dcaf0; border: 1px solid #0dcaf0; }
+        .mb-3 { margin-bottom: 12px; }
+        .mt-3 { margin-top: 12px; }
+        .text-muted { color: #6c757d; font-size: 12px; }
+        .d-flex { display: flex; }
+        .justify-content-between { justify-content: space-between; }
+        .align-items-center { align-items: center; }
+        .input-group { display: flex; gap: 4px; }
+        .input-group .form-control { flex: 1; }
+        #previewImg { max-width: 100%; max-height: 200px; border: 1px solid #ddd; border-radius: 4px; }
+        #suggestionsOutput { padding: 12px; background: white; border: 1px solid #ddd; border-radius: 4px; min-height: 100px; }
+    </style>
+</head>
+<body>
+    <div id="apiKeySetup" class="alert alert-warning">
+        <h5 style="margin-bottom: 8px;">⚙️ Setup</h5>
+        <p style="margin-bottom: 8px;">Get free API key from <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></p>
+        <div class="input-group">
+            <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
+            <button class="btn btn-primary" id="saveKeyBtn">💾 Save</button>
+        </div>
+    </div>
+
+    <div id="apiKeyManage" class="alert alert-success d-none">
+        <div class="d-flex justify-content-between align-items-center">
+            <span>✅ API Key configured</span>
+            <button class="btn btn-sm btn-outline-danger" id="removeKeyBtn">🗑️</button>
+        </div>
+    </div>
+
+    <div id="toolSection" class="d-none">
+        <div class="alert alert-info">
+            <strong>💡 Note:</strong> AI analyzes your image and provides editing suggestions.
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Upload image:</label>
+            <input type="file" id="imageInput" class="form-control" accept="image/*">
+        </div>
+
+        <div id="imagePreview" class="mb-3 d-none">
+            <label class="form-label">Preview:</label>
+            <img id="previewImg">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Instructions:</label>
+            <textarea id="instructionText" class="form-control" rows="3" 
+                placeholder="Example: make background darker, add contrast..."></textarea>
+            <small class="text-muted">Describe what you want to change</small>
+        </div>
+
+        <button class="btn btn-primary" id="editBtn" style="width: 100%;" disabled>✨ Analyze & Suggest</button>
+
+        <div id="resultSection" class="mt-3 d-none">
+            <label class="form-label">AI Suggestions:</label>
+            <div id="suggestionsOutput"></div>
+            <div class="mt-3" style="display: flex; gap: 8px;">
+                <button class="btn btn-sm btn-outline-secondary" id="copyBtn">📋 Copy</button>
+                <button class="btn btn-sm btn-outline-info" id="downloadBtn">💾 Download</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../shared/gemini-api.js"></script>
+    <script src="../../shared/edit-image-ui.js"></script>
+    <script src="edit-image-storage.js"></script>
+    <script>
+        let editImageUI;
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            editImageUI = new EditImageUI({
+                storage: ChromeGeminiStorage,
+                translations: {}
+            });
+            await editImageUI.init();
+        });
+
+        document.getElementById('saveKeyBtn').onclick = async () => {
+            const apiKey = document.getElementById('apiKeyInput').value.trim();
+            if (!apiKey) return alert('❌ Enter API key');
+
+            const btn = document.getElementById('saveKeyBtn');
+            btn.disabled = true;
+            btn.textContent = '⏳ Validating...';
+
+            try {
+                const success = await editImageUI.saveApiKey(apiKey);
+                if (success) alert('✅ Saved');
+                else alert('❌ Invalid key');
+            } catch (error) {
+                alert(`❌ Error: ${error.message}`);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '💾 Save';
+            }
+        };
+
+        document.getElementById('removeKeyBtn').onclick = () => {
+            if (confirm('Remove API key?')) editImageUI.removeApiKey();
+        };
+
+        document.getElementById('imageInput').onchange = async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            try {
+                const dataUrl = await editImageUI.loadImage(file);
+                document.getElementById('previewImg').src = dataUrl;
+                document.getElementById('imagePreview').classList.remove('d-none');
+                document.getElementById('editBtn').disabled = false;
+            } catch (error) {
+                alert(`❌ Error: ${error.message}`);
+            }
+        };
+
+        document.getElementById('editBtn').onclick = async () => {
+            const instruction = document.getElementById('instructionText').value;
+            const btn = document.getElementById('editBtn');
+
+            if (!instruction.trim()) return alert('❌ Enter instructions');
+
+            btn.disabled = true;
+            btn.textContent = '⏳ Analyzing...';
+
+            try {
+                const suggestions = await editImageUI.editImage(instruction);
+                const formatted = editImageUI.formatText(suggestions);
+                document.getElementById('suggestionsOutput').innerHTML = formatted;
+                document.getElementById('resultSection').classList.remove('d-none');
+            } catch (error) {
+                alert(`❌ Error: ${error.message}`);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '✨ Analyze & Suggest';
+            }
+        };
+
+        document.getElementById('copyBtn').onclick = () => {
+            const text = document.getElementById('suggestionsOutput').innerText;
+            navigator.clipboard.writeText(text).then(() => alert('✅ Copied'));
+        };
+
+        document.getElementById('downloadBtn').onclick = () => {
+            const text = document.getElementById('suggestionsOutput').innerText;
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `image-suggestions-${new Date().toISOString().slice(0,10)}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        };
+    </script>
+</body>
+</html>

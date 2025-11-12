@@ -215,7 +215,7 @@
         "es": "Herramientas potenciadas con inteligencia artificial",
         "en": "AI-powered tools"
       },
-      "tools": ["chat-ai", "summarize-text-ai", "improve-text-ai", "chat-pdf", "edit-image-ai", "translate-ai"]
+      "tools": ["chat-ai", "chat-pdf", "summarize-text-ai", "improve-text-ai", "translate-ai", "edit-image-ai"]
     },
     {
       "id": "seo-specialists",
@@ -673,6 +673,7 @@
     {
       "id": "summarize-text-ai",
       "slug": "summarize-text-ai.html",
+      "extensionSlug": "tools/ai/summarize-text.html",
       "title": {
         "es": "Resumir Texto con IA",
         "en": "Summarize Text with AI"
@@ -684,11 +685,12 @@
       "categories": ["ai", "text"],
       "icon": "📄",
       "tags": ["ai", "text", "summarize"],
-      "availableIn": ["web"]
+      "availableIn": ["web", "extension"]
     },
     {
       "id": "improve-text-ai",
       "slug": "improve-text-ai.html",
+      "extensionSlug": "tools/ai/improve-text.html",
       "title": {
         "es": "Mejorar Texto con IA",
         "en": "Improve Text with AI"
@@ -700,7 +702,7 @@
       "categories": ["ai", "text"],
       "icon": "✨",
       "tags": ["ai", "text", "improve"],
-      "availableIn": ["web"]
+      "availableIn": ["web", "extension"]
     },
     {
       "id": "chat-pdf",
@@ -722,6 +724,7 @@
     {
       "id": "edit-image-ai",
       "slug": "edit-image-ai.html",
+      "extensionSlug": "tools/ai/edit-image.html",
       "title": {
         "es": "Editar Imagen con IA",
         "en": "Edit Image with AI"
@@ -733,11 +736,12 @@
       "categories": ["ai", "image"],
       "icon": "🎨",
       "tags": ["ai", "image", "edit"],
-      "availableIn": ["web"]
+      "availableIn": ["web", "extension"]
     },
     {
       "id": "translate-ai",
       "slug": "translate-ai.html",
+      "extensionSlug": "tools/ai/translate.html",
       "title": {
         "es": "Traductor con IA",
         "en": "AI Translator"
@@ -749,7 +753,7 @@
       "categories": ["ai", "text"],
       "icon": "🌐",
       "tags": ["ai", "translate", "languages"],
-      "availableIn": ["web"]
+      "availableIn": ["web", "extension"]
     },
     {
       "id": "meta-tags-analyzer",

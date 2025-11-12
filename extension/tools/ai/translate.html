@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Translator</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 16px; background: #f5f5f5; }
+        .alert { padding: 12px; border-radius: 8px; margin-bottom: 12px; }
+        .alert-warning { background: #fff3cd; border: 1px solid #ffc107; }
+        .alert-success { background: #d1e7dd; border: 1px solid #0f5132; }
+        .d-none { display: none !important; }
+        .form-label { display: block; margin-bottom: 4px; font-weight: 500; font-size: 14px; }
+        .form-control, .form-select { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+        textarea.form-control { resize: vertical; font-family: inherit; }
+        .btn { padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+        .btn-sm { padding: 4px 8px; font-size: 12px; }
+        .btn-outline-danger { background: white; color: #dc3545; border: 1px solid #dc3545; }
+        .btn-outline-secondary { background: white; color: #6c757d; border: 1px solid #6c757d; }
+        .btn-outline-info { background: white; color: #0dcaf0; border: 1px solid #0dcaf0; }
+        .btn-outline-warning { background: white; color: #ffc107; border: 1px solid #ffc107; }
+        .mb-3 { margin-bottom: 12px; }
+        .mt-2 { margin-top: 8px; }
+        .mt-3 { margin-top: 12px; }
+        .ms-2 { margin-left: 8px; }
+        .text-muted { color: #6c757d; font-size: 12px; }
+        .d-flex { display: flex; }
+        .justify-content-between { justify-content: space-between; }
+        .align-items-center { align-items: center; }
+        .input-group { display: flex; gap: 4px; }
+        .input-group .form-control { flex: 1; }
+        #translationOutput { padding: 12px; background: white; border: 1px solid #ddd; border-radius: 4px; min-height: 100px; }
+    </style>
+</head>
+<body>
+    <div id="apiKeySetup" class="alert alert-warning">
+        <h5 style="margin-bottom: 8px;">⚙️ Setup</h5>
+        <p style="margin-bottom: 8px; font-size: 13px;">Get free API key from <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></p>
+        <div class="input-group">
+            <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
+            <button class="btn btn-primary" id="saveKeyBtn">💾 Save</button>
+        </div>
+    </div>
+
+    <div id="apiKeyManage" class="alert alert-success d-none">
+        <div class="d-flex justify-content-between align-items-center">
+            <span style="font-size: 13px;">✅ API Key configured</span>
+            <button class="btn btn-sm btn-outline-danger" id="removeKeyBtn">🗑️</button>
+        </div>
+    </div>
+
+    <div id="toolSection" class="d-none">
+        <div class="mb-3">
+            <label class="form-label">Source text:</label>
+            <textarea id="inputText" class="form-control" rows="6" placeholder="Enter text to translate..."></textarea>
+            <button class="btn btn-sm btn-outline-info mt-2" id="detectBtn">🔍 Detect</button>
+            <span id="detectedLang" class="ms-2 text-muted"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Translate to:</label>
+            <select id="targetLangSelect" class="form-select">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="it">Italiano</option>
+                <option value="pt">Português</option>
+                <option value="ja">日本語</option>
+                <option value="zh">中文</option>
+                <option value="ru">Русский</option>
+                <option value="ar">العربية</option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary" id="translateBtn" style="width: 100%;">🌐 Translate</button>
+
+        <div id="resultSection" class="mt-3 d-none">
+            <label class="form-label">Translation:</label>
+            <div id="translationOutput"></div>
+            <div class="mt-3" style="display: flex; gap: 8px;">
+                <button class="btn btn-sm btn-outline-secondary" id="copyBtn">📋 Copy</button>
+                <button class="btn btn-sm btn-outline-info" id="downloadBtn">💾 Download</button>
+                <button class="btn btn-sm btn-outline-warning" id="swapBtn">🔄 Swap</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../shared/gemini-api.js"></script>
+    <script src="../../shared/translate-ui.js"></script>
+    <script src="translate-storage.js"></script>
+    <script>
+        let translateUI;
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            translateUI = new TranslateUI({
+                storage: ChromeGeminiStorage,
+                translations: {},
+                userLanguage: navigator.language.split('-')[0] || 'en'
+            });
+            await translateUI.init();
+            document.getElementById('targetLangSelect').value = translateUI.userLanguage;
+        });
+
+        document.getElementById('saveKeyBtn').onclick = async () => {
+            const apiKey = document.getElementById('apiKeyInput').value.trim();
+            if (!apiKey) return alert('❌ Enter API key');
+
+            const btn = document.getElementById('saveKeyBtn');
+            btn.disabled = true;
+            btn.textContent = '⏳ Validating...';
+
+            try {
+                const success = await translateUI.saveApiKey(apiKey);
+                if (success) alert('✅ Saved');
+                else alert('❌ Invalid key');
+            } catch (error) {
+                alert(`❌ Error: ${error.message}`);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '💾 Save';
+            }
+        };
+
+        document.getElementById('removeKeyBtn').onclick = () => {
+            if (confirm('Remove API key?')) translateUI.removeApiKey();
+        };
+
+        document.getElementById('detectBtn').onclick = async () => {
+            const text = document.getElementById('inputText').value;
+            if (!text.trim()) return alert('❌ Enter text first');
+
+            const span = document.getElementById('detectedLang');
+            span.textContent = '⏳ Detecting...';
+
+            try {
+                const lang = await translateUI.detectLanguage(text);
+                const langNames = { en: 'English', es: 'Spanish', fr: 'French', de: 'German', it: 'Italian', pt: 'Portuguese' };
+                span.textContent = `Detected: ${langNames[lang] || lang}`;
+            } catch (error) {
+                span.textContent = '❌ Failed';
+            }
+        };
+
+        document.getElementById('translateBtn').onclick = async () => {
+            const text = document.getElementById('inputText').value;
+            const targetLang = document.getElementById('targetLangSelect').value;
+            const btn = document.getElementById('translateBtn');
+
+            if (!text.trim()) return alert('❌ Enter text');
+
+            btn.disabled = true;
+            btn.textContent = '⏳ Translating...';
+
+            try {
+                const translation = await translateUI.translate(text, targetLang);
+                const formatted = translateUI.formatText(translation);
+                document.getElementById('translationOutput').innerHTML = formatted;
+                document.getElementById('resultSection').classList.remove('d-none');
+            } catch (error) {
+                alert(`❌ Error: ${error.message}`);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '🌐 Translate';
+            }
+        };
+
+        document.getElementById('copyBtn').onclick = () => {
+            const text = document.getElementById('translationOutput').innerText;
+            navigator.clipboard.writeText(text).then(() => alert('✅ Copied'));
+        };
+
+        document.getElementById('downloadBtn').onclick = () => {
+            const text = document.getElementById('translationOutput').innerText;
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `translation-${new Date().toISOString().slice(0,10)}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        };
+
+        document.getElementById('swapBtn').onclick = () => {
+            const input = document.getElementById('inputText');
+            const output = document.getElementById('translationOutput');
+            const temp = input.value;
+            input.value = output.innerText;
+            output.innerHTML = '';
+            document.getElementById('resultSection').classList.add('d-none');
+        };
+    </script>
+</body>
+</html>
