@@ -1,0 +1,34 @@
+{
+  "en": {
+    "title": "Improve Text with AI",
+    "description": "Improve your text writing with AI",
+    "inputLabel": "Text to improve:",
+    "inputPlaceholder": "Paste your text here...",
+    "modeLabel": "Improvement mode:",
+    "modeGrammar": "Fix Grammar & Spelling",
+    "modeClarity": "Improve Clarity",
+    "modeProfessional": "Make Professional",
+    "modeCasual": "Make Casual",
+    "modeConcise": "Make Concise",
+    "improveButton": "✨ Improve Text",
+    "resultTitle": "Improved text:",
+    "copyButton": "📋 Copy",
+    "downloadButton": "💾 Download"
+  },
+  "es": {
+    "title": "Mejorar Texto con IA",
+    "description": "Mejora la redacción de tus textos con IA",
+    "inputLabel": "Texto a mejorar:",
+    "inputPlaceholder": "Pega tu texto aquí...",
+    "modeLabel": "Modo de mejora:",
+    "modeGrammar": "Corregir Gramática y Ortografía",
+    "modeClarity": "Mejorar Claridad",
+    "modeProfessional": "Hacer Profesional",
+    "modeCasual": "Hacer Casual",
+    "modeConcise": "Hacer Conciso",
+    "improveButton": "✨ Mejorar Texto",
+    "resultTitle": "Texto mejorado:",
+    "copyButton": "📋 Copiar",
+    "downloadButton": "💾 Descargar"
+  }
+}

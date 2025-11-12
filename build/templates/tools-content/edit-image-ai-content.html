@@ -1,0 +1,58 @@
+<div id="apiKeySetup" class="alert alert-warning">
+    <h5>⚙️ Initial Setup</h5>
+    <p>You need a free API key from Google AI Studio:</p>
+    <ol>
+        <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+        <li>Create an API key (free, 60 req/min)</li>
+        <li>Paste it below 👇</li>
+    </ol>
+    <div class="input-group">
+        <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
+        <button class="btn btn-primary" onclick="saveApiKey()">💾 Save</button>
+    </div>
+    <small class="text-muted">🔒 Stored locally in your browser</small>
+</div>
+
+<div id="apiKeyManage" class="alert alert-success d-none">
+    <div class="d-flex justify-content-between align-items-center">
+        <span>✅ API Key configured</span>
+        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Remove</button>
+    </div>
+</div>
+
+<div id="toolSection" class="d-none">
+    <div class="alert alert-info">
+        <strong>💡 Note:</strong> This tool uses Gemini Vision to analyze your image and provide editing suggestions. 
+        For actual image editing, it will describe the changes - you'll need to apply them manually or use image editing software.
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Upload image:</label>
+        <input type="file" id="imageInput" class="form-control" accept="image/*" onchange="handleImageUpload()">
+    </div>
+
+    <div id="imagePreview" class="mb-3 d-none">
+        <label class="form-label">Preview:</label>
+        <img id="previewImg" class="img-fluid border rounded" style="max-height: 300px;">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Editing instructions:</label>
+        <textarea id="instructionText" class="form-control" rows="3" 
+            placeholder="Example: make the background darker, add more contrast, suggest color corrections..."></textarea>
+        <small class="text-muted">Describe what you want to change or improve in the image</small>
+    </div>
+
+    <button class="btn btn-primary" onclick="editImage()" id="editBtn" disabled>
+        ✨ Analyze & Suggest Edits
+    </button>
+
+    <div id="resultSection" class="mt-4 d-none">
+        <h5>AI Suggestions:</h5>
+        <div id="suggestionsOutput" class="p-3 bg-light border rounded"></div>
+        <div class="mt-3">
+            <button class="btn btn-sm btn-outline-secondary" onclick="copyResult()">📋 Copy</button>
+            <button class="btn btn-sm btn-outline-info" onclick="downloadResult()">💾 Download</button>
+        </div>
+    </div>
+</div>

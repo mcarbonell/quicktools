@@ -1,0 +1,28 @@
+{
+  "en": {
+    "title": "AI Translator",
+    "description": "Translate text between languages using AI",
+    "apiKeySetup": "Initial Setup",
+    "sourceText": "Source text:",
+    "translation": "Translation:",
+    "translateTo": "Translate to:",
+    "detectLanguage": "🔍 Detect language",
+    "translateButton": "🌐 Translate",
+    "copyButton": "📋 Copy",
+    "downloadButton": "💾 Download",
+    "swapButton": "🔄 Swap"
+  },
+  "es": {
+    "title": "Traductor con IA",
+    "description": "Traduce textos entre idiomas usando inteligencia artificial",
+    "apiKeySetup": "Configuración Inicial",
+    "sourceText": "Texto origen:",
+    "translation": "Traducción:",
+    "translateTo": "Traducir a:",
+    "detectLanguage": "🔍 Detectar idioma",
+    "translateButton": "🌐 Traducir",
+    "copyButton": "📋 Copiar",
+    "downloadButton": "💾 Descargar",
+    "swapButton": "🔄 Intercambiar"
+  }
+}

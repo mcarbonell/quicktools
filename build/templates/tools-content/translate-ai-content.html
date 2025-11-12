@@ -1,0 +1,68 @@
+<div id="apiKeySetup" class="alert alert-warning">
+    <h5>⚙️ Initial Setup</h5>
+    <p>You need a free API key from Google AI Studio:</p>
+    <ol>
+        <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+        <li>Create an API key (free, 60 req/min)</li>
+        <li>Paste it below 👇</li>
+    </ol>
+    <div class="input-group">
+        <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
+        <button class="btn btn-primary" onclick="saveApiKey()">💾 Save</button>
+    </div>
+    <small class="text-muted">🔒 Stored locally in your browser</small>
+</div>
+
+<div id="apiKeyManage" class="alert alert-success d-none">
+    <div class="d-flex justify-content-between align-items-center">
+        <span>✅ API Key configured</span>
+        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Remove</button>
+    </div>
+</div>
+
+<div id="toolSection" class="d-none">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Source text:</label>
+            <textarea id="inputText" class="form-control" rows="10" placeholder="Enter text to translate..."></textarea>
+            <button class="btn btn-sm btn-outline-info mt-2" onclick="detectLanguage()">🔍 Detect language</button>
+            <span id="detectedLang" class="ms-2 text-muted"></span>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Translation:</label>
+            <div id="translationOutput" class="form-control" style="min-height: 250px; background: #f8f9fa;"></div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Translate to:</label>
+        <select id="targetLangSelect" class="form-select">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="it">Italiano</option>
+            <option value="pt">Português</option>
+            <option value="ja">日本語</option>
+            <option value="zh">中文</option>
+            <option value="ru">Русский</option>
+            <option value="ar">العربية</option>
+            <option value="ko">한국어</option>
+            <option value="hi">हिन्दी</option>
+            <option value="nl">Nederlands</option>
+            <option value="sv">Svenska</option>
+            <option value="pl">Polski</option>
+            <option value="tr">Türkçe</option>
+        </select>
+    </div>
+
+    <button class="btn btn-primary" onclick="translateText()" id="translateBtn">
+        🌐 Translate
+    </button>
+
+    <div id="resultActions" class="mt-3 d-none">
+        <button class="btn btn-sm btn-outline-secondary" onclick="copyResult()">📋 Copy</button>
+        <button class="btn btn-sm btn-outline-info" onclick="downloadResult()">💾 Download</button>
+        <button class="btn btn-sm btn-outline-warning" onclick="swapLanguages()">🔄 Swap</button>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "en": {
+    "title": "Edit Image with AI",
+    "description": "Edit images using artificial intelligence",
+    "noteTitle": "💡 Note:",
+    "noteText": "This tool uses Gemini Vision to analyze your image and provide editing suggestions. For actual image editing, it will describe the changes - you'll need to apply them manually or use image editing software.",
+    "uploadLabel": "Upload image:",
+    "previewLabel": "Preview:",
+    "instructionLabel": "Editing instructions:",
+    "instructionPlaceholder": "Example: make the background darker, add more contrast, suggest color corrections...",
+    "instructionHint": "Describe what you want to change or improve in the image",
+    "analyzeButton": "✨ Analyze & Suggest Edits",
+    "resultTitle": "AI Suggestions:",
+    "copyButton": "📋 Copy",
+    "downloadButton": "💾 Download"
+  },
+  "es": {
+    "title": "Editar Imagen con IA",
+    "description": "Edita imágenes usando inteligencia artificial",
+    "noteTitle": "💡 Nota:",
+    "noteText": "Esta herramienta usa Gemini Vision para analizar tu imagen y proporcionar sugerencias de edición. Para la edición real de la imagen, describirá los cambios - necesitarás aplicarlos manualmente o usar software de edición de imágenes.",
+    "uploadLabel": "Subir imagen:",
+    "previewLabel": "Vista previa:",
+    "instructionLabel": "Instrucciones de edición:",
+    "instructionPlaceholder": "Ejemplo: hacer el fondo más oscuro, añadir más contraste, sugerir correcciones de color...",
+    "instructionHint": "Describe qué quieres cambiar o mejorar en la imagen",
+    "analyzeButton": "✨ Analizar y Sugerir Ediciones",
+    "resultTitle": "Sugerencias de IA:",
+    "copyButton": "📋 Copiar",
+    "downloadButton": "💾 Descargar"
+  }
+}

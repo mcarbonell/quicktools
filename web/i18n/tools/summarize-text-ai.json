@@ -1,0 +1,32 @@
+{
+  "en": {
+    "title": "Summarize Text with AI",
+    "description": "Summarize long texts using AI",
+    "inputLabel": "Text to summarize:",
+    "inputPlaceholder": "Paste your text here...",
+    "inputHint": "Tip: Works best with articles, documents, or long texts",
+    "lengthLabel": "Summary length:",
+    "lengthShort": "Short (2-3 sentences)",
+    "lengthMedium": "Medium (4-6 sentences)",
+    "lengthLong": "Long (detailed)",
+    "summarizeButton": "✨ Summarize",
+    "resultTitle": "Summary:",
+    "copyButton": "📋 Copy",
+    "downloadButton": "💾 Download"
+  },
+  "es": {
+    "title": "Resumir Texto con IA",
+    "description": "Resume textos largos usando inteligencia artificial",
+    "inputLabel": "Texto a resumir:",
+    "inputPlaceholder": "Pega tu texto aquí...",
+    "inputHint": "Consejo: Funciona mejor con artículos, documentos o textos largos",
+    "lengthLabel": "Longitud del resumen:",
+    "lengthShort": "Corto (2-3 frases)",
+    "lengthMedium": "Medio (4-6 frases)",
+    "lengthLong": "Largo (detallado)",
+    "summarizeButton": "✨ Resumir",
+    "resultTitle": "Resumen:",
+    "copyButton": "📋 Copiar",
+    "downloadButton": "💾 Descargar"
+  }
+}
