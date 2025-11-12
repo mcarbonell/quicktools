@@ -656,6 +656,7 @@
     {
       "id": "chat-ai",
       "slug": "chat-ai.html",
+      "extensionSlug": "tools/ai/chat-ai.html",
       "title": {
         "es": "Chat con IA",
         "en": "AI Chat"
@@ -666,7 +667,8 @@
       },
       "categories": ["ai"],
       "icon": "💬",
-      "tags": ["ai", "chat", "gemini"]
+      "tags": ["ai", "chat", "gemini"],
+      "availableIn": ["web", "extension"]
     },
     {
       "id": "summarize-text-ai",
@@ -681,7 +683,8 @@
       },
       "categories": ["ai", "text"],
       "icon": "📄",
-      "tags": ["ai", "text", "summarize"]
+      "tags": ["ai", "text", "summarize"],
+      "availableIn": ["web"]
     },
     {
       "id": "improve-text-ai",
@@ -696,11 +699,13 @@
       },
       "categories": ["ai", "text"],
       "icon": "✨",
-      "tags": ["ai", "text", "improve"]
+      "tags": ["ai", "text", "improve"],
+      "availableIn": ["web"]
     },
     {
       "id": "chat-pdf",
       "slug": "chat-pdf.html",
+      "extensionSlug": "tools/ai/chat-pdf.html",
       "title": {
         "es": "Chat con PDF",
         "en": "Chat with PDF"
@@ -711,7 +716,8 @@
       },
       "categories": ["ai", "files"],
       "icon": "📚",
-      "tags": ["ai", "pdf", "chat"]
+      "tags": ["ai", "pdf", "chat"],
+      "availableIn": ["web", "extension"]
     },
     {
       "id": "edit-image-ai",
@@ -726,7 +732,8 @@
       },
       "categories": ["ai", "image"],
       "icon": "🎨",
-      "tags": ["ai", "image", "edit"]
+      "tags": ["ai", "image", "edit"],
+      "availableIn": ["web"]
     },
     {
       "id": "meta-tags-analyzer",

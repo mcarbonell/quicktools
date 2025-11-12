@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat con IA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 1rem; background: #f8f9fa; }
+        .api-key-setup { background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+        .api-key-setup h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .api-key-setup ol { margin: 0.5rem 0; padding-left: 1.5rem; font-size: 0.875rem; }
+        .input-group { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+        .input-group input { flex: 1; padding: 0.5rem; border: 1px solid #dee2e6; border-radius: 4px; }
+        .btn { padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer; font-size: 0.875rem; }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-danger { background: #dc3545; color: white; }
+        .btn-secondary { background: #6c757d; color: white; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .alert { padding: 0.75rem; border-radius: 4px; margin-bottom: 1rem; }
+        .alert-success { background: #d4edda; border: 1px solid #c3e6cb; }
+        .d-none { display: none !important; }
+        .d-flex { display: flex; }
+        .justify-between { justify-content: space-between; }
+        .align-center { align-items: center; }
+        .chat-container { height: 400px; overflow-y: auto; border: 1px solid #dee2e6; border-radius: 8px; padding: 1rem; background: white; margin-bottom: 1rem; }
+        .message { margin-bottom: 1rem; padding: 0.75rem; border-radius: 8px; max-width: 85%; }
+        .message.user { background: #007bff; color: white; margin-left: auto; }
+        .message.assistant { background: #f0f4f8; border: 1px solid #d0dae5; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        .message > strong { display: block; margin-bottom: 0.5rem; font-size: 0.875rem; }
+        .message code { background: #e9ecef; padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.875em; font-family: 'Courier New', monospace; }
+        .message pre { background: #2d2d2d; color: #f8f8f2; padding: 0.75rem; border-radius: 4px; overflow-x: auto; margin: 0.5rem 0; }
+        .message pre code { background: none; padding: 0; color: inherit; }
+        .message ul, .message ol { margin: 0.5rem 0; padding-left: 1.5rem; }
+        .message li { margin: 0.25rem 0; }
+        .message a { color: #007bff; text-decoration: underline; }
+        .message.user a { color: #fff; }
+        .typing-indicator { display: none; padding: 0.75rem; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; max-width: 80px; margin-bottom: 1rem; }
+        .typing-indicator span { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #6c757d; margin: 0 2px; animation: typing 1.4s infinite; }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-10px); } }
+        .actions { display: flex; gap: 0.5rem; margin-top: 1rem; }
+        .btn-sm { padding: 0.375rem 0.75rem; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div id="apiKeySetup" class="api-key-setup">
+        <h3>⚙️ Configuración Inicial</h3>
+        <p style="font-size: 0.875rem; margin-bottom: 0.5rem;">Necesitas una API key gratuita de Google AI Studio:</p>
+        <ol>
+            <li>Visita <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+            <li>Inicia sesión con tu cuenta Google</li>
+            <li>Crea una API key (gratis, 60 req/min)</li>
+            <li>Pégala abajo 👇</li>
+        </ol>
+        <div class="input-group">
+            <input type="password" id="apiKeyInput" placeholder="AIzaSy...">
+            <button class="btn btn-primary" id="saveKeyBtn">💾 Guardar</button>
+        </div>
+        <small style="color: #6c757d;">🔒 Se guarda en tu navegador, nunca en servidores.</small>
+    </div>
+
+    <div id="apiKeyManage" class="alert alert-success d-none">
+        <div class="d-flex justify-between align-center">
+            <span>✅ API Key configurada</span>
+            <button class="btn btn-danger btn-sm" id="removeKeyBtn">🗑️ Eliminar</button>
+        </div>
+    </div>
+
+    <div id="chatSection" class="d-none">
+        <div class="chat-container" id="chatMessages">
+            <div class="message assistant">
+                <strong>Asistente IA</strong>
+                <div>¡Hola! Soy tu asistente con IA. ¿En qué puedo ayudarte hoy?</div>
+            </div>
+        </div>
+
+        <div class="typing-indicator" id="typingIndicator">
+            <span></span><span></span><span></span>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="userInput" placeholder="Escribe tu mensaje...">
+            <button class="btn btn-primary" id="sendBtn">📤 Enviar</button>
+        </div>
+
+        <div class="actions">
+            <button class="btn btn-secondary btn-sm" id="clearBtn">🗑️ Limpiar chat</button>
+            <button class="btn btn-secondary btn-sm" id="exportBtn">💾 Exportar</button>
+        </div>
+    </div>
+
+    <!-- Scripts compartidos desde web -->
+    <script src="../../shared/gemini-api.js"></script>
+    <script src="../../shared/chat-ui.js"></script>
+    <script src="./chat-ai-storage.js"></script>
+    <script src="./chat-ai.js"></script>
+</body>
+</html>

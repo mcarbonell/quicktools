@@ -203,7 +203,7 @@ extension/tools/seo/
 
 ---
 
-**Last Updated:** December 2024
-**Status:** Suite SEO completa e integrada en extensión
-**UX:** Herramientas SEO cargan inline en popup (500px), ocultas en NewTab
+**Last Updated:** November 2025  
+**Status:** Suite SEO completa e integrada en extensión  
+**UX:** Herramientas SEO cargan inline en popup (500px), ocultas en NewTab  
 **Future:** Implementar Option C para funcionalidad completa sin restricciones

@@ -29,17 +29,26 @@ export async function loadTools(lang = 'es') {
         const response = await fetch(chrome.runtime.getURL('data/fasttools-data.json'));
         const data = await response.json();
         
-        // Process web tools
-        const webTools = data.tools.map(tool => ({
-            ...tool,
-            title: tool.title[lang] || tool.title.es,
-            description: tool.description[lang] || tool.description.es,
-            category: tool.categories[0], // Primary category
-            url: tool.slug.startsWith('tools/') 
-                ? chrome.runtime.getURL(tool.slug)
-                : (lang === 'es' ? `${BASE_URL}/es/${tool.slug}` : `${BASE_URL}/${tool.slug}`),
-            local: tool.slug.startsWith('tools/')
-        }));
+        // Process web tools - filter by availability
+        const webTools = data.tools
+            .filter(tool => {
+                // If availableIn is not set, assume available everywhere
+                if (!tool.availableIn) return true;
+                // Only show tools available in extension
+                return tool.availableIn.includes('extension');
+            })
+            .map(tool => ({
+                ...tool,
+                title: tool.title[lang] || tool.title.es,
+                description: tool.description[lang] || tool.description.es,
+                category: tool.categories[0], // Primary category
+                url: tool.extensionSlug
+                    ? chrome.runtime.getURL(tool.extensionSlug)
+                    : tool.slug.startsWith('tools/') 
+                        ? chrome.runtime.getURL(tool.slug)
+                        : chrome.runtime.getURL(tool.slug),
+                local: true
+            }));
         
         // Process local tools
         const localTools = LOCAL_TOOLS.map(tool => ({

@@ -132,8 +132,15 @@ class FastToolsPopup {
         } else if (tool.slug.startsWith('tools/seo/')) {
             // SEO tools - load inline in popup
             this.loadSEOTool(tool);
+        } else if (tool.slug.startsWith('tools/ai/')) {
+            // AI tools - load inline in popup
+            this.loadSEOTool(tool);
         } else if (tool.slug.startsWith('tools/')) {
             // Other local tools - open in new tab
+            chrome.tabs.create({ url: tool.url, active: true });
+            window.close();
+        } else {
+            // Web tools - open in new tab
             chrome.tabs.create({ url: tool.url, active: true });
             window.close();
         }
