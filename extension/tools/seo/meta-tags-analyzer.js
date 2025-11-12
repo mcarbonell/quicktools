@@ -51,7 +51,7 @@ async function analyzePage() {
             response = await chrome.tabs.sendMessage(tab.id, { action: 'getMetaTags' });
         } catch (error) {
             if (error.message.includes('Receiving end does not exist')) {
-                throw new Error('Por favor, recarga la página (F5) y vuelve a intentarlo. El content script no está disponible.');
+                throw new Error('Por favor, recarga la página que quieres analizar (F5) y vuelve a intentarlo.');
             }
             throw error;
         }
