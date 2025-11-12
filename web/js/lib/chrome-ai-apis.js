@@ -85,13 +85,19 @@ class ChromeAI {
     }
 
     async summarize(text, options = {}) {
-        if (!this.apis.summarizer) await this.createSummarizer(options);
-        return await this.apis.summarizer.summarize(text);
+        const lang = document.documentElement.lang || 'en';
+        const summarizerOptions = { sharedContext: '', length: 'medium', ...options };
+        
+        if (!this.apis.summarizer) await this.createSummarizer(summarizerOptions);
+        return await this.apis.summarizer.summarize(text, { context: lang === 'es' ? 'Responde en español' : '' });
     }
 
     async *summarizeStreaming(text, options = {}) {
-        if (!this.apis.summarizer) await this.createSummarizer(options);
-        const stream = await this.apis.summarizer.summarizeStreaming(text);
+        const lang = document.documentElement.lang || 'en';
+        const summarizerOptions = { sharedContext: '', length: 'medium', ...options };
+        
+        if (!this.apis.summarizer) await this.createSummarizer(summarizerOptions);
+        const stream = await this.apis.summarizer.summarizeStreaming(text, { context: lang === 'es' ? 'Responde en español' : '' });
         
         for await (const chunk of stream) {
             yield chunk;
