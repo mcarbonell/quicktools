@@ -109,30 +109,30 @@
 
 <div id="toolSection">
     <div class="mb-3">
-        <label class="form-label">Text to summarize:</label>
-        <textarea id="inputText" class="form-control" rows="10" placeholder="Paste your text here..."></textarea>
-        <small class="text-muted">Tip: Works best with articles, documents, or long texts</small>
+        <label class="form-label">Texto a resumir:</label>
+        <textarea id="inputText" class="form-control" rows="10" placeholder="Pega tu texto aquí..."></textarea>
+        <small class="text-muted">Consejo: Funciona mejor con artículos, documentos o textos largos</small>
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Summary length:</label>
+        <label class="form-label">Longitud del resumen:</label>
         <select id="lengthSelect" class="form-select">
-            <option value="short">Short (2-3 sentences)</option>
-            <option value="medium" selected>Medium (4-6 sentences)</option>
-            <option value="long">Long (detailed)</option>
+            <option value="short">Corto (2-3 frases)</option>
+            <option value="medium" selected>Medio (4-6 frases)</option>
+            <option value="long">Largo (detallado)</option>
         </select>
     </div>
 
     <button class="btn btn-primary" onclick="summarizeText()" id="summarizeBtn">
-        ✨ Summarize
+        ✨ Resumir
     </button>
 
     <div id="resultSection" class="mt-4 d-none">
-        <h5>Summary:</h5>
+        <h5>Resumen:</h5>
         <div id="summaryOutput" class="p-3 bg-light border rounded"></div>
         <div class="mt-3">
-            <button class="btn btn-sm btn-outline-secondary" onclick="copyResult()">📋 Copy</button>
-            <button class="btn btn-sm btn-outline-info" onclick="downloadResult()">💾 Download</button>
+            <button class="btn btn-sm btn-outline-secondary" onclick="copyResult()">📋 Copiar</button>
+            <button class="btn btn-sm btn-outline-info" onclick="downloadResult()">💾 Descargar</button>
         </div>
     </div>
 </div>
