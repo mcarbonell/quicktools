@@ -136,12 +136,12 @@ class GeminiAPI {
     }
 
     const data = await response.json();
-    const parts = data.candidates[0].content.parts;
+    const resultParts = data.candidates[0].content.parts;
     
     let text = '';
     let image = null;
     
-    for (const part of parts) {
+    for (const part of resultParts) {
       if (part.text) text += part.text;
       if (part.inline_data?.data) image = part.inline_data.data;
     }
