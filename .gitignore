@@ -46,6 +46,7 @@ coverage/
 # Local Documentation
 _local_docs/
 local_docs/
+.local_docs/
 
 # Amazon Q
 _.amazonq/
