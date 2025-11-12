@@ -60,12 +60,25 @@ async function editImage() {
     if (!instruction.trim()) return alert('❌ Enter instructions');
 
     btn.disabled = true;
-    btn.textContent = '⏳ Analyzing...';
+    btn.textContent = '⏳ Processing...';
 
     try {
-        const suggestions = await editImageUI.editImage(instruction);
-        const formatted = editImageUI.formatText(suggestions);
-        document.getElementById('suggestionsOutput').innerHTML = formatted;
+        const result = await editImageUI.editImage(instruction);
+        
+        // Show generated image if available
+        if (result.image) {
+            const imgElement = document.getElementById('generatedImg');
+            imgElement.src = `data:image/png;base64,${result.image}`;
+            document.getElementById('generatedImageSection').classList.remove('d-none');
+        }
+        
+        // Show text response if available
+        if (result.text) {
+            const formatted = editImageUI.formatText(result.text);
+            document.getElementById('suggestionsOutput').innerHTML = formatted;
+            document.getElementById('textResponseSection').classList.remove('d-none');
+        }
+        
         document.getElementById('resultSection').classList.remove('d-none');
     } catch (error) {
         alert(`❌ Error: ${error.message}`);
@@ -81,12 +94,11 @@ function copyResult() {
 }
 
 function downloadResult() {
-    const text = document.getElementById('suggestionsOutput').innerText;
-    const blob = new Blob([text], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `image-suggestions-${new Date().toISOString().slice(0,10)}.txt`;
-    a.click();
-    URL.revokeObjectURL(url);
+    const img = document.getElementById('generatedImg');
+    if (img && !img.classList.contains('d-none')) {
+        const a = document.createElement('a');
+        a.href = img.src;
+        a.download = `edited-image-${new Date().toISOString().slice(0,10)}.png`;
+        a.click();
+    }
 }

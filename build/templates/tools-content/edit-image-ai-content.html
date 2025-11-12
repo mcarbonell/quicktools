@@ -22,8 +22,9 @@
 
 <div id="toolSection" class="d-none">
     <div class="alert alert-info">
-        <strong>💡 Note:</strong> This tool uses Gemini Vision to analyze your image and provide editing suggestions. 
-        For actual image editing, it will describe the changes - you'll need to apply them manually or use image editing software.
+        <strong>✨ Nano Banana (Gemini 2.5 Flash Image):</strong> This tool can generate and edit images using AI! 
+        Upload an image and describe the changes you want (e.g., "change background to sunset", "add a hat", "make it look like a painting"). 
+        The AI will generate a new edited version of your image.
     </div>
 
     <div class="mb-3">
@@ -48,11 +49,19 @@
     </button>
 
     <div id="resultSection" class="mt-4 d-none">
-        <h5>AI Suggestions:</h5>
-        <div id="suggestionsOutput" class="p-3 bg-light border rounded"></div>
-        <div class="mt-3">
-            <button class="btn btn-sm btn-outline-secondary" onclick="copyResult()">📋 Copy</button>
-            <button class="btn btn-sm btn-outline-info" onclick="downloadResult()">💾 Download</button>
+        <div id="generatedImageSection" class="mb-3 d-none">
+            <h5>✨ Generated Image:</h5>
+            <img id="generatedImg" class="img-fluid border rounded" style="max-width: 100%;">
+            <div class="mt-2">
+                <button class="btn btn-sm btn-primary" onclick="downloadGeneratedImage()">💾 Download Image</button>
+            </div>
+        </div>
+        <div id="textResponseSection" class="d-none">
+            <h5>AI Response:</h5>
+            <div id="suggestionsOutput" class="p-3 bg-light border rounded"></div>
+            <div class="mt-3">
+                <button class="btn btn-sm btn-outline-secondary" onclick="copyResult()">📋 Copy</button>
+            </div>
         </div>
     </div>
 </div>
@@ -115,12 +124,25 @@
         if (!instruction.trim()) return alert('❌ Please enter editing instructions');
 
         btn.disabled = true;
-        btn.textContent = '⏳ Analyzing...';
+        btn.textContent = '⏳ Processing...';
 
         try {
-            const suggestions = await editImageUI.editImage(instruction);
-            const formatted = editImageUI.formatText(suggestions);
-            document.getElementById('suggestionsOutput').innerHTML = formatted;
+            const result = await editImageUI.editImage(instruction);
+            
+            // Show generated image if available
+            if (result.image) {
+                const imgElement = document.getElementById('generatedImg');
+                imgElement.src = `data:image/png;base64,${result.image}`;
+                document.getElementById('generatedImageSection').classList.remove('d-none');
+            }
+            
+            // Show text response if available
+            if (result.text) {
+                const formatted = editImageUI.formatText(result.text);
+                document.getElementById('suggestionsOutput').innerHTML = formatted;
+                document.getElementById('textResponseSection').classList.remove('d-none');
+            }
+            
             document.getElementById('resultSection').classList.remove('d-none');
         } catch (error) {
             alert(`❌ Error: ${error.message}`);
@@ -135,15 +157,12 @@
         navigator.clipboard.writeText(text).then(() => alert('✅ Copied to clipboard'));
     }
 
-    function downloadResult() {
-        const text = document.getElementById('suggestionsOutput').innerText;
-        const blob = new Blob([text], { type: 'text/plain' });
-        const url = URL.createObjectURL(blob);
+    function downloadGeneratedImage() {
+        const img = document.getElementById('generatedImg');
         const a = document.createElement('a');
-        a.href = url;
-        a.download = `image-edit-suggestions-${new Date().toISOString().slice(0,10)}.txt`;
+        a.href = img.src;
+        a.download = `edited-image-${new Date().toISOString().slice(0,10)}.png`;
         a.click();
-        URL.revokeObjectURL(url);
     }
 
     document.getElementById('imageInput').addEventListener('change', handleImageUpload);

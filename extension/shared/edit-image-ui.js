@@ -71,8 +71,8 @@ class EditImageUI {
             throw new Error('Please enter editing instructions');
         }
 
-        const prompt = `Based on this image, ${instruction}. Describe the edited result in detail.`;
-        return await this.geminiAPI.chatWithImage(prompt, this.currentImage.base64, this.currentImage.mimeType);
+        const result = await this.geminiAPI.editImage(instruction, this.currentImage.base64, this.currentImage.mimeType);
+        return result;
     }
 
     formatText(text) {
