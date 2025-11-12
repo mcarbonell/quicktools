@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid AI Demo - FastTools</title>
+    <link rel="stylesheet" href="css/style-v2.css">
+    <style>
+        .container { max-width: 900px; margin: 2rem auto; padding: 1rem; }
+        .status-panel { background: #f0f9ff; border: 2px solid #0ea5e9; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
+        .service-list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+        .service-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; }
+        .service-badge { padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+        .service-badge.local { background: #10b981; color: white; }
+        .service-badge.cloud { background: #3b82f6; color: white; }
+        .test-section { background: white; border: 1px solid #ddd; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .test-section h3 { margin-top: 0; }
+        textarea { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 0.5rem; min-height: 100px; }
+        button { padding: 0.75rem 1.5rem; background: #13a4ec; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .result { margin-top: 1rem; padding: 1rem; background: #f9f9f9; border-radius: 8px; white-space: pre-wrap; }
+        .service-used { font-size: 0.875rem; color: #666; margin-top: 0.5rem; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Hybrid AI System Demo</h1>
+        <p>Intelligent AI with Chrome Built-in APIs + Gemini Cloud fallback</p>
+
+        <div class="status-panel">
+            <h3>🔍 Available Services</h3>
+            <div class="service-list" id="service-list">
+                <div>Checking...</div>
+            </div>
+        </div>
+
+        <!-- Summarize Test -->
+        <div class="test-section">
+            <h3>📝 Summarize Text</h3>
+            <p><strong>Preferred:</strong> <span id="summarize-service">-</span></p>
+            <textarea id="summarize-input" placeholder="Enter long text to summarize...">Chrome now includes built-in AI capabilities powered by Gemini Nano. These APIs allow developers to add AI features to their web applications without requiring API keys or sending data to external servers. The AI runs entirely on-device, ensuring privacy and enabling offline functionality. There are seven different APIs available: Prompt API for general chat, Summarizer API for text summarization, Translator API for language translation, Language Detector API for detecting languages, Writer API for creative writing, Rewriter API for text improvement, and Proofreader API for grammar checking.</textarea>
+            <button onclick="testSummarize()">Summarize</button>
+            <div id="summarize-result" style="display: none;"></div>
+        </div>
+
+        <!-- Improve Text Test -->
+        <div class="test-section">
+            <h3>✨ Improve Text</h3>
+            <p><strong>Preferred:</strong> <span id="improve-service">-</span></p>
+            <textarea id="improve-input" placeholder="Enter text to improve...">this is a tets with some erors and bad grammer that need fixing</textarea>
+            <button onclick="testImprove()">Improve</button>
+            <div id="improve-result" style="display: none;"></div>
+        </div>
+
+        <!-- Translate Test -->
+        <div class="test-section">
+            <h3>🌐 Translate</h3>
+            <p><strong>Preferred:</strong> <span id="translate-service">-</span></p>
+            <textarea id="translate-input" placeholder="Enter text to translate...">Hello, how are you today?</textarea>
+            <div style="display: flex; gap: 1rem; margin-bottom: 0.5rem;">
+                <select id="source-lang">
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                </select>
+                <span>→</span>
+                <select id="target-lang">
+                    <option value="es">Spanish</option>
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                </select>
+            </div>
+            <button onclick="testTranslate()">Translate</button>
+            <div id="translate-result" style="display: none;"></div>
+        </div>
+
+        <!-- Chat Test -->
+        <div class="test-section">
+            <h3>💬 Chat</h3>
+            <p><strong>Preferred:</strong> <span id="chat-service">-</span></p>
+            <textarea id="chat-input" placeholder="Ask anything...">Explain what FastTools is in one sentence</textarea>
+            <button onclick="testChat()">Send</button>
+            <div id="chat-result" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script src="js/lib/chrome-ai-apis.js"></script>
+    <script src="js/lib/gemini-api.js"></script>
+    <script src="js/lib/hybrid-ai.js"></script>
+    <script>
+        const hybridAI = new HybridAI();
+        
+        async function init() {
+            await hybridAI.init();
+            
+            // Show available services
+            const services = hybridAI.getAvailableServices();
+            const serviceList = document.getElementById('service-list');
+            
+            if (services.length === 0) {
+                serviceList.innerHTML = '<div style="color: #ef4444;">❌ No AI services available. Enable Chrome AI or add Gemini API key.</div>';
+            } else {
+                serviceList.innerHTML = services.map(service => {
+                    const isLocal = service.includes('Local');
+                    return `
+                        <div class="service-item">
+                            <span class="service-badge ${isLocal ? 'local' : 'cloud'}">
+                                ${isLocal ? '🏠 Local' : '☁️ Cloud'}
+                            </span>
+                            <span>${service}</span>
+                        </div>
+                    `;
+                }).join('');
+            }
+            
+            // Show preferred services
+            document.getElementById('summarize-service').textContent = hybridAI.getPreferredService('summarize');
+            document.getElementById('improve-service').textContent = hybridAI.getPreferredService('improve');
+            document.getElementById('translate-service').textContent = hybridAI.getPreferredService('translate');
+            document.getElementById('chat-service').textContent = hybridAI.getPreferredService('chat');
+        }
+
+        async function testSummarize() {
+            const input = document.getElementById('summarize-input').value;
+            const resultDiv = document.getElementById('summarize-result');
+            const button = event.target;
+            
+            button.disabled = true;
+            button.textContent = 'Summarizing...';
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = '<div class="result">Processing...</div>';
+            
+            try {
+                let result = '';
+                for await (const chunk of hybridAI.summarizeStreaming(input)) {
+                    result += chunk;
+                    resultDiv.innerHTML = `
+                        <div class="result">${result}</div>
+                        <div class="service-used">Using: ${hybridAI.getPreferredService('summarize')}</div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result" style="background: #fee; color: #c00;">Error: ${error.message}</div>`;
+            } finally {
+                button.disabled = false;
+                button.textContent = 'Summarize';
+            }
+        }
+
+        async function testImprove() {
+            const input = document.getElementById('improve-input').value;
+            const resultDiv = document.getElementById('improve-result');
+            const button = event.target;
+            
+            button.disabled = true;
+            button.textContent = 'Improving...';
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = '<div class="result">Processing...</div>';
+            
+            try {
+                let result = '';
+                for await (const chunk of hybridAI.improveTextStreaming(input)) {
+                    result += chunk;
+                    resultDiv.innerHTML = `
+                        <div class="result">${result}</div>
+                        <div class="service-used">Using: ${hybridAI.getPreferredService('improve')}</div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result" style="background: #fee; color: #c00;">Error: ${error.message}</div>`;
+            } finally {
+                button.disabled = false;
+                button.textContent = 'Improve';
+            }
+        }
+
+        async function testTranslate() {
+            const input = document.getElementById('translate-input').value;
+            const sourceLang = document.getElementById('source-lang').value;
+            const targetLang = document.getElementById('target-lang').value;
+            const resultDiv = document.getElementById('translate-result');
+            const button = event.target;
+            
+            button.disabled = true;
+            button.textContent = 'Translating...';
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = '<div class="result">Processing...</div>';
+            
+            try {
+                const result = await hybridAI.translate(input, sourceLang, targetLang);
+                resultDiv.innerHTML = `
+                    <div class="result">${result}</div>
+                    <div class="service-used">Using: ${hybridAI.getPreferredService('translate')}</div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result" style="background: #fee; color: #c00;">Error: ${error.message}</div>`;
+            } finally {
+                button.disabled = false;
+                button.textContent = 'Translate';
+            }
+        }
+
+        async function testChat() {
+            const input = document.getElementById('chat-input').value;
+            const resultDiv = document.getElementById('chat-result');
+            const button = event.target;
+            
+            button.disabled = true;
+            button.textContent = 'Thinking...';
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = '<div class="result">Processing...</div>';
+            
+            try {
+                let result = '';
+                for await (const chunk of hybridAI.chatStreaming(input)) {
+                    result += chunk;
+                    resultDiv.innerHTML = `
+                        <div class="result">${result}</div>
+                        <div class="service-used">Using: ${hybridAI.getPreferredService('chat')}</div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result" style="background: #fee; color: #c00;">Error: ${error.message}</div>`;
+            } finally {
+                button.disabled = false;
+                button.textContent = 'Send';
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>
