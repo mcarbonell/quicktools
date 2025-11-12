@@ -42,12 +42,19 @@ class HybridAI {
     // SUMMARIZE
     // ====================
 
-    async summarize(text, options = {}) {
+    async summarize(text, options = {}, onChunk = null) {
         // Try Chrome Summarizer API first
         if (this.availability?.summarizer) {
             try {
                 if (!this.chromeAI) this.chromeAI = new ChromeAI();
-                return await this.chromeAI.summarize(text, options);
+                if (onChunk) {
+                    for await (const chunk of this.chromeAI.summarizeStreaming(text, options)) {
+                        onChunk(chunk);
+                    }
+                    return;
+                } else {
+                    return await this.chromeAI.summarize(text, options);
+                }
             } catch (error) {
                 console.warn('Chrome Summarizer failed, falling back to Gemini:', error);
             }
@@ -56,7 +63,14 @@ class HybridAI {
         // Fallback to Gemini Cloud
         if (this.geminiAPI) {
             const prompt = `Summarize the following text concisely:\n\n${text}`;
-            return await this.geminiAPI.generateText(prompt);
+            if (onChunk) {
+                for await (const chunk of this.geminiAPI.generateTextStream(prompt)) {
+                    onChunk(chunk);
+                }
+                return;
+            } else {
+                return await this.geminiAPI.generateText(prompt);
+            }
         }
 
         throw new Error('No AI service available. Enable Chrome AI or add Gemini API key.');
@@ -263,6 +277,14 @@ class HybridAI {
     // ====================
     // UTILITY
     // ====================
+
+    get hasChromeAI() {
+        return this.availability && Object.values(this.availability).some(v => v);
+    }
+
+    get hasGeminiAPI() {
+        return !!this.geminiAPI;
+    }
 
     getAvailableServices() {
         const services = [];
