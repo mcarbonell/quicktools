@@ -71,7 +71,9 @@ class VisionChatUI {
             throw new Error('Please enter editing instructions');
         }
 
-        const prompt = `Analyze this image and provide detailed suggestions for: ${instruction}`;
+        const prompt = `Analyze this image and answer the following question. IMPORTANT: Respond in the SAME LANGUAGE as the question.
+
+Question: ${instruction}`;
         const text = await this.geminiAPI.chatWithImage(prompt, this.currentImage.base64, this.currentImage.mimeType);
         return { text, image: null };
     }
