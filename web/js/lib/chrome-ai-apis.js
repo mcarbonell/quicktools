@@ -56,8 +56,15 @@ class ChromeAI {
         if (!this.apis.prompt) await this.createPromptSession();
         
         if (image) {
-            // Multimodal: text + image
-            return await this.apis.prompt.prompt(text, { image });
+            // Multimodal: append image first, then prompt
+            await this.apis.prompt.append([{
+                role: 'user',
+                content: [
+                    { type: 'text', value: text },
+                    { type: 'image', value: image }
+                ]
+            }]);
+            return await this.apis.prompt.prompt('');
         } else {
             // Text only
             return await this.apis.prompt.prompt(text);
@@ -67,8 +74,19 @@ class ChromeAI {
     async *promptStreaming(text, image = null) {
         if (!this.apis.prompt) await this.createPromptSession();
         
-        const stream = image 
-            ? await this.apis.prompt.promptStreaming(text, { image })
+        if (image) {
+            // Multimodal: append image first, then stream
+            await this.apis.prompt.append([{
+                role: 'user',
+                content: [
+                    { type: 'text', value: text },
+                    { type: 'image', value: image }
+                ]
+            }]);
+        }
+        
+        const stream = image
+            ? await this.apis.prompt.promptStreaming('')
             : await this.apis.prompt.promptStreaming(text);
         
         let previousChunk = '';
