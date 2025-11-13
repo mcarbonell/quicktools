@@ -58,7 +58,6 @@
 
             try {
                 chromeAI = new ChromeAI();
-                await chromeAI.createPromptSession();
                 
                 statusEl.className = 'alert alert-success';
                 statusEl.textContent = '✅ Prompt API ready! Upload an image to analyze.';

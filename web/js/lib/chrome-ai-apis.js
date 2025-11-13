@@ -40,20 +40,30 @@ class ChromeAI {
         }
 
         const defaults = await LanguageModel.params();
-        this.apis.prompt = await LanguageModel.create({
+        const config = {
             temperature: options.temperature ?? defaults.defaultTemperature,
             topK: options.topK ?? defaults.defaultTopK,
             initialPrompts: options.systemPrompt ? [{
                 role: 'system',
                 content: options.systemPrompt
             }] : []
-        });
+        };
+        
+        // Add image support if requested
+        if (options.supportsImages) {
+            config.expectedInputs = [{ type: 'image' }];
+        }
 
+        this.apis.prompt = await LanguageModel.create(config);
         return this.apis.prompt;
     }
 
     async prompt(text, image = null) {
-        if (!this.apis.prompt) await this.createPromptSession();
+        if (image && !this.apis.prompt) {
+            await this.createPromptSession({ supportsImages: true });
+        } else if (!this.apis.prompt) {
+            await this.createPromptSession();
+        }
         
         if (image) {
             // Multimodal: append image first, then prompt
@@ -72,7 +82,11 @@ class ChromeAI {
     }
 
     async *promptStreaming(text, image = null) {
-        if (!this.apis.prompt) await this.createPromptSession();
+        if (image && !this.apis.prompt) {
+            await this.createPromptSession({ supportsImages: true });
+        } else if (!this.apis.prompt) {
+            await this.createPromptSession();
+        }
         
         if (image) {
             // Multimodal: append image first, then stream
