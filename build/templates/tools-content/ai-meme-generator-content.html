@@ -1,189 +1,197 @@
-<div class="container py-4">
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div id="apiKeySetup" class="mb-4">
-                        <h5>{{t.setupTitle}}</h5>
-                        <p>{{{t.setupDescription}}}</p>
-                        <ol>
-                            <li>{{{t.setupStep1}}}</li>
-                            <li>{{{t.setupStep2}}}</li>
-                            <li>{{{t.setupStep3}}}</li>
-                        </ol>
-                        <div class="input-group mb-2">
-                            <input type="password" class="form-control" id="apiKeyInput" placeholder="{{t.apiKeyPlaceholder}}">
-                            <button class="btn btn-primary" onclick="saveApiKey()">{{t.saveButton}}</button>
-                        </div>
-                        <small class="text-muted">{{{t.setupNote}}}</small>
-                    </div>
+<div id="apiKeySetup" class="alert alert-warning">
+    <h5>{{t.setupTitle}}</h5>
+    <p>{{t.setupDescription}}</p>
+    <ol>
+        <li>{{t.setupStep1}}</li>
+        <li>{{t.setupStep2}}</li>
+        <li>{{t.setupStep3}}</li>
+    </ol>
+    <div class="input-group">
+        <input type="password" id="apiKeyInput" class="form-control" placeholder="{{t.apiKeyPlaceholder}}">
+        <button class="btn btn-primary" onclick="saveApiKey()">{{t.saveButton}}</button>
+    </div>
+    <small class="text-muted">{{t.setupNote}}</small>
+</div>
 
-                    <div id="toolSection" style="display: none;">
-                        <div class="alert alert-info mb-4">
-                            <strong>{{t.toolTitle}}</strong> {{t.toolDescription}}
-                            <br><small>{{{t.toolNote}}}</small>
-                        </div>
+<div id="apiKeyManage" class="alert alert-success d-none">
+    <div class="d-flex justify-content-between align-items-center">
+        <span>{{t.apiKeyConfigured}}</span>
+        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">{{t.removeButton}}</button>
+    </div>
+</div>
 
-                        <div class="mb-4">
-                            <label class="form-label fw-bold">{{t.uploadLabel}}</label>
-                            <input type="file" class="form-control" id="imageFile" accept="image/*">
-                        </div>
+<div id="toolSection" class="d-none">
+    <div class="alert alert-info">
+        <strong>{{t.toolTitle}}</strong> {{t.toolDescription}}
+        <br><small>{{t.toolNote}}</small>
+    </div>
 
-                        <div id="imagePreview" class="mb-4" style="display: none;">
-                            <label class="form-label fw-bold">{{t.originalImageLabel}}</label>
-                            <img id="previewImg" class="img-fluid rounded border" style="max-height: 400px;">
-                        </div>
+    <div class="mb-3">
+        <label class="form-label">{{t.uploadLabel}}</label>
+        <input type="file" id="imageInput" class="form-control" accept="image/*" onchange="handleImageUpload()">
+    </div>
 
-                        <div class="mb-4">
-                            <label class="form-label fw-bold">{{t.memeTextLabel}}</label>
-                            <input type="text" class="form-control" id="memeText" placeholder="{{t.memeTextPlaceholder}}">
-                            <small class="text-muted">{{t.memeTextHint}}</small>
-                        </div>
+    <div id="imagePreview" class="mb-3 d-none">
+        <label class="form-label">{{t.originalImageLabel}}</label>
+        <img id="previewImg" class="img-fluid border rounded" style="max-height: 300px;">
+    </div>
 
-                        <div class="mb-4">
-                            <button id="generateBtn" class="btn btn-primary btn-lg w-100" onclick="generateMeme()" disabled>
-                                <i class="material-symbols-outlined align-middle">add_reaction</i>
-                                {{t.generateButton}}
-                            </button>
-                        </div>
+    <div class="mb-3">
+        <label class="form-label">{{t.memeTextLabel}}</label>
+        <input type="text" id="memeText" class="form-control" placeholder="{{t.memeTextPlaceholder}}">
+        <small class="text-muted">{{t.memeTextHint}}</small>
+    </div>
 
-                        <div id="result" class="mt-4" style="display: none;">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <label class="form-label fw-bold mb-0">{{t.resultTitle}}</label>
-                                <div>
-                                    <button class="btn btn-success" onclick="downloadMeme()">{{t.downloadButton}}</button>
-                                    <button class="btn btn-secondary" onclick="generateAnother()">{{t.generateAnotherButton}}</button>
-                                </div>
-                            </div>
-                            <img id="resultImg" class="img-fluid rounded border">
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <button class="btn btn-primary" onclick="generateMeme()" id="generateBtn" disabled>
+        {{t.generateButton}}
+    </button>
+
+    <div id="resultSection" class="mt-4 d-none">
+        <h5>{{t.resultTitle}}</h5>
+        <img id="resultImg" class="img-fluid border rounded mb-3" style="max-width: 100%;">
+        <div>
+            <button class="btn btn-primary" onclick="downloadMeme()">{{t.downloadButton}}</button>
+            <button class="btn btn-outline-secondary" onclick="resetTool()">{{t.generateAnotherButton}}</button>
         </div>
     </div>
 </div>
 
-<script src="/js/vendor/nano-banana-api.js"></script>
+<script src="/js/lib/gemini-api.js"></script>
 <script>
-let nanoBanana = null;
-let currentImage = null;
-let resultImageUrl = null;
+    const t = window.toolTranslations || {};
+    let geminiAPI;
+    let currentImage = null;
 
-window.addEventListener('DOMContentLoaded', async () => {
-    const apiKey = localStorage.getItem('nano_banana_api_key');
-    if (apiKey) {
-        nanoBanana = new NanoBananaAPI(apiKey);
-        document.getElementById('apiKeySetup').style.display = 'none';
-        document.getElementById('toolSection').style.display = 'block';
-    }
-});
-
-async function saveApiKey() {
-    const apiKey = document.getElementById('apiKeyInput').value.trim();
-    if (!apiKey) return alert('{{t.pleaseEnterApiKey}}');
-
-    const btn = event.target;
-    btn.disabled = true;
-    btn.textContent = '{{t.validating}}';
-
-    try {
-        nanoBanana = new NanoBananaAPI(apiKey);
-        localStorage.setItem('nano_banana_api_key', apiKey);
-        document.getElementById('apiKeySetup').style.display = 'none';
-        document.getElementById('toolSection').style.display = 'block';
-        alert('{{t.apiKeySaved}}');
-    } catch (error) {
-        alert('{{t.invalidApiKey}}');
-    } finally {
-        btn.disabled = false;
-        btn.textContent = '{{t.saveButton}}';
-    }
-}
-
-document.getElementById('imageFile')?.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    currentImage = file;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        document.getElementById('previewImg').src = e.target.result;
-        document.getElementById('imagePreview').style.display = 'block';
-        document.getElementById('generateBtn').disabled = false;
-    };
-    reader.readAsDataURL(file);
-});
-
-async function generateMeme() {
-    if (!currentImage) return alert('{{t.pleaseUploadImage}}');
-
-    const btn = document.getElementById('generateBtn');
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>{{t.generating}}';
-
-    try {
-        const userText = document.getElementById('memeText').value.trim();
-        const lang = document.documentElement.lang || 'en';
-        
-        let prompt;
-        if (userText) {
-            prompt = lang === 'es'
-                ? `Analiza esta imagen y crea un meme con el siguiente texto: "${userText}". Si la imagen ya tiene texto de meme, límpialo primero. Añade el texto en español con formato de meme (texto blanco con borde negro, estilo Impact).`
-                : `Analyze this image and create a meme with the following text: "${userText}". If the image already has meme text, clean it first. Add the text in English with meme format (white text with black outline, Impact style).`;
-        } else {
-            prompt = lang === 'es'
-                ? 'Analiza esta imagen y piensa en un texto gracioso y relatable para convertirla en un meme viral. Si la imagen ya tiene texto de meme, límpialo y reemplázalo. Genera el meme con texto en español, usando formato clásico de meme (texto blanco con borde negro, estilo Impact).'
-                : 'Analyze this image and think of a funny and relatable text to turn it into a viral meme. If the image already has meme text, clean it and replace it. Generate the meme with text in English, using classic meme format (white text with black outline, Impact style).';
+    window.addEventListener('DOMContentLoaded', async () => {
+        const apiKey = GeminiStorage.get();
+        if (apiKey) {
+            geminiAPI = new GeminiAPI(apiKey);
+            showTool();
         }
-
-        const imageData = await fileToBase64(currentImage);
-        const result = await nanoBanana.editImage(imageData, prompt);
-
-        if (result && result.image) {
-            resultImageUrl = `data:image/png;base64,${result.image}`;
-            document.getElementById('resultImg').src = resultImageUrl;
-            document.getElementById('result').style.display = 'block';
-        } else {
-            alert('{{t.noMemeGenerated}}');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        if (error.message?.includes('quota')) {
-            alert('{{t.quotaExceeded}}');
-        } else {
-            alert(`{{t.generationError}}: ${error.message}`);
-        }
-    } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="material-symbols-outlined align-middle">add_reaction</i>{{t.generateButton}}';
-    }
-}
-
-function downloadMeme() {
-    if (!resultImageUrl) return;
-    const a = document.createElement('a');
-    a.href = resultImageUrl;
-    a.download = `meme-${Date.now()}.png`;
-    a.click();
-}
-
-function generateAnother() {
-    document.getElementById('result').style.display = 'none';
-    document.getElementById('memeText').value = '';
-    document.getElementById('imageFile').value = '';
-    document.getElementById('imagePreview').style.display = 'none';
-    document.getElementById('generateBtn').disabled = true;
-    currentImage = null;
-    resultImageUrl = null;
-}
-
-async function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result.split(',')[1]);
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
     });
-}
+
+    async function saveApiKey() {
+        const apiKey = document.getElementById('apiKeyInput').value.trim();
+        if (!apiKey) return alert(t.pleaseEnterApiKey || '❌ Please enter an API key');
+
+        const btn = event.target;
+        btn.disabled = true;
+        btn.textContent = '⏳ Validating...';
+
+        try {
+            geminiAPI = new GeminiAPI(apiKey);
+            const valid = await geminiAPI.validateKey();
+            if (valid) {
+                GeminiStorage.save(apiKey);
+                showTool();
+                alert(t.apiKeySaved || '✅ API Key saved successfully');
+            } else {
+                alert(t.invalidApiKey || '❌ Invalid API Key');
+            }
+        } catch (error) {
+            alert(`${t.generationError || '❌ Error'}: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = t.saveButton || '💾 Save';
+        }
+    }
+
+    function removeApiKey() {
+        if (confirm(t.removeApiKeyConfirm || 'Remove API key?')) {
+            GeminiStorage.remove();
+            location.reload();
+        }
+    }
+
+    function showTool() {
+        document.getElementById('apiKeySetup').classList.add('d-none');
+        document.getElementById('apiKeyManage').classList.remove('d-none');
+        document.getElementById('toolSection').classList.remove('d-none');
+    }
+
+    async function handleImageUpload() {
+        const file = document.getElementById('imageInput').files[0];
+        if (!file) return;
+
+        if (!file.type.startsWith('image/')) {
+            return alert(t.pleaseSelectImage || '❌ Please select an image file');
+        }
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const dataUrl = e.target.result;
+            const base64 = dataUrl.split(',')[1];
+            currentImage = {
+                base64: base64,
+                mimeType: file.type,
+                dataUrl: dataUrl
+            };
+            
+            document.getElementById('previewImg').src = dataUrl;
+            document.getElementById('imagePreview').classList.remove('d-none');
+            document.getElementById('generateBtn').disabled = false;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    async function generateMeme() {
+        const userText = document.getElementById('memeText').value.trim();
+        const btn = document.getElementById('generateBtn');
+
+        if (!currentImage) return alert(t.pleaseUploadImage || '❌ Please upload an image first');
+
+        btn.disabled = true;
+        btn.textContent = '⏳ Generating meme...';
+
+        try {
+            const lang = document.documentElement.lang || 'en';
+            
+            let prompt;
+            if (userText) {
+                prompt = lang === 'es'
+                    ? `Analiza esta imagen y crea un meme con el siguiente texto: "${userText}". Si la imagen ya tiene texto de meme, límpialo primero. Añade el texto en español con formato de meme (texto blanco con borde negro, estilo Impact).`
+                    : `Analyze this image and create a meme with the following text: "${userText}". If the image already has meme text, clean it first. Add the text in English with meme format (white text with black outline, Impact style).`;
+            } else {
+                prompt = lang === 'es'
+                    ? 'Analiza esta imagen y piensa en un texto gracioso y relatable para convertirla en un meme viral. Si la imagen ya tiene texto de meme, límpialo y reemplázalo. Genera el meme con texto en español, usando formato clásico de meme (texto blanco con borde negro, estilo Impact).'
+                    : 'Analyze this image and think of a funny and relatable text to turn it into a viral meme. If the image already has meme text, clean it and replace it. Generate the meme with text in English, using classic meme format (white text with black outline, Impact style).';
+            }
+
+            const result = await geminiAPI.editImage(prompt, currentImage.base64, currentImage.mimeType);
+            
+            if (result.image) {
+                const imgElement = document.getElementById('resultImg');
+                imgElement.src = `data:image/png;base64,${result.image}`;
+                document.getElementById('resultSection').classList.remove('d-none');
+            } else {
+                alert(t.noMemeGenerated || '❌ No meme generated. Please try again.');
+            }
+        } catch (error) {
+            if (error.message.includes('quota')) {
+                alert(t.quotaExceeded || '❌ Quota exceeded. Nano Banana requires a paid API key.');
+            } else {
+                alert(`${t.generationError || '❌ Error'}: ${error.message}`);
+            }
+        } finally {
+            btn.disabled = false;
+            btn.textContent = t.generateButton || 'Generate Meme';
+        }
+    }
+
+    function downloadMeme() {
+        const img = document.getElementById('resultImg');
+        const a = document.createElement('a');
+        a.href = img.src;
+        a.download = `meme-${new Date().toISOString().slice(0,10)}.png`;
+        a.click();
+    }
+
+    function resetTool() {
+        document.getElementById('imageInput').value = '';
+        document.getElementById('memeText').value = '';
+        document.getElementById('imagePreview').classList.add('d-none');
+        document.getElementById('resultSection').classList.add('d-none');
+        document.getElementById('generateBtn').disabled = true;
+        currentImage = null;
+    }
 </script>

@@ -91,194 +91,202 @@
             <div class="alert alert-info mt-3"><small>🎯 Useful for: <a href="/designers.html" class="badge bg-primary text-decoration-none">🎨 Designers</a> <a href="/marketers.html" class="badge bg-primary text-decoration-none">📱 Marketers</a> <a href="/ai.html" class="badge bg-primary text-decoration-none">🤖 AI Tools</a></small></div>
         </div>
 
-        <div class="container py-4">
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div id="apiKeySetup" class="mb-4">
-                        <h5>⚙️ Initial Setup</h5>
-                        <p>{You need a <strong>paid</strong> API key from Google AI Studio (Nano Banana requires paid tier):}</p>
-                        <ol>
-                            <li>{Visit <a href='https://aistudio.google.com/app/apikey' target='_blank'>Google AI Studio</a>}</li>
-                            <li>{Create an API key with <strong>paid billing enabled</strong>}</li>
-                            <li>{Paste it below 👇}</li>
-                        </ol>
-                        <div class="input-group mb-2">
-                            <input type="password" class="form-control" id="apiKeyInput" placeholder="AIzaSy...">
-                            <button class="btn btn-primary" onclick="saveApiKey()">💾 Save</button>
-                        </div>
-                        <small class="text-muted">{🔒 Stored locally in your browser | 💰 ~$0.0125 per meme}</small>
-                    </div>
+        <div id="apiKeySetup" class="alert alert-warning">
+    <h5>⚙️ Initial Setup</h5>
+    <p>You need a <strong>paid</strong> API key from Google AI Studio (Nano Banana requires paid tier):</p>
+    <ol>
+        <li>Visit <a href='https://aistudio.google.com/app/apikey' target='_blank'>Google AI Studio</a></li>
+        <li>Create an API key with <strong>paid billing enabled</strong></li>
+        <li>Paste it below 👇</li>
+    </ol>
+    <div class="input-group">
+        <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
+        <button class="btn btn-primary" onclick="saveApiKey()">💾 Save</button>
+    </div>
+    <small class="text-muted">🔒 Stored locally in your browser | 💰 ~$0.0125 per meme</small>
+</div>
 
-                    <div id="toolSection" style="display: none;">
-                        <div class="alert alert-info mb-4">
-                            <strong>🎭 AI Meme Generator:</strong> Turn any image into a viral meme! AI analyzes your image and adds funny text automatically, or use your own custom text.
-                            <br><small>{Cost: ~$0.0125 per meme | Auto-detects language | Cleans existing meme text}</small>
-                        </div>
+<div id="apiKeyManage" class="alert alert-success d-none">
+    <div class="d-flex justify-content-between align-items-center">
+        <span>✅ API Key configured</span>
+        <button class="btn btn-sm btn-outline-danger" onclick="removeApiKey()">🗑️ Remove</button>
+    </div>
+</div>
 
-                        <div class="mb-4">
-                            <label class="form-label fw-bold">Upload image for meme:</label>
-                            <input type="file" class="form-control" id="imageFile" accept="image/*">
-                        </div>
+<div id="toolSection" class="d-none">
+    <div class="alert alert-info">
+        <strong>🎭 AI Meme Generator:</strong> Turn any image into a viral meme! AI analyzes your image and adds funny text automatically, or use your own custom text.
+        <br><small>Cost: ~$0.0125 per meme | Auto-detects language | Cleans existing meme text</small>
+    </div>
 
-                        <div id="imagePreview" class="mb-4" style="display: none;">
-                            <label class="form-label fw-bold">Original image:</label>
-                            <img id="previewImg" class="img-fluid rounded border" style="max-height: 400px;">
-                        </div>
+    <div class="mb-3">
+        <label class="form-label">Upload image for meme:</label>
+        <input type="file" id="imageInput" class="form-control" accept="image/*" onchange="handleImageUpload()">
+    </div>
 
-                        <div class="mb-4">
-                            <label class="form-label fw-bold">Meme text (optional):</label>
-                            <input type="text" class="form-control" id="memeText" placeholder="Leave blank for AI to create funny text automatically">
-                            <small class="text-muted">💡 Leave empty for AI magic, or write your own meme text</small>
-                        </div>
+    <div id="imagePreview" class="mb-3 d-none">
+        <label class="form-label">Original image:</label>
+        <img id="previewImg" class="img-fluid border rounded" style="max-height: 300px;">
+    </div>
 
-                        <div class="mb-4">
-                            <button id="generateBtn" class="btn btn-primary btn-lg w-100" onclick="generateMeme()" disabled>
-                                <i class="material-symbols-outlined align-middle">add_reaction</i>
-                                Generate Meme
-                            </button>
-                        </div>
+    <div class="mb-3">
+        <label class="form-label">Meme text (optional):</label>
+        <input type="text" id="memeText" class="form-control" placeholder="Leave blank for AI to create funny text automatically">
+        <small class="text-muted">💡 Leave empty for AI magic, or write your own meme text</small>
+    </div>
 
-                        <div id="result" class="mt-4" style="display: none;">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <label class="form-label fw-bold mb-0">Your Meme:</label>
-                                <div>
-                                    <button class="btn btn-success" onclick="downloadMeme()">💾 Download Meme</button>
-                                    <button class="btn btn-secondary" onclick="generateAnother()">🔄 Generate Another</button>
-                                </div>
-                            </div>
-                            <img id="resultImg" class="img-fluid rounded border">
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <button class="btn btn-primary" onclick="generateMeme()" id="generateBtn" disabled>
+        Generate Meme
+    </button>
+
+    <div id="resultSection" class="mt-4 d-none">
+        <h5>Your Meme:</h5>
+        <img id="resultImg" class="img-fluid border rounded mb-3" style="max-width: 100%;">
+        <div>
+            <button class="btn btn-primary" onclick="downloadMeme()">💾 Download Meme</button>
+            <button class="btn btn-outline-secondary" onclick="resetTool()">🔄 Generate Another</button>
         </div>
     </div>
 </div>
 
-<script src="/js/vendor/nano-banana-api.js"></script>
+<script src="/js/lib/gemini-api.js"></script>
 <script>
-let nanoBanana = null;
-let currentImage = null;
-let resultImageUrl = null;
+    const t = window.toolTranslations || {};
+    let geminiAPI;
+    let currentImage = null;
 
-window.addEventListener('DOMContentLoaded', async () => {
-    const apiKey = localStorage.getItem('nano_banana_api_key');
-    if (apiKey) {
-        nanoBanana = new NanoBananaAPI(apiKey);
-        document.getElementById('apiKeySetup').style.display = 'none';
-        document.getElementById('toolSection').style.display = 'block';
-    }
-});
-
-async function saveApiKey() {
-    const apiKey = document.getElementById('apiKeyInput').value.trim();
-    if (!apiKey) return alert('❌ Please enter an API key');
-
-    const btn = event.target;
-    btn.disabled = true;
-    btn.textContent = '⏳ Validating...';
-
-    try {
-        nanoBanana = new NanoBananaAPI(apiKey);
-        localStorage.setItem('nano_banana_api_key', apiKey);
-        document.getElementById('apiKeySetup').style.display = 'none';
-        document.getElementById('toolSection').style.display = 'block';
-        alert('✅ API Key saved successfully');
-    } catch (error) {
-        alert('❌ Invalid API Key');
-    } finally {
-        btn.disabled = false;
-        btn.textContent = '💾 Save';
-    }
-}
-
-document.getElementById('imageFile')?.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    currentImage = file;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        document.getElementById('previewImg').src = e.target.result;
-        document.getElementById('imagePreview').style.display = 'block';
-        document.getElementById('generateBtn').disabled = false;
-    };
-    reader.readAsDataURL(file);
-});
-
-async function generateMeme() {
-    if (!currentImage) return alert('❌ Please upload an image first');
-
-    const btn = document.getElementById('generateBtn');
-    btn.disabled = true;
-    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Generating meme...';
-
-    try {
-        const userText = document.getElementById('memeText').value.trim();
-        const lang = document.documentElement.lang || 'en';
-        
-        let prompt;
-        if (userText) {
-            prompt = lang === 'es'
-                ? `Analiza esta imagen y crea un meme con el siguiente texto: "${userText}". Si la imagen ya tiene texto de meme, límpialo primero. Añade el texto en español con formato de meme (texto blanco con borde negro, estilo Impact).`
-                : `Analyze this image and create a meme with the following text: "${userText}". If the image already has meme text, clean it first. Add the text in English with meme format (white text with black outline, Impact style).`;
-        } else {
-            prompt = lang === 'es'
-                ? 'Analiza esta imagen y piensa en un texto gracioso y relatable para convertirla en un meme viral. Si la imagen ya tiene texto de meme, límpialo y reemplázalo. Genera el meme con texto en español, usando formato clásico de meme (texto blanco con borde negro, estilo Impact).'
-                : 'Analyze this image and think of a funny and relatable text to turn it into a viral meme. If the image already has meme text, clean it and replace it. Generate the meme with text in English, using classic meme format (white text with black outline, Impact style).';
+    window.addEventListener('DOMContentLoaded', async () => {
+        const apiKey = GeminiStorage.get();
+        if (apiKey) {
+            geminiAPI = new GeminiAPI(apiKey);
+            showTool();
         }
-
-        const imageData = await fileToBase64(currentImage);
-        const result = await nanoBanana.editImage(imageData, prompt);
-
-        if (result && result.image) {
-            resultImageUrl = `data:image/png;base64,${result.image}`;
-            document.getElementById('resultImg').src = resultImageUrl;
-            document.getElementById('result').style.display = 'block';
-        } else {
-            alert('❌ No meme generated. Please try again.');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        if (error.message?.includes('quota')) {
-            alert('❌ Quota exceeded. Nano Banana requires a paid API key. Check billing at https://aistudio.google.com/');
-        } else {
-            alert(`❌ Error: ${error.message}`);
-        }
-    } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="material-symbols-outlined align-middle">add_reaction</i>Generate Meme';
-    }
-}
-
-function downloadMeme() {
-    if (!resultImageUrl) return;
-    const a = document.createElement('a');
-    a.href = resultImageUrl;
-    a.download = `meme-${Date.now()}.png`;
-    a.click();
-}
-
-function generateAnother() {
-    document.getElementById('result').style.display = 'none';
-    document.getElementById('memeText').value = '';
-    document.getElementById('imageFile').value = '';
-    document.getElementById('imagePreview').style.display = 'none';
-    document.getElementById('generateBtn').disabled = true;
-    currentImage = null;
-    resultImageUrl = null;
-}
-
-async function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result.split(',')[1]);
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
     });
-}
+
+    async function saveApiKey() {
+        const apiKey = document.getElementById('apiKeyInput').value.trim();
+        if (!apiKey) return alert(t.pleaseEnterApiKey || '❌ Please enter an API key');
+
+        const btn = event.target;
+        btn.disabled = true;
+        btn.textContent = '⏳ Validating...';
+
+        try {
+            geminiAPI = new GeminiAPI(apiKey);
+            const valid = await geminiAPI.validateKey();
+            if (valid) {
+                GeminiStorage.save(apiKey);
+                showTool();
+                alert(t.apiKeySaved || '✅ API Key saved successfully');
+            } else {
+                alert(t.invalidApiKey || '❌ Invalid API Key');
+            }
+        } catch (error) {
+            alert(`${t.generationError || '❌ Error'}: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = t.saveButton || '💾 Save';
+        }
+    }
+
+    function removeApiKey() {
+        if (confirm(t.removeApiKeyConfirm || 'Remove API key?')) {
+            GeminiStorage.remove();
+            location.reload();
+        }
+    }
+
+    function showTool() {
+        document.getElementById('apiKeySetup').classList.add('d-none');
+        document.getElementById('apiKeyManage').classList.remove('d-none');
+        document.getElementById('toolSection').classList.remove('d-none');
+    }
+
+    async function handleImageUpload() {
+        const file = document.getElementById('imageInput').files[0];
+        if (!file) return;
+
+        if (!file.type.startsWith('image/')) {
+            return alert(t.pleaseSelectImage || '❌ Please select an image file');
+        }
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const dataUrl = e.target.result;
+            const base64 = dataUrl.split(',')[1];
+            currentImage = {
+                base64: base64,
+                mimeType: file.type,
+                dataUrl: dataUrl
+            };
+            
+            document.getElementById('previewImg').src = dataUrl;
+            document.getElementById('imagePreview').classList.remove('d-none');
+            document.getElementById('generateBtn').disabled = false;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    async function generateMeme() {
+        const userText = document.getElementById('memeText').value.trim();
+        const btn = document.getElementById('generateBtn');
+
+        if (!currentImage) return alert(t.pleaseUploadImage || '❌ Please upload an image first');
+
+        btn.disabled = true;
+        btn.textContent = '⏳ Generating meme...';
+
+        try {
+            const lang = document.documentElement.lang || 'en';
+            
+            let prompt;
+            if (userText) {
+                prompt = lang === 'es'
+                    ? `Analiza esta imagen y crea un meme con el siguiente texto: "${userText}". Si la imagen ya tiene texto de meme, límpialo primero. Añade el texto en español con formato de meme (texto blanco con borde negro, estilo Impact).`
+                    : `Analyze this image and create a meme with the following text: "${userText}". If the image already has meme text, clean it first. Add the text in English with meme format (white text with black outline, Impact style).`;
+            } else {
+                prompt = lang === 'es'
+                    ? 'Analiza esta imagen y piensa en un texto gracioso y relatable para convertirla en un meme viral. Si la imagen ya tiene texto de meme, límpialo y reemplázalo. Genera el meme con texto en español, usando formato clásico de meme (texto blanco con borde negro, estilo Impact).'
+                    : 'Analyze this image and think of a funny and relatable text to turn it into a viral meme. If the image already has meme text, clean it and replace it. Generate the meme with text in English, using classic meme format (white text with black outline, Impact style).';
+            }
+
+            const result = await geminiAPI.editImage(prompt, currentImage.base64, currentImage.mimeType);
+            
+            if (result.image) {
+                const imgElement = document.getElementById('resultImg');
+                imgElement.src = `data:image/png;base64,${result.image}`;
+                document.getElementById('resultSection').classList.remove('d-none');
+            } else {
+                alert(t.noMemeGenerated || '❌ No meme generated. Please try again.');
+            }
+        } catch (error) {
+            if (error.message.includes('quota')) {
+                alert(t.quotaExceeded || '❌ Quota exceeded. Nano Banana requires a paid API key.');
+            } else {
+                alert(`${t.generationError || '❌ Error'}: ${error.message}`);
+            }
+        } finally {
+            btn.disabled = false;
+            btn.textContent = t.generateButton || 'Generate Meme';
+        }
+    }
+
+    function downloadMeme() {
+        const img = document.getElementById('resultImg');
+        const a = document.createElement('a');
+        a.href = img.src;
+        a.download = `meme-${new Date().toISOString().slice(0,10)}.png`;
+        a.click();
+    }
+
+    function resetTool() {
+        document.getElementById('imageInput').value = '';
+        document.getElementById('memeText').value = '';
+        document.getElementById('imagePreview').classList.add('d-none');
+        document.getElementById('resultSection').classList.add('d-none');
+        document.getElementById('generateBtn').disabled = true;
+        currentImage = null;
+    }
 </script>
 
         <!-- SEO Content Section -->
@@ -345,7 +353,7 @@ async function fileToBase64(file) {
 
     
     <script>
-        window.toolTranslations = {"setupTitle":"⚙️ Initial Setup","setupDescription":"You need a <strong>paid</strong> API key from Google AI Studio (Nano Banana requires paid tier):","setupStep1":"Visit <a href='https://aistudio.google.com/app/apikey' target='_blank'>Google AI Studio</a>","setupStep2":"Create an API key with <strong>paid billing enabled</strong>","setupStep3":"Paste it below 👇","setupNote":"🔒 Stored locally in your browser | 💰 ~$0.0125 per meme","toolTitle":"🎭 AI Meme Generator:","toolDescription":"Turn any image into a viral meme! AI analyzes your image and adds funny text automatically, or use your own custom text.","toolNote":"Cost: ~$0.0125 per meme | Auto-detects language | Cleans existing meme text","uploadLabel":"Upload image for meme:","originalImageLabel":"Original image:","memeTextLabel":"Meme text (optional):","memeTextPlaceholder":"Leave blank for AI to create funny text automatically","memeTextHint":"💡 Leave empty for AI magic, or write your own meme text","generateButton":"Generate Meme","generating":"Generating meme...","resultTitle":"Your Meme:","downloadButton":"💾 Download Meme","generateAnotherButton":"🔄 Generate Another","apiKeyPlaceholder":"AIzaSy...","saveButton":"💾 Save","validating":"⏳ Validating...","pleaseEnterApiKey":"❌ Please enter an API key","apiKeySaved":"✅ API Key saved successfully","invalidApiKey":"❌ Invalid API Key","pleaseUploadImage":"❌ Please upload an image first","noMemeGenerated":"❌ No meme generated. Please try again.","quotaExceeded":"❌ Quota exceeded. Nano Banana requires a paid API key. Check billing at https://aistudio.google.com/","generationError":"❌ Error","seo":{"whatIsTitle":"What is an AI Meme Generator?","whatIsContent":"An **AI Meme Generator** uses **Gemini 2.5 Flash Image** (Nano Banana) to automatically create memes from any image. The AI analyzes your photo, thinks of funny relatable text, and adds it in classic meme format with white text and black outline.","howToTitle":"How to generate memes with AI?","howToSteps":["Get a **paid API key** from [Google AI Studio](https://aistudio.google.com/app/apikey)","Upload any **image** you want to turn into a meme","Leave text **blank for AI magic**, or write your own meme text","Click **'Generate Meme'** and download (~$0.0125 per meme)"],"useCasesTitle":"Use cases for AI meme generator","useCases":["Create **viral memes** for social media","Generate **marketing memes** for brands","Make **reaction memes** from photos","Create **custom memes** with your text","Replace text in **existing memes**"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"Is the meme generator free?","answer":"No, it requires a **paid Google AI API key**. Cost is approximately **$0.0125 per meme**. The AI analyzes images and adds text automatically."},{"question":"Can it create text automatically?","answer":"Yes! Leave the text field **blank** and the AI will analyze your image and create **funny, relatable meme text** automatically in your language."},{"question":"What if my image already has meme text?","answer":"The AI will **automatically clean** existing meme text and replace it with new text, so you can remix existing memes easily."}]}};
+        window.toolTranslations = {"setupTitle":"⚙️ Initial Setup","setupDescription":"You need a <strong>paid</strong> API key from Google AI Studio (Nano Banana requires paid tier):","setupStep1":"Visit <a href='https://aistudio.google.com/app/apikey' target='_blank'>Google AI Studio</a>","setupStep2":"Create an API key with <strong>paid billing enabled</strong>","setupStep3":"Paste it below 👇","setupNote":"🔒 Stored locally in your browser | 💰 ~$0.0125 per meme","toolTitle":"🎭 AI Meme Generator:","toolDescription":"Turn any image into a viral meme! AI analyzes your image and adds funny text automatically, or use your own custom text.","toolNote":"Cost: ~$0.0125 per meme | Auto-detects language | Cleans existing meme text","uploadLabel":"Upload image for meme:","originalImageLabel":"Original image:","memeTextLabel":"Meme text (optional):","memeTextPlaceholder":"Leave blank for AI to create funny text automatically","memeTextHint":"💡 Leave empty for AI magic, or write your own meme text","generateButton":"Generate Meme","generating":"Generating meme...","resultTitle":"Your Meme:","downloadButton":"💾 Download Meme","generateAnotherButton":"🔄 Generate Another","apiKeyPlaceholder":"AIzaSy...","saveButton":"💾 Save","removeButton":"🗑️ Remove","validating":"⏳ Validating...","apiKeyConfigured":"✅ API Key configured","pleaseEnterApiKey":"❌ Please enter an API key","apiKeySaved":"✅ API Key saved successfully","invalidApiKey":"❌ Invalid API Key","pleaseSelectImage":"❌ Please select an image file","removeApiKeyConfirm":"Remove API key?","pleaseUploadImage":"❌ Please upload an image first","noMemeGenerated":"❌ No meme generated. Please try again.","quotaExceeded":"❌ Quota exceeded. Nano Banana requires a paid API key. Check billing at https://aistudio.google.com/","generationError":"❌ Error","seo":{"whatIsTitle":"What is an AI Meme Generator?","whatIsContent":"An **AI Meme Generator** uses **Gemini 2.5 Flash Image** (Nano Banana) to automatically create memes from any image. The AI analyzes your photo, thinks of funny relatable text, and adds it in classic meme format with white text and black outline.","howToTitle":"How to generate memes with AI?","howToSteps":["Get a **paid API key** from [Google AI Studio](https://aistudio.google.com/app/apikey)","Upload any **image** you want to turn into a meme","Leave text **blank for AI magic**, or write your own meme text","Click **'Generate Meme'** and download (~$0.0125 per meme)"],"useCasesTitle":"Use cases for AI meme generator","useCases":["Create **viral memes** for social media","Generate **marketing memes** for brands","Make **reaction memes** from photos","Create **custom memes** with your text","Replace text in **existing memes**"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"Is the meme generator free?","answer":"No, it requires a **paid Google AI API key**. Cost is approximately **$0.0125 per meme**. The AI analyzes images and adds text automatically."},{"question":"Can it create text automatically?","answer":"Yes! Leave the text field **blank** and the AI will analyze your image and create **funny, relatable meme text** automatically in your language."},{"question":"What if my image already has meme text?","answer":"The AI will **automatically clean** existing meme text and replace it with new text, so you can remix existing memes easily."}]}};
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
