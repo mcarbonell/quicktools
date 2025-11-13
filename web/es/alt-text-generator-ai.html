@@ -131,7 +131,7 @@
 
     <div class="mb-3">
         <label class="form-label">¿Qué tipo de alt text necesitas?</label>
-        <textarea id="promptInput" class="form-control" rows="3" placeholder="Genera un texto alternativo para esta imagen optimizado para SEO">Generate an alt text for this image for SEO optimization</textarea>
+        <textarea id="promptInput" class="form-control" rows="3" placeholder="Genera un texto alternativo para esta imagen optimizado para SEO"></textarea>
     </div>
 
     <div class="mb-3">
@@ -169,6 +169,14 @@
         ai = new HybridAI();
         await ai.init();
         updateServiceStatus();
+        
+        // Set default prompt based on language
+        const lang = document.documentElement.lang || 'en';
+        const defaultPrompts = {
+            en: 'Generate an alt text for this image for SEO optimization',
+            es: 'Genera un texto alternativo para esta imagen optimizado para SEO'
+        };
+        document.getElementById('promptInput').value = defaultPrompts[lang] || defaultPrompts.en;
     });
 
     function updateServiceStatus() {
@@ -248,7 +256,12 @@
         resultSection.classList.remove('d-none');
 
         try {
-            const fullPrompt = `${prompt}\n\nLength preference: ${length}`;
+            const lang = document.documentElement.lang || 'en';
+            const langInstructions = {
+                en: 'Respond in English.',
+                es: 'Responde en español.'
+            };
+            const fullPrompt = `${prompt}\n\nLength preference: ${length}\n${langInstructions[lang] || langInstructions.en}`;
             
             // Use ChromeAI directly for multimodal
             if (ai.hasChromeAI) {
