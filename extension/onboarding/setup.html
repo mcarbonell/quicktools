@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - FastTools</title>
+    <link rel="stylesheet" href="setup.css">
+</head>
+<body>
+    <div class="setup-container">
+        <!-- Pantalla 1: Bienvenida -->
+        <div id="screen-welcome" class="screen active">
+            <div class="logo">🚀</div>
+            <h1>¡Bienvenido a FastTools!</h1>
+            <p class="subtitle">Vamos a crear tu perfil personalizado analizando tu navegación</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <span class="icon">🔒</span>
+                    <span>100% Privado - Todo local</span>
+                </div>
+                <div class="feature">
+                    <span class="icon">🤖</span>
+                    <span>IA local de Chrome</span>
+                </div>
+                <div class="feature">
+                    <span class="icon">⚡</span>
+                    <span>Recomendaciones personalizadas</span>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="btn-start" class="btn btn-primary">Crear mi perfil</button>
+                <button id="btn-skip" class="btn btn-secondary">Omitir por ahora</button>
+            </div>
+        </div>
+
+        <!-- Pantalla 2: Analizando -->
+        <div id="screen-analyzing" class="screen">
+            <div class="spinner"></div>
+            <h2>Analizando tu navegación...</h2>
+            <p id="progress-text" class="progress-text">Iniciando análisis...</p>
+            
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+            
+            <div class="steps">
+                <div id="step-history" class="step">
+                    <span class="step-icon">⏳</span>
+                    <span class="step-text">Analizando historial</span>
+                </div>
+                <div id="step-bookmarks" class="step">
+                    <span class="step-icon">⏳</span>
+                    <span class="step-text">Revisando marcadores</span>
+                </div>
+                <div id="step-inference" class="step">
+                    <span class="step-icon">⏳</span>
+                    <span class="step-text">Infiriendo perfil con IA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla 3: Reveal -->
+        <div id="screen-reveal" class="screen">
+            <div class="reveal-header">
+                <div class="avatar">👨💻</div>
+                <h2>¡Hola! Creo que eres un:</h2>
+            </div>
+
+            <div class="profile-card">
+                <div class="profile-field" id="profile-name-field" style="display: none;">
+                    <span class="label">✨ Nombre:</span>
+                    <span id="profile-name-display" class="value">-</span>
+                </div>
+                <div class="profile-field">
+                    <span class="label">👤 Perfil:</span>
+                    <span id="profile-role" class="value">-</span>
+                </div>
+                <div class="profile-field">
+                    <span class="label">📊 Nivel:</span>
+                    <span id="profile-level" class="value">-</span>
+                </div>
+                <div class="profile-field">
+                    <span class="label">💡 Intereses:</span>
+                    <span id="profile-interests" class="value">-</span>
+                </div>
+                <div class="profile-field">
+                    <span class="label">🛠️ Stack:</span>
+                    <span id="profile-stack" class="value">-</span>
+                </div>
+                <div class="profile-field" id="profile-hobbies-field" style="display: none;">
+                    <span class="label">🎮 Hobbies:</span>
+                    <span id="profile-hobbies" class="value">-</span>
+                </div>
+            </div>
+
+            <p class="question">¿Es correcto?</p>
+
+            <div class="actions">
+                <button id="btn-confirm" class="btn btn-primary">Sí, perfecto</button>
+                <button id="btn-edit" class="btn btn-secondary">Editar perfil</button>
+                <button id="btn-retry" class="btn btn-tertiary">Reintentar</button>
+            </div>
+        </div>
+
+        <!-- Pantalla 4: Error -->
+        <div id="screen-error" class="screen">
+            <div class="error-icon">❌</div>
+            <h2>Algo salió mal</h2>
+            <p id="error-message" class="error-text">No se pudo completar el análisis.</p>
+            
+            <div class="actions">
+                <button id="btn-retry-error" class="btn btn-primary">Reintentar</button>
+                <button id="btn-skip-error" class="btn btn-secondary">Continuar sin perfil</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="setup.js"></script>
+</body>
+</html>

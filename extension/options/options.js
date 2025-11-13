@@ -36,6 +36,7 @@ class OptionsManager {
 
     async init() {
         await this.loadSettings();
+        await this.loadProfile();
         this.setupEventListeners();
         this.setupNavigation();
         this.updateUI();
@@ -43,6 +44,27 @@ class OptionsManager {
         this.loadDataStats();
 
         console.log('Options page initialized');
+    }
+    
+    async loadProfile() {
+        const { userProfile } = await chrome.storage.local.get('userProfile');
+        this.profile = userProfile || null;
+        if (this.profile) {
+            this.updateProfileUI();
+        }
+    }
+    
+    updateProfileUI() {
+        if (!this.profile) return;
+        
+        document.getElementById('profile-role').value = this.profile.role || this.profile.profile || '';
+        document.getElementById('profile-level').value = this.profile.level || 'mid';
+        document.getElementById('profile-interests').value = (this.profile.interests || []).join(', ');
+        document.getElementById('profile-stack').value = (this.profile.stack || []).join(', ');
+        document.getElementById('profile-workstyle').value = this.profile.workStyle || '';
+        document.getElementById('profile-hobbies').value = (this.profile.hobbies || []).join(', ');
+        document.getElementById('profile-gender').value = this.profile.gender || 'unknown';
+        document.getElementById('profile-age').value = this.profile.ageRange || '';
     }
 
     // Load settings from storage
@@ -74,86 +96,55 @@ class OptionsManager {
     // Setup event listeners
     setupEventListeners() {
         // General Settings
-        this.setupEventListener('openInNewTab', 'change', (checked) => {
-            this.settings.openInNewTab = checked;
-            this.saveSettings();
+        this.setupEventListener('auto-start', 'change', (checked) => {
+            this.settings.autoStart = checked;
+        });
+        
+        this.setupEventListener('auto-capture', 'change', (checked) => {
+            this.settings.autoCapture = checked;
+        });
+        
+        this.setupEventListener('save-to-clipboard', 'change', (checked) => {
+            this.settings.saveToClipboard = checked;
         });
 
-        this.setupEventListener('showNotifications', 'change', (checked) => {
+        this.setupEventListener('show-notifications', 'change', (checked) => {
             this.settings.showNotifications = checked;
-            this.saveSettings();
         });
-
-        this.setupEventListener('autoHidePanel', 'change', (checked) => {
-            this.settings.autoHidePanel = checked;
-            this.saveSettings();
+        
+        this.setupEventListener('open-in-new-tab', 'change', (checked) => {
+            this.settings.openInNewTab = checked;
+        });
+        
+        this.setupEventListener('compact-view', 'change', (checked) => {
+            this.settings.compactView = checked;
         });
 
         // Theme Settings
-        this.setupEventListener('themeSystem', 'change', (checked) => {
-            if (checked) {
-                this.settings.theme = 'system';
-                this.saveSettings();
-                this.updateTheme();
-            }
+        document.querySelectorAll('input[name="theme"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if (e.target.checked) {
+                    this.settings.theme = e.target.value;
+                    this.updateTheme();
+                }
+            });
         });
 
-        this.setupEventListener('themeLight', 'change', (checked) => {
-            if (checked) {
-                this.settings.theme = 'light';
-                this.saveSettings();
-                this.updateTheme();
-            }
-        });
-
-        this.setupEventListener('themeDark', 'change', (checked) => {
-            if (checked) {
-                this.settings.theme = 'dark';
-                this.saveSettings();
-                this.updateTheme();
-            }
-        });
-
-        this.setupEventListener('primaryColor', 'input', (value) => {
-            this.settings.primaryColor = value;
-            document.documentElement.style.setProperty('--primary-color', value);
-            document.getElementById('colorValue').textContent = value;
-        });
-
-        this.setupEventListener('primaryColor', 'change', (value) => {
-            this.saveSettings();
-        });
-
-        this.setupEventListener('enableAnimations', 'change', (checked) => {
-            this.settings.enableAnimations = checked;
-            this.saveSettings();
-        });
+        const accentColor = document.getElementById('accent-color');
+        if (accentColor) {
+            accentColor.addEventListener('input', (e) => {
+                this.settings.primaryColor = e.target.value;
+                document.documentElement.style.setProperty('--primary-color', e.target.value);
+            });
+        }
 
         // Privacy Settings
-        this.setupEventListener('dataCollection', 'change', (checked) => {
-            this.settings.dataCollection = checked;
-            this.saveSettings();
-        });
-
-        this.setupEventListener('analyticsEnabled', 'change', (checked) => {
+        this.setupEventListener('enable-analytics', 'change', (checked) => {
             this.settings.analyticsEnabled = checked;
-            this.saveSettings();
         });
 
-        this.setupEventListener('crashReports', 'change', (checked) => {
+        this.setupEventListener('crash-reports', 'change', (checked) => {
             this.settings.crashReports = checked;
-            this.saveSettings();
-        });
-
-        this.setupEventListener('syncData', 'change', (checked) => {
-            this.settings.syncData = checked;
-            this.saveSettings();
-        });
-
-        // Auto-hide delay
-        this.setupEventListener('autoHideDelay', 'change', (value) => {
-            this.settings.autoHideDelay = parseInt(value) || 5;
-            this.saveSettings();
         });
 
         // Shortcuts
@@ -164,6 +155,41 @@ class OptionsManager {
 
         // Keyboard shortcuts
         this.setupKeyboardShortcuts();
+        
+        // Profile actions
+        document.getElementById('save-profile')?.addEventListener('click', () => this.saveProfile());
+        document.getElementById('regenerate-profile')?.addEventListener('click', () => this.regenerateProfile());
+        
+        // Save settings button
+        document.getElementById('save-settings')?.addEventListener('click', () => this.saveSettings());
+    }
+    
+    async saveProfile() {
+        const profile = {
+            name: document.getElementById('profile-name').value.trim(),
+            role: document.getElementById('profile-role').value.trim(),
+            level: document.getElementById('profile-level').value,
+            interests: document.getElementById('profile-interests').value.split(',').map(s => s.trim()).filter(Boolean),
+            stack: document.getElementById('profile-stack').value.split(',').map(s => s.trim()).filter(Boolean),
+            workStyle: document.getElementById('profile-workstyle').value.trim(),
+            hobbies: document.getElementById('profile-hobbies').value.split(',').map(s => s.trim()).filter(Boolean),
+            gender: document.getElementById('profile-gender').value,
+            ageRange: document.getElementById('profile-age').value,
+            language: this.profile?.language || 'es',
+            lastUpdated: new Date().toISOString(),
+            source: 'manual'
+        };
+        
+        await chrome.storage.local.set({ userProfile: profile });
+        this.profile = profile;
+        this.showMessage('Perfil guardado correctamente', 'success');
+    }
+    
+    async regenerateProfile() {
+        if (!confirm('¿Regenerar perfil con IA? Esto sobrescribirá los cambios actuales.')) return;
+        
+        await chrome.storage.local.remove(['onboardingCompleted', 'userProfile']);
+        chrome.tabs.create({ url: chrome.runtime.getURL('onboarding/setup.html?force=true') });
     }
 
     // Setup event listener helper
@@ -220,22 +246,29 @@ class OptionsManager {
     // Update UI based on settings
     updateUI() {
         // General Settings
-        this.setChecked('openInNewTab', this.settings.openInNewTab);
-        this.setChecked('showNotifications', this.settings.showNotifications);
-        this.setChecked('autoHidePanel', this.settings.autoHidePanel);
-        document.getElementById('autoHideDelay').value = this.settings.autoHideDelay;
+        this.setChecked('auto-start', this.settings.autoStart);
+        this.setChecked('auto-capture', this.settings.autoCapture);
+        this.setChecked('save-to-clipboard', this.settings.saveToClipboard);
+        this.setChecked('show-notifications', this.settings.showNotifications);
+        this.setChecked('open-in-new-tab', this.settings.openInNewTab);
+        this.setChecked('compact-view', this.settings.compactView);
 
         // Theme Settings
-        document.getElementById(`theme${this.capitalize(this.settings.theme)}`).checked = true;
-        document.getElementById('primaryColor').value = this.settings.primaryColor;
-        document.getElementById('colorValue').textContent = this.settings.primaryColor;
-        this.setChecked('enableAnimations', this.settings.enableAnimations);
+        const themeRadios = document.querySelectorAll('input[name="theme"]');
+        themeRadios.forEach(radio => {
+            if (radio.value === this.settings.theme) {
+                radio.checked = true;
+            }
+        });
+        
+        const accentColor = document.getElementById('accent-color');
+        if (accentColor) {
+            accentColor.value = this.settings.primaryColor || '#6366f1';
+        }
 
         // Privacy Settings
-        this.setChecked('dataCollection', this.settings.dataCollection);
-        this.setChecked('analyticsEnabled', this.settings.analyticsEnabled);
-        this.setChecked('crashReports', this.settings.crashReports);
-        this.setChecked('syncData', this.settings.syncData);
+        this.setChecked('enable-analytics', this.settings.analyticsEnabled);
+        this.setChecked('crash-reports', this.settings.crashReports);
     }
 
     // Set checkbox value
@@ -287,14 +320,18 @@ class OptionsManager {
         this.updateShortcutsDisplay();
 
         // Reset shortcuts
-        document.getElementById('resetShortcuts').addEventListener('click', () => {
-            this.resetShortcuts();
-        });
+        const resetBtn = document.getElementById('reset-shortcuts');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                this.resetShortcuts();
+            });
+        }
     }
 
     // Update shortcuts display
     updateShortcutsDisplay() {
-        const shortcutsContainer = document.getElementById('shortcutsList');
+        const shortcutsContainer = document.getElementById('shortcut-list');
+        if (!shortcutsContainer) return;
         shortcutsContainer.innerHTML = '';
 
         Object.entries(this.settings.shortcuts).forEach(([action, keys]) => {
@@ -338,24 +375,58 @@ class OptionsManager {
     // Setup data management
     setupDataManagement() {
         // Export data
-        document.getElementById('exportData').addEventListener('click', () => {
-            this.exportData();
-        });
+        const exportBtn = document.getElementById('export-data');
+        if (exportBtn) {
+            exportBtn.addEventListener('click', () => this.exportData());
+        }
 
         // Import data
-        document.getElementById('importData').addEventListener('click', () => {
-            this.importData();
-        });
+        const importBtn = document.getElementById('import-data');
+        if (importBtn) {
+            importBtn.addEventListener('click', () => this.importData());
+        }
 
-        // Clear data
-        document.getElementById('clearData').addEventListener('click', () => {
-            this.clearData();
-        });
-
-        // Sync data
-        document.getElementById('syncData').addEventListener('click', () => {
-            this.syncData();
-        });
+        // Clear notes
+        const clearNotesBtn = document.getElementById('clear-notes');
+        if (clearNotesBtn) {
+            clearNotesBtn.addEventListener('click', () => this.clearNotes());
+        }
+        
+        // Clear captures
+        const clearCapturesBtn = document.getElementById('clear-captures');
+        if (clearCapturesBtn) {
+            clearCapturesBtn.addEventListener('click', () => this.clearCaptures());
+        }
+        
+        // Clear history
+        const clearHistoryBtn = document.getElementById('clear-history');
+        if (clearHistoryBtn) {
+            clearHistoryBtn.addEventListener('click', () => this.clearHistory());
+        }
+    }
+    
+    async clearNotes() {
+        if (confirm('¿Eliminar todas las notas?')) {
+            await chrome.storage.local.set({ notes: { items: [] } });
+            this.showMessage('Notas eliminadas', 'success');
+            this.loadDataStats();
+        }
+    }
+    
+    async clearCaptures() {
+        if (confirm('¿Eliminar todas las capturas?')) {
+            await chrome.storage.local.set({ captures: [] });
+            this.showMessage('Capturas eliminadas', 'success');
+            this.loadDataStats();
+        }
+    }
+    
+    async clearHistory() {
+        if (confirm('¿Eliminar historial de herramientas?')) {
+            await chrome.storage.local.set({ analytics: {} });
+            this.showMessage('Historial eliminado', 'success');
+            this.loadDataStats();
+        }
     }
 
     // Load data statistics
@@ -402,10 +473,13 @@ class OptionsManager {
 
     // Update data statistics display
     updateDataStats(stats) {
-        document.getElementById('syncKeysCount').textContent = stats.sync.keys;
-        document.getElementById('syncDataSize').textContent = this.formatSize(stats.sync.size);
-        document.getElementById('localKeysCount').textContent = stats.local.keys;
-        document.getElementById('localDataSize').textContent = this.formatSize(stats.local.size);
+        const notesCount = document.getElementById('notes-count');
+        const capturesCount = document.getElementById('captures-count');
+        const historyCount = document.getElementById('history-count');
+        
+        if (notesCount) notesCount.textContent = stats.local.keys;
+        if (capturesCount) capturesCount.textContent = '0';
+        if (historyCount) historyCount.textContent = '0';
     }
 
     // Format size in bytes
@@ -603,7 +677,7 @@ class OptionsManager {
 
 // Initialize options page when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new OptionsManager();
+    window.optionsManager = new OptionsManager();
 });
 
 // Handle service worker messages
@@ -611,5 +685,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === 'optionsUpdated') {
         // Reload settings if changed from popup
         window.location.reload();
+    }
+    if (message.action === 'open-profile-section') {
+        // Switch to profile section
+        const optionsManager = window.optionsManager;
+        if (optionsManager) {
+            optionsManager.switchSection('profile');
+        }
     }
 });

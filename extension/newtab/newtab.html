@@ -27,6 +27,7 @@
                     <div id="search-results" class="search-results"></div>
                 </div>
                 <div class="header-actions">
+                    <button id="profile-btn" class="icon-btn" title="Perfil">👤</button>
                     <button id="settings-btn" class="icon-btn" title="Configuración">⚙️</button>
                     <div class="user-tier" id="user-tier">🆓 Free</div>
                 </div>
@@ -194,12 +195,18 @@
 
     <script type="module" src="newtab.js"></script>
 
-    <!-- Dev Tools Link -->
-    <div style="position: fixed; bottom: 10px; right: 10px; z-index: 9999;">
-        <a href="/tools/ai/test-chrome-ai-apis.html" 
+    <!-- Dev Tools Links -->
+    <div style="position: fixed; bottom: 10px; right: 10px; z-index: 9999; display: flex; gap: 10px;">
+        <button id="similarPagesBtn" 
+           style="padding: 8px 16px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 8px; font-size: 12px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.2); cursor: pointer;">
+            🌍 Similar Pages
+        </button>
+        <a href="/test-ai-recommender.html" 
            style="display: inline-block; padding: 8px 16px; background: var(--primary-color); color: white; text-decoration: none; border-radius: 8px; font-size: 12px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
-            🧪 Test Chrome AI APIs
+            🤖 Test AI
         </a>
     </div>
+
+
 </body>
 </html>

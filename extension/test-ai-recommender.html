@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test AI Recommender - FastTools</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        h1 {
+            color: #667eea;
+        }
+
+        .test-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background: #5568d3;
+        }
+
+        #results {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .success {
+            color: #28a745;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test AI Smart Recommender</h1>
+
+    <div class="test-section">
+        <h2>1. Analizar Historial</h2>
+        <p>Analiza tu historial de navegación de los últimos 30 días.</p>
+        <button id="analyzeBtn">🔍 Analizar Historial</button>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Obtener Recomendaciones</h2>
+        <p>Genera recomendaciones basadas en tu perfil.</p>
+        <button id="recommendBtn">🎯 Obtener Recomendaciones</button>
+        <button id="recommendCurrentBtn">🌐 Recomendaciones para Sitio Actual</button>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Limpiar Caché</h2>
+        <p>Limpia el caché de perfil para forzar nuevo análisis.</p>
+        <button id="clearBtn">🗑️ Limpiar Caché</button>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Abrir Popup</h2>
+        <p>Abre el popup de AI Recommender en ventana nueva.</p>
+        <button id="openPopupBtn">🚀 Abrir Popup</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script src="test-ai-recommender.js"></script>
+</body>
+</html>

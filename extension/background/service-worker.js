@@ -2,6 +2,15 @@
 // Maneja eventos en segundo plano, analytics, sync
 
 // ====================
+// IMPORTS
+// ====================
+
+importScripts('history-analyzer.js');
+importScripts('bookmarks-analyzer.js');
+importScripts('profile-manager.js');
+importScripts('../shared/profile-inference.js');
+
+// ====================
 // INICIALIZACIÓN
 // ====================
 
@@ -29,8 +38,12 @@ chrome.runtime.onInstalled.addListener((details) => {
 // ====================
 
 async function initializeExtension() {
+    // Abrir onboarding en primera instalación
+    chrome.tabs.create({ url: chrome.runtime.getURL('onboarding/setup.html') });
+    
     // Configurar almacenamiento inicial
     await chrome.storage.local.set({
+        onboardingCompleted: false,
         user: {
             id: generateUserId(),
             tier: 'free',
@@ -96,63 +109,52 @@ function handleUpdate(previousVersion) {
 function createContextMenus() {
     // Limpiar menus existentes
     chrome.contextMenus.removeAll(() => {
-        // Menu principal
+        // Similar Pages (principal)
         chrome.contextMenus.create({
-            id: 'fasttools-main',
-            title: '🛠️ FastTools',
-            contexts: ['page', 'selection', 'image', 'link']
+            id: 'similar-pages',
+            title: '🌍 Encontrar Páginas Similares',
+            contexts: ['page']
         });
 
-        // Submenu para texto
+        // Separator
         chrome.contextMenus.create({
-            id: 'fasttools-text',
-            title: '📝 Herramientas de Texto',
-            parentId: 'fasttools-main',
-            contexts: ['selection']
+            id: 'separator1',
+            type: 'separator',
+            contexts: ['page']
         });
 
+        // Capturar pantalla
+        chrome.contextMenus.create({
+            id: 'capture-screen',
+            title: '📸 Capturar Pantalla',
+            contexts: ['page']
+        });
+
+        // Notas rápidas
+        chrome.contextMenus.create({
+            id: 'quick-notes',
+            title: '📝 Nueva Nota Rápida',
+            contexts: ['page']
+        });
+
+        // Herramientas de texto (solo en selección)
         chrome.contextMenus.create({
             id: 'text-encode-url',
             title: '🔗 Codificar URL',
-            parentId: 'fasttools-text',
             contexts: ['selection']
         });
 
         chrome.contextMenus.create({
             id: 'text-base64',
             title: '🔐 Base64 Encode',
-            parentId: 'fasttools-text',
             contexts: ['selection']
         });
 
-        // Submenu para imagen
-        chrome.contextMenus.create({
-            id: 'fasttools-image',
-            title: '🖼️ Herramientas de Imagen',
-            parentId: 'fasttools-main',
-            contexts: ['image']
-        });
-
+        // Herramientas de imagen (solo en imágenes)
         chrome.contextMenus.create({
             id: 'image-color-picker',
             title: '🎨 Extraer Colores',
-            parentId: 'fasttools-image',
             contexts: ['image']
-        });
-
-        // Acciones directas
-        chrome.contextMenus.create({
-            id: 'capture-screen',
-            title: '📸 Capturar Pantalla',
-            parentId: 'fasttools-main',
-            contexts: ['page']
-        });
-
-        chrome.contextMenus.create({
-            id: 'quick-notes',
-            title: '📝 Nueva Nota Rápida',
-            parentId: 'fasttools-main',
-            contexts: ['page']
         });
     });
 }
@@ -182,6 +184,9 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
             case 'quick-notes':
                 await handleQuickNotes(tab);
                 break;
+            case 'similar-pages':
+                await openSimilarPages();
+                break;
         }
 
         // Track usage
@@ -207,6 +212,9 @@ chrome.commands.onCommand.addListener(async (command) => {
                 break;
             case 'quick-notes':
                 await openQuickNotes();
+                break;
+            case 'similar-pages':
+                await openSimilarPages();
                 break;
         }
 
@@ -265,6 +273,42 @@ async function openColorPicker(imageUrl) {
     // Abrir popup con color picker pre-loaded
     chrome.action.openPopup();
     // El popup manejará la imagen
+}
+
+async function openAIRecommender() {
+    // Abrir popup de AI Recommender
+    chrome.windows.create({
+        url: chrome.runtime.getURL('popup/ai-recommender.html'),
+        type: 'popup',
+        width: 520,
+        height: 600
+    });
+}
+
+async function openSimilarPages() {
+    try {
+        // Obtener URL de la pestaña activa
+        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        
+        if (!tab || !tab.url || tab.url.startsWith('chrome://') || tab.url.startsWith('chrome-extension://')) {
+            showNotification('No se puede analizar esta página', 'error');
+            return;
+        }
+        
+        // Guardar URL en storage temporal
+        await chrome.storage.session.set({ 'similar-pages-url': tab.url });
+        
+        // Abrir popup
+        chrome.windows.create({
+            url: chrome.runtime.getURL('popup/similar-pages.html'),
+            type: 'popup',
+            width: 420,
+            height: 500
+        });
+    } catch (error) {
+        console.error('❌ Error abriendo Similar Pages:', error);
+        showNotification('Error: ' + error.message, 'error');
+    }
 }
 
 // New captureScreen function using offscreen document
@@ -413,6 +457,33 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             checkLink(request.url).then(sendResponse);
             return true; // Async response
             break;
+        case 'analyze-history':
+            analyzeHistory(request.days).then(sendResponse);
+            return true;
+        case 'get-recommendations':
+            getRecommendations(request.currentUrl).then(sendResponse);
+            return true; // Async response
+        case 'clear-profile-cache':
+            clearProfileCache();
+            break;
+        case 'analyze-bookmarks':
+            analyzeBookmarks().then(sendResponse);
+            return true;
+        case 'infer-profile':
+            inferProfileFromData(request.historyAnalysis, request.bookmarksAnalysis).then(sendResponse);
+            return true;
+        case 'save-profile':
+            saveProfile(request.profile).then(sendResponse);
+            return true;
+        case 'get-system-prompt':
+            getSystemPrompt().then(sendResponse);
+            return true;
+        case 'open-profile-section':
+            // Mensaje para options page
+            break;
+        case 'open-similar-pages':
+            openSimilarPages();
+            break;
         case 'capture-success':
             const notificationId = `capture-${Date.now()}`;
             showNotification(
@@ -546,5 +617,165 @@ self.addEventListener('error', (event) => {
 self.addEventListener('unhandledrejection', (event) => {
     console.error('💥 Unhandled promise rejection:', event.reason);
 });
+
+// ====================
+// AI SMART RECOMMENDER
+// ====================
+
+async function analyzeHistory(days = 30) {
+    try {
+        const analysis = await historyAnalyzer.analyzeHistory(days);
+        return {
+            success: true,
+            analysis: analysis
+        };
+    } catch (error) {
+        console.error('❌ Error analizando historial:', error);
+        return {
+            success: false,
+            error: error.message
+        };
+    }
+}
+
+async function getRecommendations(currentUrl = null) {
+    try {
+        console.log('🎯 Obteniendo recomendaciones...');
+        
+        // Setup offscreen document for AI
+        await setupAIOffscreenDocument();
+        
+        // Obtener perfil cacheado o generar nuevo
+        let profile = profileInference.getCachedProfile();
+        let analysis;
+        
+        if (!profile) {
+            const result = await analyzeHistoryAndInferProfile();
+            if (!result.success) {
+                throw new Error(result.error);
+            }
+            profile = result.profile;
+            analysis = result.analysis;
+        } else {
+            analysis = await historyAnalyzer.analyzeHistory();
+        }
+        
+        // Generar recomendaciones
+        const recommendations = await profileInference.generateRecommendations(
+            profile,
+            analysis,
+            currentUrl
+        );
+        
+        return {
+            success: true,
+            recommendations: recommendations,
+            profile: profile
+        };
+    } catch (error) {
+        console.error('❌ Error generando recomendaciones:', error);
+        return {
+            success: false,
+            error: error.message
+        };
+    }
+}
+
+function clearProfileCache() {
+    historyAnalyzer.clearCache();
+    bookmarksAnalyzer.clearCache();
+    profileInference.clearCache();
+    console.log('✅ Caché de perfil limpiado');
+}
+
+async function analyzeBookmarks() {
+    try {
+        const analysis = await bookmarksAnalyzer.analyzeBookmarks();
+        return {
+            success: true,
+            analysis: analysis
+        };
+    } catch (error) {
+        console.error('❌ Error analizando bookmarks:', error);
+        return {
+            success: false,
+            error: error.message
+        };
+    }
+}
+
+async function inferProfileFromData(historyAnalysis, bookmarksAnalysis) {
+    try {
+        await setupAIOffscreenDocument();
+        
+        // Combinar análisis
+        const combinedData = {
+            history: historyAnalysis,
+            bookmarks: bookmarksAnalysis
+        };
+        
+        // Inferir perfil
+        const profile = await profileInference.inferProfile(combinedData);
+        
+        return {
+            success: true,
+            profile: profile
+        };
+    } catch (error) {
+        console.error('❌ Error infiriendo perfil:', error);
+        return {
+            success: false,
+            error: error.message,
+            profile: profileInference.getDefaultProfile()
+        };
+    }
+}
+
+async function saveProfile(profile) {
+    try {
+        await profileManager.saveProfile(profile);
+        return { success: true };
+    } catch (error) {
+        console.error('❌ Error guardando perfil:', error);
+        return {
+            success: false,
+            error: error.message
+        };
+    }
+}
+
+async function getSystemPrompt() {
+    try {
+        const systemPrompt = await profileManager.getSystemPrompt();
+        return {
+            success: true,
+            systemPrompt: systemPrompt
+        };
+    } catch (error) {
+        console.error('❌ Error obteniendo system prompt:', error);
+        return {
+            success: false,
+            systemPrompt: ''
+        };
+    }
+}
+
+async function setupAIOffscreenDocument() {
+    const path = 'background/ai-offscreen.html';
+    const existingContexts = await chrome.runtime.getContexts({
+        contextTypes: [chrome.runtime.ContextType.OFFSCREEN_DOCUMENT],
+        documentUrls: [chrome.runtime.getURL(path)]
+    });
+
+    if (existingContexts.length > 0) {
+        return;
+    }
+
+    await chrome.offscreen.createDocument({
+        url: path,
+        reasons: [chrome.offscreen.Reason.DOM_SCRAPING],
+        justification: 'AI APIs require document context'
+    });
+}
 
 console.log('🚀 FastTools Service Worker cargado');

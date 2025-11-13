@@ -61,10 +61,10 @@
         <small style="color: #6c757d;">🔒 Se guarda en tu navegador, nunca en servidores.</small>
     </div>
 
-    <div id="apiKeyManage" class="alert alert-success d-none">
+    <div id="serviceStatus" class="alert d-none">
         <div class="d-flex justify-between align-center">
-            <span>✅ API Key configurada</span>
-            <button class="btn btn-danger btn-sm" id="removeKeyBtn">🗑️ Eliminar</button>
+            <span id="statusText"></span>
+            <button class="btn btn-danger btn-sm d-none" id="removeKeyBtn">🗑️ Eliminar API Key</button>
         </div>
     </div>
 
@@ -91,10 +91,10 @@
         </div>
     </div>
 
-    <!-- Scripts compartidos desde web -->
+    <!-- Scripts compartidos -->
     <script src="../../shared/gemini-api.js"></script>
-    <script src="../../shared/chat-ui.js"></script>
-    <script src="./chat-ai-storage.js"></script>
+    <script src="../../shared/chrome-ai-apis.js"></script>
+    <script src="../../shared/hybrid-ai.js"></script>
     <script src="./chat-ai.js"></script>
 </body>
 </html>

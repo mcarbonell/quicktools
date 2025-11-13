@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "FastTools - Productivity Suite",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "description": "Suite completa de herramientas de productividad - 33 herramientas para desarrolladores y profesionales",
     "permissions": [
         "activeTab",
@@ -12,7 +12,9 @@
         "notifications",
         "downloads",
         "contextMenus",
-        "offscreen"
+        "offscreen",
+        "history",
+        "bookmarks"
     ],
     "host_permissions": [
         "<all_urls>"
@@ -50,6 +52,7 @@
     "chrome_url_overrides": {
         "newtab": "newtab/newtab.html"
     },
+    "options_page": "options/options.html",
     "commands": {
         "quick-tools": {
             "suggested_key": {
@@ -71,6 +74,13 @@
                 "mac": "Command+Shift+N"
             },
             "description": "Abrir notas rápidas"
+        },
+        "similar-pages": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+S",
+                "mac": "Command+Shift+S"
+            },
+            "description": "Encontrar sitios similares"
         }
     },
     "icons": {

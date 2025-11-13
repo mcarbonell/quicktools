@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Smart Recommender - FastTools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 500px;
+            min-height: 400px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .profile-section {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .profile-section h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .profile-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .profile-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-item label {
+            font-weight: 600;
+            color: #6c757d;
+            margin-bottom: 3px;
+        }
+
+        .profile-item span {
+            color: #212529;
+        }
+
+        .recommendations-section {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .recommendations-section h2 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .recommendations-content {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .recommendations-content a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .recommendations-content a:hover {
+            text-decoration: underline;
+        }
+
+        .recommendations-content h3 {
+            font-size: 14px;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            color: #495057;
+        }
+
+        .recommendations-content ul {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .recommendations-content li {
+            margin-bottom: 8px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px;
+            font-size: 13px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+        }
+
+        .btn-secondary {
+            background: #e9ecef;
+            color: #495057;
+        }
+
+        .btn-secondary:hover {
+            background: #dee2e6;
+        }
+
+        .current-site {
+            background: #e7f3ff;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+
+        .current-site strong {
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🤖 AI Smart Recommender</h1>
+        <p>Recomendaciones personalizadas basadas en tu historial</p>
+    </div>
+
+    <div class="container">
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Analizando tu historial de navegación...</p>
+        </div>
+
+        <div id="content" style="display: none;">
+            <div id="currentSite" class="current-site" style="display: none;">
+                <strong>Sitio actual:</strong> <span id="currentUrl"></span>
+            </div>
+
+            <div class="profile-section">
+                <h2>📊 Tu Perfil</h2>
+                <div class="profile-info">
+                    <div class="profile-item">
+                        <label>Rol:</label>
+                        <span id="profileRole">-</span>
+                    </div>
+                    <div class="profile-item">
+                        <label>Nivel:</label>
+                        <span id="profileLevel">-</span>
+                    </div>
+                    <div class="profile-item">
+                        <label>Intereses:</label>
+                        <span id="profileInterests">-</span>
+                    </div>
+                    <div class="profile-item">
+                        <label>Stack:</label>
+                        <span id="profileStack">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommendations-section">
+                <h2>🎯 Recomendaciones</h2>
+                <div id="recommendations" class="recommendations-content">
+                    <!-- Recommendations will be inserted here -->
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="refreshBtn" class="btn btn-primary">🔄 Actualizar</button>
+                <button id="clearCacheBtn" class="btn btn-secondary">🗑️ Limpiar Caché</button>
+            </div>
+        </div>
+
+        <div id="error" class="error" style="display: none;">
+            <strong>Error:</strong> <span id="errorMessage"></span>
+        </div>
+    </div>
+
+    <script src="ai-recommender.js"></script>
+</body>
+</html>

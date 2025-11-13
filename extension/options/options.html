@@ -55,6 +55,12 @@
                         </button>
                     </li>
                     <li class="nav-item">
+                        <button class="nav-btn" data-section="profile">
+                            <span class="nav-icon">👤</span>
+                            <span class="nav-text">Perfil</span>
+                        </button>
+                    </li>
+                    <li class="nav-item">
                         <button class="nav-btn" data-section="advanced">
                             <span class="nav-icon">🔧</span>
                             <span class="nav-text">Avanzado</span>
@@ -344,6 +350,84 @@
                                 <p>Desbloquea sincronización ilimitada, notas ilimitadas, y funciones exclusivas</p>
                                 <button class="btn btn-primary" id="upgrade-premium">Actualizar a Premium</button>
                             </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Profile Section -->
+                <section id="profile-section" class="content-section">
+                    <h2>Perfil de Usuario</h2>
+
+                    <div class="settings-group">
+                        <h3>Información del Perfil</h3>
+                        <p class="section-description">Este perfil se usa para personalizar tu experiencia con IA</p>
+                        
+                        <div class="profile-form">
+                            <div class="form-group">
+                                <label for="profile-name">✨ Nombre/Apodo (opcional):</label>
+                                <input type="text" id="profile-name" placeholder="Ej: Mario">
+                                <small style="color: var(--text-secondary); font-size: 12px;">La IA te llamará por tu nombre en las conversaciones</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profile-role">👤 Rol/Profesión:</label>
+                                <input type="text" id="profile-role" placeholder="Ej: Desarrollador Web Full-Stack">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profile-level">📊 Nivel:</label>
+                                <select id="profile-level">
+                                    <option value="junior">Junior</option>
+                                    <option value="mid" selected>Mid</option>
+                                    <option value="senior">Senior</option>
+                                    <option value="expert">Expert</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profile-interests">💡 Intereses (separados por coma):</label>
+                                <input type="text" id="profile-interests" placeholder="Ej: React, TypeScript, IA">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profile-stack">🛠️ Stack (separado por coma):</label>
+                                <input type="text" id="profile-stack" placeholder="Ej: JavaScript, Python, Node.js">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profile-workstyle">💼 Estilo de trabajo:</label>
+                                <input type="text" id="profile-workstyle" placeholder="Ej: Colaborativo, orientado a resultados">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profile-hobbies">🎮 Hobbies (separados por coma):</label>
+                                <input type="text" id="profile-hobbies" placeholder="Ej: Coding, Gaming, Lectura">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profile-gender">👤 Género:</label>
+                                <select id="profile-gender">
+                                    <option value="unknown">No especificado</option>
+                                    <option value="male">Masculino</option>
+                                    <option value="female">Femenino</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profile-age">🎂 Rango de edad:</label>
+                                <select id="profile-age">
+                                    <option value="">No especificado</option>
+                                    <option value="18-25">18-25</option>
+                                    <option value="26-35">26-35</option>
+                                    <option value="36-45">36-45</option>
+                                    <option value="46+">46+</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="profile-actions">
+                            <button class="btn" id="regenerate-profile">🔄 Regenerar con IA</button>
+                            <button class="btn btn-primary" id="save-profile">💾 Guardar Perfil</button>
                         </div>
                     </div>
                 </section>

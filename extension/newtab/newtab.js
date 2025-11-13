@@ -69,12 +69,29 @@ class FastToolsNewTab {
         searchInput.addEventListener('input', (e) => this.handleSearch(e.target.value));
 
         // Buttons
-        document.getElementById('settings-btn').onclick = () => {
-            this.loadSettingsModal();
-            showModal('settings-modal');
+        document.getElementById('profile-btn').onclick = () => {
+            chrome.runtime.openOptionsPage();
+            setTimeout(() => {
+                chrome.runtime.sendMessage({ action: 'open-profile-section' });
+            }, 100);
         };
-        document.getElementById('edit-favorites').onclick = () => this.showFavoritesModal();
+        
+        document.getElementById('settings-btn').onclick = () => {
+            chrome.runtime.openOptionsPage();
+        };
+        const editFavBtn = document.getElementById('edit-favorites');
+        if (editFavBtn) {
+            editFavBtn.onclick = () => this.showFavoritesModal();
+        }
         document.getElementById('new-note-btn').onclick = () => this.createNewNote();
+        
+        // Similar Pages button
+        const similarBtn = document.getElementById('similarPagesBtn');
+        if (similarBtn) {
+            similarBtn.addEventListener('click', () => {
+                chrome.runtime.sendMessage({ action: 'open-similar-pages' });
+            });
+        }
 
         // Data-action handlers
         document.addEventListener('click', (e) => {

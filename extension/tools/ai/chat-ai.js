@@ -4,44 +4,76 @@ const isExtension = typeof chrome !== 'undefined' && chrome.storage;
 
 window.addEventListener('DOMContentLoaded', async () => {
     ai = new HybridAI();
-    await ai.init();
-    updateServiceStatus();
     
+    // Obtener system prompt del perfil si existe
+    let systemPrompt = '';
+    if (isExtension) {
+        try {
+            const response = await chrome.runtime.sendMessage({ action: 'get-system-prompt' });
+            if (response && response.systemPrompt) {
+                systemPrompt = response.systemPrompt;
+                console.log('✅ Perfil de usuario cargado para personalización');
+            }
+        } catch (error) {
+            console.log('ℹ️ Sin perfil de usuario, usando chat genérico');
+        }
+    }
+    
+    await ai.init({ systemPrompt });
+    
+    // Setup event listeners
+    document.getElementById('saveKeyBtn')?.addEventListener('click', saveApiKey);
+    document.getElementById('removeKeyBtn')?.addEventListener('click', removeApiKey);
+    document.getElementById('sendBtn')?.addEventListener('click', sendMessage);
+    document.getElementById('userInput')?.addEventListener('keypress', handleKeyPress);
+    document.getElementById('clearBtn')?.addEventListener('click', clearChat);
+    document.getElementById('exportBtn')?.addEventListener('click', exportChat);
+    
+    // Check if we have AI available
     if (ai.hasChromeAI || ai.hasGeminiAPI) {
-        showChat();
+        document.getElementById('apiKeySetup').classList.add('d-none');
+        document.getElementById('chatSection').classList.remove('d-none');
+        
+        // Show service status
+        const statusDiv = document.getElementById('serviceStatus');
+        const statusText = document.getElementById('statusText');
+        const removeBtn = document.getElementById('removeKeyBtn');
+        
+        statusDiv.classList.remove('d-none');
+        
+        if (ai.hasChromeAI) {
+            statusText.textContent = '🏠 Usando IA Local de Chrome (Gratis, Privado, Personalizado)';
+            statusDiv.className = 'alert alert-success';
+            removeBtn.classList.add('d-none');
+        } else if (ai.hasGeminiAPI) {
+            statusText.textContent = '☁️ Usando Gemini Cloud API (Personalizado)';
+            statusDiv.className = 'alert alert-info';
+            removeBtn.classList.remove('d-none');
+        }
+    } else {
+        document.getElementById('apiKeySetup').classList.remove('d-none');
     }
 });
 
-function updateServiceStatus() {
-    const statusEl = document.getElementById('statusText');
-    const configureBtn = document.getElementById('configureBtn');
+async function removeApiKey() {
+    if (!confirm('¿Eliminar API key?')) return;
     
-    if (!statusEl) return;
-    
-    if (ai.hasChromeAI) {
-        statusEl.textContent = '🏠 Using Chrome Local AI (Free, Private)';
-        statusEl.parentElement.parentElement.className = 'alert alert-success';
-    } else if (ai.hasGeminiAPI) {
-        statusEl.textContent = '☁️ Using Gemini Cloud API';
-        statusEl.parentElement.parentElement.className = 'alert alert-info';
+    if (isExtension) {
+        await chrome.storage.local.remove('gemini_api_key');
     } else {
-        statusEl.textContent = '⚠️ No AI service available';
-        statusEl.parentElement.parentElement.className = 'alert alert-warning';
-        if (configureBtn) configureBtn.classList.remove('d-none');
+        localStorage.removeItem('gemini_api_key');
     }
-}
-
-function showApiKeySetup() {
-    document.getElementById('apiKeySetup').classList.remove('d-none');
+    
+    location.reload();
 }
 
 async function saveApiKey() {
     const apiKey = document.getElementById('apiKeyInput').value.trim();
-    if (!apiKey) return alert('❌ Please enter an API key');
+    if (!apiKey) return alert('❌ Ingresa una API key');
 
-    const btn = event.target;
+    const btn = document.getElementById('saveKeyBtn');
     btn.disabled = true;
-    btn.textContent = '⏳ Validating...';
+    btn.textContent = '⏳ Validando...';
 
     try {
         if (isExtension) {
@@ -49,22 +81,13 @@ async function saveApiKey() {
         } else {
             localStorage.setItem('gemini_api_key', apiKey);
         }
-        await ai.init();
-        updateServiceStatus();
-        showChat();
-        document.getElementById('apiKeySetup').classList.add('d-none');
-        alert('✅ API Key saved successfully');
+        
+        location.reload();
     } catch (error) {
         alert(`❌ Error: ${error.message}`);
-    } finally {
         btn.disabled = false;
-        btn.textContent = '💾 Save';
+        btn.textContent = '💾 Guardar';
     }
-}
-
-function showChat() {
-    document.getElementById('apiKeySetup').classList.add('d-none');
-    document.getElementById('chatSection').classList.remove('d-none');
 }
 
 async function sendMessage() {
