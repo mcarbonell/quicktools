@@ -52,14 +52,25 @@ class ChromeAI {
         return this.apis.prompt;
     }
 
-    async prompt(text) {
+    async prompt(text, image = null) {
         if (!this.apis.prompt) await this.createPromptSession();
-        return await this.apis.prompt.prompt(text);
+        
+        if (image) {
+            // Multimodal: text + image
+            return await this.apis.prompt.prompt(text, { image });
+        } else {
+            // Text only
+            return await this.apis.prompt.prompt(text);
+        }
     }
 
-    async *promptStreaming(text) {
+    async *promptStreaming(text, image = null) {
         if (!this.apis.prompt) await this.createPromptSession();
-        const stream = await this.apis.prompt.promptStreaming(text);
+        
+        const stream = image 
+            ? await this.apis.prompt.promptStreaming(text, { image })
+            : await this.apis.prompt.promptStreaming(text);
+        
         let previousChunk = '';
         
         for await (const chunk of stream) {

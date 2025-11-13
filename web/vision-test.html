@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Test - Multimodal Prompt API</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-5">
+        <h1>🖼️ Vision Test - Multimodal Prompt API</h1>
+        <p class="text-muted">Test Chrome's Prompt API with image analysis</p>
+
+        <div class="alert alert-info" id="status">
+            🔍 Checking API availability...
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5>Upload Image</h5>
+                <input type="file" id="imageInput" class="form-control" accept="image/*">
+                <img id="preview" class="mt-3" style="max-width: 100%; max-height: 400px; display: none;">
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5>Prompt</h5>
+                <textarea id="promptInput" class="form-control" rows="3" placeholder="What do you want to know about the image?">Generate an alt text for this image for SEO optimization</textarea>
+            </div>
+        </div>
+
+        <button id="analyzeBtn" class="btn btn-primary" disabled>
+            🔍 Analyze Image
+        </button>
+
+        <div class="card mt-3" id="resultCard" style="display: none;">
+            <div class="card-body">
+                <h5>Result:</h5>
+                <div id="result" class="p-3 bg-light border rounded"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/lib/chrome-ai-apis.js"></script>
+    <script>
+        let chromeAI;
+        let selectedImage = null;
+
+        async function init() {
+            const statusEl = document.getElementById('status');
+            
+            if (!('LanguageModel' in self)) {
+                statusEl.className = 'alert alert-danger';
+                statusEl.textContent = '❌ Prompt API not available. Enable chrome://flags/#prompt-api-for-gemini-nano';
+                return;
+            }
+
+            try {
+                chromeAI = new ChromeAI();
+                await chromeAI.createPromptSession();
+                
+                statusEl.className = 'alert alert-success';
+                statusEl.textContent = '✅ Prompt API ready! Upload an image to analyze.';
+                
+                document.getElementById('analyzeBtn').disabled = false;
+            } catch (error) {
+                statusEl.className = 'alert alert-danger';
+                statusEl.textContent = `❌ Error: ${error.message}`;
+            }
+        }
+
+        document.getElementById('imageInput').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const preview = document.getElementById('preview');
+                preview.src = event.target.result;
+                preview.style.display = 'block';
+                
+                // Store image for API
+                selectedImage = file;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        document.getElementById('analyzeBtn').addEventListener('click', async () => {
+            if (!selectedImage) {
+                alert('Please upload an image first');
+                return;
+            }
+
+            const prompt = document.getElementById('promptInput').value;
+            const btn = document.getElementById('analyzeBtn');
+            const resultCard = document.getElementById('resultCard');
+            const resultEl = document.getElementById('result');
+
+            btn.disabled = true;
+            btn.textContent = '⏳ Analyzing...';
+            resultEl.textContent = '';
+            resultCard.style.display = 'block';
+
+            try {
+                // Stream the response
+                for await (const chunk of chromeAI.promptStreaming(prompt, selectedImage)) {
+                    resultEl.textContent += chunk;
+                }
+            } catch (error) {
+                resultEl.textContent = `❌ Error: ${error.message}`;
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '🔍 Analyze Image';
+            }
+        });
+
+        init();
+    </script>
+</body>
+</html>
