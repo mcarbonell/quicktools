@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Audio Transcription - FastTools</title>
+    <meta name="description" content="Transcribe audio files to text using local AI.">
+    <meta name="keywords" content="ai, audio, transcription, speech-to-text">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI Audio Transcription — FastTools">
+    <meta property="og:description" content="Transcribe audio files to text using local AI.">
+    <meta property="og:url" content="https://fasttools.tools/audio-transcription-ai.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/audio-transcription-ai.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/audio-transcription-ai.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/audio-transcription-ai.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "FastTools",
+      "item": "https://fasttools.tools"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "AI Tools",
+      "item": "https://fasttools.tools/ai.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AI Audio Transcription"
+    }
+  ]
+}
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>AI Audio Transcription</h1>
+            <p class="text-muted">Transcribe audio files to text using local AI.</p>
+            <div class="alert alert-info mt-3"><small>🎯 Useful for: <a href="/ai.html" class="badge bg-primary text-decoration-none">🤖 AI Tools</a></small></div>
+        </div>
+
+        <div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div id="serviceStatus" class="alert alert-info mb-4">
+                        <div class="d-flex align-items-center">
+                            <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                            <span>Checking AI service availability...</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Upload Audio File</label>
+                        <input type="file" class="form-control" id="audioFile" accept="audio/*">
+                        <small class="text-muted">Supported: MP3, WAV, OGG, M4A, WebM</small>
+                    </div>
+
+                    <div class="mb-4 text-center">
+                        <button id="recordBtn" class="btn btn-danger btn-lg">
+                            <i class="material-symbols-outlined align-middle">mic</i>
+                            Record Audio
+                        </button>
+                        <div id="recordingStatus" class="mt-2 text-muted" style="display: none;">
+                            <div class="spinner-border spinner-border-sm me-2"></div>
+                            <span>Recording...</span>
+                        </div>
+                    </div>
+
+                    <div id="audioPreview" class="mb-4" style="display: none;">
+                        <label class="form-label fw-bold">Audio Preview</label>
+                        <audio id="audioPlayer" controls class="w-100"></audio>
+                    </div>
+
+                    <div class="mb-4">
+                        <button id="transcribeBtn" class="btn btn-primary btn-lg w-100" disabled>
+                            <i class="material-symbols-outlined align-middle">transcribe</i>
+                            Transcribe Audio
+                        </button>
+                    </div>
+
+                    <div id="output" class="mt-4" style="display: none;">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <label class="form-label fw-bold mb-0">Transcription</label>
+                            <button id="copyBtn" class="btn btn-sm btn-outline-primary">
+                                <i class="material-symbols-outlined align-middle">content_copy</i>
+                                Copy
+                            </button>
+                        </div>
+                        <div id="transcriptionResult" class="border rounded p-3 bg-light"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/lib/chrome-ai-apis.js"></script>
+<script>
+(async function() {
+    const chromeAI = new ChromeAI();
+    let currentAudioBlob = null;
+    let mediaRecorder = null;
+    let audioChunks = [];
+
+    const serviceStatus = document.getElementById('serviceStatus');
+    const audioFile = document.getElementById('audioFile');
+    const recordBtn = document.getElementById('recordBtn');
+    const recordingStatus = document.getElementById('recordingStatus');
+    const audioPreview = document.getElementById('audioPreview');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const transcribeBtn = document.getElementById('transcribeBtn');
+    const output = document.getElementById('output');
+    const transcriptionResult = document.getElementById('transcriptionResult');
+    const copyBtn = document.getElementById('copyBtn');
+
+    // Check service availability
+    const hasPromptAPI = 'LanguageModel' in self;
+    
+    if (hasPromptAPI) {
+        serviceStatus.className = 'alert alert-success mb-4';
+        serviceStatus.innerHTML = '<i class="material-symbols-outlined align-middle me-2">check_circle</i>Using Chrome Local AI (Gemini Nano)';
+    } else {
+        serviceStatus.className = 'alert alert-warning mb-4';
+        serviceStatus.innerHTML = '<i class="material-symbols-outlined align-middle me-2">warning</i>Prompt API required. Enable chrome://flags/#prompt-api-for-gemini-nano';
+    }
+
+    // File upload
+    audioFile.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        currentAudioBlob = new Blob([file]);
+        audioPlayer.src = URL.createObjectURL(currentAudioBlob);
+        audioPreview.style.display = 'block';
+        transcribeBtn.disabled = false;
+    });
+
+    // Record audio
+    recordBtn.addEventListener('click', async () => {
+        if (mediaRecorder && mediaRecorder.state === 'recording') {
+            // Stop recording
+            mediaRecorder.stop();
+            return;
+        }
+
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            audioChunks = [];
+            mediaRecorder = new MediaRecorder(stream);
+
+            mediaRecorder.ondataavailable = (e) => {
+                audioChunks.push(e.data);
+            };
+
+            mediaRecorder.onstop = () => {
+                currentAudioBlob = new Blob(audioChunks, { type: mediaRecorder.mimeType });
+                audioPlayer.src = URL.createObjectURL(currentAudioBlob);
+                audioPreview.style.display = 'block';
+                transcribeBtn.disabled = false;
+                
+                recordBtn.innerHTML = '<i class="material-symbols-outlined align-middle">mic</i>Record Audio';
+                recordBtn.className = 'btn btn-danger btn-lg';
+                recordingStatus.style.display = 'none';
+                
+                stream.getTracks().forEach(track => track.stop());
+            };
+
+            mediaRecorder.start();
+            recordBtn.innerHTML = '<i class="material-symbols-outlined align-middle">stop</i>Stop Recording';
+            recordBtn.className = 'btn btn-secondary btn-lg';
+            recordingStatus.style.display = 'block';
+
+        } catch (error) {
+            console.error('❌ Error accessing microphone:', error);
+            alert('Could not access microphone. Please check permissions.');
+        }
+    });
+
+    // Transcribe
+    transcribeBtn.addEventListener('click', async () => {
+        if (!currentAudioBlob) return;
+
+        transcribeBtn.disabled = true;
+        transcribeBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Transcribing...';
+        output.style.display = 'block';
+        transcriptionResult.textContent = '';
+
+        try {
+            const arrayBuffer = await currentAudioBlob.arrayBuffer();
+            const lang = document.documentElement.lang || 'en';
+            const prompt = lang === 'es' 
+                ? 'Transcribe este audio en español' 
+                : 'Transcribe this audio';
+
+            const stream = chromeAI.promptStreaming(prompt, arrayBuffer, 'audio');
+            
+            for await (const chunk of stream) {
+                transcriptionResult.textContent += chunk;
+            }
+
+        } catch (error) {
+            console.error('❌ Transcription error:', error);
+            transcriptionResult.innerHTML = '<span class="text-danger">Error transcribing audio. Please try again.</span>';
+        } finally {
+            transcribeBtn.disabled = false;
+            transcribeBtn.innerHTML = '<i class="material-symbols-outlined align-middle">transcribe</i>Transcribe Audio';
+        }
+    });
+
+    // Copy to clipboard
+    copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(transcriptionResult.textContent);
+        const originalText = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<i class="material-symbols-outlined align-middle">check</i>Copied!';
+        setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+        }, 2000);
+    });
+})();
+</script>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"checking_service":"Checking AI service availability...","using_local_ai":"Using Chrome Local AI (Gemini Nano)","prompt_api_required":"Prompt API required. Enable chrome://flags/#prompt-api-for-gemini-nano","upload_audio":"Upload Audio File","supported_formats":"Supported: MP3, WAV, OGG, M4A, WebM","record_audio":"Record Audio","stop_recording":"Stop Recording","recording":"Recording...","audio_preview":"Audio Preview","transcribe":"Transcribe Audio","transcribing":"Transcribing...","transcription":"Transcription","copy":"Copy","copied":"Copied!","transcription_error":"Error transcribing audio. Please try again.","microphone_error":"Could not access microphone. Please check permissions."};
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>

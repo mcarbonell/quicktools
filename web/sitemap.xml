@@ -848,4 +848,20 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/alt-text-generator-ai.html"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/alt-text-generator-ai.html"/>
   </url>
+  <url>
+    <loc>https://fasttools.tools/audio-transcription-ai.html</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/audio-transcription-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/audio-transcription-ai.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/audio-transcription-ai.html</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/audio-transcription-ai.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/audio-transcription-ai.html"/>
+  </url>
 </urlset>

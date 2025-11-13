@@ -1,0 +1,38 @@
+{
+  "en": {
+    "checking_service": "Checking AI service availability...",
+    "using_local_ai": "Using Chrome Local AI (Gemini Nano)",
+    "prompt_api_required": "Prompt API required. Enable chrome://flags/#prompt-api-for-gemini-nano",
+    "upload_audio": "Upload Audio File",
+    "supported_formats": "Supported: MP3, WAV, OGG, M4A, WebM",
+    "record_audio": "Record Audio",
+    "stop_recording": "Stop Recording",
+    "recording": "Recording...",
+    "audio_preview": "Audio Preview",
+    "transcribe": "Transcribe Audio",
+    "transcribing": "Transcribing...",
+    "transcription": "Transcription",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "transcription_error": "Error transcribing audio. Please try again.",
+    "microphone_error": "Could not access microphone. Please check permissions."
+  },
+  "es": {
+    "checking_service": "Verificando disponibilidad del servicio IA...",
+    "using_local_ai": "Usando IA Local de Chrome (Gemini Nano)",
+    "prompt_api_required": "Se requiere Prompt API. Activa chrome://flags/#prompt-api-for-gemini-nano",
+    "upload_audio": "Subir Archivo de Audio",
+    "supported_formats": "Soportados: MP3, WAV, OGG, M4A, WebM",
+    "record_audio": "Grabar Audio",
+    "stop_recording": "Detener Grabación",
+    "recording": "Grabando...",
+    "audio_preview": "Vista Previa de Audio",
+    "transcribe": "Transcribir Audio",
+    "transcribing": "Transcribiendo...",
+    "transcription": "Transcripción",
+    "copy": "Copiar",
+    "copied": "¡Copiado!",
+    "transcription_error": "Error al transcribir audio. Por favor, inténtalo de nuevo.",
+    "microphone_error": "No se pudo acceder al micrófono. Por favor, verifica los permisos."
+  }
+}

@@ -1,0 +1,181 @@
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div id="serviceStatus" class="alert alert-info mb-4">
+                        <div class="d-flex align-items-center">
+                            <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                            <span>{{t.checking_service}}</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">{{t.upload_audio}}</label>
+                        <input type="file" class="form-control" id="audioFile" accept="audio/*">
+                        <small class="text-muted">{{t.supported_formats}}</small>
+                    </div>
+
+                    <div class="mb-4 text-center">
+                        <button id="recordBtn" class="btn btn-danger btn-lg">
+                            <i class="material-symbols-outlined align-middle">mic</i>
+                            {{t.record_audio}}
+                        </button>
+                        <div id="recordingStatus" class="mt-2 text-muted" style="display: none;">
+                            <div class="spinner-border spinner-border-sm me-2"></div>
+                            <span>{{t.recording}}</span>
+                        </div>
+                    </div>
+
+                    <div id="audioPreview" class="mb-4" style="display: none;">
+                        <label class="form-label fw-bold">{{t.audio_preview}}</label>
+                        <audio id="audioPlayer" controls class="w-100"></audio>
+                    </div>
+
+                    <div class="mb-4">
+                        <button id="transcribeBtn" class="btn btn-primary btn-lg w-100" disabled>
+                            <i class="material-symbols-outlined align-middle">transcribe</i>
+                            {{t.transcribe}}
+                        </button>
+                    </div>
+
+                    <div id="output" class="mt-4" style="display: none;">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <label class="form-label fw-bold mb-0">{{t.transcription}}</label>
+                            <button id="copyBtn" class="btn btn-sm btn-outline-primary">
+                                <i class="material-symbols-outlined align-middle">content_copy</i>
+                                {{t.copy}}
+                            </button>
+                        </div>
+                        <div id="transcriptionResult" class="border rounded p-3 bg-light"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/lib/chrome-ai-apis.js"></script>
+<script>
+(async function() {
+    const chromeAI = new ChromeAI();
+    let currentAudioBlob = null;
+    let mediaRecorder = null;
+    let audioChunks = [];
+
+    const serviceStatus = document.getElementById('serviceStatus');
+    const audioFile = document.getElementById('audioFile');
+    const recordBtn = document.getElementById('recordBtn');
+    const recordingStatus = document.getElementById('recordingStatus');
+    const audioPreview = document.getElementById('audioPreview');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const transcribeBtn = document.getElementById('transcribeBtn');
+    const output = document.getElementById('output');
+    const transcriptionResult = document.getElementById('transcriptionResult');
+    const copyBtn = document.getElementById('copyBtn');
+
+    // Check service availability
+    const hasPromptAPI = 'LanguageModel' in self;
+    
+    if (hasPromptAPI) {
+        serviceStatus.className = 'alert alert-success mb-4';
+        serviceStatus.innerHTML = '<i class="material-symbols-outlined align-middle me-2">check_circle</i>{{t.using_local_ai}}';
+    } else {
+        serviceStatus.className = 'alert alert-warning mb-4';
+        serviceStatus.innerHTML = '<i class="material-symbols-outlined align-middle me-2">warning</i>{{t.prompt_api_required}}';
+    }
+
+    // File upload
+    audioFile.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        currentAudioBlob = new Blob([file]);
+        audioPlayer.src = URL.createObjectURL(currentAudioBlob);
+        audioPreview.style.display = 'block';
+        transcribeBtn.disabled = false;
+    });
+
+    // Record audio
+    recordBtn.addEventListener('click', async () => {
+        if (mediaRecorder && mediaRecorder.state === 'recording') {
+            // Stop recording
+            mediaRecorder.stop();
+            return;
+        }
+
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            audioChunks = [];
+            mediaRecorder = new MediaRecorder(stream);
+
+            mediaRecorder.ondataavailable = (e) => {
+                audioChunks.push(e.data);
+            };
+
+            mediaRecorder.onstop = () => {
+                currentAudioBlob = new Blob(audioChunks, { type: mediaRecorder.mimeType });
+                audioPlayer.src = URL.createObjectURL(currentAudioBlob);
+                audioPreview.style.display = 'block';
+                transcribeBtn.disabled = false;
+                
+                recordBtn.innerHTML = '<i class="material-symbols-outlined align-middle">mic</i>{{t.record_audio}}';
+                recordBtn.className = 'btn btn-danger btn-lg';
+                recordingStatus.style.display = 'none';
+                
+                stream.getTracks().forEach(track => track.stop());
+            };
+
+            mediaRecorder.start();
+            recordBtn.innerHTML = '<i class="material-symbols-outlined align-middle">stop</i>{{t.stop_recording}}';
+            recordBtn.className = 'btn btn-secondary btn-lg';
+            recordingStatus.style.display = 'block';
+
+        } catch (error) {
+            console.error('❌ Error accessing microphone:', error);
+            alert('{{t.microphone_error}}');
+        }
+    });
+
+    // Transcribe
+    transcribeBtn.addEventListener('click', async () => {
+        if (!currentAudioBlob) return;
+
+        transcribeBtn.disabled = true;
+        transcribeBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>{{t.transcribing}}';
+        output.style.display = 'block';
+        transcriptionResult.textContent = '';
+
+        try {
+            const arrayBuffer = await currentAudioBlob.arrayBuffer();
+            const lang = document.documentElement.lang || 'en';
+            const prompt = lang === 'es' 
+                ? 'Transcribe este audio en español' 
+                : 'Transcribe this audio';
+
+            const stream = chromeAI.promptStreaming(prompt, arrayBuffer, 'audio');
+            
+            for await (const chunk of stream) {
+                transcriptionResult.textContent += chunk;
+            }
+
+        } catch (error) {
+            console.error('❌ Transcription error:', error);
+            transcriptionResult.innerHTML = '<span class="text-danger">{{t.transcription_error}}</span>';
+        } finally {
+            transcribeBtn.disabled = false;
+            transcribeBtn.innerHTML = '<i class="material-symbols-outlined align-middle">transcribe</i>{{t.transcribe}}';
+        }
+    });
+
+    // Copy to clipboard
+    copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(transcriptionResult.textContent);
+        const originalText = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<i class="material-symbols-outlined align-middle">check</i>{{t.copied}}';
+        setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+        }, 2000);
+    });
+})();
+</script>

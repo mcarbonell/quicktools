@@ -49,29 +49,33 @@ class ChromeAI {
             }] : []
         };
         
-        // Add image support if requested
+        // Add multimodal support if requested
         if (options.supportsImages) {
             config.expectedInputs = [{ type: 'image' }];
+        }
+        if (options.supportsAudio) {
+            config.expectedInputs = [{ type: 'audio' }];
         }
 
         this.apis.prompt = await LanguageModel.create(config);
         return this.apis.prompt;
     }
 
-    async prompt(text, image = null) {
-        if (image && !this.apis.prompt) {
-            await this.createPromptSession({ supportsImages: true });
+    async prompt(text, media = null, mediaType = 'image') {
+        if (media && !this.apis.prompt) {
+            const options = mediaType === 'audio' ? { supportsAudio: true } : { supportsImages: true };
+            await this.createPromptSession(options);
         } else if (!this.apis.prompt) {
             await this.createPromptSession();
         }
         
-        if (image) {
-            // Multimodal: append image first, then prompt
+        if (media) {
+            // Multimodal: append media first, then prompt
             await this.apis.prompt.append([{
                 role: 'user',
                 content: [
                     { type: 'text', value: text },
-                    { type: 'image', value: image }
+                    { type: mediaType, value: media }
                 ]
             }]);
             return await this.apis.prompt.prompt('');
@@ -81,25 +85,26 @@ class ChromeAI {
         }
     }
 
-    async *promptStreaming(text, image = null) {
-        if (image && !this.apis.prompt) {
-            await this.createPromptSession({ supportsImages: true });
+    async *promptStreaming(text, media = null, mediaType = 'image') {
+        if (media && !this.apis.prompt) {
+            const options = mediaType === 'audio' ? { supportsAudio: true } : { supportsImages: true };
+            await this.createPromptSession(options);
         } else if (!this.apis.prompt) {
             await this.createPromptSession();
         }
         
-        if (image) {
-            // Multimodal: append image first, then stream
+        if (media) {
+            // Multimodal: append media first, then stream
             await this.apis.prompt.append([{
                 role: 'user',
                 content: [
                     { type: 'text', value: text },
-                    { type: 'image', value: image }
+                    { type: mediaType, value: media }
                 ]
             }]);
         }
         
-        const stream = image
+        const stream = media
             ? await this.apis.prompt.promptStreaming('')
             : await this.apis.prompt.promptStreaming(text);
         

@@ -215,7 +215,7 @@
         "es": "Herramientas potenciadas con inteligencia artificial",
         "en": "AI-powered tools"
       },
-      "tools": ["chat-ai", "chat-pdf", "summarize-text-ai", "improve-text-ai", "translate-ai", "vision-chat-ai", "image-generator-ai", "image-editor-ai", "alt-text-generator-ai"]
+      "tools": ["chat-ai", "chat-pdf", "summarize-text-ai", "improve-text-ai", "translate-ai", "vision-chat-ai", "image-generator-ai", "image-editor-ai", "alt-text-generator-ai", "audio-transcription-ai"]
     },
     {
       "id": "seo-specialists",
@@ -909,6 +909,22 @@
       "categories": ["ai", "image", "seo"],
       "icon": "🖼️",
       "tags": ["ai", "image", "seo", "alt-text", "accessibility"],
+      "availableIn": ["web"]
+    },
+    {
+      "id": "audio-transcription-ai",
+      "slug": "audio-transcription-ai.html",
+      "title": {
+        "es": "Transcripción de Audio con IA",
+        "en": "AI Audio Transcription"
+      },
+      "description": {
+        "es": "Transcribe archivos de audio a texto usando IA local.",
+        "en": "Transcribe audio files to text using local AI."
+      },
+      "categories": ["ai", "utils"],
+      "icon": "🎤",
+      "tags": ["ai", "audio", "transcription", "speech-to-text"],
       "availableIn": ["web"]
     }
   ]

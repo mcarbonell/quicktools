@@ -23,13 +23,40 @@ Chrome 138+ now includes **7 AI APIs** powered by Gemini Nano running locally!
 - ✅ Updated `translate-ai.html` - Chrome Translator + Language Detector
 - ✅ Updated `chat-ai.html` - Chrome Prompt API (Gemma), Markdown rendering
 
+### 4. NEW TOOL: Alt Text Generator with AI Vision! 🎉
+- ✅ Created `alt-text-generator-ai.html` - **First multimodal tool**
+- ✅ Analyzes images locally with Chrome Prompt API
+- ✅ Generates SEO-optimized alt text
+- ✅ Streaming responses with Markdown formatting
+- ✅ Auto-detects page language (EN/ES)
+- ✅ Multilingual support (~100 languages via Gemma)
+- ✅ Integrated in 4 audiences (Designers, Marketers, AI Tools, SEO)
+
+### 5. NEW TOOL: Audio Transcription with AI! 🎤
+- ✅ Created `audio-transcription-ai.html` - **Audio multimodal support**
+- ✅ Transcribes audio files to text using Chrome Prompt API
+- ✅ Supports file upload (MP3, WAV, OGG, M4A, WebM)
+- ✅ Live audio recording with MediaRecorder API
+- ✅ Streaming transcription responses
+- ✅ Auto-detects page language for prompts
+- ✅ Integrated in AI Tools audience
+
 ## 📦 Files Created
 
 ### Core Libraries
-- `web/js/lib/chrome-ai-apis.js` - Wrapper for 7 Chrome APIs
+- `web/js/lib/chrome-ai-apis.js` - Wrapper for 7 Chrome APIs + **multimodal support**
 - `web/js/lib/hybrid-ai.js` - Intelligent fallback system
 - `web/js/lib/prompt-api.js` - Prompt API wrapper
 - `extension/shared/prompt-api.js` - Extension version
+
+### New Tool: Alt Text Generator
+- `build/templates/tools-content/alt-text-generator-ai-content.html` - Template
+- `web/i18n/tools/alt-text-generator-ai.json` - Translations (EN/ES)
+
+### New Tool: Audio Transcription
+- `build/templates/tools-content/audio-transcription-ai-content.html` - Template
+- `web/i18n/tools/audio-transcription-ai.json` - Translations (EN/ES)
+- `build/data/fasttools-data.json` - Updated with both new tools
 
 ### Demos & Tests
 - `web/ai-apis-test.html` - Test all 7 APIs (100% working)
@@ -162,6 +189,9 @@ await ai.chat(message, {}, (chunk) => {
 - Test Suite: `/ai-apis-test.html`
 - Hybrid Demo: `/hybrid-ai-demo.html`
 - Nano Chat: `/nano-chat.html`
+- Vision Test: `/vision-test.html`
+- **NEW: Alt Text Generator:** `/alt-text-generator-ai.html` 🎉
+- **NEW: Audio Transcription:** `/audio-transcription-ai.html` 🎤
 - Updated Tools:
   - `/summarize-text-ai.html`
   - `/improve-text-ai.html`
@@ -182,6 +212,12 @@ await ai.chat(message, {}, (chunk) => {
 8. **outputLanguage is critical** for Summarizer API to avoid warnings and ensure correct language
 9. **Gemma model** is the local AI powering Chrome's Prompt API
 10. **Template system** with `{{t.key}}` placeholders ensures proper i18n
+11. **Multimodal Prompt API** requires `expectedInputs: [{ type: 'image' }]` in session creation
+12. **Images passed via append()** with content array: `[{ type: 'text', value }, { type: 'image', value: file }]`
+13. **Gemma is multilingual** - Responds in ~100 languages based on prompt context
+14. **Markdown formatting** enhances AI responses (bold, italic, code, lists, links)
+15. **Audio multimodal support** requires `expectedInputs: [{ type: 'audio' }]` and ArrayBuffer format
+16. **MediaRecorder API** enables live audio recording in browser for transcription
 
 ## 🚩 Chrome Flags Status
 
@@ -210,6 +246,32 @@ await ai.chat(message, {}, (chunk) => {
 
 ---
 
-**Session Date:** Noviembre 2025
-**Status:** 🎉 COMPLETE - All 4 AI tools using Chrome Local AI + Gemini Cloud fallback
-**Next:** Test on production, monitor user adoption, add more AI-powered features
+**Session Date:** November 2025  
+**Status:** 🎉 COMPLETE - 4 AI tools + 2 NEW Multimodal Tools!  
+**Total Tools:** 45 (43 + 2 new: Alt Text + Audio Transcription)  
+**Service Worker:** v3.0.50  
+**Pages Generated:** 92 (46 EN + 46 ES)  
+**Next:** Production testing, user feedback, more multimodal features
+
+## 🔮 Future Multimodal Tools Ideas
+
+### Vision (Image)
+- 📸 Image Describer (accessibility)
+- 🔍 Visual Content Analyzer
+- 📝 Image to Text (OCR)
+- 🎨 Design Feedback
+- 🏷️ Product Tagger (e-commerce)
+- ♿ Accessibility Checker
+
+### Audio
+- 🎤 Audio Transcription ✅ DONE
+- 🎵 Music Genre Detector
+- 🗣️ Speaker Identification
+- 📻 Podcast Summarizer
+- 🎙️ Voice Command Interface
+
+### Video (Future)
+- 🎬 Video Summarizer
+- 📹 Scene Detection
+- 🎞️ Content Moderation
+- 🎥 Action Recognition
