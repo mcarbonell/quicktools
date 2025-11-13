@@ -64,7 +64,6 @@ async function saveApiKey() {
 
 function showChat() {
     document.getElementById('apiKeySetup').classList.add('d-none');
-    document.getElementById('apiKeyManage').classList.remove('d-none');
     document.getElementById('chatSection').classList.remove('d-none');
 }
 
@@ -133,11 +132,11 @@ function handleKeyPress(event) {
 }
 
 function clearChat() {
-    if (confirm('¿Limpiar todo el chat?')) {
+    if (confirm('Clear all chat?')) {
         document.getElementById('chatMessages').innerHTML = `
             <div class="message assistant">
-                <strong>Asistente IA</strong>
-                <p class="mb-0 mt-2">¡Hola! Soy tu asistente con IA. ¿En qué puedo ayudarte hoy?</p>
+                <strong>AI Assistant</strong>
+                <p class="mb-0 mt-2">Hello! I'm your AI assistant. How can I help you today?</p>
             </div>
         `;
     }
@@ -149,7 +148,7 @@ function exportChat() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `chat-ia-${new Date().toISOString().slice(0,10)}.txt`;
+    a.download = `ai-chat-${new Date().toISOString().slice(0,10)}.txt`;
     a.click();
     URL.revokeObjectURL(url);
 }
