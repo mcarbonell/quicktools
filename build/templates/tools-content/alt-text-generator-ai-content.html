@@ -1,0 +1,196 @@
+<div id="serviceStatus" class="alert alert-info">
+    <div class="d-flex justify-content-between align-items-center">
+        <span id="statusText">🔍 Detecting AI services...</span>
+        <button class="btn btn-sm btn-outline-primary d-none" id="configureBtn" onclick="showApiKeySetup()">⚙️ Configure</button>
+    </div>
+</div>
+
+<div id="apiKeySetup" class="alert alert-warning d-none">
+    <h5>⚙️ Optional: Gemini Cloud API</h5>
+    <p>Add a Gemini API key for cloud fallback:</p>
+    <ol>
+        <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+        <li>Create an API key (free, 60 req/min)</li>
+        <li>Paste it below 👇</li>
+    </ol>
+    <div class="input-group">
+        <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
+        <button class="btn btn-primary" onclick="saveApiKey()">💾 Save</button>
+    </div>
+    <small class="text-muted">🔒 Stored locally in your browser</small>
+</div>
+
+<div id="toolSection">
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5>{{t.uploadLabel}}</h5>
+            <input type="file" id="imageInput" class="form-control" accept="image/*">
+            <small class="text-muted">{{t.uploadHint}}</small>
+            <img id="preview" class="mt-3" style="max-width: 100%; max-height: 400px; display: none;">
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">{{t.promptLabel}}</label>
+        <textarea id="promptInput" class="form-control" rows="3" placeholder="{{t.promptPlaceholder}}">Generate an alt text for this image for SEO optimization</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">{{t.lengthLabel}}</label>
+        <select id="lengthSelect" class="form-select">
+            <option value="short">{{t.lengthShort}}</option>
+            <option value="medium" selected>{{t.lengthMedium}}</option>
+            <option value="long">{{t.lengthLong}}</option>
+        </select>
+    </div>
+
+    <button class="btn btn-primary" onclick="generateAltText()" id="generateBtn" disabled>
+        {{t.generateButton}}
+    </button>
+
+    <div id="resultSection" class="mt-4 d-none">
+        <h5>{{t.resultTitle}}</h5>
+        <div id="altTextOutput" class="p-3 bg-light border rounded"></div>
+        <div class="mt-3">
+            <button class="btn btn-sm btn-outline-secondary" onclick="copyResult()">{{t.copyButton}}</button>
+            <button class="btn btn-sm btn-outline-info" onclick="downloadResult()">{{t.downloadButton}}</button>
+            <button class="btn btn-sm btn-outline-danger" onclick="clearAll()">{{t.clearButton}}</button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/lib/chrome-ai-apis.js"></script>
+<script src="/js/lib/gemini-api.js"></script>
+<script src="/js/lib/hybrid-ai.js"></script>
+<script>
+    let ai;
+    let selectedImage = null;
+
+    window.addEventListener('DOMContentLoaded', async () => {
+        ai = new HybridAI();
+        await ai.init();
+        updateServiceStatus();
+    });
+
+    function updateServiceStatus() {
+        const statusEl = document.getElementById('statusText');
+        const configureBtn = document.getElementById('configureBtn');
+        
+        if (ai.hasChromeAI) {
+            statusEl.textContent = '🏠 Using Chrome Local AI (Free, Private)';
+            statusEl.parentElement.parentElement.className = 'alert alert-success';
+        } else if (ai.hasGeminiAPI) {
+            statusEl.textContent = '☁️ Using Gemini Cloud API';
+            statusEl.parentElement.parentElement.className = 'alert alert-info';
+        } else {
+            statusEl.textContent = '⚠️ No AI service available';
+            statusEl.parentElement.parentElement.className = 'alert alert-warning';
+            configureBtn.classList.remove('d-none');
+        }
+    }
+
+    function showApiKeySetup() {
+        document.getElementById('apiKeySetup').classList.remove('d-none');
+    }
+
+    async function saveApiKey() {
+        const apiKey = document.getElementById('apiKeyInput').value.trim();
+        if (!apiKey) return alert('❌ Please enter an API key');
+
+        const btn = event.target;
+        btn.disabled = true;
+        btn.textContent = '⏳ Validating...';
+
+        try {
+            localStorage.setItem('gemini_api_key', apiKey);
+            await ai.init();
+            updateServiceStatus();
+            document.getElementById('apiKeySetup').classList.add('d-none');
+            alert('✅ API Key saved successfully');
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '💾 Save';
+        }
+    }
+
+    document.getElementById('imageInput').addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const preview = document.getElementById('preview');
+            preview.src = event.target.result;
+            preview.style.display = 'block';
+            
+            selectedImage = file;
+            document.getElementById('generateBtn').disabled = false;
+        };
+        reader.readAsDataURL(file);
+    });
+
+    async function generateAltText() {
+        if (!selectedImage) {
+            alert('Please upload an image first');
+            return;
+        }
+
+        const prompt = document.getElementById('promptInput').value;
+        const length = document.getElementById('lengthSelect').value;
+        const btn = document.getElementById('generateBtn');
+        const resultSection = document.getElementById('resultSection');
+        const outputEl = document.getElementById('altTextOutput');
+
+        btn.disabled = true;
+        btn.textContent = '⏳ Generating...';
+        outputEl.textContent = '';
+        resultSection.classList.remove('d-none');
+
+        try {
+            const fullPrompt = `${prompt}\n\nLength preference: ${length}`;
+            
+            // Use ChromeAI directly for multimodal
+            if (ai.hasChromeAI) {
+                const chromeAI = new ChromeAI();
+                for await (const chunk of chromeAI.promptStreaming(fullPrompt, selectedImage)) {
+                    outputEl.textContent += chunk;
+                }
+            } else if (ai.hasGeminiAPI) {
+                // Gemini Cloud doesn't support vision yet in our implementation
+                outputEl.textContent = 'Vision analysis requires Chrome Local AI (Chrome 138+)';
+            }
+        } catch (error) {
+            outputEl.textContent = `❌ Error: ${error.message}`;
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '✨ Generate Alt Text';
+        }
+    }
+
+    function copyResult() {
+        const text = document.getElementById('altTextOutput').innerText;
+        navigator.clipboard.writeText(text).then(() => alert('✅ Copied to clipboard'));
+    }
+
+    function downloadResult() {
+        const text = document.getElementById('altTextOutput').innerText;
+        const blob = new Blob([text], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `alt-text-${new Date().toISOString().slice(0,10)}.txt`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    function clearAll() {
+        document.getElementById('imageInput').value = '';
+        document.getElementById('preview').style.display = 'none';
+        document.getElementById('resultSection').classList.add('d-none');
+        document.getElementById('altTextOutput').textContent = '';
+        selectedImage = null;
+        document.getElementById('generateBtn').disabled = true;
+    }
+</script>

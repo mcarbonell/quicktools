@@ -1,0 +1,36 @@
+{
+  "en": {
+    "title": "AI Alt Text Generator",
+    "description": "Generate SEO alt text for images using local AI",
+    "uploadLabel": "Upload Image",
+    "uploadHint": "Drag & drop or click to select",
+    "promptLabel": "What type of alt text do you need?",
+    "promptPlaceholder": "Generate an alt text for this image for SEO optimization",
+    "lengthLabel": "Alt text length:",
+    "lengthShort": "Short (concise)",
+    "lengthMedium": "Medium (descriptive)",
+    "lengthLong": "Long (detailed)",
+    "generateButton": "✨ Generate Alt Text",
+    "resultTitle": "Generated Alt Text:",
+    "copyButton": "📋 Copy",
+    "downloadButton": "💾 Download",
+    "clearButton": "🗑️ Clear"
+  },
+  "es": {
+    "title": "Generador de Alt Text con IA",
+    "description": "Genera texto alternativo SEO para imágenes usando IA local",
+    "uploadLabel": "Subir Imagen",
+    "uploadHint": "Arrastra y suelta o haz clic para seleccionar",
+    "promptLabel": "¿Qué tipo de alt text necesitas?",
+    "promptPlaceholder": "Genera un texto alternativo para esta imagen optimizado para SEO",
+    "lengthLabel": "Longitud del alt text:",
+    "lengthShort": "Corto (conciso)",
+    "lengthMedium": "Medio (descriptivo)",
+    "lengthLong": "Largo (detallado)",
+    "generateButton": "✨ Generar Alt Text",
+    "resultTitle": "Alt Text Generado:",
+    "copyButton": "📋 Copiar",
+    "downloadButton": "💾 Descargar",
+    "clearButton": "🗑️ Limpiar"
+  }
+}

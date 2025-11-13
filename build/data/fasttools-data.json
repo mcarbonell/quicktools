@@ -145,7 +145,7 @@
         "es": "Herramientas para diseño gráfico y edición de imágenes",
         "en": "Tools for graphic design and image editing"
       },
-      "tools": ["image-resizer", "convert-image", "image-cropper", "image-compressor", "color-palette-generator", "color-picker-converter", "exif-viewer-cleaner", "vision-chat-ai", "image-generator-ai", "image-editor-ai"]
+      "tools": ["image-resizer", "convert-image", "image-cropper", "image-compressor", "color-palette-generator", "color-picker-converter", "exif-viewer-cleaner", "vision-chat-ai", "image-generator-ai", "image-editor-ai", "alt-text-generator-ai"]
     },
     {
       "id": "writers",
@@ -187,7 +187,7 @@
         "es": "Herramientas para marketing digital y redes sociales",
         "en": "Tools for digital marketing and social media"
       },
-      "tools": ["qr-generator", "image-resizer", "convert-image", "image-compressor", "color-palette-generator", "chat-ai", "meta-tags-analyzer", "open-graph-preview"]
+      "tools": ["qr-generator", "image-resizer", "convert-image", "image-compressor", "color-palette-generator", "chat-ai", "meta-tags-analyzer", "open-graph-preview", "alt-text-generator-ai"]
     },
     {
       "id": "productivity",
@@ -215,7 +215,7 @@
         "es": "Herramientas potenciadas con inteligencia artificial",
         "en": "AI-powered tools"
       },
-      "tools": ["chat-ai", "chat-pdf", "summarize-text-ai", "improve-text-ai", "translate-ai", "vision-chat-ai", "image-generator-ai", "image-editor-ai"]
+      "tools": ["chat-ai", "chat-pdf", "summarize-text-ai", "improve-text-ai", "translate-ai", "vision-chat-ai", "image-generator-ai", "image-editor-ai", "alt-text-generator-ai"]
     },
     {
       "id": "seo-specialists",
@@ -229,7 +229,7 @@
         "es": "Herramientas para optimización SEO y análisis web",
         "en": "Tools for SEO optimization and web analysis"
       },
-      "tools": ["meta-tags-analyzer", "heading-structure-checker", "robots-txt-validator", "sitemap-validator", "broken-links-checker", "open-graph-preview", "schema-validator", "seo-score-calculator"]
+      "tools": ["meta-tags-analyzer", "heading-structure-checker", "robots-txt-validator", "sitemap-validator", "broken-links-checker", "open-graph-preview", "schema-validator", "seo-score-calculator", "alt-text-generator-ai"]
     }
   ],
   "tools": [
@@ -894,6 +894,22 @@
       "categories": ["seo"],
       "icon": "🎯",
       "tags": ["seo", "score", "audit"]
+    },
+    {
+      "id": "alt-text-generator-ai",
+      "slug": "alt-text-generator-ai.html",
+      "title": {
+        "es": "Generador de Alt Text con IA",
+        "en": "AI Alt Text Generator"
+      },
+      "description": {
+        "es": "Genera texto alternativo SEO para imágenes usando IA local.",
+        "en": "Generate SEO alt text for images using local AI."
+      },
+      "categories": ["ai", "image", "seo"],
+      "icon": "🖼️",
+      "tags": ["ai", "image", "seo", "alt-text", "accessibility"],
+      "availableIn": ["web"]
     }
   ]
 }

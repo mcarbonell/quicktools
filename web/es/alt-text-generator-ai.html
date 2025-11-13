@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Generador de Alt Text con IA - FastTools</title>
+    <meta name="description" content="Genera texto alternativo SEO para imágenes usando IA local.">
+    <meta name="keywords" content="ai, image, seo, alt-text, accessibility">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Generador de Alt Text con IA — FastTools">
+    <meta property="og:description" content="Genera texto alternativo SEO para imágenes usando IA local.">
+    <meta property="og:url" content="https://fasttools.tools/es/alt-text-generator-ai.html">
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0d6efd">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="FastTools">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+    <!-- Hreflang tags for i18n -->
+    <link rel="alternate" hreflang="en" href="https://fasttools.tools/alt-text-generator-ai.html">
+    <link rel="alternate" hreflang="es" href="https://fasttools.tools/es/alt-text-generator-ai.html">
+    <link rel="alternate" hreflang="x-default" href="https://fasttools.tools/alt-text-generator-ai.html">
+
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "FastTools",
+      "item": "https://fasttools.tools/es"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Diseñadores",
+      "item": "https://fasttools.tools/es/designers.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Marketing",
+      "item": "https://fasttools.tools/es/marketers.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "IA",
+      "item": "https://fasttools.tools/es/ai.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "SEO",
+      "item": "https://fasttools.tools/es/seo.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "Generador de Alt Text con IA"
+    }
+  ]
+}
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-v2.css">
+    <link rel="stylesheet" href="/css/cookie-banner.css">
+    
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="/index.html" class="btn btn-secondary btn-sm" id="backLink">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                Back
+            </a>
+            <div id="languageSelector"></div>
+        </div>
+        <div class="tool-header">
+            <h1>Generador de Alt Text con IA</h1>
+            <p class="text-muted">Genera texto alternativo SEO para imágenes usando IA local.</p>
+            <div class="alert alert-info mt-3"><small>🎯 Útil para: <a href="/es/designers.html" class="badge bg-primary text-decoration-none">🎨 Diseñadores</a> <a href="/es/marketers.html" class="badge bg-primary text-decoration-none">📱 Marketing</a> <a href="/es/ai.html" class="badge bg-primary text-decoration-none">🤖 IA</a> <a href="/es/seo.html" class="badge bg-primary text-decoration-none">🔍 SEO</a></small></div>
+        </div>
+
+        <div id="serviceStatus" class="alert alert-info">
+    <div class="d-flex justify-content-between align-items-center">
+        <span id="statusText">🔍 Detecting AI services...</span>
+        <button class="btn btn-sm btn-outline-primary d-none" id="configureBtn" onclick="showApiKeySetup()">⚙️ Configure</button>
+    </div>
+</div>
+
+<div id="apiKeySetup" class="alert alert-warning d-none">
+    <h5>⚙️ Optional: Gemini Cloud API</h5>
+    <p>Add a Gemini API key for cloud fallback:</p>
+    <ol>
+        <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+        <li>Create an API key (free, 60 req/min)</li>
+        <li>Paste it below 👇</li>
+    </ol>
+    <div class="input-group">
+        <input type="password" id="apiKeyInput" class="form-control" placeholder="AIzaSy...">
+        <button class="btn btn-primary" onclick="saveApiKey()">💾 Save</button>
+    </div>
+    <small class="text-muted">🔒 Stored locally in your browser</small>
+</div>
+
+<div id="toolSection">
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5>Subir Imagen</h5>
+            <input type="file" id="imageInput" class="form-control" accept="image/*">
+            <small class="text-muted">Arrastra y suelta o haz clic para seleccionar</small>
+            <img id="preview" class="mt-3" style="max-width: 100%; max-height: 400px; display: none;">
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">¿Qué tipo de alt text necesitas?</label>
+        <textarea id="promptInput" class="form-control" rows="3" placeholder="Genera un texto alternativo para esta imagen optimizado para SEO">Generate an alt text for this image for SEO optimization</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Longitud del alt text:</label>
+        <select id="lengthSelect" class="form-select">
+            <option value="short">Corto (conciso)</option>
+            <option value="medium" selected>Medio (descriptivo)</option>
+            <option value="long">Largo (detallado)</option>
+        </select>
+    </div>
+
+    <button class="btn btn-primary" onclick="generateAltText()" id="generateBtn" disabled>
+        ✨ Generar Alt Text
+    </button>
+
+    <div id="resultSection" class="mt-4 d-none">
+        <h5>Alt Text Generado:</h5>
+        <div id="altTextOutput" class="p-3 bg-light border rounded"></div>
+        <div class="mt-3">
+            <button class="btn btn-sm btn-outline-secondary" onclick="copyResult()">📋 Copiar</button>
+            <button class="btn btn-sm btn-outline-info" onclick="downloadResult()">💾 Descargar</button>
+            <button class="btn btn-sm btn-outline-danger" onclick="clearAll()">🗑️ Limpiar</button>
+        </div>
+    </div>
+</div>
+
+<script src="/js/lib/chrome-ai-apis.js"></script>
+<script src="/js/lib/gemini-api.js"></script>
+<script src="/js/lib/hybrid-ai.js"></script>
+<script>
+    let ai;
+    let selectedImage = null;
+
+    window.addEventListener('DOMContentLoaded', async () => {
+        ai = new HybridAI();
+        await ai.init();
+        updateServiceStatus();
+    });
+
+    function updateServiceStatus() {
+        const statusEl = document.getElementById('statusText');
+        const configureBtn = document.getElementById('configureBtn');
+        
+        if (ai.hasChromeAI) {
+            statusEl.textContent = '🏠 Using Chrome Local AI (Free, Private)';
+            statusEl.parentElement.parentElement.className = 'alert alert-success';
+        } else if (ai.hasGeminiAPI) {
+            statusEl.textContent = '☁️ Using Gemini Cloud API';
+            statusEl.parentElement.parentElement.className = 'alert alert-info';
+        } else {
+            statusEl.textContent = '⚠️ No AI service available';
+            statusEl.parentElement.parentElement.className = 'alert alert-warning';
+            configureBtn.classList.remove('d-none');
+        }
+    }
+
+    function showApiKeySetup() {
+        document.getElementById('apiKeySetup').classList.remove('d-none');
+    }
+
+    async function saveApiKey() {
+        const apiKey = document.getElementById('apiKeyInput').value.trim();
+        if (!apiKey) return alert('❌ Please enter an API key');
+
+        const btn = event.target;
+        btn.disabled = true;
+        btn.textContent = '⏳ Validating...';
+
+        try {
+            localStorage.setItem('gemini_api_key', apiKey);
+            await ai.init();
+            updateServiceStatus();
+            document.getElementById('apiKeySetup').classList.add('d-none');
+            alert('✅ API Key saved successfully');
+        } catch (error) {
+            alert(`❌ Error: ${error.message}`);
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '💾 Save';
+        }
+    }
+
+    document.getElementById('imageInput').addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const preview = document.getElementById('preview');
+            preview.src = event.target.result;
+            preview.style.display = 'block';
+            
+            selectedImage = file;
+            document.getElementById('generateBtn').disabled = false;
+        };
+        reader.readAsDataURL(file);
+    });
+
+    async function generateAltText() {
+        if (!selectedImage) {
+            alert('Please upload an image first');
+            return;
+        }
+
+        const prompt = document.getElementById('promptInput').value;
+        const length = document.getElementById('lengthSelect').value;
+        const btn = document.getElementById('generateBtn');
+        const resultSection = document.getElementById('resultSection');
+        const outputEl = document.getElementById('altTextOutput');
+
+        btn.disabled = true;
+        btn.textContent = '⏳ Generating...';
+        outputEl.textContent = '';
+        resultSection.classList.remove('d-none');
+
+        try {
+            const fullPrompt = `${prompt}\n\nLength preference: ${length}`;
+            
+            // Use ChromeAI directly for multimodal
+            if (ai.hasChromeAI) {
+                const chromeAI = new ChromeAI();
+                for await (const chunk of chromeAI.promptStreaming(fullPrompt, selectedImage)) {
+                    outputEl.textContent += chunk;
+                }
+            } else if (ai.hasGeminiAPI) {
+                // Gemini Cloud doesn't support vision yet in our implementation
+                outputEl.textContent = 'Vision analysis requires Chrome Local AI (Chrome 138+)';
+            }
+        } catch (error) {
+            outputEl.textContent = `❌ Error: ${error.message}`;
+        } finally {
+            btn.disabled = false;
+            btn.textContent = '✨ Generate Alt Text';
+        }
+    }
+
+    function copyResult() {
+        const text = document.getElementById('altTextOutput').innerText;
+        navigator.clipboard.writeText(text).then(() => alert('✅ Copied to clipboard'));
+    }
+
+    function downloadResult() {
+        const text = document.getElementById('altTextOutput').innerText;
+        const blob = new Blob([text], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `alt-text-${new Date().toISOString().slice(0,10)}.txt`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    function clearAll() {
+        document.getElementById('imageInput').value = '';
+        document.getElementById('preview').style.display = 'none';
+        document.getElementById('resultSection').classList.add('d-none');
+        document.getElementById('altTextOutput').textContent = '';
+        selectedImage = null;
+        document.getElementById('generateBtn').disabled = true;
+    }
+</script>
+
+    </div>
+
+    
+    <script>
+        window.toolTranslations = {"title":"Generador de Alt Text con IA","description":"Genera texto alternativo SEO para imágenes usando IA local","uploadLabel":"Subir Imagen","uploadHint":"Arrastra y suelta o haz clic para seleccionar","promptLabel":"¿Qué tipo de alt text necesitas?","promptPlaceholder":"Genera un texto alternativo para esta imagen optimizado para SEO","lengthLabel":"Longitud del alt text:","lengthShort":"Corto (conciso)","lengthMedium":"Medio (descriptivo)","lengthLong":"Largo (detallado)","generateButton":"✨ Generar Alt Text","resultTitle":"Alt Text Generado:","copyButton":"📋 Copiar","downloadButton":"💾 Descargar","clearButton":"🗑️ Limpiar"};
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/toast.js"></script>
+    <script src="/i18n/language-selector.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+    <script src="/js/analytics.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        // Auto-registrar Service Worker
+        if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js', {
+                    scope: '/'
+                }).then(function (registration) {
+                    console.log('SW registered: ', registration);
+                }).catch(function (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+
+    
+</body>
+
+</html>
