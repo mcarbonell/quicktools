@@ -1,0 +1,40 @@
+{
+  "en": {
+    "checking_service": "Checking AI service availability...",
+    "using_local_ai": "Using Chrome Local AI (Gemini Nano)",
+    "prompt_api_required": "Prompt API required. Enable chrome://flags/#prompt-api-for-gemini-nano",
+    "upload_image": "Upload Image",
+    "supported_formats": "Supported: JPG, PNG, WebP, GIF, BMP",
+    "image_preview": "Image Preview",
+    "output_format": "Output Format",
+    "plain_text": "Plain Text",
+    "markdown": "Markdown",
+    "structured_json": "Structured JSON",
+    "extract_text": "Extract Text",
+    "extracting": "Extracting...",
+    "extracted_text": "Extracted Text",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "download": "Download",
+    "extraction_error": "Error extracting text. Please try again."
+  },
+  "es": {
+    "checking_service": "Verificando disponibilidad del servicio IA...",
+    "using_local_ai": "Usando IA Local de Chrome (Gemini Nano)",
+    "prompt_api_required": "Se requiere Prompt API. Activa chrome://flags/#prompt-api-for-gemini-nano",
+    "upload_image": "Subir Imagen",
+    "supported_formats": "Soportados: JPG, PNG, WebP, GIF, BMP",
+    "image_preview": "Vista Previa de Imagen",
+    "output_format": "Formato de Salida",
+    "plain_text": "Texto Plano",
+    "markdown": "Markdown",
+    "structured_json": "JSON Estructurado",
+    "extract_text": "Extraer Texto",
+    "extracting": "Extrayendo...",
+    "extracted_text": "Texto Extraído",
+    "copy": "Copiar",
+    "copied": "¡Copiado!",
+    "download": "Descargar",
+    "extraction_error": "Error al extraer texto. Por favor, inténtalo de nuevo."
+  }
+}

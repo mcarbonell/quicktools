@@ -1,0 +1,167 @@
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div id="serviceStatus" class="alert alert-info mb-4">
+                        <div class="d-flex align-items-center">
+                            <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+                            <span>{{t.checking_service}}</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">{{t.upload_image}}</label>
+                        <input type="file" class="form-control" id="imageFile" accept="image/*">
+                        <small class="text-muted">{{t.supported_formats}}</small>
+                    </div>
+
+                    <div id="imagePreview" class="mb-4" style="display: none;">
+                        <label class="form-label fw-bold">{{t.image_preview}}</label>
+                        <img id="previewImg" class="img-fluid rounded border" style="max-height: 400px;">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">{{t.output_format}}</label>
+                        <select id="outputFormat" class="form-select">
+                            <option value="plain">{{t.plain_text}}</option>
+                            <option value="markdown">{{t.markdown}}</option>
+                            <option value="structured">{{t.structured_json}}</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <button id="extractBtn" class="btn btn-primary btn-lg w-100" disabled>
+                            <i class="material-symbols-outlined align-middle">text_fields</i>
+                            {{t.extract_text}}
+                        </button>
+                    </div>
+
+                    <div id="output" class="mt-4" style="display: none;">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <label class="form-label fw-bold mb-0">{{t.extracted_text}}</label>
+                            <div>
+                                <button id="copyBtn" class="btn btn-sm btn-outline-primary me-2">
+                                    <i class="material-symbols-outlined align-middle">content_copy</i>
+                                    {{t.copy}}
+                                </button>
+                                <button id="downloadBtn" class="btn btn-sm btn-outline-secondary">
+                                    <i class="material-symbols-outlined align-middle">download</i>
+                                    {{t.download}}
+                                </button>
+                            </div>
+                        </div>
+                        <div id="extractedText" class="border rounded p-3 bg-light" style="white-space: pre-wrap; max-height: 500px; overflow-y: auto;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/lib/chrome-ai-apis.js"></script>
+<script>
+(async function() {
+    const chromeAI = new ChromeAI();
+    let currentImage = null;
+
+    const serviceStatus = document.getElementById('serviceStatus');
+    const imageFile = document.getElementById('imageFile');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewImg = document.getElementById('previewImg');
+    const outputFormat = document.getElementById('outputFormat');
+    const extractBtn = document.getElementById('extractBtn');
+    const output = document.getElementById('output');
+    const extractedText = document.getElementById('extractedText');
+    const copyBtn = document.getElementById('copyBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+
+    // Check service availability
+    const hasPromptAPI = 'LanguageModel' in self;
+    
+    if (hasPromptAPI) {
+        serviceStatus.className = 'alert alert-success mb-4';
+        serviceStatus.innerHTML = '<i class="material-symbols-outlined align-middle me-2">check_circle</i>{{t.using_local_ai}}';
+    } else {
+        serviceStatus.className = 'alert alert-warning mb-4';
+        serviceStatus.innerHTML = '<i class="material-symbols-outlined align-middle me-2">warning</i>{{t.prompt_api_required}}';
+    }
+
+    // File upload
+    imageFile.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        currentImage = file;
+        previewImg.src = URL.createObjectURL(file);
+        imagePreview.style.display = 'block';
+        extractBtn.disabled = false;
+    });
+
+    // Extract text
+    extractBtn.addEventListener('click', async () => {
+        if (!currentImage) return;
+
+        extractBtn.disabled = true;
+        extractBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>{{t.extracting}}';
+        output.style.display = 'block';
+        extractedText.textContent = '';
+
+        try {
+            const lang = document.documentElement.lang || 'en';
+            const format = outputFormat.value;
+            
+            let prompt = '';
+            if (format === 'plain') {
+                prompt = lang === 'es' 
+                    ? 'Extrae todo el texto de esta imagen. Solo devuelve el texto, sin comentarios adicionales.'
+                    : 'Extract all text from this image. Return only the text, no additional comments.';
+            } else if (format === 'markdown') {
+                prompt = lang === 'es'
+                    ? 'Extrae el texto de esta imagen y formatealo en Markdown, preservando la estructura (títulos, listas, etc.).'
+                    : 'Extract text from this image and format it as Markdown, preserving structure (headings, lists, etc.).';
+            } else {
+                prompt = lang === 'es'
+                    ? 'Extrae el texto de esta imagen y devuélvelo en formato JSON estructurado con campos relevantes.'
+                    : 'Extract text from this image and return it as structured JSON with relevant fields.';
+            }
+
+            const stream = chromeAI.promptStreaming(prompt, currentImage, 'image');
+            
+            for await (const chunk of stream) {
+                extractedText.textContent += chunk;
+            }
+
+        } catch (error) {
+            console.error('❌ OCR error:', error);
+            extractedText.innerHTML = '<span class="text-danger">{{t.extraction_error}}</span>';
+        } finally {
+            extractBtn.disabled = false;
+            extractBtn.innerHTML = '<i class="material-symbols-outlined align-middle">text_fields</i>{{t.extract_text}}';
+        }
+    });
+
+    // Copy to clipboard
+    copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(extractedText.textContent);
+        const originalText = copyBtn.innerHTML;
+        copyBtn.innerHTML = '<i class="material-symbols-outlined align-middle">check</i>{{t.copied}}';
+        setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+        }, 2000);
+    });
+
+    // Download as file
+    downloadBtn.addEventListener('click', () => {
+        const format = outputFormat.value;
+        const extension = format === 'structured' ? 'json' : (format === 'markdown' ? 'md' : 'txt');
+        const blob = new Blob([extractedText.textContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `extracted-text.${extension}`;
+        a.click();
+        URL.revokeObjectURL(url);
+    });
+})();
+</script>

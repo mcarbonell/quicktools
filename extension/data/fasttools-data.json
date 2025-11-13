@@ -145,7 +145,7 @@
         "es": "Herramientas para diseño gráfico y edición de imágenes",
         "en": "Tools for graphic design and image editing"
       },
-      "tools": ["image-resizer", "convert-image", "image-cropper", "image-compressor", "color-palette-generator", "color-picker-converter", "exif-viewer-cleaner", "vision-chat-ai", "image-generator-ai", "image-editor-ai", "alt-text-generator-ai"]
+      "tools": ["image-resizer", "convert-image", "image-cropper", "image-compressor", "color-palette-generator", "color-picker-converter", "exif-viewer-cleaner", "vision-chat-ai", "image-generator-ai", "image-editor-ai", "alt-text-generator-ai", "image-to-text-ocr"]
     },
     {
       "id": "writers",
@@ -159,7 +159,7 @@
         "es": "Herramientas para escritura y edición de textos",
         "en": "Tools for writing and text editing"
       },
-      "tools": ["text-cleaner", "lorem-ipsum-generator", "diff", "summarize-text-ai", "improve-text-ai", "chat-ai"]
+      "tools": ["text-cleaner", "lorem-ipsum-generator", "diff", "summarize-text-ai", "improve-text-ai", "chat-ai", "image-to-text-ocr"]
     },
     {
       "id": "data-analysts",
@@ -215,7 +215,7 @@
         "es": "Herramientas potenciadas con inteligencia artificial",
         "en": "AI-powered tools"
       },
-      "tools": ["chat-ai", "chat-pdf", "summarize-text-ai", "improve-text-ai", "translate-ai", "vision-chat-ai", "image-generator-ai", "image-editor-ai", "alt-text-generator-ai", "audio-transcription-ai"]
+      "tools": ["chat-ai", "chat-pdf", "summarize-text-ai", "improve-text-ai", "translate-ai", "vision-chat-ai", "image-generator-ai", "image-editor-ai", "alt-text-generator-ai", "audio-transcription-ai", "image-to-text-ocr"]
     },
     {
       "id": "seo-specialists",
@@ -925,6 +925,22 @@
       "categories": ["ai", "utils"],
       "icon": "🎤",
       "tags": ["ai", "audio", "transcription", "speech-to-text"],
+      "availableIn": ["web"]
+    },
+    {
+      "id": "image-to-text-ocr",
+      "slug": "image-to-text-ocr.html",
+      "title": {
+        "es": "Imagen a Texto (OCR)",
+        "en": "Image to Text (OCR)"
+      },
+      "description": {
+        "es": "Extrae texto de imágenes con OCR usando IA local. Soporta múltiples formatos de salida.",
+        "en": "Extract text from images with OCR using local AI. Supports multiple output formats."
+      },
+      "categories": ["ai", "image", "converters"],
+      "icon": "📝",
+      "tags": ["ai", "ocr", "image", "text", "extract", "vision"],
       "availableIn": ["web"]
     }
   ]
