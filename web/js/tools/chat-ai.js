@@ -85,13 +85,15 @@ async function sendMessage() {
     const assistantMsg = addMessage('', 'assistant');
     const contentDiv = assistantMsg.querySelector('.message-content');
 
+    let fullText = '';
     try {
         await ai.chat(message, {}, (chunk) => {
-            contentDiv.textContent += chunk;
+            fullText += chunk;
+            contentDiv.innerHTML = formatMessage(fullText);
             document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
         });
     } catch (error) {
-        contentDiv.textContent = `❌ Error: ${error.message}`;
+        contentDiv.innerHTML = `<span class="text-danger">❌ Error: ${error.message}</span>`;
     } finally {
         typingIndicator.style.display = 'none';
         sendBtn.disabled = false;
