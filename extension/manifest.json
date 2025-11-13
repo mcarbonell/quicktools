@@ -48,7 +48,7 @@
         "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com;"
     },
     "chrome_url_overrides": {
-        "newtab": "newtab/newtab-simple.html"
+        "newtab": "newtab/newtab.html"
     },
     "commands": {
         "quick-tools": {

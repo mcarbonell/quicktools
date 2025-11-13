@@ -214,5 +214,5 @@ if (hasKey) {
 
 ---
 
-**Última actualización:** Diciembre 2024
+**Última actualización:** Noviembre 2025
 **Commit:** 1e76f81 - feat: unify build system with shared JS files

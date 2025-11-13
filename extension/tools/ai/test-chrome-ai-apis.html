@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome AI APIs Test - Extension Context</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        .api-test {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #ccc;
+        }
+        .api-test.available {
+            border-left-color: #4caf50;
+        }
+        .api-test.unavailable {
+            border-left-color: #f44336;
+        }
+        .api-name {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        .api-status {
+            font-size: 14px;
+            color: #666;
+        }
+        .available .api-status {
+            color: #4caf50;
+        }
+        .unavailable .api-status {
+            color: #f44336;
+        }
+        .summary {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Chrome AI APIs Test - Extension Context</h1>
+    
+    <div class="summary">
+        <strong>Context:</strong> Chrome Extension<br>
+        <strong>Chrome Version:</strong> <span id="chrome-version"></span><br>
+        <strong>Available APIs:</strong> <span id="available-count">Testing...</span>
+    </div>
+
+    <button id="test-btn">🔄 Test All APIs</button>
+
+    <div id="results"></div>
+
+    <script src="test-chrome-ai-apis.js"></script>
+</body>
+</html>

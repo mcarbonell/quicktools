@@ -44,29 +44,31 @@ Chrome 138+ now includes **7 AI APIs** powered by Gemini Nano running locally!
 
 ## 🤖 The 7 Chrome AI APIs
 
-| API | Status | Available |
-|-----|--------|-----------|
-| Prompt API | Origin Trial | ✅ Chrome 138+ |
-| Summarizer API | Available | ✅ Chrome 138+ |
-| Translator API | Available | ✅ Chrome 138+ |
-| Language Detector API | Available | ✅ Chrome 138+ |
-| Writer API | Origin Trial | ✅ Chrome 138+ |
-| Rewriter API | Origin Trial | ✅ Chrome 138+ |
-| Proofreader API | Origin Trial | ✅ Chrome 138+ |
+| API | Status | Default Availability |
+|-----|--------|---------------------|
+| Summarizer API | Available | ✅ Works out-of-the-box |
+| Translator API | Available | ✅ Works out-of-the-box |
+| Language Detector API | Available | ✅ Works out-of-the-box |
+| Prompt API | Origin Trial | ⚠️ Requires flags/origin-trial |
+| Writer API | Origin Trial | ⚠️ Requires flags/origin-trial |
+| Rewriter API | Origin Trial | ⚠️ Requires flags/origin-trial |
+| Proofreader API | Origin Trial | ⚠️ Requires flags/origin-trial |
+
+**Reality Check (Chrome 142):** Only 3 of 7 APIs work by default for regular users.
 
 ## 💡 Key Benefits
 
-### For Users
-- 🆓 Free AI (no API key needed with Chrome 138+)
+### For Users (with available APIs)
+- 🆓 Free AI (no API key needed for Summarizer, Translator, Language Detector)
 - 🔒 100% Private (local processing)
 - ⚡ Instant (no network latency)
 - 📴 Offline capable
 
 ### For FastTools
-- 💰 70% cost reduction (most users won't need API calls)
-- 🚀 Better UX (instant responses)
-- 🌐 Wider compatibility (fallback to cloud)
-- 🔮 Future-proof (ready for Chrome AI rollout)
+- 💰 ~30% cost reduction (only 3/7 APIs work by default, most users will use cloud fallback)
+- 🚀 Better UX for summarize/translate (instant responses)
+- 🌐 Hybrid system critical (most users need cloud fallback for chat/improve)
+- 🔮 Future-proof (ready when Chrome enables more APIs by default)
 
 ## 🎯 Next Steps
 
@@ -88,15 +90,45 @@ Chrome 138+ now includes **7 AI APIs** powered by Gemini Nano running locally!
 ## 🧪 Test Results
 
 **Chrome Version:** 142.0.0.0
-**All 7 APIs:** ✅ WORKING
+**Test Environment:** With chrome://flags enabled
 **Hybrid System:** ✅ WORKING
 **All 4 AI Tools:** ✅ UPDATED & WORKING
 
-### Tool-Specific Results
-- **Summarize:** ✅ Streaming, auto language detection (outputLanguage)
-- **Improve Text:** ✅ Chrome Rewriter (no streaming - API limitation)
-- **Translate:** ✅ Chrome Translator + Language Detector (no streaming - API limitation)
-- **Chat:** ✅ Streaming with Gemma, Markdown rendering
+### Web Context (Default - No Flags)
+- ✅ Summarizer API - Available
+- ✅ Translator API - Available
+- ✅ Language Detector API - Available
+- ❌ Prompt API - Requires flags
+- ❌ Writer API - Requires flags
+- ❌ Rewriter API - Requires flags
+- ❌ Proofreader API - Requires flags
+
+**Result:** 3 of 7 APIs available (43%)
+
+### Extension Context (With Flags)
+- ✅ Prompt API - **Available in extension!**
+- ✅ Summarizer API - Available
+- ✅ Translator API - Available
+- ✅ Language Detector API - Available
+- ❌ Writer API - Requires flags
+- ❌ Rewriter API - Requires flags
+- ❌ Proofreader API - Requires flags
+
+**Result:** 4 of 7 APIs available (57%)
+
+### Tool Availability by Context
+
+**Web (Default):**
+- **Summarize:** ✅ Works with Summarizer API
+- **Translate:** ✅ Works with Translator + Language Detector
+- **Improve Text:** ⚠️ Falls back to Gemini Cloud (Rewriter requires flags)
+- **Chat:** ⚠️ Falls back to Gemini Cloud (Prompt requires flags)
+
+**Extension (With Flags):**
+- **Summarize:** ✅ Works with Summarizer API
+- **Translate:** ✅ Works with Translator + Language Detector
+- **Improve Text:** ⚠️ Falls back to Gemini Cloud (Rewriter requires flags)
+- **Chat:** ✅ **Works with Prompt API (local AI!)**
 
 ## 📝 Usage Example
 
@@ -138,24 +170,46 @@ await ai.chat(message, {}, (chunk) => {
 
 ## 🔑 Key Learnings
 
-1. **Chrome AI APIs require Chrome 138+** - Users with older versions will fallback to Gemini Cloud
-2. **Not all APIs support streaming:**
+1. **Extensions have better API access** - Prompt API works in extensions but not in web (with flags)
+2. **Only 3 of 7 APIs work by default in web** - Summarizer, Translator, Language Detector
+3. **4 of 7 APIs work in extensions** - Adds Prompt API for local chat
+4. **Origin Trial APIs require flags** - Writer, Rewriter, Proofreader need chrome://flags or origin trial tokens
+5. **Hybrid system is CRITICAL for web** - Most web users will fall back to Gemini Cloud for chat and improve text
+6. **Extension users get local chat** - Prompt API available in extension context (huge advantage)
+7. **Not all APIs support streaming:**
    - ✅ Streaming: Prompt API, Summarizer API
    - ❌ No streaming: Translator, Rewriter, Language Detector (API limitations)
-3. **outputLanguage is critical** for Summarizer API to avoid warnings and ensure correct language
-4. **Gemma model** is the local AI powering Chrome's Prompt API
-5. **Template system** with `{{t.key}}` placeholders ensures proper i18n
+8. **outputLanguage is critical** for Summarizer API to avoid warnings and ensure correct language
+9. **Gemma model** is the local AI powering Chrome's Prompt API
+10. **Template system** with `{{t.key}}` placeholders ensures proper i18n
 
 ## 🚩 Chrome Flags Status
 
-You mentioned touching `chrome://flags` - these are the relevant flags:
-- `chrome://flags/#optimization-guide-on-device-model` - Enable on-device AI
-- `chrome://flags/#prompt-api-for-gemini-nano` - Enable Prompt API
+**Required Flags for Testing:**
+- `chrome://flags/#optimization-guide-on-device-model` - Enable on-device AI (Enabled)
+- `chrome://flags/#prompt-api-for-gemini-nano` - Enable Prompt API (Enabled)
 
-In Chrome 138+, most APIs are available by default, but some (Prompt, Writer, Rewriter, Proofreader) may still require Origin Trial tokens or flags.
+**Availability by Context:**
+
+| API | Web (Default) | Extension (Flags) |
+|-----|---------------|-------------------|
+| Summarizer | ✅ Available | ✅ Available |
+| Translator | ✅ Available | ✅ Available |
+| Language Detector | ✅ Available | ✅ Available |
+| Prompt | ❌ Requires flags | ✅ **Available** |
+| Writer | ❌ Requires flags | ❌ Requires flags |
+| Rewriter | ❌ Requires flags | ❌ Requires flags |
+| Proofreader | ❌ Requires flags | ❌ Requires flags |
+
+**Key Insight:** Extensions have privileged access to Prompt API, enabling local chat without cloud fallback.
+
+**Implications:**
+- **Web users:** Will use Gemini Cloud fallback for chat and improve text (3/7 APIs = 43%)
+- **Extension users:** Can use local AI for chat + summarize + translate (4/7 APIs = 57%)
+- **Extension advantage:** ~30% more API coverage, including the most important one (chat)
 
 ---
 
-**Session Date:** December 2024
+**Session Date:** Noviembre 2025
 **Status:** 🎉 COMPLETE - All 4 AI tools using Chrome Local AI + Gemini Cloud fallback
 **Next:** Test on production, monitor user adoption, add more AI-powered features

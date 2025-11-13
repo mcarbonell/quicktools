@@ -1,7 +1,10 @@
 {
   "domain": "fasttools.tools",
   "defaultLanguage": "en",
-  "languages": ["en", "es"],
+  "languages": [
+    "en",
+    "es"
+  ],
   "siteName": "FastTools",
   "description": {
     "en": "Fast, secure online tools. Everything processed in your browser.",
