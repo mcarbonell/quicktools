@@ -12,7 +12,41 @@
     "summarizeButton": "✨ Summarize",
     "resultTitle": "Summary:",
     "copyButton": "📋 Copy",
-    "downloadButton": "💾 Download"
+    "downloadButton": "💾 Download",
+    "seo": {
+      "whatIsTitle": "What is AI Text Summarization?",
+      "whatIsContent": "**AI Text Summarization** uses **Chrome's local Summarizer API** or **Google Gemini** to condense long texts into concise summaries. Extract key points from articles, documents, and reports automatically.",
+      "howToTitle": "How to summarize text with AI?",
+      "howToSteps": [
+        "Paste your **long text** (article, document, report)",
+        "Select **summary length**: Short, Medium, or Long",
+        "Click **'Summarize'** to generate summary",
+        "**Copy or download** the condensed version"
+      ],
+      "useCasesTitle": "Use cases for text summarization",
+      "useCases": [
+        "Summarize **research papers** and articles",
+        "Create **executive summaries** of reports",
+        "Extract **key points** from meeting notes",
+        "Condense **news articles** for quick reading",
+        "Generate **abstracts** for documents"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Is text summarization free?",
+          "answer": "Yes! It uses **Chrome's local Summarizer API** (free, offline) when available, or falls back to **Google Gemini** (requires free API key)."
+        },
+        {
+          "question": "How long can the text be?",
+          "answer": "Works best with texts between **500-10,000 words**. Longer texts may be truncated or require multiple summaries."
+        },
+        {
+          "question": "Does it work offline?",
+          "answer": "Yes! When using **Chrome's Summarizer API**, it works **completely offline** with no internet connection needed."
+        }
+      ]
+    }
   },
   "es": {
     "title": "Resumir Texto con IA",
@@ -27,6 +61,40 @@
     "summarizeButton": "✨ Resumir",
     "resultTitle": "Resumen:",
     "copyButton": "📋 Copiar",
-    "downloadButton": "💾 Descargar"
+    "downloadButton": "💾 Descargar",
+    "seo": {
+      "whatIsTitle": "¿Qué es la resumización de texto con IA?",
+      "whatIsContent": "La **resumización de texto con IA** usa **Summarizer API local de Chrome** o **Google Gemini** para condensar textos largos en resúmenes concisos. Extrae puntos clave de artículos, documentos e informes automáticamente.",
+      "howToTitle": "¿Cómo resumir texto con IA?",
+      "howToSteps": [
+        "Pega tu **texto largo** (artículo, documento, informe)",
+        "Selecciona **longitud del resumen**: Corto, Medio o Largo",
+        "Haz clic en **'Resumir'** para generar resumen",
+        "**Copia o descarga** la versión condensada"
+      ],
+      "useCasesTitle": "Casos de uso para resumización de texto",
+      "useCases": [
+        "Resumir **papers de investigación** y artículos",
+        "Crear **resúmenes ejecutivos** de informes",
+        "Extraer **puntos clave** de notas de reuniones",
+        "Condensar **artículos de noticias** para lectura rápida",
+        "Generar **abstracts** para documentos"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿La resumización de texto es gratuita?",
+          "answer": "¡Sí! Usa **Summarizer API local de Chrome** (gratis, offline) cuando está disponible, o recurre a **Google Gemini** (requiere API key gratuita)."
+        },
+        {
+          "question": "¿Cuán largo puede ser el texto?",
+          "answer": "Funciona mejor con textos entre **500-10,000 palabras**. Textos más largos pueden truncarse o requerir múltiples resúmenes."
+        },
+        {
+          "question": "¿Funciona sin conexión?",
+          "answer": "¡Sí! Al usar **Summarizer API de Chrome**, funciona **completamente offline** sin necesidad de conexión a internet."
+        }
+      ]
+    }
   }
 }

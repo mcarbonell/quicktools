@@ -148,11 +148,71 @@
     </div>
 </div>
 
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What is AI Translation?</h2>
+            <p class="mb-4"><strong>AI Translation</strong> uses <strong>Chrome's local AI</strong> (Translator API + Language Detector) or <strong>Google Gemini</strong> to translate text between languages with high accuracy. Supports 100+ languages with automatic language detection.</p>
+            <h3 class="h5 mb-3">How to translate with AI?</h3>
+            <ol class="mb-4">
+                <li>Paste or type your <strong>text</strong> in the source area</li>
+                <li>Click <strong>'Detect language'</strong> or select source language</li>
+                <li>Choose <strong>target language</strong> from the dropdown</li>
+                <li>Click <strong>'Translate'</strong> to get instant translation</li>
+            </ol>
+            <h3 class="h5 mb-3">Use cases for AI translation</h3>
+            <ul class="mb-4">
+                <li>Translate <strong>documents</strong> and articles</li>
+                <li>Communicate in <strong>foreign languages</strong></li>
+                <li>Localize <strong>website content</strong></li>
+                <li>Understand <strong>international emails</strong></li>
+                <li>Learn <strong>new languages</strong> with context</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            Is AI translation free?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! It uses <strong>Chrome's local Translator API</strong> (free, offline) when available, or falls back to <strong>Google Gemini</strong> (requires free API key).
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            How many languages are supported?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Supports <strong>100+ languages</strong> including English, Spanish, French, German, Chinese, Japanese, Arabic, and many more.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            Is it better than Google Translate?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            It uses similar AI technology but processes <strong>locally in your browser</strong> when possible, ensuring privacy and offline capability.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     
     <script>
-        window.toolTranslations = {"title":"AI Translator","description":"Translate text between languages using AI","apiKeySetup":"Initial Setup","sourceText":"Source text:","translation":"Translation:","translateTo":"Translate to:","detectLanguage":"🔍 Detect language","translateButton":"🌐 Translate","copyButton":"📋 Copy","downloadButton":"💾 Download","swapButton":"🔄 Swap"};
+        window.toolTranslations = {"title":"AI Translator","description":"Translate text between languages using AI","apiKeySetup":"Initial Setup","sourceText":"Source text:","translation":"Translation:","translateTo":"Translate to:","detectLanguage":"🔍 Detect language","translateButton":"🌐 Translate","copyButton":"📋 Copy","downloadButton":"💾 Download","swapButton":"🔄 Swap","seo":{"whatIsTitle":"What is AI Translation?","whatIsContent":"**AI Translation** uses **Chrome's local AI** (Translator API + Language Detector) or **Google Gemini** to translate text between languages with high accuracy. Supports 100+ languages with automatic language detection.","howToTitle":"How to translate with AI?","howToSteps":["Paste or type your **text** in the source area","Click **'Detect language'** or select source language","Choose **target language** from the dropdown","Click **'Translate'** to get instant translation"],"useCasesTitle":"Use cases for AI translation","useCases":["Translate **documents** and articles","Communicate in **foreign languages**","Localize **website content**","Understand **international emails**","Learn **new languages** with context"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"Is AI translation free?","answer":"Yes! It uses **Chrome's local Translator API** (free, offline) when available, or falls back to **Google Gemini** (requires free API key)."},{"question":"How many languages are supported?","answer":"Supports **100+ languages** including English, Spanish, French, German, Chinese, Japanese, Arabic, and many more."},{"question":"Is it better than Google Translate?","answer":"It uses similar AI technology but processes **locally in your browser** when possible, ensuring privacy and offline capability."}]}};
     </script>
 <script src="/js/lib/chrome-ai-apis.js"></script>
 <script src="/js/lib/gemini-api.js"></script>

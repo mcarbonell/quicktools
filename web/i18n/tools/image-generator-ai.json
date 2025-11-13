@@ -31,7 +31,41 @@
     "noImageGenerated": "❌ No image generated. Please try again with a different prompt.",
     "quotaExceeded": "❌ Quota exceeded. Nano Banana requires a paid API key. Please check your billing at https://aistudio.google.com/",
     "generationError": "❌ Error",
-    "removeApiKeyConfirm": "Remove API key?"
+    "removeApiKeyConfirm": "Remove API key?",
+    "seo": {
+      "whatIsTitle": "What is AI Image Generation?",
+      "whatIsContent": "**AI Image Generation** uses **Gemini 2.5 Flash Image** (Nano Banana) to create images from text descriptions. Generate photorealistic images, artwork, illustrations, and designs using natural language prompts.",
+      "howToTitle": "How to generate images with AI?",
+      "howToSteps": [
+        "Get a **paid API key** from [Google AI Studio](https://aistudio.google.com/app/apikey)",
+        "Write a **detailed text description** of the image you want",
+        "Click **'Generate Image'** and wait 10-30 seconds",
+        "**Download** the result (~$0.0125 per image)"
+      ],
+      "useCasesTitle": "Use cases for AI image generation",
+      "useCases": [
+        "Create **marketing visuals** and social media content",
+        "Generate **product mockups** and concepts",
+        "Design **illustrations** for articles and blogs",
+        "Create **artwork** and creative projects",
+        "Prototype **UI designs** and interfaces"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Is this tool free?",
+          "answer": "No, it requires a **paid Google AI API key**. Cost is approximately **$0.0125 per image**. The API key is stored locally in your browser."
+        },
+        {
+          "question": "What is Nano Banana?",
+          "answer": "**Nano Banana** is the codename for Gemini 2.5 Flash Image, Google's latest AI model for fast, high-quality image generation from text."
+        },
+        {
+          "question": "How to write good prompts?",
+          "answer": "Be **specific and detailed**. Include style, mood, colors, composition, and quality descriptors like 'highly detailed', 'photorealistic', or 'artistic style'."
+        }
+      ]
+    }
   },
   "es": {
     "setupTitle": "⚙️ Configuración Inicial",
@@ -65,6 +99,40 @@
     "noImageGenerated": "❌ No se generó imagen. Intenta de nuevo con un prompt diferente.",
     "quotaExceeded": "❌ Cuota excedida. Nano Banana requiere una API key de pago. Verifica tu facturación en https://aistudio.google.com/",
     "generationError": "❌ Error",
-    "removeApiKeyConfirm": "¿Eliminar API key?"
+    "removeApiKeyConfirm": "¿Eliminar API key?",
+    "seo": {
+      "whatIsTitle": "¿Qué es la generación de imágenes con IA?",
+      "whatIsContent": "La **generación de imágenes con IA** usa **Gemini 2.5 Flash Image** (Nano Banana) para crear imágenes desde descripciones de texto. Genera imágenes fotorrealistas, arte, ilustraciones y diseños usando prompts en lenguaje natural.",
+      "howToTitle": "¿Cómo generar imágenes con IA?",
+      "howToSteps": [
+        "Obtén una **API key de pago** de [Google AI Studio](https://aistudio.google.com/app/apikey)",
+        "Escribe una **descripción detallada** de la imagen que quieres",
+        "Haz clic en **'Generar Imagen'** y espera 10-30 segundos",
+        "**Descarga** el resultado (~$0.0125 por imagen)"
+      ],
+      "useCasesTitle": "Casos de uso para generación de imágenes con IA",
+      "useCases": [
+        "Crear **visuales de marketing** y contenido para redes sociales",
+        "Generar **mockups de productos** y conceptos",
+        "Diseñar **ilustraciones** para artículos y blogs",
+        "Crear **arte** y proyectos creativos",
+        "Prototipar **diseños UI** e interfaces"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Esta herramienta es gratuita?",
+          "answer": "No, requiere una **API key de pago de Google AI**. El costo es aproximadamente **$0.0125 por imagen**. La API key se almacena localmente en tu navegador."
+        },
+        {
+          "question": "¿Qué es Nano Banana?",
+          "answer": "**Nano Banana** es el nombre código de Gemini 2.5 Flash Image, el último modelo de IA de Google para generación rápida de imágenes de alta calidad desde texto."
+        },
+        {
+          "question": "¿Cómo escribir buenos prompts?",
+          "answer": "Sé **específico y detallado**. Incluye estilo, ambiente, colores, composición y descriptores de calidad como 'muy detallado', 'fotorrealista' o 'estilo artístico'."
+        }
+      ]
+    }
   }
 }

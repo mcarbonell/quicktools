@@ -10,7 +10,41 @@
     "translateButton": "🌐 Translate",
     "copyButton": "📋 Copy",
     "downloadButton": "💾 Download",
-    "swapButton": "🔄 Swap"
+    "swapButton": "🔄 Swap",
+    "seo": {
+      "whatIsTitle": "What is AI Translation?",
+      "whatIsContent": "**AI Translation** uses **Chrome's local AI** (Translator API + Language Detector) or **Google Gemini** to translate text between languages with high accuracy. Supports 100+ languages with automatic language detection.",
+      "howToTitle": "How to translate with AI?",
+      "howToSteps": [
+        "Paste or type your **text** in the source area",
+        "Click **'Detect language'** or select source language",
+        "Choose **target language** from the dropdown",
+        "Click **'Translate'** to get instant translation"
+      ],
+      "useCasesTitle": "Use cases for AI translation",
+      "useCases": [
+        "Translate **documents** and articles",
+        "Communicate in **foreign languages**",
+        "Localize **website content**",
+        "Understand **international emails**",
+        "Learn **new languages** with context"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Is AI translation free?",
+          "answer": "Yes! It uses **Chrome's local Translator API** (free, offline) when available, or falls back to **Google Gemini** (requires free API key)."
+        },
+        {
+          "question": "How many languages are supported?",
+          "answer": "Supports **100+ languages** including English, Spanish, French, German, Chinese, Japanese, Arabic, and many more."
+        },
+        {
+          "question": "Is it better than Google Translate?",
+          "answer": "It uses similar AI technology but processes **locally in your browser** when possible, ensuring privacy and offline capability."
+        }
+      ]
+    }
   },
   "es": {
     "title": "Traductor con IA",
@@ -23,6 +57,40 @@
     "translateButton": "🌐 Traducir",
     "copyButton": "📋 Copiar",
     "downloadButton": "💾 Descargar",
-    "swapButton": "🔄 Intercambiar"
+    "swapButton": "🔄 Intercambiar",
+    "seo": {
+      "whatIsTitle": "¿Qué es la traducción con IA?",
+      "whatIsContent": "La **traducción con IA** usa **IA local de Chrome** (Translator API + Language Detector) o **Google Gemini** para traducir texto entre idiomas con alta precisión. Soporta más de 100 idiomas con detección automática de idioma.",
+      "howToTitle": "¿Cómo traducir con IA?",
+      "howToSteps": [
+        "Pega o escribe tu **texto** en el área de origen",
+        "Haz clic en **'Detectar idioma'** o selecciona idioma de origen",
+        "Elige **idioma destino** del menú desplegable",
+        "Haz clic en **'Traducir'** para obtener traducción instantánea"
+      ],
+      "useCasesTitle": "Casos de uso para traducción con IA",
+      "useCases": [
+        "Traducir **documentos** y artículos",
+        "Comunicarse en **idiomas extranjeros**",
+        "Localizar **contenido web**",
+        "Entender **emails internacionales**",
+        "Aprender **nuevos idiomas** con contexto"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿La traducción con IA es gratuita?",
+          "answer": "¡Sí! Usa **Translator API local de Chrome** (gratis, offline) cuando está disponible, o recurre a **Google Gemini** (requiere API key gratuita)."
+        },
+        {
+          "question": "¿Cuántos idiomas son compatibles?",
+          "answer": "Soporta **más de 100 idiomas** incluyendo inglés, español, francés, alemán, chino, japonés, árabe y muchos más."
+        },
+        {
+          "question": "¿Es mejor que Google Translate?",
+          "answer": "Usa tecnología de IA similar pero procesa **localmente en tu navegador** cuando es posible, asegurando privacidad y capacidad offline."
+        }
+      ]
+    }
   }
 }

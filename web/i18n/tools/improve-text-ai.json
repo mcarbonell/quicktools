@@ -13,7 +13,41 @@
     "improveButton": "✨ Improve Text",
     "resultTitle": "Improved text:",
     "copyButton": "📋 Copy",
-    "downloadButton": "💾 Download"
+    "downloadButton": "💾 Download",
+    "seo": {
+      "whatIsTitle": "What is AI Text Improvement?",
+      "whatIsContent": "**AI Text Improvement** uses **Chrome's Rewriter API** or **Google Gemini** to enhance your writing. Fix grammar, improve clarity, adjust tone, and make text more professional or concise automatically.",
+      "howToTitle": "How to improve text with AI?",
+      "howToSteps": [
+        "Paste your **text** that needs improvement",
+        "Select **improvement mode**: Grammar, Clarity, Professional, Casual, or Concise",
+        "Click **'Improve Text'** to enhance writing",
+        "**Copy or download** the improved version"
+      ],
+      "useCasesTitle": "Use cases for text improvement",
+      "useCases": [
+        "Fix **grammar and spelling** errors",
+        "Make **emails more professional**",
+        "Improve **clarity** of technical writing",
+        "Adjust **tone** for different audiences",
+        "Make text **more concise** and readable"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Is text improvement free?",
+          "answer": "Yes! It uses **Chrome's local Rewriter API** (free, offline) when available, or falls back to **Google Gemini** (requires free API key)."
+        },
+        {
+          "question": "What improvement modes are available?",
+          "answer": "Offers **5 modes**: Fix Grammar, Improve Clarity, Make Professional, Make Casual, and Make Concise. Each optimized for different writing needs."
+        },
+        {
+          "question": "Does it change the meaning?",
+          "answer": "No, it preserves the **original meaning** while improving grammar, clarity, and style. You always have control over the final text."
+        }
+      ]
+    }
   },
   "es": {
     "title": "Mejorar Texto con IA",
@@ -29,6 +63,40 @@
     "improveButton": "✨ Mejorar Texto",
     "resultTitle": "Texto mejorado:",
     "copyButton": "📋 Copiar",
-    "downloadButton": "💾 Descargar"
+    "downloadButton": "💾 Descargar",
+    "seo": {
+      "whatIsTitle": "¿Qué es la mejora de texto con IA?",
+      "whatIsContent": "La **mejora de texto con IA** usa **Rewriter API de Chrome** o **Google Gemini** para mejorar tu escritura. Corrige gramática, mejora claridad, ajusta tono y hace el texto más profesional o conciso automáticamente.",
+      "howToTitle": "¿Cómo mejorar texto con IA?",
+      "howToSteps": [
+        "Pega tu **texto** que necesita mejora",
+        "Selecciona **modo de mejora**: Gramática, Claridad, Profesional, Casual o Conciso",
+        "Haz clic en **'Mejorar Texto'** para mejorar escritura",
+        "**Copia o descarga** la versión mejorada"
+      ],
+      "useCasesTitle": "Casos de uso para mejora de texto",
+      "useCases": [
+        "Corregir errores de **gramática y ortografía**",
+        "Hacer **emails más profesionales**",
+        "Mejorar **claridad** de escritura técnica",
+        "Ajustar **tono** para diferentes audiencias",
+        "Hacer texto **más conciso** y legible"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿La mejora de texto es gratuita?",
+          "answer": "¡Sí! Usa **Rewriter API local de Chrome** (gratis, offline) cuando está disponible, o recurre a **Google Gemini** (requiere API key gratuita)."
+        },
+        {
+          "question": "¿Qué modos de mejora están disponibles?",
+          "answer": "Ofrece **5 modos**: Corregir Gramática, Mejorar Claridad, Hacer Profesional, Hacer Casual y Hacer Conciso. Cada uno optimizado para diferentes necesidades de escritura."
+        },
+        {
+          "question": "¿Cambia el significado?",
+          "answer": "No, preserva el **significado original** mientras mejora gramática, claridad y estilo. Siempre tienes control sobre el texto final."
+        }
+      ]
+    }
   }
 }

@@ -343,11 +343,71 @@
     }
 </script>
 
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What is AI Image Editing?</h2>
+            <p class="mb-4"><strong>AI Image Editing</strong> uses <strong>Gemini 2.5 Flash Image</strong> (Nano Banana) to modify images with simple text instructions. Change backgrounds, add objects, adjust colors, and apply effects using natural language commands.</p>
+            <h3 class="h5 mb-3">How to edit images with AI?</h3>
+            <ol class="mb-4">
+                <li>Get a <strong>paid API key</strong> from <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener">Google AI Studio</a></li>
+                <li>Upload the <strong>image</strong> you want to edit</li>
+                <li>Write <strong>text instructions</strong> describing the changes</li>
+                <li>Click <strong>'Edit Image'</strong> and download the result (~$0.0125 per edit)</li>
+            </ol>
+            <h3 class="h5 mb-3">Use cases for AI image editing</h3>
+            <ul class="mb-4">
+                <li>Change <strong>backgrounds</strong> and environments</li>
+                <li>Add or remove <strong>objects</strong> from photos</li>
+                <li>Adjust <strong>colors, lighting, and mood</strong></li>
+                <li>Apply <strong>artistic styles</strong> and effects</li>
+                <li>Create <strong>product variations</strong> for e-commerce</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            Is this tool free?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            No, it requires a <strong>paid Google AI API key</strong>. Cost is approximately <strong>$0.0125 per image edit</strong>. The API key is stored locally in your browser.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            What is Nano Banana?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <strong>Nano Banana</strong> is the codename for Gemini 2.5 Flash Image, Google's AI model for image generation and editing with text instructions.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            Does it add watermarks?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, edited images include an <strong>invisible SynthID watermark</strong> for AI-generated content identification, but it's not visible to the human eye.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     
     <script>
-        window.toolTranslations = {"setupTitle":"⚙️ Initial Setup","setupDescription":"You need a <strong>paid</strong> API key from Google AI Studio (Nano Banana requires paid tier):","setupStep1":"Visit <a href='https://aistudio.google.com/app/apikey' target='_blank'>Google AI Studio</a>","setupStep2":"Create an API key with <strong>paid billing enabled</strong>","setupStep3":"Paste it below 👇","setupNote":"🔒 Stored locally in your browser | 💰 ~$0.0125 per edit","toolTitle":"🎨 Nano Banana:","toolDescription":"Edit images with AI using text instructions. Change backgrounds, add objects, adjust colors, and more!","toolNote":"Cost: ~$0.0125 per edit | Includes invisible SynthID watermark","uploadLabel":"Upload image to edit:","originalImageLabel":"Original image:","instructionLabel":"Editing instructions:","instructionHint":"Describe what you want to change or add to the image","resultTitle":"Edited Image:","apiKeyPlaceholder":"AIzaSy...","saveButton":"💾 Save","removeButton":"🗑️ Remove","validating":"⏳ Validating...","apiKeyConfigured":"✅ API Key configured","instructionPlaceholder":"Example: Change the background to a sunset beach, add warm color grading","editButton":"✨ Edit Image with AI","editing":"⏳ Editing... (may take 10-30 seconds)","downloadButton":"💾 Download Edited Image","editAnotherButton":"🔄 Edit Another","showCapabilitiesButton":"💡 Show Capabilities & Tips","hideCapabilitiesButton":"💡 Hide Capabilities & Tips","pleaseEnterApiKey":"❌ Please enter an API key","apiKeySaved":"✅ API Key saved successfully","invalidApiKey":"❌ Invalid API Key","pleaseSelectImage":"❌ Please select an image file","pleaseUploadImage":"❌ Please upload an image first","pleaseEnterInstructions":"❌ Please enter editing instructions","noImageEdited":"❌ No edited image generated. Please try again with different instructions.","quotaExceeded":"❌ Quota exceeded. Nano Banana requires a paid API key. Please check your billing at https://aistudio.google.com/","editError":"❌ Error","removeApiKeyConfirm":"Remove API key?"};
+        window.toolTranslations = {"setupTitle":"⚙️ Initial Setup","setupDescription":"You need a <strong>paid</strong> API key from Google AI Studio (Nano Banana requires paid tier):","setupStep1":"Visit <a href='https://aistudio.google.com/app/apikey' target='_blank'>Google AI Studio</a>","setupStep2":"Create an API key with <strong>paid billing enabled</strong>","setupStep3":"Paste it below 👇","setupNote":"🔒 Stored locally in your browser | 💰 ~$0.0125 per edit","toolTitle":"🎨 Nano Banana:","toolDescription":"Edit images with AI using text instructions. Change backgrounds, add objects, adjust colors, and more!","toolNote":"Cost: ~$0.0125 per edit | Includes invisible SynthID watermark","uploadLabel":"Upload image to edit:","originalImageLabel":"Original image:","instructionLabel":"Editing instructions:","instructionHint":"Describe what you want to change or add to the image","resultTitle":"Edited Image:","apiKeyPlaceholder":"AIzaSy...","saveButton":"💾 Save","removeButton":"🗑️ Remove","validating":"⏳ Validating...","apiKeyConfigured":"✅ API Key configured","instructionPlaceholder":"Example: Change the background to a sunset beach, add warm color grading","editButton":"✨ Edit Image with AI","editing":"⏳ Editing... (may take 10-30 seconds)","downloadButton":"💾 Download Edited Image","editAnotherButton":"🔄 Edit Another","showCapabilitiesButton":"💡 Show Capabilities & Tips","hideCapabilitiesButton":"💡 Hide Capabilities & Tips","pleaseEnterApiKey":"❌ Please enter an API key","apiKeySaved":"✅ API Key saved successfully","invalidApiKey":"❌ Invalid API Key","pleaseSelectImage":"❌ Please select an image file","pleaseUploadImage":"❌ Please upload an image first","pleaseEnterInstructions":"❌ Please enter editing instructions","noImageEdited":"❌ No edited image generated. Please try again with different instructions.","quotaExceeded":"❌ Quota exceeded. Nano Banana requires a paid API key. Please check your billing at https://aistudio.google.com/","editError":"❌ Error","removeApiKeyConfirm":"Remove API key?","seo":{"whatIsTitle":"What is AI Image Editing?","whatIsContent":"**AI Image Editing** uses **Gemini 2.5 Flash Image** (Nano Banana) to modify images with simple text instructions. Change backgrounds, add objects, adjust colors, and apply effects using natural language commands.","howToTitle":"How to edit images with AI?","howToSteps":["Get a **paid API key** from [Google AI Studio](https://aistudio.google.com/app/apikey)","Upload the **image** you want to edit","Write **text instructions** describing the changes","Click **'Edit Image'** and download the result (~$0.0125 per edit)"],"useCasesTitle":"Use cases for AI image editing","useCases":["Change **backgrounds** and environments","Add or remove **objects** from photos","Adjust **colors, lighting, and mood**","Apply **artistic styles** and effects","Create **product variations** for e-commerce"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"Is this tool free?","answer":"No, it requires a **paid Google AI API key**. Cost is approximately **$0.0125 per image edit**. The API key is stored locally in your browser."},{"question":"What is Nano Banana?","answer":"**Nano Banana** is the codename for Gemini 2.5 Flash Image, Google's AI model for image generation and editing with text instructions."},{"question":"Does it add watermarks?","answer":"Yes, edited images include an **invisible SynthID watermark** for AI-generated content identification, but it's not visible to the human eye."}]}};
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

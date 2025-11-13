@@ -238,11 +238,71 @@
     }
 </script>
 
+        <!-- SEO Content Section -->
+        <div class="seo-content mt-5 pt-4 border-top">
+            <h2 class="h4 mb-3">What is AI Text Summarization?</h2>
+            <p class="mb-4"><strong>AI Text Summarization</strong> uses <strong>Chrome's local Summarizer API</strong> or <strong>Google Gemini</strong> to condense long texts into concise summaries. Extract key points from articles, documents, and reports automatically.</p>
+            <h3 class="h5 mb-3">How to summarize text with AI?</h3>
+            <ol class="mb-4">
+                <li>Paste your <strong>long text</strong> (article, document, report)</li>
+                <li>Select <strong>summary length</strong>: Short, Medium, or Long</li>
+                <li>Click <strong>'Summarize'</strong> to generate summary</li>
+                <li><strong>Copy or download</strong> the condensed version</li>
+            </ol>
+            <h3 class="h5 mb-3">Use cases for text summarization</h3>
+            <ul class="mb-4">
+                <li>Summarize <strong>research papers</strong> and articles</li>
+                <li>Create <strong>executive summaries</strong> of reports</li>
+                <li>Extract <strong>key points</strong> from meeting notes</li>
+                <li>Condense <strong>news articles</strong> for quick reading</li>
+                <li>Generate <strong>abstracts</strong> for documents</li>
+            </ul>
+            <h3 class="h5 mb-3">Frequently Asked Questions</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading0">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse0" aria-expanded="false" aria-controls="faqCollapse0">
+                            Is text summarization free?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse0" class="accordion-collapse collapse" aria-labelledby="faqHeading0" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! It uses <strong>Chrome's local Summarizer API</strong> (free, offline) when available, or falls back to <strong>Google Gemini</strong> (requires free API key).
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                            How long can the text be?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Works best with texts between <strong>500-10,000 words</strong>. Longer texts may be truncated or require multiple summaries.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h4 class="accordion-header" id="faqHeading2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                            Does it work offline?
+                        </button>
+                    </h4>
+                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes! When using <strong>Chrome's Summarizer API</strong>, it works <strong>completely offline</strong> with no internet connection needed.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     
     <script>
-        window.toolTranslations = {"title":"Summarize Text with AI","description":"Summarize long texts using AI","inputLabel":"Text to summarize:","inputPlaceholder":"Paste your text here...","inputHint":"Tip: Works best with articles, documents, or long texts","lengthLabel":"Summary length:","lengthShort":"Short (2-3 sentences)","lengthMedium":"Medium (4-6 sentences)","lengthLong":"Long (detailed)","summarizeButton":"✨ Summarize","resultTitle":"Summary:","copyButton":"📋 Copy","downloadButton":"💾 Download"};
+        window.toolTranslations = {"title":"Summarize Text with AI","description":"Summarize long texts using AI","inputLabel":"Text to summarize:","inputPlaceholder":"Paste your text here...","inputHint":"Tip: Works best with articles, documents, or long texts","lengthLabel":"Summary length:","lengthShort":"Short (2-3 sentences)","lengthMedium":"Medium (4-6 sentences)","lengthLong":"Long (detailed)","summarizeButton":"✨ Summarize","resultTitle":"Summary:","copyButton":"📋 Copy","downloadButton":"💾 Download","seo":{"whatIsTitle":"What is AI Text Summarization?","whatIsContent":"**AI Text Summarization** uses **Chrome's local Summarizer API** or **Google Gemini** to condense long texts into concise summaries. Extract key points from articles, documents, and reports automatically.","howToTitle":"How to summarize text with AI?","howToSteps":["Paste your **long text** (article, document, report)","Select **summary length**: Short, Medium, or Long","Click **'Summarize'** to generate summary","**Copy or download** the condensed version"],"useCasesTitle":"Use cases for text summarization","useCases":["Summarize **research papers** and articles","Create **executive summaries** of reports","Extract **key points** from meeting notes","Condense **news articles** for quick reading","Generate **abstracts** for documents"],"faqTitle":"Frequently Asked Questions","faq":[{"question":"Is text summarization free?","answer":"Yes! It uses **Chrome's local Summarizer API** (free, offline) when available, or falls back to **Google Gemini** (requires free API key)."},{"question":"How long can the text be?","answer":"Works best with texts between **500-10,000 words**. Longer texts may be truncated or require multiple summaries."},{"question":"Does it work offline?","answer":"Yes! When using **Chrome's Summarizer API**, it works **completely offline** with no internet connection needed."}]}};
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

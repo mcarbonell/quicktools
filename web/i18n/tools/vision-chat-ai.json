@@ -12,7 +12,41 @@
     "analyzeButton": "✨ Analyze & Suggest Edits",
     "resultTitle": "AI Suggestions:",
     "copyButton": "📋 Copy",
-    "downloadButton": "💾 Download"
+    "downloadButton": "💾 Download",
+    "seo": {
+      "whatIsTitle": "What is AI Vision Chat?",
+      "whatIsContent": "**AI Vision Chat** uses **Google Gemini Vision** to analyze images and answer questions about them. Ask about objects, text, colors, composition, or get detailed descriptions of any image.",
+      "howToTitle": "How to chat with images?",
+      "howToSteps": [
+        "Upload an **image** you want to analyze",
+        "Ask a **question** or request analysis",
+        "Get **detailed AI responses** about the image",
+        "Ask **follow-up questions** for more details"
+      ],
+      "useCasesTitle": "Use cases for AI vision chat",
+      "useCases": [
+        "Identify **objects and scenes** in photos",
+        "Extract and read **text from images** (OCR)",
+        "Get **accessibility descriptions** for images",
+        "Analyze **product photos** and designs",
+        "Understand **diagrams and charts**"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Is AI vision chat free?",
+          "answer": "Requires a **free Google Gemini API key**. Get one at [Google AI Studio](https://aistudio.google.com/app/apikey). The key is stored locally in your browser."
+        },
+        {
+          "question": "What can it recognize?",
+          "answer": "Can identify **objects, people, text, colors, scenes, emotions, brands, landmarks**, and provide detailed descriptions of image content."
+        },
+        {
+          "question": "Does it work with any image?",
+          "answer": "Yes! Works with **JPG, PNG, WebP, GIF** and most image formats. Best results with clear, well-lit images."
+        }
+      ]
+    }
   },
   "es": {
     "title": "Editar Imagen con IA",
@@ -27,6 +61,40 @@
     "analyzeButton": "✨ Analizar y Sugerir Ediciones",
     "resultTitle": "Sugerencias de IA:",
     "copyButton": "📋 Copiar",
-    "downloadButton": "💾 Descargar"
+    "downloadButton": "💾 Descargar",
+    "seo": {
+      "whatIsTitle": "¿Qué es el chat con visión IA?",
+      "whatIsContent": "El **chat con visión IA** usa **Google Gemini Vision** para analizar imágenes y responder preguntas sobre ellas. Pregunta sobre objetos, texto, colores, composición u obtén descripciones detalladas de cualquier imagen.",
+      "howToTitle": "¿Cómo chatear con imágenes?",
+      "howToSteps": [
+        "Sube una **imagen** que quieras analizar",
+        "Haz una **pregunta** o solicita análisis",
+        "Obtén **respuestas detalladas de IA** sobre la imagen",
+        "Haz **preguntas de seguimiento** para más detalles"
+      ],
+      "useCasesTitle": "Casos de uso para chat con visión IA",
+      "useCases": [
+        "Identificar **objetos y escenas** en fotos",
+        "Extraer y leer **texto de imágenes** (OCR)",
+        "Obtener **descripciones de accesibilidad** para imágenes",
+        "Analizar **fotos de productos** y diseños",
+        "Entender **diagramas y gráficos**"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿El chat con visión IA es gratuito?",
+          "answer": "Requiere una **API key gratuita de Google Gemini**. Obténla en [Google AI Studio](https://aistudio.google.com/app/apikey). La key se almacena localmente en tu navegador."
+        },
+        {
+          "question": "¿Qué puede reconocer?",
+          "answer": "Puede identificar **objetos, personas, texto, colores, escenas, emociones, marcas, monumentos**, y proporcionar descripciones detalladas del contenido de la imagen."
+        },
+        {
+          "question": "¿Funciona con cualquier imagen?",
+          "answer": "¡Sí! Funciona con **JPG, PNG, WebP, GIF** y la mayoría de formatos de imagen. Mejores resultados con imágenes claras y bien iluminadas."
+        }
+      ]
+    }
   }
 }
