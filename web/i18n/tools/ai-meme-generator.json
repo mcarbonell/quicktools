@@ -1,0 +1,132 @@
+{
+  "en": {
+    "setupTitle": "⚙️ Initial Setup",
+    "setupDescription": "You need a <strong>paid</strong> API key from Google AI Studio (Nano Banana requires paid tier):",
+    "setupStep1": "Visit <a href='https://aistudio.google.com/app/apikey' target='_blank'>Google AI Studio</a>",
+    "setupStep2": "Create an API key with <strong>paid billing enabled</strong>",
+    "setupStep3": "Paste it below 👇",
+    "setupNote": "🔒 Stored locally in your browser | 💰 ~$0.0125 per meme",
+    "toolTitle": "🎭 AI Meme Generator:",
+    "toolDescription": "Turn any image into a viral meme! AI analyzes your image and adds funny text automatically, or use your own custom text.",
+    "toolNote": "Cost: ~$0.0125 per meme | Auto-detects language | Cleans existing meme text",
+    "uploadLabel": "Upload image for meme:",
+    "originalImageLabel": "Original image:",
+    "memeTextLabel": "Meme text (optional):",
+    "memeTextPlaceholder": "Leave blank for AI to create funny text automatically",
+    "memeTextHint": "💡 Leave empty for AI magic, or write your own meme text",
+    "generateButton": "Generate Meme",
+    "generating": "Generating meme...",
+    "resultTitle": "Your Meme:",
+    "downloadButton": "💾 Download Meme",
+    "generateAnotherButton": "🔄 Generate Another",
+    "apiKeyPlaceholder": "AIzaSy...",
+    "saveButton": "💾 Save",
+    "validating": "⏳ Validating...",
+    "pleaseEnterApiKey": "❌ Please enter an API key",
+    "apiKeySaved": "✅ API Key saved successfully",
+    "invalidApiKey": "❌ Invalid API Key",
+    "pleaseUploadImage": "❌ Please upload an image first",
+    "noMemeGenerated": "❌ No meme generated. Please try again.",
+    "quotaExceeded": "❌ Quota exceeded. Nano Banana requires a paid API key. Check billing at https://aistudio.google.com/",
+    "generationError": "❌ Error",
+    "seo": {
+      "whatIsTitle": "What is an AI Meme Generator?",
+      "whatIsContent": "An **AI Meme Generator** uses **Gemini 2.5 Flash Image** (Nano Banana) to automatically create memes from any image. The AI analyzes your photo, thinks of funny relatable text, and adds it in classic meme format with white text and black outline.",
+      "howToTitle": "How to generate memes with AI?",
+      "howToSteps": [
+        "Get a **paid API key** from [Google AI Studio](https://aistudio.google.com/app/apikey)",
+        "Upload any **image** you want to turn into a meme",
+        "Leave text **blank for AI magic**, or write your own meme text",
+        "Click **'Generate Meme'** and download (~$0.0125 per meme)"
+      ],
+      "useCasesTitle": "Use cases for AI meme generator",
+      "useCases": [
+        "Create **viral memes** for social media",
+        "Generate **marketing memes** for brands",
+        "Make **reaction memes** from photos",
+        "Create **custom memes** with your text",
+        "Replace text in **existing memes**"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Is the meme generator free?",
+          "answer": "No, it requires a **paid Google AI API key**. Cost is approximately **$0.0125 per meme**. The AI analyzes images and adds text automatically."
+        },
+        {
+          "question": "Can it create text automatically?",
+          "answer": "Yes! Leave the text field **blank** and the AI will analyze your image and create **funny, relatable meme text** automatically in your language."
+        },
+        {
+          "question": "What if my image already has meme text?",
+          "answer": "The AI will **automatically clean** existing meme text and replace it with new text, so you can remix existing memes easily."
+        }
+      ]
+    }
+  },
+  "es": {
+    "setupTitle": "⚙️ Configuración Inicial",
+    "setupDescription": "Necesitas una API key <strong>de pago</strong> de Google AI Studio (Nano Banana requiere tier de pago):",
+    "setupStep1": "Visita <a href='https://aistudio.google.com/app/apikey' target='_blank'>Google AI Studio</a>",
+    "setupStep2": "Crea una API key con <strong>facturación de pago habilitada</strong>",
+    "setupStep3": "Pégala abajo 👇",
+    "setupNote": "🔒 Almacenada localmente en tu navegador | 💰 ~$0.0125 por meme",
+    "toolTitle": "🎭 Generador de Memes con IA:",
+    "toolDescription": "¡Convierte cualquier imagen en un meme viral! La IA analiza tu imagen y añade texto gracioso automáticamente, o usa tu propio texto personalizado.",
+    "toolNote": "Costo: ~$0.0125 por meme | Detecta idioma automáticamente | Limpia texto de memes existentes",
+    "uploadLabel": "Sube imagen para meme:",
+    "originalImageLabel": "Imagen original:",
+    "memeTextLabel": "Texto del meme (opcional):",
+    "memeTextPlaceholder": "Déjalo en blanco para que la IA cree texto gracioso automáticamente",
+    "memeTextHint": "💡 Déjalo vacío para magia IA, o escribe tu propio texto de meme",
+    "generateButton": "Generar Meme",
+    "generating": "Generando meme...",
+    "resultTitle": "Tu Meme:",
+    "downloadButton": "💾 Descargar Meme",
+    "generateAnotherButton": "🔄 Generar Otro",
+    "apiKeyPlaceholder": "AIzaSy...",
+    "saveButton": "💾 Guardar",
+    "validating": "⏳ Validando...",
+    "pleaseEnterApiKey": "❌ Por favor, introduce una API key",
+    "apiKeySaved": "✅ API Key guardada exitosamente",
+    "invalidApiKey": "❌ API Key inválida",
+    "pleaseUploadImage": "❌ Por favor, sube una imagen primero",
+    "noMemeGenerated": "❌ No se generó meme. Inténtalo de nuevo.",
+    "quotaExceeded": "❌ Cuota excedida. Nano Banana requiere una API key de pago. Verifica facturación en https://aistudio.google.com/",
+    "generationError": "❌ Error",
+    "seo": {
+      "whatIsTitle": "¿Qué es un generador de memes con IA?",
+      "whatIsContent": "Un **generador de memes con IA** usa **Gemini 2.5 Flash Image** (Nano Banana) para crear memes automáticamente desde cualquier imagen. La IA analiza tu foto, piensa en texto gracioso y relatable, y lo añade en formato clásico de meme con texto blanco y borde negro.",
+      "howToTitle": "¿Cómo generar memes con IA?",
+      "howToSteps": [
+        "Obtén una **API key de pago** de [Google AI Studio](https://aistudio.google.com/app/apikey)",
+        "Sube cualquier **imagen** que quieras convertir en meme",
+        "Deja el texto **en blanco para magia IA**, o escribe tu propio texto de meme",
+        "Haz clic en **'Generar Meme'** y descarga (~$0.0125 por meme)"
+      ],
+      "useCasesTitle": "Casos de uso para generador de memes con IA",
+      "useCases": [
+        "Crear **memes virales** para redes sociales",
+        "Generar **memes de marketing** para marcas",
+        "Hacer **memes de reacción** desde fotos",
+        "Crear **memes personalizados** con tu texto",
+        "Reemplazar texto en **memes existentes**"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿El generador de memes es gratuito?",
+          "answer": "No, requiere una **API key de pago de Google AI**. El costo es aproximadamente **$0.0125 por meme**. La IA analiza imágenes y añade texto automáticamente."
+        },
+        {
+          "question": "¿Puede crear texto automáticamente?",
+          "answer": "¡Sí! Deja el campo de texto **en blanco** y la IA analizará tu imagen y creará **texto de meme gracioso y relatable** automáticamente en tu idioma."
+        },
+        {
+          "question": "¿Qué pasa si mi imagen ya tiene texto de meme?",
+          "answer": "La IA **limpiará automáticamente** el texto de meme existente y lo reemplazará con texto nuevo, así puedes remezclar memes existentes fácilmente."
+        }
+      ]
+    }
+  }
+}

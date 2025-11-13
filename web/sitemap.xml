@@ -880,4 +880,20 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/image-to-text-ocr.html"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/image-to-text-ocr.html"/>
   </url>
+  <url>
+    <loc>https://fasttools.tools/ai-meme-generator.html</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/ai-meme-generator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/ai-meme-generator.html"/>
+  </url>
+  <url>
+    <loc>https://fasttools.tools/es/ai-meme-generator.html</loc>
+    <lastmod>2025-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://fasttools.tools/ai-meme-generator.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://fasttools.tools/es/ai-meme-generator.html"/>
+  </url>
 </urlset>

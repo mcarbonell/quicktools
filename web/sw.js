@@ -1,8 +1,8 @@
 // sw.js - Service Worker para FastTools
 // Cache name con version para invalidar cache cuando actualicemos
-const CACHE_NAME = 'fasttools-v3.0.53';
-const STATIC_CACHE = 'fasttools-static-v3.0.53';
-const DYNAMIC_CACHE = 'fasttools-dynamic-v3.0.53';
+const CACHE_NAME = 'fasttools-v3.0.54';
+const STATIC_CACHE = 'fasttools-static-v3.0.54';
+const DYNAMIC_CACHE = 'fasttools-dynamic-v3.0.54';
 
 // Recursos críticos que deben estar siempre en cache
 const STATIC_ASSETS = [
@@ -32,7 +32,7 @@ const MAX_CACHE_SIZE = 50; // Máximo número de items en cache dinámico
  * Se ejecuta cuando el SW se instala por primera vez
  */
 self.addEventListener('install', (event) => {
-    console.log('[SW] Installing Service Worker v3.0.53');
+    console.log('[SW] Installing Service Worker v3.0.54');
 
     event.waitUntil(
         (async () => {
@@ -59,7 +59,7 @@ self.addEventListener('install', (event) => {
  * Se ejecuta cuando el SW toma control de la página
  */
 self.addEventListener('activate', (event) => {
-    console.log('[SW] Activating Service Worker v3.0.53');
+    console.log('[SW] Activating Service Worker v3.0.54');
 
     event.waitUntil(
         (async () => {

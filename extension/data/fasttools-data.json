@@ -145,7 +145,7 @@
         "es": "Herramientas para diseño gráfico y edición de imágenes",
         "en": "Tools for graphic design and image editing"
       },
-      "tools": ["image-resizer", "convert-image", "image-cropper", "image-compressor", "color-palette-generator", "color-picker-converter", "exif-viewer-cleaner", "vision-chat-ai", "image-generator-ai", "image-editor-ai", "alt-text-generator-ai", "image-to-text-ocr"]
+      "tools": ["image-resizer", "convert-image", "image-cropper", "image-compressor", "color-palette-generator", "color-picker-converter", "exif-viewer-cleaner", "vision-chat-ai", "image-generator-ai", "image-editor-ai", "alt-text-generator-ai", "image-to-text-ocr", "ai-meme-generator"]
     },
     {
       "id": "writers",
@@ -187,7 +187,7 @@
         "es": "Herramientas para marketing digital y redes sociales",
         "en": "Tools for digital marketing and social media"
       },
-      "tools": ["qr-generator", "image-resizer", "convert-image", "image-compressor", "color-palette-generator", "chat-ai", "meta-tags-analyzer", "open-graph-preview", "alt-text-generator-ai"]
+      "tools": ["qr-generator", "image-resizer", "convert-image", "image-compressor", "color-palette-generator", "chat-ai", "meta-tags-analyzer", "open-graph-preview", "alt-text-generator-ai", "ai-meme-generator"]
     },
     {
       "id": "productivity",
@@ -215,7 +215,7 @@
         "es": "Herramientas potenciadas con inteligencia artificial",
         "en": "AI-powered tools"
       },
-      "tools": ["chat-ai", "chat-pdf", "summarize-text-ai", "improve-text-ai", "translate-ai", "vision-chat-ai", "image-generator-ai", "image-editor-ai", "alt-text-generator-ai", "audio-transcription-ai", "image-to-text-ocr"]
+      "tools": ["chat-ai", "chat-pdf", "summarize-text-ai", "improve-text-ai", "translate-ai", "vision-chat-ai", "image-generator-ai", "image-editor-ai", "alt-text-generator-ai", "audio-transcription-ai", "image-to-text-ocr", "ai-meme-generator"]
     },
     {
       "id": "seo-specialists",
@@ -941,6 +941,22 @@
       "categories": ["ai", "image", "converters"],
       "icon": "📝",
       "tags": ["ai", "ocr", "image", "text", "extract", "vision"],
+      "availableIn": ["web"]
+    },
+    {
+      "id": "ai-meme-generator",
+      "slug": "ai-meme-generator.html",
+      "title": {
+        "es": "Generador de Memes con IA",
+        "en": "AI Meme Generator"
+      },
+      "description": {
+        "es": "Crea memes virales automáticamente con IA. Sube una imagen y la IA añade texto gracioso o usa tu propio texto.",
+        "en": "Create viral memes automatically with AI. Upload an image and AI adds funny text or use your own."
+      },
+      "categories": ["ai", "image", "generators"],
+      "icon": "🎭",
+      "tags": ["ai", "meme", "generator", "funny", "viral", "social-media", "nano-banana"],
       "availableIn": ["web"]
     }
   ]
