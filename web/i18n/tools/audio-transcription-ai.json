@@ -15,7 +15,41 @@
     "copy": "Copy",
     "copied": "Copied!",
     "transcription_error": "Error transcribing audio. Please try again.",
-    "microphone_error": "Could not access microphone. Please check permissions."
+    "microphone_error": "Could not access microphone. Please check permissions.",
+    "seo": {
+      "whatIsTitle": "What is AI Audio Transcription?",
+      "whatIsContent": "**AI Audio Transcription** uses **Chrome's local AI** (Gemini Nano) to convert **speech to text** completely offline. Transcribe audio files or record live audio with **100% privacy** - no data sent to servers.",
+      "howToTitle": "How to transcribe audio with AI?",
+      "howToSteps": [
+        "**Upload** an audio file (MP3, WAV, OGG, M4A, WebM)",
+        "Or click **'Record Audio'** to capture live speech",
+        "Click **'Transcribe Audio'** to convert to text",
+        "**Copy or download** the transcription result"
+      ],
+      "useCasesTitle": "Use cases for audio transcription",
+      "useCases": [
+        "Transcribe **meeting recordings** and interviews",
+        "Convert **voice notes** to searchable text",
+        "Create **subtitles** for videos and podcasts",
+        "Generate **meeting minutes** from audio",
+        "Transcribe **lectures** and educational content"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Is audio transcription free?",
+          "answer": "Yes! It uses **Chrome's local AI** which is completely free and processes audio **100% locally** without sending data to external servers."
+        },
+        {
+          "question": "What audio formats are supported?",
+          "answer": "Supports **MP3, WAV, OGG, M4A, WebM** and any format your browser can play. You can also **record live audio** directly."
+        },
+        {
+          "question": "Does this work offline?",
+          "answer": "Yes! Once Chrome's AI model is downloaded, transcription works **completely offline** with no internet connection needed."
+        }
+      ]
+    }
   },
   "es": {
     "checking_service": "Verificando disponibilidad del servicio IA...",
@@ -33,6 +67,40 @@
     "copy": "Copiar",
     "copied": "¡Copiado!",
     "transcription_error": "Error al transcribir audio. Por favor, inténtalo de nuevo.",
-    "microphone_error": "No se pudo acceder al micrófono. Por favor, verifica los permisos."
+    "microphone_error": "No se pudo acceder al micrófono. Por favor, verifica los permisos.",
+    "seo": {
+      "whatIsTitle": "¿Qué es la transcripción de audio con IA?",
+      "whatIsContent": "La **transcripción de audio con IA** usa **IA local de Chrome** (Gemini Nano) para convertir **voz a texto** completamente offline. Transcribe archivos de audio o graba audio en vivo con **100% privacidad** - ningún dato se envía a servidores.",
+      "howToTitle": "¿Cómo transcribir audio con IA?",
+      "howToSteps": [
+        "**Sube** un archivo de audio (MP3, WAV, OGG, M4A, WebM)",
+        "O haz clic en **'Grabar Audio'** para capturar voz en vivo",
+        "Haz clic en **'Transcribir Audio'** para convertir a texto",
+        "**Copia o descarga** el resultado de la transcripción"
+      ],
+      "useCasesTitle": "Casos de uso para transcripción de audio",
+      "useCases": [
+        "Transcribir **grabaciones de reuniones** y entrevistas",
+        "Convertir **notas de voz** a texto buscable",
+        "Crear **subtítulos** para videos y podcasts",
+        "Generar **actas de reuniones** desde audio",
+        "Transcribir **clases** y contenido educativo"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿La transcripción de audio es gratuita?",
+          "answer": "¡Sí! Usa **IA local de Chrome** que es completamente gratuita y procesa audio **100% localmente** sin enviar datos a servidores externos."
+        },
+        {
+          "question": "¿Qué formatos de audio son compatibles?",
+          "answer": "Soporta **MP3, WAV, OGG, M4A, WebM** y cualquier formato que tu navegador pueda reproducir. También puedes **grabar audio en vivo** directamente."
+        },
+        {
+          "question": "¿Funciona sin conexión?",
+          "answer": "¡Sí! Una vez descargado el modelo de IA de Chrome, la transcripción funciona **completamente offline** sin necesidad de conexión a internet."
+        }
+      ]
+    }
   }
 }

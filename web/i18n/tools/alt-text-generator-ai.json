@@ -14,7 +14,41 @@
     "resultTitle": "Generated Alt Text:",
     "copyButton": "📋 Copy",
     "downloadButton": "💾 Download",
-    "clearButton": "🗑️ Clear"
+    "clearButton": "🗑️ Clear",
+    "seo": {
+      "whatIsTitle": "What is AI Alt Text Generation?",
+      "whatIsContent": "**AI Alt Text Generation** uses **local AI vision** (Chrome Gemini Nano) to analyze images and generate **SEO-optimized alternative text** for accessibility and search engines. Alt text helps visually impaired users and improves image SEO.",
+      "howToTitle": "How to generate alt text with AI?",
+      "howToSteps": [
+        "Upload an **image** (JPG, PNG, WebP, GIF)",
+        "Optionally customize the **prompt** for specific focus",
+        "Click **'Generate Alt Text'** to analyze with local AI",
+        "Copy the **SEO-optimized description** for your website"
+      ],
+      "useCasesTitle": "Use cases for AI alt text",
+      "useCases": [
+        "Generate **accessible descriptions** for website images",
+        "Improve **image SEO** with keyword-rich alt text",
+        "Batch process **product images** for e-commerce",
+        "Create **social media** image descriptions",
+        "Ensure **WCAG accessibility compliance**"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Is this tool free?",
+          "answer": "Yes! It uses **Chrome's local AI** (Gemini Nano) which is completely free and processes images **100% locally** without sending data to servers."
+        },
+        {
+          "question": "What makes good alt text?",
+          "answer": "Good alt text is **descriptive, concise** (under 125 characters), includes **relevant keywords**, and describes the image's purpose in context."
+        },
+        {
+          "question": "Does this work offline?",
+          "answer": "Yes! Once Chrome's AI model is downloaded, alt text generation works **completely offline** with no internet connection needed."
+        }
+      ]
+    }
   },
   "es": {
     "title": "Generador de Alt Text con IA",
@@ -31,6 +65,40 @@
     "resultTitle": "Alt Text Generado:",
     "copyButton": "📋 Copiar",
     "downloadButton": "💾 Descargar",
-    "clearButton": "🗑️ Limpiar"
+    "clearButton": "🗑️ Limpiar",
+    "seo": {
+      "whatIsTitle": "¿Qué es la generación de Alt Text con IA?",
+      "whatIsContent": "La **generación de Alt Text con IA** usa **visión IA local** (Chrome Gemini Nano) para analizar imágenes y generar **texto alternativo optimizado para SEO** para accesibilidad y motores de búsqueda. El alt text ayuda a usuarios con discapacidad visual y mejora el SEO de imágenes.",
+      "howToTitle": "¿Cómo generar alt text con IA?",
+      "howToSteps": [
+        "Sube una **imagen** (JPG, PNG, WebP, GIF)",
+        "Opcionalmente personaliza el **prompt** para enfoque específico",
+        "Haz clic en **'Generar Alt Text'** para analizar con IA local",
+        "Copia la **descripción optimizada para SEO** para tu sitio web"
+      ],
+      "useCasesTitle": "Casos de uso para alt text con IA",
+      "useCases": [
+        "Generar **descripciones accesibles** para imágenes web",
+        "Mejorar **SEO de imágenes** con alt text rico en keywords",
+        "Procesar por lotes **imágenes de productos** para e-commerce",
+        "Crear descripciones de imágenes para **redes sociales**",
+        "Asegurar **cumplimiento de accesibilidad WCAG**"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Esta herramienta es gratuita?",
+          "answer": "¡Sí! Usa **IA local de Chrome** (Gemini Nano) que es completamente gratuita y procesa imágenes **100% localmente** sin enviar datos a servidores."
+        },
+        {
+          "question": "¿Qué hace un buen alt text?",
+          "answer": "Un buen alt text es **descriptivo, conciso** (menos de 125 caracteres), incluye **keywords relevantes**, y describe el propósito de la imagen en contexto."
+        },
+        {
+          "question": "¿Funciona sin conexión?",
+          "answer": "¡Sí! Una vez descargado el modelo de IA de Chrome, la generación de alt text funciona **completamente offline** sin necesidad de conexión a internet."
+        }
+      ]
+    }
   }
 }

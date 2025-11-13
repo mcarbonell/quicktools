@@ -16,7 +16,41 @@
     "copy": "Copy",
     "copied": "Copied!",
     "download": "Download",
-    "extraction_error": "Error extracting text. Please try again."
+    "extraction_error": "Error extracting text. Please try again.",
+    "seo": {
+      "whatIsTitle": "What is OCR (Optical Character Recognition)?",
+      "whatIsContent": "**OCR (Optical Character Recognition)** uses **AI vision** to extract text from images. Our tool uses **Chrome's local AI** (Gemini Nano) to perform OCR **100% offline** with complete privacy. Convert images to text, Markdown, or structured JSON.",
+      "howToTitle": "How to extract text from images?",
+      "howToSteps": [
+        "**Upload** an image containing text (JPG, PNG, WebP, GIF, BMP)",
+        "Select **output format**: Plain Text, Markdown, or JSON",
+        "Click **'Extract Text'** to perform OCR with local AI",
+        "**Copy or download** the extracted text"
+      ],
+      "useCasesTitle": "Use cases for OCR",
+      "useCases": [
+        "Digitize **printed documents** and books",
+        "Extract text from **screenshots** and photos",
+        "Convert **business cards** to contact data",
+        "Transcribe **handwritten notes** (with AI assistance)",
+        "Extract data from **receipts** and invoices"
+      ],
+      "faqTitle": "Frequently Asked Questions",
+      "faq": [
+        {
+          "question": "Is this OCR tool free?",
+          "answer": "Yes! It uses **Chrome's local AI** which is completely free and processes images **100% locally** without uploading to servers."
+        },
+        {
+          "question": "What image formats are supported?",
+          "answer": "Supports **JPG, PNG, WebP, GIF, BMP** and any image format your browser can display. Works best with clear, high-contrast text."
+        },
+        {
+          "question": "Can it recognize handwriting?",
+          "answer": "Yes! The AI can recognize **printed and handwritten text**, though accuracy is higher with printed text. Try different prompts for better results."
+        }
+      ]
+    }
   },
   "es": {
     "checking_service": "Verificando disponibilidad del servicio IA...",
@@ -35,6 +69,40 @@
     "copy": "Copiar",
     "copied": "¡Copiado!",
     "download": "Descargar",
-    "extraction_error": "Error al extraer texto. Por favor, inténtalo de nuevo."
+    "extraction_error": "Error al extraer texto. Por favor, inténtalo de nuevo.",
+    "seo": {
+      "whatIsTitle": "¿Qué es OCR (Reconocimiento Óptico de Caracteres)?",
+      "whatIsContent": "**OCR (Reconocimiento Óptico de Caracteres)** usa **visión IA** para extraer texto de imágenes. Nuestra herramienta usa **IA local de Chrome** (Gemini Nano) para realizar OCR **100% offline** con privacidad completa. Convierte imágenes a texto, Markdown o JSON estructurado.",
+      "howToTitle": "¿Cómo extraer texto de imágenes?",
+      "howToSteps": [
+        "**Sube** una imagen con texto (JPG, PNG, WebP, GIF, BMP)",
+        "Selecciona **formato de salida**: Texto Plano, Markdown o JSON",
+        "Haz clic en **'Extraer Texto'** para realizar OCR con IA local",
+        "**Copia o descarga** el texto extraído"
+      ],
+      "useCasesTitle": "Casos de uso para OCR",
+      "useCases": [
+        "Digitalizar **documentos impresos** y libros",
+        "Extraer texto de **capturas de pantalla** y fotos",
+        "Convertir **tarjetas de visita** a datos de contacto",
+        "Transcribir **notas manuscritas** (con asistencia IA)",
+        "Extraer datos de **recibos** y facturas"
+      ],
+      "faqTitle": "Preguntas frecuentes",
+      "faq": [
+        {
+          "question": "¿Esta herramienta OCR es gratuita?",
+          "answer": "¡Sí! Usa **IA local de Chrome** que es completamente gratuita y procesa imágenes **100% localmente** sin subir a servidores."
+        },
+        {
+          "question": "¿Qué formatos de imagen son compatibles?",
+          "answer": "Soporta **JPG, PNG, WebP, GIF, BMP** y cualquier formato de imagen que tu navegador pueda mostrar. Funciona mejor con texto claro y alto contraste."
+        },
+        {
+          "question": "¿Puede reconocer escritura a mano?",
+          "answer": "¡Sí! La IA puede reconocer **texto impreso y manuscrito**, aunque la precisión es mayor con texto impreso. Prueba diferentes prompts para mejores resultados."
+        }
+      ]
+    }
   }
 }
