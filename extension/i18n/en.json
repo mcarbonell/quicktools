@@ -93,7 +93,12 @@
     "nav_privacy": "Privacy",
     "nav_sync": "Sync",
     "nav_profile": "Profile",
-    "nav_advanced": "Advanced"
+    "nav_advanced": "Advanced",
+    "section_general": "General Settings",
+    "section_appearance": "Appearance",
+    "group_functionality": "Functionality",
+    "auto_start": "Start automatically with browser",
+    "auto_start_desc": "The extension will activate automatically when opening Chrome"
   },
   "onboarding": {
     "welcome_title": "Welcome to FastTools!",

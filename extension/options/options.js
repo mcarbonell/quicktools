@@ -46,6 +46,13 @@ class OptionsManager {
         this.updateUI();
         this.setupTheme();
         this.loadDataStats();
+        
+        // Restaurar sección activa después de cambio de idioma
+        const savedSection = sessionStorage.getItem('activeSection');
+        if (savedSection) {
+            this.switchSection(savedSection);
+            sessionStorage.removeItem('activeSection');
+        }
 
         console.log('Options page initialized');
     }
@@ -264,6 +271,8 @@ class OptionsManager {
             languageSelect.addEventListener('change', async (e) => {
                 const newLang = e.target.value;
                 await setLanguage(newLang);
+                // Guardar sección activa antes de recargar
+                sessionStorage.setItem('activeSection', this.currentSection);
                 location.reload();
             });
         }

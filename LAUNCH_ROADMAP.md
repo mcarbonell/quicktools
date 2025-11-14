@@ -22,9 +22,10 @@
 - [x] Analytics básico
 
 ### 🔄 En Progreso
+- [x] Resolución de dominio fasttools.ai
+- [ ] I18n en la extensión
 - [ ] Pulido de diseño (consistencia visual)
 - [ ] Testing exhaustivo de todas las herramientas
-- [x] Resolución de dominio fasttools.ai
 - [ ] Gestión de API keys (free/paid)
 
 ### 📋 Pendiente
