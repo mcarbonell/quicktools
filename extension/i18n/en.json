@@ -104,6 +104,8 @@
   },
   "categories": {
     "all": "All",
+    "category_all": "All",
+    "utils": "🔧 Utilities",
     "developers": "💻 Developers",
     "designers": "🎨 Designers",
     "writers": "✍️ Writers",
@@ -130,6 +132,28 @@
     "section_quick_access": "⚡ Quick Access",
     "section_all_tools": "🛠️ All Tools",
     "section_notes": "📝 Quick Notes"
+  },
+  "timer": {
+    "timer_title": "⏰ Timer",
+    "timer_start": "Start",
+    "timer_stop": "Stop",
+    "timer_reset": "Reset"
+  },
+  "buttons": {
+    "btn_edit": "✏️ Edit",
+    "btn_new": "+ New",
+    "btn_save": "Save",
+    "btn_cancel": "Cancel",
+    "btn_close": "Close",
+    "btn_delete": "🗑️ Delete"
+  },
+  "modals": {
+    "modal_settings": "⚙️ Settings",
+    "modal_favorites": "⭐ Edit Quick Access",
+    "modal_notes": "📝 Note Editor"
+  },
+  "favorites": {
+    "favorites_description": "Select up to 8 tools for quick access:"
   },
   "usage": {
     "usage_count": "{count} uses",

@@ -260,9 +260,11 @@ class OptionsManager {
         // Language Settings
         const languageSelect = document.getElementById('language-select');
         if (languageSelect) {
-            languageSelect.value = this.settings.language || 'en';
-            languageSelect.addEventListener('change', (e) => {
-                this.settings.language = e.target.value;
+            languageSelect.value = this.lang || 'en';
+            languageSelect.addEventListener('change', async (e) => {
+                const newLang = e.target.value;
+                await setLanguage(newLang);
+                location.reload();
             });
         }
 
