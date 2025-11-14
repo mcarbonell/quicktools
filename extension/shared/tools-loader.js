@@ -48,15 +48,21 @@ export async function loadTools(lang = 'es') {
                 
                 // Determine URL based on availability
                 let url;
+                let isLocal = false;
+                
                 if (hasExtension && tool.extensionSlug) {
                     // Local implementation in extension
                     url = chrome.runtime.getURL(tool.extensionSlug);
+                    isLocal = true;
+                    console.log(`🔧 ${tool.id}: Local URL = ${url}`);
                 } else if (hasWeb) {
                     // Redirect to web version
                     url = `${BASE_URL}${langPrefix}/${tool.slug}`;
+                    console.log(`🌐 ${tool.id}: Web URL = ${url}`);
                 } else {
                     // Should not happen due to filter, but fallback to web
                     url = `${BASE_URL}${langPrefix}/${tool.slug}`;
+                    console.log(`⚠️ ${tool.id}: Fallback URL = ${url}`);
                 }
                 
                 return {
@@ -65,7 +71,7 @@ export async function loadTools(lang = 'es') {
                     description: tool.description[lang] || tool.description.es,
                     category: tool.categories[0], // Primary category
                     url: url,
-                    local: hasExtension && tool.extensionSlug ? true : false
+                    local: isLocal
                 };
             });
         

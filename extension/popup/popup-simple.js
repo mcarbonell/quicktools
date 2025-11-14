@@ -131,11 +131,8 @@ class FastToolsPopup {
             showModal('notes-modal');
             this.loadNotes();
         } else {
-            // Open all tools in web version (fasttools.ai)
-            const toolSlug = tool.slug.replace(/^local:\/\//, '').replace(/^tools\//, '');
-            const langPrefix = this.lang === 'en' ? '' : `${this.lang}/`;
-            const webUrl = `https://fasttools.ai/${langPrefix}${toolSlug}`;
-            chrome.tabs.create({ url: webUrl, active: true });
+            // Use tool.url from tools-loader (local or web)
+            chrome.tabs.create({ url: tool.url, active: true });
             window.close();
         }
     }
