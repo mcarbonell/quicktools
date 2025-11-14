@@ -1,78 +1,77 @@
-let summarizeUI;
+let ai;
 
-document.addEventListener('DOMContentLoaded', async () => {
-    summarizeUI = new SummarizeUI({
-        storage: ChromeGeminiStorage,
-        translations: {}
-    });
-    await summarizeUI.init();
-
-    document.getElementById('saveKeyBtn').onclick = saveApiKey;
-    document.getElementById('removeKeyBtn').onclick = removeApiKey;
-    document.getElementById('summarizeBtn').onclick = summarizeText;
-    document.getElementById('copyBtn').onclick = copyResult;
-    document.getElementById('downloadBtn').onclick = downloadResult;
+window.addEventListener('DOMContentLoaded', async () => {
+    ai = new HybridAI();
+    await ai.init();
+    updateUI();
 });
 
-async function saveApiKey() {
-    const apiKey = document.getElementById('apiKeyInput').value.trim();
-    if (!apiKey) return alert('❌ Enter API key');
-
-    const btn = document.getElementById('saveKeyBtn');
-    btn.disabled = true;
-    btn.textContent = '⏳ Validating...';
-
-    try {
-        const success = await summarizeUI.saveApiKey(apiKey);
-        if (success) alert('✅ Saved');
-        else alert('❌ Invalid key');
-    } catch (error) {
-        alert(`❌ Error: ${error.message}`);
-    } finally {
-        btn.disabled = false;
-        btn.textContent = '💾 Save';
+function updateUI() {
+    const apiKeySetup = document.getElementById('apiKeySetup');
+    const apiKeyManage = document.getElementById('apiKeyManage');
+    const toolSection = document.getElementById('toolSection');
+    
+    if (ai.hasChromeAI || ai.hasGeminiAPI) {
+        apiKeySetup.classList.add('d-none');
+        toolSection.classList.remove('d-none');
+        
+        if (ai.hasGeminiAPI) {
+            apiKeyManage.classList.remove('d-none');
+        }
     }
 }
 
-function removeApiKey() {
-    if (confirm('Remove API key?')) summarizeUI.removeApiKey();
-}
+document.getElementById('saveKeyBtn')?.addEventListener('click', async () => {
+    const apiKey = document.getElementById('apiKeyInput').value.trim();
+    if (!apiKey) return alert('❌ Enter API key');
+    
+    await ChromeGeminiStorage.save(apiKey);
+    await ai.init();
+    updateUI();
+});
 
-async function summarizeText() {
+document.getElementById('removeKeyBtn')?.addEventListener('click', async () => {
+    await ChromeGeminiStorage.remove();
+    location.reload();
+});
+
+document.getElementById('summarizeBtn')?.addEventListener('click', async () => {
     const text = document.getElementById('inputText').value;
     const length = document.getElementById('lengthSelect').value;
     const btn = document.getElementById('summarizeBtn');
-
+    const output = document.getElementById('summaryOutput');
+    
     if (!text.trim()) return alert('❌ Enter text');
-
+    
     btn.disabled = true;
     btn.textContent = '⏳ Summarizing...';
-
+    output.textContent = '';
+    document.getElementById('resultSection').classList.remove('d-none');
+    
     try {
-        const summary = await summarizeUI.summarize(text, length);
-        const formatted = summarizeUI.formatText(summary);
-        document.getElementById('summaryOutput').innerHTML = formatted;
-        document.getElementById('resultSection').classList.remove('d-none');
+        await ai.summarize(text, { length }, (chunk) => {
+            output.textContent += chunk;
+        });
     } catch (error) {
-        alert(`❌ Error: ${error.message}`);
+        alert(`❌ ${error.message}`);
     } finally {
         btn.disabled = false;
         btn.textContent = '✨ Summarize';
     }
-}
+});
 
-function copyResult() {
+document.getElementById('copyBtn')?.addEventListener('click', () => {
     const text = document.getElementById('summaryOutput').innerText;
     navigator.clipboard.writeText(text).then(() => alert('✅ Copied'));
-}
+});
 
-function downloadResult() {
+document.getElementById('downloadBtn')?.addEventListener('click', () => {
     const text = document.getElementById('summaryOutput').innerText;
     const blob = new Blob([text], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `summary-${new Date().toISOString().slice(0,10)}.txt`;
+    a.download = `summary-${Date.now()}.txt`;
     a.click();
     URL.revokeObjectURL(url);
-}
+});
