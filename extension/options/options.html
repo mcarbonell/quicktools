@@ -137,7 +137,8 @@
                                 <span class="checkmark"></span>
                                 <span data-i18n="options.compact_view">Vista compacta</span>
                             </label>
-                            <p class="setting-description">Mostrar herramientas en vista más compacta</p>
+                            <p class="setting-description" data-i18n="options.compact_view_desc">Mostrar herramientas en
+                                vista más compacta</p>
                         </div>
                     </div>
                 </section>
@@ -162,36 +163,36 @@
                     </div>
 
                     <div class="settings-group">
-                        <h3>Tema</h3>
+                        <h3 data-i18n="options.group_theme">Tema</h3>
                         <div class="theme-options">
                             <label class="theme-option">
                                 <input type="radio" name="theme" value="auto" checked>
                                 <div class="theme-preview">
-                                    <div class="theme-auto">Auto</div>
-                                    <span>Seguir configuración del sistema</span>
+                                    <div class="theme-auto" data-i18n="options.theme_auto">Auto</div>
+                                    <span data-i18n="options.theme_auto_desc">Seguir configuración del sistema</span>
                                 </div>
                             </label>
                             <label class="theme-option">
                                 <input type="radio" name="theme" value="light">
                                 <div class="theme-preview">
-                                    <div class="theme-light">Claro</div>
-                                    <span>Interfaz clara</span>
+                                    <div class="theme-light" data-i18n="options.theme_light">Claro</div>
+                                    <span data-i18n="options.theme_light_desc">Interfaz clara</span>
                                 </div>
                             </label>
                             <label class="theme-option">
                                 <input type="radio" name="theme" value="dark">
                                 <div class="theme-preview">
-                                    <div class="theme-dark">Oscuro</div>
-                                    <span>Interfaz oscura</span>
+                                    <div class="theme-dark" data-i18n="options.theme_dark">Oscuro</div>
+                                    <span data-i18n="options.theme_dark_desc">Interfaz oscura</span>
                                 </div>
                             </label>
                         </div>
                     </div>
 
                     <div class="settings-group">
-                        <h3>Colores</h3>
+                        <h3 data-i18n="options.group_colors">Colores</h3>
                         <div class="color-setting">
-                            <label for="accent-color">Color de acento:</label>
+                            <label for="accent-color" data-i18n="options.accent_color">Color de acento:</label>
                             <div class="color-picker-container">
                                 <input type="color" id="accent-color" value="#6366f1" class="color-input">
                                 <span class="color-value">#6366f1</span>
@@ -199,7 +200,7 @@
                         </div>
 
                         <div class="color-setting">
-                            <label for="background-color">Color de fondo:</label>
+                            <label for="background-color" data-i18n="options.background_color">Color de fondo:</label>
                             <div class="color-picker-container">
                                 <input type="color" id="background-color" value="#ffffff" class="color-input">
                                 <span class="color-value">#ffffff</span>
@@ -208,14 +209,16 @@
                     </div>
 
                     <div class="settings-group">
-                        <h3>New Tab</h3>
+                        <h3 data-i18n="options.group_newtab">New Tab</h3>
                         <div class="setting-item">
                             <label class="setting-label">
                                 <input type="checkbox" id="use-custom-newtab" checked>
                                 <span class="checkmark"></span>
-                                Usar QuickTools como página de nueva pestaña
+                                <span data-i18n="options.use_custom_newtab">Usar QuickTools como página de nueva
+                                    pestaña</span>
                             </label>
-                            <p class="setting-description">Reemplaza la página de nueva pestaña con el dashboard de
+                            <p class="setting-description" data-i18n="options.use_custom_newtab_desc">Reemplaza la
+                                página de nueva pestaña con el dashboard de
                                 QuickTools</p>
                         </div>
 
@@ -223,29 +226,32 @@
                             <label class="setting-label">
                                 <input type="checkbox" id="show-weather" checked>
                                 <span class="checkmark"></span>
-                                Mostrar widget del clima
+                                <span data-i18n="options.show_weather">Mostrar widget del clima</span>
                             </label>
-                            <p class="setting-description">Mostrar información del clima en el dashboard</p>
+                            <p class="setting-description" data-i18n="options.show_weather_desc">Mostrar información del
+                                clima en el dashboard</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
                                 <input type="checkbox" id="show-productivity" checked>
                                 <span class="checkmark"></span>
-                                Mostrar métricas de productividad
+                                <span data-i18n="options.show_productivity">Mostrar métricas de productividad</span>
                             </label>
-                            <p class="setting-description">Mostrar estadísticas de uso y productividad</p>
+                            <p class="setting-description" data-i18n="options.show_productivity_desc">Mostrar
+                                estadísticas de uso y productividad</p>
                         </div>
                     </div>
                 </section>
 
                 <!-- Shortcuts Section -->
                 <section id="shortcuts-section" class="content-section">
-                    <h2>Atajos de Teclado</h2>
+                    <h2 data-i18n="options.section_shortcuts">Atajos de Teclado</h2>
 
                     <div class="settings-group">
-                        <h3>Atajos Globales</h3>
-                        <p class="section-description">Personaliza los atajos de teclado para acceder rápidamente a las
+                        <h3 data-i18n="options.group_global_shortcuts">Atajos Globales</h3>
+                        <p class="section-description" data-i18n="options.shortcuts_description">Personaliza los atajos
+                            de teclado para acceder rápidamente a las
                             funciones</p>
 
                         <div class="shortcut-list" id="shortcut-list">
@@ -253,23 +259,25 @@
                         </div>
 
                         <div class="shortcut-actions">
-                            <button class="btn" id="reset-shortcuts">Restaurar por defecto</button>
-                            <button class="btn" id="add-shortcut">Agregar atajo</button>
+                            <button class="btn" id="reset-shortcuts" data-i18n="options.reset_shortcuts">Restaurar por
+                                defecto</button>
+                            <button class="btn" id="add-shortcut" data-i18n="options.add_shortcut">Agregar
+                                atajo</button>
                         </div>
                     </div>
                 </section>
 
                 <!-- Privacy Section -->
                 <section id="privacy-section" class="content-section">
-                    <h2>Privacidad y Datos</h2>
+                    <h2 data-i18n="options.section_privacy">Privacidad y Datos</h2>
 
                     <div class="settings-group">
-                        <h3>Recolección de Datos</h3>
+                        <h3 data-i18n="options.group_data_collection">Recolección de Datos</h3>
                         <div class="setting-item">
                             <label class="setting-label">
                                 <input type="checkbox" id="enable-analytics" checked>
                                 <span class="checkmark"></span>
-                                Enviar analíticas de uso anónimas
+                                <span data-i18n="options.enable_analytics">Enviar analíticas de uso anónimas</span>
                             </label>
                             <p class="setting-description">Ayuda a mejorar QuickTools enviando datos de uso anónimos</p>
                         </div>

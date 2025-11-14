@@ -909,7 +909,7 @@
       "categories": ["ai", "image", "seo"],
       "icon": "🖼️",
       "tags": ["ai", "image", "seo", "alt-text", "accessibility"],
-      "availableIn": ["web"]
+      "availableIn": ["web", "extension"]
     },
     {
       "id": "audio-transcription-ai",
@@ -925,7 +925,7 @@
       "categories": ["ai", "utils"],
       "icon": "🎤",
       "tags": ["ai", "audio", "transcription", "speech-to-text"],
-      "availableIn": ["web"]
+      "availableIn": ["web", "extension"]
     },
     {
       "id": "image-to-text-ocr",
@@ -941,7 +941,7 @@
       "categories": ["ai", "image", "converters"],
       "icon": "📝",
       "tags": ["ai", "ocr", "image", "text", "extract", "vision"],
-      "availableIn": ["web"]
+      "availableIn": ["web", "extension"]
     },
     {
       "id": "ai-meme-generator",
@@ -957,7 +957,7 @@
       "categories": ["ai", "image", "generators"],
       "icon": "🎭",
       "tags": ["ai", "meme", "generator", "funny", "viral", "social-media", "nano-banana"],
-      "availableIn": ["web"]
+      "availableIn": ["web", "extension"]
     }
   ]
 }
