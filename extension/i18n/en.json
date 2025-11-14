@@ -171,6 +171,8 @@
     "capture_started": "Capture started",
     "note_saved": "Note saved",
     "note_deleted": "Note deleted",
+    "msg_note_saved": "Note saved",
+    "msg_note_deleted": "Note deleted",
     "note_empty": "Note must have title or content",
     "favorites_saved": "Favorites saved",
     "settings_saved": "Settings saved",
@@ -178,5 +180,15 @@
     "timer_finished": "⏰ Time's up!",
     "profile_updated": "Profile updated",
     "api_key_saved": "API Key saved"
+  },
+  "colors": {
+    "colors_title": "🎨 Recent Colors"
+  },
+  "settings": {
+    "settings_appearance": "🎨 Appearance",
+    "settings_language": "🌐 Language",
+    "settings_theme": "Theme:",
+    "lang_es": "Español",
+    "lang_en": "English"
   }
 }

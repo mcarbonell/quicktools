@@ -171,6 +171,8 @@
     "capture_started": "Captura iniciada",
     "note_saved": "Nota guardada",
     "note_deleted": "Nota eliminada",
+    "msg_note_saved": "Nota guardada",
+    "msg_note_deleted": "Nota eliminada",
     "note_empty": "La nota debe tener título o contenido",
     "favorites_saved": "Favoritos guardados",
     "settings_saved": "Configuración guardada",
@@ -178,5 +180,15 @@
     "timer_finished": "⏰ ¡Tiempo terminado!",
     "profile_updated": "Perfil actualizado",
     "api_key_saved": "API Key guardada"
+  },
+  "colors": {
+    "colors_title": "🎨 Colores Recientes"
+  },
+  "settings": {
+    "settings_appearance": "🎨 Apariencia",
+    "settings_language": "🌐 Idioma",
+    "settings_theme": "Tema:",
+    "lang_es": "Español",
+    "lang_en": "English"
   }
 }
