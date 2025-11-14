@@ -2,8 +2,6 @@
 // IMAGE TO TEXT OCR
 // ====================
 
-import { GeminiAPI } from '../../shared/gemini-api.js';
-
 let extractedData = {
     plain: '',
     markdown: '',
@@ -17,7 +15,20 @@ let currentFormat = 'plain';
 
 document.addEventListener('DOMContentLoaded', () => {
     setupUploadArea();
+    setupEventListeners();
 });
+
+function setupEventListeners() {
+    // Format buttons
+    document.querySelectorAll('.format-btn').forEach(btn => {
+        btn.addEventListener('click', () => changeFormat(btn.dataset.format));
+    });
+    
+    // Action buttons
+    document.getElementById('copyBtn')?.addEventListener('click', copyText);
+    document.getElementById('downloadBtn')?.addEventListener('click', downloadText);
+    document.getElementById('resetBtn')?.addEventListener('click', reset);
+}
 
 // ====================
 // UPLOAD HANDLING
@@ -81,7 +92,13 @@ async function extractText(file) {
     contentGrid.style.display = 'none';
 
     try {
-        const gemini = new GeminiAPI();
+        // Get API key
+        const apiKey = await ChromeGeminiStorage.get();
+        if (!apiKey) {
+            throw new Error('No se encontró API key de Gemini. Por favor configúrala en las opciones de la extensión.');
+        }
+        
+        const gemini = new GeminiAPI(apiKey);
         
         // Convert image to base64
         const base64 = await fileToBase64(file);
@@ -148,7 +165,7 @@ function updateStats() {
 // FORMAT SWITCHING
 // ====================
 
-window.changeFormat = function(format) {
+function changeFormat(format) {
     currentFormat = format;
     
     // Update buttons
@@ -164,7 +181,7 @@ window.changeFormat = function(format) {
 // ACTIONS
 // ====================
 
-window.copyText = async function() {
+async function copyText() {
     const text = document.getElementById('extractedText').value;
     try {
         await navigator.clipboard.writeText(text);
@@ -174,7 +191,7 @@ window.copyText = async function() {
     }
 };
 
-window.downloadText = function() {
+function downloadText() {
     const text = document.getElementById('extractedText').value;
     const extensions = { plain: 'txt', markdown: 'md', json: 'json' };
     const ext = extensions[currentFormat];
@@ -188,7 +205,7 @@ window.downloadText = function() {
     URL.revokeObjectURL(url);
 };
 
-window.reset = function() {
+function reset() {
     document.getElementById('preview').style.display = 'none';
     document.getElementById('contentGrid').style.display = 'none';
     document.getElementById('fileInput').value = '';

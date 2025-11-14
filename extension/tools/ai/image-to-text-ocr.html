@@ -196,19 +196,20 @@
             <div class="result-section">
                 <h3>📄 Texto Extraído</h3>
                 <div class="format-selector">
-                    <button class="format-btn active" data-format="plain" onclick="changeFormat('plain')">Texto Plano</button>
-                    <button class="format-btn" data-format="markdown" onclick="changeFormat('markdown')">Markdown</button>
-                    <button class="format-btn" data-format="json" onclick="changeFormat('json')">JSON</button>
+                    <button class="format-btn active" data-format="plain">Texto Plano</button>
+                    <button class="format-btn" data-format="markdown">Markdown</button>
+                    <button class="format-btn" data-format="json">JSON</button>
                 </div>
                 <textarea id="extractedText" placeholder="El texto extraído aparecerá aquí..."></textarea>
                 <div class="stats" id="stats"></div>
-                <button class="btn" onclick="copyText()">📋 Copiar Texto</button>
-                <button class="btn" onclick="downloadText()">💾 Descargar</button>
-                <button class="btn" onclick="reset()">🔄 Nueva Imagen</button>
+                <button class="btn" id="copyBtn">📋 Copiar Texto</button>
+                <button class="btn" id="downloadBtn">💾 Descargar</button>
+                <button class="btn" id="resetBtn">🔄 Nueva Imagen</button>
             </div>
         </div>
     </div>
 
-    <script type="module" src="image-to-text-ocr.js"></script>
+    <script src="../../shared/gemini-api.js"></script>
+    <script src="image-to-text-ocr.js"></script>
 </body>
 </html>

@@ -2,8 +2,6 @@
 // AUDIO TRANSCRIPTION AI
 // ====================
 
-import { GeminiAPI } from '../../shared/gemini-api.js';
-
 let currentAudio = null;
 
 // ====================
@@ -12,7 +10,14 @@ let currentAudio = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     setupUploadArea();
+    setupEventListeners();
 });
+
+function setupEventListeners() {
+    document.getElementById('copyBtn')?.addEventListener('click', copyTranscription);
+    document.getElementById('downloadBtn')?.addEventListener('click', downloadTranscription);
+    document.getElementById('resetBtn')?.addEventListener('click', reset);
+}
 
 // ====================
 // UPLOAD HANDLING
@@ -147,7 +152,7 @@ function updateStats(text) {
 // ACTIONS
 // ====================
 
-window.copyTranscription = async function() {
+async function copyTranscription() {
     const text = document.getElementById('transcription').value;
     try {
         await navigator.clipboard.writeText(text);
@@ -157,7 +162,7 @@ window.copyTranscription = async function() {
     }
 };
 
-window.downloadTranscription = function() {
+function downloadTranscription() {
     const text = document.getElementById('transcription').value;
     const blob = new Blob([text], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
@@ -168,7 +173,7 @@ window.downloadTranscription = function() {
     URL.revokeObjectURL(url);
 };
 
-window.reset = function() {
+function reset() {
     document.getElementById('audioPlayer').style.display = 'none';
     document.getElementById('resultArea').style.display = 'none';
     document.getElementById('error').style.display = 'none';

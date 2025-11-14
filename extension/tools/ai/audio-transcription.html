@@ -195,12 +195,13 @@
                 <span id="wordCount">0 palabras</span>
                 <span id="charCount">0 caracteres</span>
             </div>
-            <button class="btn" onclick="copyTranscription()">📋 Copiar Transcripción</button>
-            <button class="btn" onclick="downloadTranscription()">💾 Descargar TXT</button>
-            <button class="btn" onclick="reset()">🔄 Nuevo Audio</button>
+            <button class="btn" id="copyBtn">📋 Copiar Transcripción</button>
+            <button class="btn" id="downloadBtn">💾 Descargar TXT</button>
+            <button class="btn" id="resetBtn">🔄 Nuevo Audio</button>
         </div>
     </div>
 
-    <script type="module" src="audio-transcription.js"></script>
+    <script src="../../shared/gemini-api.js"></script>
+    <script src="audio-transcription.js"></script>
 </body>
 </html>

@@ -163,6 +163,22 @@ class GeminiAPI {
   }
 
   /**
+   * Genera contenido con imagen (wrapper para compatibilidad)
+   * @param {string} prompt - Texto del usuario
+   * @param {string} imageBase64 - Imagen en base64
+   * @param {string} mimeType - Tipo MIME de la imagen
+   * @returns {Promise<Object>} - {success: boolean, text: string, error?: string}
+   */
+  async generateContentWithImage(prompt, imageBase64, mimeType) {
+    try {
+      const text = await this.chatWithImage(prompt, imageBase64, mimeType);
+      return { success: true, text };
+    } catch (error) {
+      return { success: false, error: error.message, text: '' };
+    }
+  }
+
+  /**
    * Valida si la API key es correcta
    * @returns {Promise<boolean>}
    */
@@ -226,3 +242,20 @@ const ChromeGeminiStorage = {
     return !!key;
   }
 };
+
+// ====================
+// EXPORTS
+// ====================
+
+// Detect environment and export appropriately
+if (typeof module !== 'undefined' && module.exports) {
+  // Node.js / CommonJS
+  module.exports = { GeminiAPI, GeminiStorage, ChromeGeminiStorage };
+} else {
+  // ES6 modules (extension)
+  if (typeof window !== 'undefined') {
+    window.GeminiAPI = GeminiAPI;
+    window.GeminiStorage = GeminiStorage;
+    window.ChromeGeminiStorage = ChromeGeminiStorage;
+  }
+}

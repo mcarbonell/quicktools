@@ -2,8 +2,6 @@
 // ALT TEXT GENERATOR AI
 // ====================
 
-import { GeminiAPI } from '../../shared/gemini-api.js';
-
 let currentImage = null;
 
 // ====================
@@ -12,7 +10,13 @@ let currentImage = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     setupUploadArea();
+    setupEventListeners();
 });
+
+function setupEventListeners() {
+    document.getElementById('copyBtn')?.addEventListener('click', copyAltText);
+    document.getElementById('resetBtn')?.addEventListener('click', reset);
+}
 
 // ====================
 // UPLOAD HANDLING
@@ -78,7 +82,13 @@ async function generateAltText(file) {
     resultArea.style.display = 'none';
 
     try {
-        const gemini = new GeminiAPI();
+        // Get API key
+        const apiKey = await ChromeGeminiStorage.get();
+        if (!apiKey) {
+            throw new Error('No se encontró API key de Gemini. Por favor configúrala en las opciones de la extensión.');
+        }
+        
+        const gemini = new GeminiAPI(apiKey);
         
         // Convert image to base64
         const base64 = await fileToBase64(file);
@@ -141,7 +151,7 @@ function fileToBase64(file) {
     });
 }
 
-window.copyAltText = async function() {
+async function copyAltText() {
     const altText = document.getElementById('altText').value;
     try {
         await navigator.clipboard.writeText(altText);
@@ -151,7 +161,7 @@ window.copyAltText = async function() {
     }
 };
 
-window.reset = function() {
+function reset() {
     document.getElementById('preview').style.display = 'none';
     document.getElementById('resultArea').style.display = 'none';
     document.getElementById('fileInput').value = '';

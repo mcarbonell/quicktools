@@ -2,8 +2,6 @@
 // AI MEME GENERATOR
 // ====================
 
-import { GeminiAPI } from '../../shared/gemini-api.js';
-
 let currentImage = null;
 let currentMode = 'ai';
 let memeText = { top: '', bottom: '' };
@@ -14,13 +12,26 @@ let memeText = { top: '', bottom: '' };
 
 document.addEventListener('DOMContentLoaded', () => {
     setupUploadArea();
+    setupEventListeners();
 });
+
+function setupEventListeners() {
+    // Mode buttons
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.addEventListener('click', () => setMode(btn.dataset.mode));
+    });
+    
+    // Action buttons
+    document.getElementById('downloadBtn')?.addEventListener('click', downloadMeme);
+    document.getElementById('regenerateBtn')?.addEventListener('click', regenerate);
+    document.getElementById('resetBtn')?.addEventListener('click', reset);
+}
 
 // ====================
 // MODE SWITCHING
 // ====================
 
-window.setMode = function(mode) {
+function setMode(mode) {
     currentMode = mode;
     
     // Update buttons
@@ -100,7 +111,13 @@ async function generateMemeText(file) {
     error.style.display = 'none';
 
     try {
-        const gemini = new GeminiAPI();
+        // Get API key
+        const apiKey = await ChromeGeminiStorage.get();
+        if (!apiKey) {
+            throw new Error('No se encontró API key de Gemini. Por favor configúrala en las opciones de la extensión.');
+        }
+        
+        const gemini = new GeminiAPI(apiKey);
         
         // Convert image to base64
         const base64 = await fileToBase64(file);
@@ -225,13 +242,13 @@ function drawText(ctx, text, x, y) {
 // ACTIONS
 // ====================
 
-window.regenerate = async function() {
+async function regenerate() {
     if (currentImage && currentMode === 'ai') {
         await generateMemeText(currentImage);
     }
 };
 
-window.downloadMeme = function() {
+function downloadMeme() {
     const canvas = document.getElementById('memeCanvas');
     const link = document.createElement('a');
     link.download = 'meme.png';
@@ -239,7 +256,7 @@ window.downloadMeme = function() {
     link.click();
 };
 
-window.reset = function() {
+function reset() {
     document.getElementById('memePreview').style.display = 'none';
     document.getElementById('error').style.display = 'none';
     document.getElementById('fileInput').value = '';

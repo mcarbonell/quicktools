@@ -167,10 +167,10 @@
         <p class="subtitle">Crea memes virales automáticamente con IA o añade tu propio texto</p>
 
         <div class="mode-selector">
-            <button class="mode-btn active" onclick="setMode('ai')">
+            <button class="mode-btn active" data-mode="ai">
                 🤖 Texto Automático con IA
             </button>
-            <button class="mode-btn" onclick="setMode('custom')">
+            <button class="mode-btn" data-mode="custom">
                 ✍️ Texto Personalizado
             </button>
         </div>
@@ -197,13 +197,14 @@
                 <canvas id="memeCanvas"></canvas>
             </div>
             <div style="text-align: center;">
-                <button class="btn" onclick="downloadMeme()">💾 Descargar Meme</button>
-                <button class="btn" onclick="regenerate()">🔄 Regenerar Texto</button>
-                <button class="btn" onclick="reset()">🆕 Nueva Imagen</button>
+                <button class="btn" id="downloadBtn">💾 Descargar Meme</button>
+                <button class="btn" id="regenerateBtn">🔄 Regenerar Texto</button>
+                <button class="btn" id="resetBtn">🆕 Nueva Imagen</button>
             </div>
         </div>
     </div>
 
-    <script type="module" src="ai-meme-generator.js"></script>
+    <script src="../../shared/gemini-api.js"></script>
+    <script src="ai-meme-generator.js"></script>
 </body>
 </html>
