@@ -11,35 +11,35 @@
         <!-- Pantalla 1: Bienvenida -->
         <div id="screen-welcome" class="screen active">
             <div class="logo">🚀</div>
-            <h1>¡Bienvenido a FastTools!</h1>
-            <p class="subtitle">Vamos a crear tu perfil personalizado analizando tu navegación</p>
+            <h1 data-i18n="onboarding.welcome_title">¡Bienvenido a FastTools!</h1>
+            <p class="subtitle" data-i18n="onboarding.welcome_subtitle">Vamos a crear tu perfil personalizado analizando tu navegación</p>
             
             <div class="features">
                 <div class="feature">
                     <span class="icon">🔒</span>
-                    <span>100% Privado - Todo local</span>
+                    <span data-i18n="onboarding.feature_private">100% Privado - Todo local</span>
                 </div>
                 <div class="feature">
                     <span class="icon">🤖</span>
-                    <span>IA local de Chrome</span>
+                    <span data-i18n="onboarding.feature_ai">IA local de Chrome</span>
                 </div>
                 <div class="feature">
                     <span class="icon">⚡</span>
-                    <span>Recomendaciones personalizadas</span>
+                    <span data-i18n="onboarding.feature_recommendations">Recomendaciones personalizadas</span>
                 </div>
             </div>
 
             <div class="actions">
-                <button id="btn-start" class="btn btn-primary">Crear mi perfil</button>
-                <button id="btn-skip" class="btn btn-secondary">Omitir por ahora</button>
+                <button id="btn-start" class="btn btn-primary" data-i18n="onboarding.btn_start">Crear mi perfil</button>
+                <button id="btn-skip" class="btn btn-secondary" data-i18n="onboarding.btn_skip">Omitir por ahora</button>
             </div>
         </div>
 
         <!-- Pantalla 2: Analizando -->
         <div id="screen-analyzing" class="screen">
             <div class="spinner"></div>
-            <h2>Analizando tu navegación...</h2>
-            <p id="progress-text" class="progress-text">Iniciando análisis...</p>
+            <h2 data-i18n="onboarding.analyzing_title">Analizando tu navegación...</h2>
+            <p id="progress-text" class="progress-text" data-i18n="onboarding.analyzing_start">Iniciando análisis...</p>
             
             <div class="progress-bar">
                 <div id="progress-fill" class="progress-fill"></div>
@@ -48,15 +48,15 @@
             <div class="steps">
                 <div id="step-history" class="step">
                     <span class="step-icon">⏳</span>
-                    <span class="step-text">Analizando historial</span>
+                    <span class="step-text" data-i18n="onboarding.step_history">Analizando historial</span>
                 </div>
                 <div id="step-bookmarks" class="step">
                     <span class="step-icon">⏳</span>
-                    <span class="step-text">Revisando marcadores</span>
+                    <span class="step-text" data-i18n="onboarding.step_bookmarks">Revisando marcadores</span>
                 </div>
                 <div id="step-inference" class="step">
                     <span class="step-icon">⏳</span>
-                    <span class="step-text">Infiriendo perfil con IA</span>
+                    <span class="step-text" data-i18n="onboarding.step_inference">Infiriendo perfil con IA</span>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
         <div id="screen-reveal" class="screen">
             <div class="reveal-header">
                 <div class="avatar">👨💻</div>
-                <h2>¡Hola! Creo que eres un:</h2>
+                <h2 data-i18n="onboarding.reveal_title">¡Hola! Creo que eres un:</h2>
             </div>
 
             <div class="profile-card">
@@ -95,28 +95,28 @@
                 </div>
             </div>
 
-            <p class="question">¿Es correcto?</p>
+            <p class="question" data-i18n="onboarding.reveal_question">¿Es correcto?</p>
 
             <div class="actions">
-                <button id="btn-confirm" class="btn btn-primary">Sí, perfecto</button>
-                <button id="btn-edit" class="btn btn-secondary">Editar perfil</button>
-                <button id="btn-retry" class="btn btn-tertiary">Reintentar</button>
+                <button id="btn-confirm" class="btn btn-primary" data-i18n="onboarding.btn_confirm">Sí, perfecto</button>
+                <button id="btn-edit" class="btn btn-secondary" data-i18n="onboarding.btn_edit">Editar perfil</button>
+                <button id="btn-retry" class="btn btn-tertiary" data-i18n="onboarding.btn_retry">Reintentar</button>
             </div>
         </div>
 
         <!-- Pantalla 4: Error -->
         <div id="screen-error" class="screen">
             <div class="error-icon">❌</div>
-            <h2>Algo salió mal</h2>
-            <p id="error-message" class="error-text">No se pudo completar el análisis.</p>
+            <h2 data-i18n="onboarding.error_title">Algo salió mal</h2>
+            <p id="error-message" class="error-text" data-i18n="onboarding.error_message">No se pudo completar el análisis.</p>
             
             <div class="actions">
-                <button id="btn-retry-error" class="btn btn-primary">Reintentar</button>
-                <button id="btn-skip-error" class="btn btn-secondary">Continuar sin perfil</button>
+                <button id="btn-retry-error" class="btn btn-primary" data-i18n="onboarding.btn_retry">Reintentar</button>
+                <button id="btn-skip-error" class="btn btn-secondary" data-i18n="onboarding.btn_skip_error">Continuar sin perfil</button>
             </div>
         </div>
     </div>
 
-    <script src="setup.js"></script>
+    <script type="module" src="setup.js"></script>
 </body>
 </html>

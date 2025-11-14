@@ -2,6 +2,8 @@
 // ONBOARDING SETUP
 // ====================
 
+import { initI18n, translatePage, t } from '../shared/i18n.js';
+
 class OnboardingSetup {
     constructor() {
         this.currentScreen = 'welcome';
@@ -11,6 +13,9 @@ class OnboardingSetup {
 
     async init() {
         console.log('🚀 Inicializando onboarding...');
+        
+        this.lang = await initI18n();
+        translatePage();
         
         // Verificar si ya completó el onboarding (solo si no es forzado)
         const urlParams = new URLSearchParams(window.location.search);

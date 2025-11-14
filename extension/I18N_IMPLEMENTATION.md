@@ -144,25 +144,25 @@ init();
 ### Para implementar en páginas existentes:
 
 1. **Popup** (`popup/popup-simple.html` + `popup-simple.js`)
-   - [ ] Importar i18n
-   - [ ] Añadir `data-i18n` a elementos
-   - [ ] Llamar `initI18n()` y `translatePage()`
+   - [x] Importar i18n
+   - [x] Añadir `data-i18n` a elementos
+   - [x] Llamar `initI18n()` y `translatePage()`
 
 2. **New Tab** (`newtab/newtab.html` + `newtab.js`)
-   - [ ] Importar i18n
-   - [ ] Añadir `data-i18n` a elementos
-   - [ ] Llamar `initI18n()` y `translatePage()`
+   - [x] Importar i18n
+   - [x] Añadir `data-i18n` a elementos
+   - [x] Llamar `initI18n()` y `translatePage()`
 
 3. **Options** (`options/options.html` + `options.js`)
-   - [ ] Importar i18n
-   - [ ] Añadir `data-i18n` a elementos
-   - [ ] Llamar `initI18n()` y `translatePage()`
-   - [ ] Conectar selector de idioma con `setLanguage()`
+   - [x] Importar i18n
+   - [x] Añadir `data-i18n` a elementos
+   - [x] Llamar `initI18n()` y `translatePage()`
+   - [x] Conectar selector de idioma con `setLanguage()`
 
 4. **Onboarding** (`onboarding/setup.html` + `setup.js`)
-   - [ ] Importar i18n
-   - [ ] Añadir `data-i18n` a elementos
-   - [ ] Llamar `initI18n()` y `translatePage()`
+   - [x] Importar i18n
+   - [x] Añadir `data-i18n` a elementos
+   - [x] Llamar `initI18n()` y `translatePage()`
 
 5. **Herramientas AI** (`tools/ai/*.html`)
    - [ ] Importar i18n en cada herramienta
