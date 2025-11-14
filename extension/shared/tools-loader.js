@@ -1,6 +1,6 @@
 // FastTools Extension - Tools Loader
 
-const BASE_URL = 'https://fasttools-nine.vercel.app';
+const BASE_URL = 'https://fasttools.ai';
 
 const LOCAL_TOOLS = [
     {
@@ -29,26 +29,45 @@ export async function loadTools(lang = 'es') {
         const response = await fetch(chrome.runtime.getURL('data/fasttools-data.json'));
         const data = await response.json();
         
+        // Get language settings
+        const settings = await chrome.storage.sync.get(['language']);
+        const userLang = settings.language || 'en';
+        const langPrefix = userLang === 'es' ? '/es' : '';
+        
         // Process web tools - filter by availability
         const webTools = data.tools
             .filter(tool => {
-                // If availableIn is not set, assume available everywhere
-                if (!tool.availableIn) return true;
-                // Only show tools available in extension
-                return tool.availableIn.includes('extension');
+                // If availableIn is not set, hide tool
+                if (!tool.availableIn || tool.availableIn.length === 0) return false;
+                // Show if has extension OR web
+                return tool.availableIn.includes('extension') || tool.availableIn.includes('web');
             })
-            .map(tool => ({
-                ...tool,
-                title: tool.title[lang] || tool.title.es,
-                description: tool.description[lang] || tool.description.es,
-                category: tool.categories[0], // Primary category
-                url: tool.extensionSlug
-                    ? chrome.runtime.getURL(tool.extensionSlug)
-                    : tool.slug.startsWith('tools/') 
-                        ? chrome.runtime.getURL(tool.slug)
-                        : chrome.runtime.getURL(tool.slug),
-                local: true
-            }));
+            .map(tool => {
+                const hasExtension = tool.availableIn.includes('extension');
+                const hasWeb = tool.availableIn.includes('web');
+                
+                // Determine URL based on availability
+                let url;
+                if (hasExtension && tool.extensionSlug) {
+                    // Local implementation in extension
+                    url = chrome.runtime.getURL(tool.extensionSlug);
+                } else if (hasWeb) {
+                    // Redirect to web version
+                    url = `${BASE_URL}${langPrefix}/${tool.slug}`;
+                } else {
+                    // Should not happen due to filter, but fallback to web
+                    url = `${BASE_URL}${langPrefix}/${tool.slug}`;
+                }
+                
+                return {
+                    ...tool,
+                    title: tool.title[lang] || tool.title.es,
+                    description: tool.description[lang] || tool.description.es,
+                    category: tool.categories[0], // Primary category
+                    url: url,
+                    local: hasExtension && tool.extensionSlug ? true : false
+                };
+            });
         
         // Process local tools
         const localTools = LOCAL_TOOLS.map(tool => ({

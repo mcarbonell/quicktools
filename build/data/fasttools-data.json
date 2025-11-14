@@ -246,7 +246,8 @@
       },
       "categories": ["image"],
       "icon": "📐",
-      "tags": ["image", "canvas", "drag-drop"]
+      "tags": ["image", "canvas", "drag-drop"],
+      "availableIn": ["web"]
     },
     {
       "id": "convert-image",
@@ -261,7 +262,8 @@
       },
       "categories": ["image", "converters"],
       "icon": "🔄",
-      "tags": ["image", "convert", "download"]
+      "tags": ["image", "convert", "download"],
+      "availableIn": ["web"]
     },
     {
       "id": "json-formatter",
@@ -276,7 +278,8 @@
       },
       "categories": ["data"],
       "icon": "📋",
-      "tags": ["json", "validator", "copy"]
+      "tags": ["json", "validator", "copy"],
+      "availableIn": ["web"]
     },
     {
       "id": "csv-json",
@@ -291,7 +294,8 @@
       },
       "categories": ["data", "converters"],
       "icon": "📊",
-      "tags": ["csv", "json", "convert"]
+      "tags": ["csv", "json", "convert"],
+      "availableIn": ["web"]
     },
     {
       "id": "pdf-to-text",
@@ -306,7 +310,8 @@
       },
       "categories": ["files"],
       "icon": "📄",
-      "tags": ["pdf", "ocr-lite", "extract"]
+      "tags": ["pdf", "ocr-lite", "extract"],
+      "availableIn": ["web"]
     },
     {
       "id": "merge-pdfs",
@@ -321,7 +326,8 @@
       },
       "categories": ["files"],
       "icon": "🔗",
-      "tags": ["pdf", "merge"]
+      "tags": ["pdf", "merge"],
+      "availableIn": ["web"]
     },
     {
       "id": "split-pdf",
@@ -336,7 +342,8 @@
       },
       "categories": ["files"],
       "icon": "✂️",
-      "tags": ["pdf", "split", "extract"]
+      "tags": ["pdf", "split", "extract"],
+      "availableIn": ["web"]
     },
     {
       "id": "compress-pdf",
@@ -351,7 +358,8 @@
       },
       "categories": ["files"],
       "icon": "🗜️",
-      "tags": ["pdf", "compress", "optimize"]
+      "tags": ["pdf", "compress", "optimize"],
+      "availableIn": ["web"]
     },
     {
       "id": "pdf-to-image",
@@ -366,7 +374,8 @@
       },
       "categories": ["files", "converters"],
       "icon": "🖼️",
-      "tags": ["pdf", "image", "convert"]
+      "tags": ["pdf", "image", "convert"],
+      "availableIn": ["web"]
     },
     {
       "id": "image-to-pdf",
@@ -381,7 +390,8 @@
       },
       "categories": ["converters"],
       "icon": "📑",
-      "tags": ["image", "pdf", "convert"]
+      "tags": ["image", "pdf", "convert"],
+      "availableIn": ["web"]
     },
     {
       "id": "color-palette-generator",
@@ -396,7 +406,8 @@
       },
       "categories": ["image", "generators"],
       "icon": "🎨",
-      "tags": ["image", "colors", "palette"]
+      "tags": ["image", "colors", "palette"],
+      "availableIn": ["web"]
     },
     {
       "id": "exif-viewer-cleaner",
@@ -411,7 +422,8 @@
       },
       "categories": ["image"],
       "icon": "🔍",
-      "tags": ["image", "exif", "privacy"]
+      "tags": ["image", "exif", "privacy"],
+      "availableIn": ["web"]
     },
     {
       "id": "lorem-ipsum-generator",
@@ -426,7 +438,8 @@
       },
       "categories": ["text", "generators"],
       "icon": "📝",
-      "tags": ["text", "lorem", "generator"]
+      "tags": ["text", "lorem", "generator"],
+      "availableIn": ["web"]
     },
     {
       "id": "image-cropper",
@@ -441,7 +454,8 @@
       },
       "categories": ["image"],
       "icon": "✂️",
-      "tags": ["image", "crop", "editor"]
+      "tags": ["image", "crop", "editor"],
+      "availableIn": ["web"]
     },
     {
       "id": "text-cleaner",
@@ -456,7 +470,8 @@
       },
       "categories": ["text"],
       "icon": "🧹",
-      "tags": ["text", "clean", "count"]
+      "tags": ["text", "clean", "count"],
+      "availableIn": ["web"]
     },
     {
       "id": "url-encoder",
@@ -471,7 +486,8 @@
       },
       "categories": ["text"],
       "icon": "🔗",
-      "tags": ["text", "url", "encode"]
+      "tags": ["text", "url", "encode"],
+      "availableIn": ["web"]
     },
     {
       "id": "base64",
@@ -486,7 +502,8 @@
       },
       "categories": ["text"],
       "icon": "🔐",
-      "tags": ["text", "base64", "encode"]
+      "tags": ["text", "base64", "encode"],
+      "availableIn": ["web"]
     },
     {
       "id": "html-encoder",
@@ -501,7 +518,8 @@
       },
       "categories": ["text"],
       "icon": "🏷️",
-      "tags": ["text", "html", "encode"]
+      "tags": ["text", "html", "encode"],
+      "availableIn": ["web"]
     },
     {
       "id": "diff",
@@ -516,7 +534,8 @@
       },
       "categories": ["text"],
       "icon": "🔀",
-      "tags": ["text", "diff", "compare"]
+      "tags": ["text", "diff", "compare"],
+      "availableIn": ["web"]
     },
     {
       "id": "yaml-json",
@@ -531,7 +550,8 @@
       },
       "categories": ["data", "converters"],
       "icon": "🔄",
-      "tags": ["yaml", "json", "convert"]
+      "tags": ["yaml", "json", "convert"],
+      "availableIn": ["web"]
     },
     {
       "id": "xml-json",
@@ -546,7 +566,8 @@
       },
       "categories": ["data", "converters"],
       "icon": "🔄",
-      "tags": ["xml", "json", "convert"]
+      "tags": ["xml", "json", "convert"],
+      "availableIn": ["web"]
     },
     {
       "id": "toml-json",
@@ -561,7 +582,8 @@
       },
       "categories": ["data", "converters"],
       "icon": "🔄",
-      "tags": ["toml", "json", "convert"]
+      "tags": ["toml", "json", "convert"],
+      "availableIn": ["web"]
     },
     {
       "id": "qr-generator",
@@ -576,7 +598,8 @@
       },
       "categories": ["utils", "generators"],
       "icon": "📱",
-      "tags": ["qr", "generator"]
+      "tags": ["qr", "generator"],
+      "availableIn": ["web"]
     },
     {
       "id": "password-generator",
@@ -591,7 +614,8 @@
       },
       "categories": ["utils", "generators"],
       "icon": "🔑",
-      "tags": ["password", "security", "generator"]
+      "tags": ["password", "security", "generator"],
+      "availableIn": ["web"]
     },
     {
       "id": "hash-calculator",
@@ -606,7 +630,8 @@
       },
       "categories": ["utils"],
       "icon": "#️⃣",
-      "tags": ["hash", "md5", "sha", "security"]
+      "tags": ["hash", "md5", "sha", "security"],
+      "availableIn": ["web"]
     },
     {
       "id": "image-compressor",
@@ -621,7 +646,8 @@
       },
       "categories": ["image"],
       "icon": "📦",
-      "tags": ["image", "compress", "optimize"]
+      "tags": ["image", "compress", "optimize"],
+      "availableIn": ["web"]
     },
     {
       "id": "color-picker-converter",
@@ -636,7 +662,8 @@
       },
       "categories": ["utils"],
       "icon": "🎨",
-      "tags": ["color", "picker", "converter"]
+      "tags": ["color", "picker", "converter"],
+      "availableIn": ["web"]
     },
     {
       "id": "stopwatch-timer",
@@ -651,7 +678,8 @@
       },
       "categories": ["utils"],
       "icon": "⏱️",
-      "tags": ["timer", "stopwatch", "alarm"]
+      "tags": ["timer", "stopwatch", "alarm"],
+      "availableIn": ["web"]
     },
     {
       "id": "chat-ai",
@@ -802,7 +830,8 @@
       },
       "categories": ["seo"],
       "icon": "🏷️",
-      "tags": ["seo", "meta", "og"]
+      "tags": ["seo", "meta", "og"],
+      "availableIn": ["web"]
     },
     {
       "id": "heading-structure-checker",
@@ -817,7 +846,8 @@
       },
       "categories": ["seo"],
       "icon": "📋",
-      "tags": ["seo", "headings", "h1"]
+      "tags": ["seo", "headings", "h1"],
+      "availableIn": ["web"]
     },
     {
       "id": "robots-txt-validator",
@@ -832,7 +862,8 @@
       },
       "categories": ["seo"],
       "icon": "🤖",
-      "tags": ["seo", "robots", "crawler"]
+      "tags": ["seo", "robots", "crawler"],
+      "availableIn": ["web"]
     },
 
     {
@@ -848,7 +879,8 @@
       },
       "categories": ["seo"],
       "icon": "🔗",
-      "tags": ["seo", "links", "checker"]
+      "tags": ["seo", "links", "checker"],
+      "availableIn": ["web"]
     },
     {
       "id": "open-graph-preview",
@@ -863,7 +895,8 @@
       },
       "categories": ["seo"],
       "icon": "📱",
-      "tags": ["seo", "og", "social"]
+      "tags": ["seo", "og", "social"],
+      "availableIn": ["web"]
     },
     {
       "id": "schema-validator",
@@ -878,7 +911,8 @@
       },
       "categories": ["seo"],
       "icon": "📊",
-      "tags": ["seo", "schema", "jsonld"]
+      "tags": ["seo", "schema", "jsonld"],
+      "availableIn": ["web"]
     },
     {
       "id": "seo-dashboard",
@@ -893,7 +927,8 @@
       },
       "categories": ["seo"],
       "icon": "🎯",
-      "tags": ["seo", "score", "audit"]
+      "tags": ["seo", "score", "audit"],
+      "availableIn": ["web"]
     },
     {
       "id": "alt-text-generator-ai",
