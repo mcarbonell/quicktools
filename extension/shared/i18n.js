@@ -1,207 +1,26 @@
-// FastTools Extension - i18n System
+// ====================
+// FASTTOOLS EXTENSION - I18N SYSTEM
+// ====================
 
-const translations = {
-    es: {
-        // Header
-        greeting_morning: '¡Buenos días!',
-        greeting_afternoon: '¡Buenas tardes!',
-        greeting_evening: '¡Buenas noches!',
-        greeting_default: '¡Hola!',
-        search_placeholder: '🔍 Buscar herramientas...',
-        
-        // Stats
-        stats_today: 'Usos Hoy',
-        stats_favorite: 'Favorita',
-        stats_time_saved: 'Tiempo Ahorrado',
-        
-        // Sections
-        section_quick_access: '⚡ Acceso Rápido',
-        section_all_tools: '🛠️ Todas las Herramientas',
-        section_notes: '📝 Notas Rápidas',
-        
-        // Buttons
-        btn_edit: '✏️ Editar',
-        btn_new: '+ Nueva',
-        btn_save: 'Guardar',
-        btn_cancel: 'Cancelar',
-        btn_delete: '🗑️ Eliminar',
-        btn_close: 'Cerrar',
-        
-        // Categories (by user audience)
-        category_all: 'Todo',
-        category_utils: '🔧 Utilidades',
-        category_developers: '💻 Desarrolladores',
-        category_designers: '🎨 Diseñadores',
-        category_writers: '✍️ Escritores',
-        category_data_analysts: '📊 Analistas de Datos',
-        category_marketers: '📱 Marketing',
-        category_productivity: '⚡ Productividad',
-        category_ai_tools: '🤖 IA',
-        category_seo_specialists: '🔍 SEO',
-        
-        // Tool categories
-        category_image: '🖼️ Imagen',
-        category_data: '📊 Datos',
-        category_text: '📝 Texto',
-        category_files: '📁 Archivos',
-        category_converters: '🔄 Conversores',
-        category_generators: '✨ Generadores',
-        category_ai: '🤖 IA',
-        category_seo: '🔍 SEO',
-        
-        // Timer
-        timer_title: '⏰ Temporizador',
-        timer_start: 'Iniciar',
-        timer_stop: 'Parar',
-        timer_reset: 'Reset',
-        
-        // Colors
-        colors_title: '🎨 Colores Recientes',
-        
-        // Modals
-        modal_settings: '⚙️ Configuración',
-        modal_favorites: '⭐ Editar Acceso Rápido',
-        modal_notes: '📝 Editor de Notas',
-        
-        // Settings
-        settings_appearance: '🎨 Apariencia',
-        settings_language: '🌐 Idioma',
-        settings_theme: 'Tema:',
-        settings_lang: 'Idioma:',
-        theme_auto: 'Automático',
-        theme_light: 'Claro',
-        theme_dark: 'Oscuro',
-        lang_es: 'Español',
-        lang_en: 'English',
-        
-        // Notes
-        note_title_placeholder: 'Título',
-        note_content_placeholder: 'Escribe tu nota...',
-        note_no_notes: 'No hay notas',
-        note_untitled: 'Sin título',
-        
-        // Favorites
-        favorites_description: 'Selecciona hasta 8 herramientas para acceso rápido:',
-        
-        // Messages
-        msg_capture_started: 'Captura iniciada',
-        msg_note_saved: 'Nota guardada',
-        msg_note_deleted: 'Nota eliminada',
-        msg_note_empty: 'La nota debe tener título o contenido',
-        msg_favorites_saved: 'Favoritos guardados',
-        msg_settings_saved: 'Configuración guardada',
-        msg_color_copied: 'Color {color} copiado',
-        msg_timer_finished: '⏰ ¡Tiempo terminado!',
-        
-        // Usage
-        usage_count: '{count} usos',
-        usage_today: '{count} usos hoy'
-    },
-    en: {
-        // Header
-        greeting_morning: 'Good morning!',
-        greeting_afternoon: 'Good afternoon!',
-        greeting_evening: 'Good evening!',
-        greeting_default: 'Hello!',
-        search_placeholder: '🔍 Search tools...',
-        
-        // Stats
-        stats_today: 'Uses Today',
-        stats_favorite: 'Favorite',
-        stats_time_saved: 'Time Saved',
-        
-        // Sections
-        section_quick_access: '⚡ Quick Access',
-        section_all_tools: '🛠️ All Tools',
-        section_notes: '📝 Quick Notes',
-        
-        // Buttons
-        btn_edit: '✏️ Edit',
-        btn_new: '+ New',
-        btn_save: 'Save',
-        btn_cancel: 'Cancel',
-        btn_delete: '🗑️ Delete',
-        btn_close: 'Close',
-        
-        // Categories (by user audience)
-        category_all: 'All',
-        category_utils: '🔧 Utilities',
-        category_developers: '💻 Developers',
-        category_designers: '🎨 Designers',
-        category_writers: '✍️ Writers',
-        category_data_analysts: '📊 Data Analysts',
-        category_marketers: '📱 Marketers',
-        category_productivity: '⚡ Productivity',
-        category_ai_tools: '🤖 AI',
-        category_seo_specialists: '🔍 SEO',
-        
-        // Tool categories
-        category_image: '🖼️ Image',
-        category_data: '📊 Data',
-        category_text: '📝 Text',
-        category_files: '📁 Files',
-        category_converters: '🔄 Converters',
-        category_generators: '✨ Generators',
-        category_ai: '🤖 AI',
-        category_seo: '🔍 SEO',
-        
-        // Timer
-        timer_title: '⏰ Timer',
-        timer_start: 'Start',
-        timer_stop: 'Stop',
-        timer_reset: 'Reset',
-        
-        // Colors
-        colors_title: '🎨 Recent Colors',
-        
-        // Modals
-        modal_settings: '⚙️ Settings',
-        modal_favorites: '⭐ Edit Quick Access',
-        modal_notes: '📝 Note Editor',
-        
-        // Settings
-        settings_appearance: '🎨 Appearance',
-        settings_language: '🌐 Language',
-        settings_theme: 'Theme:',
-        settings_lang: 'Language:',
-        theme_auto: 'Auto',
-        theme_light: 'Light',
-        theme_dark: 'Dark',
-        lang_es: 'Español',
-        lang_en: 'English',
-        
-        // Notes
-        note_title_placeholder: 'Title',
-        note_content_placeholder: 'Write your note...',
-        note_no_notes: 'No notes',
-        note_untitled: 'Untitled',
-        
-        // Favorites
-        favorites_description: 'Select up to 8 tools for quick access:',
-        
-        // Messages
-        msg_capture_started: 'Capture started',
-        msg_note_saved: 'Note saved',
-        msg_note_deleted: 'Note deleted',
-        msg_note_empty: 'Note must have title or content',
-        msg_favorites_saved: 'Favorites saved',
-        msg_settings_saved: 'Settings saved',
-        msg_color_copied: 'Color {color} copied',
-        msg_timer_finished: '⏰ Time\'s up!',
-        
-        // Usage
-        usage_count: '{count} uses',
-        usage_today: '{count} uses today'
-    }
-};
+// Translation cache
+let translations = {};
+let currentLang = 'es';
 
-// Get browser language
+// ====================
+// LANGUAGE DETECTION
+// ====================
+
+/**
+ * Get browser language
+ */
 export function getBrowserLanguage() {
     const lang = navigator.language || navigator.userLanguage;
     return lang.startsWith('es') ? 'es' : 'en';
 }
 
-// Get current language from storage or browser
+/**
+ * Get current language from storage or browser
+ */
 export async function getCurrentLanguage() {
     try {
         const data = await chrome.storage.local.get('settings');
@@ -211,25 +30,95 @@ export async function getCurrentLanguage() {
     }
 }
 
-// Set language
+/**
+ * Set language
+ */
 export async function setLanguage(lang) {
     try {
         const data = await chrome.storage.local.get('settings');
         const settings = data.settings || {};
         settings.language = lang;
         await chrome.storage.local.set({ settings });
+        currentLang = lang;
         return true;
     } catch {
         return false;
     }
 }
 
-// Get translation
-export function t(key, params = {}, lang = null) {
-    const currentLang = lang || 'es'; // Default to Spanish
-    let text = translations[currentLang]?.[key] || translations['es']?.[key] || key;
+// ====================
+// TRANSLATION LOADING
+// ====================
+
+/**
+ * Load translations from JSON file
+ */
+async function loadTranslations(lang) {
+    try {
+        const response = await fetch(chrome.runtime.getURL(`i18n/${lang}.json`));
+        const data = await response.json();
+        translations[lang] = data;
+        return data;
+    } catch (error) {
+        console.error(`Error loading translations for ${lang}:`, error);
+        return null;
+    }
+}
+
+/**
+ * Initialize i18n system
+ */
+export async function initI18n() {
+    currentLang = await getCurrentLanguage();
     
-    // Replace params
+    // Load current language
+    await loadTranslations(currentLang);
+    
+    // Preload other language
+    const otherLang = currentLang === 'es' ? 'en' : 'es';
+    loadTranslations(otherLang);
+    
+    return currentLang;
+}
+
+// ====================
+// TRANSLATION FUNCTIONS
+// ====================
+
+/**
+ * Get translation by key
+ * @param {string} key - Translation key (e.g., 'common.save' or 'popup.greeting_morning')
+ * @param {object} params - Parameters to replace in translation
+ * @param {string} lang - Language override
+ */
+export function t(key, params = {}, lang = null) {
+    const useLang = lang || currentLang;
+    
+    // Ensure translations are loaded
+    if (!translations[useLang]) {
+        console.warn(`Translations not loaded for ${useLang}`);
+        return key;
+    }
+    
+    // Navigate nested keys (e.g., 'common.save' -> translations.common.save)
+    const keys = key.split('.');
+    let text = translations[useLang];
+    
+    for (const k of keys) {
+        if (text && typeof text === 'object') {
+            text = text[k];
+        } else {
+            break;
+        }
+    }
+    
+    // Fallback to key if not found
+    if (typeof text !== 'string') {
+        console.warn(`Translation not found: ${key}`);
+        return key;
+    }
+    
+    // Replace parameters
     Object.keys(params).forEach(param => {
         text = text.replace(`{${param}}`, params[param]);
     });
@@ -237,18 +126,54 @@ export function t(key, params = {}, lang = null) {
     return text;
 }
 
-// Get category name
-export function getCategoryName(category, lang = 'es') {
-    // Normalize category slug (replace hyphens with underscores for i18n keys)
+/**
+ * Get category name
+ */
+export function getCategoryName(category, lang = null) {
+    const useLang = lang || currentLang;
     const normalized = category.toLowerCase().replace(/-/g, '_');
-    const key = `category_${normalized}`;
-    return t(key, {}, lang);
+    return t(`categories.${normalized}`, {}, useLang);
 }
 
-// Initialize i18n
-export async function initI18n() {
-    const lang = await getCurrentLanguage();
-    return lang;
+/**
+ * Translate all elements with data-i18n attribute
+ */
+export function translatePage() {
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        const text = t(key);
+        
+        // Check if it's a placeholder
+        if (element.hasAttribute('placeholder')) {
+            element.placeholder = text;
+        } else {
+            element.textContent = text;
+        }
+    });
+    
+    // Translate data-i18n-placeholder
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        element.placeholder = t(key);
+    });
+    
+    // Translate data-i18n-title
+    document.querySelectorAll('[data-i18n-title]').forEach(element => {
+        const key = element.getAttribute('data-i18n-title');
+        element.title = t(key);
+    });
 }
 
-export default { t, getCategoryName, initI18n, getCurrentLanguage, getBrowserLanguage };
+// ====================
+// EXPORT
+// ====================
+
+export default {
+    t,
+    getCategoryName,
+    initI18n,
+    getCurrentLanguage,
+    getBrowserLanguage,
+    setLanguage,
+    translatePage
+};

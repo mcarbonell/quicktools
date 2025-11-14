@@ -97,7 +97,8 @@
                 "newtab/*",
                 "popup/*",
                 "data/*",
-                "shared/*"
+                "shared/*",
+                "i18n/*"
             ],
             "matches": [
                 "<all_urls>"
