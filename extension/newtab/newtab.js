@@ -634,7 +634,7 @@ class FastToolsNewTab {
 
             option.innerHTML = `
                 <div style="font-size: 24px;">${tool.icon}</div>
-                <div style="font-size: 14px; font-weight: 500;">${tool.name}</div>
+                <div style="font-size: 14px; font-weight: 500;">${tool.title}</div>
             `;
 
             container.appendChild(option);

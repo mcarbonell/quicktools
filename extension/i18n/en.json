@@ -31,8 +31,11 @@
     "edit_favorites": "✏️ Edit",
     "new_note": "+ New",
     "no_notes": "No notes",
+    "note_no_notes": "No notes",
     "untitled": "Untitled",
-    "note_placeholder": "Write your note..."
+    "note_placeholder": "Write your note...",
+    "note_title_placeholder": "Title",
+    "note_content_placeholder": "Write your note..."
   },
   "newtab": {
     "welcome": "Welcome to FastTools",
@@ -78,7 +81,12 @@
     "banana_get_key": "Get API Key",
     "version": "Version",
     "save_success": "Settings saved successfully",
-    "save_error": "Error saving settings"
+    "save_error": "Error saving settings",
+    "help": "Help",
+    "feedback": "Feedback",
+    "save_settings": "Save Settings",
+    "settings_lang": "🌐 Interface language:",
+    "language_description": "Change the language of the extension and web tools"
   },
   "onboarding": {
     "welcome_title": "Welcome to FastTools!",

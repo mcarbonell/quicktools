@@ -13,10 +13,10 @@
         <!-- Header -->
         <header class="header">
             <div class="logo">
-                <img src="../icons/icon-48x48.png" alt="QuickTools" class="logo-icon">
-                <h1>QuickTools Extension</h1>
+                <img src="../icons/icon-48x48.png" alt="FastTools" class="logo-icon">
+                <h1 data-i18n="common.app_name">FastTools</h1>
             </div>
-            <div class="version">v1.0.0</div>
+            <div class="version">v1.2.0</div>
         </header>
 
         <!-- Main Content -->
@@ -141,14 +141,14 @@
                     <h2>Apariencia</h2>
 
                     <div class="settings-group">
-                        <h3>Idioma</h3>
+                        <h3 data-i18n="options.language">Idioma</h3>
                         <div class="setting-item">
-                            <label for="language-select">🌐 Idioma de la interfaz:</label>
-                            <select id="language-select">
+                            <label for="language-select" data-i18n="options.settings_lang">🌐 Idioma de la interfaz:</label>
+                            <select id="language-select" class="form-input">
                                 <option value="en">English</option>
                                 <option value="es">Español</option>
                             </select>
-                            <p class="setting-description">Cambia el idioma de la extensión y las herramientas web</p>
+                            <p class="setting-description" data-i18n="options.language_description">Cambia el idioma de la extensión y las herramientas web</p>
                         </div>
                     </div>
 
@@ -507,14 +507,14 @@
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-left">
-                    <span>QuickTools Extension v1.0.0</span>
+                    <span><span data-i18n="common.app_name">FastTools</span> v1.2.0</span>
                     <span class="separator">•</span>
-                    <a href="#" id="help-link">Ayuda</a>
+                    <a href="#" id="help-link" data-i18n="options.help">Ayuda</a>
                     <span class="separator">•</span>
-                    <a href="#" id="feedback-link">Feedback</a>
+                    <a href="#" id="feedback-link" data-i18n="options.feedback">Feedback</a>
                 </div>
                 <div class="footer-right">
-                    <button class="btn btn-primary" id="save-settings">Guardar Configuración</button>
+                    <button class="btn btn-primary" id="save-settings" data-i18n="options.save_settings">Guardar Configuración</button>
                 </div>
             </div>
         </footer>
