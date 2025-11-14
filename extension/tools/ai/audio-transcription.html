@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transcripción de Audio con IA - FastTools</title>
+    <title>Transcripción de Audio - FastTools Extension</title>
     <style>
         * {
             margin: 0;
@@ -161,9 +161,8 @@
         <h1>🎤 Transcripción de Audio con IA</h1>
         <p class="subtitle">Transcribe archivos de audio a texto usando IA</p>
 
-        <div class="notice">
-            <strong>⚠️ Nota:</strong> Esta herramienta requiere Google Gemini API. 
-            Los archivos de audio se procesan localmente y solo se envía el audio a Gemini para transcripción.
+        <div class="notice" id="serviceStatus" style="background: #d1ecf1; border-color: #bee5eb;">
+            <strong>🔄 Verificando disponibilidad...</strong>
         </div>
 
         <div class="upload-area" id="uploadArea">
@@ -201,7 +200,7 @@
         </div>
     </div>
 
-    <script src="../../shared/gemini-api.js"></script>
+    <script src="../../shared/chrome-ai-apis.js"></script>
     <script src="audio-transcription.js"></script>
 </body>
 </html>

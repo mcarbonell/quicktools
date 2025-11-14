@@ -2,16 +2,35 @@
 // AUDIO TRANSCRIPTION AI
 // ====================
 
-let currentAudio = null;
+const chromeAI = new ChromeAI();
+let currentAudioBlob = null;
+let mediaRecorder = null;
+let audioChunks = [];
 
 // ====================
 // INITIALIZATION
 // ====================
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    await checkServiceAvailability();
     setupUploadArea();
     setupEventListeners();
 });
+
+async function checkServiceAvailability() {
+    const serviceStatus = document.getElementById('serviceStatus');
+    const hasPromptAPI = 'LanguageModel' in self;
+    
+    if (hasPromptAPI) {
+        serviceStatus.style.background = '#d4edda';
+        serviceStatus.style.borderColor = '#c3e6cb';
+        serviceStatus.innerHTML = '<strong>✅ Usando Chrome AI Local (Gemini Nano)</strong>';
+    } else {
+        serviceStatus.style.background = '#fff3cd';
+        serviceStatus.style.borderColor = '#ffc107';
+        serviceStatus.innerHTML = '<strong>⚠️ Requiere Prompt API. Habilita chrome://flags/#prompt-api-for-gemini-nano</strong>';
+    }
+}
 
 function setupEventListeners() {
     document.getElementById('copyBtn')?.addEventListener('click', copyTranscription);
@@ -54,14 +73,7 @@ function setupUploadArea() {
 }
 
 async function handleFile(file) {
-    // Check file size (max 10MB)
-    if (file.size > 10 * 1024 * 1024) {
-        document.getElementById('error').textContent = '❌ El archivo es demasiado grande. Máximo 10MB.';
-        document.getElementById('error').style.display = 'block';
-        return;
-    }
-
-    currentAudio = file;
+    currentAudioBlob = file;
     
     // Show audio player
     const audioPlayer = document.getElementById('audioPlayer');
@@ -79,54 +91,49 @@ async function handleFile(file) {
         };
     };
     reader.readAsDataURL(file);
-
-    // Transcribe audio
-    await transcribeAudio(file);
 }
 
 // ====================
 // TRANSCRIPTION
 // ====================
 
-async function transcribeAudio(file) {
-    const loading = document.getElementById('loading');
-    const error = document.getElementById('error');
-    const resultArea = document.getElementById('resultArea');
+// Transcribe button handler
+const transcribeBtn = document.querySelector('button');
+if (transcribeBtn && transcribeBtn.textContent.includes('Transcribir')) {
+    transcribeBtn.addEventListener('click', async () => {
+        if (!currentAudioBlob) return;
 
-    loading.style.display = 'block';
-    error.style.display = 'none';
-    resultArea.style.display = 'none';
+        const loading = document.getElementById('loading');
+        const error = document.getElementById('error');
+        const resultArea = document.getElementById('resultArea');
+        const transcription = document.getElementById('transcription');
 
-    try {
-        const gemini = new GeminiAPI();
-        
-        // Convert audio to base64
-        const base64 = await fileToBase64(file);
-        const audioData = base64.split(',')[1];
+        loading.style.display = 'block';
+        error.style.display = 'none';
+        resultArea.style.display = 'none';
+        transcription.value = '';
 
-        // Note: Gemini API doesn't support audio directly yet
-        // This is a placeholder for when it becomes available
-        // For now, we'll show an informative message
-        
-        throw new Error('La transcripción de audio con Gemini API aún no está disponible. Próximamente se añadirá soporte cuando Google lo habilite.');
-        
-        // Future implementation:
-        // const result = await gemini.transcribeAudio(audioData, file.type);
-        // if (result.success) {
-        //     displayResult(result.text);
-        // }
-        
-    } catch (err) {
-        console.error('Error:', err);
-        error.innerHTML = `❌ ${err.message}<br><br>
-            <strong>Alternativas:</strong><br>
-            • Usa servicios como <a href="https://speech.google.com" target="_blank">Google Speech-to-Text</a><br>
-            • Prueba <a href="https://www.happyscribe.com" target="_blank">Happy Scribe</a><br>
-            • O <a href="https://otter.ai" target="_blank">Otter.ai</a>`;
-        error.style.display = 'block';
-    } finally {
-        loading.style.display = 'none';
-    }
+        try {
+            const arrayBuffer = await currentAudioBlob.arrayBuffer();
+            const prompt = 'Transcribe este audio en español';
+
+            const stream = chromeAI.promptStreaming(prompt, arrayBuffer, 'audio');
+            
+            resultArea.style.display = 'block';
+            for await (const chunk of stream) {
+                transcription.value += chunk;
+            }
+
+            updateStats(transcription.value);
+
+        } catch (err) {
+            console.error('Error:', err);
+            error.textContent = `❌ Error: ${err.message}`;
+            error.style.display = 'block';
+        } finally {
+            loading.style.display = 'none';
+        }
+    });
 }
 
 function displayResult(text) {
