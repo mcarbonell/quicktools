@@ -1,7 +1,7 @@
 # 🚀 FastTools - Launch Roadmap
 
-**Objetivo:** Lanzar FastTools en Chrome Web Store en 2-3 semanas
-**Fecha creación:** Enero 2025
+**Objetivo:** Lanzar FastTools en Chrome Web Store en 2-3 semanas  
+**Fecha creación:** Noviembre 2025  
 **Estado actual:** Pre-lanzamiento (80% completo)
 
 ---
@@ -24,7 +24,7 @@
 ### 🔄 En Progreso
 - [ ] Pulido de diseño (consistencia visual)
 - [ ] Testing exhaustivo de todas las herramientas
-- [ ] Resolución de dominio fasttools.ai
+- [x] Resolución de dominio fasttools.ai
 - [ ] Gestión de API keys (free/paid)
 
 ### 📋 Pendiente
@@ -704,7 +704,7 @@ trackFeature('similar-pages', { success: true, results: 5 });
 
 ---
 
-**Última actualización:** Enero 2025  
+**Última actualización:** Noviembre 2025  
 **Próxima revisión:** Después del lanzamiento  
 **Owner:** Mario Raúl Carbonell Martínez
 
@@ -713,7 +713,7 @@ trackFeature('similar-pages', { success: true, results: 5 });
 ## ✅ Quick Checklist (Imprimir y tachar)
 
 ### Pre-Lanzamiento
-- [ ] Dominio funcionando
+- [x] Dominio funcionando
 - [ ] Todas las herramientas testeadas
 - [ ] Diseño consistente
 - [ ] Analytics configurado

@@ -413,12 +413,10 @@ class FastToolsNewTab {
             showToast(t('msg_capture_started', {}, this.lang), 'info');
         } else if (tool.slug === 'local://notes') {
             this.createNewNote();
-        } else if (tool.slug.startsWith('tools/')) {
-            // Local extension tools (SEO tools)
-            chrome.tabs.create({ url: tool.url, active: true });
         } else {
-            // External web tools
-            chrome.tabs.create({ url: tool.url, active: true });
+            // Open all tools in web version (fasttools.ai)
+            const webUrl = `https://fasttools.ai/en/${tool.slug.replace(/^local:\/\//, '').replace(/^tools\//, '')}`;
+            chrome.tabs.create({ url: webUrl, active: true });
         }
     }
 
