@@ -86,7 +86,14 @@
     "feedback": "Feedback",
     "save_settings": "Save Settings",
     "settings_lang": "🌐 Interface language:",
-    "language_description": "Change the language of the extension and web tools"
+    "language_description": "Change the language of the extension and web tools",
+    "nav_general": "General",
+    "nav_appearance": "Appearance",
+    "nav_shortcuts": "Shortcuts",
+    "nav_privacy": "Privacy",
+    "nav_sync": "Sync",
+    "nav_profile": "Profile",
+    "nav_advanced": "Advanced"
   },
   "onboarding": {
     "welcome_title": "Welcome to FastTools!",

@@ -86,7 +86,14 @@
     "feedback": "Feedback",
     "save_settings": "Guardar Configuración",
     "settings_lang": "🌐 Idioma de la interfaz:",
-    "language_description": "Cambia el idioma de la extensión y las herramientas web"
+    "language_description": "Cambia el idioma de la extensión y las herramientas web",
+    "nav_general": "General",
+    "nav_appearance": "Apariencia",
+    "nav_shortcuts": "Atajos",
+    "nav_privacy": "Privacidad",
+    "nav_sync": "Sincronización",
+    "nav_profile": "Perfil",
+    "nav_advanced": "Avanzado"
   },
   "onboarding": {
     "welcome_title": "¡Bienvenido a FastTools!",
