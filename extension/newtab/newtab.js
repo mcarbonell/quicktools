@@ -415,7 +415,9 @@ class FastToolsNewTab {
             this.createNewNote();
         } else {
             // Open all tools in web version (fasttools.ai)
-            const webUrl = `https://fasttools.ai/en/${tool.slug.replace(/^local:\/\//, '').replace(/^tools\//, '')}`;
+            const toolSlug = tool.slug.replace(/^local:\/\//, '').replace(/^tools\//, '');
+            const langPrefix = this.lang === 'en' ? '' : `${this.lang}/`;
+            const webUrl = `https://fasttools.ai/${langPrefix}${toolSlug}`;
             chrome.tabs.create({ url: webUrl, active: true });
         }
     }

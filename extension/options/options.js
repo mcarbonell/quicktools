@@ -253,6 +253,15 @@ class OptionsManager {
         this.setChecked('open-in-new-tab', this.settings.openInNewTab);
         this.setChecked('compact-view', this.settings.compactView);
 
+        // Language Settings
+        const languageSelect = document.getElementById('language-select');
+        if (languageSelect) {
+            languageSelect.value = this.settings.language || 'en';
+            languageSelect.addEventListener('change', (e) => {
+                this.settings.language = e.target.value;
+            });
+        }
+
         // Theme Settings
         const themeRadios = document.querySelectorAll('input[name="theme"]');
         themeRadios.forEach(radio => {
