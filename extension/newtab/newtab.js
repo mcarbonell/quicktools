@@ -3,7 +3,7 @@
 
 import { getTimeAgo, getStorage, setStorage, trackToolUsage, showToast, showModal, closeModal, copyToClipboard } from '../shared/utils.js';
 import { loadTools, getToolById, filterByCategory, getCategories } from '../shared/tools-loader.js';
-import { t, getCategoryName, initI18n, setLanguage } from '../shared/i18n.js';
+import { t, getCategoryName, initI18n, setLanguage, translatePage } from '../shared/i18n.js';
 
 class FastToolsNewTab {
     constructor() {
@@ -30,6 +30,7 @@ class FastToolsNewTab {
 
         try {
             this.lang = await initI18n();
+            translatePage();
             await this.loadData();
             this.setupEventListeners();
             this.render();

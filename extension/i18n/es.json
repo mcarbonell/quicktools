@@ -21,11 +21,18 @@
     "quick_access": "⚡ Acceso Rápido",
     "all_tools": "🛠️ Todas las Herramientas",
     "notes": "📝 Notas Rápidas",
+    "notes_short": "Notas",
+    "capture": "Capturar",
+    "color": "Color",
+    "color_picker": "🎨 Color Picker",
+    "copy_hex": "Copiar HEX",
     "settings": "⚙️ Configuración",
+    "settings_coming": "Configuración próximamente...",
     "edit_favorites": "✏️ Editar",
     "new_note": "+ Nueva",
     "no_notes": "No hay notas",
-    "untitled": "Sin título"
+    "untitled": "Sin título",
+    "note_placeholder": "Escribe tu nota..."
   },
   "newtab": {
     "welcome": "Bienvenido a FastTools",

@@ -232,19 +232,19 @@
     <!-- Quick Actions -->
     <div class="quick-actions">
         <button class="quick-btn" data-action="capture-screen">
-            📸<br><span>Capturar</span>
+            📸<br><span data-i18n="popup.capture">Capturar</span>
         </button>
         <button class="quick-btn" data-action="show-modal" data-modal="notes-modal">
-            📝<br><span>Notas</span>
+            📝<br><span data-i18n="popup.notes_short">Notas</span>
         </button>
         <button class="quick-btn" data-action="show-modal" data-modal="color-picker-modal">
-            🎨<br><span>Color</span>
+            🎨<br><span data-i18n="popup.color">Color</span>
         </button>
     </div>
 
     <!-- Tools -->
     <div class="tools-section">
-        <h2 class="section-title">Herramientas</h2>
+        <h2 class="section-title" data-i18n="popup.all_tools">Herramientas</h2>
         <div id="tools-grid"></div>
     </div>
 
@@ -270,17 +270,17 @@
     <div id="notes-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>📝 Notas Rápidas</h3>
+                <h3 data-i18n="popup.notes">📝 Notas Rápidas</h3>
                 <button class="close-btn" data-action="close-modal" data-modal="notes-modal">×</button>
             </div>
             <div class="modal-body">
-                <input type="text" id="note-title" placeholder="Título" class="form-input" style="margin-bottom: var(--space-md);">
-                <textarea id="note-content" placeholder="Escribe tu nota..." class="form-textarea"></textarea>
+                <input type="text" id="note-title" data-i18n-placeholder="options.name_placeholder" placeholder="Título" class="form-input" style="margin-bottom: var(--space-md);">
+                <textarea id="note-content" data-i18n-placeholder="popup.note_placeholder" placeholder="Escribe tu nota..." class="form-textarea"></textarea>
                 <div class="notes-list" id="notes-list"></div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" data-action="save-note">Guardar</button>
-                <button class="btn" data-action="close-modal" data-modal="notes-modal">Cerrar</button>
+                <button class="btn btn-primary" data-action="save-note" data-i18n="common.save">Guardar</button>
+                <button class="btn" data-action="close-modal" data-modal="notes-modal" data-i18n="common.close">Cerrar</button>
             </div>
         </div>
     </div>
@@ -289,7 +289,7 @@
     <div id="color-picker-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>🎨 Color Picker</h3>
+                <h3 data-i18n="popup.color_picker">🎨 Color Picker</h3>
                 <button class="close-btn" data-action="close-modal" data-modal="color-picker-modal">×</button>
             </div>
             <div class="modal-body">
@@ -305,11 +305,11 @@
                             <input type="text" id="color-rgb" value="rgb(19, 164, 236)" readonly class="color-text">
                         </div>
                     </div>
-                    <button class="btn btn-primary" data-action="copy-color">Copiar HEX</button>
+                    <button class="btn btn-primary" data-action="copy-color" data-i18n="popup.copy_hex">Copiar HEX</button>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn" data-action="close-modal" data-modal="color-picker-modal">Cerrar</button>
+                <button class="btn" data-action="close-modal" data-modal="color-picker-modal" data-i18n="common.close">Cerrar</button>
             </div>
         </div>
     </div>
@@ -318,14 +318,14 @@
     <div id="settings-modal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>⚙️ Configuración</h3>
+                <h3 data-i18n="popup.settings">⚙️ Configuración</h3>
                 <button class="close-btn" data-action="close-modal" data-modal="settings-modal">×</button>
             </div>
             <div class="modal-body">
-                <p style="text-align:center;color:var(--text-secondary);">Configuración próximamente...</p>
+                <p style="text-align:center;color:var(--text-secondary);" data-i18n="popup.settings_coming">Configuración próximamente...</p>
             </div>
             <div class="modal-footer">
-                <button class="btn" data-action="close-modal" data-modal="settings-modal">Cerrar</button>
+                <button class="btn" data-action="close-modal" data-modal="settings-modal" data-i18n="common.close">Cerrar</button>
             </div>
         </div>
     </div>

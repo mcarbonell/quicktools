@@ -2,7 +2,7 @@
 
 import { loadTools } from '../shared/tools-loader.js';
 import { getStorage, trackToolUsage, showToast, showModal, closeModal } from '../shared/utils.js';
-import { t, initI18n } from '../shared/i18n.js';
+import { t, initI18n, translatePage } from '../shared/i18n.js';
 
 class FastToolsPopup {
     constructor() {
@@ -16,6 +16,7 @@ class FastToolsPopup {
         console.log('🚀 Initializing FastTools Popup');
         
         this.lang = await initI18n();
+        translatePage();
         await this.loadData();
         this.applyTheme();
         this.setupEventListeners();

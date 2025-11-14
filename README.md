@@ -19,7 +19,7 @@ FastTools es una suite de 47 herramientas online que funcionan completamente del
 - 💰 **Gratis con Publicidad**: Modelo sostenible con anuncios no intrusivos
 - 🌐 **Offline Ready**: PWA con Service Worker v3.0.35
 - 🌍 **Bilingüe**: Soporte completo EN/ES con i18n
-- 🤖 **IA Integrada**: 6 herramientas con Google Gemini, Nano Banana y la IA local de Chrome
+- 🤖 **IA Integrada**: 12 herramientas con Google Gemini, Nano Banana y la IA local de Chrome
 
 ## 🛠️ Herramientas Disponibles
 

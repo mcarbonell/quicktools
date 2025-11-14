@@ -1,5 +1,7 @@
 // QuickTools Extension - Options Page Script
 
+import { initI18n, translatePage, setLanguage } from '../shared/i18n.js';
+
 class OptionsManager {
     constructor() {
         this.currentSection = 'general';
@@ -35,6 +37,8 @@ class OptionsManager {
     }
 
     async init() {
+        this.lang = await initI18n();
+        translatePage();
         await this.loadSettings();
         await this.loadProfile();
         this.setupEventListeners();
