@@ -746,7 +746,12 @@ async function saveProfile(profile) {
 
 async function getSystemPrompt() {
     try {
+        const profile = await profileManager.getProfile();
+        console.log('📊 Perfil cargado:', profile);
+        
         const systemPrompt = await profileManager.getSystemPrompt();
+        console.log('📝 System prompt generado:', systemPrompt);
+        
         return {
             success: true,
             systemPrompt: systemPrompt

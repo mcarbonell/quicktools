@@ -3,11 +3,11 @@
 ## Project Owner
 **Name:** Mario Raúl Carbonell Martínez  
 **Role:** Project Lead & Director  
-**Contact:** contact@fasttools.tools
+**Contact:** contact@fasttools.ai
 
 ## Project Overview
 **Name:** FastTools (formerly QuickTools)  
-**Domain:** fasttools.tools  
+**Domain:** fasttools.ai  
 **Staging:** fasttools-nine.vercel.app  
 **Purpose:** Privacy-focused online tools suite (42 tools) that process everything client-side  
 **Status:** ✅ PRODUCTION READY (Noviembre 2025)
@@ -206,7 +206,7 @@ npm run serve            # Local server on :8000
 - **User Fix:** Hard refresh (Ctrl+Shift+R) or clear site data
 
 ### DNS Propagation
-- **Issue:** fasttools.tools may take 1-48h to propagate globally
+- **Issue:** fasttools.ai may take 1-48h to propagate globally
 - **Workaround:** Use fasttools-nine.vercel.app during propagation
 - **Check:** dnschecker.org for propagation status
 
@@ -353,7 +353,7 @@ npm run serve            # Local server on :8000
 ## Contact & Resources
 
 ### URLs
-- **Production:** https://fasttools.tools
+- **Production:** https://fasttools.ai
 - **Staging:** https://fasttools-nine.vercel.app
 - **Analytics:** https://analytics.google.com (G-9XTNQMQKE2)
 
@@ -375,7 +375,7 @@ npm run serve            # Local server on :8000
 ## Contact & Resources
 
 ### URLs
-- **Production:** https://fasttools.tools
+- **Production:** https://fasttools.ai
 - **Staging:** https://fasttools-nine.vercel.app
 - **Repository:** github.com/mcarbonell/quicktools
 - **Analytics:** https://analytics.google.com (G-9XTNQMQKE2)
@@ -388,7 +388,7 @@ npm run serve            # Local server on :8000
 - **README.md:** Project overview
 
 ### Support
-- **Email:** contact@fasttools.tools
+- **Email:** contact@fasttools.ai
 - **Issues:** GitHub Issues
 - **Discussions:** GitHub Discussions
 

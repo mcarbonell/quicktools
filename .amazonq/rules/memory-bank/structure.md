@@ -271,7 +271,7 @@ web/*.html (generated pages)
   ↓
 Vercel deployment
   ↓
-https://fasttools.tools/tool-name.html
+https://fasttools.ai/tool-name.html
 ```
 
 **Shared Code Flow:**
@@ -340,7 +340,7 @@ Used by both platforms
 - **Source:** web/ directory
 - **Build:** None (pre-generated files)
 - **Deploy:** Automatic on git push to main
-- **URL:** https://fasttools.tools
+- **URL:** https://fasttools.ai
 
 ### Extension Deployment
 - **Source:** extension/ directory

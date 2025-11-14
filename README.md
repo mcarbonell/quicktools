@@ -328,7 +328,7 @@ FastTools incluye una **extensión de navegador** con funcionalidad completa:
 # Conecta tu repositorio
 # Build command: null (archivos pre-generados)
 # Publish directory: web
-# Domain: fasttools.tools
+# Domain: fasttools.ai
 ```
 
 ### Extensión de Navegador (Chrome/Firefox)
@@ -450,7 +450,7 @@ Este proyecto está bajo la licencia ISC - ver el archivo [LICENSE](LICENSE) par
 
 ## 🔗 Enlaces
 
-- **Web**: https://fasttools.tools
+- **Web**: https://fasttools.ai
 - **Issues**: https://github.com/mcarbonell/quicktools/issues
 - **Discussions**: https://github.com/mcarbonell/quicktools/discussions
 

@@ -7,18 +7,25 @@ window.addEventListener('DOMContentLoaded', async () => {
     
     // Obtener system prompt del perfil si existe
     let systemPrompt = '';
+    let hasProfile = false;
     if (isExtension) {
         try {
             const response = await chrome.runtime.sendMessage({ action: 'get-system-prompt' });
+            console.log('📨 Respuesta get-system-prompt:', response);
             if (response && response.systemPrompt) {
                 systemPrompt = response.systemPrompt;
+                hasProfile = true;
                 console.log('✅ Perfil de usuario cargado para personalización');
+                console.log('📝 System prompt:', systemPrompt);
+            } else {
+                console.log('ℹ️ Sin perfil de usuario, usando chat genérico');
             }
         } catch (error) {
-            console.log('ℹ️ Sin perfil de usuario, usando chat genérico');
+            console.log('❌ Error obteniendo perfil:', error);
         }
     }
     
+    console.log('🤖 Inicializando AI con systemPrompt:', systemPrompt ? 'SÍ' : 'NO');
     await ai.init({ systemPrompt });
     
     // Setup event listeners
@@ -42,11 +49,13 @@ window.addEventListener('DOMContentLoaded', async () => {
         statusDiv.classList.remove('d-none');
         
         if (ai.hasChromeAI) {
-            statusText.textContent = '🏠 Usando IA Local de Chrome (Gratis, Privado, Personalizado)';
+            const profileText = hasProfile ? ', Personalizado' : '';
+            statusText.textContent = `🏠 Usando IA Local de Chrome (Gratis, Privado${profileText})`;
             statusDiv.className = 'alert alert-success';
             removeBtn.classList.add('d-none');
         } else if (ai.hasGeminiAPI) {
-            statusText.textContent = '☁️ Usando Gemini Cloud API (Personalizado)';
+            const profileText = hasProfile ? ', Personalizado' : '';
+            statusText.textContent = `☁️ Usando Gemini Cloud API${profileText}`;
             statusDiv.className = 'alert alert-info';
             removeBtn.classList.remove('d-none');
         }

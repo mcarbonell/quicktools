@@ -6,9 +6,12 @@ class HybridAI {
         this.chromeAI = null;
         this.geminiAPI = null;
         this.availability = null;
+        this.systemPrompt = '';
     }
 
-    async init() {
+    async init(options = {}) {
+        this.systemPrompt = options.systemPrompt || '';
+        
         // Check Chrome APIs availability
         this.availability = await this.checkChromeAPIs();
         
@@ -220,17 +223,20 @@ class HybridAI {
     // ====================
 
     async chat(message, options = {}, onChunk = null) {
+        // Prepend system prompt if available
+        const fullMessage = this.systemPrompt ? `${this.systemPrompt}\n\nUser: ${message}` : message;
+        
         // Try Chrome Prompt API first
         if (this.availability?.prompt) {
             try {
                 if (!this.chromeAI) this.chromeAI = new ChromeAI();
                 if (onChunk) {
-                    for await (const chunk of this.chromeAI.promptStreaming(message)) {
+                    for await (const chunk of this.chromeAI.promptStreaming(fullMessage)) {
                         onChunk(chunk);
                     }
                     return;
                 } else {
-                    return await this.chromeAI.prompt(message);
+                    return await this.chromeAI.prompt(fullMessage);
                 }
             } catch (error) {
                 console.warn('Chrome Prompt failed, falling back to Gemini:', error);
@@ -240,12 +246,12 @@ class HybridAI {
         // Fallback to Gemini Cloud
         if (this.geminiAPI) {
             if (onChunk) {
-                for await (const chunk of this.geminiAPI.generateTextStream(message)) {
+                for await (const chunk of this.geminiAPI.generateTextStream(fullMessage)) {
                     onChunk(chunk);
                 }
                 return;
             } else {
-                return await this.geminiAPI.generateText(message);
+                return await this.geminiAPI.generateText(fullMessage);
             }
         }
 
@@ -253,11 +259,14 @@ class HybridAI {
     }
 
     async *chatStreaming(message, options = {}) {
+        // Prepend system prompt if available
+        const fullMessage = this.systemPrompt ? `${this.systemPrompt}\n\nUser: ${message}` : message;
+        
         // Try Chrome Prompt API first
         if (this.availability?.prompt) {
             try {
                 if (!this.chromeAI) this.chromeAI = new ChromeAI();
-                for await (const chunk of this.chromeAI.promptStreaming(message)) {
+                for await (const chunk of this.chromeAI.promptStreaming(fullMessage)) {
                     yield chunk;
                 }
                 return;
@@ -268,7 +277,7 @@ class HybridAI {
 
         // Fallback to Gemini Cloud
         if (this.geminiAPI) {
-            for await (const chunk of this.geminiAPI.generateTextStream(message)) {
+            for await (const chunk of this.geminiAPI.generateTextStream(fullMessage)) {
                 yield chunk;
             }
             return;

@@ -3,7 +3,7 @@
 ## Project Identity
 
 **Name:** FastTools (formerly QuickTools)  
-**Domain:** fasttools.tools  
+**Domain:** fasttools.ai  
 **Tagline:** "Tools in your browser" / "Herramientas en tu navegador"  
 **Owner:** Mario Raúl Carbonell Martínez  
 **Status:** ✅ Production Ready (Noviembre 2025)
@@ -191,7 +191,7 @@ FastTools is a privacy-focused suite of 43 online tools that process everything 
 - **Pages Generated:** 88 (44 EN + 44 ES)
 - **Service Worker:** v3.0.35
 - **Test Pass Rate:** 99.25%
-- **Production URL:** https://fasttools.tools
+- **Production URL:** https://fasttools.ai
 - **Staging URL:** https://fasttools-nine.vercel.app
 
 ## Future Roadmap

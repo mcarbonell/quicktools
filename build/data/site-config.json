@@ -1,5 +1,5 @@
 {
-  "domain": "fasttools.tools",
+  "domain": "fasttools.ai",
   "defaultLanguage": "en",
   "languages": [
     "en",
@@ -22,7 +22,7 @@
     "github": "https://github.com/mcarbonell/quicktools"
   },
   "contact": {
-    "email": "contact@fasttools.tools",
-    "support": "support@fasttools.tools"
+    "email": "contact@fasttools.ai",
+    "support": "support@fasttools.ai"
   }
 }
