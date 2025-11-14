@@ -933,6 +933,7 @@
     {
       "id": "alt-text-generator-ai",
       "slug": "alt-text-generator-ai.html",
+      "extensionSlug": "tools/ai/alt-text-generator.html",
       "title": {
         "es": "Generador de Alt Text con IA",
         "en": "AI Alt Text Generator"
@@ -949,6 +950,7 @@
     {
       "id": "audio-transcription-ai",
       "slug": "audio-transcription-ai.html",
+      "extensionSlug": "tools/ai/audio-transcription.html",
       "title": {
         "es": "Transcripción de Audio con IA",
         "en": "AI Audio Transcription"
@@ -965,6 +967,7 @@
     {
       "id": "image-to-text-ocr",
       "slug": "image-to-text-ocr.html",
+      "extensionSlug": "tools/ai/image-to-text-ocr.html",
       "title": {
         "es": "Imagen a Texto (OCR)",
         "en": "Image to Text (OCR)"
@@ -981,6 +984,7 @@
     {
       "id": "ai-meme-generator",
       "slug": "ai-meme-generator.html",
+      "extensionSlug": "tools/ai/ai-meme-generator.html",
       "title": {
         "es": "Generador de Memes con IA",
         "en": "AI Meme Generator"

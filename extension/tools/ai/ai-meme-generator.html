@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Memes con IA - FastTools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #fa709a;
+            margin-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .upload-area {
+            border: 3px dashed #fa709a;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 2rem;
+        }
+
+        .upload-area:hover {
+            background: #fff9f0;
+            border-color: #fee140;
+        }
+
+        .mode-selector {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .mode-btn {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .mode-btn.active {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            border-color: #fa709a;
+        }
+
+        .custom-text-area {
+            display: none;
+            margin-bottom: 2rem;
+        }
+
+        .custom-text-area.active {
+            display: block;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .meme-preview {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .meme-canvas-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f0f0f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        canvas {
+            width: 100%;
+            display: block;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            display: none;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #fa709a;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #fee;
+            color: #c33;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎭 Generador de Memes con IA</h1>
+        <p class="subtitle">Crea memes virales automáticamente con IA o añade tu propio texto</p>
+
+        <div class="mode-selector">
+            <button class="mode-btn active" onclick="setMode('ai')">
+                🤖 Texto Automático con IA
+            </button>
+            <button class="mode-btn" onclick="setMode('custom')">
+                ✍️ Texto Personalizado
+            </button>
+        </div>
+
+        <div class="custom-text-area" id="customTextArea">
+            <input type="text" id="topText" placeholder="Texto superior (opcional)">
+            <input type="text" id="bottomText" placeholder="Texto inferior">
+        </div>
+
+        <div class="upload-area" id="uploadArea">
+            <div>🖼️ Arrastra una imagen aquí o haz clic para seleccionar</div>
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p id="loadingText">Generando meme con IA...</p>
+        </div>
+
+        <div class="error" id="error"></div>
+
+        <div class="meme-preview" id="memePreview">
+            <div class="meme-canvas-container">
+                <canvas id="memeCanvas"></canvas>
+            </div>
+            <div style="text-align: center;">
+                <button class="btn" onclick="downloadMeme()">💾 Descargar Meme</button>
+                <button class="btn" onclick="regenerate()">🔄 Regenerar Texto</button>
+                <button class="btn" onclick="reset()">🆕 Nueva Imagen</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="ai-meme-generator.js"></script>
+</body>
+</html>
