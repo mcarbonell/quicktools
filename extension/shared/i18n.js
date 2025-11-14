@@ -112,6 +112,16 @@ export function t(key, params = {}, lang = null) {
         }
     }
     
+    // If not found with dots, try searching all sections for the key
+    if (typeof text !== 'string' && !key.includes('.')) {
+        for (const section of Object.values(translations[useLang])) {
+            if (section && typeof section === 'object' && section[key]) {
+                text = section[key];
+                break;
+            }
+        }
+    }
+    
     // Fallback to key if not found
     if (typeof text !== 'string') {
         console.warn(`Translation not found: ${key}`);

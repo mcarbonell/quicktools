@@ -121,6 +121,20 @@
     "ai": "🤖 IA",
     "seo": "🔍 SEO"
   },
+  "stats": {
+    "stats_today": "Usos Hoy",
+    "stats_favorite": "Favorita",
+    "stats_time_saved": "Tiempo Ahorrado"
+  },
+  "sections": {
+    "section_quick_access": "⚡ Acceso Rápido",
+    "section_all_tools": "🛠️ Todas las Herramientas",
+    "section_notes": "📝 Notas Rápidas"
+  },
+  "usage": {
+    "usage_count": "{count} usos",
+    "usage_today": "{count} usos hoy"
+  },
   "messages": {
     "capture_started": "Captura iniciada",
     "note_saved": "Nota guardada",
