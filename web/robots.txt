@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://fasttools.tools/sitemap.xml
+Sitemap: https://fasttools.ai/sitemap.xml
 
 # Disallow admin/config files
 Disallow: /config/
