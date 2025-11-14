@@ -1,107 +1,105 @@
-let translateUI;
+let ai;
+let sourceLang = 'auto';
 
-document.addEventListener('DOMContentLoaded', async () => {
-    translateUI = new TranslateUI({
-        storage: ChromeGeminiStorage,
-        translations: {},
-        userLanguage: navigator.language.split('-')[0] || 'en'
-    });
-    await translateUI.init();
-    document.getElementById('targetLangSelect').value = translateUI.userLanguage;
-
-    document.getElementById('saveKeyBtn').onclick = saveApiKey;
-    document.getElementById('removeKeyBtn').onclick = removeApiKey;
-    document.getElementById('detectBtn').onclick = detectLanguage;
-    document.getElementById('translateBtn').onclick = translateText;
-    document.getElementById('copyBtn').onclick = copyResult;
-    document.getElementById('downloadBtn').onclick = downloadResult;
-    document.getElementById('swapBtn').onclick = swapLanguages;
+window.addEventListener('DOMContentLoaded', async () => {
+    ai = new HybridAI();
+    await ai.init();
+    updateUI();
 });
 
-async function saveApiKey() {
+function updateUI() {
+    const apiKeySetup = document.getElementById('apiKeySetup');
+    const apiKeyManage = document.getElementById('apiKeyManage');
+    const toolSection = document.getElementById('toolSection');
+    
+    if (ai.hasChromeAI || ai.hasGeminiAPI) {
+        apiKeySetup.classList.add('d-none');
+        toolSection.classList.remove('d-none');
+        
+        if (ai.hasGeminiAPI) {
+            apiKeyManage.classList.remove('d-none');
+        }
+    }
+}
+
+document.getElementById('saveKeyBtn')?.addEventListener('click', async () => {
     const apiKey = document.getElementById('apiKeyInput').value.trim();
     if (!apiKey) return alert('❌ Enter API key');
+    
+    await ChromeGeminiStorage.save(apiKey);
+    await ai.init();
+    updateUI();
+});
 
-    const btn = document.getElementById('saveKeyBtn');
+document.getElementById('removeKeyBtn')?.addEventListener('click', async () => {
+    await ChromeGeminiStorage.remove();
+    location.reload();
+});
+
+document.getElementById('detectBtn')?.addEventListener('click', async () => {
+    const text = document.getElementById('inputText').value;
+    if (!text.trim()) return alert('❌ Enter text');
+    
+    const btn = document.getElementById('detectBtn');
     btn.disabled = true;
-    btn.textContent = '⏳ Validating...';
-
+    btn.textContent = '⏳ Detecting...';
+    
     try {
-        const success = await translateUI.saveApiKey(apiKey);
-        if (success) alert('✅ Saved');
-        else alert('❌ Invalid key');
+        const result = await ai.detectLanguage(text);
+        sourceLang = result.language;
+        document.getElementById('detectedLang').textContent = `Detected: ${result.language}`;
     } catch (error) {
-        alert(`❌ Error: ${error.message}`);
+        alert(`❌ ${error.message}`);
     } finally {
         btn.disabled = false;
-        btn.textContent = '💾 Save';
+        btn.textContent = '🔍 Detect';
     }
-}
+});
 
-function removeApiKey() {
-    if (confirm('Remove API key?')) translateUI.removeApiKey();
-}
-
-async function detectLanguage() {
-    const text = document.getElementById('inputText').value;
-    if (!text.trim()) return alert('❌ Enter text first');
-
-    const span = document.getElementById('detectedLang');
-    span.textContent = '⏳ Detecting...';
-
-    try {
-        const lang = await translateUI.detectLanguage(text);
-        const langNames = { en: 'English', es: 'Spanish', fr: 'French', de: 'German', it: 'Italian', pt: 'Portuguese' };
-        span.textContent = `Detected: ${langNames[lang] || lang}`;
-    } catch (error) {
-        span.textContent = '❌ Failed';
-    }
-}
-
-async function translateText() {
+document.getElementById('translateBtn')?.addEventListener('click', async () => {
     const text = document.getElementById('inputText').value;
     const targetLang = document.getElementById('targetLangSelect').value;
     const btn = document.getElementById('translateBtn');
-
+    const output = document.getElementById('translationOutput');
+    
     if (!text.trim()) return alert('❌ Enter text');
-
+    
     btn.disabled = true;
     btn.textContent = '⏳ Translating...';
-
+    output.textContent = '';
+    document.getElementById('resultSection').classList.remove('d-none');
+    
     try {
-        const translation = await translateUI.translate(text, targetLang);
-        const formatted = translateUI.formatText(translation);
-        document.getElementById('translationOutput').innerHTML = formatted;
-        document.getElementById('resultSection').classList.remove('d-none');
+        const result = await ai.translate(text, sourceLang, targetLang);
+        output.textContent = result;
     } catch (error) {
-        alert(`❌ Error: ${error.message}`);
+        alert(`❌ ${error.message}`);
     } finally {
         btn.disabled = false;
         btn.textContent = '🌐 Translate';
     }
-}
+});
 
-function copyResult() {
+document.getElementById('copyBtn')?.addEventListener('click', () => {
     const text = document.getElementById('translationOutput').innerText;
     navigator.clipboard.writeText(text).then(() => alert('✅ Copied'));
-}
+});
 
-function downloadResult() {
+document.getElementById('downloadBtn')?.addEventListener('click', () => {
     const text = document.getElementById('translationOutput').innerText;
     const blob = new Blob([text], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `translation-${new Date().toISOString().slice(0,10)}.txt`;
+    a.download = `translation-${Date.now()}.txt`;
     a.click();
     URL.revokeObjectURL(url);
-}
+});
 
-function swapLanguages() {
+document.getElementById('swapBtn')?.addEventListener('click', () => {
     const input = document.getElementById('inputText');
     const output = document.getElementById('translationOutput');
     const temp = input.value;
     input.value = output.innerText;
-    output.innerHTML = '';
-    document.getElementById('resultSection').classList.add('d-none');
-}
+    output.textContent = temp;
+});
