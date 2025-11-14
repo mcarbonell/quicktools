@@ -3,317 +3,334 @@
 ## Programming Languages
 
 ### JavaScript (ES6+)
-**Version:** ES2015+ (ES6, ES7, ES8 features)  
-**Usage:** 100% of application logic  
-**Style:** Vanilla JavaScript, no frameworks
-
-**Key Features Used:**
-- Arrow functions
-- Async/await
-- Promises
-- Template literals
-- Destructuring
-- Spread operator
-- Classes
-- Modules (import/export)
-- const/let (no var)
+- **Version:** ES2020+ features
+- **Style:** Modern syntax with arrow functions, async/await, destructuring
+- **Modules:** ES6 modules where supported, script tags for browser compatibility
+- **Transpilation:** None (native browser support)
 
 ### HTML5
-**Version:** HTML5  
-**Usage:** Semantic markup, modern APIs
-
-**Key Features Used:**
-- Semantic elements (header, nav, main, footer, article, section)
-- Canvas API (image processing)
-- File API (client-side file handling)
-- LocalStorage API
-- Service Worker API
-- Web App Manifest
+- **Semantic markup:** `<main>`, `<section>`, `<article>`, `<nav>`, `<footer>`
+- **Accessibility:** ARIA labels, alt text, semantic structure
+- **SEO:** Meta tags, Open Graph, Twitter Cards, Schema.org JSON-LD
 
 ### CSS3
-**Version:** CSS3  
-**Usage:** Styling, animations, responsive design
+- **Methodology:** Custom CSS with BEM-like naming
+- **Variables:** CSS custom properties for theming
+- **Layout:** Flexbox, Grid
+- **Responsive:** Mobile-first with media queries
+- **Animations:** CSS transitions, keyframe animations
 
-**Key Features Used:**
-- CSS Variables (custom properties)
-- Flexbox
-- Grid
-- Media queries
-- Animations and transitions
-- Transform
-- Filter effects
+## Frontend Technologies
 
-## Frontend Framework
+### UI Framework
+- **Bootstrap 5.3.2**
+  - Minimal usage (grid, utilities, components)
+  - Custom CSS overrides in `style-v2.css`
+  - No JavaScript components (vanilla JS preferred)
 
-### Bootstrap 5.3.2
-**Usage:** Base UI framework (minimal, custom CSS on top)  
-**CDN:** Used via CDN (no npm install)
+### Design System
+- **CSS Variables:** Defined in `web/css/style-v2.css`
+- **Color Palette:** Primary (#13a4ec), gradients for hero/features
+- **Typography:** Inter font family (400-900 weights)
+- **Icons:** Material Symbols Outlined
+- **Spacing:** 4px base unit system
+- **Border Radius:** 8px (md), 12px (lg), 16px (xl)
 
-**Components Used:**
-- Grid system
-- Utilities (spacing, colors, typography)
-- Forms
-- Buttons
-- Cards
-- Modals
-- Alerts
+### Client-Side Libraries
 
-**Customization:**
-- Custom CSS in style-v2.css overrides Bootstrap
-- Custom color scheme (#13a4ec primary)
-- Custom animations and transitions
+**PDF Processing:**
+- `pdf.js` → PDF rendering and text extraction
+- `pdf-lib` → PDF manipulation (merge, split, compress)
 
-## Libraries & Dependencies
+**Data Formats:**
+- `js-yaml` → YAML parsing/serialization
+- `fast-xml-parser` → XML parsing/serialization
+- `@iarna/toml` → TOML parsing/serialization
 
-### PDF Processing
-- **PDF.js** - Mozilla's PDF renderer (text extraction, viewing)
-- **pdf-lib** - PDF manipulation (merge, split, compress)
+**Image Processing:**
+- Canvas API → Native browser image manipulation
+- `cropper.js` → Image cropping UI
 
-### Data Format Parsing
-- **js-yaml** - YAML parser/serializer
-- **fast-xml-parser** - XML parser/serializer
-- **@iarna/toml** - TOML parser/serializer
+**Utilities:**
+- `qrcode.js` → QR code generation
+- Native Crypto API → Hash calculation
 
-### Image Processing
-- **Canvas API** - Native browser API (resize, crop, convert, compress)
-- **Cropper.js** - Image cropping UI
+## AI Integration
 
-### Utilities
-- **qrcode.js** - QR code generation
-- **crypto-js** - Hash calculation (MD5, SHA-1, SHA-256, SHA-512)
+### Google Gemini API
+- **Models:** 
+  - `gemini-2.0-flash-exp` → Text generation, chat
+  - `gemini-2.5-flash-preview-0205` → Image generation
+- **Features:** Chat, summarization, translation, text improvement
+- **Storage:** API key in localStorage (web) or chrome.storage (extension)
 
-### AI Integration
-- **Google Gemini API** - AI chat, summarization, translation, image generation
-- **Nano Banana API** - AI image generation and editing
+### Chrome AI (Gemini Nano)
+- **API:** `window.ai.languageModel` (Prompt API)
+- **Access:** Via offscreen document in extension
+- **Features:** Local AI inference, profile generation, recommendations
+- **Fallback:** Hybrid strategy (Chrome AI → Gemini Cloud)
 
-### Development
-- **http-server** - Local development server (npm package)
+### Nano Banana API
+- **Endpoints:** Image generation, image editing
+- **Features:** Text-to-image, image-to-image with prompts
+- **Storage:** API key in localStorage/chrome.storage
 
 ## Build System
 
 ### Node.js Scripts
-**Version:** Node.js 14+  
-**Package Manager:** npm
+- **Runtime:** Node.js 14+
+- **Package Manager:** npm
+- **Build Scripts:** Custom JavaScript in `build/scripts/`
 
-**Build Scripts:**
-```json
-{
-  "clean": "node build/scripts/clean-build.js",
-  "build:web": "node build/scripts/bump-version.js && npm run clean && node build/scripts/generate-site.js && node build/scripts/generate-category-pages.js",
-  "build:extension": "node build/scripts/build-extension.js",
-  "sync:shared": "node scripts/sync-shared-files.js",
-  "build:local": "npm run build:web && npm run build:extension && npm run sync:shared",
-  "test": "node tests/automated-qa.js",
-  "serve": "npx http-server web -p 8000"
-}
+### Build Commands
+
+```bash
+# Full build (web + extension + sync)
+npm run build:local
+
+# Web only (bump version + clean + generate + categories)
+npm run build:web
+
+# Extension only (sync fasttools-data.json)
+npm run build:extension
+
+# Sync shared JS files
+npm run sync:shared
+
+# Clean generated files
+npm run clean
+
+# Run tests
+npm test
+
+# Local development server
+npm run serve
 ```
 
-**Build Process:**
-1. **bump-version.js** - Increment Service Worker version
-2. **clean-build.js** - Remove old generated files
-3. **generate-site.js** - Generate tool pages from templates
-4. **generate-category-pages.js** - Generate category pages
-5. **build-extension.js** - Sync data to extension
-6. **sync-shared-files.js** - Distribute shared JS files
+### Build Process
 
-### Template Engine
-**Custom:** Simple string replacement in Node.js  
-**No Framework:** No Handlebars, Pug, or EJS - just string manipulation
+**1. Version Bump** (`build/scripts/bump-version.js`)
+- Increments Service Worker version
+- Updates `web/sw.js` cache version
 
-**Template Variables:**
-- `{{TOOL_NAME}}` - Tool name
-- `{{TOOL_DESCRIPTION}}` - Tool description
-- `{{TOOL_CONTENT}}` - Tool-specific HTML
-- `{{LANG}}` - Language code (en/es)
-- `{{VERSION}}` - Service Worker version
+**2. Clean** (`build/scripts/clean-build.js`)
+- Removes generated HTML files
+- Preserves static assets
 
-## Hosting & Deployment
+**3. Generate Site** (`build/scripts/generate-site.js`)
+- Reads `build/data/fasttools-data.json`
+- Applies templates from `build/templates/`
+- Generates 94 tool pages (47 × 2 languages)
+- Outputs to `web/` and `web/es/`
 
-### Vercel
-**Plan:** Hobby (free)  
-**Configuration:** vercel.json
+**4. Generate Categories** (`build/scripts/generate-category-pages.js`)
+- Creates 16 category pages (8 × 2 languages)
+- Uses `build/templates/category-base.html`
 
-```json
-{
-  "buildCommand": null,
-  "installCommand": null,
-  "outputDirectory": "web"
-}
-```
+**5. Sync Extension** (`build/scripts/build-extension.js`)
+- Copies `build/data/fasttools-data.json` → `extension/data/`
 
-**Key Points:**
-- No build on deploy (files pre-generated)
-- Static file serving only
-- Automatic HTTPS
-- Global CDN
-- Custom domain support
-
-### Domain
-**Registrar:** cdmon.com  
-**Cost:** €10.95/year  
-**DNS:** Configured to point to Vercel
+**6. Sync Shared Files** (`scripts/sync-shared-files.js`)
+- Copies `build/shared/*.js` → `web/js/lib/` + `web/js/tools/`
+- Copies `build/shared/*.js` → `extension/shared/` + `extension/tools/ai/`
 
 ## Progressive Web App (PWA)
 
 ### Service Worker
-**Version:** v3.0.35 (auto-incremented)  
-**Location:** web/sw.js (root) + web/js/service-worker.js (logic)
-
-**Features:**
-- Cache-first strategy for static assets
-- Network-first for dynamic content
-- Offline fallback
-- Version-based cache invalidation
-
-**Cache Strategy:**
-```javascript
-// Static assets: cache-first
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
-  );
-});
-```
+- **Version:** v3.0.35 (auto-incremented)
+- **Location:** `web/sw.js` (root level)
+- **Strategy:** Cache-first for static assets, network-first for API calls
+- **Cache:** HTML, CSS, JS, icons, vendor libraries
 
 ### Web App Manifest
-**Location:** web/manifest.json
+- **Location:** `web/manifest.json`
+- **Features:** 
+  - App name, description, icons
+  - Theme color (#13a4ec)
+  - Display mode (standalone)
+  - Start URL (/)
 
-**Configuration:**
-```json
-{
-  "name": "FastTools",
-  "short_name": "FastTools",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#13a4ec",
-  "icons": [...]
-}
-```
+### Offline Support
+- Cached pages work offline
+- Tools function without network
+- Service Worker handles cache updates
 
 ## Browser Extension
 
 ### Manifest V3
-**Location:** extension/manifest.json  
-**Target:** Chrome, Edge, Firefox
+- **Location:** `extension/manifest.json`
+- **Version:** 1.2.0
+- **Permissions:** 
+  - `storage` → API keys, user profile
+  - `history` → Browsing history analysis
+  - `bookmarks` → Bookmark analysis
+  - `tabs` → Active tab access
+  - `contextMenus` → Right-click menus
+  - `offscreen` → Chrome AI access
 
-**Key Permissions:**
-- `storage` - Save user settings
-- `activeTab` - Access current tab
-- `contextMenus` - Right-click menus
-- `offscreen` - Offscreen documents
+### Extension APIs
 
-**Architecture:**
-- **Background Service Worker** - Persistent background logic
-- **Content Scripts** - Inject into web pages
-- **Popup** - Extension popup UI
-- **Options** - Settings page
-- **New Tab** - Custom new tab page
+**Chrome Storage API:**
+```javascript
+// Sync storage (cross-device)
+chrome.storage.sync.set({ key: value });
+chrome.storage.sync.get(['key']);
 
-## Analytics
+// Local storage (device-specific)
+chrome.storage.local.set({ key: value });
+chrome.storage.local.get(['key']);
 
-### Google Analytics 4
-**Property ID:** G-9XTNQMQKE2  
-**Implementation:** web/js/analytics.js
+// Session storage (temporary)
+chrome.storage.session.set({ key: value });
+```
 
-**Events Tracked:**
-- Page views
-- Tool usage
-- File conversions
-- Error events
-- Performance metrics
+**Chrome AI API:**
+```javascript
+// Check availability
+const availability = await LanguageModel.availability();
 
-**Privacy:**
-- Cookie consent banner
-- Anonymized IP
-- No PII collection
+// Create session
+const session = await LanguageModel.create({
+  systemPrompt: "You are a helpful assistant"
+});
+
+// Generate text
+const result = await session.prompt("Hello");
+```
+
+**History API:**
+```javascript
+chrome.history.search({
+  text: '',
+  startTime: Date.now() - 30 * 24 * 60 * 60 * 1000,
+  maxResults: 10000
+});
+```
+
+**Bookmarks API:**
+```javascript
+chrome.bookmarks.getTree();
+```
 
 ## Internationalization (i18n)
 
-### Custom JSON System
-**Languages:** English (en), Spanish (es)  
-**Location:** web/i18n/
+### Translation System
+- **Format:** JSON files (`en.json`, `es.json`)
+- **Location:** `web/i18n/`
+- **Engine:** Custom `i18n.js` script
+- **Scope:** Global + tool-specific translations
 
-**Structure:**
-```
-web/i18n/
-├── en.json          # English translations
-├── es.json          # Spanish translations
-├── i18n.js          # Translation engine
-└── tools/           # Tool-specific translations
+### Translation Files
+```json
+{
+  "nav.home": "Home",
+  "nav.tools": "Tools",
+  "footer.privacy": "Privacy Policy"
+}
 ```
 
-**Usage:**
+### Usage
 ```javascript
 // Load translations
-const translations = await fetch('/i18n/en.json').then(r => r.json());
+const i18n = new I18n('en');
+await i18n.load();
 
-// Apply translations
-document.querySelectorAll('[data-i18n]').forEach(el => {
-  const key = el.getAttribute('data-i18n');
-  el.textContent = translations[key];
-});
+// Translate
+const text = i18n.t('nav.home'); // "Home"
 ```
 
 ## Testing
 
 ### Automated Testing
-**Framework:** Custom Node.js test runner  
-**Location:** tests/
+- **Framework:** Custom Node.js test runner
+- **Location:** `tests/`
+- **Coverage:** 99.25% pass rate (134 tests)
 
-**Test Suites:**
-- **automated-qa.js** - Main QA suite (134 tests, 99.25% pass rate)
-- **csv-parser.test.js** - CSV parsing tests
-- **validate-conversions.js** - Format conversion tests
-- **validate-format-edgecases.js** - Edge case tests
-- **pwa-validation.js** - PWA validation
-- **service-worker.test.js** - Service Worker tests
+### Test Types
+1. **Structure Tests:** File existence, valid JSON
+2. **Parser Tests:** CSV, YAML, XML, TOML conversion
+3. **Format Tests:** Edge cases, malformed data
+4. **PWA Tests:** Service Worker, manifest validation
+5. **Integration Tests:** End-to-end tool functionality
 
-**Run Tests:**
+### Test Commands
 ```bash
+# Run all tests
 npm test
-# or
-node tests/automated-qa.js
-```
 
-### Browser Testing
-**Location:** tests/web-tests.html  
-**Usage:** Open in browser for interactive testing
+# Individual test files
+node tests/csv-parser.test.js
+node tests/pwa-validation.js
+
+# Browser tests
+# Open tests/web-tests.html in browser
+```
 
 ## Development Tools
 
-### Local Development Server
-```bash
-# Serve web/ directory
-npm run serve
-# or
-npx http-server web -p 8000
+### Code Editor
+- **Recommended:** VS Code
+- **Extensions:** ESLint, Prettier, Live Server
 
-# Access at http://localhost:8000
+### Local Server
+```bash
+# Node.js http-server
+npm run serve
+# → http://localhost:8000
+
+# Python SimpleHTTPServer
+cd web
+python -m http.server 8000
 ```
 
-### Code Editor
-**Recommended:** VS Code with extensions:
-- ESLint
-- Prettier
-- Live Server
-- HTML CSS Support
+### Browser DevTools
+- **Chrome DevTools:** Debugging, network, performance
+- **Extension DevTools:** chrome://extensions/ → Inspect views
+- **Service Worker:** chrome://serviceworker-internals/
+- **Chrome AI:** chrome://on-device-internals/
 
-### Version Control
-**System:** Git  
-**Repository:** GitHub  
-**Branching:** Main branch (production-ready)
+## Deployment
+
+### Vercel (Web App)
+- **Platform:** Vercel Hobby (free)
+- **Domain:** fasttools.ai (cdmon.com registrar)
+- **Config:** `vercel.json`
+  - `buildCommand: null` (pre-generated files)
+  - `installCommand: null`
+  - `outputDirectory: web`
+- **Deployment:** Auto-deploy on push to main branch
+
+### Chrome Web Store (Extension)
+- **Status:** Pending publication
+- **Requirements:** 
+  - Screenshots, promotional images
+  - Privacy policy
+  - Store listing description
+
+## Analytics
+
+### Google Analytics 4
+- **Property ID:** G-9XTNQMQKE2
+- **Location:** `web/js/analytics.js`
+- **Features:** 
+  - Page views
+  - Tool usage events
+  - User demographics
+  - Traffic sources
+
+### Cookie Consent
+- **Location:** `web/js/cookie-consent.js`
+- **Compliance:** GDPR-friendly banner
+- **Storage:** User consent in localStorage
 
 ## Performance Optimization
 
-### Techniques Used
-- **Minification** - Vendor libraries minified
-- **Lazy Loading** - Load tools on demand
-- **Code Splitting** - Tool-specific JS files
-- **Image Optimization** - SVG icons, optimized PNGs
-- **Caching** - Service Worker caching strategy
-- **CDN** - Vercel global CDN
+### Strategies
+1. **Lazy Loading:** Load tools on demand
+2. **Code Splitting:** Separate vendor libraries
+3. **Caching:** Service Worker cache-first strategy
+4. **Minification:** Vendor libraries minified
+5. **CDN:** Bootstrap, fonts from CDN
 
 ### Lighthouse Targets
 - **Performance:** 90+
@@ -324,153 +341,72 @@ npx http-server web -p 8000
 ## Security
 
 ### Content Security Policy (CSP)
-**Implementation:** Meta tags in HTML
+- **Extension:** Strict CSP (no inline scripts)
+- **Web:** Relaxed for third-party scripts (ads, analytics)
 
-**Directives:**
-- `default-src 'self'`
-- `script-src 'self' 'unsafe-inline'` (required for inline scripts)
-- `style-src 'self' 'unsafe-inline'` (required for inline styles)
+### Privacy
+- **No tracking:** Optional analytics only
+- **No uploads:** All processing client-side
+- **No registration:** No user accounts
+- **No cookies:** Minimal cookie usage (consent only)
 
-### Security Headers (Vercel)
+## Dependencies
+
+### Production Dependencies
+None (all libraries loaded via CDN or vendored)
+
+### Development Dependencies
 ```json
 {
-  "X-Content-Type-Options": "nosniff",
-  "X-Frame-Options": "DENY",
-  "X-XSS-Protection": "1; mode=block"
+  "http-server": "^14.1.1"
 }
 ```
 
-### Privacy
-- **No Server Uploads** - All processing client-side
-- **No Tracking** - Minimal analytics, anonymized
-- **No Cookies** - Except for consent banner
-- **No Third-Party Scripts** - Except Google Analytics (opt-in)
+## Version Control
 
-## API Integrations
+### Git
+- **Repository:** github.com/mcarbonell/quicktools
+- **Branch:** main (production)
+- **Commit Style:** Conventional commits (feat:, fix:, docs:)
 
-### Google Gemini API
-**Purpose:** AI chat, summarization, translation  
-**Authentication:** API key stored in localStorage  
-**Endpoint:** https://generativelanguage.googleapis.com/v1beta/models/gemini-pro
-
-### Nano Banana API
-**Purpose:** AI image generation and editing  
-**Authentication:** API key stored in localStorage  
-**Endpoint:** https://api.nanobanana.com/v1/
-
-## Development Commands
-
-### Build Commands
-```bash
-# Full build (web + extension + sync)
-npm run build:local
-
-# Build web only
-npm run build:web
-
-# Build extension only
-npm run build:extension
-
-# Sync shared files only
-npm run sync:shared
-
-# Clean generated files
-npm run clean
-```
-
-### Testing Commands
-```bash
-# Run all tests
-npm test
-
-# Run specific test
-node tests/csv-parser.test.js
-
-# Run PWA validation
-node tests/pwa-validation.js
-```
-
-### Development Commands
-```bash
-# Start local server
-npm run serve
-
-# Install dependencies
-npm install
-
-# Update dependencies
-npm update
-```
-
-### Git Commands
-```bash
-# Commit with conventional commits
-git commit -m "feat: add new tool"
-git commit -m "fix: resolve bug"
-git commit -m "docs: update README"
-
-# Push to deploy
-git push origin main
-```
+### Versioning
+- **Web:** Service Worker version (v3.0.35)
+- **Extension:** Manifest version (1.2.0)
+- **Semantic Versioning:** MAJOR.MINOR.PATCH
 
 ## Environment Variables
 
-**None required for web deployment** - All configuration in code
+### Web App
+None (all configuration in code)
 
-**Extension:**
-- API keys stored in chrome.storage.local
-- User preferences in chrome.storage.sync
+### Extension
+- API keys stored in chrome.storage
+- No environment variables needed
 
 ## Browser Compatibility
 
 ### Minimum Versions
-- **Chrome:** 80+
-- **Firefox:** 75+
-- **Safari:** 13+
-- **Edge:** 80+
-- **Mobile browsers:** Modern versions
+- Chrome 80+ (ES2020 support)
+- Firefox 75+ (ES2020 support)
+- Safari 13+ (ES2020 support)
+- Edge 80+ (Chromium-based)
 
-### Polyfills
-**None required** - Target modern browsers only
+### Extension Compatibility
+- Chrome 88+ (Manifest V3)
+- Edge 88+ (Manifest V3)
+- Firefox: Requires Manifest V2 port (future work)
 
-### Feature Detection
-```javascript
-// Check for required APIs
-if ('serviceWorker' in navigator) {
-  // Register Service Worker
-}
+## API Keys Required
 
-if (window.File && window.FileReader && window.FileList && window.Blob) {
-  // File API supported
-}
-```
+### Optional (for AI features)
+1. **Google Gemini API Key**
+   - Free tier: 60 requests/minute
+   - Required for: Chat, summarization, translation, text improvement
+   
+2. **Nano Banana API Key**
+   - Required for: Image generation, image editing
 
-## Code Quality
-
-### Linting
-**None configured** - Manual code review
-
-### Formatting
-**Style:**
-- 4 spaces for JavaScript
-- 2 spaces for JSON
-- Single quotes for JS
-- Double quotes for HTML
-
-### Naming Conventions
-- **Variables/Functions:** camelCase
-- **Classes:** PascalCase
-- **Files:** kebab-case
-- **CSS:** kebab-case
-
-## Documentation
-
-### Code Comments
-- Section dividers: `// ====================`
-- Emoji prefixes: 🚀 init, ✅ success, ❌ error
-- JSDoc for complex functions
-
-### Project Documentation
-- **README.md** - Project overview
-- **local_docs/** - Detailed documentation
-- **.amazonq/rules/memory-bank/** - AI context files
+3. **Chrome AI (Gemini Nano)**
+   - No API key required
+   - Built-in Chrome feature (experimental)
+   - Requires Chrome 128+ with AI features enabled

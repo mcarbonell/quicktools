@@ -1,355 +1,335 @@
 # FastTools - Project Structure
 
-## Directory Overview
+## Directory Organization
 
 ```
-quicktools/                          # Project root
-├── build/                           # 🏗️ Build configuration (NOT deployed)
-├── web/                             # 🌐 Production web app (deployed)
-├── extension/                       # 🧩 Browser extension
-├── scripts/                         # 🛠️ Build automation scripts
-├── tests/                           # 🧪 Testing suite
-├── local_docs/                      # 📚 Internal documentation
-├── web_design/                      # 🎨 Design mockups
-└── .amazonq/rules/memory-bank/      # 🤖 AI context files
+quicktools/                         # Project root
+├── build/                          # Build configuration (NOT deployed)
+├── web/                            # Production web app (deployed)
+├── extension/                      # Browser extension
+├── scripts/                        # Build automation
+├── tests/                          # Testing suite
+├── .amazonq/rules/memory-bank/     # AI context files
+├── .local_docs/                    # Internal documentation
+└── web_design/                     # Design assets
 ```
 
-## Core Directories
+## Build System (`build/`)
 
-### build/ - Build Configuration Hub
-**Purpose:** Central source of truth for site generation (NOT deployed to production)
+**Purpose:** Central configuration hub - single source of truth for both web and extension
 
 ```
 build/
 ├── data/
-│   └── fasttools-data.json          # Single source of truth (tools, categories, audiences)
-├── templates/
-│   ├── base.html                    # Base template for all pages
-│   ├── category-base.html           # Template for category pages
-│   ├── index-base.html              # Homepage template
-│   └── tools-content/               # 115+ tool content files (EN/ES)
-├── scripts/
-│   ├── generate-site.js             # Main site generator
-│   ├── generate-category-pages.js   # Category page generator
-│   ├── build-extension.js           # Extension data sync
-│   ├── bump-version.js              # Auto-version incrementer
-│   └── clean-build.js               # Clean generated files
-└── shared/
-    ├── gemini-api.js                # Shared Gemini API client
-    ├── chat-ai.js                   # Shared chat functionality
-    ├── image-generator-ai.js        # Shared image generator
-    └── image-editor-ai.js           # Shared image editor
+│   └── fasttools-data.json         # Single source of truth (tools, categories, audiences)
+├── templates/                      # HTML templates for generation
+│   ├── base.html                   # Base template for tool pages
+│   ├── category-base.html          # Template for category pages
+│   ├── index-base.html             # Homepage template
+│   └── tools-content/              # 115+ tool-specific content files
+│       ├── chat-ai-scripts.html
+│       ├── image-generator-ai-content.html
+│       └── [tool-name]-content.html
+├── scripts/                        # Build scripts
+│   ├── generate-site.js            # Main site generator
+│   ├── generate-category-pages.js  # Category page generator
+│   ├── build-extension.js          # Sync data to extension
+│   ├── bump-version.js             # Auto-increment Service Worker version
+│   └── clean-build.js              # Clean generated files
+└── shared/                         # Shared JS files (web + extension)
+    ├── gemini-api.js               # Gemini API client with env detection
+    ├── chat-ai.js                  # Chat functionality
+    ├── image-generator-ai.js       # Image generator
+    └── image-editor-ai.js          # Image editor
 ```
 
-**Key Concepts:**
-- **Single Source of Truth:** fasttools-data.json defines all tools, categories, and metadata
-- **Template-Based Generation:** HTML pages generated from templates + data
-- **Shared Code:** build/shared/ contains JS files used by both web and extension
-- **Not Deployed:** This directory stays in repository, not in production
+**Key Concept:** `build/shared/` contains JS files that work in both web and extension environments through automatic environment detection.
 
-### web/ - Production Web Application
-**Purpose:** Deployed static site (main artifact)
+## Web Application (`web/`)
+
+**Purpose:** Production-ready static site deployed to Vercel
 
 ```
 web/
-├── index.html                       # Homepage (EN) - root level
-├── es/                              # Spanish versions
-│   ├── index.html                   # Homepage (ES)
-│   └── *.html                       # 43 tool pages (ES)
-├── *.html                           # 43 tool pages (EN) - root level
-├── developers.html                  # Category pages (8 total)
-├── designers.html
-├── writers.html
-├── data-analysts.html
-├── marketers.html
-├── productivity.html
-├── ai.html
-├── seo.html
-├── 404.html                         # Custom 404 page
-├── privacy.html                     # Privacy policy
-├── manifest.json                    # PWA manifest
-├── sitemap.xml                      # SEO sitemap
-├── robots.txt                       # Search engine directives
-├── sw.js                            # Service Worker (root)
+├── index.html                      # Homepage (EN)
+├── *.html                          # 47 tool pages (EN) - root level
+├── developers.html                 # Category pages (8 total)
+├── 404.html                        # Custom 404 page
+├── privacy.html                    # Privacy policy
+├── manifest.json                   # PWA manifest
+├── sitemap.xml                     # SEO sitemap (100+ URLs)
+├── robots.txt                      # Search engine directives
+├── sw.js                           # Service Worker (root level)
+├── es/                             # Spanish versions
+│   ├── index.html
+│   ├── *.html                      # 47 tool pages (ES)
+│   └── [category].html             # 8 category pages (ES)
 ├── css/
-│   ├── style-v2.css                 # Main styles (current)
-│   ├── style.css                    # Legacy styles
-│   └── cookie-banner.css            # Cookie consent styles
+│   ├── style-v2.css                # Main styles (design system)
+│   ├── style.css                   # Legacy styles
+│   └── cookie-banner.css
 ├── js/
-│   ├── main.js                      # Core functionality
-│   ├── service-worker.js            # Service Worker logic
-│   ├── analytics.js                 # Google Analytics integration
-│   ├── animations.js                # Scroll animations
-│   ├── cookie-consent.js            # Cookie banner
-│   ├── toast.js                     # Toast notifications
-│   ├── lib/                         # Shared libraries
-│   │   └── gemini-api.js            # Gemini API client (synced from build/shared/)
-│   ├── tools/                       # Tool-specific JS
-│   │   ├── chat-ai.js               # Chat AI (synced from build/shared/)
-│   │   ├── image-generator-ai.js    # Image generator (synced from build/shared/)
-│   │   ├── image-editor-ai.js       # Image editor (synced from build/shared/)
-│   │   └── *.js                     # Other tool scripts
-│   └── vendor/                      # Third-party libraries
-│       ├── pdf.min.js               # PDF.js
-│       ├── pdf-lib.min.js           # PDF manipulation
-│       ├── qrcode.min.js            # QR code generation
-│       └── ...
-├── i18n/
-│   ├── en.json                      # English translations
-│   ├── es.json                      # Spanish translations
-│   ├── i18n.js                      # Translation engine
-│   └── tools/                       # Tool-specific translations
-├── icons/                           # PWA icons (SVG)
-└── ads/
-    └── adsense.html                 # AdSense configuration
+│   ├── main.js                     # Main application logic
+│   ├── service-worker.js           # SW registration
+│   ├── analytics.js                # Google Analytics integration
+│   ├── animations.js               # Scroll reveal animations
+│   ├── lib/                        # Shared libraries
+│   │   └── gemini-api.js           # Synced from build/shared/
+│   ├── tools/                      # Tool-specific JS
+│   │   ├── chat-ai.js              # Synced from build/shared/
+│   │   ├── image-generator-ai.js
+│   │   ├── image-editor-ai.js
+│   │   └── [tool-name].js
+│   └── vendor/                     # Third-party libraries
+│       ├── pdf.min.js
+│       ├── pdf-lib.min.js
+│       ├── qrcode.min.js
+│       └── js-yaml.min.js
+├── i18n/                           # Internationalization
+│   ├── en.json                     # English translations
+│   ├── es.json                     # Spanish translations
+│   ├── i18n.js                     # Translation engine
+│   └── tools/                      # Tool-specific translations
+│       ├── chat-ai-en.json
+│       └── chat-ai-es.json
+└── icons/                          # PWA icons (SVG)
+    ├── icon-192x192.svg
+    └── icon-512x512.svg
 ```
 
-**Key Concepts:**
-- **Clean URLs:** Tools at root level (e.g., /json-formatter.html, /es/json-formatter.html)
-- **No /tools/ Prefix:** Simplified URL structure for SEO
-- **Bilingual:** Full EN/ES support with /es/ subdirectory
-- **Static Generation:** All HTML pre-generated, no build on deploy
-- **PWA Ready:** Service Worker, manifest, offline support
+**URL Structure:**
+- EN: `/tool-name.html` (root level, no `/tools/` prefix)
+- ES: `/es/tool-name.html`
+- Categories: `/developers.html`, `/es/developers.html`
 
-### extension/ - Browser Extension
-**Purpose:** Chrome/Firefox extension with enhanced functionality
+## Browser Extension (`extension/`)
+
+**Purpose:** Chrome/Firefox extension with AI features and SEO tools
 
 ```
 extension/
-├── manifest.json                    # Extension Manifest V3
-├── background/
-│   ├── service-worker.js            # Background service worker
-│   ├── offscreen.html               # Offscreen document for DOM operations
-│   └── offscreen.js                 # Offscreen script
-├── content/
-│   ├── content-script.js            # Injected into web pages
-│   └── content-styles.css           # Content script styles
-├── popup/
-│   ├── popup.html                   # Extension popup UI
-│   ├── popup.js                     # Popup logic
-│   ├── popup-simple.html            # Simplified popup
-│   └── popup-simple.js              # Simplified popup logic
-├── options/
-│   ├── options.html                 # Settings page
-│   ├── options.js                   # Settings logic
-│   └── options.css                  # Settings styles
-├── newtab/
-│   ├── newtab.html                  # Custom new tab page
-│   ├── newtab.js                    # New tab logic
-│   ├── newtab-simple.html           # Simplified new tab
-│   └── newtab-simple.js             # Simplified new tab logic
-├── shared/
-│   ├── gemini-api.js                # Gemini API client (synced from build/shared/)
-│   ├── chat-ui.js                   # Chat UI component
-│   ├── summarize-ui.js              # Summarize UI component
-│   ├── improve-text-ui.js           # Improve text UI component
-│   ├── translate-ui.js              # Translate UI component
-│   ├── vision-chat-ui.js            # Vision chat UI component
-│   ├── edit-image-ui.js             # Edit image UI component
-│   ├── extension-adapter.js         # Environment detection
-│   ├── tools-loader.js              # Dynamic tool loading
-│   ├── i18n.js                      # Internationalization
-│   └── utils.js                     # Utility functions
-├── tools/
-│   ├── ai/                          # AI tools (chat, summarize, etc.)
-│   └── seo/                         # SEO tools (full functionality)
+├── manifest.json                   # Extension Manifest V3
+├── background/                     # Service worker and offscreen docs
+│   ├── service-worker.js           # Main background script
+│   ├── ai-offscreen.js             # Chrome AI access (offscreen doc)
+│   ├── ai-offscreen.html
+│   ├── history-analyzer.js         # Analyze browsing history
+│   ├── bookmarks-analyzer.js       # Analyze bookmarks
+│   └── profile-manager.js          # User profile CRUD
+├── content/                        # Content scripts
+│   ├── content-script.js           # Injected into web pages
+│   └── content-styles.css
+├── popup/                          # Extension popup
+│   ├── popup.html                  # Main popup
+│   ├── popup.js
+│   ├── similar-pages.html          # Similar pages feature
+│   └── similar-pages.js
+├── options/                        # Settings page
+│   ├── options.html                # Options UI
+│   ├── options.js                  # Settings logic + profile editor
+│   └── options.css
+├── newtab/                         # Custom new tab page
+│   ├── newtab.html                 # New tab UI
+│   ├── newtab.js                   # Top sites + AI recommendations
+│   └── newtab.css
+├── onboarding/                     # First-run experience
+│   ├── setup.html                  # Onboarding wizard (4 screens)
+│   ├── setup.js                    # Profile inference logic
+│   └── setup.css
+├── shared/                         # Shared code
+│   ├── gemini-api.js               # Synced from build/shared/
+│   ├── chrome-ai-apis.js           # Chrome AI wrapper
+│   ├── hybrid-ai.js                # Chrome AI + Gemini fallback
+│   ├── profile-inference.js        # AI profile inference
+│   ├── utils.js                    # Utility functions
+│   └── i18n.js                     # Translation helper
+├── tools/                          # Tool implementations
+│   ├── ai/                         # AI tools
+│   │   ├── chat-ai.html
+│   │   ├── chat-ai.js              # Synced from build/shared/
+│   │   ├── image-generator-ai.html
+│   │   └── image-editor-ai.html
+│   └── seo/                        # SEO tools
+│       ├── meta-tags-analyzer.html
+│       ├── broken-links-checker.html
+│       └── seo-utils.js
 ├── data/
-│   └── fasttools-data.json          # Tool catalog (synced from build/data/)
-└── icons/                           # Extension icons (16, 32, 48, 128)
+│   └── fasttools-data.json         # Synced from build/data/
+└── icons/                          # Extension icons
+    ├── icon-16x16.png
+    ├── icon-48x48.png
+    └── icon-128x128.png
 ```
 
-**Key Concepts:**
-- **Manifest V3:** Modern extension architecture
-- **Shared Code:** Reuses code from build/shared/ via sync script
-- **No CORS Limits:** Can access external resources unlike web version
-- **Full SEO Tools:** Implements complete SEO tool functionality
-- **Offline First:** All tools work without internet (except AI)
+**Key Features:**
+- AI Smart Recommender (similar pages based on history)
+- Onboarding with automatic profile inference
+- Personalized chat with user profile context
+- SEO tools without CORS limitations
 
-### scripts/ - Build Automation
-**Purpose:** Build and sync scripts
+## Scripts (`scripts/`)
+
+**Purpose:** Build automation and synchronization
 
 ```
 scripts/
-├── sync-shared-files.js             # Sync build/shared/ to web/ and extension/
-└── build-extension-tools.js         # Build extension-specific tools
+├── sync-shared-files.js            # Sync build/shared/ to web/ and extension/
+└── build-extension-tools.js        # Build extension-specific tools
 ```
 
-**Key Concepts:**
-- **Sync Script:** Copies shared JS files to web/ and extension/
-- **Single Source:** Ensures consistency across platforms
-- **Automated:** Runs as part of build:local command
+**Build Flow:**
+1. `npm run build:web` → Generate web pages from templates
+2. `npm run build:extension` → Sync fasttools-data.json to extension
+3. `npm run sync:shared` → Sync shared JS files to web and extension
+4. `npm run build:local` → Run all three in sequence
 
-### tests/ - Testing Suite
-**Purpose:** Automated testing and validation
+## Tests (`tests/`)
+
+**Purpose:** Automated QA and validation
 
 ```
 tests/
-├── automated-qa.js                  # Main QA suite (134 tests)
-├── run-all-tests.js                 # Test runner
-├── pwa-validation.js                # PWA validation
-├── service-worker.test.js           # Service Worker tests
-├── csv-parser.test.js               # CSV parser tests
-├── validate-conversions.js          # Format conversion tests
-├── validate-format-edgecases.js     # Edge case tests
-├── web-tests.html                   # Browser-based tests
-├── qa-report.json                   # QA results
-└── test-report.json                 # Test results
+├── automated-qa.js                 # Main QA suite (134 tests)
+├── run-all-tests.js                # Test runner
+├── csv-parser.test.js              # CSV parsing tests
+├── debug-yaml.js                   # YAML debugging
+├── pwa-validation.js               # PWA validation
+├── service-worker.test.js          # SW tests
+├── validate-conversions.js         # Format conversion tests
+├── web-tests.html                  # Browser-based test UI
+└── qa-report.json                  # Test results
 ```
 
-**Key Concepts:**
-- **99.25% Pass Rate:** High test coverage
-- **Automated QA:** Runs on every build
-- **PWA Validation:** Complete Service Worker testing
-- **Browser Tests:** Interactive testing in browser
+**Test Coverage:** 99.25% pass rate (134 tests)
 
 ## Architectural Patterns
 
-### Build System Architecture
+### 1. Shared Code Architecture
 
-**Flow:**
-1. **Source:** build/data/fasttools-data.json (single source of truth)
-2. **Templates:** build/templates/ (HTML templates)
-3. **Generation:** build/scripts/generate-site.js (creates web/ pages)
-4. **Sync:** scripts/sync-shared-files.js (distributes shared JS)
-5. **Output:** web/ (deployed) + extension/ (packaged)
+**Problem:** Avoid code duplication between web and extension  
+**Solution:** Single source in `build/shared/` with environment detection
 
-**Commands:**
-```bash
-npm run build:web        # Generate web pages
-npm run build:extension  # Sync extension data
-npm run sync:shared      # Sync shared JS files
-npm run build:local      # Full build (all above)
-```
-
-### Shared Code Architecture
-
-**Problem:** Code duplication between web and extension  
-**Solution:** Centralized shared code in build/shared/
-
-**Shared Files:**
-- `gemini-api.js` - API client with environment detection
-- `chat-ai.js` - Chat functionality
-- `image-generator-ai.js` - Image generation
-- `image-editor-ai.js` - Image editing
-
-**Environment Detection:**
 ```javascript
+// Automatic environment detection
 const isExtension = typeof chrome !== 'undefined' && chrome.storage;
 const Storage = isExtension ? ChromeGeminiStorage : GeminiStorage;
 ```
 
 **Distribution:**
-- `build/shared/` → `web/js/lib/` (gemini-api.js)
-- `build/shared/` → `web/js/tools/` (tool scripts)
-- `build/shared/` → `extension/shared/` (gemini-api.js)
-- `build/shared/` → `extension/tools/ai/` (tool scripts)
+- `build/shared/gemini-api.js` → `web/js/lib/` + `extension/shared/`
+- `build/shared/chat-ai.js` → `web/js/tools/` + `extension/tools/ai/`
 
-### URL Structure
+### 2. Template-Based Generation
 
-**Web:**
-- EN: `/tool-name.html` (root level)
-- ES: `/es/tool-name.html` (subdirectory)
-- Categories: `/category-name.html` (root level)
+**Problem:** Maintain 100+ HTML pages with consistent structure  
+**Solution:** Templates + data-driven generation
 
-**Examples:**
-- `/json-formatter.html` (EN)
-- `/es/json-formatter.html` (ES)
-- `/developers.html` (category)
-- `/es/developers.html` (category ES)
+- `build/data/fasttools-data.json` → Single source of truth
+- `build/templates/base.html` → Base template
+- `build/templates/tools-content/` → Tool-specific content
+- `build/scripts/generate-site.js` → Generator script
 
-**No /tools/ Prefix:** Simplified for SEO and user experience
+### 3. Progressive Web App (PWA)
 
-### Data Flow
+**Components:**
+- `web/manifest.json` → App manifest
+- `web/sw.js` → Service Worker (v3.0.35)
+- `web/js/service-worker.js` → SW registration
+- Auto-versioning via `build/scripts/bump-version.js`
 
-**Tool Definition:**
+### 4. Internationalization (i18n)
+
+**Strategy:** Static generation with JSON translations
+
+- `web/i18n/en.json` + `web/i18n/es.json` → Base translations
+- `web/i18n/tools/` → Tool-specific translations
+- `web/i18n/i18n.js` → Translation engine
+- URL structure: `/tool.html` (EN), `/es/tool.html` (ES)
+
+### 5. Category System
+
+**Organization:** Tools grouped by user profile
+
+- 8 category pages (developers, designers, writers, etc.)
+- Schema.org CollectionPage for categories
+- Schema.org BreadcrumbList for tools
+- Category badges on each tool page
+
+### 6. Extension Architecture
+
+**Pattern:** Manifest V3 with offscreen documents
+
+- Service Worker → Background logic
+- Offscreen Document → Chrome AI access (window.ai)
+- Content Scripts → Page interaction
+- Popup/Options/NewTab → UI components
+- Shared storage → Unified API keys
+
+## Data Flow
+
+### Build Process
 ```
 build/data/fasttools-data.json
-  ↓
+    ↓
 build/scripts/generate-site.js
-  ↓
-web/*.html (generated pages)
-  ↓
-Vercel deployment
-  ↓
-https://fasttools.ai/tool-name.html
+    ↓
+web/*.html (47 tools × 2 languages = 94 pages)
+web/[category].html (8 categories × 2 languages = 16 pages)
+    ↓
+Vercel deployment (web/ folder only)
 ```
 
-**Shared Code Flow:**
+### Shared Code Sync
 ```
-build/shared/*.js (source)
-  ↓
+build/shared/*.js
+    ↓
 scripts/sync-shared-files.js
-  ↓
-web/js/lib/*.js + web/js/tools/*.js
-extension/shared/*.js + extension/tools/ai/*.js
-  ↓
-Used by both platforms
+    ↓
+web/js/lib/ + web/js/tools/
+extension/shared/ + extension/tools/ai/
 ```
 
-## Component Relationships
-
-### Web Application Components
-- **Homepage** → Lists all tools by category
-- **Tool Pages** → Individual tool functionality
-- **Category Pages** → Tools filtered by user profile
-- **Service Worker** → Caching and offline support
-- **Analytics** → Google Analytics 4 tracking
-- **i18n System** → Bilingual support
-
-### Extension Components
-- **Background Service Worker** → Manages extension lifecycle
-- **Content Scripts** → Interact with web pages
-- **Popup** → Quick access to tools
-- **Options** → User settings
-- **New Tab** → Custom new tab with tools
-- **Shared Code** → Reused from web version
-
-### Build System Components
-- **fasttools-data.json** → Defines all tools and metadata
-- **Templates** → HTML structure
-- **Generator Scripts** → Create pages from templates + data
-- **Sync Scripts** → Distribute shared code
-- **Version Bumper** → Auto-increment Service Worker version
+### Extension Data Sync
+```
+build/data/fasttools-data.json
+    ↓
+build/scripts/build-extension.js
+    ↓
+extension/data/fasttools-data.json
+```
 
 ## Key Files
 
 ### Configuration
-- `package.json` - npm scripts and dependencies
-- `vercel.json` - Deployment configuration (buildCommand: null)
-- `manifest.json` - PWA manifest (web/) and Extension manifest (extension/)
+- `package.json` → npm scripts, dependencies
+- `vercel.json` → Deployment config (buildCommand: null)
+- `.gitignore` → Git exclusions
+- `.vercelignore` → Vercel exclusions
+
+### Documentation
+- `README.md` → Main project documentation
+- `.local_docs/` → Internal documentation
+- `.amazonq/rules/memory-bank/` → AI context files
+- `extension/README.md` → Extension documentation
 
 ### Data
-- `build/data/fasttools-data.json` - Single source of truth
-- `web/sitemap.xml` - SEO sitemap
-- `web/robots.txt` - Search engine directives
+- `build/data/fasttools-data.json` → Single source of truth
+- `web/sitemap.xml` → SEO sitemap
+- `web/robots.txt` → Search engine directives
 
-### Core Scripts
-- `build/scripts/generate-site.js` - Main site generator
-- `build/scripts/generate-category-pages.js` - Category page generator
-- `scripts/sync-shared-files.js` - Shared code distributor
-- `build/scripts/bump-version.js` - Version incrementer
+## Deployment Strategy
 
-### Service Workers
-- `web/sw.js` - PWA Service Worker (root)
-- `web/js/service-worker.js` - Service Worker logic
-- `extension/background/service-worker.js` - Extension Service Worker
+**Web App:**
+- Source: `web/` folder only
+- Platform: Vercel
+- Domain: fasttools.ai
+- Build: Pre-generated files (no build command)
 
-## Deployment Architecture
+**Extension:**
+- Source: `extension/` folder
+- Platform: Chrome Web Store (pending)
+- Distribution: Manual load for development
 
-### Web Deployment (Vercel)
-- **Source:** web/ directory
-- **Build:** None (pre-generated files)
-- **Deploy:** Automatic on git push to main
-- **URL:** https://fasttools.ai
-
-### Extension Deployment
-- **Source:** extension/ directory
-- **Package:** Zip extension/ folder
-- **Submit:** Chrome Web Store / Firefox Add-ons
-- **Distribution:** Browser extension stores
-
-## Version Management
-
-- **Service Worker:** Auto-incremented on each build (v3.0.35)
-- **Package:** Semantic versioning in package.json (1.0.0)
-- **Git:** Conventional commits (feat:, fix:, docs:, etc.)
+**Testing:**
+- Local server: `npm run serve` (port 8000)
+- Tests: `npm test` (automated QA)

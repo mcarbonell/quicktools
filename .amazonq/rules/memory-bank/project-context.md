@@ -91,12 +91,12 @@ quicktools/
 - **build/data/fasttools-data.json:** Single source of truth (toolCategories, audiences, tools)
 - **package.json:** npm scripts (build:web, build:extension, build:local, test, serve)
 - **vercel.json:** Deployment config (buildCommand: null, installCommand: null)
-- **sitemap.xml:** SEO sitemap (42 tools + 8 categories × 2 languages = 100 URLs)
+- **sitemap.xml:** SEO sitemap (47 tools + 8 categories × 2 languages = 110 URLs)
 - **robots.txt:** Search engine directives
 - **manifest.json:** PWA manifest
 - **sw.js:** Service Worker v3.0.17
 
-## Tools Inventory (42 Total)
+## Tools Inventory (47 Total)
 
 **URL Structure:** Clean URLs without /tools/ prefix
 - EN: `/lorem-ipsum-generator.html`
@@ -143,13 +143,19 @@ quicktools/
 4. Color Picker & Converter
 5. Stopwatch & Timer
 
-### AI Tools (6)
-1. AI Chat (Google Gemini)
-2. Summarize Text with AI
-3. Improve Text with AI
-4. Chat with PDF
-5. Edit Image with AI
-6. AI Translator
+### AI Tools (12)
+1. AI Chat
+2. Resumir Texto con IA
+3. Mejorar Texto con IA
+4. Chat con PDF
+5. Chat de Visión IA
+6. Traductor IA
+7. Generador de Imágenes IA - (requiere API key)
+8. Editor de Imágenes IA - (requiere API key)
+9. Generador Alt Text IA 
+10. Transcripción de Audio IA
+11. Imagen a Texto (OCR)
+12. Generador de Memes IA - (requiere API key)
 
 ### SEO Tools (8) - NEW!
 1. Meta Tags Analyzer

@@ -3,213 +3,176 @@
 ## Project Identity
 
 **Name:** FastTools (formerly QuickTools)  
-**Domain:** fasttools.ai  
-**Tagline:** "Tools in your browser" / "Herramientas en tu navegador"  
+**Domain:** https://fasttools.ai  
+**Tagline:** "Herramientas online rápidas, seguras y sin registro. Todo se procesa en tu navegador."  
 **Owner:** Mario Raúl Carbonell Martínez  
-**Status:** ✅ Production Ready (Noviembre 2025)
+**Status:** ✅ Production Ready (November 2025)
 
 ## Value Proposition
 
-FastTools is a privacy-focused suite of 43 online tools that process everything client-side in the browser. No file uploads, no registration, no tracking - just instant, secure tools accessible from any device.
+FastTools is a privacy-first suite of 47 online tools that process everything client-side in the browser. No file uploads, no registration, no tracking - just instant, secure tools accessible from any device.
 
-**Core Promise:** 100% client-side processing ensures complete privacy and data security.
+### Core Differentiators
+
+1. **100% Privacy-Focused**: All processing happens locally in the browser - files never leave the user's device
+2. **Zero Configuration**: No registration, no setup, no API keys required (except for premium AI features)
+3. **Instant Access**: Tools load instantly and work offline via PWA Service Worker
+4. **Bilingual Support**: Full EN/ES internationalization with custom i18n system
+5. **Cross-Platform**: Web app + Browser extension with shared codebase
+6. **AI-Powered**: 12 AI tools using Google Gemini, Nano Banana, and Chrome's local AI
+
+## Product Offerings
+
+### Web Application (47 Tools)
+
+**Image Tools (7)**
+- Image Resizer, Format Converter (JPG/PNG/WebP), Compressor, Cropper
+- Color Palette Generator, EXIF Viewer/Cleaner, Image to PDF
+
+**File Tools (4)**
+- PDF Text Extractor, PDF Merger, PDF Splitter, PDF Compressor
+
+**Converters (2)**
+- PDF to Image, Image to PDF
+
+**Data Tools (5)**
+- JSON Formatter, CSV↔JSON, YAML↔JSON, XML↔JSON, TOML↔JSON
+
+**Text Tools (6)**
+- Text Cleaner, URL Encoder/Decoder, Base64 Encoder/Decoder
+- HTML Encoder/Decoder, Text Diff Comparator, Lorem Ipsum Generator
+
+**Utilities (5)**
+- QR Generator, Password Generator, Hash Calculator (MD5/SHA)
+- Color Picker/Converter, Stopwatch/Timer
+
+**AI Tools (12)**
+- AI Chat (Google Gemini), Text Summarizer, Text Improver
+- Chat with PDF, Vision Chat, AI Translator
+- Image Generator (Nano Banana), Image Editor (Nano Banana)
+- Alt Text Generator, Audio Transcription, Image OCR, Meme Generator
+
+**SEO Tools (8)**
+- Meta Tags Analyzer, Heading Structure Checker
+- Robots.txt Validator, Sitemap Validator, Broken Links Checker
+- Open Graph Preview, Schema.org Validator, SEO Score Calculator
+
+### Browser Extension
+
+**Unique Features:**
+- AI Smart Recommender: Analyzes browsing history with local Chrome AI to recommend similar sites
+- Onboarding System: Automatic user profile inference from history + bookmarks
+- Personalized New Tab: Top sites + AI recommendations
+- SEO Tools: Full functionality without CORS limitations
+- Context Menus: Quick access to tools from selected text
+- Shared Storage: Unified API keys across all AI tools
+
+**Technical Advantages:**
+- Manifest V3 compliant
+- Shared codebase with web app (build/shared/)
+- No CORS restrictions for SEO tools
+- Local AI processing with Chrome Gemini Nano
+
+## Target Audiences
+
+FastTools organizes tools by user profile with dedicated category pages:
+
+1. **💻 Developers** (10 tools): JSON, CSV, YAML, XML, TOML, Base64, URL/HTML encoders, Hash calculator, Diff
+2. **🎨 Designers** (8 tools): Image manipulation, format conversion, color tools, AI image generation/editing
+3. **✍️ Writers** (6 tools): Text cleaning, comparison, Lorem Ipsum, AI summarization/improvement/chat
+4. **📊 Data Analysts** (6 tools): Data format converters, PDF text extraction
+5. **📱 Marketers** (8 tools): QR codes, image tools, color palettes, AI chat, SEO tools
+6. **⚡ Productivity** (8 tools): Timer, password generator, QR, text cleaner, PDF utilities
+7. **🤖 AI Enthusiasts** (12 tools): All AI-powered tools
+8. **🔍 SEO Specialists** (8 tools): Complete SEO analysis toolkit
 
 ## Key Features
 
 ### Privacy & Security
-- **100% Client-Side Processing:** All files and data processed locally in browser
-- **Zero Server Uploads:** No data ever leaves the user's device
-- **No Registration Required:** Instant access without accounts
-- **Offline Capable:** PWA with Service Worker for offline functionality
-- **Privacy Policy:** Transparent data handling practices
+- Client-side processing only
+- No file uploads to servers
+- No user tracking or analytics (optional Google Analytics)
+- No registration required
+- CSP compliant (no inline scripts)
 
-### User Experience
-- **Instant Access:** No loading, no configuration, no setup
-- **Mobile-First Design:** Responsive across all devices
-- **Progressive Web App:** Installable on desktop and mobile
-- **Bilingual Support:** Full English and Spanish versions
-- **Category Navigation:** Tools organized by user profile (8 categories)
-- **Clean URLs:** SEO-friendly structure without /tools/ prefix
+### Performance
+- PWA with Service Worker v3.0.35
+- Offline functionality
+- Lighthouse scores 90+ target
+- Mobile-first responsive design
+- Instant tool loading
 
-### Technical Excellence
-- **SEO Optimized:** Schema.org structured data, meta tags, sitemap
-- **Performance:** Lighthouse scores 90+ target
-- **Accessibility:** WCAG 2.1 AA compliance
-- **Modern Stack:** Vanilla JavaScript, Bootstrap 5, HTML5/CSS3
-- **Service Worker:** v3.0.35 for caching and offline support
+### Developer Experience
+- Vanilla JavaScript (no framework bloat)
+- Bootstrap 5.3.2 for UI
+- Custom CSS variables design system
+- Automated testing suite (99.25% pass rate)
+- Build system with shared code between web/extension
 
-## Tool Categories (43 Total)
+### Internationalization
+- Full EN/ES support
+- Custom JSON-based i18n system
+- Tool-specific translations
+- Clean URLs: `/tool-name.html` (EN), `/es/tool-name.html` (ES)
 
-### 🖼️ Image Tools (7)
-1. Image Resizer - Resize maintaining aspect ratio
-2. Convert Image Format - JPG ↔ PNG ↔ WebP
-3. Color Palette Generator - Extract dominant colors
-4. EXIF Viewer & Cleaner - View and remove metadata
-5. Crop Image - Crop specific areas
-6. Compress Image - Reduce size without quality loss
-7. Image to PDF - Convert images to PDF
+### SEO Optimization
+- Individual pages for each tool
+- Schema.org structured data (CollectionPage, BreadcrumbList)
+- Sitemap with 100+ URLs
+- Meta tags, Open Graph, Twitter Cards
+- Category pages for user profiles
 
-### 📊 Data Tools (5)
-1. Format JSON - Validate, format, minify
-2. CSV ↔ JSON - Bidirectional conversion
-3. YAML ↔ JSON - Bidirectional conversion
-4. XML ↔ JSON - Bidirectional conversion
-5. TOML ↔ JSON - Bidirectional conversion
+## Business Model
 
-### 📁 File Tools (4)
-1. Extract Text from PDF - Lightweight OCR with PDF.js
-2. Merge PDFs - Combine multiple PDFs
-3. Split PDF - Extract specific pages
-4. Compress PDF - Reduce PDF file size
-
-### 🔄 Converters (2)
-1. PDF to Image - Convert pages to JPG/PNG
-2. Image to PDF - Generate PDF from images
-
-### 📝 Text Tools (6)
-1. Clean Text - Remove extra spaces, count words
-2. Encode/Decode URL - URL encoding/decoding
-3. Encode/Decode Base64 - Base64 encoding/decoding
-4. Encode/Decode HTML - HTML entities
-5. Compare Texts - Find differences (diff)
-6. Lorem Ipsum Generator - Placeholder text
-
-### 🔧 Utilities (5)
-1. QR Generator - Create QR codes from text/URL
-2. Password Generator - Secure customizable passwords
-3. Hash Calculator - MD5, SHA-1, SHA-256, SHA-512
-4. Color Picker & Converter - HEX ↔ RGB ↔ HSL
-5. Stopwatch & Timer - Time tracking tool
-
-### 🤖 AI Tools (6)
-1. AI Chat - Conversation with Google Gemini
-2. Summarize Text with AI - Automatic text summarization
-3. Improve Text with AI - Grammar and style improvement
-4. Chat with PDF - Ask questions about PDFs
-5. Edit Image with AI - Edit images with text instructions (Nano Banana)
-6. AI Translator - AI-powered translation
-
-### 🔍 SEO Tools (8)
-1. Meta Tags Analyzer - Extract and validate meta tags
-2. Heading Structure Checker - Validate H1-H6 hierarchy
-3. Robots.txt Validator - Validate robots.txt files
-4. Sitemap Validator - Check sitemap structure
-5. Broken Links Checker - Find broken links (extension only)
-6. Open Graph Preview - Preview social media cards
-7. Schema.org Validator - Check structured data
-8. SEO Score Calculator - Calculate page SEO score
-
-**Note:** SEO tools are promotional pages on web (CORS limitations), full functionality available in browser extension.
-
-## User Categories (8 Profiles)
-
-1. **💻 Developers** (10 tools) - JSON, CSV, YAML, XML, TOML, Base64, URL encoder, HTML encoder, Hash calculator, Diff
-2. **🎨 Designers** (8 tools) - Image resize, convert, crop, compress, palettes, EXIF, AI editor
-3. **✍️ Writers** (6 tools) - Text cleaner, compare, Lorem Ipsum, AI summarize, AI improve, AI chat
-4. **📊 Data Analysts** (6 tools) - JSON, CSV, YAML, XML, TOML, PDF text extraction
-5. **📱 Marketers** (8 tools) - QR, image tools, palettes, AI chat, SEO tools
-6. **⚡ Productivity** (8 tools) - Stopwatch, passwords, QR, text cleaner, PDF tools
-7. **🤖 AI Tools** (6 tools) - Chat, summarize, improve, PDF chat, translate, image editor
-8. **🔍 SEO Specialists** (8 tools) - Meta analyzer, heading checker, robots validator, sitemap validator, broken links, Open Graph, Schema validator, SEO score
-
-## Target Users
-
-### Primary Audience
-- **Developers:** Need quick data format conversions and encoding tools
-- **Designers:** Require image manipulation without complex software
-- **Content Writers:** Need text processing and AI assistance
-- **Digital Marketers:** Require SEO analysis and content tools
-- **Privacy-Conscious Users:** Want tools without data collection
-
-### Use Cases
-- Quick file format conversions during development
-- Image optimization for web projects
-- Data transformation between formats
-- Text processing and cleanup
-- Password generation and security
-- QR code creation for marketing
-- PDF manipulation without uploads
-- AI-assisted content creation
-- SEO analysis and optimization
+**Current:** Free with non-intrusive advertising  
+**Future:** Freemium model with premium features
+- Basic tools: Free forever
+- Advanced AI features: Subscription ($5-10/month)
+- Extension premium features: Sync, unlimited notes, exclusive tools
+- White-label solution for agencies
 
 ## Competitive Advantages
 
-1. **Privacy-First:** Unlike competitors, zero server-side processing
-2. **No Registration:** Instant access vs. account-gated tools
-3. **Offline Capable:** PWA works without internet connection
-4. **Free & Ad-Supported:** Sustainable model without paywalls
-5. **Bilingual:** Full EN/ES support from day one
-6. **Browser Extension:** Additional functionality beyond web limitations
-7. **Open Source:** Transparent codebase (ISC license)
-8. **Modern Architecture:** Fast, responsive, accessible
+1. **Privacy-First**: Unlike competitors (Smallpdf, iLovePDF), no files leave the device
+2. **No Limits**: No file size restrictions, no daily limits, no paywalls for basic features
+3. **Unique AI Features**: Local Chrome AI for recommendations and profile inference
+4. **Extension + Web**: Dual platform with shared codebase
+5. **SEO Tools**: Extension bypasses CORS for full functionality
+6. **Open Source**: Transparent, auditable code
 
-## Monetization Strategy
+## Success Metrics
 
-- **Free with Ads:** Google AdSense integration (non-intrusive)
-- **Browser Extension:** Premium features for advanced users
-- **Future Premium:** Advanced tools or API access
-- **Sustainability:** Low hosting costs (Vercel free tier)
-
-## Technical Architecture
-
-### Web Application
-- **Frontend:** Vanilla JavaScript (ES6+), HTML5, CSS3
-- **Framework:** Bootstrap 5.3.2 (minimal, custom CSS)
-- **Hosting:** Vercel (static deployment)
-- **Domain:** cdmon.com (€10.95/year)
-- **Analytics:** Google Analytics 4 (G-9XTNQMQKE2)
-- **PWA:** Service Worker v3.0.35
-- **i18n:** Custom JSON-based system (EN/ES)
-
-### Browser Extension
-- **Manifest:** V3 (Chrome/Edge/Firefox compatible)
-- **Architecture:** Service Worker, Content Scripts, Popup, Options, New Tab
-- **Shared Code:** Unified codebase with web version
-- **Storage:** Chrome Storage API for settings
-- **Permissions:** Minimal required permissions
-
-### Build System
-- **Source of Truth:** build/data/fasttools-data.json
-- **Templates:** build/templates/ for HTML generation
-- **Scripts:** Node.js build scripts for automation
-- **Sync:** Automatic shared file distribution
-- **Versioning:** Auto-increment on each build
-
-## Quality Assurance
-
-- **Automated Testing:** 99.25% pass rate (134 tests)
-- **PWA Validation:** Complete Service Worker testing
-- **SEO Monitoring:** Google Search Console
-- **Performance:** Regular Lighthouse audits
-- **Accessibility:** WCAG 2.1 AA compliance checks
-
-## Project Status
-
-- **Launch Date:** Noviembre 2025 (< 2 semanas)
-- **Total Tools:** 43 (web) + 30+ (extension)
-- **Languages:** 2 (English, Spanish)
-- **Pages Generated:** 88 (44 EN + 44 ES)
+- **Tools:** 47 online tools
+- **Languages:** 2 (EN/ES)
+- **Test Coverage:** 99.25% (134 tests passing)
 - **Service Worker:** v3.0.35
-- **Test Pass Rate:** 99.25%
-- **Production URL:** https://fasttools.ai
-- **Staging URL:** https://fasttools-nine.vercel.app
+- **Pages Generated:** 100+ (tools + categories × languages)
+- **Build System:** Unified with shared code architecture
 
 ## Future Roadmap
 
-### Short-term (1-3 months)
+**Short-term (1-3 months)**
+- Publish extension to Chrome Web Store
 - Dark mode toggle
 - Blog section for SEO
-- More languages (Portuguese, French, German, Italian, Russian, Japanese)
-- Extension launch (Chrome Web Store, Firefox Add-ons)
+- More languages (PT, FR, DE, IT, RU, JA)
 
-### Medium-term (3-6 months)
+**Medium-term (3-6 months)**
 - Dead Links Checker (MVP in extension)
 - PWA install promotion
 - API for developers
-- Advanced analytics dashboard
+- Premium subscription launch
 
-### Long-term (6-12 months)
+**Long-term (6-12 months)**
 - Tool marketplace (user-submitted tools)
 - Collaboration features
-- White-label solution
-- Premium tier with advanced features
+- Advanced analytics dashboard
+- White-label solution for agencies
+
+## Contact & Resources
+
+- **Production:** https://fasttools.ai
+- **Staging:** https://fasttools-nine.vercel.app
+- **Repository:** github.com/mcarbonell/quicktools
+- **Email:** contact@fasttools.ai
+- **Analytics:** Google Analytics 4 (G-9XTNQMQKE2)

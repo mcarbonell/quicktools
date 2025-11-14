@@ -2,67 +2,77 @@
 
 ## Code Quality Standards
 
-### Formatting Conventions
-
-**Indentation:**
-- JavaScript: 4 spaces
-- JSON: 2 spaces
-- HTML: 2 spaces (when nested)
-
-**Quotes:**
-- JavaScript: Single quotes `'text'`
-- HTML: Double quotes `"attribute"`
-- JSON: Double quotes `"key": "value"`
-
-**Naming Conventions:**
-- Variables/Functions: `camelCase` (e.g., `handleImageUpload`, `userData`)
-- Classes: `PascalCase` (e.g., `QuickToolsNewTab`, `GeminiAPI`)
-- Files: `kebab-case` (e.g., `service-worker.js`, `automated-qa.js`)
-- CSS Classes: `kebab-case` (e.g., `.quick-access-item`, `.tool-icon`)
-- Constants: `UPPER_SNAKE_CASE` (e.g., `CACHE_NAME`, `API_KEY`)
-
-**Code Organization:**
-- Section dividers: `// ====================`
-- Section headers: `// SECTION NAME` (uppercase)
-- Subsections: `// Subsection name` (sentence case)
+### File Organization
+- **Section dividers:** Use `// ====================` with descriptive comments
+- **Logical grouping:** Group related functions under section headers
+- **Import statements:** Always at the top with clear section marker
+- **Exports:** At the bottom with clear section marker
 
 **Example:**
 ```javascript
 // ====================
-// DATA LOADING
+// IMPORTS
 // ====================
 
-async function loadUserData() {
-    // Load user preferences
-    const data = await chrome.storage.local.get(['user', 'settings']);
-    this.userData = data.user;
+importScripts('history-analyzer.js');
+importScripts('bookmarks-analyzer.js');
+
+// ====================
+// INITIALIZATION
+// ====================
+
+let creating; // A promise to prevent race conditions
+
+// ====================
+// EXPORT
+// ====================
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { /* exports */ };
 }
 ```
 
-### Console Logging Standards
+### Naming Conventions
 
-**Emoji Prefixes:**
-- 🚀 - Initialization/startup
-- ✅ - Success/completion
-- ❌ - Error/failure
-- 📋 - Context menu/clipboard
-- ⌨️ - Keyboard command
-- 📨 - Message received
-- 🔄 - Update/sync
-- 💥 - Critical error
-- 📸 - Capture/screenshot
-- 📊 - Analytics/tracking
+**Variables and Functions:**
+- camelCase for variables and functions: `generateUserId`, `trackToolUsage`
+- Descriptive names that explain purpose: `showUpdateAvailable`, `setupOffscreenDocument`
+- Boolean variables with `is/has` prefix: `isServiceWorkerSupported`, `hasAlt`
 
-**Examples:**
-```javascript
-console.log('🚀 Inicializando QuickTools New Tab');
-console.log('✅ QuickTools New Tab inicializado');
-console.error('❌ Error inicializando new tab:', error);
-console.log('📋 Context menu click:', info.menuItemId);
-console.log('⌨️ Command triggered:', command);
-```
+**Constants:**
+- UPPER_SNAKE_CASE for true constants: `CACHE_NAME`, `MAX_SCORE`
+- camelCase for configuration objects: `colors`, `results`
 
-### Comment Standards
+**Files:**
+- kebab-case for filenames: `service-worker.js`, `automated-qa.js`, `seo-utils.js`
+- Descriptive names matching content: `history-analyzer.js`, `profile-manager.js`
+
+**CSS:**
+- kebab-case for classes: `.sw-update-banner`, `.toast-notification`
+- BEM-like naming for components: `.card__header`, `.button--primary`
+
+### Code Formatting
+
+**Indentation:**
+- 4 spaces for JavaScript
+- 2 spaces for JSON
+- Consistent throughout file
+
+**Quotes:**
+- Single quotes for JavaScript strings: `'FastTools Extension'`
+- Double quotes for HTML attributes: `<div class="container">`
+- Template literals for multi-line or interpolated strings
+
+**Semicolons:**
+- Always use semicolons to terminate statements
+- Consistent across all JavaScript files
+
+**Line Length:**
+- Prefer lines under 100 characters
+- Break long lines at logical points
+- Indent continuation lines
+
+### Comments and Documentation
 
 **Function Documentation:**
 ```javascript
@@ -75,424 +85,145 @@ function isServiceWorkerSupported() {
 ```
 
 **Inline Comments:**
-- Use for complex logic explanation
-- Keep concise and meaningful
-- Prefer self-documenting code over comments
+- Use `//` for single-line comments
+- Explain WHY, not WHAT (code should be self-documenting)
+- Add context for complex logic
 
-**Section Comments:**
+**Section Headers:**
 ```javascript
 // ====================
-// UTILITY FUNCTIONS
+// CONTEXT MENUS
 // ====================
 ```
 
-## Structural Conventions
-
-### Class Structure Pattern
-
-**Standard Class Organization:**
-```javascript
-class QuickToolsNewTab {
-    constructor() {
-        // Initialize properties
-        this.userData = null;
-        this.settings = null;
-        this.tools = [];
-        
-        // Start initialization
-        this.init();
-    }
-
-    async init() {
-        console.log('🚀 Inicializando...');
-        
-        try {
-            // Load data
-            await this.loadUserData();
-            
-            // Setup
-            this.setupEventListeners();
-            
-            // Render
-            this.renderInterface();
-            
-            console.log('✅ Inicializado');
-        } catch (error) {
-            console.error('❌ Error:', error);
-        }
-    }
-
-    // ====================
-    // DATA LOADING
-    // ====================
-    
-    async loadUserData() {
-        // Implementation
-    }
-
-    // ====================
-    // EVENT HANDLERS
-    // ====================
-    
-    setupEventListeners() {
-        // Implementation
-    }
-
-    // ====================
-    // RENDERING
-    // ====================
-    
-    renderInterface() {
-        // Implementation
-    }
-}
-```
-
-**Frequency:** Used in 100% of class-based modules (extension/newtab/newtab.js)
-
-### Async/Await Pattern
-
-**Always use async/await over promises:**
-```javascript
-// ✅ Good
-async function loadTools() {
-    const data = await chrome.storage.local.get('tools');
-    return data.tools || [];
-}
-
-// ❌ Avoid
-function loadTools() {
-    return chrome.storage.local.get('tools').then(data => {
-        return data.tools || [];
-    });
-}
-```
-
-**Frequency:** 95% of asynchronous operations use async/await
-
-### Error Handling Pattern
-
-**Standard try-catch with logging:**
-```javascript
-try {
-    // Operation
-    const result = await performOperation();
-    console.log('✅ Operation completed');
-    return result;
-} catch (error) {
-    console.error('❌ Error in operation:', error);
-    this.showToast('Error message', 'error');
-    throw error; // Re-throw if needed
-}
-```
-
-**Frequency:** Used in 90% of async functions
+**TODO Comments:**
+- Use `// TODO:` for future improvements
+- Include context or ticket reference
 
 ## Semantic Patterns
 
-### Storage Access Pattern
+### Async/Await Pattern
+**Frequency:** Very high (90%+ of async code)
 
-**Chrome Extension Storage:**
 ```javascript
-// Get data
-const data = await chrome.storage.local.get(['user', 'settings']);
-this.userData = data.user;
-this.settings = data.settings || this.getDefaultSettings();
-
-// Set data
-await chrome.storage.local.set({
-    user: this.userData,
-    settings: this.settings
-});
+async function analyzeHistory(days = 30) {
+    try {
+        const analysis = await historyAnalyzer.analyzeHistory(days);
+        return {
+            success: true,
+            analysis: analysis
+        };
+    } catch (error) {
+        console.error('❌ Error analizando historial:', error);
+        return {
+            success: false,
+            error: error.message
+        };
+    }
+}
 ```
 
-**Frequency:** Used in 100% of extension storage operations
+**Key Points:**
+- Always use try-catch with async functions
+- Return structured objects with `success` flag
+- Include error messages in return value
+- Log errors with emoji prefixes
 
 ### Event Listener Pattern
+**Frequency:** High (all user interactions)
 
-**Data-action attribute for CSP compliance:**
 ```javascript
-// HTML
-<button data-action="save-note" data-modal="note-modal">Save</button>
-
-// JavaScript
-document.addEventListener('click', (e) => {
-    const action = e.target.dataset.action;
-    if (!action) return;
-    
-    e.preventDefault();
-    e.stopPropagation();
-    
-    switch (action) {
-        case 'save-note':
-            this.saveNote();
-            break;
-        case 'delete-note':
-            this.deleteNote();
-            break;
-    }
-});
-```
-
-**Frequency:** Used in 80% of event handlers in extension code
-
-### Modal Management Pattern
-
-**Show/Hide modals:**
-```javascript
-showModal(modalId) {
-    const modal = document.getElementById(modalId);
-    modal.classList.add('show');
-    
-    // Load specific modal content
-    switch (modalId) {
-        case 'settings-modal':
-            this.loadSettingsModal();
-            break;
-    }
-}
-
-closeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    modal.classList.remove('show');
-}
-```
-
-**Frequency:** Used in 100% of modal interactions
-
-### Toast Notification Pattern
-
-**Standard toast implementation:**
-```javascript
-showToast(message, type = 'info') {
-    const toast = document.createElement('div');
-    toast.className = `toast ${type}`;
-    toast.textContent = message;
-    
-    document.body.appendChild(toast);
-    
-    setTimeout(() => {
-        toast.remove();
-    }, 3000);
-}
-```
-
-**Frequency:** Used in 90% of user feedback scenarios
-
-## API Usage Patterns
-
-### Chrome Extension APIs
-
-**Message Passing:**
-```javascript
-// Send message
-chrome.runtime.sendMessage({
-    action: 'track-usage',
-    toolId: toolId,
-    source: source
-});
-
-// Receive message
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    switch (request.action) {
-        case 'track-usage':
-            trackToolUsage(request.toolId, request.source);
-            break;
-        case 'get-analytics':
-            getAnalytics().then(sendResponse);
-            return true; // Async response
-    }
-});
-```
-
-**Frequency:** Used in 100% of extension communication
-
-**Context Menus:**
-```javascript
-// Create menu
-chrome.contextMenus.create({
-    id: 'tool-action',
-    title: '🛠️ Tool Name',
-    contexts: ['selection', 'page']
-});
-
-// Handle click
 chrome.contextMenus.onClicked.addListener(async (info, tab) => {
-    switch (info.menuItemId) {
-        case 'tool-action':
-            await handleToolAction(info, tab);
-            break;
+    console.log('📋 Context menu click:', info.menuItemId);
+
+    try {
+        switch (info.menuItemId) {
+            case 'text-encode-url':
+                await handleTextEncodeURL(info, tab);
+                break;
+            case 'text-base64':
+                await handleTextBase64(info, tab);
+                break;
+        }
+
+        await trackToolUsage(info.menuItemId, 'context-menu');
+
+    } catch (error) {
+        console.error('❌ Error en context menu:', error);
+        showErrorNotification(error.message);
     }
 });
 ```
 
-**Frequency:** Used in 100% of context menu implementations
+**Key Points:**
+- Use arrow functions for listeners
+- Always wrap in try-catch
+- Log action with emoji
+- Track usage after successful action
+- Show user-friendly error notifications
 
-**Notifications:**
+### Message Passing Pattern (Extension)
+**Frequency:** High (extension communication)
+
 ```javascript
-chrome.notifications.create({
-    type: 'basic',
-    iconUrl: chrome.runtime.getURL('icons/icon-128x128.png'),
-    title: 'FastTools',
-    message: message,
-    buttons: [{ title: 'Action' }],
-    requireInteraction: true
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    console.log('📨 Message received:', request.action);
+
+    switch (request.action) {
+        case 'analyze-history':
+            analyzeHistory(request.days).then(sendResponse);
+            return true; // Async response
+        case 'save-profile':
+            saveProfile(request.profile).then(sendResponse);
+            return true;
+    }
 });
 ```
 
-**Frequency:** Used in 80% of user notifications
+**Key Points:**
+- Always log received messages
+- Use switch statement for action routing
+- Return `true` for async responses
+- Validate sender ID for security
 
-### Service Worker Patterns
+### Storage Pattern
+**Frequency:** High (data persistence)
 
-**Cache-First Strategy:**
 ```javascript
-self.addEventListener('fetch', (event) => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => response || fetch(event.request))
-    );
-});
-```
-
-**Install Event:**
-```javascript
-self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(urlsToCache))
-    );
-});
-```
-
-**Frequency:** Used in 100% of Service Worker implementations
-
-### Analytics Tracking Pattern
-
-**Tool Usage Tracking:**
-```javascript
-// Track when tool is used
-if (window.analytics) {
-    window.analytics.trackToolUsed({
-        'file_type': file.type,
-        'file_size': file.size
-    });
+// Chrome Storage (Extension)
+async function saveProfile(profile) {
+    try {
+        await chrome.storage.local.set({ userProfile: profile });
+        return { success: true };
+    } catch (error) {
+        console.error('❌ Error guardando perfil:', error);
+        return {
+            success: false,
+            error: error.message
+        };
+    }
 }
 
-// Track actions
-if (window.analytics) {
-    window.analytics.trackAction('download', {
-        'format': outputFormat
-    });
-}
-
-// Track errors
-if (window.analytics) {
-    window.analytics.trackError('operation_failed', error.message);
+// LocalStorage (Web)
+function saveApiKey(key) {
+    try {
+        localStorage.setItem('gemini_api_key', key);
+        return true;
+    } catch (error) {
+        console.error('❌ Error guardando API key:', error);
+        return false;
+    }
 }
 ```
 
-**Frequency:** Used in 85% of tool implementations
+**Key Points:**
+- Always wrap storage operations in try-catch
+- Use descriptive keys: `userProfile`, `gemini_api_key`
+- Return success/failure indicators
+- Prefer chrome.storage in extensions (sync across devices)
 
-## Code Idioms
-
-### Null Coalescing with Default Values
-
-```javascript
-// Get with default
-this.settings = data.settings || this.getDefaultSettings();
-this.notes = data.notes?.items || [];
-
-// Array operations
-const recentNotes = this.notes.slice(0, 3);
-```
-
-**Frequency:** Used in 95% of data loading operations
-
-### Array Filtering and Mapping
-
-```javascript
-// Filter and map
-const quickAccessTools = this.quickAccess
-    .map(id => this.tools.find(t => t.id === id))
-    .filter(Boolean);
-
-// Reduce for aggregation
-const totalUsage = Object.values(todayUsage)
-    .reduce((sum, count) => sum + count, 0);
-```
-
-**Frequency:** Used in 80% of array operations
-
-### Template Literals for HTML
-
-```javascript
-item.innerHTML = `
-    <div class="tool-icon">${tool.icon}</div>
-    <div class="tool-info">
-        <div class="tool-name">${tool.name}</div>
-        <div class="tool-description">${tool.description}</div>
-    </div>
-`;
-```
-
-**Frequency:** Used in 100% of dynamic HTML generation
-
-### Object Destructuring
-
-```javascript
-// Destructure from storage
-const { user, settings, analytics } = await chrome.storage.local.get([
-    'user', 'settings', 'analytics'
-]);
-
-// Spread operator for updates
-const newSettings = { ...this.settings, ...updates };
-```
-
-**Frequency:** Used in 70% of object operations
-
-### Arrow Functions
-
-```javascript
-// Event listeners
-button.addEventListener('click', () => this.handleClick());
-
-// Array methods
-tools.forEach(tool => this.renderTool(tool));
-
-// Async operations
-const data = await fetch(url).then(r => r.json());
-```
-
-**Frequency:** Used in 95% of function expressions
-
-## Testing Patterns
-
-### Test Structure
-
-```javascript
-function testFeature() {
-    log(colors.cyan, '\n🧪 Testing Feature...\n');
-    
-    const testCases = [
-        'file1.html',
-        'file2.html'
-    ];
-    
-    testCases.forEach(file => {
-        const fullPath = path.join(process.cwd(), file);
-        testResult(
-            `Test: ${file}`,
-            fileExists(fullPath),
-            `Missing: ${file}`
-        );
-    });
-}
-```
-
-**Frequency:** Used in 100% of test suites
-
-### Test Result Tracking
+### Testing Pattern
+**Frequency:** All test files
 
 ```javascript
 function testResult(name, passed, message = '') {
@@ -509,343 +240,594 @@ function testResult(name, passed, message = '') {
         }
     }
 }
+
+// Usage
+testResult(
+    'File exists: web/index.html',
+    fileExists(fullPath),
+    `Missing file: web/index.html`
+);
 ```
 
-**Frequency:** Used in 100% of test assertions
+**Key Points:**
+- Use emoji indicators (✅ ❌)
+- Track total/passed/failed counts
+- Store error details for reporting
+- Descriptive test names
+- Optional error messages
 
-## Best Practices
-
-### 1. Always Check for API Availability
-
-```javascript
-if ('serviceWorker' in navigator) {
-    // Use Service Worker
-}
-
-if (window.analytics) {
-    // Track analytics
-}
-
-if (typeof chrome !== 'undefined' && chrome.storage) {
-    // Use Chrome Storage
-}
-```
-
-### 2. Provide Default Values
+### Notification Pattern
+**Frequency:** Medium (user feedback)
 
 ```javascript
-getDefaultSettings() {
-    return {
-        theme: 'auto',
-        accentColor: '#6366f1',
-        autoCapture: false,
-        saveToClipboard: true
+function showNotification(message, type = 'info', buttons = [], notificationId = undefined, requireInteraction = false) {
+    const icons = {
+        success: 'icons/icon-128x128.png',
+        error: 'icons/icon-128x128.png',
+        info: 'icons/icon-128x128.png'
     };
+
+    chrome.notifications.create(notificationId, {
+        type: 'basic',
+        iconUrl: chrome.runtime.getURL(icons[type]),
+        title: 'FastTools',
+        message: message,
+        buttons: buttons,
+        requireInteraction: requireInteraction
+    });
 }
 ```
 
-### 3. Use Semantic HTML
+**Key Points:**
+- Default parameters for flexibility
+- Icon mapping by type
+- Consistent branding (title)
+- Optional buttons and interaction
+
+## Chrome Extension Patterns
+
+### Offscreen Document Pattern
+**Frequency:** Medium (Chrome AI access)
 
 ```javascript
-// Create semantic elements
-const item = document.createElement('article');
-item.className = 'tool-item';
-item.setAttribute('role', 'button');
-item.setAttribute('tabindex', '0');
+async function setupOffscreenDocument(path) {
+    // Check all existing contexts for a matching document
+    const existingContexts = await chrome.runtime.getContexts({
+        contextTypes: [chrome.runtime.ContextType.OFFSCREEN_DOCUMENT],
+        documentUrls: [chrome.runtime.getURL(path)]
+    });
+
+    if (existingContexts.length > 0) {
+        return;
+    }
+
+    // create offscreen document
+    if (creating) {
+        await creating;
+    } else {
+        creating = chrome.offscreen.createDocument({
+            url: path,
+            reasons: [chrome.offscreen.Reason.USER_MEDIA],
+            justification: 'Screen capture requires getDisplayMedia API',
+        });
+        await creating;
+        creating = null;
+    }
+}
 ```
 
-### 4. Handle Async Errors Gracefully
+**Key Points:**
+- Check for existing contexts first
+- Prevent race conditions with promise tracking
+- Clear justification for Chrome Web Store review
+- Appropriate reason enum
+
+### Context Menu Pattern
+**Frequency:** Medium (extension UI)
+
+```javascript
+function createContextMenus() {
+    // Limpiar menus existentes
+    chrome.contextMenus.removeAll(() => {
+        // Similar Pages (principal)
+        chrome.contextMenus.create({
+            id: 'similar-pages',
+            title: '🌍 Encontrar Páginas Similares',
+            contexts: ['page']
+        });
+
+        // Separator
+        chrome.contextMenus.create({
+            id: 'separator1',
+            type: 'separator',
+            contexts: ['page']
+        });
+
+        // Herramientas de texto (solo en selección)
+        chrome.contextMenus.create({
+            id: 'text-encode-url',
+            title: '🔗 Codificar URL',
+            contexts: ['selection']
+        });
+    });
+}
+```
+
+**Key Points:**
+- Remove all existing menus first
+- Use emoji in titles for visual appeal
+- Appropriate contexts: `page`, `selection`, `image`
+- Separators for grouping
+- Descriptive IDs matching handler logic
+
+### Chrome Storage Session Pattern
+**Frequency:** Medium (temporary data)
+
+```javascript
+// Save URL for popup
+await chrome.storage.session.set({ 'similar-pages-url': tab.url });
+
+// Retrieve in popup
+const data = await chrome.storage.session.get('similar-pages-url');
+const url = data['similar-pages-url'];
+```
+
+**Key Points:**
+- Use for temporary cross-context data
+- Doesn't persist after browser restart
+- Faster than local storage
+- Good for passing data to popups
+
+## Web Application Patterns
+
+### Service Worker Registration
+**Frequency:** Once per page load
+
+```javascript
+async function registerSW() {
+    if (!isServiceWorkerSupported()) {
+        console.log('[SW] Service Workers no soportados');
+        return null;
+    }
+
+    if (!isSecureContext()) {
+        console.warn('[SW] Service Workers requieren HTTPS');
+        return null;
+    }
+
+    try {
+        const registration = await navigator.serviceWorker.register('/sw.js', {
+            scope: '/'
+        });
+
+        console.log('[SW] Service Worker registrado:', registration.scope);
+
+        // Manejar actualizaciones
+        registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing;
+            if (newWorker) {
+                newWorker.addEventListener('statechange', () => {
+                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                        showUpdateAvailable();
+                    }
+                });
+            }
+        });
+
+        return registration;
+
+    } catch (error) {
+        console.error('[SW] Error registrando:', error);
+        return null;
+    }
+}
+```
+
+**Key Points:**
+- Check support and security context first
+- Log with `[SW]` prefix for filtering
+- Handle update notifications
+- Return null on failure (graceful degradation)
+
+### Analytics Integration Pattern
+**Frequency:** High (all tools)
+
+```javascript
+function handleImageUpload(file) {
+    // Track cuando usuario carga archivo
+    if (window.analytics) {
+        window.analytics.trackToolUsed({
+            'file_type': file.type,
+            'file_size': file.size
+        });
+    }
+    
+    // ... resto del código de carga ...
+}
+
+function resizeImage(width, height) {
+    if (window.analytics) {
+        window.analytics.trackAction('processing_started', {
+            'target_width': width,
+            'target_height': height
+        });
+    }
+    
+    try {
+        // ... código de redimensionamiento ...
+        
+        if (window.analytics) {
+            window.analytics.trackAction('processing_completed', {
+                'output_width': outputWidth,
+                'output_height': outputHeight
+            });
+        }
+    } catch (error) {
+        if (window.analytics) {
+            window.analytics.trackError('resize_failed', error.message);
+        }
+        throw error;
+    }
+}
+```
+
+**Key Points:**
+- Always check `window.analytics` exists
+- Track tool usage on first interaction
+- Track actions with descriptive names
+- Track errors in catch blocks
+- Include relevant metadata
+
+### SEO Utilities Pattern
+**Frequency:** Medium (SEO tools)
+
+```javascript
+function extractMetaTags(doc = document) {
+    const metaTags = {};
+    
+    // Basic meta tags
+    metaTags.title = doc.title || '';
+    metaTags.description = doc.querySelector('meta[name="description"]')?.content || '';
+    metaTags.canonical = doc.querySelector('link[rel="canonical"]')?.href || '';
+    
+    // Open Graph
+    metaTags.og = {};
+    doc.querySelectorAll('meta[property^="og:"]').forEach(meta => {
+        const property = meta.getAttribute('property').replace('og:', '');
+        metaTags.og[property] = meta.content;
+    });
+    
+    return metaTags;
+}
+```
+
+**Key Points:**
+- Default to `document` parameter
+- Use optional chaining `?.` for safety
+- Fallback to empty string `|| ''`
+- Group related data in objects
+- Iterate with forEach for collections
+
+## Error Handling
+
+### Standard Error Pattern
+**Frequency:** Very high (all async operations)
+
+```javascript
+async function operation() {
+    try {
+        // ... operation code ...
+        return { success: true, data: result };
+    } catch (error) {
+        console.error('❌ Error en operación:', error);
+        return {
+            success: false,
+            error: error.message
+        };
+    }
+}
+```
+
+**Key Points:**
+- Always return structured objects
+- Include `success` boolean flag
+- Return error message, not error object
+- Log with emoji prefix for visibility
+- Never throw from top-level handlers
+
+### User-Facing Error Pattern
+**Frequency:** High (UI interactions)
 
 ```javascript
 try {
-    const result = await operation();
-    return result;
+    await processFile(file);
+    showNotification('Archivo procesado correctamente', 'success');
 } catch (error) {
-    console.error('❌ Error:', error);
-    this.showToast('User-friendly error message', 'error');
-    return null; // Return safe default
+    console.error('❌ Error procesando archivo:', error);
+    showNotification('Error: ' + error.message, 'error');
 }
 ```
 
-### 5. Clean Up Resources
+**Key Points:**
+- Show success notifications
+- Show user-friendly error messages
+- Always log technical details
+- Use notification system consistently
+
+## Logging Standards
+
+### Console Logging Pattern
+**Frequency:** Very high (debugging and monitoring)
 
 ```javascript
-// Clear intervals
-if (this.quickTimer.interval) {
-    clearInterval(this.quickTimer.interval);
-}
-
-// Remove event listeners
-element.removeEventListener('click', handler);
-
-// Clear timeouts
-clearTimeout(timeoutId);
+console.log('🚀 FastTools Extension instalado:', details.reason);
+console.log('📋 Context menu click:', info.menuItemId);
+console.log('📨 Message received:', request.action);
+console.log('✅ FastTools inicializado correctamente');
+console.error('❌ Error en context menu:', error);
+console.warn('[SW] Service Workers requieren HTTPS');
 ```
 
-### 6. Use Constants for Magic Numbers
+**Emoji Prefixes:**
+- 🚀 Initialization/startup
+- ✅ Success/completion
+- ❌ Errors
+- 📋 User actions
+- 📨 Messages/communication
+- 🔄 Updates/sync
+- 📊 Analytics/data
+- 🎯 Important events
+- 💥 Critical errors
+
+**Key Points:**
+- Always use emoji prefixes for visual scanning
+- Include relevant context data
+- Use appropriate log level (log/warn/error)
+- Prefix Service Worker logs with `[SW]`
+
+## Testing Standards
+
+### Test Structure
+**Frequency:** All test files
 
 ```javascript
-const MAX_NOTES = 50;
-const TOAST_DURATION = 3000;
-const CACHE_VERSION = 'v2.0.0';
-```
+function testSuiteName() {
+    log(colors.cyan, '\\n📁 Testing Suite Name...\\n');
 
-### 7. Validate User Input
+    const testCases = [
+        'web/index.html',
+        'web/sitemap.xml'
+    ];
 
-```javascript
-if (!title && !content) {
-    this.showToast('La nota debe tener título o contenido', 'warning');
-    return;
-}
-```
-
-### 8. Use Descriptive Variable Names
-
-```javascript
-// ✅ Good
-const quickAccessTools = this.quickAccess
-    .map(id => this.tools.find(t => t.id === id))
-    .filter(Boolean);
-
-// ❌ Avoid
-const qat = this.qa.map(i => this.t.find(t => t.i === i)).filter(Boolean);
-```
-
-### 9. Keep Functions Small and Focused
-
-```javascript
-// Each function does one thing
-async function loadUserData() { }
-async function loadTools() { }
-async function loadNotes() { }
-
-// Called from init
-async function init() {
-    await this.loadUserData();
-    await this.loadTools();
-    await this.loadNotes();
-}
-```
-
-### 10. Document Complex Logic
-
-```javascript
-/**
- * Calculate productivity score based on tool diversity and usage
- * Score = min(toolCount * 10, 50) + min(totalUsage * 2, 50)
- * Maximum score: 100
- */
-calculateProductivityScore() {
-    const diversityScore = Math.min(toolCount * 10, 50);
-    const usageScore = Math.min(totalUsage * 2, 50);
-    return Math.min(diversityScore + usageScore, 100);
+    testCases.forEach(testCase => {
+        const result = performTest(testCase);
+        testResult(
+            `Test description: ${testCase}`,
+            result,
+            `Error message if failed`
+        );
+    });
 }
 ```
 
-## File Organization
+**Key Points:**
+- Group tests in suites with descriptive names
+- Use colored output for readability
+- Iterate over test cases
+- Descriptive test names
+- Clear error messages
 
-### Module Structure
-
-**Typical file structure:**
-```
-1. File header comment
-2. Imports (if any)
-3. Constants
-4. Main class/function
-5. Helper functions
-6. Initialization code
-7. Exports (if module)
-```
-
-**Example:**
-```javascript
-// service-worker.js - Service Worker registration
-// For use in pages as module: import { registerSW } from './service-worker.js'
-
-// Constants
-const CACHE_VERSION = 'v2.0.0';
-
-// Main functions
-async function registerSW() { }
-async function updateSW() { }
-
-// Helper functions
-function isServiceWorkerSupported() { }
-function isSecureContext() { }
-
-// Auto-initialization
-if (typeof window !== 'undefined') {
-    registerSW();
-}
-
-// Exports
-export { registerSW, updateSW };
-```
-
-### Separation of Concerns
-
-- **Logic:** Separate business logic from UI
-- **Data:** Separate data loading from rendering
-- **Events:** Centralize event handling
-- **Utilities:** Extract reusable functions
-
-## Performance Considerations
-
-### 1. Lazy Loading
+### Test Reporting
+**Frequency:** End of test runs
 
 ```javascript
-// Load tools on demand
-async function loadTool(toolId) {
-    const module = await import(`./tools/${toolId}.js`);
-    return module.default;
-}
+// Summary
+log(colors.magenta, '\\n' + '='.repeat(60));
+log(colors.magenta, '📊 Test Summary');
+log(colors.magenta, '='.repeat(60));
+
+log(colors.cyan, `\\nTotal Tests: ${results.total}`);
+log(colors.green, `Passed: ${results.passed}`);
+log(colors.red, `Failed: ${results.failed}`);
+
+const passRate = ((results.passed / results.total) * 100).toFixed(2);
+log(colors.cyan, `\\nPass Rate: ${passRate}%`);
+
+// Save report
+const report = {
+    timestamp: new Date().toISOString(),
+    summary: {
+        total: results.total,
+        passed: results.passed,
+        failed: results.failed,
+        passRate: passRate + '%'
+    },
+    errors: results.errors
+};
+
+fs.writeFileSync('qa-report.json', JSON.stringify(report, null, 2));
 ```
 
-### 2. Debouncing
+**Key Points:**
+- Visual separators with repeated characters
+- Color-coded summary
+- Calculate and display pass rate
+- Save JSON report for CI/CD
+- Include timestamp and all metrics
 
+## Best Practices
+
+### 1. Privacy First
+- Never send user data to external servers
+- Process everything client-side
+- Clear user data on request
+- Transparent about data usage
+
+### 2. Progressive Enhancement
+- Check feature support before using
+- Graceful degradation when features unavailable
+- Don't break core functionality
+
+### 3. Performance
+- Lazy load heavy libraries
+- Cache API responses
+- Minimize DOM operations
+- Use Web Workers for heavy processing
+
+### 4. Accessibility
+- Semantic HTML
+- ARIA labels where needed
+- Keyboard navigation support
+- Screen reader friendly
+
+### 5. Security
+- Validate all user input
+- Sanitize HTML output
+- Use CSP headers
+- No inline scripts in extension
+
+### 6. Maintainability
+- DRY (Don't Repeat Yourself)
+- Single Responsibility Principle
+- Clear function names
+- Comprehensive comments
+
+### 7. User Experience
+- Immediate feedback on actions
+- Clear error messages
+- Loading states
+- Success confirmations
+
+## Code Review Checklist
+
+Before committing code, verify:
+
+- [ ] Follows naming conventions
+- [ ] Has section dividers
+- [ ] Includes error handling
+- [ ] Logs with emoji prefixes
+- [ ] Returns structured objects
+- [ ] Has descriptive comments
+- [ ] No console.log in production (use proper logging)
+- [ ] Analytics tracking added (if applicable)
+- [ ] Tests written/updated
+- [ ] No hardcoded credentials
+- [ ] Responsive design (if UI)
+- [ ] Accessibility considered
+- [ ] Browser compatibility checked
+- [ ] Performance optimized
+
+## Common Pitfalls to Avoid
+
+1. **Forgetting async/await:** Always await promises
+2. **Missing error handling:** Every async operation needs try-catch
+3. **Not checking analytics exists:** Always `if (window.analytics)`
+4. **Inline scripts in extension:** Violates CSP
+5. **Not returning true for async messages:** Extension messages need this
+6. **Race conditions in offscreen docs:** Use promise tracking
+7. **Not validating sender ID:** Security risk in message handlers
+8. **Forgetting to track usage:** Analytics incomplete
+9. **Not logging errors:** Debugging becomes impossible
+10. **Hardcoding values:** Use constants or configuration
+
+## File Templates
+
+### JavaScript Module Template
 ```javascript
-// Debounce search input
-let searchTimeout;
-searchInput.addEventListener('input', (e) => {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => {
-        this.handleSearch(e);
-    }, 300);
-});
-```
+// ====================
+// MODULE NAME
+// ====================
 
-### 3. Efficient DOM Updates
+// Brief description of module purpose
 
-```javascript
-// Batch DOM updates
-const fragment = document.createDocumentFragment();
-items.forEach(item => {
-    fragment.appendChild(this.createItem(item));
-});
-container.appendChild(fragment);
-```
+// ====================
+// IMPORTS
+// ====================
 
-### 4. Cache Results
+// Import statements here
 
-```javascript
-// Cache expensive calculations
-if (!this._cachedResult) {
-    this._cachedResult = this.expensiveCalculation();
-}
-return this._cachedResult;
-```
+// ====================
+// CONSTANTS
+// ====================
 
-## Security Practices
+const CONFIG = {
+    // Configuration here
+};
 
-### 1. Content Security Policy Compliance
+// ====================
+// MAIN FUNCTIONS
+// ====================
 
-```javascript
-// Use data-action instead of inline onclick
-<button data-action="save">Save</button>
-
-// Handle via event delegation
-document.addEventListener('click', (e) => {
-    const action = e.target.dataset.action;
-    if (action === 'save') this.save();
-});
-```
-
-### 2. Sanitize User Input
-
-```javascript
-// Escape HTML entities
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
-```
-
-### 3. Validate URLs
-
-```javascript
-// Validate before opening
-function isValidUrl(url) {
+async function mainFunction() {
     try {
-        new URL(url);
-        return true;
-    } catch {
-        return false;
+        // Implementation
+        return { success: true, data: result };
+    } catch (error) {
+        console.error('❌ Error:', error);
+        return { success: false, error: error.message };
     }
+}
+
+// ====================
+// HELPER FUNCTIONS
+// ====================
+
+function helperFunction() {
+    // Implementation
+}
+
+// ====================
+// EXPORT
+// ====================
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { mainFunction, helperFunction };
 }
 ```
 
-## Accessibility
-
-### 1. Semantic HTML
-
+### Test File Template
 ```javascript
-// Use semantic elements
-<button> instead of <div onclick>
-<nav> for navigation
-<main> for main content
-<article> for independent content
-```
+// ====================
+// TEST SUITE NAME
+// ====================
 
-### 2. ARIA Attributes
+const colors = {
+    reset: '\\x1b[0m',
+    green: '\\x1b[32m',
+    red: '\\x1b[31m',
+    cyan: '\\x1b[36m'
+};
 
-```javascript
-element.setAttribute('role', 'button');
-element.setAttribute('aria-label', 'Close modal');
-element.setAttribute('aria-expanded', 'false');
-```
+const results = {
+    total: 0,
+    passed: 0,
+    failed: 0,
+    errors: []
+};
 
-### 3. Keyboard Navigation
-
-```javascript
-element.setAttribute('tabindex', '0');
-element.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-        this.handleClick();
+function testResult(name, passed, message = '') {
+    results.total++;
+    if (passed) {
+        results.passed++;
+        console.log(`${colors.green}✅ ${name}${colors.reset}`);
+    } else {
+        results.failed++;
+        console.log(`${colors.red}❌ ${name}${colors.reset}`);
+        if (message) {
+            results.errors.push({ test: name, error: message });
+        }
     }
-});
-```
+}
 
-## Internationalization
+function runTests() {
+    console.log(`${colors.cyan}\\n🧪 Running Tests...\\n${colors.reset}`);
+    
+    // Tests here
+    
+    // Summary
+    const passRate = ((results.passed / results.total) * 100).toFixed(2);
+    console.log(`\\nPass Rate: ${passRate}%`);
+}
 
-### 1. Use Translation Keys
-
-```javascript
-// Load translations
-const translations = await fetch('/i18n/en.json').then(r => r.json());
-
-// Apply translations
-document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    el.textContent = translations[key];
-});
-```
-
-### 2. Language Detection
-
-```javascript
-const userLang = navigator.language || navigator.userLanguage;
-const lang = userLang.startsWith('es') ? 'es' : 'en';
-```
-
-## Version Control
-
-### Commit Message Format
-
-```
-feat: add new feature
-fix: resolve bug
-docs: update documentation
-style: format code
-refactor: restructure code
-test: add tests
-chore: update dependencies
-```
-
-### Branch Naming
-
-```
-feature/tool-name
-fix/bug-description
-docs/update-readme
+runTests();
 ```

@@ -65,41 +65,18 @@ FastTools es una suite de 47 herramientas online que funcionan completamente del
 - **Cronómetro/Temporizador** - Herramienta de tiempo
 
 ### 🤖 IA (12 herramientas)
-💬 AI Chat
-Chat with AI using Google Gemini.
-
-📄 Summarize Text with AI
-Summarize long texts using AI.
-
-✨ Improve Text with AI
-Improve your text writing with AI.
-
-📚 Chat with PDF
-Chat with your PDF documents using AI.
-
-👁️ AI Vision Chat
-Chat with AI about your images. Ask questions and get detailed analysis.
-
-🌐 AI Translator
-Translate text between languages using AI.
-
-🎨 AI Image Generator
-Generate images from text using Gemini 2.5 Flash Image (Nano Banana). Requires paid API key.
-
-✏️ AI Image Editor
-Edit images with text instructions using Gemini 2.5 Flash Image (Nano Banana). Requires paid API key.
-
-🖼️ AI Alt Text Generator
-Generate SEO alt text for images using local AI.
-
-🎤 AI Audio Transcription
-Transcribe audio files to text using local AI.
-
-📝 Image to Text (OCR)
-Extract text from images with OCR using local AI. Supports multiple output formats.
-
-🎭 AI Meme Generator
-Create viral memes automatically with AI. Upload an image and AI adds funny text or use your own.
+- **💬 AI Chat** - Conversa con IA usando Google Gemini
+- **📄 Resumir Texto con IA** - Resumir textos largos usando IA
+- **✨ Mejorar Texto con IA** - Mejorar la escritura con IA
+- **📚 Chat con PDF** - Conversa con documentos PDF usando IA
+- **👁️ Chat de Visión IA** - Analiza imágenes con IA y responde preguntas
+- **🌐 Traductor IA** - Traduce texto entre idiomas usando IA
+- **🎨 Generador de Imágenes IA** - Genera imágenes desde texto (requiere API key)
+- **✏️ Editor de Imágenes IA** - Edita imágenes con instrucciones de texto (requiere API key)
+- **🖼️ Generador Alt Text IA** - Genera texto alternativo SEO para imágenes
+- **🎤 Transcripción de Audio IA** - Transcribe archivos de audio a texto
+- **📝 Imagen a Texto (OCR)** - Extrae texto de imágenes con OCR local
+- **🎭 Generador de Memes IA** - Crea memes virales automáticamente con IA
 
 ### 🔍 SEO (8 herramientas)
 - **Analizador de Meta Tags** - Extrae y valida meta tags
