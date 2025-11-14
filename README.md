@@ -7,7 +7,7 @@
 
 > **Herramientas online rápidas, seguras y sin registro. Todo se procesa en tu navegador.**
 
-FastTools es una suite de 43 herramientas online que funcionan completamente del lado del cliente, sin necesidad de subir archivos a servidores. Privacidad total, acceso instantáneo y compatible con dispositivos móviles.
+FastTools es una suite de 47 herramientas online que funcionan completamente del lado del cliente, sin necesidad de subir archivos a servidores. Privacidad total, acceso instantáneo y compatible con dispositivos móviles.
 
 ## ✨ Características Principales
 
@@ -19,7 +19,7 @@ FastTools es una suite de 43 herramientas online que funcionan completamente del
 - 💰 **Gratis con Publicidad**: Modelo sostenible con anuncios no intrusivos
 - 🌐 **Offline Ready**: PWA con Service Worker v3.0.35
 - 🌍 **Bilingüe**: Soporte completo EN/ES con i18n
-- 🤖 **IA Integrada**: 6 herramientas con Google Gemini y Nano Banana
+- 🤖 **IA Integrada**: 6 herramientas con Google Gemini, Nano Banana y la IA local de Chrome
 
 ## 🛠️ Herramientas Disponibles
 
@@ -64,13 +64,42 @@ FastTools es una suite de 43 herramientas online que funcionan completamente del
 - **Selector de color** - Conversor HEX ↔ RGB ↔ HSL
 - **Cronómetro/Temporizador** - Herramienta de tiempo
 
-### 🤖 IA (6 herramientas)
-- **Chat con IA** - Conversa con Google Gemini 2.0 Flash
-- **Resumir Texto con IA** - Resume textos largos automáticamente
-- **Mejorar Texto con IA** - Mejora gramática y estilo
-- **Chat con PDF** - Haz preguntas sobre tus PDFs
-- **Generador de Imágenes IA** - Genera imágenes con Gemini 2.5 Flash Image (Nano Banana)
-- **Editor de Imágenes IA** - Edita imágenes con instrucciones de texto (Nano Banana)
+### 🤖 IA (12 herramientas)
+💬 AI Chat
+Chat with AI using Google Gemini.
+
+📄 Summarize Text with AI
+Summarize long texts using AI.
+
+✨ Improve Text with AI
+Improve your text writing with AI.
+
+📚 Chat with PDF
+Chat with your PDF documents using AI.
+
+👁️ AI Vision Chat
+Chat with AI about your images. Ask questions and get detailed analysis.
+
+🌐 AI Translator
+Translate text between languages using AI.
+
+🎨 AI Image Generator
+Generate images from text using Gemini 2.5 Flash Image (Nano Banana). Requires paid API key.
+
+✏️ AI Image Editor
+Edit images with text instructions using Gemini 2.5 Flash Image (Nano Banana). Requires paid API key.
+
+🖼️ AI Alt Text Generator
+Generate SEO alt text for images using local AI.
+
+🎤 AI Audio Transcription
+Transcribe audio files to text using local AI.
+
+📝 Image to Text (OCR)
+Extract text from images with OCR using local AI. Supports multiple output formats.
+
+🎭 AI Meme Generator
+Create viral memes automatically with AI. Upload an image and AI adds funny text or use your own.
 
 ### 🔍 SEO (8 herramientas)
 - **Analizador de Meta Tags** - Extrae y valida meta tags
@@ -374,7 +403,7 @@ open tests/web-tests.html     # macOS
 ## 📈 Roadmap
 
 ### Completado ✅
-- [x] **v1.0** - 43 herramientas online
+- [x] **v1.0** - 47 herramientas online
 - [x] **v2.0** - Progressive Web App (PWA)
 - [x] **v2.1** - Internacionalización (EN/ES)
 - [x] **v2.2** - Sistema de categorías por perfil
