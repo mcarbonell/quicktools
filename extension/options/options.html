@@ -83,53 +83,59 @@
                                 <span class="checkmark"></span>
                                 <span data-i18n="options.auto_start">Iniciar automáticamente con el navegador</span>
                             </label>
-                            <p class="setting-description" data-i18n="options.auto_start_desc">La extensión se activará automáticamente al abrir Chrome</p>
+                            <p class="setting-description" data-i18n="options.auto_start_desc">La extensión se activará
+                                automáticamente al abrir Chrome</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
                                 <input type="checkbox" id="auto-capture" checked>
                                 <span class="checkmark"></span>
-                                Captura automática al seleccionar
+                                <span data-i18n="options.auto_capture">Captura automática al seleccionar</span>
                             </label>
-                            <p class="setting-description">Capturar automáticamente cuando selecciones una región</p>
+                            <p class="setting-description" data-i18n="options.auto_capture_desc">Capturar
+                                automáticamente cuando selecciones una región</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
                                 <input type="checkbox" id="save-to-clipboard" checked>
                                 <span class="checkmark"></span>
-                                Guardar automáticamente en el portapapeles
+                                <span data-i18n="options.save_to_clipboard">Guardar automáticamente en el
+                                    portapapeles</span>
                             </label>
-                            <p class="setting-description">Copiar resultados automáticamente al portapapeles</p>
+                            <p class="setting-description" data-i18n="options.save_to_clipboard_desc">Copiar resultados
+                                automáticamente al portapapeles</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
                                 <input type="checkbox" id="show-notifications" checked>
                                 <span class="checkmark"></span>
-                                Mostrar notificaciones
+                                <span data-i18n="options.show_notifications">Mostrar notificaciones</span>
                             </label>
-                            <p class="setting-description">Mostrar notificaciones de éxito y error</p>
+                            <p class="setting-description" data-i18n="options.show_notifications_desc">Mostrar
+                                notificaciones de éxito y error</p>
                         </div>
                     </div>
 
                     <div class="settings-group">
-                        <h3>Comportamiento del Popup</h3>
+                        <h3 data-i18n="options.group_popup_behavior">Comportamiento del Popup</h3>
                         <div class="setting-item">
                             <label class="setting-label">
                                 <input type="checkbox" id="open-in-new-tab">
                                 <span class="checkmark"></span>
-                                Abrir herramientas en nueva pestaña
+                                <span data-i18n="options.open_in_new_tab">Abrir herramientas en nueva pestaña</span>
                             </label>
-                            <p class="setting-description">Abrir herramientas web en lugar de usar el popup</p>
+                            <p class="setting-description" data-i18n="options.open_in_new_tab_desc">Abrir herramientas
+                                web en lugar de usar el popup</p>
                         </div>
 
                         <div class="setting-item">
                             <label class="setting-label">
                                 <input type="checkbox" id="compact-view">
                                 <span class="checkmark"></span>
-                                Vista compacta
+                                <span data-i18n="options.compact_view">Vista compacta</span>
                             </label>
                             <p class="setting-description">Mostrar herramientas en vista más compacta</p>
                         </div>
@@ -143,12 +149,15 @@
                     <div class="settings-group">
                         <h3 data-i18n="options.language">Idioma</h3>
                         <div class="setting-item">
-                            <label for="language-select" data-i18n="options.settings_lang">🌐 Idioma de la interfaz:</label>
-                            <select id="language-select" style="width: 100%; padding: 8px; border: 1px solid var(--border, #ddd); border-radius: 4px; font-size: 14px;">
+                            <label for="language-select" data-i18n="options.settings_lang">🌐 Idioma de la
+                                interfaz:</label>
+                            <select id="language-select"
+                                style="width: 100%; padding: 8px; border: 1px solid var(--border, #ddd); border-radius: 4px; font-size: 14px;">
                                 <option value="en">English</option>
                                 <option value="es">Español</option>
                             </select>
-                            <p class="setting-description" data-i18n="options.language_description">Cambia el idioma de la extensión y las herramientas web</p>
+                            <p class="setting-description" data-i18n="options.language_description">Cambia el idioma de
+                                la extensión y las herramientas web</p>
                         </div>
                     </div>
 
@@ -373,19 +382,20 @@
                     <div class="settings-group">
                         <h3>Información del Perfil</h3>
                         <p class="section-description">Este perfil se usa para personalizar tu experiencia con IA</p>
-                        
+
                         <div class="profile-form">
                             <div class="form-group">
                                 <label for="profile-name">✨ Nombre/Apodo (opcional):</label>
                                 <input type="text" id="profile-name" placeholder="Ej: Mario">
-                                <small style="color: var(--text-secondary); font-size: 12px;">La IA te llamará por tu nombre en las conversaciones</small>
+                                <small style="color: var(--text-secondary); font-size: 12px;">La IA te llamará por tu
+                                    nombre en las conversaciones</small>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="profile-role">👤 Rol/Profesión:</label>
                                 <input type="text" id="profile-role" placeholder="Ej: Desarrollador Web Full-Stack">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="profile-level">📊 Nivel:</label>
                                 <select id="profile-level">
@@ -395,27 +405,28 @@
                                     <option value="expert">Expert</option>
                                 </select>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="profile-interests">💡 Intereses (separados por coma):</label>
                                 <input type="text" id="profile-interests" placeholder="Ej: React, TypeScript, IA">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="profile-stack">🛠️ Stack (separado por coma):</label>
                                 <input type="text" id="profile-stack" placeholder="Ej: JavaScript, Python, Node.js">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="profile-workstyle">💼 Estilo de trabajo:</label>
-                                <input type="text" id="profile-workstyle" placeholder="Ej: Colaborativo, orientado a resultados">
+                                <input type="text" id="profile-workstyle"
+                                    placeholder="Ej: Colaborativo, orientado a resultados">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="profile-hobbies">🎮 Hobbies (separados por coma):</label>
                                 <input type="text" id="profile-hobbies" placeholder="Ej: Coding, Gaming, Lectura">
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="profile-gender">👤 Género:</label>
                                 <select id="profile-gender">
@@ -424,7 +435,7 @@
                                     <option value="female">Femenino</option>
                                 </select>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label for="profile-age">🎂 Rango de edad:</label>
                                 <select id="profile-age">
@@ -436,7 +447,7 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="profile-actions">
                             <button class="btn" id="regenerate-profile">🔄 Regenerar con IA</button>
                             <button class="btn btn-primary" id="save-profile">💾 Guardar Perfil</button>
@@ -514,7 +525,8 @@
                     <a href="#" id="feedback-link" data-i18n="options.feedback">Feedback</a>
                 </div>
                 <div class="footer-right">
-                    <button class="btn btn-primary" id="save-settings" data-i18n="options.save_settings">Guardar Configuración</button>
+                    <button class="btn btn-primary" id="save-settings" data-i18n="options.save_settings">Guardar
+                        Configuración</button>
                 </div>
             </div>
         </footer>
