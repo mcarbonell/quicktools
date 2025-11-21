@@ -23,7 +23,7 @@
 
 ### 🔄 En Progreso
 - [x] Resolución de dominio fasttools.ai
-- [ ] I18n en la extensión
+- [x] I18n en la extensión
 - [ ] Pulido de diseño (consistencia visual)
 - [ ] Testing exhaustivo de todas las herramientas
 - [ ] Gestión de API keys (free/paid)
@@ -45,7 +45,7 @@
 #### Día 1-2: Resolver Blockers Críticos
 **Prioridad: ALTA**
 
-- [ ] **Dominio fasttools.ai**
+- [x] **Dominio fasttools.ai**
   - Contactar soporte cdmon
   - Verificar DNS en dnschecker.org
   - Si no resuelve en 24h, considerar alternativa
